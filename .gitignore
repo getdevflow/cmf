@@ -1,0 +1,15 @@
+database/migrations/.migrations.log
+public/sites/cms_
+resources/views/*.tpl
+storage/app/cookies/cookie.*
+storage/framework/cache/@psr*
+storage/install.lock
+storage/logs/*.log
+/vendor/
+.idea
+.env
+.env.local
+.phpcs-cache
+.php-cs-fixer.cache
+.phpunit.result.cache
+composer.lock

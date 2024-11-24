@@ -1,0 +1,85 @@
+{
+    "name": "getdevflow/cmf",
+    "type": "project",
+    "description": "Developer-centric, headless content management framework.",
+    "keywords": ["devflow","framework","content-management"],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Joshua Parker",
+            "email": "joshua@joshuaparker.dev",
+            "homepage": "https://joshuaparker.dev/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "barryvdh/elfinder-flysystem-driver": "^0.5.0",
+        "codefyphp/codefy": "^2",
+        "erusev/parsedown": "^1.7",
+        "forxer/gravatar": "^5.0",
+        "franzl/whoops-middleware": "^2.0",
+        "paragonie/csp-builder": "^2.9",
+        "qubus/form": "^1.0",
+        "qubus/hooks": "^1.0",
+        "qubus/nosql": "^3.0",
+        "spatie/image": "^3.7",
+        "spatie/image-optimizer": "^1.7",
+        "spatie/menu": "^3.2",
+        "studio-42/elfinder": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "Cms\\": "Cms/",
+            "Plugin\\": "public/plugins/",
+            "Theme\\": "public/themes/"
+        },
+        "files": [
+            "App/Infrastructure/Http/Middleware/Csrf/helpers.php",
+            "App/Shared/Helpers/db.php",
+            "App/Shared/Helpers/core.php",
+            "App/Shared/Helpers/hook.php",
+            "App/Shared/Helpers/content.php",
+            "App/Shared/Helpers/product.php",
+            "App/Shared/Helpers/user.php",
+            "App/Shared/Helpers/auth.php",
+            "App/Shared/Helpers/url.php",
+            "App/Shared/Helpers/domain.php",
+            "App/Shared/Helpers/site.php",
+            "App/Shared/Helpers/content-type.php",
+            "App/Shared/Helpers/menu.php"
+        ]
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require-dev": {
+        "marcocesarato/markdown": "^0.1.11",
+        "pestphp/pest": "^1.23",
+        "qubus/qubus-coding-standard": "^1.1"
+    },
+    "suggest": {
+        "fenom/fenom": "Lightweight and fast template engine for PHP.",
+        "fenom/providers-collection": "Additional providers for Fenom template engine.",
+        "foil/foil": "Write simple, clean, and concise templates with nothing more than PHP.",
+        "jolicode/jolinotif": "Send notifications to your desktop directly from your PHP script",
+        "mobiledetect/mobiledetectlib": "Mobile Detect is a lightweight PHP class for detecting mobile devices (including tablets).",
+        "webonyx/graphql-php": "A PHP implementation of the GraphQL specification based on the reference implementation in JavaScript.",
+        "spatie/schema-org": "Provides a fluent builder for all Schema.org types and their properties.",
+        "arcanedev/seo-helper": "SEO Helper is a package that provides tools and helpers for SEO (Search Engine Optimization)."
+    }
+}

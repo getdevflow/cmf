@@ -1,0 +1,55 @@
+<?php
+
+use App\Application\Devflow;
+
+use function App\Shared\Helpers\get_auth_screen_logo;
+use function Qubus\Security\Helpers\esc_attr__;
+use function Qubus\Security\Helpers\t__;
+
+$this->parent('framework::backend/layouts/auth-layout');
+$this->block('auth', function ($params) {
+?>
+
+    <div class="brand">
+        <?=get_auth_screen_logo();?>
+        <?=Devflow::inst()::$APP->flash->display();?>
+    </div>
+
+    <div class="card fat">
+        <div class="card-body">
+            <form method="post" action="<?=$params['url'];?>" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="form-group">
+                    <label for="username"><?=t__(msgid: 'Username', domain: 'devflow');?></label>
+                    <input id="username" type="text" class="form-control" name="user_login" required="required" autofocus>
+                    <div class="invalid-feedback">
+                        <?=t__(msgid: 'Username is invalid.', domain: 'devflow');?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><?=t__('Password');?>
+                        <a href="reset-password/" class="float-right">
+                            <?=t__(msgid: 'Forgot Password?', domain: 'devflow');?>
+                        </a>
+                    </label>
+                    <input id="password" type="password" class="form-control" name="user_pass" required="required" data-eye>
+                    <div class="invalid-feedback">
+                        <?=t__(msgid: 'Password is required.', domain: 'devflow');?>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-checkbox custom-control">
+                        <input type="checkbox" name="rememberme" value="yes" id="remember" class="custom-control-input">
+                        <label for="remember" class="custom-control-label"><?=t__(msgid: 'Remember Me', domain: 'devflow');?></label>
+                    </div>
+                </div>
+
+                <div class="form-group m-0">
+                    <input type="submit" name="login-submit" class="btn btn-submit btn-block" value="<?=esc_attr__(string: 'Login', domain: 'devflow');?>">
+                </div>
+            </form>
+        </div>
+    </div>
+
+<?php }); ?>

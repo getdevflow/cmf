@@ -1,0 +1,125 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\ae;
+use function App\Shared\Helpers\content_status_label;
+use function App\Shared\Helpers\get_current_user_id;
+use function App\Shared\Helpers\get_name;
+use function App\Shared\Helpers\get_user_datetime;
+use function Qubus\Security\Helpers\esc_html__;
+use function Qubus\Security\Helpers\t__;
+use function Qubus\Support\Helpers\is_null__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+
+Registry::getInstance()->{'set'}('screen_parent', 'product');
+Registry::getInstance()->{'set'}('screen_child', 'products');
+?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-text-width"></i>
+                <h3 class="box-title"><?=t__(msgid: 'All Products', domain: 'devflow');?></h3>
+
+                <div class="pull-right">
+                    <button type="button"<?= ae('create:product');?> class="btn btn-warning" onclick="window.location = '<?= admin_url('product/create/'); ?>'"><i class="fa fa-plus"></i> <?= esc_html__(string: 'New Product', domain: 'devflow'); ?></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?php Action::getInstance()->doAction('admin_notices'); ?>
+
+            <?= Devflow::inst()::$APP->flash->display(); ?>
+
+            <!-- SELECT2 EXAMPLE -->
+            <div class="box box-default">
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th><?= esc_html__(string: 'Title', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Author', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Date', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Last Modified', domain: 'devflow'); ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if(!empty($params['products'])) : foreach ($params['products'] as $product) : ?>
+                            <tr class="gradeX">
+                                <td>
+                                    <div class="content_title">
+                                        <strong><a href="<?= admin_url(sprintf('product/%s/', $product['id'])); ?>"><?= $product['title']; ?></a></strong> --
+                                        <span class="label <?= content_status_label($product['status']);?>" style="font-size:1em;font-weight: bold;">
+                                            <?= ucfirst($product['status']); ?>
+                                        </span>
+                                    </div>
+                                    <div class="row-actions">
+                                        <span class="edit"><a href="<?= admin_url(sprintf('product/%s/', $product['id'])); ?>"><?=esc_html__(string: 'Edit', domain: 'devflow');?></a></span> |
+                                        <span class="delete"><a<?= ae('delete:product');?> href="#" data-toggle="modal" data-target="#delete-<?= $product['id']; ?>"><?=esc_html__(string: 'Delete', domain: 'devflow');?></a></span>
+                                    </div>
+                                    <div class="modal" id="delete-<?= $product['id']; ?>">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title"><?= $product['title']; ?></h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p><?=esc_html__(string: 'Are you sure you want to delete this product?', domain: 'devflow');?></p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
+                                                    <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url(sprintf('product/%s/d/', $product['id'])); ?>'"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
+                                </td>
+                                <td>
+                                    <?php if ($product['author'] === get_current_user_id()) : ?>
+                                        <a href="<?= admin_url('user/profile/'); ?>"><?= get_name($product['author'], true); ?></a>
+                                    <?php else : ?>
+                                        <a href="<?= admin_url(sprintf('user/%s/', $product['author'])); ?>"><?= get_name($product['author'], true); ?></a>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?=get_user_datetime($product['published'], 'Y-m-d @ h:i A');?></td>
+                                <td><?php $product['modified'] === '0000-00-00 00:00:00' || is_null__($product['modified']) ? '0000-00-00 00:00:00' : get_user_datetime($product['modified'], 'Y-m-d @ h:i A');?></td>
+                            </tr>
+                        <?php endforeach; endif; ?>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th><?= esc_html__(string: 'Title', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Author', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Date', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Last Modified', domain: 'devflow'); ?></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+<?php }); ?>

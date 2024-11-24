@@ -1,0 +1,112 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\get_users_dropdown_list;
+use function App\Shared\Helpers\selected;
+use function Qubus\Security\Helpers\esc_html__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+Registry::getInstance()->{'set'}('screen_child', 'sites');
+?>
+
+    <script src="static/assets/js/url_slug.js" type="text/javascript"></script>
+    <script>
+        $(function(){
+            $('#site_name').keyup(function() {
+                $('#site_slug').val(url_slug($(this).val()));
+            });
+        });
+    </script>
+
+    <!-- form start -->
+    <form method="post" action="<?= admin_url('site/' . $params['site']->id . '/'); ?>" data-toggle="validator" autocomplete="off">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <i class="fa fa-thumb-tack"></i>
+                    <h3 class="box-title"><?= esc_html__(string: 'Update Site', domain: 'devflow'); ?></h3>
+
+                    <div class="pull-right">
+                        <input type="hidden" id="site_slug" name="slug" value="<?= $params['site']->slug; ?>" />
+                        <input type="hidden" id="site_key" name="key" value="<?= $params['site']->key; ?>" />
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= esc_html__(string: 'Update', domain: 'devflow'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('site/'); ?>'"><i class="fa fa-ban"></i> <?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <?php Action::getInstance()->doAction('admin_notices'); ?>
+
+                <?= Devflow::inst()::$APP->flash->display(); ?>
+
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-9">
+                        <div class="box box-default">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><span style="color: red; ">*</span> <?= esc_html__(string: 'Site Domain', domain: 'devflow'); ?></label>
+                                    <input type="text" class="form-control" name="domain" value="<?= $params['site']->domain; ?>" required/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><?= esc_html__(string: 'Site Mapping', domain: 'devflow'); ?></label>
+                                    <input type="text" class="form-control" name="mapping" value="<?= $params['site']->mapping; ?>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label><span style="color: red; ">*</span> <?= esc_html__(string: 'Site Name', domain: 'devflow'); ?></label>
+                                    <input type="text" id="site_name" class="form-control" name="name" value="<?= $params['site']->name; ?>" required/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><?= esc_html__(string: 'Path', domain: 'devflow'); ?></label>
+                                    <input type="text" class="form-control" name="path" value="<?= $params['site']->path; ?>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label><?= esc_html__(string: 'Administrator', domain: 'devflow'); ?></label>
+                                    <select class="form-control select2" name="owner" style="width: 100%;" required>
+                                        <option>&nbsp;</option>
+                                        <?php get_users_dropdown_list($params['site']->owner); ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><?= esc_html__(string: 'Status', domain: 'devflow'); ?></label>
+                                    <select class="form-control select2" name="status" style="width: 100%;" required>
+                                        <option>&nbsp;</option>
+                                        <option value="public"<?= selected('public', $params['site']->status, false); ?>><?= esc_html__(string: 'Public', domain: 'devflow'); ?></option>
+                                        <option value="archive"<?= selected('archive', $params['site']->status, false); ?>><?= esc_html__(string: 'Archive', domain: 'devflow'); ?></option>
+                                    </select>
+                                </div>
+                                <?php Action::getInstance()->doAction('update_site_form_fields', $params['site']->id); ?>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-header -->
+                    </div>
+                    <!-- /.left column -->
+                </div>
+                <!--/.row -->
+
+            </section>
+            <!-- /.content -->
+
+        </div>
+        <!-- /.content-wrapper -->
+    </form>
+
+<?php }); ?>

@@ -1,0 +1,141 @@
+<?php
+/**
+ * User's List View
+ */
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\ae;
+use function App\Shared\Helpers\get_current_user_id;
+use function App\Shared\Helpers\get_name;
+use function App\Shared\Helpers\get_user_option;
+use function App\Shared\Helpers\get_userdata;
+use function App\Shared\Helpers\get_users_reassign;
+use function App\Shared\Helpers\user_status_label;
+use function Qubus\Security\Helpers\esc_attr__;
+use function Qubus\Security\Helpers\esc_html__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+Registry::getInstance()->{'set'}('screen_parent', 'users');
+Registry::getInstance()->{'set'}('screen_child', 'all-users');
+?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-user"></i>
+                <h3 class="box-title"><?= esc_html__(string: 'Users', domain: 'devflow'); ?></h3>
+
+                <div class="pull-right">
+                    <button type="button"<?=ae('create:users');?> class="btn btn-warning" onclick="window.location='<?=admin_url('user/create/');?>'"><i class="fa fa-plus"></i> <?= esc_html__(string: 'New User', domain: 'devflow'); ?></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?php Action::getInstance()->doAction('admin_notices'); ?>
+
+            <?= Devflow::inst()::$APP->flash->display(); ?>
+
+            <!-- SELECT2 EXAMPLE -->
+            <div class="box box-default">
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th class="text-center"><?= esc_html__(string: 'Username', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'First Name', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'Status', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'Role', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'Action', domain: 'devflow'); ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($params['users'] as $user) : $data = get_userdata($user['id']); ?>
+                            <tr class="gradeX">
+                                <td class="text-center"><?= $user['login']; ?></td>
+                                <td class="text-center"><?= $user['fname']; ?></td>
+                                <td class="text-center"><?= $user['lname']; ?></td>
+                                <td class="text-center">
+                                    <span class="label <?= user_status_label(get_user_option('status', $user['id'])); ?>" style="font-size:1em;font-weight: bold;">
+                                        <?= (get_user_option('status', $user['id']) === 'A' ? esc_html__(string: 'Active', domain: 'devflow') : esc_html__(string: 'Inactive', domain: 'devflow')); ?>
+                                    </span>
+                                </td>
+                                <td class="text-center"><?= get_user_option('role', $user['id']);?></td>
+                                <td class="text-center">
+                                    <?php if ($user['id'] === get_current_user_id()) : ?>
+                                        <a href="<?= admin_url('user/profile/'); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Update', domain: 'devflow'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
+                                    <?php else : ?>
+                                        <a href="<?= admin_url(sprintf('user/%s/', $user['id'] )); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Update', domain: 'devflow'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
+                                    <?php endif; ?>
+                                    <a href="<?= admin_url(sprintf('user/%s/reset-password/', $user['id'])); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Reset Password', domain: 'devflow'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-redo"></i></button></a>
+                                    <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && $user['id'] !== get_current_user_id()) : ?>
+                                        <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', $user['id'])); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Switch to', domain: 'devflow'); ?>"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
+                                    <?php endif; ?>
+                                    <?php if ($user['role'] !== 'super' && $user['id'] !== get_current_user_id()) : ?>
+                                        <a<?= ae('delete:users'); ?> href="#" data-toggle="modal" data-target="#delete-<?= $user['id']; ?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
+                                    <?php endif; ?>
+
+                                    <div class="modal" id="delete-<?= $user['id']; ?>">
+                                        <form method="post" action="<?=admin_url('user/' . $user['id'] . '/d/');?>">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title"><?= get_name($user['id']); ?></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p><?= esc_html__(string: 'Are you sure you want to remove the user from this site?', domain: 'devflow'); ?></p>
+                                                        <div class="alert alert-info"><?=esc_html__(string: "Would you like to assign this user's content to a different user? Choose below.", domain: 'devflow');?></div>
+                                                        <select class="form-control select2" name="assign_id" style="width: 100%;">
+                                                            <option>&nbsp;</option>
+                                                            <?php get_users_reassign($user['id']); ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
+                                                        <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </form>
+                                    </div>
+                                    <!-- /.modal -->
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th class="text-center"><?= esc_html__(string: 'Username', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'First Name', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'Status', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'Role', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= esc_html__(string: 'Action', domain: 'devflow'); ?></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+<?php }); ?>

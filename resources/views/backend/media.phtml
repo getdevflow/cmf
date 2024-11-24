@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\site_url;
+use function Qubus\Security\Helpers\esc_html__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function () {
+Registry::getInstance()->set('screen_parent', 'media');
+?>
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="vendor/studio-42/elfinder/css/elfinder.full.css" type="text/css" rel="stylesheet" />
+    <link href="vendor/studio-42/elfinder/css/theme.css" type="text/css" rel="stylesheet" />
+    <script src="vendor/studio-42/elfinder/js/elfinder.full.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $().ready(function() {
+            var elf = $('#elfinder').elfinder({
+                baseUrl: '<?=site_url('vendor/studio-42/elfinder/');?>',
+                url : '<?=admin_url('connector/');?>',
+                soundPath: '<?=site_url('vendor/studio-42/elfinder/sounds');?>',
+                modal: false,
+                resizable:false
+            }).elfinder('instance');
+        });
+    </script>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-camera"></i>
+                <h3 class="box-title"><?= esc_html__(string: 'Media Library', domain: 'devflow'); ?></h3>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?php Action::getInstance()->doAction('admin_notices'); ?>
+
+            <?=Devflow::inst()::$APP->flash->display();?>
+
+            <div class="box box-default">
+                <div class="box-body">
+                    <div id="elfinder"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+<?php }); ?>

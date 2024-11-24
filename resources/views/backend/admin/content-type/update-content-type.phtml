@@ -1,0 +1,85 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use function App\Shared\Helpers\admin_url;
+use function Qubus\Security\Helpers\esc_html__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+Registry::getInstance()->{'set'}('screen_parent', 'content_types');
+?>
+
+    <script src="static/assets/js/url_slug.js" type="text/javascript"></script>
+    <script>
+        $(function(){
+            $('#contenttype_title').keyup(function() {
+                $('#contenttype_slug').val(url_slug($(this).val()));
+            });
+        });
+    </script>
+
+    <!-- form start -->
+    <form method="post" action="<?=admin_url('content-type/' . $params['type']->id . '/'); ?>" data-toggle="validator" autocomplete="off">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <i class="fa fa-thumb-tack"></i>
+                    <h3 class="box-title"><?= esc_html__(string: 'Update Content Type', domain: 'devflow'); ?></h3>
+
+                    <div class="pull-right">
+                        <input type="hidden" class="form-control" name="id" id="id" value="<?=$params['type']->id;?>" required/>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= esc_html__(string: 'Update', domain: 'devflow'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location='<?=admin_url('content-type/');?>'"><i class="fa fa-ban"></i> <?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <?php Action::getInstance()->doAction('admin_notices'); ?>
+
+                <?= Devflow::inst()::$APP->flash->display(); ?>
+
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Name', domain: 'devflow'); ?></label>
+                                    <input type="text" class="form-control input-lg" name="title" id="title" value="<?=$params['type']->title;?>" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Slug', domain: 'devflow'); ?></label>
+                                    <input type="text" class="form-control" name="slug" id="slug" value="<?=$params['type']->slug;?>" required/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><?= esc_html__(string: 'Content Type Description', domain: 'devflow'); ?></label>
+                                    <textarea class="form-control" rows="3" name="description"><?=$params['type']->description;?></textarea>
+                                </div>
+                                <?php Action::getInstance()->doAction('update_contenttype_form_fields', $params['type']->id); ?>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+
+        </div>
+        <!-- /.content-wrapper -->
+    </form>
+
+<?php }); ?>

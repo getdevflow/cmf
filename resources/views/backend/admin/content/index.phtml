@@ -1,0 +1,123 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\ae;
+use function App\Shared\Helpers\content_status_label;
+use function App\Shared\Helpers\get_current_user_id;
+use function App\Shared\Helpers\get_name;
+use function App\Shared\Helpers\get_user_datetime;
+use function Qubus\Security\Helpers\esc_html__;
+use function Qubus\Security\Helpers\t__;
+use function Qubus\Support\Helpers\is_null__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+
+Registry::getInstance()->{'set'}('screen_parent', 'content');
+Registry::getInstance()->{'set'}('screen_child', 'content');
+?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-text-width"></i>
+                <h3 class="box-title"><?=t__(msgid: 'All Content', domain: 'devflow');?></h3>
+                <div class="pull-right">
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?php Action::getInstance()->doAction('admin_notices'); ?>
+
+            <?= Devflow::inst()::$APP->flash->display(); ?>
+
+            <!-- SELECT2 EXAMPLE -->
+            <div class="box box-default">
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th><?= esc_html__(string: 'Title', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Author', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Date', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Last Modified', domain: 'devflow'); ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if(!empty($params['contentArray'])) : foreach ($params['contentArray'] as $content) : ?>
+                            <tr class="gradeX">
+                                <td>
+                                    <div class="content_title">
+                                        <strong><a href="<?= admin_url(sprintf('content-type/%s/%s/', $content['contentType'], $content['id'])); ?>"><?= $content['title']; ?></a></strong> --
+                                        <span class="label <?= content_status_label($content['status']);?>" style="font-size:1em;font-weight: bold;">
+                                            <?= ucfirst($content['status']); ?>
+                                        </span>
+                                    </div>
+                                    <div class="row-actions">
+                                        <span class="edit"><a href="<?= admin_url(sprintf('content-type/%s/%s/', $content['contentType'], $content['id'])); ?>"><?=esc_html__(string: 'Edit', domain: 'devflow');?></a></span> |
+                                        <span class="delete"><a<?= ae('delete:content');?> href="#" data-toggle="modal" data-target="#delete-<?= $content['id']; ?>"><?=esc_html__(string: 'Delete', domain: 'devflow');?></a></span>
+                                    </div>
+                                    <div class="modal" id="delete-<?= $content['id']; ?>">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title"><?= $content['title']; ?></h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p><?=esc_html__(string: 'Are you sure you want to delete this content?', domain: 'devflow');?></p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
+                                                    <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url(sprintf('content-type/%s/%s/d/', $content['contentType'], $content['id'])); ?>'"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
+                                </td>
+                                <td>
+                                    <?php if ($content['author'] === get_current_user_id()) : ?>
+                                        <a href="<?= admin_url('user/profile/'); ?>"><?= get_name($content['author'], true); ?></a>
+                                    <?php else : ?>
+                                        <a href="<?= admin_url(sprintf('user/%s/', $content['author'])); ?>"><?= get_name($content['author'], true); ?></a>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?=get_user_datetime($content['published'], 'Y-m-d @ h:i A');?></td>
+                                <td><?php $content['modified'] === '0000-00-00 00:00:00' || is_null__($content['modified']) ? '0000-00-00 00:00:00' : get_user_datetime($content['modified'], 'Y-m-d @ h:i A');?></td>
+                            </tr>
+                        <?php endforeach; endif; ?>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th><?= esc_html__(string: 'Title', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Author', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Date', domain: 'devflow'); ?></th>
+                            <th><?= esc_html__(string: 'Last Modified', domain: 'devflow'); ?></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+<?php }); ?>

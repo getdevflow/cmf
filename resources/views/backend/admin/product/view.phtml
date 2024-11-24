@@ -1,0 +1,271 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use Qubus\EventDispatcher\ActionFilter\Filter;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\ae;
+use function App\Shared\Helpers\checked;
+use function App\Shared\Helpers\cms_upload_image;
+use function App\Shared\Helpers\currency_option;
+use function App\Shared\Helpers\current_user_can;
+use function App\Shared\Helpers\get_users_dropdown_list;
+use function App\Shared\Helpers\selected;
+use function Qubus\Security\Helpers\esc_html__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+Registry::getInstance()->{'set'}('screen_parent', $params['product']->slug);
+Registry::getInstance()->{'set'}('screen_child', $params['product']->slug);
+?>
+
+<?=cms_upload_image();?>
+
+    <script src="static/assets/js/url_slug.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $('#product_title').keyup(function () {
+                $('#product_slug').val(url_slug($(this).val()));
+            });
+        });
+    </script>
+
+    <!-- form start -->
+    <form name="form" method="post" data-toggle="validator" action="<?= admin_url(sprintf('product/%s/', $params['product']->id));?>" id="form" autocomplete="off">
+        <!-- Content Wrapper. Contains content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Content header) -->
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <i class="fa fa-text-width"></i>
+                    <h3 class="box-title"><?= $params['product']->title; ?></h3>
+
+                    <div class="pull-right">
+                        <button type="button"<?=ae('create:product');?> class="btn btn-warning" onclick="window.location = '<?= admin_url('product/create/');?>'"><i class="fa fa-plus"></i> <?= esc_html__(string: 'New Product', domain: 'devflow'); ?></button>
+                        <button type="submit"<?=ae('update:product');?> class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= esc_html__(string: 'Update', domain: 'devflow'); ?></button>
+                        <button type="button"<?=ae('delete:product');?> class="btn btn-danger" data-toggle="modal" data-target="#delete-<?= $params['product']->id; ?>"><i class="fa fa-trash"></i> <?= esc_html__(string: 'Delete', domain: 'devflow'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('product/');?>'"><i class="fa fa-ban"></i> <?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
+                        <input type="hidden" name="id" value="<?= $params['product']->id; ?>" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <section class="content">
+                <?php Action::getInstance()->doAction('admin_notices'); ?>
+                <?= Devflow::inst()::$APP->flash->display(); ?>
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-9">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= esc_html__(string: 'Product', domain: 'devflow'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Title', domain: 'devflow'); ?></strong></label>
+                                    <input type="text" class="form-control input-lg" name="title" id="product_title" value="<?= $params['product']->title; ?>" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Slug', domain: 'devflow'); ?></strong> <a href="#slug" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
+                                    <input type="text" class="form-control" name="slug" id="product_slug" value="<?= $params['product']->slug; ?>" />
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Content', domain: 'devflow'); ?></strong></label>
+                                    <textarea id="content_body" class="form-control" name="body"><?= $params['product']->body; ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="div-label"><?= esc_html__(string: 'Purchase Url', domain: 'devflow'); ?> <a href="#purchase-url" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
+                                    <input type="text" class="form-control" name="purchaseUrl" id="product_purchase_url" value="<?=$params['product']->purchaseUrl;?>" />
+                                </div>
+                                <?=Filter::getInstance()->applyFilter('product_metabox', $params['form']);?>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.left column -->
+
+                    <div class="col-md-3">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= esc_html__(string: 'Publish', domain: 'devflow'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Publication Date', domain: 'devflow'); ?></strong></label>
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <input type="text" class="form-control" name="published" value="<?= $params['product']->published; ?>" required/>
+                                        <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Status', domain: 'devflow'); ?></strong></label>
+                                    <select class="form-control select2" name="status" style="width: 100%;" required>
+                                        <option>&nbsp;</option>
+                                        <?php if (current_user_can('publish:product')) : ?>
+                                            <option value="published"<?= selected('published', $params['product']->status, false); ?>><?= esc_html__(string: 'Publish', domain: 'devflow'); ?></option>
+                                        <?php endif; ?>
+                                        <option value="draft"<?= selected('draft', $params['product']->status, false); ?>><?= esc_html__(string: 'Draft', domain: 'devflow'); ?></option>
+                                        <option value="pending"<?= selected('pending', $params['product']->status, false); ?>><?= esc_html__(string: 'Pending', domain: 'devflow'); ?></option>
+                                        <option value="archived"<?= selected('archived', $params['product']->status, false); ?>><?= esc_html__(string: 'Archive', domain: 'devflow'); ?></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Author', domain: 'devflow'); ?></strong></label>
+                                    <select class="form-control select2" name="author" style="width: 100%;" required>
+                                        <option>&nbsp;</option>
+                                        <?php get_users_dropdown_list($params['product']->author); ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-primary -->
+
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= esc_html__(string: 'Product Attributes', domain: 'devflow'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="div-label"><span style="color: red; ">*</span> <?= esc_html__(string: 'Sku', domain: 'devflow'); ?></label>
+                                    <input type="text" class="form-control input-lg" name="sku" id="product_sku" value="<?=$params['product']->sku;?>" required/>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="div-label"><span style="color: red; ">*</span> <?= esc_html__(string: 'Price', domain: 'devflow'); ?></label>
+                                    <input type="number" class="form-control input-lg" name="price" id="product_price" step="any" value="<?=$params['product']->price;?>" required/>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <select class="form-control select2" name="currency" style="width: 100%;" required>
+                                        <option>&nbsp;</option>
+                                        <?php currency_option($params['product']->currency); ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><strong><?= esc_html__(string: 'Show in Menu', domain: 'devflow'); ?></strong></label>
+                                    <div class="ios-switch switch-md pull-right">
+                                        <input type="hidden" class="js-switch" name="showInMenu" value="0" />
+                                        <input type="checkbox" class="js-switch" name="showInMenu"<?= checked('1', $params['product']->showInMenu, false); ?> value="1" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><?= esc_html__(string: 'Show in Search', domain: 'devflow'); ?></strong></label>
+                                    <div class="ios-switch switch-md pull-right">
+                                        <input type="hidden" class="js-switch" name="showInSearch" value="0" />
+                                        <input type="checkbox" class="js-switch" name="showInSearch"<?= checked('1', $params['product']->showInSearch, false); ?> value="1" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-primary -->
+
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= esc_html__(string: 'Featured Image', domain: 'devflow'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div id="elfinder"></div>
+                                <div id="elfinder_image"><img src="<?= $params['product']->featuredImage; ?>" style="width:280px;height:auto;background-size:contain;margin-bottom:.9em;background-repeat:no-repeat" /></div>
+                                <?php if ($params['product']->featuredImage !== '') : ?>
+                                    <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url(sprintf('product/%s/remove-featured-image/', $params['product']->id)); ?>'"><?= esc_html__(string: 'Remove featured image', domain: 'devflow'); ?></button>
+                                <?php else : ?>
+                                    <button type="button" id="set_image" class="btn btn-primary" style="display:none;"><?= esc_html__(string: 'Set featured image', domain: 'devflow'); ?></button>
+                                    <button type="button" id="remove_image" class="btn btn-primary" style="display:none;"><?= esc_html__(string: 'Remove featured image', domain: 'devflow'); ?></button>
+                                <?php endif; ?>
+                                <input type="hidden" class="form-control" name="featuredImage" id="upload_image" value="<?= $params['product']->featuredImage; ?>" />
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-primary -->
+                    </div>
+
+                </div>
+                <!--/.row -->
+            </section>
+            <!-- /.Main content -->
+        </div>
+    </form>
+    <!-- /.Content Wrapper. Contains content -->
+<?php
+/**
+ * Fires before the update content screen is fully loaded.
+ */
+Action::getInstance()->doAction('enqueue_cms_editor');
+?>
+    <!-- modal -->
+    <div class="modal" id="slug">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><?= esc_html__(string: 'Product Slug', domain: 'devflow'); ?></h4>
+                </div>
+                <div class="modal-body">
+                    <p><?=esc_html__(string: "If left blank, the system will auto generate the Product slug.", domain: 'devflow');?></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- modal -->
+    <div class="modal" id="delete-<?= $params['product']->id; ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><?= $params['product']->title; ?></h4>
+                </div>
+                <div class="modal-body">
+                    <p><?=esc_html__(string: 'Are you sure you want to delete this product?', domain: 'devflow');?></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
+                    <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url(sprintf('product/%s/d/', $params['product']->id)); ?>'"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+<?php }); ?>

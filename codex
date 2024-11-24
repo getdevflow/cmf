@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Console\Kernel;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+use function Codefy\Framework\Helpers\get_fresh_bootstrap;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$app = get_fresh_bootstrap();
+
+$kernel = $app->make(Kernel::class);
+
+$status = $kernel->handle(new ArgvInput(), new ConsoleOutput());
+
+exit($status);

@@ -1,0 +1,67 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use function Qubus\Security\Helpers\esc_html__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function () {
+Registry::getInstance()->{'set'}('screen_parent', 'dashboard');
+Registry::getInstance()->{'set'}('screen_child', 'home');
+?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <?= esc_html__('Dashboard'); ?>
+                <small><?= esc_html__(string: 'Control panel', domain: 'devflow'); ?></small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> <?= esc_html__(string: 'Home', domain: 'devflow'); ?></a></li>
+                <li class="active"><?= esc_html__(string: 'Dashboard', domain: 'devflow'); ?></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?php Action::getInstance()->doAction('admin_notices'); ?>
+
+            <?=Devflow::inst()::$APP->flash->display();?>
+
+            <div class="row">
+                <?php //top widgets can go here.?>
+            </div>
+            <!-- /.row -->
+
+            <!-- Main row -->
+            <div class="row">
+                <!-- Left col -->
+                <section class="col-lg-6">
+
+                    <?php Action::getInstance()->doAction('widget_left_column'); ?>
+
+                </section>
+                <!-- /.Left col -->
+
+                <!-- Left col -->
+                <section class="col-lg-6 connectedSortable">
+
+                    <?php Action::getInstance()->doAction('widget_right_column'); ?>
+
+                </section>
+                <!-- /.Left col -->
+            </div>
+            <!-- /.row (main row) -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+<?php }); ?>
