@@ -16,7 +16,6 @@ use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\storage_path;
-use function Qubus\Config\Helpers\env;
 use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -54,7 +53,7 @@ $option = Options::factory();
                 $report .= esc_html__(string: 'Active User Count:', domain: 'devflow') . "\t\t\t\t\t" . $params['users'] . PHP_EOL;
 
                 $report .= "\n\t" . esc_html__(string: '** CONFIG **', domain: 'devflow') . PHP_EOL . PHP_EOL;
-                $report .= esc_html__(string: 'Environment:', domain: 'devflow') . "\t\t\t\t\t\t" . (env('APP_ENV') == 'prod' ? '<span style="color: green; ">' . esc_html__(string: 'Production', domain: 'devflow') . '</span>': '<span style="color: red; ">' . esc_html__(string: 'Development', domain: 'devflow') . '</span>') . PHP_EOL;
+                $report .= esc_html__(string: 'Environment:', domain: 'devflow') . "\t\t\t\t\t\t" . (config(key: 'app.env') === 'prod' ? '<span style="color: green; ">' . esc_html__(string: 'Production', domain: 'devflow') . '</span>': '<span style="color: red; ">' . esc_html__(string: 'Development', domain: 'devflow') . '</span>') . PHP_EOL;
                 $report .= esc_html__(string: 'Base Path:', domain: 'devflow') . "\t\t\t\t\t\t" . base_path() . PHP_EOL;
 
                 $report .= "\n\t" . esc_html__(string: '** SERVER DATA **', domain: 'devflow') . PHP_EOL . PHP_EOL;
