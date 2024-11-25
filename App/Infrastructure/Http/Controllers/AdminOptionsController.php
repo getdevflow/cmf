@@ -146,17 +146,17 @@ final class AdminOptionsController extends BaseController
             /** @var Site $currentSite */
         $currentSite = get_site_by('key', get_current_site_key());
 
-        if (!is_false__($currentSite) && $currentSite->name !== $request->getParsedBody()['name']) {
+        if (!is_false__($currentSite) && $currentSite->name !== $request->getParsedBody()['sitename']) {
             $siteSlug = cms_unique_site_slug(
                 $currentSite->slug,
-                $request->getParsedBody()['name'],
+                $request->getParsedBody()['sitename'],
                 $currentSite->id
             );
 
             try {
                 $command = new UpdateSiteCommand([
                     'siteId' => SiteId::fromString($currentSite->id),
-                    'siteName' => new StringLiteral($request->getParsedBody()['name']),
+                    'siteName' => new StringLiteral($request->getParsedBody()['sitename']),
                     'siteSlug' => new StringLiteral($siteSlug),
                     'siteDomain' => new StringLiteral($currentSite->domain),
                     'siteMapping' => new StringLiteral($currentSite->mapping ?? ''),

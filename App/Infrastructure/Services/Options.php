@@ -109,7 +109,7 @@ final class Options
      * @throws InvalidArgumentException
      * @throws ReflectionException|Exception
      */
-    public function read($optionKey, $default = false): mixed
+    public function read($optionKey, $default = ''): mixed
     {
         $optionKey = preg_replace('/\s/', '', $optionKey);
         if (empty($optionKey)) {
@@ -168,7 +168,7 @@ final class Options
         if (!empty($result)) {
             $value = purify_html($result);
         } else {
-            $value = purify_html($default);
+            $value = $default;
         }
         /**
          * Filter the value of an existing option.
