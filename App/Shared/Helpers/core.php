@@ -839,7 +839,7 @@ function convert_seconds_to_time(int $seconds): string
  */
 function set_email_template(string $body): string
 {
-    $tpl = resource_path('tpl' . Codefy::$PHP::DS . 'system_email.tpl');
+    $tpl = file_get_contents(resource_path('tpl' . Codefy::$PHP::DS . 'system_email.tpl'));
 
     $template = Filter::getInstance()->applyFilter('email_template', $tpl);
 
@@ -920,7 +920,6 @@ function process_email_html(string $text, string $title): string
 function get_domain_name(): string
 {
     $request = new Request();
-    FileLoggerFactory::getLogger()->info('server params', [$request->getServerName()]);
     $serverName = strtolower($request->getServerName());
     if (substr($serverName, 0, 4) === 'www.') {
         $serverName = substr($serverName, 4);
