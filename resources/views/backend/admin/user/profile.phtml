@@ -14,6 +14,7 @@ use function App\Shared\Helpers\cms_dropdown_languages;
 use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
+use function App\Shared\Helpers\get_userdata;
 use function App\Shared\Helpers\selected;
 use function Qubus\Security\Helpers\esc_html__;
 use function Qubus\Security\Helpers\purify_html;
@@ -23,6 +24,7 @@ $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($param) {
 Registry::getInstance()->{'set'}('screen_parent', 'users');
 Registry::getInstance()->{'set'}('screen_child', 'profile');
+$username = get_user_option('username', $param['user']->id) === '' ? get_userdata($param['user']->id)->login : get_user_option('username', $param['user']->id);
 ?>
 
     <!-- form start -->
@@ -186,7 +188,9 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
                             <div class="box-body">
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Username', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="login" value="<?= get_user_option('username', $param['user']->id); ?>" readonly required>
+                                    <input type="text" class="form-control" id="user_login" name="login" value="<?=$username;?>" readonly="readonly" required/>
+                                    <button type="button" class="btn btn-primary" id="enable_button" style="display:none"><?= esc_html__(string: 'Change username', domain: 'devflow'); ?></button>
+                                    <button type="button" class="btn btn-danger" id="disable_button" style="display:none"><?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
                                 </div>
 
                                 <div class="form-group">
@@ -347,4 +351,19 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
         <!-- /.content-wrapper -->
     </form>
     <!-- form end -->
+    <script>
+        $("#disable_button").hide();
+        $("#enable_button").show();
+
+        $('#disable_button').click(function() {
+            $("#disable_button").hide();
+            $("#enable_button").show();
+            $('#user_login').prop('readonly', true);
+        });
+        $('#enable_button').click(function() {
+            $("#disable_button").show();
+            $("#enable_button").hide();
+            $('#user_login').prop('readonly', false);
+        });
+    </script>
 <?php }); ?>
