@@ -1,5 +1,5 @@
 <h1 align="center">
-    <a href="https://getdevflow.com/" target="_blank"><img src="https://downloads.joshuaparker.blog/images/Devflow Logo.png" width="400" alt="Devflow Logo"></a>
+    <a href="https://getdevflow.com/" target="_blank"><img src="https://downloads.joshuaparker.blog/images/Devflow-Logo.png" alt="Devflow Logo"></a>
 </h1>
 
 <p align="center">
@@ -12,7 +12,11 @@
 Devflow is a headless, domain-driven content management framework created specifically for PHP programmers wanting to build bespoke websites.
 
 ## 📍 Requirement
-- PHP 8.3+
+- PHP >= 8.3+
+- BCMath PHP Extension
+- Gettext PHP Extension
+- Fileinfo PHP extension
+- JSON PHP Extension
 - OpenSSL PHP Extension
 - PDO PHP Extension 
 - Mbstring PHP Extension 
@@ -22,8 +26,11 @@ Devflow is a headless, domain-driven content management framework created specif
 - Imagick PHP Extension
 
 ## 🏆 Highlighted Features
-- Domain-Driven
-- Event sourced
+- Domain-Driven Development
+- Event Store for saving domain events
+- Read Models for content, products, and users
+- Serializer - supports serializing and deserialization of data
+- CQRS & Event Sourcing
 - Custom Content Types
 - Ability to customize admin dashboard
 - Provides a simple hook and event system without affecting core code
