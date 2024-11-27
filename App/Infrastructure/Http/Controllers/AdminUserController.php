@@ -501,7 +501,7 @@ final class AdminUserController extends BaseController
             );
         }
 
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() === 'POST') {
             $userId = cms_update_user($request->getParsedBody());
 
             if (is_error($userId)) {
