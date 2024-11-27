@@ -3,3 +3,6 @@ public/static/assets/* linguist-vendored
 *.js linguist-detectable=false
 *.css linguist-detectable=false
 *.less linguist-detectable=false
+
+# Configure diff output for .php and .phar files.
+*.php diff=php
