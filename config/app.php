@@ -38,7 +38,7 @@ return [
     | Application Base Url
     |--------------------------------------------------------------------------
     */
-    'url' => env(key: 'APP_URL', default: 'localhost'),
+    'url' => env(key: 'APP_URL', default: 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
