@@ -57,6 +57,6 @@ final class Devflow extends stdClass
 
     public function release(): string
     {
-        return '1.0.0-rc.1';
+        return '1.0.0-rc.2';
     }
 }
