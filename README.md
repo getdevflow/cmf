@@ -32,8 +32,8 @@ Devflow is a headless, domain-driven content management framework created specif
 - Serializer - supports serializing and deserialization of data
 - CQRS & Event Sourcing
 - Custom Content Types
-- Ability to customize admin dashboard
 - Provides a simple hook and event system without affecting core code
+- Ability to customize admin dashboard using hooks
 - Scheduler for scheduling tasks/jobs
 - Security and sanitizing helpers
 - NIST Level 2 Standard Role-Based Access Control
@@ -43,7 +43,7 @@ Devflow is a headless, domain-driven content management framework created specif
 To create a new project, run the following command:
 
 ```bash
-composer create-project getdevflow/cmf my-app-name
+composer create-project getdevflow/cmf:1.0.0-rc.2 my-app-name
 ```
 
 ## 🕑 Releases
@@ -78,7 +78,7 @@ rules to follow in order to ease code reviews, and discussions before I accept a
 
 ## 🔐 Security Vulnerabilities
 
-If you discover a vulnerability in the code, please email [joshua@joshuaparker.dev](mailto:joshua@joshuaparker.dev).
+If you discover a vulnerability in the code, please email [joshua@nomadicjosh.com](mailto:joshua@nomadicjosh.com).
 
 ## 📄 License
 
