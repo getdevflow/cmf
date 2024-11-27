@@ -4695,8 +4695,8 @@ var elFinder = function(elm, opts, bootCallback) {
 	this.hasVolOptions = false;
 
 	/**
-	 * Hash of .trash holders
-	 * key: .trash folder hash
+	 * Hash of trash holders
+	 * key: trash folder hash
 	 * val: source volume hash
 	 * 
 	 * @type Object
@@ -8090,7 +8090,7 @@ elFinder.prototype = {
 								// check uiCmdMap
 								chkCmdMap(targetOptions);
 								
-								// check .trash bin hash
+								// check trash bin hash
 								if (targetOptions.trashHash) {
 									if (self.trashes[targetOptions.trashHash] === false) {
 										delete targetOptions.trashHash;
@@ -8155,7 +8155,7 @@ elFinder.prototype = {
 							}
 						}
 
-						// lock .trash bins holder
+						// lock trash bins holder
 						if (self.trashes[file.hash]) {
 							file.locked = true;
 						}
@@ -11908,9 +11908,9 @@ elFinder.prototype._options = {
 			dimSubImgSize : 307200
 		},
 		rm: {
-			// If .trash is valid, items moves immediately to the .trash holder without confirm.
+			// If trash is valid, items moves immediately to the trash holder without confirm.
 			quickTrash : true,
-			// Maximum wait seconds when checking the number of items to into the .trash
+			// Maximum wait seconds when checking the number of items to into the trash
 			infoCheckWait : 10,
 			// Maximum number of items that can be placed into the Trash at one time
 			toTrashMaxItems : 1000
@@ -13766,7 +13766,7 @@ if (typeof elFinder === 'function' && elFinder.prototype.i18) {
 			'errMove'              : 'Unable to move "$1".',
 			'errCopyInItself'      : 'Unable to copy "$1" into itself.',
 			'errRm'                : 'Unable to remove "$1".',
-			'errTrash'             : 'Unable into .trash.', // from v2.1.24 added 30.4.2017
+			'errTrash'             : 'Unable into trash.', // from v2.1.24 added 30.4.2017
 			'errRmSrc'             : 'Unable remove source file(s).',
 			'errExtract'           : 'Unable to extract files from "$1".',
 			'errArchive'           : 'Unable to create archive.',
@@ -13800,7 +13800,7 @@ if (typeof elFinder === 'function' && elFinder.prototype.i18) {
 			'errSearchTimeout'     : 'Timed out while searching "$1". Search result is partial.', // from v2.1 added 12.1.2016
 			'errReauthRequire'     : 'Re-authorization is required.', // from v2.1.10 added 24.3.2016
 			'errMaxTargets'        : 'Max number of selectable items is $1.', // from v2.1.17 added 17.10.2016
-			'errRestore'           : 'Unable to restore from the .trash. Can\'t identify the restore destination.', // from v2.1.24 added 3.5.2017
+			'errRestore'           : 'Unable to restore from the trash. Can\'t identify the restore destination.', // from v2.1.24 added 3.5.2017
 			'errEditorNotFound'    : 'Editor not found to this file type.', // from v2.1.25 added 23.5.2017
 			'errServerError'       : 'Error occurred on the server side.', // from v2.1.25 added 16.6.2017
 			'errEmpty'             : 'Unable to empty folder "$1".', // from v2.1.25 added 22.6.2017
@@ -13830,7 +13830,7 @@ if (typeof elFinder === 'function' && elFinder.prototype.i18) {
 			'cmdreload'    : 'Reload',
 			'cmdrename'    : 'Rename',
 			'cmdrm'        : 'Delete',
-			'cmdtrash'     : 'Into .trash', //from v2.1.24 added 29.4.2017
+			'cmdtrash'     : 'Into trash', //from v2.1.24 added 29.4.2017
 			'cmdrestore'   : 'Restore', //from v2.1.24 added 3.5.2017
 			'cmdsearch'    : 'Find files',
 			'cmdup'        : 'Go to parent folder',
@@ -13911,8 +13911,8 @@ if (typeof elFinder === 'function' && elFinder.prototype.i18) {
 			'ntfzipdl'    : 'Creating a file for download', // from v2.1.7 added 23.1.2016
 			'ntfparents'  : 'Getting path infomation', // from v2.1.17 added 2.11.2016
 			'ntfchunkmerge': 'Processing the uploaded file', // from v2.1.17 added 2.11.2016
-			'ntftrash'    : 'Doing throw in the .trash', // from v2.1.24 added 2.5.2017
-			'ntfrestore'  : 'Doing restore from the .trash', // from v2.1.24 added 3.5.2017
+			'ntftrash'    : 'Doing throw in the trash', // from v2.1.24 added 2.5.2017
+			'ntfrestore'  : 'Doing restore from the trash', // from v2.1.24 added 3.5.2017
 			'ntfchkdir'   : 'Checking destination folder', // from v2.1.24 added 3.5.2017
 			'ntfundo'     : 'Undoing previous operation', // from v2.1.27 added 31.07.2017
 			'ntfredo'     : 'Redoing previous undone', // from v2.1.27 added 31.07.2017
@@ -13988,11 +13988,11 @@ if (typeof elFinder === 'function' && elFinder.prototype.i18) {
 			'confirmReq'      : 'Confirmation required',
 			'confirmRm'       : 'Are you sure you want to permanently remove items?<br/>This cannot be undone!',
 			'confirmRepl'     : 'Replace old file with new one? (If it contains folders, it will be merged. To backup and replace, select Backup.)',
-			'confirmRest'     : 'Replace existing item with the item in .trash?', // fromv2.1.24 added 5.5.2017
+			'confirmRest'     : 'Replace existing item with the item in trash?', // fromv2.1.24 added 5.5.2017
 			'confirmConvUTF8' : 'Not in UTF-8<br/>Convert to UTF-8?<br/>Contents become UTF-8 by saving after conversion.', // from v2.1 added 08.04.2014
 			'confirmNonUTF8'  : 'Character encoding of this file couldn\'t be detected. It need to temporarily convert to UTF-8 for editting.<br/>Please select character encoding of this file.', // from v2.1.19 added 28.11.2016
 			'confirmNotSave'  : 'It has been modified.<br/>Losing work if you do not save changes.', // from v2.1 added 15.7.2015
-			'confirmTrash'    : 'Are you sure you want to move items to .trash bin?', //from v2.1.24 added 29.4.2017
+			'confirmTrash'    : 'Are you sure you want to move items to trash bin?', //from v2.1.24 added 29.4.2017
 			'confirmMove'     : 'Are you sure you want to move items to "$1"?', //from v2.1.50 added 27.7.2019
 			'apllyAll'        : 'Apply to all',
 			'name'            : 'Name',
@@ -14124,7 +14124,7 @@ if (typeof elFinder === 'function' && elFinder.prototype.i18) {
 			'selectFolder'    : 'Select folder', // from v2.1.20 added 13.12.2016
 			'firstLetterSearch': 'First letter search', // from v2.1.23 added 24.3.2017
 			'presets'         : 'Presets', // from v2.1.25 added 26.5.2017
-			'tooManyToTrash'  : 'It\'s too many items so it can\'t into .trash.', // from v2.1.25 added 9.6.2017
+			'tooManyToTrash'  : 'It\'s too many items so it can\'t into trash.', // from v2.1.25 added 9.6.2017
 			'TextArea'        : 'TextArea', // from v2.1.25 added 14.6.2017
 			'folderToEmpty'   : 'Empty the folder "$1".', // from v2.1.25 added 22.6.2017
 			'filderIsEmpty'   : 'There are no items in a folder "$1".', // from v2.1.25 added 22.6.2017
@@ -17516,7 +17516,7 @@ $.fn.elfindercwd = function(fm, options) {
 
 		// IE < 11 not support CSS `pointer-events: none`
 		if (!fm.UA.ltIE10) {
-			mBoard.append($('<div class="elfinder-cwd-.trash" ></div>').html(fm.i18n('volume_Trash')))
+			mBoard.append($('<div class="elfinder-cwd-trash" ></div>').html(fm.i18n('volume_Trash')))
 			      .append(vExpires);
 		}
 
@@ -17683,10 +17683,10 @@ $.fn.elfindercwd = function(fm, options) {
 						showVolumeExpires();
 						wrapper.addClass('elfinder-cwd-wrapper-' + curVolId);
 					}
-					// add/remove .trash class
+					// add/remove trash class
 					$.when(req).done(function() {
 						cwdParents = fm.parents(cwdObj.hash);
-						wrapper[inTrash()? 'addClass':'removeClass']('elfinder-cwd-wrapper-.trash');
+						wrapper[inTrash()? 'addClass':'removeClass']('elfinder-cwd-wrapper-trash');
 					});
 					incHashes = void 0;
 					unselectAll({ notrigger: true });
@@ -34060,7 +34060,7 @@ elFinder.prototype.commands.resize = function() {
 
 /**
  * @class  elFinder command "restore"
- * Restore items from the .trash
+ * Restore items from the trash
  *
  * @author Naoki Sawada
  **/
@@ -34176,7 +34176,7 @@ elFinder.prototype.commands.resize = function() {
 							if (srcRoot = fm.trashes[phash]) {
 								if (! rHashes[srcRoot]) {
 									if (found) {
-										// Keep items of other .trash
+										// Keep items of other trash
 										others.push(f.hash);
 										return null; // continue $.each
 									}
@@ -34260,7 +34260,7 @@ elFinder.prototype.commands.resize = function() {
 																if (--cnt < 1) {
 																	dfrd[hasErr? 'reject' : 'resolve']();
 																	if (others.length) {
-																		// Restore items of other .trash
+																		// Restore items of other trash
 																		fm.exec('restore', others);
 																	}
 																}
@@ -34272,7 +34272,7 @@ elFinder.prototype.commands.resize = function() {
 														if (--cnt < 1) {
 															dfrd.resolve();
 															if (others.length) {
-																// Restore items of other .trash
+																// Restore items of other trash
 																fm.exec('restore', others);
 															}
 														}
@@ -34572,7 +34572,7 @@ elFinder.prototype.commands.rm = function() {
 							err = ['errTrash'],
 							res = {},
 							hasNtf = function() {
-								return fm.ui.notify.children('.elfinder-notify-.trash').length;
+								return fm.ui.notify.children('.elfinder-notify-trash').length;
 							},
 							hashes, tm, prg, prgSt;
 						
@@ -34580,7 +34580,7 @@ elFinder.prototype.commands.rm = function() {
 							prg = 1 / cnt * 100;
 							prgSt = cnt === 1? 100 : 5;
 							tm = setTimeout(function() {
-								fm.notify({type : '.trash', cnt : 1, hideCnt : true, progress : prgSt});
+								fm.notify({type : 'trash', cnt : 1, hideCnt : true, progress : prgSt});
 							}, fm.notifyDelay);
 							$.each(dsts, function(dir, files) {
 								var phash = fm.file(files[0]).phash,
@@ -34618,13 +34618,13 @@ elFinder.prototype.commands.rm = function() {
 									.always(function() {
 										var hashes = [], addTexts, end = 2;
 										if (hasNtf()) {
-											fm.notify({type : '.trash', cnt : 0, hideCnt : true, progress : prg});
+											fm.notify({type : 'trash', cnt : 0, hideCnt : true, progress : prg});
 										} else {
 											prgSt+= prg;
 										}
 										if (--cnt < 1) {
 											tm && clearTimeout(tm);
-											hasNtf() && fm.notify({type : '.trash', cnt  : -1});
+											hasNtf() && fm.notify({type : 'trash', cnt  : -1});
 											fm.unlockfiles({files : targets});
 											if (Object.keys(res).length) {
 												if (err.length > 1) {
@@ -34646,11 +34646,11 @@ elFinder.prototype.commands.rm = function() {
 												res._noSound = true;
 												if (res.undo && res.redo) {
 													res.undo = {
-														cmd : '.trash',
+														cmd : 'trash',
 														callback : res.undo,
 													};
 													res.redo = {
-														cmd : '.trash',
+														cmd : 'trash',
 														callback : res.redo
 													};
 												}
@@ -34731,9 +34731,9 @@ elFinder.prototype.commands.rm = function() {
 			delete self.extra;
 			self.title = fm.i18n('cmd' + self.value);
 			self.className = self.value;
-			self.button && self.button.children('span.elfinder-button-icon')[self.value === '.trash'? 'addClass' : 'removeClass']('elfinder-button-icon-.trash');
+			self.button && self.button.children('span.elfinder-button-icon')[self.value === 'trash'? 'addClass' : 'removeClass']('elfinder-button-icon-trash');
 			if (origin && origin !== 'cwd' && (self.state > -1 || origin === 'navbar')) {
-				if (self.value === '.trash') {
+				if (self.value === 'trash') {
 					self.extra = {
 						icon: 'rm',
 						node: $('<span></span>')
@@ -34846,7 +34846,7 @@ elFinder.prototype.commands.rm = function() {
 	fm.bind('select contextmenucreate closecontextmenu', function(e) {
 		var targets = (e.data? (e.data.selected || e.data.targets) : null) || fm.selected();
 		if (targets && targets.length) {
-			self.update(void(0), (targets? getTHash(targets) : fm.option('trashHash'))? '.trash' : 'rm');
+			self.update(void(0), (targets? getTHash(targets) : fm.option('trashHash'))? 'trash' : 'rm');
 		}
 	});
 

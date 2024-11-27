@@ -2711,7 +2711,7 @@ tr.elfinder-cwd-file td .elfinder-cwd-select {
     background-color: transparent;
 }
 
-/* overlay message board for .trash */
+/* overlay message board for trash */
 .elfinder-cwd-wrapper-trash .elfinder-cwd-message-board {
     background-image: url(../img/trashmesh.png);
 }

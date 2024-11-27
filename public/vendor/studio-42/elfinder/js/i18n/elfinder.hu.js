@@ -77,7 +77,7 @@
 			'errMove'              : '"$1" áthelyezése nem sikerült.',
 			'errCopyInItself'      : '"$1" nem másolható saját magára.',
 			'errRm'                : '"$1" törlése nem sikerült.',
-			'errTrash'             : 'Unable into .trash.', // from v2.1.24 added 30.4.2017
+			'errTrash'             : 'Unable into trash.', // from v2.1.24 added 30.4.2017
 			'errRmSrc'             : 'Forrásfájl(ok) eltávolítása sikertelen.',
 			'errExtract'           : 'Nem sikerült kikibontani a "$1" fájlokat.',
 			'errArchive'           : 'Nem sikerült létrehozni az archívumot.',
@@ -111,7 +111,7 @@
 			'errSearchTimeout'     : 'Dőtúllépés a(z) "$1" keresése közben. A keresési eredmény részleges.', // from v2.1 added 12.1.2016
 			'errReauthRequire'     : 'Új engedélyre van szükség.', // from v2.1.10 added 24.3.2016
 			'errMaxTargets'        : 'Max number of selectable items is $1.', // from v2.1.17 added 17.10.2016
-			'errRestore'           : 'Unable to restore from the .trash. Can\'t identify the restore destination.', // from v2.1.24 added 3.5.2017
+			'errRestore'           : 'Unable to restore from the trash. Can\'t identify the restore destination.', // from v2.1.24 added 3.5.2017
 			'errEditorNotFound'    : 'Editor not found to this file type.', // from v2.1.25 added 23.5.2017
 			'errServerError'       : 'Error occurred on the server side.', // from v2.1.25 added 16.6.2017
 			'errEmpty'             : 'Unable to empty folder "$1".', // from v2.1.25 added 22.6.2017
@@ -140,7 +140,7 @@
 			'cmdreload'    : 'Frissítés',
 			'cmdrename'    : 'Átnevezés',
 			'cmdrm'        : 'Törlés',
-			'cmdtrash'     : 'Into .trash', //from v2.1.24 added 29.4.2017
+			'cmdtrash'     : 'Into trash', //from v2.1.24 added 29.4.2017
 			'cmdrestore'   : 'Restore', //from v2.1.24 added 3.5.2017
 			'cmdsearch'    : 'Keresés',
 			'cmdup'        : 'Ugrás a szülőmappába',
@@ -221,8 +221,8 @@
 			'ntfzipdl'    : 'Fájl létrehozása letöltésre', // from v2.1.7 added 23.1.2016
 			'ntfparents'  : 'Getting path infomation', // from v2.1.17 added 2.11.2016
 			'ntfchunkmerge': 'Processing the uploaded file', // from v2.1.17 added 2.11.2016
-			'ntftrash'    : 'Doing throw in the .trash', // from v2.1.24 added 2.5.2017
-			'ntfrestore'  : 'Doing restore from the .trash', // from v2.1.24 added 3.5.2017
+			'ntftrash'    : 'Doing throw in the trash', // from v2.1.24 added 2.5.2017
+			'ntfrestore'  : 'Doing restore from the trash', // from v2.1.24 added 3.5.2017
 			'ntfchkdir'   : 'Checking destination folder', // from v2.1.24 added 3.5.2017
 			'ntfundo'     : 'Undoing previous operation', // from v2.1.27 added 31.07.2017
 			'ntfredo'     : 'Redoing previous undone', // from v2.1.27 added 31.07.2017
@@ -298,11 +298,11 @@
 			'confirmReq'      : 'Megerősítés szükséges',
 			'confirmRm'       : 'Valóban törölni akarja a kijelölt adatokat?<br/>Ez később nem fordítható vissza!',
 			'confirmRepl'     : 'Replace old file with new one? (If it contains folders, it will be merged. To backup and replace, select Backup.)',
-			'confirmRest'     : 'Replace existing item with the item in .trash?', // fromv2.1.24 added 5.5.2017
+			'confirmRest'     : 'Replace existing item with the item in trash?', // fromv2.1.24 added 5.5.2017
 			'confirmConvUTF8' : 'Nem UTF-8.<br/>Átalakítsam UTF-8-ra?<br/>A tartalom mentés után UTF-8 lesz..', // from v2.1 added 08.04.2014
 			'confirmNonUTF8'  : 'Character encoding of this file couldn\'t be detected. It need to temporarily convert to UTF-8 for editting.<br/>Please select character encoding of this file.', // from v2.1.19 added 28.11.2016
 			'confirmNotSave'  : 'Megváltozott.<br/>Módosítások elvesznek, ha nem menti el azokat.', // from v2.1 added 15.7.2015
-			'confirmTrash'    : 'Are you sure you want to move items to .trash bin?', //from v2.1.24 added 29.4.2017
+			'confirmTrash'    : 'Are you sure you want to move items to trash bin?', //from v2.1.24 added 29.4.2017
 			'confirmMove'     : 'Are you sure you want to move items to "$1"?', //from v2.1.50 added 27.7.2019
 			'apllyAll'        : 'Mindenre vonatkozik',
 			'name'            : 'Név',
@@ -434,7 +434,7 @@
 			'selectFolder'    : 'Select folder', // from v2.1.20 added 13.12.2016
 			'firstLetterSearch': 'First letter search', // from v2.1.23 added 24.3.2017
 			'presets'         : 'Presets', // from v2.1.25 added 26.5.2017
-			'tooManyToTrash'  : 'It\'s too many items so it can\'t into .trash.', // from v2.1.25 added 9.6.2017
+			'tooManyToTrash'  : 'It\'s too many items so it can\'t into trash.', // from v2.1.25 added 9.6.2017
 			'TextArea'        : 'TextArea', // from v2.1.25 added 14.6.2017
 			'folderToEmpty'   : 'Empty the folder "$1".', // from v2.1.25 added 22.6.2017
 			'filderIsEmpty'   : 'There are no items in a folder "$1".', // from v2.1.25 added 22.6.2017
