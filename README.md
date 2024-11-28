@@ -9,7 +9,12 @@
     <a href="https://packagist.org/packages/getdevflow/cmf"><img src="https://img.shields.io/packagist/dt/getdevflow/cmf" alt="Total Downloads"></a>
 </p>
 
-Devflow is a headless, domain-driven content management framework created specifically for PHP programmers wanting to build bespoke websites.
+__Devflow__ is a powerful headless content management framework built for PHP programmers, designed to streamline web development 
+using __CQRS__ (Command Query Responsibility Segregation) and __domain-driven development__ principles. Offering an advanced architecture, 
+Devflow supports __event sourcing__ and __domain events__, allowing developers to easily manage complex workflows and data changes. 
+Its rich set of features includes __action__ and __filter__ hooks, enabling customization and extension. Devflow ensures that 
+content management is intuitive and tailored to your specific needs, providing flexibility and control for building scalable 
+and maintainable applications. Perfect for developers seeking a robust, modern solution for headless content management.
 
 ## 📍 Requirement
 - PHP >= 8.3+
