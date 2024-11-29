@@ -57,7 +57,7 @@ class UserWasCreated extends AggregateChanged
         Username $userLogin,
         Name $name,
         EmailAddress $emailAddress,
-        UserToken $token,
+        #[SensitiveParameter] UserToken $token,
         #[SensitiveParameter] StringLiteral $password,
         StringLiteral $url,
         StringLiteral $timezone,

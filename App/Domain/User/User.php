@@ -71,7 +71,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
         Username $login,
         Name $name,
         EmailAddress $emailAddress,
-        UserToken $token,
+        #[SensitiveParameter] UserToken $token,
         #[SensitiveParameter] StringLiteral $password,
         StringLiteral $url,
         StringLiteral $timezone,

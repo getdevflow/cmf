@@ -12,6 +12,8 @@ use Codefy\Domain\EventSourcing\DomainEvent;
 use Codefy\Domain\Metadata;
 use Qubus\Exception\Data\TypeException;
 
+use SensitiveParameter;
+
 use function Qubus\Support\Helpers\is_null__;
 
 class UserTokenWasChanged extends AggregateChanged
@@ -22,7 +24,7 @@ class UserTokenWasChanged extends AggregateChanged
 
     public static function withData(
         UserId $userId,
-        UserToken $userToken
+        #[SensitiveParameter] UserToken $userToken
     ): UserTokenWasChanged|DomainEvent|AggregateChanged {
         $event = self::occur(
             aggregateId: $userId,
