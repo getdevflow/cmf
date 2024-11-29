@@ -1,4 +1,5 @@
 database/migrations/.migrations.log
+public/plugins/CookieConsent
 public/sites/cms_
 resources/views/*.tpl
 storage/app/cookies/cookie.*

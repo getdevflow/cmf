@@ -801,3 +801,84 @@ function renew_csrf_session(SessionService $sessionService, ServerRequest $reque
 
     $sessionService->commitSession(new Response(), $session);
 }
+
+/**
+ * Fires the admin_head action.
+ *
+ * @access private
+ * @file App/Shared/Helpers/hook.php
+ * @throws Exception
+ * @throws ReflectionException
+ */
+function admin_head(): void
+{
+    /**
+     * Registers & enqueues a stylesheet to be printed in backend head section.
+     */
+    Action::getInstance()->doAction('enqueue_admin_css');
+    /**
+     * Fires in head section of all admin screens.
+     */
+    Action::getInstance()->doAction('cms_admin_head');
+}
+
+/**
+ * Fires the frontend cms_head action.
+ *
+ * @access private
+ * @file App/Shared/Helpers/hook.php
+ * @throws Exception
+ * @throws ReflectionException
+ */
+function cms_head(): void
+{
+    /**
+     * Registers & enqueues a stylesheet to be printed in frontend head section.
+     */
+    Action::getInstance()->doAction('enqueue_css');
+    /**
+     * Prints scripts and/or data in the head of the front end.
+     */
+    Action::getInstance()->doAction('cms_head');
+}
+
+/**
+ * Fires the admin_footer action via backend.
+ *
+ * @access private
+ * @file App/Shared/Helpers/hook.php
+ * @throws Exception
+ * @throws ReflectionException
+ */
+function admin_footer(): void
+{
+    /**
+     * Registers & enqueues javascript to be printed in backend footer section.
+     */
+    Action::getInstance()->doAction('enqueue_admin_js');
+    /**
+     * Prints scripts and/or data before the ending body tag of the backend.
+     */
+    Action::getInstance()->doAction('cms_admin_footer');
+}
+
+/**
+ * Fires the cms_footer action via the admin.
+ *
+ * @access private
+ * @file App/Shared/Helpers/hook.php
+ * @throws Exception
+ * @throws ReflectionException
+ */
+function cms_footer(): void
+{
+    /**
+     * Registers & enqueues javascript to be printed in frontend footer section.
+     */
+    Action::getInstance()->doAction('enqueue_js');
+    /**
+     * Prints scripts and/or data before the ending body tag
+     * of the front end.
+     */
+    Action::getInstance()->doAction('cms_footer');
+}

@@ -43,6 +43,7 @@
             "App/Shared/Helpers/db.php",
             "App/Shared/Helpers/core.php",
             "App/Shared/Helpers/hook.php",
+            "App/Shared/Helpers/plugin.php",
             "App/Shared/Helpers/content.php",
             "App/Shared/Helpers/product.php",
             "App/Shared/Helpers/user.php",

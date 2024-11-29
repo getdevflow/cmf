@@ -8,6 +8,8 @@ use App\Shared\Services\DateTime;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\add_dashboard_submenu;
+use function App\Shared\Helpers\admin_footer;
+use function App\Shared\Helpers\admin_head;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
 use function App\Shared\Helpers\cms_admin_copyright_footer;
@@ -73,7 +75,7 @@ $option = Options::factory();
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="static/assets/css/skins/_all-skins.min.css">
-        <?php //admin_head(); ?>
+        <?php admin_head(); ?>
     </head>
     <body class="hold-transition <?= get_user_option('admin_skin', $user->id); ?> <?= (get_user_option('admin_layout', $user->id) === '0' ? 'fixed ' : ''); ?><?= (get_user_option('admin_sidebar', $user->id) === '0' ? 'sidebar-collapse ' : ''); ?>sidebar-mini">
     <div class="wrapper">
@@ -92,46 +94,44 @@ $option = Options::factory();
                 <!--<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                       <span class="sr-only"><?=esc_html__(string: 'Toggle navigation', domain: 'devflow');?></span>
                     </a>-->
-                <?php if (!function_exists('show_cms_adminbar')) : ?>
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- User Account: style can be found in dropdown.less -->
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <?= get_user_avatar($user->email, 160, 'user-image'); ?>
-                                    <span class="hidden-xs"><?= get_name(get_current_user_id()); ?></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <?= get_user_avatar($user->email, 160, 'image-circle'); ?>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <?= get_user_avatar($user->email, 160, 'user-image'); ?>
+                                <span class="hidden-xs"><?= get_name(get_current_user_id()); ?></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <?= get_user_avatar($user->email, 160, 'image-circle'); ?>
 
-                                        <p>
-                                            <?= get_name(get_current_user_id()); ?>
-                                            <small><?=esc_html__(string: 'Member since', domain: 'devflow'); ?> <?= (new DateTime())->db2date('M Y', $user->registered); ?></small>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
+                                    <p>
+                                        <?= get_name(get_current_user_id()); ?>
+                                        <small><?=esc_html__(string: 'Member since', domain: 'devflow'); ?> <?= (new DateTime())->db2date('M Y', $user->registered); ?></small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="<?= admin_url('user/profile/'); ?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Profile', domain: 'devflow');?></a>
+                                    </div>
+                                    <?php if (isset($_COOKIE['SWITCH_USERBACK'])) : ?>
                                         <div class="pull-left">
-                                            <a href="<?= admin_url('user/profile/'); ?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Profile', domain: 'devflow');?></a>
+                                            <a href="<?= admin_url('user/' . $cookie->id . '/switch-back/'); ?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Switch back', domain: 'devflow');?></a>
                                         </div>
-                                        <?php if (isset($_COOKIE['SWITCH_USERBACK'])) : ?>
-                                            <div class="pull-left">
-                                                <a href="<?= admin_url('user/' . $cookie->id . '/switch-back/'); ?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Switch back', domain: 'devflow');?></a>
-                                            </div>
-                                        <?php endif; ?>
-                                        <div class="pull-right">
-                                            <a href="<?= admin_url('logout/'); ?>?redirect_to=<?=login_url();?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Logout', domain: 'devflow');?></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- Control Sidebar Toggle Button -->
-                            <li><p>&nbsp;</p></li>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+                                    <?php endif; ?>
+                                    <div class="pull-right">
+                                        <a href="<?= admin_url('logout/'); ?>?redirect_to=<?=login_url();?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Logout', domain: 'devflow');?></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                        <li><p>&nbsp;</p></li>
+                    </ul>
+                </div>
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
@@ -228,7 +228,7 @@ $option = Options::factory();
                             <i class="fa fa-camera"></i> <span><?=esc_html__(string: 'Media Library', domain: 'devflow');?></span>
                         </a>
                     </li>
-                    <li<?= ae('notset'); ?> class="treeview<?=current_screen('screen_parent', 'plugins');?>">
+                    <li<?= ae('manage:plugins'); ?> class="treeview<?=current_screen('screen_parent', 'plugins');?>">
                         <a href="#">
                             <i class="fa fa-plug"></i>
                             <span><?=esc_html__(string: 'Plugins', domain: 'devflow');?></span>
@@ -237,7 +237,7 @@ $option = Options::factory();
                                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?php add_dashboard_submenu(esc_html__(string: 'Installed Plugins', domain: 'devflow'), '/plugin/', 'installed-plugins'); ?>
+                            <?=add_dashboard_submenu(esc_html__(string: 'Plugins', domain: 'devflow'), '/plugin/', 'installed-plugins');?>
                             <?php Action::getInstance()->doAction('plugins_submenu'); ?>
                         </ul>
                     </li>
@@ -325,6 +325,6 @@ $option = Options::factory();
         });
     </script>
 
-    <?php //admin_footer(); ?>
+    <?php admin_footer(); ?>
     </body>
     </html>

@@ -6,16 +6,21 @@ namespace App\Infrastructure\Providers;
 
 use Codefy\Framework\Support\CodefyServiceProvider;
 use Psr\Http\Message\RequestInterface;
+use Qubus\EventDispatcher\ActionFilter\Filter;
+use Qubus\Exception\Data\TypeException;
 use Qubus\Exception\Exception;
 use Qubus\Http\Request;
 use Qubus\Routing\Exceptions\TooLateToAddNewRouteException;
 use Qubus\Routing\Router;
+use ReflectionException;
 
 final class WebRouteServiceProvider extends CodefyServiceProvider
 {
     /**
-     * @throws TooLateToAddNewRouteException
      * @throws Exception
+     * @throws TooLateToAddNewRouteException
+     * @throws TypeException
+     * @throws ReflectionException
      */
     public function boot(): void
     {
@@ -63,7 +68,14 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
                     ->name('admin.logout')
                     ->middleware(['user.session.expire']);
 
+            // Plugin routes
+            $group->get(uri: '/plugin/', callback: 'AdminPluginController@plugins')
+                    ->name('admin.plugins');
+            $group->get(uri: '/plugin/activate/', callback: 'AdminPluginController@activate');
+            $group->get(uri: '/plugin/deactivate/', callback: 'AdminPluginController@deactivate');
 
+
+            // Content type routes
             $group->get(uri: '/content-type/', callback: 'AdminContentTypeController@contentTypes');
             $group->post(uri: '/content-type/create/', callback: 'AdminContentTypeController@contentTypeCreate')
                 ->middleware(['csrf.protection']);
@@ -82,6 +94,8 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
             )
             ->where(['contentTypeId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
 
+
+            // Site routes
             $group->get(uri: '/site/', callback: 'AdminSiteController@sites');
             $group->post(uri: '/site/', callback: 'AdminSiteController@siteCreate')
                 ->middleware(['csrf.protection']);
@@ -103,6 +117,8 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
             )
                 ->where(['siteId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
 
+
+            // User routes
             $group->get(uri: '/user/', callback: 'AdminUserController@users');
             $group->map(['GET', 'POST'], '/user/profile/', callback: 'AdminUserController@userProfile')
                 ->middleware(['csrf.token', 'csrf.protection']);
@@ -132,6 +148,8 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
             $group->get(uri: '/user/{userId}/switch-back/', callback: 'AdminUserController@userSwitchBack')
                     ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
 
+
+            // Option routes
             $group->post(uri: '/options/', callback: 'AdminOptionsController@options')
                 ->middleware(['csrf.protection']);
             $group->get(uri: '/general/', callback: 'AdminOptionsController@generalView')
@@ -143,6 +161,8 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
             $group->post(uri: '/reading/', callback: 'AdminOptionsController@readingOptions')
                 ->middleware(['csrf.protection']);
 
+
+            // Content routes
             $group->get(uri: '/content-type/{contentTypeSlug}/', callback: 'AdminContentController@contentViewByType');
             $group->get(
                 uri: '/content-type/{contentTypeSlug}/create/',
@@ -177,6 +197,8 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
             )
                 ->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
 
+
+            // Product routes
             $group->get(uri: '/product/', callback: 'AdminProductController@products');
             $group->get(
                 uri: '/product/create/',
@@ -211,6 +233,9 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
             )
                     ->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
         });
+
+        // Custom plugin routes
+        Filter::getInstance()->applyFilter('plugin_route', $router);
 
         /*
          * Set the default controller namespace for custom Devflow development.

@@ -7,19 +7,30 @@ namespace App\Infrastructure\Providers;
 use App\Application\Devflow;
 use App\Shared\Services\Parsecode;
 use Codefy\Framework\Support\CodefyServiceProvider;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Psr\SimpleCache\InvalidArgumentException;
 use Qubus\EventDispatcher\ActionFilter\Action;
 use Qubus\EventDispatcher\ActionFilter\Filter;
+use Qubus\Exception\Data\TypeException;
 use Qubus\Exception\Exception;
 use ReflectionException;
 
+use function App\Shared\Helpers\get_user_timezone;
+use function App\Shared\Helpers\load_active_plugins;
+use function date_default_timezone_set;
 use function Qubus\Security\Helpers\esc_html__;
 use function sprintf;
 
 final class CmsHelperServiceProvider extends CodefyServiceProvider
 {
     /**
-     * @throws ReflectionException
+     * @throws ContainerExceptionInterface
      * @throws Exception
+     * @throws InvalidArgumentException
+     * @throws NotFoundExceptionInterface
+     * @throws ReflectionException
+     * @throws TypeException
      */
     public function register(): void
     {
@@ -29,38 +40,25 @@ final class CmsHelperServiceProvider extends CodefyServiceProvider
     /**
      * @throws Exception
      * @throws ReflectionException
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     * @throws InvalidArgumentException
+     * @throws TypeException
      */
     private function registerHooksFiltersAndHelpers(): void
     {
+        if (!$this->codefy->isRunningInConsole()) {
+            load_active_plugins();
+            /**
+             * Set the timezone for the application.
+             */
+            date_default_timezone_set(get_user_timezone());
+        }
         /**
          * An action called to add the plugin's link
          * to the menu structure.
          */
         Action::getInstance()->doAction('admin_menu');
-        /**
-         * Registers & enqueues a stylesheet to be printed in backend head section.
-         */
-        Action::getInstance()->doAction('enqueue_admin_css');
-        /**
-         * Fires in head section of all admin screens.
-         */
-        Action::getInstance()->doAction('cms_admin_head');
-        /**
-         * Registers & enqueues a stylesheet to be printed in frontend head section.
-         */
-        Action::getInstance()->doAction('enqueue_css');
-        /**
-         * Prints scripts and/or data in the head of the front end.
-         */
-        Action::getInstance()->doAction('cms_head');
-        /**
-         * Registers & enqueues javascript to be printed in backend footer section.
-         */
-        Action::getInstance()->doAction('enqueue_admin_js');
-        /**
-         * Prints scripts and/or data before the ending body tag of the backend.
-         */
-        Action::getInstance()->doAction('cms_admin_footer');
         /**
          * Registers & enqueues javascript to be printed in frontend footer section.
          */
@@ -71,20 +69,8 @@ final class CmsHelperServiceProvider extends CodefyServiceProvider
          */
         Action::getInstance()->doAction('cms_footer');
         /**
-         * Prints CMS release information.
-         */
-        Action::getInstance()->doAction('cms_release');
-        /**
-         * Prints widgets at the top portion of the admin.
-         */
-        Action::getInstance()->doAction('admin_top_widgets');
-        /**
          * Default actions and filters.
          */
-        Action::getInstance()->addAction('cms_admin_head', 'head_release_meta', 5);
-        //Action::getInstance()->addAction('cms_admin_footer', 'App\Shared\Helpers\admin_dashboard_js', 5);
-        //Action::getInstance()->addAction('cms_head', 'head_release_meta', 5);
-        //Action::getInstance()->addAction('cms_release', 'foot_release', 5);
         Action::getInstance()->addAction('login_form_top', 'App\Shared\Helpers\cms_login_form_show_message', 5);
         Action::getInstance()->addAction('admin_notices', 'App\Shared\Helpers\cms_dev_mode', 5);
         Action::getInstance()->addAction('save_site', 'App\Shared\Helpers\new_site_schema', 5, 3);
@@ -127,5 +113,9 @@ final class CmsHelperServiceProvider extends CodefyServiceProvider
             fn() => sprintf(esc_html__(string: 'Devflow %s', domain: 'devflow'), Devflow::inst()->release()),
             10,
         );
+        /**
+         * Fires once activated plugins have loaded.
+         */
+        Action::getInstance()->doAction('plugins_loaded');
     }
 }

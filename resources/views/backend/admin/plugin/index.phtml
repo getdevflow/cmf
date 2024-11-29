@@ -1,0 +1,103 @@
+<?php
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\is_plugin_activated;
+use function App\Shared\Helpers\plugin_info;
+use function Codefy\Framework\Helpers\public_path;
+use function Qubus\Security\Helpers\esc_html__;
+use function Qubus\Security\Helpers\esc_url;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function () {
+Registry::getInstance()->{'set'}('screen_parent', 'plugins');
+Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
+?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-thumb-tack"></i>
+                <h3 class="box-title"><?= esc_html__('Plugins'); ?></h3>
+
+                <div class="pull-right">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?=Devflow::inst()::$APP->flash->display(); ?>
+
+            <div class="row">
+
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?=esc_html__('Plugins');?></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="text-center"><?= esc_html__('Name'); ?></th>
+                                    <th class="text-center"><?= esc_html__('Version'); ?></th>
+                                    <th class="text-center"><?= esc_html__('Description'); ?></th>
+                                    <th class="text-center"><?= esc_html__('Action'); ?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach (plugin_info(public_path('plugins/')) as $plugin) : ?>
+                                <?php if (is_plugin_activated($plugin['className']) === true) : ?>
+                                <tr class="gradeX" style="background-color:#B0E0E6 !important;">
+                                    <?php else : ?>
+                                <tr class="gradeX">
+                                    <?php endif; ?>
+                                    <td class="text-center"><?=$plugin['name'];?></td>
+                                    <td class="text-center"><?=$plugin['version'];?></td>
+                                    <td class="text-center">
+                                        <?= $plugin['description']; ?> <br />
+                                        <strong><?=esc_html__('Developer:');?></strong>
+                                        <a href="<?=esc_url($plugin['authorUri']);?>"><?=$plugin['author'];?></a> |
+                                        <a href="<?=esc_url($plugin['pluginUri']);?>"><?=esc_html__('View Details');?></a>
+                                    </td>
+                                    <?php if (is_plugin_activated($plugin['className']) === true) : ?>
+                                        <td class="text-center"><a class="btn btn-danger" href="<?=admin_url('plugin/deactivate/?id=' . $plugin['className']);?>"><i class="fa fa-minus-circle"></i></a></td>
+                                    <?php else : ?>
+                                        <td class="text-center"><a class="btn btn-success" href="<?=admin_url('plugin/activate/?id=' . $plugin['className']);?>"><i class="fa fa-plus-circle"></i></a></td>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th class="text-center"><?= esc_html__('Name'); ?></th>
+                                    <th class="text-center"><?= esc_html__('Version'); ?></th>
+                                    <th class="text-center"><?= esc_html__('Description'); ?></th>
+                                    <th class="text-center"><?= esc_html__('Action'); ?></th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box-primary -->
+                </div>
+                <!-- /.left column -->
+
+            </div>
+            <!--/.row -->
+        </section>
+        <!-- /.Main content -->
+
+    </div>
+    <!-- /.Content Wrapper. Contains page content -->
+<?php }); ?>
