@@ -16,6 +16,7 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use Qubus\EventDispatcher\ActionFilter\Filter;
 use Qubus\Exception\Data\TypeException;
 use Qubus\Exception\Exception;
+use Qubus\ValueObjects\Identity\Ulid;
 use ReflectionException;
 
 use function App\Shared\Helpers\maybe_serialize;
@@ -79,6 +80,7 @@ final class Options
                     ->qb()
                     ->table($this->dfdb->prefix . 'option')
                     ->insert([
+                        'option_id' => Ulid::generateAsString(),
                         'option_key' => $name,
                         'option_value' => $optionValue,
                     ]);
@@ -318,6 +320,6 @@ final class Options
             Database::ARRAY_A
         );
 
-        return !is_null__($key['option_id']);
+        return !is_null__($key);
     }
 }
