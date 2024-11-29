@@ -225,7 +225,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     /**
      * @throws Exception
      */
-    public function changeUserToken(StringLiteral $token): void
+    public function changeUserToken(UserToken $token): void
     {
         if ($token->isEmpty()) {
             throw new Exception(message: t__(msgid: 'Token cannot be null.', domain: 'devflow'));
