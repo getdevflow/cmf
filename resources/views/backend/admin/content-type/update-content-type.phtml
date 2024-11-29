@@ -63,9 +63,8 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
 
                                 <div class="form-group">
                                     <label><?= esc_html__(string: 'Content Type Description', domain: 'devflow'); ?></label>
-                                    <textarea class="form-control" rows="3" name="description"><?=$params['type']->description;?></textarea>
+                                    <textarea class="form-control" rows="3" name="description" required><?=$params['type']->description;?></textarea>
                                 </div>
-                                <?php Action::getInstance()->doAction('update_contenttype_form_fields', $params['type']->id); ?>
                             </div>
                             <!-- /.col -->
                         </div>
