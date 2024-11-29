@@ -301,6 +301,28 @@ final class Options
     }
 
     /**
+     * @param array $options
+     * @return bool
+     * @throws Exception
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
+     * @throws TypeException
+     */
+    public function massUpdate(array $options): bool
+    {
+        try{
+            foreach($options as $optionKey => $optionValue) {
+                $this->update($optionKey, $optionValue);
+            }
+
+            return true;
+        } catch (PDOException|ReflectionException $e) {
+            FileLoggerFactory::getLogger()->error($e->getMessage());
+            return false;
+        }
+    }
+
+    /**
      * Checks if a key exists in the option table.
      *
      * @param string $optionKey Key to check against.
