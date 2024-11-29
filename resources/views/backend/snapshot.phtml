@@ -63,9 +63,9 @@ $option = Options::factory();
 
                 $report .= "\n\t" . esc_html__(string: '** PHP CONFIGURATION **', domain: 'devflow') . PHP_EOL . PHP_EOL;
                 $report .= esc_html__(string: 'Memory Limit:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('memory_limit') . PHP_EOL;
-                $report .= esc_html__(string: 'Upload Max:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('upload_max_filesize') . PHP_EOL;
-                $report .= esc_html__(string: 'Post Max:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('post_max_size') . PHP_EOL;
-                $report .= esc_html__(string: 'Time Limit:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('max_execution_time') . PHP_EOL;
+                $report .= esc_html__(string: 'Upload Max Size:', domain: 'devflow') . "\t\t\t\t\t" . ini_get('upload_max_filesize') . PHP_EOL;
+                $report .= esc_html__(string: 'Post Max Size:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('post_max_size') . PHP_EOL;
+                $report .= esc_html__(string: 'Max Execution Time:', domain: 'devflow') . "\t\t\t\t\t" . ini_get('max_execution_time') . PHP_EOL;
                 $report .= esc_html__(string: 'Max Input Vars:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('max_input_vars') . PHP_EOL;
                 $report .= esc_html__(string: 'Cookie Path:', domain: 'devflow') . "\t\t\t\t\t\t" . (is_writable(storage_path('app/cookies')) ? '<span style="color: green; ">' . storage_path('app/cookies') . '</span>': '<span style="color: red; ">' . storage_path('app/cookies') . '</span>') . PHP_EOL;
                 $report .= esc_html__(string: 'Regular Cookie TTL:', domain: 'devflow') . "\t\t\t\t\t" . convert_seconds_to_time((int) config('cookies.lifetime')) . PHP_EOL;
