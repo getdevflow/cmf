@@ -150,7 +150,7 @@ final class AdminSiteController extends BaseController
             return $this->view->render(
                 template: 'framework::backend/admin/site/index',
                 data: [
-                    'title' => 'sites',
+                    'title' => t__(msgid: 'Sites', domain: 'devflow'),
                     'sites' => $sites,
                     'request' => $request,
                     'connection' => $connection,

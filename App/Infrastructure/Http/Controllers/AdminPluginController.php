@@ -60,7 +60,10 @@ final class AdminPluginController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        return $this->view->render(template: 'framework::backend/admin/plugin/index', data: ['title' => 'Plugins']);
+        return $this->view->render(
+            template: 'framework::backend/admin/plugin/index',
+            data: ['title' => t__(msgid: 'Plugins', domain: 'devflow')]
+        );
     }
 
     /**

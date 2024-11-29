@@ -102,7 +102,7 @@ final class AdminAuthController extends BaseController
         return $this->view->render(
             template: 'framework::backend/auth/index',
             data: [
-                'title' => 'Login',
+                'title' => t__(msgid: 'Login', domain: 'devflow'),
                 'url' => site_url($this->router->url(name: 'admin.auth')),
             ]
         );

@@ -18,6 +18,8 @@ use Qubus\Exception\Exception;
 use Qubus\Http\Factories\JsonResponseFactory;
 use ReflectionException;
 
+use function Qubus\Security\Helpers\t__;
+
 class RestApiMiddleware implements MiddlewareInterface
 {
     public function __construct(protected Database $dfdb, ConfigContainer $configContainer)
@@ -46,7 +48,7 @@ class RestApiMiddleware implements MiddlewareInterface
         }
 
         return JsonResponseFactory::create(
-            data: 'Unauthorized.',
+            data: t__(msgid: 'Unauthorized.', domain: 'devflow'),
             status: 401
         );
     }

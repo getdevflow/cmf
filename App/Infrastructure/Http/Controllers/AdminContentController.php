@@ -294,7 +294,7 @@ final class AdminContentController extends BaseController
 
         $getContentType = get_content_type_by('slug', $contentTypeSlug);
         if (empty($getContentType->id) || is_false__($getContentType)) {
-            return JsonResponseFactory::create(data: t__('Content not found.', domain: 'devflow'), status: 404);
+            return JsonResponseFactory::create(data: t__(msgid: 'Content not found.', domain: 'devflow'), status: 404);
         }
 
         try {

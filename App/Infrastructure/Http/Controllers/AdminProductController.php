@@ -40,7 +40,6 @@ use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\cms_delete_product;
 use function App\Shared\Helpers\cms_insert_product;
 use function App\Shared\Helpers\cms_update_product;
-use function App\Shared\Helpers\get_all_products_with_filters;
 use function App\Shared\Helpers\get_product_by_id;
 use function App\Shared\Helpers\get_products;
 use function Codefy\Framework\Helpers\config;

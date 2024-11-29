@@ -79,7 +79,7 @@ final class AdminMediaController extends BaseController
                     'URL' => site_url(
                         path: 'sites/' . Registry::getInstance()->get('siteKey') . "/$dir"
                     ),
-                    'alias' => 'Media Library',
+                    'alias' => t__(msgid: 'Media Library', domain: 'devflow'),
                     'accessControl' => $this->configContainer->getConfigKey(key: 'elfinder.access'),
                     'tmbURL' => site_url('sites/' . Registry::getInstance()->get('siteKey') . "/{$dir}.tmb"),
                 ];

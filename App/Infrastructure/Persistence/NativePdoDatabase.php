@@ -38,6 +38,7 @@ use function preg_match;
 use function preg_match_all;
 use function preg_split;
 use function Qubus\Config\Helpers\env;
+use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_null__;
 use function sprintf;
 use function strlen;
@@ -160,7 +161,7 @@ final class NativePdoDatabase implements Database
         if (!preg_match_all("/(\?|:)/", $query, $matches)) {
             throw new Exception(
                 sprintf(
-                    'The query argument of %s must have a placeholder.',
+                    t__(msgid: 'The query argument of %s must have a placeholder.', domain: 'devflow'),
                     'NativePdoDatabase::prepare'
                 )
             );
@@ -175,7 +176,9 @@ final class NativePdoDatabase implements Database
 
         foreach ($params as $param) {
             if (!is_scalar($param) && !is_null__($param)) {
-                throw new PDOException(sprintf('Unsupported value type (%s).', gettype($param)));
+                throw new PDOException(
+                    sprintf(t__(msgid: 'Unsupported value type (%s).', domain: 'devflow'), gettype($param))
+                );
             }
         }
 
@@ -232,13 +235,18 @@ final class NativePdoDatabase implements Database
                             if (array_key_exists($indexQuestionMark, $params)) {
                                 $st .= $this->quote($params[$indexQuestionMark]);
                             } else {
-                                throw new PDOException(sprintf('Wrong params in query at %s.', $index));
+                                throw new PDOException(
+                                    sprintf(t__(msgid: 'Wrong params in query at %s.', domain: 'devflow'), $index)
+                                );
                             }
                         } else {
                             if (array_key_exists($key, $params)) {
                                 $st .= $this->quote($params[$key]);
                             } else {
-                                throw new PDOException(sprintf('Wrong params in query with key %s.', $key));
+                                throw new PDOException(sprintf(
+                                    t__(msgid: 'Wrong params in query with key %s.', domain: 'devflow'),
+                                    $key
+                                ));
                             }
                         }
                     } else {
@@ -502,11 +510,11 @@ final class NativePdoDatabase implements Database
     public function setPrefix(?string $prefix = null, bool $setTableNames = true): Error|string
     {
         if (is_null__($prefix) || empty($prefix)) {
-            return new Error('Database prefix cannot be null.', 'invalid_db_prefix');
+            return new Error(t__(msgid: 'Database prefix cannot be null.', domain: 'devflow'), 'invalid_db_prefix');
         }
 
         if (preg_match('|[^a-z0-9_]|i', $prefix)) {
-            return new Error('Invalid database prefix.', 'invalid_db_prefix');
+            return new Error(t__(msgid: 'Invalid database prefix.', domain: 'devflow'), 'invalid_db_prefix');
         }
 
         $oldPrefix = '';

@@ -95,7 +95,7 @@ final class AdminDashboardController extends BaseController
 
         return $this->view->render(
             template: 'framework::backend/snapshot',
-            data: ['title' => 'System Snapshot', 'users' => count($users)]
+            data: ['title' => t__(msgid: 'System Snapshot', domain: 'devflow'), 'users' => count($users)]
         );
     }
 

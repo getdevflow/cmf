@@ -125,7 +125,7 @@ final class AdminContentTypeController extends BaseController
             return $this->view->render(
                 template: 'framework::backend/admin/content-type/content-type',
                 data: [
-                    'title' => 'Content Types',
+                    'title' => t__(msgid: 'Content Types', domain: 'devflow'),
                     'types' => $contentTypes,
                     'request' => $request->getParsedBody(),
                 ]

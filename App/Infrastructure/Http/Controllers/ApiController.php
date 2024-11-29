@@ -15,6 +15,7 @@ use Qubus\Http\Session\SessionService;
 use Qubus\Routing\Router;
 use Qubus\View\Renderer;
 
+use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_false__;
 use function sprintf;
 
@@ -44,7 +45,7 @@ final class ApiController extends BaseController
                     ->getPdo()
                     ->exec(sprintf('SELECT * FROM %s', $this->dfdb->prefix . $table));
         } catch (PDOException $e) {
-            return JsonResponseFactory::create('Database table does not exist.', 404);
+            return JsonResponseFactory::create(t__(msgid: 'Database table does not exist.', domain: 'devflow'), 404);
         }
 
         $query = $this->dfdb->qb()
@@ -75,7 +76,7 @@ final class ApiController extends BaseController
         });
 
         if (is_false__($data)) {
-            return JsonResponseFactory::create('No data.', 404);
+            return JsonResponseFactory::create(t__(msgid: 'No data.', domain: 'devflow'), 404);
         }
 
         return JsonResponseFactory::create($data);
@@ -97,7 +98,10 @@ final class ApiController extends BaseController
                     ->getPdo()
                     ->exec(sprintf('SELECT * FROM %s', $this->dfdb->prefix . $table));
         } catch (PDOException $e) {
-            return JsonResponseFactory::create('Database table does not exist.', 404);
+            return JsonResponseFactory::create(
+                t__(msgid: 'Database table does not exist.', domain: 'devflow'),
+                404
+            );
         }
 
         $query = $this->dfdb->qb()
@@ -112,7 +116,7 @@ final class ApiController extends BaseController
                 });
 
         if (is_false__($query)) {
-            return JsonResponseFactory::create('No data.', 404);
+            return JsonResponseFactory::create(t__(msgid: 'No data.', domain: 'devflow'), 404);
         }
 
         return JsonResponseFactory::create($query);

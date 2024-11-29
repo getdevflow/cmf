@@ -23,6 +23,7 @@ use function preg_match_all;
 use function preg_replace;
 use function preg_replace_callback;
 use function preg_split;
+use function Qubus\Security\Helpers\t__;
 use function sprintf;
 use function str_replace;
 use function stripcslashes;
@@ -114,13 +115,16 @@ final class Parsecode
     public function add(string $tag, callable $func): bool
     {
         if ('' === trim($tag)) {
-            throw new Exception('Invalid parsecode name: empty name given.');
+            throw new Exception(t__(msgid: 'Invalid parsecode name: empty name given.', domain: 'devflow'));
         }
 
         if (0 !== preg_match('@[<>&/\[\]\x00-\x20]@', $tag)) {
             throw new Exception(
                 sprintf(
-                    'Invalid parsecode name: %s. Do not use spaces or reserved characters: & / < > [ ]',
+                    t__(
+                        msgid: 'Invalid parsecode name: %s. Do not use spaces or reserved characters: & / < > [ ]',
+                        domain: 'devflow'
+                    ),
                     $tag
                 )
             );
@@ -143,7 +147,7 @@ final class Parsecode
     public function remove(string $tag): bool
     {
         if ('' === trim($tag)) {
-            throw new Exception('Invalid parsecode name: empty name given.');
+            throw new Exception(t__(msgid: 'Invalid parsecode name: empty name given.', domain: 'devflow'));
         }
 
         if (isset(self::$parsecodeTags[$tag])) {
