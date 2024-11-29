@@ -33,7 +33,6 @@ use Codefy\QueryBus\Busses\SynchronousQueryBus;
 use Codefy\QueryBus\Enquire;
 use Codefy\QueryBus\Resolvers\NativeQueryHandlerResolver;
 use Codefy\QueryBus\UnresolvableQueryHandlerException;
-use DateInvalidTimeZoneException;
 use PDOException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
