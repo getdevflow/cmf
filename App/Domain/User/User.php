@@ -33,6 +33,7 @@ use Qubus\ValueObjects\StringLiteral\StringLiteral;
 use Qubus\ValueObjects\Web\EmailAddress;
 use SensitiveParameter;
 
+use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_null__;
 
 final class User extends EventSourcedAggregate implements AggregateRoot
@@ -179,7 +180,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserLogin(Username $login): void
     {
         if ($login->isEmpty()) {
-            throw new Exception(message: 'Login/Username cannot be null.');
+            throw new Exception(message: t__(msgid: 'Login/Username cannot be null.', domain: 'devflow'));
         }
         if ($login->equals($this->login)) {
             return;
@@ -195,7 +196,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserEmailAddress(EmailAddress $emailAddress): void
     {
         if ($emailAddress->isEmpty()) {
-            throw new Exception(message: 'Email address cannot be null.');
+            throw new Exception(message: t__(msgid: 'Email address cannot be null.', domain: 'devflow'));
         }
         if ($emailAddress->equals($this->emailAddress)) {
             return;
@@ -211,7 +212,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserName(Name $name): void
     {
         if ($name->getFirstName()->isEmpty() && $name->getLastName()->isEmpty()) {
-            throw new Exception(message: 'Name cannot be null.');
+            throw new Exception(message: t__(msgid: 'Name cannot be null.', domain: 'devflow'));
         }
         if ($name->equals($this->name)) {
             return;
@@ -227,7 +228,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserToken(StringLiteral $token): void
     {
         if ($token->isEmpty()) {
-            throw new Exception(message: 'Token cannot be null.');
+            throw new Exception(message: t__(msgid: 'Token cannot be null.', domain: 'devflow'));
         }
         if ($token->equals($this->token)) {
             return;
@@ -243,7 +244,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserPassword(StringLiteral $password): void
     {
         if ($password->isEmpty()) {
-            throw new Exception(message: 'Password cannot be null.');
+            throw new Exception(message: t__(msgid: 'Password cannot be null.', domain: 'devflow'));
         }
         if ($password->equals($this->password)) {
             return;
@@ -273,7 +274,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserTimezone(StringLiteral $timezone): void
     {
         if ($timezone->isEmpty()) {
-            throw new Exception(message: 'Timezone cannot be null.');
+            throw new Exception(message: t__(msgid: 'Timezone cannot be null.', domain: 'devflow'));
         }
         if ($timezone->equals($this->timezone)) {
             return;
@@ -287,7 +288,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserDateFormat(StringLiteral $dateFormat): void
     {
         if ($dateFormat->isEmpty()) {
-            throw new Exception(message: 'Date format cannot be null.');
+            throw new Exception(message: t__(msgid: 'Date format cannot be null.', domain: 'devflow'));
         }
         if ($dateFormat->equals($this->dateFormat)) {
             return;
@@ -301,7 +302,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserTimeFormat(StringLiteral $timeFormat): void
     {
         if ($timeFormat->isEmpty()) {
-            throw new Exception(message: 'Time format cannot be null.');
+            throw new Exception(message: t__(msgid: 'Time format cannot be null.', domain: 'devflow'));
         }
         if ($timeFormat->equals($this->timeFormat)) {
             return;
@@ -315,7 +316,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserLocale(StringLiteral $locale): void
     {
         if ($locale->isEmpty()) {
-            throw new Exception(message: 'Locale cannot be null.');
+            throw new Exception(message: t__(msgid: 'Locale cannot be null.', domain: 'devflow'));
         }
         if ($locale->equals($this->locale)) {
             return;
@@ -345,7 +346,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUserDeleted(UserId $userId): void
     {
         if ($userId->isEmpty()) {
-            throw new Exception(message: 'User id cannot be null.');
+            throw new Exception(message: t__(msgid: 'User id cannot be null.', domain: 'devflow'));
         }
         if ($this->userId->toNative() !== $userId->toNative()) {
             return;
@@ -359,7 +360,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
     public function changeUsermeta(ArrayLiteral $meta): void
     {
         if ($meta->isEmpty()) {
-            throw new Exception(message: 'User meta cannot be empty.');
+            throw new Exception(message: t__(msgid: 'User meta cannot be empty.', domain: 'devflow'));
         }
 
         if ($meta->equals($this->meta)) {

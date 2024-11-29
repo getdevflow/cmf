@@ -34,6 +34,7 @@ use Qubus\Exception\Data\TypeException;
 use Qubus\ValueObjects\Number\IntegerNumber;
 use Qubus\ValueObjects\StringLiteral\StringLiteral;
 
+use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_null__;
 
 final class Content extends EventSourcedAggregate implements AggregateRoot
@@ -230,7 +231,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentTitle(StringLiteral $contentTitle): void
     {
         if ($contentTitle->isEmpty()) {
-            throw new Exception(message: 'Content title cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Content title cannot be empty.', domain: 'devflow'));
         }
         if ($contentTitle->equals($this->contentTitle)) {
             return;
@@ -246,7 +247,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentSlug(StringLiteral $contentSlug): void
     {
         if ($contentSlug->isEmpty()) {
-            throw new Exception(message: 'Content slug cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Content slug cannot be empty.', domain: 'devflow'));
         }
         if ($contentSlug->equals($this->contentSlug)) {
             return;
@@ -276,7 +277,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentAuthor(UserId $contentAuthor): void
     {
         if ($contentAuthor->isEmpty()) {
-            throw new Exception(message: 'Content author cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Content author cannot be empty.', domain: 'devflow'));
         }
         if ($contentAuthor->equals($this->contentAuthor)) {
             return;
@@ -290,7 +291,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentType(StringLiteral $contentTypeSlug): void
     {
         if ($contentTypeSlug->isEmpty()) {
-            throw new Exception(message: 'Content type cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Content type cannot be empty.', domain: 'devflow'));
         }
         if ($contentTypeSlug->equals($this->contentTypeSlug)) {
             return;
@@ -335,7 +336,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentSidebar(IntegerNumber $contentSidebar): void
     {
         if ($contentSidebar->toInteger()->toNative() < 0) {
-            throw new Exception(message: 'Content sidebar must be an absolute integer.');
+            throw new Exception(message: t__(msgid: 'Content sidebar must be an absolute integer.', domain: 'devflow'));
         }
         if ($contentSidebar->equals($this->contentSidebar)) {
             return;
@@ -349,7 +350,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentShowInMenu(IntegerNumber $showInMenu): void
     {
         if ($showInMenu->toInteger()->toNative() < 0) {
-            throw new Exception(message: 'Show in menu must be an absolute integer.');
+            throw new Exception(message: t__(msgid: 'Show in menu must be an absolute integer.', domain: 'devflow'));
         }
         if ($showInMenu->equals($this->contentShowInMenu)) {
             return;
@@ -363,7 +364,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentShowInSearch(IntegerNumber $showInSearch): void
     {
         if ($showInSearch->toInteger()->toNative() < 0) {
-            throw new Exception(message: 'Show in search must be an absolute integer.');
+            throw new Exception(message: t__(msgid: 'Show in search must be an absolute integer.', domain: 'devflow'));
         }
         if ($showInSearch->equals($this->contentShowInSearch)) {
             return;
@@ -393,7 +394,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentStatus(StringLiteral $contentStatus): void
     {
         if ($contentStatus->isEmpty()) {
-            throw new Exception(message: 'Content status cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Content status cannot be empty.', domain: 'devflow'));
         }
         if ($contentStatus->equals($this->contentStatus)) {
             return;
@@ -407,7 +408,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentPublished(DateTimeInterface $contentPublished): void
     {
         if (empty($this->contentPublished)) {
-            throw new Exception(message: 'Content published cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Content published cannot be empty.', domain: 'devflow'));
         }
         if ($this->contentPublished->getTimestamp() === $contentPublished->getTimestamp()) {
             return;
@@ -421,7 +422,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentPublishedGmt(DateTimeInterface $contentPublishedGmt): void
     {
         if (empty($this->contentPublishedGmt)) {
-            throw new Exception(message: 'Content published gmt cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Content published gmt cannot be empty.', domain: 'devflow'));
         }
         if ($this->contentPublishedGmt->getTimestamp() === $contentPublishedGmt->getTimestamp()) {
             return;
@@ -467,7 +468,7 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
     public function changeContentDeleted(ContentId $contentId): void
     {
         if ($contentId->isEmpty()) {
-            throw new Exception(message: 'Content id cannot be null.');
+            throw new Exception(message: t__(msgid: 'Content id cannot be null.', domain: 'devflow'));
         }
         if (!$contentId->equals($this->contentId)) {
             return;

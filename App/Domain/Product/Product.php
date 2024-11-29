@@ -34,6 +34,7 @@ use Qubus\ValueObjects\Money\Money;
 use Qubus\ValueObjects\Number\IntegerNumber;
 use Qubus\ValueObjects\StringLiteral\StringLiteral;
 
+use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_null__;
 
 class Product extends EventSourcedAggregate implements AggregateRoot
@@ -218,7 +219,7 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductTitle(StringLiteral $productTitle): void
     {
         if ($productTitle->isEmpty()) {
-            throw new Exception(message: 'Product title cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Product title cannot be empty.', domain: 'devflow'));
         }
         if ($productTitle->equals($this->productTitle)) {
             return;
@@ -234,7 +235,7 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductSlug(StringLiteral $productSlug): void
     {
         if ($productSlug->isEmpty()) {
-            throw new Exception(message: 'Product slug cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Product slug cannot be empty.', domain: 'devflow'));
         }
         if ($productSlug->equals($this->productSlug)) {
             return;
@@ -250,7 +251,7 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductBody(StringLiteral $productBody): void
     {
         if ($productBody->isEmpty()) {
-            throw new Exception(message: 'Product body cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Product body cannot be empty.', domain: 'devflow'));
         }
         if ($productBody->equals($this->productBody)) {
             return;
@@ -264,7 +265,7 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductAuthor(UserId $productAuthor): void
     {
         if ($productAuthor->isEmpty()) {
-            throw new Exception(message: 'Product author cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Product author cannot be empty.', domain: 'devflow'));
         }
         if ($productAuthor->equals($this->productAuthor)) {
             return;
@@ -278,7 +279,7 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductSku(StringLiteral $productSku): void
     {
         if ($productSku->isEmpty()) {
-            throw new Exception(message: 'Product sku cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Product sku cannot be empty.', domain: 'devflow'));
         }
         if ($productSku->equals($this->productSku)) {
             return;
@@ -317,7 +318,9 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductShowInMenu(IntegerNumber $productShowInMenu): void
     {
         if ($productShowInMenu->toNative() < 0) {
-            throw new Exception(message: 'Product show in menu must be an absolute value.');
+            throw new Exception(
+                message: t__(msgid: 'Product show in menu must be an absolute value.', domain: 'devflow')
+            );
         }
         if ($productShowInMenu->equals($this->productShowInMenu)) {
             return;
@@ -331,7 +334,9 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductShowInSearch(IntegerNumber $productShowInSearch): void
     {
         if ($productShowInSearch->toNative() < 0) {
-            throw new Exception(message: 'Product show in search must be an absolute value.');
+            throw new Exception(
+                message: t__(msgid: 'Product show in search must be an absolute value.', domain: 'devflow')
+            );
         }
         if ($productShowInSearch->equals($this->productShowInSearch)) {
             return;
@@ -357,7 +362,7 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductStatus(StringLiteral $productStatus): void
     {
         if ($productStatus->isEmpty()) {
-            throw new Exception(message: 'Product status cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Product status cannot be empty.', domain: 'devflow'));
         }
         if ($productStatus->equals($this->productStatus)) {
             return;
@@ -384,7 +389,7 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductPublished(DateTimeInterface $productPublished): void
     {
         if (empty($this->productPublished)) {
-            throw new Exception(message: 'Product published date cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Product published date cannot be empty.', domain: 'devflow'));
         }
         if ($this->productPublished->getTimestamp() === $productPublished->getTimestamp()) {
             return;
@@ -398,7 +403,7 @@ class Product extends EventSourcedAggregate implements AggregateRoot
     public function changeProductPublishedGmt(DateTimeInterface $productPublishedGmt): void
     {
         if (empty($this->productPublishedGmt)) {
-            throw new Exception(message: 'Product published gmt date cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Product published gmt date cannot be empty.', domain: 'devflow'));
         }
         if ($this->productPublishedGmt->getTimestamp() === $productPublishedGmt->getTimestamp()) {
             return;

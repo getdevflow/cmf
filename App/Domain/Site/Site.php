@@ -24,6 +24,7 @@ use Exception;
 use Qubus\Exception\Data\TypeException;
 use Qubus\ValueObjects\StringLiteral\StringLiteral;
 
+use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_null__;
 
 final class Site extends EventSourcedAggregate implements AggregateRoot
@@ -148,7 +149,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
     public function changeSiteName(StringLiteral $siteName): void
     {
         if ($siteName->isEmpty()) {
-            throw new Exception(message: 'Site name cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Site name cannot be empty.', domain: 'devflow'));
         }
 
         if ($siteName->equals($this->siteName)) {
@@ -166,7 +167,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
     public function changeSiteSlug(StringLiteral $siteSlug): void
     {
         if ($siteSlug->isEmpty()) {
-            throw new Exception(message: 'Site slug cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Site slug cannot be empty.', domain: 'devflow'));
         }
 
         if ($siteSlug->equals($this->siteSlug)) {
@@ -182,7 +183,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
     public function changeSiteDomain(StringLiteral $siteDomain): void
     {
         if ($siteDomain->isEmpty()) {
-            throw new Exception(message: 'Site domain cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Site domain cannot be empty.', domain: 'devflow'));
         }
 
         if ($siteDomain->equals($this->siteDomain)) {
@@ -214,7 +215,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
     public function changeSitePath(StringLiteral $sitePath): void
     {
         if ($sitePath->isEmpty()) {
-            throw new Exception(message: 'Site path cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Site path cannot be empty.', domain: 'devflow'));
         }
 
         if ($sitePath->equals($this->sitePath)) {
@@ -230,7 +231,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
     public function changeSiteOwner(UserId $siteOwner): void
     {
         if ($siteOwner->isEmpty()) {
-            throw new Exception(message: 'Owner cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Owner cannot be empty.', domain: 'devflow'));
         }
 
         if ($siteOwner->equals($this->siteOwner)) {
@@ -246,7 +247,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
     public function changeSiteStatus(StringLiteral $siteStatus): void
     {
         if ($siteStatus->isEmpty()) {
-            throw new Exception(message: 'Site status cannot be empty.');
+            throw new Exception(message: t__(msgid: 'Site status cannot be empty.', domain: 'devflow'));
         }
 
         if ($siteStatus->equals($this->siteStatus)) {
@@ -278,7 +279,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
     public function changeSiteDeleted(SiteId $siteId): void
     {
         if (is_null__($siteId)) {
-            throw new Exception(message: 'Site id cannot be null.');
+            throw new Exception(message: t__(msgid: 'Site id cannot be null.', domain: 'devflow'));
         }
 
         if (!$siteId->equals($this->siteId)) {
