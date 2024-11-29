@@ -302,6 +302,9 @@ class Product extends EventSourcedAggregate implements AggregateRoot
 
     public function changeProductPurchaseUrl(StringLiteral $productPurchaseUrl): void
     {
+        if ($productPurchaseUrl->isEmpty()) {
+            return;
+        }
         if ($productPurchaseUrl->equals($this->productPurchaseUrl)) {
             return;
         }

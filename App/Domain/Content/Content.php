@@ -229,10 +229,10 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
      */
     public function changeContentTitle(StringLiteral $contentTitle): void
     {
-        if ($this->contentTitle->isEmpty()) {
+        if ($contentTitle->isEmpty()) {
             throw new Exception(message: 'Content title cannot be empty.');
         }
-        if ($this->contentTitle->toNative() === $contentTitle->toNative()) {
+        if ($contentTitle->equals($this->contentTitle)) {
             return;
         }
         $this->recordApplyAndPublishThat(
@@ -376,6 +376,9 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
      */
     public function changeContentFeaturedImage(StringLiteral $contentFeaturedImage): void
     {
+        if ($contentFeaturedImage->isEmpty()) {
+            return;
+        }
         if ($contentFeaturedImage->equals($this->contentFeaturedImage)) {
             return;
         }

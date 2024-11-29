@@ -25,7 +25,6 @@ use App\Shared\ValueObject\ArrayLiteral;
 use Codefy\Domain\Aggregate\AggregateId;
 use Codefy\Domain\Aggregate\AggregateRoot;
 use Codefy\Domain\Aggregate\EventSourcedAggregate;
-use Codefy\Framework\Support\Password;
 use DateTimeInterface;
 use Exception;
 use Qubus\Exception\Data\TypeException;
@@ -211,7 +210,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
      */
     public function changeUserName(Name $name): void
     {
-        if (empty($name->getFirstName()) && empty($name->getLastName())) {
+        if ($name->getFirstName()->isEmpty() && $name->getLastName()->isEmpty()) {
             throw new Exception(message: 'Name cannot be null.');
         }
         if ($name->equals($this->name)) {
@@ -259,6 +258,9 @@ final class User extends EventSourcedAggregate implements AggregateRoot
      */
     public function changeUserUrl(StringLiteral $url): void
     {
+        if ($url->isEmpty()) {
+            return;
+        }
         if ($url->equals($this->url)) {
             return;
         }
@@ -273,7 +275,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
         if ($timezone->isEmpty()) {
             throw new Exception(message: 'Timezone cannot be null.');
         }
-        if ($timezone->__toString() === $this->timezone->__toString()) {
+        if ($timezone->equals($this->timezone)) {
             return;
         }
         $this->recordApplyAndPublishThat(UserTimezoneWasChanged::withData($this->userId, $timezone));
@@ -287,7 +289,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
         if ($dateFormat->isEmpty()) {
             throw new Exception(message: 'Date format cannot be null.');
         }
-        if ($dateFormat->__toString() === $this->dateFormat->__toString()) {
+        if ($dateFormat->equals($this->dateFormat)) {
             return;
         }
         $this->recordApplyAndPublishThat(UserDateFormatWasChanged::withData($this->userId, $dateFormat));
@@ -301,7 +303,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
         if ($timeFormat->isEmpty()) {
             throw new Exception(message: 'Time format cannot be null.');
         }
-        if ($timeFormat->__toString() === $this->timeFormat->__toString()) {
+        if ($timeFormat->equals($this->timeFormat)) {
             return;
         }
         $this->recordApplyAndPublishThat(UserTimeFormatWasChanged::withData($this->userId, $timeFormat));
@@ -315,7 +317,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
         if ($locale->isEmpty()) {
             throw new Exception(message: 'Locale cannot be null.');
         }
-        if ($locale->__toString() === $this->locale->__toString()) {
+        if ($locale->equals($this->locale)) {
             return;
         }
         $this->recordApplyAndPublishThat(UserLocaleWasChanged::withData($this->userId, $locale));

@@ -151,7 +151,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
             throw new Exception(message: 'Site name cannot be empty.');
         }
 
-        if ($siteName->toNative() === $this->siteName->toNative()) {
+        if ($siteName->equals($this->siteName)) {
             return;
         }
 
@@ -169,7 +169,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
             throw new Exception(message: 'Site slug cannot be empty.');
         }
 
-        if ($siteSlug->toNative() === $this->siteSlug->toNative()) {
+        if ($siteSlug->equals($this->siteSlug)) {
             return;
         }
 
@@ -185,7 +185,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
             throw new Exception(message: 'Site domain cannot be empty.');
         }
 
-        if ($siteDomain->toNative() === $this->siteDomain->toNative()) {
+        if ($siteDomain->equals($this->siteDomain)) {
             return;
         }
 
@@ -201,7 +201,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
             return;
         }
 
-        if ($siteMapping->toNative() === $this->siteMapping->toNative()) {
+        if ($siteMapping->equals($this->siteMapping)) {
             return;
         }
 
@@ -217,7 +217,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
             throw new Exception(message: 'Site path cannot be empty.');
         }
 
-        if ($sitePath->toNative() === $this->sitePath->toNative()) {
+        if ($sitePath->equals($this->sitePath)) {
             return;
         }
 
@@ -233,7 +233,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
             throw new Exception(message: 'Owner cannot be empty.');
         }
 
-        if ($siteOwner->toNative() === $this->siteOwner->toNative()) {
+        if ($siteOwner->equals($this->siteOwner)) {
             return;
         }
 
@@ -249,7 +249,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
             throw new Exception(message: 'Site status cannot be empty.');
         }
 
-        if ($siteStatus->toNative() === $this->siteStatus->toNative()) {
+        if ($siteStatus->equals($this->siteStatus)) {
             return;
         }
 
@@ -281,7 +281,7 @@ final class Site extends EventSourcedAggregate implements AggregateRoot
             throw new Exception(message: 'Site id cannot be null.');
         }
 
-        if ($this->siteId->toNative() !== $siteId->toNative()) {
+        if (!$siteId->equals($this->siteId)) {
             return;
         }
 

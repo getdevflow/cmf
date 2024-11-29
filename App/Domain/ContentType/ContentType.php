@@ -81,11 +81,11 @@ final class ContentType extends EventSourcedAggregate implements AggregateRoot
      */
     public function changeTitle(StringLiteral $newTitle): void
     {
-        if (is_null__($this->contentTypeTitle)) {
+        if ($newTitle->isEmpty()) {
             throw new Exception(message: 'Content Type Title cannot be null.');
         }
 
-        if ($this->contentTypeTitle->equals($newTitle)) {
+        if ($newTitle->equals($this->contentTypeTitle)) {
             return;
         }
 
@@ -102,11 +102,11 @@ final class ContentType extends EventSourcedAggregate implements AggregateRoot
      */
     public function changeContentTypeSlug(StringLiteral $newSlug): void
     {
-        if (is_null__($this->contentTypeSlug)) {
+        if ($newSlug->isEmpty()) {
             throw new Exception(message: 'Content Type Slug cannot be null.');
         }
 
-        if ($this->contentTypeSlug->equals($newSlug)) {
+        if ($newSlug->equals($this->contentTypeSlug)) {
             return;
         }
 
@@ -120,10 +120,10 @@ final class ContentType extends EventSourcedAggregate implements AggregateRoot
      */
     public function changeContentTypeDescription(StringLiteral $newDescription): void
     {
-        if (is_null__($this->contentTypeDescription)) {
+        if ($newDescription->isEmpty()) {
             throw new Exception(message: 'Content Type Description cannot be null.');
         }
-        if ($this->contentTypeDescription->equals($newDescription)) {
+        if ($newDescription->equals($this->contentTypeDescription)) {
             return;
         }
         $this->recordApplyAndPublishThat(
@@ -140,10 +140,10 @@ final class ContentType extends EventSourcedAggregate implements AggregateRoot
      */
     public function changeContentTypeDeleted(ContentTypeId $contentTypeId): void
     {
-        if (is_null__($this->contentTypeId)) {
+        if ($contentTypeId->isEmpty()) {
             throw new Exception(message: 'Content Type ID cannot be null.');
         }
-        if (!$this->contentTypeId->equals($contentTypeId)) {
+        if (!$contentTypeId->equals($this->contentTypeId)) {
             return;
         }
         $this->recordApplyAndPublishThat(event: ContentTypeWasDeleted::withData($this->contentTypeId));
