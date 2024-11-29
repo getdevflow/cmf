@@ -46,8 +46,10 @@ function cms_dropdown_languages(string $active = ''): void
  * @param false|string $pluginRelPath Optional. Relative path to plugin dir where the locale directory resides.
  *                                    Default false.
  * @return bool True when textdomain is successfully loaded, false otherwise.
+ * @throws ContainerExceptionInterface
  * @throws Exception
  * @throws InvalidArgumentException
+ * @throws NotFoundExceptionInterface
  * @throws ReflectionException
  */
 function load_plugin_textdomain(string $domain, false|string $pluginRelPath = false): bool
@@ -90,6 +92,6 @@ function load_plugin_textdomain(string $domain, false|string $pluginRelPath = fa
 function load_core_locale(): string
 {
     $option = Options::factory();
-    $locale = $option->read(optionKey: 'cms_core_locale', default: config(key: 'app.locale'));
+    $locale = $option->read(optionKey: 'site_locale', default: config(key: 'app.locale'));
     return Filter::getInstance()->applyFilter('core_locale', $locale);
 }
