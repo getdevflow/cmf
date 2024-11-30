@@ -513,7 +513,7 @@ final class AdminUserController extends BaseController
             $user->id = $userId;
             $user->setRole($request->get('role'));
 
-            Devflow::inst()::$APP->flash->success(message: Devflow::inst()::$APP->flash->notice(num: 201));
+            Devflow::inst()::$APP->flash->success(message: Devflow::inst()::$APP->flash->notice(num: 200));
         }
 
         return $this->view->render(
