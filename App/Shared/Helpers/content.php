@@ -875,7 +875,7 @@ function get_content_status(string $contentId): false|string
  */
 function get_content_date(string $type = 'published', string $contentId = ''): string
 {
-    return call_user_func_array("the_{$type}_date", ['Y-m-d',&$contentId]);
+    return call_user_func_array("App\\Shared\\Helpers\\the_{$type}_date", ['Y-m-d',&$contentId]);
 }
 
 /**
@@ -891,7 +891,7 @@ function get_content_date(string $type = 'published', string $contentId = ''): s
  */
 function get_content_time(string $type = 'published', string $contentId = ''): string
 {
-    return call_user_func_array("the_{$type}_time", ['h:i A',&$contentId]);
+    return call_user_func_array("App\\Shared\\Helpers\\the_{$type}_time", ['h:i A',&$contentId]);
 }
 
 /**

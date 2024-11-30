@@ -737,7 +737,7 @@ function get_product_status(string $productId): false|string
  */
 function get_product_date(string $type = 'published', string $productId = ''): string
 {
-    return call_user_func_array("the_product_{$type}_date", ['Y-m-d',&$productId]);
+    return call_user_func_array("App\\Shared\\Helpers\\the_product_{$type}_date", ['Y-m-d',&$productId]);
 }
 
 /**
@@ -753,7 +753,7 @@ function get_product_date(string $type = 'published', string $productId = ''): s
  */
 function get_product_time(string $type = 'published', string $productId = ''): string
 {
-    return call_user_func_array("the_product_{$type}_time", ['h:i A',&$productId]);
+    return call_user_func_array("App\\Shared\\Helpers\\the_product_{$type}_time", ['h:i A',&$productId]);
 }
 
 /**
