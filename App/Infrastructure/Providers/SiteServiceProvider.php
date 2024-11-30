@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Providers;
 
-use App\Infrastructure\Persistence\Database;
 use App\Shared\Services\Registry;
 use Codefy\Framework\Factory\FileLoggerFactory;
 use Codefy\Framework\Support\CodefyServiceProvider;
+use PDO;
 use PDOException;
 use Psr\Http\Message\RequestInterface;
 use Qubus\Exception\Exception;
@@ -39,25 +39,24 @@ final class SiteServiceProvider extends CodefyServiceProvider
     {
         /** @var RequestInterface $request */
         $request = $this->codefy->make(RequestInterface::class);
-        /** @var Database $cdb */
-        $cdb = $this->codefy->make(Database::class);
+
+        /** @var PDO $pdo */
+        $pdo = $this->codefy->make(PDO::class);
+
+        $default = $this->codefy->configContainer->getConfigKey(key: 'database.default');
+        $prefix = $this->codefy->configContainer->getConfigKey(key: "database.connections.{$default}.prefix");
 
         try {
-            $currentSiteKey = $cdb->getRow(
-                $cdb->prepare(
-                    "SELECT site_key FROM {$cdb->basePrefix}site WHERE site_domain = ? OR site_mapping = ? LIMIT 1",
-                    [
-                        $request->getHeaderLine('Host'),
-                        $request->getHeaderLine('Host'),
-                    ]
-                )
-            );
+            $sql = "SELECT site_key FROM {$prefix}site WHERE site_domain = :domain OR site_mapping = :mapping LIMIT 1";
+            $sth = $pdo->prepare($sql);
+            $sth->execute(['domain' => $request->getHeaderLine('Host'), 'mapping' => $request->getHeaderLine('Host')]);
 
-            if (null === $currentSiteKey) {
-                $default = $this->codefy->configContainer->getConfigKey(key: 'database.default');
-                $siteKey = $this->codefy->configContainer->getConfigKey(key: "database.connections.{$default}.prefix");
+            $currentSiteKey = $sth->fetchColumn();
+
+            if (false === $currentSiteKey) {
+                $siteKey = $prefix;
             } else {
-                $siteKey = esc_html($currentSiteKey->site_key);
+                $siteKey = esc_html($currentSiteKey);
             }
             /**
              * Set site key.

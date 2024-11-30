@@ -485,7 +485,7 @@ function update_usermeta(string $userId, string $metaKey, mixed $value, mixed $p
  * Update user meta by entity ID.
  *
  * @file App/Shared/Helpers/user.php
- * @param string $eid
+ * @param string $mid
  * @param string $metaKey
  * @param mixed $value
  * @return bool
@@ -497,10 +497,10 @@ function update_usermeta(string $userId, string $metaKey, mixed $value, mixed $p
  * @throws TypeException
  * @throws UnresolvableQueryHandlerException
  */
-function update_usermeta_by_mid(string $eid, string $metaKey, mixed $value): bool
+function update_usermeta_by_mid(string $mid, string $metaKey, mixed $value): bool
 {
     return MetaData::factory(dfdb()->prefix . 'usermeta')
-            ->updateByMid('user', $eid, $metaKey, $value);
+            ->updateByMid('user', $mid, $metaKey, $value);
 }
 
 /**
@@ -847,7 +847,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
             )
         );
     }
-    $meta['username'] = $userLogin;
 
     $userUrl = $userdata['url'];
 
@@ -885,7 +884,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
             message: esc_html__(string: 'Sorry, that email address cannot be used.', domain: 'devflow')
         );
     }
-    $meta['email'] = $userEmail;
 
     $rawUserFname = $userdata['fname'];
     $sanitizedUserFname = $user->fname = Sanitizer::item($userdata['fname']);
@@ -901,7 +899,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
         (string) $sanitizedUserFname,
         (string) $rawUserFname
     );
-    $meta['fname'] = $userFname;
 
     $rawUserMname = $userdata['mname'];
     $sanitizedUserMname = $user->mname = Sanitizer::item($userdata['mname']);
@@ -917,7 +914,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
         (string) $sanitizedUserMname,
         (string) $rawUserMname
     );
-    $meta['mname'] = $userMname;
 
     $rawUserLname = $userdata['lname'];
     $sanitizedUserLname = $user->lname = Sanitizer::item($userdata['lname']);
@@ -933,7 +929,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
         (string) $sanitizedUserLname,
         (string) $rawUserLname
     );
-    $meta['lname'] = $userLname;
 
     $rawUserBio = $userdata['bio'];
     $sanitizedUserBio = Sanitizer::item($userdata['bio']);
@@ -964,7 +959,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
         (string) $sanitizedUserTimezone,
         (string) $rawUserTimezone
     );
-    $meta['timezone'] = $userTimezone;
 
     $rawUserDateFormat = $userdata['dateFormat'];
     $sanitizedUserDateFormat = $user->dateFormat = Sanitizer::item($userdata['dateFormat']);
@@ -980,7 +974,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
         (string) $sanitizedUserDateFormat,
         (string) $rawUserDateFormat
     );
-    $meta['date_format'] = $userDateFormat;
 
     $rawUserTimeFormat = $userdata['timeFormat'];
     $sanitizedUserTimeFormat = $user->timeFormat = Sanitizer::item($userdata['timeFormat']);
@@ -996,7 +989,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
         (string) $sanitizedUserTimeFormat,
         (string) $rawUserTimeFormat
     );
-    $meta['time_format'] = $userTimeFormat;
 
     $rawUserLocale = $userdata['locale'];
     $sanitizedUserLocale = Sanitizer::item($userdata['locale']);
@@ -1012,7 +1004,6 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
         (string) $sanitizedUserLocale,
         (string) $rawUserLocale
     );
-    $meta['locale'] = $userLocale;
 
     $rawUserStatus = $userdata['status'];
     $sanitizedUserStatus = Sanitizer::item($userdata['status']);
@@ -1052,6 +1043,7 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
     $compacted = [
         'login' => $userLogin,
         'fname' => $userFname,
+        'mname' => $userMname,
         'lname' => $userLname,
         'pass' => $userPass,
         'email' => $userEmail,
@@ -1076,6 +1068,7 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
      *
      *      @type string $login        The user's login.
      *      @type string $fname        The user's first name.
+     *      @type string $mname        The user's middle name.
      *      @type string $lname        The user's last name.
      *      @type string $pass         The user's password.
      *      @type string $email        The user's email.
@@ -1106,18 +1099,7 @@ function cms_insert_user(array|ServerRequestInterface|User $userdata): string|Er
      * @param array $meta {
      *     Default meta values and keys for the user.
      *
-     *     @type string $username       The user's username
-     *     @type string $fname          The user's first name.
-     *     @type string $lname          The user's last name.
-     *     @type string $email          The user's email.
-     *     @type string $timezone       The user's timezone.
-     *     @type string $dateFormat    The user's date format.
-     *     @type string $timeFormat    The user's time format.
      *     @type string $bio            The user's bio.
-     *     @type string $timezone       The user's timezone.
-     *     @type string $dateFormat    The user's date format.
-     *     @type string $timeFormat    The user's time_format.
-     *     @type string $locale         The user's locale.
      *     @type string $status         The user's status.
      *     @type int    $admin_layout   The user's layout option.
      *     @type int    $admin_sidebar  The user's sidebar option.
@@ -1261,10 +1243,6 @@ function cms_update_user(array|ServerRequestInterface|User $userdata): string|Us
     $user = get_object_vars($userObj);
 
     $userAttributes = [
-        'username',
-        'fname',
-        'lname',
-        'email',
         'timezone',
         'date_format',
         'time_format',
@@ -1458,8 +1436,8 @@ function cms_delete_user(string $userId, ?string $assignId = null): bool
     );
 
     if ($meta) {
-        foreach ($meta as $eid) {
-            delete_usermeta_by_mid($eid['meta_id']);
+        foreach ($meta as $mid) {
+            delete_usermeta_by_mid($mid['meta_id']);
         }
     }
 
@@ -1889,48 +1867,6 @@ function blacklisted_usernames(): array
 }
 
 /**
- * Recently published widget.
- *
- * @file App/Shared/Helpers/user.php
- * @return void 5 recently published posts.
- * @throws ContainerExceptionInterface
- * @throws Exception
- * @throws NotFoundExceptionInterface
- * @throws ReflectionException
- * @throws SessionException
- */
-function recently_published_widget(): void
-{
-    $dfdb = dfdb();
-
-    $limit = Filter::getInstance()->applyFilter('recently_published_widget_limit', 5);
-
-    try {
-        $posts = $dfdb->getResults(sprintf("SELECT * FROM {$dfdb->prefix}content LIMIT %s", $limit), Database::ARRAY_A);
-        $_posts = sort_list($posts, 'post_created', 'DESC');
-
-        foreach ($_posts as $post) {
-            echo '<div class="text-muted rp-widget">';
-            echo '<table>';
-            echo '<tr>';
-            echo '<td>' . get_post_datetime(esc_html($post['post_id'])) . '</td>';
-            echo '<td>' . sprintf(
-                '<a href="%s">%s</a>',
-                admin_url(
-                    esc_html($post['post_posttype']) . '/' . esc_html($post['post_id']) . '/'
-                ),
-                esc_html($post['post_title'])
-            ) . '</td>';
-            echo '</tr>';
-            echo '</table>';
-            echo '</div>';
-        }
-    } catch (PDOException $e) {
-        Devflow::inst()::$APP->flash->error($e->getMessage());
-    }
-}
-
-/**
  * Resets a user's password.
  *
  * @file App/Shared/Helpers/user.php
@@ -2044,9 +1980,9 @@ function get_users_by_site_key(string $siteKey = ''): array|string|bool
  */
 function get_user_timezone(): mixed
 {
-    $userTimezone = get_user_option(option: 'timezone', userId: get_current_user_id());
+    $userTimezone = get_user_by('id', get_current_user_id());
     if (is_user_logged_in() && $userTimezone !== false) {
-        return $userTimezone;
+        return $userTimezone->timezone;
     }
     return Options::factory()->read(optionKey: 'site_timezone') ?? config(key: 'app.timezone');
 }
@@ -2064,9 +2000,9 @@ function get_user_timezone(): mixed
  */
 function get_user_date_format(): mixed
 {
-    $userDateFormat = get_user_option(option: 'date_format', userId: get_current_user_id());
+    $userDateFormat = get_user_by('id', get_current_user_id());
     if (is_user_logged_in() && $userDateFormat !== false) {
-        return $userDateFormat;
+        return $userDateFormat->dateFormat;
     }
     return Options::factory()->read(optionKey: 'date_format');
 }
@@ -2084,9 +2020,9 @@ function get_user_date_format(): mixed
  */
 function get_user_time_format(): mixed
 {
-    $userTimeFormat = get_user_option(option: 'time_format', userId: get_current_user_id());
+    $userTimeFormat = get_user_by('id', get_current_user_id());
     if (is_user_logged_in() && $userTimeFormat !== false) {
-        return $userTimeFormat;
+        return $userTimeFormat->timeFormat;
     }
     return Options::factory()->read(optionKey: 'time_format');
 }

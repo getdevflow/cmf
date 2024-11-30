@@ -67,8 +67,8 @@ return [
          */
         App\Infrastructure\Providers\CacheAdapterServiceProvider::class,
         App\Infrastructure\Providers\AppServiceProvider::class,
-        App\Infrastructure\Providers\DatabaseServiceProvider::class,
         App\Infrastructure\Providers\SiteServiceProvider::class,
+        App\Infrastructure\Providers\DatabaseServiceProvider::class,
         App\Infrastructure\Providers\RbacServiceProvider::class,
         App\Infrastructure\Providers\MiddlewareServiceProvider::class,
         App\Infrastructure\Providers\ApiRouteServiceProvider::class,

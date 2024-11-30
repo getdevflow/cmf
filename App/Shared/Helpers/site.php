@@ -222,10 +222,6 @@ function add_site_usermeta(string $siteKey, array $params = []): bool
     /** @var User $userdata */
     $userdata = get_userdata($params['assign_id']);
     $data = [
-        'username' => $userdata->login,
-        'fname' => $userdata->fname,
-        'lname' => $userdata->lname,
-        'email' => $userdata->email,
         'bio' => $userdata->bio,
         'status' => $userdata->status,
         'admin_layout' => $userdata->admin_layout <= 0 ? (int) 0 : (int) $userdata->admin_layout,
@@ -508,14 +504,6 @@ function add_user_to_site(User|string $user, Site|string $site, string $role): f
     // Store values to save in user meta.
     $meta = [];
 
-    $meta['username'] = $userdata->login;
-
-    $meta['fname'] = $userdata->fname;
-
-    $meta['lname'] = $userdata->lname;
-
-    $meta['email'] = $userdata->email;
-
     $meta['bio'] = null;
 
     $meta['role'] = $role;
@@ -535,10 +523,6 @@ function add_user_to_site(User|string $user, Site|string $site, string $role): f
      * @param array $meta {
      *     Default meta values and keys for the user.
      *
-     *     @type string $username       The user's username
-     *     @type string $fname          The user's first name.
-     *     @type string $lname          The user's last name.
-     *     @type string $email          The user's email.
      *     @type string $bio            The user's bio.
      *     @type string $role           The user's role.
      *     @type string $status         The user's status.
@@ -1101,7 +1085,7 @@ function cms_update_site(array|ServerRequestInterface|Site $sitedata): Error|str
         add_user_to_site($sitedata['owner'], $sitedata['id'], 'admin');
     }
 
-    //ttcms()->obj['sitecache']->clean($siteId);
+    //cms()->obj['sitecache']->clean($siteId);
 
     return $siteId;
 }
@@ -1412,10 +1396,6 @@ function new_site_schema(string $siteId, Site $site, bool $update): bool|string
     }
     // Store values to save in user meta.
     $meta = [];
-    $meta['username'] = $userdata->login;
-    $meta['fname'] = $userdata->fname;
-    $meta['lname'] = $userdata->lname;
-    $meta['email'] = $userdata->email;
     $meta['bio'] = null;
     $meta['role'] = 'admin';
     $meta['status'] = (string) 'A';
@@ -1430,10 +1410,6 @@ function new_site_schema(string $siteId, Site $site, bool $update): bool|string
      * @param array $meta {
      *     Default meta values and keys for the user.
      *
-     *     @type string $username       The user's username
-     *     @type string $fname          The user's first name.
-     *     @type string $lname          The user's last name.
-     *     @type string $email          The user's email.
      *     @type string $bio            The user's bio.
      *     @type string $role           The user's role.
      *     @type string $status         The user's status.

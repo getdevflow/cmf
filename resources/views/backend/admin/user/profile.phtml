@@ -14,7 +14,6 @@ use function App\Shared\Helpers\cms_dropdown_languages;
 use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
-use function App\Shared\Helpers\get_userdata;
 use function App\Shared\Helpers\selected;
 use function Qubus\Security\Helpers\esc_html__;
 use function Qubus\Security\Helpers\purify_html;
@@ -24,7 +23,6 @@ $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($param) {
 Registry::getInstance()->{'set'}('screen_parent', 'users');
 Registry::getInstance()->{'set'}('screen_child', 'profile');
-$username = get_user_option('username', $param['user']->id) === '' ? get_userdata($param['user']->id)->login : get_user_option('username', $param['user']->id);
 ?>
 
     <!-- form start -->
@@ -188,19 +186,24 @@ $username = get_user_option('username', $param['user']->id) === '' ? get_userdat
                             <div class="box-body">
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Username', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" id="user_login" name="login" value="<?=$username;?>" readonly="readonly" required/>
+                                    <input type="text" class="form-control" id="user_login" name="login" value="<?=$param['user']->login;?>" readonly="readonly" required/>
                                     <button type="button" class="btn btn-primary" id="enable_button" style="display:none"><?= esc_html__(string: 'Change username', domain: 'devflow'); ?></button>
                                     <button type="button" class="btn btn-danger" id="disable_button" style="display:none"><?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
                                 </div>
 
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'First Name', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="fname" value="<?= get_user_option('fname', $param['user']->id); ?>" required>
+                                    <input type="text" class="form-control" name="fname" value="<?=$param['user']->fname;?>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><strong><?= esc_html__(string: 'Middle Name', domain: 'devflow'); ?></strong></label>
+                                    <input type="text" class="form-control" name="mname" value="<?=$param['user']->mname;?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="lname" value="<?= get_user_option('lname', $param['user']->id); ?>" required>
+                                    <input type="text" class="form-control" name="lname" value="<?=$param['user']->lname;?>" required>
                                 </div>
 
                                 <?php
@@ -222,12 +225,12 @@ $username = get_user_option('username', $param['user']->id) === '' ? get_userdat
 
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Email', domain: 'devflow'); ?></strong></label>
-                                    <input type="email" class="form-control" name="email" value="<?= get_user_option('email', $param['user']->id); ?>" required>
+                                    <input type="email" class="form-control" name="email" value="<?=$param['user']->email;?>" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'URL', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="url" value="<?= $param['user']->url; ?>" />
+                                    <input type="text" class="form-control" name="url" value="<?=$param['user']->url;?>" />
                                 </div>
 
                                 <?php
@@ -317,7 +320,7 @@ $username = get_user_option('username', $param['user']->id) === '' ? get_userdat
 
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Profile Picture', domain: 'devflow'); ?></strong></label>
-                                    <div><?= get_user_avatar(get_user_option('email', $param['user']->id), 100);?></div>
+                                    <div><?= get_user_avatar($param['user']->email, 100);?></div>
                                     <p class="help-block"><?= sprintf(purify_html(string: t__(msgid: 'You can change your profile picture on <a href="%s">Gravatar</a>.', domain: 'devflow')), '//en.gravatar.com/'); ?></p>
                                 </div>
 

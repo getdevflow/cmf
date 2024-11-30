@@ -124,9 +124,8 @@ final class NativePdoDatabase implements Database
 
         $this->sitePrefix = $this->siteKey ?? $this->basePrefix;
         $this->prefix = $this->sitePrefix;
-        Registry::getInstance()->set('tblPrefix', $this->prefix);
 
-        $this->setPrefix($this->prefix);
+        Registry::getInstance()->set('tblPrefix', $this->prefix);
     }
 
     /**

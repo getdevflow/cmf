@@ -39,7 +39,7 @@ use function strval;
 
 final class MetaData
 {
-    public function __construct(protected Database $cdb, protected CacheInterface $cache)
+    public function __construct(protected Database $dfdb, protected CacheInterface $cache)
     {
     }
 
@@ -50,7 +50,7 @@ final class MetaData
      */
     public static function factory(string $namespace = 'metadata'): MetaData
     {
-        return new self(cdb: dfdb(), cache: SimpleCacheObjectCacheFactory::make($namespace));
+        return new self(dfdb: dfdb(), cache: SimpleCacheObjectCacheFactory::make($namespace));
     }
 
     /**
@@ -65,12 +65,13 @@ final class MetaData
      */
     private function table(string $type): string
     {
+        $prefix = 'user' === $type ? $this->dfdb->basePrefix : $this->dfdb->prefix;
         $tableName = "{$type}meta";
-        if (empty($this->cdb->prefix . $tableName)) {
+        if (empty($prefix . $tableName)) {
             return '';
         }
 
-        return $this->cdb->prefix . $tableName;
+        return $prefix . $tableName;
     }
 
     /**
@@ -208,8 +209,8 @@ final class MetaData
         $table = Sanitizer::item($table);
         $column = Sanitizer::item($column);
 
-        $metaIds = $this->cdb->getCol(
-            $this->cdb->prepare(
+        $metaIds = $this->dfdb->getCol(
+            $this->dfdb->prepare(
                 query: sprintf("SELECT meta_id FROM %s WHERE meta_key = ? AND %s = ?", $table, $column),
                 params: [
                     $metaKey,
@@ -243,7 +244,7 @@ final class MetaData
 
         if (! empty($prevValue)) {
             try {
-                $result = $this->cdb->qb()->transactional(function () use (
+                $result = $this->dfdb->qb()->transactional(function () use (
                     $table,
                     $metaTypeId,
                     $column,
@@ -251,7 +252,7 @@ final class MetaData
                     $metaValue,
                     $data
                 ) {
-                    $this->cdb
+                    $this->dfdb
                         ->qb()
                         ->table($table)
                         ->where(sprintf("%s = ?", $column), $metaTypeId)
@@ -270,9 +271,9 @@ final class MetaData
             }
         } else {
             try {
-                $result = $this->cdb->qb()->transactional(
+                $result = $this->dfdb->qb()->transactional(
                     function () use ($table, $metaTypeId, $column, $metaKey, $data) {
-                        $this->cdb
+                        $this->dfdb
                         ->qb()
                         ->table($table)
                         ->where(sprintf("%s = ?", $column), $metaTypeId)
@@ -394,8 +395,8 @@ final class MetaData
         $column = Sanitizer::item($column);
 
         if (
-            $unique && $this->cdb->getVar(
-                $this->cdb->prepare(
+            $unique && $this->dfdb->getVar(
+                $this->dfdb->prepare(
                     query: sprintf("SELECT COUNT(*) FROM %s WHERE meta_key = ? AND %s = ?", $table, $column),
                     params: [
                         $metaKey,
@@ -423,7 +424,7 @@ final class MetaData
         Action::getInstance()->doAction("add_{$metaType}meta", $metaTypeId, $metaKey, $_metaValue);
 
         try {
-            $result = $this->cdb->qb()->transactional(function () use (
+            $result = $this->dfdb->qb()->transactional(function () use (
                 $table,
                 $metaTypeId,
                 $column,
@@ -431,7 +432,7 @@ final class MetaData
                 $metaValue
             ) {
                 $metaId = Ulid::generateAsString();
-                $this->cdb
+                $this->dfdb
                         ->qb()
                         ->table($table)
                         ->insert([
@@ -542,7 +543,7 @@ final class MetaData
 
         $table = Sanitizer::item($table);
 
-        $query = $this->cdb->prepare(
+        $query = $this->dfdb->prepare(
             query: sprintf("SELECT meta_id FROM %s WHERE meta_key = ?", $table),
             params: [
                 $metaKey
@@ -552,7 +553,7 @@ final class MetaData
         $typeColumn = Sanitizer::item($typeColumn);
 
         if (!$deleteAll) {
-            $query .= $this->cdb->prepare(
+            $query .= $this->dfdb->prepare(
                 query: " AND $typeColumn = ?",
                 params: [
                     $metaTypeId
@@ -561,7 +562,7 @@ final class MetaData
         }
 
         if ('' !== $metaValue) {
-            $query .= $this->cdb->prepare(
+            $query .= $this->dfdb->prepare(
                 query: " AND meta_value = ?",
                 params: [
                     $metaValue
@@ -569,7 +570,7 @@ final class MetaData
             );
         }
 
-        $metaIds = $this->cdb->getCol($query);
+        $metaIds = $this->dfdb->getCol($query);
         if (!count($metaIds)) {
             return false;
         }
@@ -578,8 +579,8 @@ final class MetaData
 
         if ($deleteAll) {
             if ('' !== $metaValue && false !== $metaValue) {
-                $metaTypeIds = $this->cdb->getCol(
-                    $this->cdb->prepare(
+                $metaTypeIds = $this->dfdb->getCol(
+                    $this->dfdb->prepare(
                         query: sprintf("SELECT %s FROM %s WHERE meta_key = ? AND meta_value = ?", $typeColumn, $table),
                         params: [
                             $metaKey,
@@ -588,8 +589,8 @@ final class MetaData
                     )
                 );
             } else {
-                $metaTypeIds = $this->cdb->getCol(
-                    $this->cdb->prepare(
+                $metaTypeIds = $this->dfdb->getCol(
+                    $this->dfdb->prepare(
                         query: sprintf("SELECT %s FROM %s WHERE meta_key = ?", $typeColumn, $table),
                         params: [
                             $metaKey
@@ -612,7 +613,7 @@ final class MetaData
          */
         Action::getInstance()->doAction("delete_{$metaType}meta", $metaIds, $metaTypeId, $metaKey, $_metaValue);
 
-        $query = $this->cdb->prepare(
+        $query = $this->dfdb->prepare(
             query: sprintf("DELETE FROM %s WHERE meta_id IN(?)", $table),
             params: [
                 implode(',', $metaIds)
@@ -620,7 +621,7 @@ final class MetaData
         );
 
         try {
-            $count = $this->cdb->qb()->query($query)->rowCount();
+            $count = $this->dfdb->qb()->query($query)->rowCount();
         } catch (PDOException | \Exception $ex) {
             FileLoggerFactory::getLogger()->error(sprintf('METADATA[%s]: %s', $ex->getCode(), $ex->getMessage()));
         }
@@ -718,8 +719,8 @@ final class MetaData
 
         $table = Sanitizer::item($table);
 
-        $meta = $this->cdb->getRow(
-            query: $this->cdb->prepare(
+        $meta = $this->dfdb->getRow(
+            query: $this->dfdb->prepare(
                 query: sprintf("SELECT * FROM %s WHERE meta_id = ?", $table),
                 params: [
                     $metaId
@@ -817,8 +818,8 @@ final class MetaData
 
             // Run the update query.
             try {
-                $this->cdb->qb()->transactional(function () use ($table, $metaId, $metaKey, $metaValue) {
-                    $this->cdb
+                $this->dfdb->qb()->transactional(function () use ($table, $metaId, $metaKey, $metaValue) {
+                    $this->dfdb
                             ->qb()
                             ->table(sprintf('%s', $table))
                             ->update(
@@ -901,8 +902,8 @@ final class MetaData
 
             // Run the query, will return true if deleted, false otherwise
             try {
-                $this->cdb->qb()->transactional(function () use ($table, $metaId) {
-                    $this->cdb
+                $this->dfdb->qb()->transactional(function () use ($table, $metaId) {
+                    $this->dfdb
                             ->qb()
                             ->setStructure(primaryKeyName: 'meta_id')
                             ->table(tableName: sprintf('%s', $table))
@@ -994,8 +995,8 @@ final class MetaData
 
         // Get meta info
         $idList = implode(separator: ',', array: $nonCachedIds);
-        $metaList = $this->cdb->getResults(
-            query: $this->cdb->prepare(
+        $metaList = $this->dfdb->getResults(
+            query: $this->dfdb->prepare(
                 query: sprintf(
                     "SELECT %s, meta_key, meta_value FROM %s WHERE %s IN(?) ORDER BY meta_id ASC",
                     $column,

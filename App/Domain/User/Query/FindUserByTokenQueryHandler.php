@@ -35,7 +35,7 @@ final class FindUserByTokenQueryHandler implements QueryHandler
     public function handle(FindUserByTokenQuery|Query $query): array|null|object
     {
         $sql = "SELECT u.*, m.meta_value AS role FROM {$this->dfdb->basePrefix}user u 
-                JOIN {$this->dfdb->prefix}usermeta m 
+                JOIN {$this->dfdb->basePrefix}usermeta m 
                 ON (m.user_id = u.user_id AND m.meta_key = '{$this->dfdb->prefix}role') 
                 WHERE u.user_token = ?";
 
