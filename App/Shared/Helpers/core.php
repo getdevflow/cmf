@@ -83,6 +83,7 @@ use function str_starts_with;
 use function strlen;
 use function strpos;
 use function strtolower;
+use function strtotime;
 use function substr;
 use function trim;
 use function ucfirst;
@@ -1277,7 +1278,7 @@ function maybe_serialize(mixed $data): string
         return serialize($data);
     }
 
-    return $data;
+    return (string) $data;
 }
 
 /**
@@ -1296,7 +1297,7 @@ function maybe_unserialize(mixed $data): string
         return unserialize($data);
     }
 
-    return $data;
+    return (string) $data;
 }
 
 /**
@@ -1428,4 +1429,49 @@ function is_multisite(): bool
     }
 
     return false;
+}
+
+/**
+ * Prints elapsed time based on datetime.
+ */
+function time_ago(string $original): string
+{
+    // array of time period chunks
+    $chunks = [
+            [60 * 60 * 24 * (date('z', mktime(0, 0, 0, 12, 31, (int) date('Y'))) + 1), 'year'],
+            [60 * 60 * 24 * date('t'), 'month'],
+            [60 * 60 * 24 * 7, 'week'],
+            [60 * 60 * 24, 'day'],
+            [60 * 60, 'hour'],
+            [60, 'min'],
+            [1, 'sec'],
+    ];
+
+    $today = time(); /* Current unix time  */
+    $since = $today - strtotime($original);
+
+    // $j saves performing the count function each time around the loop
+    for ($i = 0, $j = count($chunks); $i < $j; $i++) {
+        $seconds = $chunks[$i][0];
+        $name = $chunks[$i][1];
+
+        // finding the biggest chunk (if the chunk fits, break)
+        if (($count = floor($since / $seconds)) != 0) {
+            break;
+        }
+    }
+
+    $print = ($count == 1) ? '1 ' . $name : "$count {$name}s";
+
+    if ($i + 1 < $j) {
+        // now getting the second item
+        $seconds2 = $chunks[$i + 1][0];
+        $name2 = $chunks[$i + 1][1];
+
+        // add second item if its greater than 0
+        if (($count2 = floor(($since - ($seconds * $count)) / $seconds2)) != 0) {
+            $print .= ($count2 == 1) ? ', 1 ' . $name2 : " $count2 {$name2}s";
+        }
+    }
+    return $print;
 }
