@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Infrastructure\Services;
 
 use App\Infrastructure\Persistence\Database;
-use Couchbase\View;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Qubus\View\Native\NativeLoader;

@@ -15,6 +15,7 @@ use Qubus\Exception\Exception;
 use ReflectionException;
 
 use function App\Shared\Helpers\dfdb;
+use function md5;
 
 class ProductCachePsr16 implements ProductCache
 {
@@ -37,13 +38,13 @@ class ProductCachePsr16 implements ProductCache
         }
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'products')
-                ->set($product['id'], $product);
+                ->set(md5($product['id']), $product);
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'productslug')
-                ->set($product['slug'], $product['id']);
+                ->set(md5($product['slug']), $product['id']);
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'productsku')
-                ->set($product['sku'], $product['id']);
+                ->set(md5($product['sku']), $product['id']);
     }
 
     /**
@@ -66,16 +67,16 @@ class ProductCachePsr16 implements ProductCache
         }
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'products')
-                ->delete($product['id']);
+                ->delete(md5($product['id']));
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'productslug')
-                ->delete($product['slug']);
+                ->delete(md5($product['slug']));
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'productsku')
-                ->delete($product['sku']);
+                ->delete(md5($product['sku']));
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'productmeta')
-                ->delete($product['id']);
+                ->delete(md5($product['id']));
 
         /**
          * Fires immediately after the given user's cache is cleaned.

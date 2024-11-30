@@ -15,6 +15,7 @@ use Qubus\Exception\Exception;
 use ReflectionException;
 
 use function App\Shared\Helpers\dfdb;
+use function md5;
 
 class ContentCachePsr16 implements ContentCache
 {
@@ -37,13 +38,13 @@ class ContentCachePsr16 implements ContentCache
         }
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'content')
-                ->set($content['id'], $content);
+                ->set(md5($content['id']), $content);
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'contentslug')
-                ->set($content['slug'], $content['id']);
+                ->set(md5($content['slug']), $content['id']);
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'contenttype')
-                ->set($content['type'], $content['id']);
+                ->set(md5($content['type']), $content['id']);
     }
 
     /**
@@ -66,16 +67,16 @@ class ContentCachePsr16 implements ContentCache
         }
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'content')
-                ->delete($content['id']);
+                ->delete(md5($content['id']));
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'contentslug')
-                ->delete($content['slug']);
+                ->delete(md5($content['slug']));
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'contenttype')
-                ->delete($content['type']);
+                ->delete(md5($content['type']));
 
         SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'contentmeta')
-                ->delete($content['id']);
+                ->delete(md5($content['id']));
 
         /**
          * Fires immediately after the given user's cache is cleaned.

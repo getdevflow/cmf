@@ -65,6 +65,7 @@ use function Codefy\Framework\Helpers\public_path;
 use function Codefy\Framework\Helpers\resource_path;
 use function date;
 use function file_get_contents;
+use function md5;
 use function mkdir;
 use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
@@ -1215,14 +1216,14 @@ function cms_delete_site_user(string $userId, array $params = []): Error|bool
         /**
          * Clean cache of the assigned user.
          */
-        SimpleCacheObjectCacheFactory::make(namespace: 'users')->delete(key: $assignUser->id);
+        SimpleCacheObjectCacheFactory::make(namespace: 'users')->delete(key: md5($assignUser->id));
         /**
          * We need to reassign the site(s) to the selected user and create the
          * needed usermeta for the site.
          */
         if (!empty($sites)) {
             foreach ($sites as $site) {
-                SimpleCacheObjectCacheFactory::make(namespace: 'sites')->delete(key: $site->id);
+                SimpleCacheObjectCacheFactory::make(namespace: 'sites')->delete(key: md5($site->id));
                 add_user_to_site($params['assign_id'], $site->id, $params['role']);
             }
             /**
@@ -1250,7 +1251,7 @@ function cms_delete_site_user(string $userId, array $params = []): Error|bool
 
                 $site = new Site((array) $oldSite);
 
-                SimpleCacheObjectCacheFactory::make(namespace: 'sites')->delete(key: $site->id);
+                SimpleCacheObjectCacheFactory::make(namespace: 'sites')->delete(key: md5($site->id));
 
                 /**
                  * Action hook triggered after the site is deleted.
@@ -1305,7 +1306,7 @@ function cms_delete_site_user(string $userId, array $params = []): Error|bool
     /**
      * Clear the cache of the deleted user.
      */
-    SimpleCacheObjectCacheFactory::make(namespace: 'users')->delete(key: $user->id);
+    SimpleCacheObjectCacheFactory::make(namespace: 'users')->delete(key: md5($user->id));
 
     /**
      * Action hook fires immediately after a user has been deleted from the usermeta document.

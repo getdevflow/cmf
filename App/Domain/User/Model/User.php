@@ -55,10 +55,10 @@ final class User extends stdClass
 
         $userId = match ($field) {
             'id' => $value,
-            'token' => SimpleCacheObjectCacheFactory::make(namespace: 'usertoken')->get($value, ''),
+            'token' => SimpleCacheObjectCacheFactory::make(namespace: 'usertoken')->get(md5($value), ''),
             'login' => SimpleCacheObjectCacheFactory::make(
                 namespace: 'userlogin'
-            )->get(Sanitizer::username($value), ''),
+            )->get(md5(Sanitizer::username($value)), ''),
             'email' => SimpleCacheObjectCacheFactory::make('useremail')->get(md5($value), ''),
             default => false,
         };
@@ -74,7 +74,7 @@ final class User extends stdClass
         $user = null;
 
         if ('' !== $userId) {
-            if ($data = SimpleCacheObjectCacheFactory::make(namespace: 'users')->get($userId)) {
+            if ($data = SimpleCacheObjectCacheFactory::make(namespace: 'users')->get(md5($userId))) {
                 is_array($data) ? convert_array_to_object($data) : $data;
             }
         }

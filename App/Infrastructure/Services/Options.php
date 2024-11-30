@@ -22,6 +22,7 @@ use ReflectionException;
 use function App\Shared\Helpers\maybe_serialize;
 use function App\Shared\Helpers\maybe_unserialize;
 use function Codefy\Framework\Helpers\app;
+use function md5;
 use function Qubus\Security\Helpers\purify_html;
 use function Qubus\Support\Helpers\is_null__;
 use function sprintf;
@@ -68,7 +69,7 @@ final class Options
 
         $_value = maybe_serialize($value);
 
-        $this->cache->delete($name);
+        $this->cache->delete(md5($name));
 
         Action::getInstance()->doAction('add_option', $name, $_value);
 
@@ -137,7 +138,7 @@ final class Options
         }
 
         try {
-            $result = $this->cache->get($optionKey);
+            $result = $this->cache->get(md5($optionKey));
 
             if (empty($result)) {
                 $result = $this->dfdb->getVar(
@@ -148,7 +149,7 @@ final class Options
                         ]
                     )
                 );
-                $this->cache->set($optionKey, $result);
+                $this->cache->set(md5($optionKey), $result);
             }
         } catch (PDOException | Exception | ReflectionException $e) {
             FileLoggerFactory::getLogger()->error(
@@ -215,7 +216,7 @@ final class Options
 
         $_newvalue = maybe_serialize($newvalue);
 
-        $this->cache->delete($optionKey);
+        $this->cache->delete(md5($optionKey));
 
         Action::getInstance()->doAction('update_option', $optionKey, $oldvalue, $newvalue);
 
@@ -268,7 +269,7 @@ final class Options
             return false;
         }
 
-        $this->cache->delete($name);
+        $this->cache->delete(md5($name));
 
         Action::getInstance()->doAction('delete_option', $name);
 
@@ -310,13 +311,13 @@ final class Options
      */
     public function massUpdate(array $options): bool
     {
-        try{
-            foreach($options as $optionKey => $optionValue) {
+        try {
+            foreach ($options as $optionKey => $optionValue) {
                 $this->update($optionKey, $optionValue);
             }
 
             return true;
-        } catch (PDOException|ReflectionException $e) {
+        } catch (PDOException | ReflectionException $e) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             return false;
         }

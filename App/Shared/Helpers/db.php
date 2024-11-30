@@ -56,6 +56,7 @@ use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\mail;
 use function Codefy\Framework\Helpers\storage_path;
 use function count;
+use function md5;
 use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
 use function Qubus\Support\Helpers\is_false__;
@@ -773,7 +774,7 @@ function populate_options_cache(): bool
         foreach ($options as $option) {
             SimpleCacheObjectCacheFactory::make(
                 namespace: $dfdb->prefix . 'options'
-            )->set($option['option_key'], $option['option_value']);
+            )->set(md5($option['option_key']), $option['option_value']);
         }
         return true;
     } catch (PDOException $e) {

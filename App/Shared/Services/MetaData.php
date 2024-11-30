@@ -30,6 +30,7 @@ use function explode;
 use function implode;
 use function is_array;
 use function is_string;
+use function md5;
 use function Qubus\Security\Helpers\unslash;
 use function Qubus\Support\Helpers\is_false__;
 use function Qubus\Support\Helpers\is_null__;
@@ -105,7 +106,7 @@ final class MetaData
             return $single && is_array($check) ? $check[0] : $check;
         }
 
-        $metaCache = $this->cache->get($metaTypeId);
+        $metaCache = $this->cache->get(md5($metaTypeId));
 
         if (is_null__($metaCache)) {
             $metaCache = $this->updateMetaDataCache($metaType, [$metaTypeId]);
@@ -293,7 +294,7 @@ final class MetaData
             }
         }
 
-        $this->cache->delete($metaTypeId);
+        $this->cache->delete(md5($metaTypeId));
 
         foreach ($metaIds as $metaId) {
             /**
@@ -454,7 +455,7 @@ final class MetaData
 
         $mid = (string) $result;
 
-        $this->cache->delete($metaTypeId);
+        $this->cache->delete(md5($metaTypeId));
 
         /**
          * Fires immediately after meta of a specific type is added.
@@ -633,10 +634,10 @@ final class MetaData
 
         if ($deleteAll) {
             foreach ((array) $metaTypeIds as $aId) {
-                $this->cache->delete($aId);
+                $this->cache->delete(md5($aId));
             }
         } else {
-            $this->cache->delete($metaTypeId);
+            $this->cache->delete(md5($metaTypeId));
         }
 
         /**
@@ -672,7 +673,7 @@ final class MetaData
             return (bool) $check;
         }
 
-        $metaCache = $this->cache->get($metaTypeId);
+        $metaCache = $this->cache->get(md5($metaTypeId));
 
         if (is_null__($metaCache)) {
             $metaCache = $this->updateMetaDataCache($metaType, [$metaTypeId]);
@@ -843,7 +844,7 @@ final class MetaData
             }
 
             // Clear the caches.
-            $this->cache->delete($metaTypeId);
+            $this->cache->delete(md5($metaTypeId));
 
             Action::getInstance()->doAction("updated_{$metaType}meta", $metaId, $metaTypeId, $metaKey, $_metaValue);
 
@@ -919,7 +920,7 @@ final class MetaData
             }
 
             // Clear the caches.
-            $this->cache->delete($metaTypeId);
+            $this->cache->delete(md5($metaTypeId));
 
             Action::getInstance()->doAction(
                 "deleted_{$metaType}meta",
@@ -978,7 +979,7 @@ final class MetaData
         $nonCachedIds = [];
         $cache = [];
         foreach ($metaTypeIds as $id) {
-            $cachedArray = $this->cache->get($id);
+            $cachedArray = $this->cache->get(md5($id));
             if (is_null__($cachedArray)) {
                 $nonCachedIds[] = $id;
             } else {
@@ -1031,7 +1032,7 @@ final class MetaData
             if (!isset($cache[$id])) {
                 $cache[$id] = [];
             }
-            $this->cache->set($id, $cache[$id]);
+            $this->cache->set(md5($id), $cache[$id]);
         }
 
         return $cache;

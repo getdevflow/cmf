@@ -382,11 +382,6 @@ function cms_insert_content_type(array|ServerRequestInterface|ContentType $conte
 
     $contentType = get_content_type_by('id', $contentTypeId->toNative());
 
-    /*(new ContentTypeCache(
-            ttcms()->obj['cache'],
-            ActionFilterHook::getInstance()
-    ))->clean($contentType);*/
-
     if ($update) {
         /**
          * Action hook triggered after existing content_type has been updated.
@@ -398,11 +393,6 @@ function cms_insert_content_type(array|ServerRequestInterface|ContentType $conte
         Action::getInstance()->doAction('update_content_type', $contentTypeId->toNative(), $contentType);
         /** @var ContentType $contentTypeAfter */
         $contentTypeAfter = get_content_type_by('id', $contentTypeId->toNative());
-
-        /*(new ContentTypeCache(
-            ttcms()->obj['cache'],
-            ActionFilterHook::getInstance()
-        ))->clean($contentType);*/
 
         /**
          * Action hook triggered after existing content type has been updated.
@@ -558,11 +548,6 @@ function cms_delete_content_type(string $contentTypeId): false|string|Error
      * @param string $contentTypeId ContentType id.
      */
     Action::getInstance()->doAction('deleted_content_type', $contentTypeId);
-
-    /*(new ContentTypeCache(
-            ttcms()->obj['cache'],
-            ActionFilterHook::getInstance()
-    ))->clean($contenttype);*/
 
     /**
      * Action hook fires after a content_type is deleted.

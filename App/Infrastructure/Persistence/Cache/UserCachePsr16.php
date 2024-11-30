@@ -37,10 +37,10 @@ class UserCachePsr16 implements UserCache
             return;
         }
 
-        SimpleCacheObjectCacheFactory::make(namespace: 'users')->set($user['id'], $user);
-        SimpleCacheObjectCacheFactory::make(namespace: 'userlogin')->set($user['login'], $user['id']);
+        SimpleCacheObjectCacheFactory::make(namespace: 'users')->set(md5($user['id']), $user);
+        SimpleCacheObjectCacheFactory::make(namespace: 'userlogin')->set(md5($user['login']), $user['id']);
         SimpleCacheObjectCacheFactory::make(namespace: 'useremail')->set(md5($user['email']), $user['id']);
-        SimpleCacheObjectCacheFactory::make(namespace: 'usertoken')->set($user['token'], $user['id']);
+        SimpleCacheObjectCacheFactory::make(namespace: 'usertoken')->set(md5($user['token']), $user['id']);
     }
 
     /**
@@ -62,11 +62,11 @@ class UserCachePsr16 implements UserCache
             return;
         }
 
-        SimpleCacheObjectCacheFactory::make(namespace: 'users')->delete($user['id']);
-        SimpleCacheObjectCacheFactory::make(namespace: 'userlogin')->delete($user['login']);
+        SimpleCacheObjectCacheFactory::make(namespace: 'users')->delete(md5($user['id']));
+        SimpleCacheObjectCacheFactory::make(namespace: 'userlogin')->delete(md5($user['login']));
         SimpleCacheObjectCacheFactory::make(namespace: 'useremail')->delete(md5($user['email']));
-        SimpleCacheObjectCacheFactory::make(namespace: 'usertoken')->delete($user['token']);
-        SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'usermeta')->delete($user['id']);
+        SimpleCacheObjectCacheFactory::make(namespace: 'usertoken')->delete(md5($user['token']));
+        SimpleCacheObjectCacheFactory::make(namespace: dfdb()->prefix . 'usermeta')->delete(md5($user['id']));
 
         /**
          * Fires immediately after the given user's cache is cleaned.

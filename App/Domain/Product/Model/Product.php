@@ -17,6 +17,7 @@ use Qubus\Exception\Exception;
 use ReflectionException;
 use stdClass;
 
+use function md5;
 use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\purify_html;
 use function Qubus\Support\Helpers\convert_array_to_object;
@@ -51,9 +52,9 @@ final class Product extends stdClass
         $productId = match ($field) {
             'id', 'ID' => $value,
             'slug' => SimpleCacheObjectCacheFactory::make(namespace: $this->dfdb->prefix . 'productslug')
-                    ->get($value, ''),
+                    ->get(md5($value), ''),
             'sku' => SimpleCacheObjectCacheFactory::make(namespace: $this->dfdb->prefix . 'productsku')
-                    ->get($value, ''),
+                    ->get(md5($value), ''),
             default => false,
         };
 
@@ -69,7 +70,7 @@ final class Product extends stdClass
         if ('' !== $productId) {
             if (
                 $data = SimpleCacheObjectCacheFactory::make(namespace: $this->dfdb->prefix . 'products')
-                    ->get($productId)
+                    ->get(md5($productId))
             ) {
                 is_array($data) ? convert_array_to_object($data) : $data;
             }

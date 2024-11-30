@@ -18,6 +18,7 @@ use ReflectionException;
 use stdClass;
 
 use function Codefy\Framework\Helpers\config;
+use function md5;
 use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\purify_html;
 use function Qubus\Support\Helpers\convert_array_to_object;
@@ -52,9 +53,9 @@ final class Content extends stdClass
         $contentId = match ($field) {
             'id', 'ID' => $value,
             'slug' => SimpleCacheObjectCacheFactory::make(namespace: $this->dfdb->prefix . 'contentslug')
-                    ->get($value, ''),
+                    ->get(md5($value), ''),
             'type' => SimpleCacheObjectCacheFactory::make(namespace: $this->dfdb->prefix . 'contenttype')
-                    ->get($value, ''),
+                    ->get(md5($value), ''),
             default => false,
         };
 
@@ -70,7 +71,7 @@ final class Content extends stdClass
         if ('' !== $contentId) {
             if (
                 $data = SimpleCacheObjectCacheFactory::make(namespace: $this->dfdb->prefix . 'content')
-                    ->get($contentId)
+                    ->get(md5($contentId))
             ) {
                 is_array($data) ? convert_array_to_object($data) : $data;
             }
