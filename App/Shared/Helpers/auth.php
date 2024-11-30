@@ -113,6 +113,10 @@ function current_user_can(string $perm, array $ruleParams = []): bool
  */
 function is_user_logged_in(): bool
 {
+    if (!isset($_COOKIE['USERCOOKIEID'])) {
+        return false;
+    }
+
     $cookies = NativePhpCookies::factory();
 
     $user = get_user_by('token', get_current_user()->token);

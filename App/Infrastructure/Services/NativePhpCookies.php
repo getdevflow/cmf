@@ -169,6 +169,10 @@ final class NativePhpCookies
      */
     public function verifySecureCookie(string $key): bool
     {
+        if (!isset($_COOKIE[$key])) {
+            return false;
+        }
+
         $file = storage_path('app/cookies/cookie.' . $this->getCookieVars($key, 'data'));
         $data = $this->getSecureCookie($key);
         /**
