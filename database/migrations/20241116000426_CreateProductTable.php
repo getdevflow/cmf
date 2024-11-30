@@ -28,7 +28,7 @@ class CreateProductTable extends Migration
                     $table->string(name: 'product_title', length: 191)->notNull();
                     $table->string(name: 'product_slug', length: 191)->notNull();
                     $table->text(name: 'product_body')->size(value: 'big');
-                    $table->string(name: 'product_author', length: 191)->notNull();
+                    $table->string(name: 'product_author', length: 36)->notNull();
                     $table->string(name: 'product_sku', length: 191)->notNull();
                     $table->string(name: 'product_price', length: 191)->defaultValue(0.00);
                     $table->string(name: 'product_currency')->defaultValue('USD');
@@ -41,8 +41,8 @@ class CreateProductTable extends Migration
                     $table->dateTime(name: 'product_created_gmt');
                     $table->string(name: 'product_published', length: 191);
                     $table->dateTime(name: 'product_published_gmt');
-                    $table->string(name: 'product_modified', length: 191)->defaultValue('0000-00-00 00:00:00');
-                    $table->dateTime(name: 'product_modified_gmt')->defaultValue('0000-00-00 00:00:00');
+                    $table->string(name: 'product_modified', length: 191);
+                    $table->dateTime(name: 'product_modified_gmt');
                     $table->index(['product_slug','product_sku'], $tablePrefix . 'productIndex');
                 });
 

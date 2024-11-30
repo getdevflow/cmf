@@ -3,9 +3,9 @@ CREATE TABLE `{site_prefix}content` (
 `content_title` varchar(191) NOT NULL,
 `content_slug` varchar(191) NOT NULL,
 `content_body` longtext DEFAULT NULL,
-`content_author` varchar(191) NOT NULL,
+`content_author` varchar(36) NOT NULL,
 `content_type` varchar(191) NOT NULL,
-`content_parent` varchar(191) DEFAULT NULL,
+`content_parent` varchar(36) DEFAULT NULL,
 `content_sidebar` int(11) DEFAULT 0,
 `content_show_in_menu` int(11) DEFAULT 0,
 `content_show_in_search` int(11) DEFAULT 0,
@@ -15,13 +15,13 @@ CREATE TABLE `{site_prefix}content` (
 `content_created_gmt` datetime DEFAULT NULL,
 `content_published` varchar(191) DEFAULT NULL,
 `content_published_gmt` datetime DEFAULT NULL,
-`content_modified` varchar(191) DEFAULT '0000-00-00 00:00:00',
-`content_modified_gmt` datetime DEFAULT '0000-00-00 00:00:00'
+`content_modified` varchar(191) DEFAULT NULL,
+`content_modified_gmt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `{site_prefix}contentmeta` (
 `meta_id` varchar(36) NOT NULL,
-`content_id` varchar(191) DEFAULT NULL,
+`content_id` varchar(36) NOT NULL,
 `meta_key` varchar(191) DEFAULT NULL,
 `meta_value` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -111,7 +111,7 @@ CREATE TABLE `{site_prefix}product` (
 `product_title` varchar(191) NOT NULL,
 `product_slug` varchar(191) NOT NULL,
 `product_body` longtext DEFAULT NULL,
-`product_author` varchar(191) NOT NULL,
+`product_author` varchar(36) NOT NULL,
 `product_sku` varchar(191) NOT NULL,
 `product_price` varchar(191) DEFAULT '0',
 `product_currency` varchar(255) DEFAULT 'USD',
@@ -124,13 +124,13 @@ CREATE TABLE `{site_prefix}product` (
 `product_created_gmt` datetime DEFAULT NULL,
 `product_published` varchar(191) DEFAULT NULL,
 `product_published_gmt` datetime DEFAULT NULL,
-`product_modified` varchar(191) DEFAULT '0000-00-00 00:00:00',
-`product_modified_gmt` datetime DEFAULT '0000-00-00 00:00:00'
+`product_modified` varchar(191) DEFAULT NULL,
+`product_modified_gmt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `{site_prefix}productmeta` (
 `meta_id` varchar(36) NOT NULL,
-`product_id` varchar(191) DEFAULT NULL,
+`product_id` varchar(36) NOT NULL,
 `meta_key` varchar(191) DEFAULT NULL,
 `meta_value` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

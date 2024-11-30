@@ -27,7 +27,7 @@ class CreateContentmetaTable extends Migration
                         $table->string(name: 'meta_id', length: 36)
                             ->primary(name: 'contentMetaId')
                             ->unique(name: $tablePrefix . 'contentMetaId');
-                        $table->string(name: 'content_id', length: 191);
+                        $table->string(name: 'content_id', length: 36)->notNull();
                         $table->string(name: 'meta_key', length: 191);
                         $table->text(name: 'meta_value')->size(value: 'big');
                         $table->unique(['content_id', 'meta_key'], $tablePrefix . 'contentMetaIndex');

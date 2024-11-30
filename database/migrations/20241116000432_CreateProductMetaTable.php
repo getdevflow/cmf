@@ -23,7 +23,7 @@ class CreateProductMetaTable extends Migration
                     $table->string(name: 'meta_id', length: 36)
                             ->primary(name: 'productMetaId')
                             ->unique(name: $tablePrefix . 'productMetaId');
-                    $table->string(name: 'product_id', length: 191);
+                    $table->string(name: 'product_id', length: 36)->notNull();
                     $table->string(name: 'meta_key', length: 191);
                     $table->text(name: 'meta_value')->size(value: 'big');
                     $table->unique(['product_id', 'meta_key'], $tablePrefix . 'productMetaIndex');

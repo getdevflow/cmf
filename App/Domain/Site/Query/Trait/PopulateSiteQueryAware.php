@@ -22,12 +22,12 @@ trait PopulateSiteQueryAware
             'name' => esc_html(string: $data['site_name']) ?? null,
             'slug' => esc_html(string: $data['site_slug']) ?? null,
             'domain' => esc_html(string: $data['site_domain']) ?? null,
-            'mapping' => $data['site_mapping'] ? esc_html(string: $data['site_mapping']) : null,
+            'mapping' => isset($data['site_mapping']) ? esc_html(string: $data['site_mapping']) : null,
             'path' => esc_html(string: $data['site_path']) ?? null,
             'owner' => esc_html(string: $data['site_owner']) ?? null,
             'status' => esc_html(string: $data['site_status']) ?? null,
-            'registered' => esc_html(string: $data['site_registered']) ?? null,
-            'modified' => esc_html(string: $data['site_modified']) ?? null,
+            'registered' => isset($data['site_registered']) ? esc_html(string: $data['site_registered']) : null,
+            'modified' => isset($data['site_modified']) ? esc_html(string: $data['site_modified']) : null,
         ];
     }
 }

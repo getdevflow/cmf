@@ -136,7 +136,7 @@ final class Product extends stdClass
         $product->slug = esc_html(string: $data['product_slug']) ?? null;
         $product->body = purify_html(string: $data['product_body']) ?? null;
         $product->author = esc_html(string: $data['product_author']) ?? null;
-        $product->sku = esc_html($data['product_sku']) ?? null;
+        $product->sku = esc_html((string) $data['product_sku']) ?? null;
         $product->price = esc_html(string: (string) $data['product_price']) ?? null;
         $product->currency = esc_html(string: (string) $data['product_currency']) ?? null;
         $product->purchaseUrl = isset($data['product_purchase_url']) ?
@@ -144,7 +144,9 @@ final class Product extends stdClass
         null;
         $product->showInMenu = esc_html(string: (string) $data['product_show_in_menu']) ?? null;
         $product->showInSearch = esc_html(string: (string) $data['product_show_in_search']) ?? null;
-        $product->featuredImage = esc_html(string: $data['product_featured_image']) ?? null;
+        $product->featuredImage = isset($data['product_featured_image']) ?
+        esc_html(string: $data['product_featured_image']) :
+        null;
         $product->status = esc_html(string: $data['product_status']) ?? null;
         $product->created = esc_html(string: $data['product_created']) ?? null;
         $product->createdGmt = esc_html(string: $data['product_created_gmt']) ?? null;

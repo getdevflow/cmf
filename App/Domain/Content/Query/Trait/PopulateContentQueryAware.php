@@ -36,13 +36,29 @@ trait PopulateContentQueryAware
             'showInMenu' => esc_html(string: (string) $data['content_show_in_menu']) ?? null,
             'showInSearch' => esc_html(string: (string) $data['content_show_in_search']) ?? null,
             'relativeUrl' => esc_html(string: $relativeUrl) ?? null,
-            'featuredImage' => esc_html(string: $data['content_featured_image']) ?? null,
+
+            'featuredImage' => isset($data['content_featured_image']) ?
+                    esc_html(string: $data['content_featured_image']) :
+                    null,
+
             'status' => esc_html(string: $data['content_status']) ?? null,
-            'created' => esc_html(string: $data['content_created']) ?? null,
-            'createdGmt' => esc_html(string: $data['content_created_gmt']) ?? null,
-            'published' => esc_html(string: $data['content_published']) ?? null,
-            'publishedGmt' => esc_html(string: $data['content_published_gmt']) ?? null,
+
+            'created' => isset($data['content_created']) ? esc_html(string: $data['content_created']) : null,
+
+            'createdGmt' => isset($data['content_created_gmt']) ?
+                    esc_html(string: $data['content_created_gmt']) :
+                    null,
+
+            'published' => isset($data['content_published']) ?
+                    esc_html(string: $data['content_published']) :
+                    null,
+
+            'publishedGmt' => isset($data['content_published_gmt']) ?
+                    esc_html(string: $data['content_published_gmt']) :
+                    null,
+
             'modified' => isset($data['content_modified']) ? esc_html(string: $data['content_modified']) : null,
+
             'modifiedGmt' => isset($data['content_modified_gmt']) ?
                     esc_html(string: $data['content_modified_gmt']) : null,
         ];

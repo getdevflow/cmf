@@ -31,10 +31,10 @@ class CreateSiteTable extends Migration
                     $table->string(name: 'site_domain', length: 191);
                     $table->string(name: 'site_mapping', length: 191);
                     $table->string(name: 'site_path', length: 191);
-                    $table->string(name: 'site_owner', length: 191);
+                    $table->string(name: 'site_owner', length: 36);
                     $table->string(name: 'site_status', length: 191);
                     $table->dateTime('site_registered');
-                    $table->dateTime('site_modified')->defaultValue('0000-00-00 00:00:00');
+                    $table->dateTime('site_modified');
                     $table->unique(['site_slug', 'site_domain', 'site_path'], $tablePrefix . 'siteIndex');
                 });
         }

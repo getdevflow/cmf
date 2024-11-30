@@ -24,8 +24,8 @@ trait PopulateProductQueryAware
             'title' => esc_html(string: $data['product_title']) ?? null,
             'body' => purify_html($data['product_body']) ?? null,
             'author' => esc_html(string: $data['product_author']) ?? null,
-            'sku' => isset($data['product_sku']) ? esc_html(string: $data['product_sku']) : null,
-            'price' => esc_html(string: $data['product_price']) ?? null,
+            'sku' => isset($data['product_sku']) ? esc_html(string: (string) $data['product_sku']) : null,
+            'price' => esc_html(string: (string) $data['product_price']) ?? null,
             'currency' => esc_html(string: (string) $data['product_currency']) ?? null,
             'purchaseUrl' => isset($data['product_purchase_url']) ?
                     esc_html(string: (string) $data['product_purchase_url']) :

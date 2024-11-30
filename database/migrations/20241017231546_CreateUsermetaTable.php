@@ -24,7 +24,7 @@ class CreateUsermetaTable extends Migration
                     $table->string(name: 'meta_id', length: 36)
                         ->primary(name: 'userMetaId')
                         ->unique(name: $tablePrefix . 'userMetaId');
-                    $table->string(name: 'user_id', length: 191);
+                    $table->string(name: 'user_id', length: 36)->notNull();
                     $table->string(name: 'meta_key', length: 191);
                     $table->text(name: 'meta_value')->size(value: 'big');
                     $table->unique(['user_id', 'meta_key'], $tablePrefix . 'userMetaIndex');

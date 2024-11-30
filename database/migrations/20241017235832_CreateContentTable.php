@@ -27,9 +27,9 @@ class CreateContentTable extends Migration
                     $table->string(name: 'content_title', length: 191)->notNull();
                     $table->string(name: 'content_slug', length: 191)->notNull();
                     $table->text(name: 'content_body')->size(value: 'big');
-                    $table->string(name: 'content_author', length: 191)->notNull();
+                    $table->string(name: 'content_author', length: 36)->notNull();
                     $table->string(name: 'content_type', length: 191)->notNull();
-                    $table->string(name: 'content_parent', length: 191);
+                    $table->string(name: 'content_parent', length: 36);
                     $table->integer(name: 'content_sidebar')->size(value: 'large')->defaultValue(0);
                     $table->integer(name: 'content_show_in_menu')->size(value: 'large')->defaultValue(0);
                     $table->integer(name: 'content_show_in_search')->size(value: 'large')->defaultValue(0);
@@ -39,8 +39,8 @@ class CreateContentTable extends Migration
                     $table->dateTime(name: 'content_created_gmt');
                     $table->string(name: 'content_published', length: 191);
                     $table->dateTime(name: 'content_published_gmt');
-                    $table->string(name: 'content_modified', length: 191)->defaultValue('0000-00-00 00:00:00');
-                    $table->dateTime(name: 'content_modified_gmt')->defaultValue('0000-00-00 00:00:00');
+                    $table->string(name: 'content_modified', length: 191);
+                    $table->dateTime(name: 'content_modified_gmt');
                     $table->index(['content_slug','content_type','content_parent'], $tablePrefix . 'contentIndex');
                 });
         }

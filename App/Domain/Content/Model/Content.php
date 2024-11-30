@@ -149,15 +149,29 @@ final class Content extends stdClass
         $content->showInMenu = esc_html(string: (string) $data['content_show_in_menu']) ?? null;
         $content->showInSearch = esc_html(string: (string) $data['content_show_in_search']) ?? null;
         $content->relativeUrl = esc_html(string: $relativeUrl) ?? null;
-        $content->featuredImage = esc_html(string: $data['content_featured_image']) ?? null;
+
+        $content->featuredImage = isset($data['content_featured_image']) ?
+        esc_html(string: $data['content_featured_image']) :
+        null;
+
         $content->status = esc_html(string: $data['content_status']) ?? null;
-        $content->created = esc_html(string: $data['content_created']) ?? null;
-        $content->createdGmt = esc_html(string: $data['content_created_gmt']) ?? null;
-        $content->published = esc_html(string: $data['content_published']) ?? null;
-        $content->publishedGmt = esc_html(string: $data['content_published_gmt']) ?? null;
+        $content->created = isset($data['content_created']) ? esc_html(string: $data['content_created']) : null;
+
+        $content->createdGmt = isset($data['content_created_gmt']) ?
+        esc_html(string: $data['content_created_gmt']) :
+        null;
+
+        $content->published = isset($data['content_published']) ? esc_html(string: $data['content_published']) : null;
+
+        $content->publishedGmt = isset($data['content_published_gmt']) ?
+        esc_html(string: $data['content_published_gmt']) :
+        null;
+
         $content->modified = isset($data['content_modified']) ? esc_html(string: $data['content_modified']) : null;
+
         $content->modifiedGmt = isset($data['content_modified_gmt']) ?
-        esc_html(string: $data['content_modified_gmt']) : null;
+        esc_html(string: $data['content_modified_gmt']) :
+        null;
 
         return $content;
     }

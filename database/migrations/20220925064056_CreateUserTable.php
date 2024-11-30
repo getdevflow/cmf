@@ -45,7 +45,7 @@ class CreateUserTable extends Migration
                     $table->string(name: 'user_locale', length: 191);
                     $table->string(name: 'user_activation_key', length: 191);
                     $table->dateTime(name: 'user_registered');
-                    $table->dateTime(name: 'user_modified')->defaultValue('0000-00-00 00:00:00');
+                    $table->dateTime(name: 'user_modified');
                 });
         }
     }

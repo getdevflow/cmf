@@ -151,8 +151,8 @@ final class User extends stdClass
         $user->dateFormat = esc_html(string: $data['user_date_format']) ?? null;
         $user->timeFormat = esc_html(string: $data['user_time_format']) ?? null;
         $user->locale = esc_html(string: $data['user_locale']) ?? null;
-        $user->registered = esc_html(string: $data['user_registered']) ?? null;
-        $user->modified = esc_html(string: $data['user_modified']) ?? null;
+        $user->registered = isset($data['user_registered']) ? esc_html(string: $data['user_registered']) : null;
+        $user->modified = isset($data['user_modified']) ? esc_html(string: $data['user_modified']) : null;
         $user->activationKey = is_null__($data['user_activation_key']) ?
         '' :
         esc_html(string: $data['user_activation_key']);

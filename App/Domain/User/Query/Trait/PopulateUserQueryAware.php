@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\User\Query\Trait;
 
 use function Qubus\Security\Helpers\esc_html;
+use function Qubus\Support\Helpers\is_null__;
 
 trait PopulateUserQueryAware
 {
@@ -31,9 +32,11 @@ trait PopulateUserQueryAware
             'dateFormat' => esc_html(string: $data['user_date_format']) ?? null,
             'timeFormat' => esc_html(string: $data['user_time_format']) ?? null,
             'locale' => esc_html(string: $data['user_locale']) ?? null,
-            'registered' => esc_html(string: $data['user_registered']) ?? null,
-            'modified' => esc_html(string: $data['user_modified']) ?? null,
-            'activationKey' => is_null($data['user_activation_key']) ? '' : esc_html(string: $data['user_activation_key']),
+            'registered' => isset($data['user_registered']) ? esc_html(string: $data['user_registered']) : null,
+            'modified' => isset($data['user_modified']) ? esc_html(string: $data['user_modified']) : null,
+            'activationKey' => is_null__($data['user_activation_key'])
+                    ? '' :
+                    esc_html(string: $data['user_activation_key']),
         ];
     }
 }
