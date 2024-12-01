@@ -137,7 +137,7 @@ function get_site_by(string $field, string $value): object|bool
                 $e->getMessage()
             ),
             [
-                'Site Function' => 'get_site'
+                'Site Function' => 'get_site_by'
             ]
         );
     }

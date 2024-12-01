@@ -5,16 +5,20 @@ declare(strict_types=1);
 namespace App\Domain\Site\Query;
 
 use App\Domain\Site\Query\Trait\PopulateSiteQueryAware;
+use App\Infrastructure\Persistence\Cache\SiteCachePsr16;
 use App\Infrastructure\Persistence\Database;
+use App\Shared\Services\SimpleCacheObjectCacheFactory;
 use Codefy\QueryBus\Query;
 use Codefy\QueryBus\QueryHandler;
-use Exception;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use Psr\SimpleCache\InvalidArgumentException;
+use Qubus\Exception\Exception;
 use ReflectionException;
 
 use function App\Shared\Helpers\dfdb;
 use function is_array;
+use function md5;
 use function Qubus\Support\Helpers\convert_array_to_object;
 use function Qubus\Support\Helpers\is_null__;
 
@@ -36,24 +40,51 @@ class FindSiteByKeyQueryHandler implements QueryHandler
 
     /**
      * @inheritDoc
+     * @param FindSiteByKeyQuery|Query $query
+     * @return array|object
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     * @throws ReflectionException
+     * @throws InvalidArgumentException
      * @throws Exception
      */
     public function handle(FindSiteByKeyQuery|Query $query): array|object
     {
+        $siteKey = SimpleCacheObjectCacheFactory::make(
+            namespace: 'sitekey'
+        )->get(md5($query->siteKey->toNative()), '');
+
+        $site = null;
+
+        if ('' !== $siteKey) {
+            if ($data = SimpleCacheObjectCacheFactory::make(namespace: 'sites')->get(md5($siteKey))) {
+                is_array($data) ? convert_array_to_object($data) : $data;
+            }
+        }
+
         $sql = "SELECT * FROM {$this->dfdb->basePrefix}site WHERE site_key = ?";
 
-        $data = $this->dfdb->getRow($this->dfdb->prepare($sql, [$query->siteKey->toNative()]), Database::ARRAY_A);
-
-        if (is_null__($data)) {
+        if (
+                !$data = $this->dfdb->getRow(
+                    $this->dfdb->prepare(
+                        $sql,
+                        [$query->siteKey->toNative()]
+                    ),
+                    Database::ARRAY_A
+                )
+        ) {
             return [];
         }
 
-        $content = $this->populate($data);
-
-        if (is_array($content)) {
-            $content = convert_array_to_object($content);
+        if (!is_null__($data)) {
+            $site = $this->populate($data);
+            SiteCachePsr16::update($site);
         }
 
-        return $content;
+        if (is_array($site)) {
+            $site = convert_array_to_object($site);
+        }
+
+        return $site;
     }
 }

@@ -131,6 +131,9 @@ final class AdminDashboardController extends BaseController
             SimpleCacheObjectCacheFactory::make(namespace: 'userlogin')->clear();
             SimpleCacheObjectCacheFactory::make(namespace: 'users')->clear();
             SimpleCacheObjectCacheFactory::make(namespace: 'usertoken')->clear();
+            SimpleCacheObjectCacheFactory::make(namespace: 'sites')->clear();
+            SimpleCacheObjectCacheFactory::make(namespace: 'sitekey')->clear();
+            SimpleCacheObjectCacheFactory::make(namespace: 'siteslug')->clear();
             SimpleCacheObjectCacheFactory::make(namespace: $this->dfdb->prefix . 'options')->clear();
             SimpleCacheObjectCacheFactory::make(namespace: $this->dfdb->prefix . 'database')->clear();
             Devflow::inst()::$APP->flash->success(
