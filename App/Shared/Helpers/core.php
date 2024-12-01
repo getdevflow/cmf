@@ -1473,5 +1473,5 @@ function time_ago(string $original): string
             $print .= ($count2 == 1) ? ', 1 ' . $name2 : " $count2 {$name2}s";
         }
     }
-    return $print;
+    return $print . ' ago';
 }
