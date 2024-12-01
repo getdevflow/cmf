@@ -97,7 +97,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']);
                                     <?php endif; ?>
                                 </td>
                                 <td><?=get_user_datetime($content['published'], 'Y-m-d @ h:i A');?></td>
-                                <?php if(php_like('0000-00-00 00:00:00', $content['modified']) || is_null__($content['modified'])) : ?>
+                                <?php if(is_null__($content['modified'])) : ?>
                                 <td><?='0000-00-00 00:00:00';?></td>
                                 <?php else : ?>
                                 <td><?=get_user_datetime($content['modified'], 'Y-m-d @ h:i A');?></td>

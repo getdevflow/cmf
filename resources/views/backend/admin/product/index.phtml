@@ -100,7 +100,7 @@ Registry::getInstance()->{'set'}('screen_child', 'products');
                                     <?php endif; ?>
                                 </td>
                                 <td><?=get_user_datetime($product['published'], 'Y-m-d @ h:i A');?></td>
-                                <td><?php $product['modified'] === '0000-00-00 00:00:00' || is_null__($product['modified']) ? '0000-00-00 00:00:00' : get_user_datetime($product['modified'], 'Y-m-d @ h:i A');?></td>
+                                <td><?= $product['modified'] === '0000-00-00 00:00:00' || is_null__($product['modified']) ? '0000-00-00 00:00:00' : get_user_datetime($product['modified'], 'Y-m-d @ h:i A'); ?></td>
                             </tr>
                         <?php endforeach; endif; ?>
                         </tbody>
