@@ -13,6 +13,7 @@ use Qubus\EventDispatcher\ActionFilter\Filter;
 use Qubus\Exception\Exception;
 use ReflectionException;
 
+use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\config;
 use function file_get_contents;
 use function Qubus\Security\Helpers\esc_url;
@@ -26,9 +27,7 @@ use function Qubus\Security\Helpers\load_textdomain;
  */
 function cms_dropdown_languages(string $active = ''): void
 {
-    $protocol = is_ssl() ? 'https://' : 'http://';
-
-    $locales = file_get_contents(esc_url($protocol . 'tritan-cms.s3.amazonaws.com/api/1.1/locale.json'));
+    $locales = file_get_contents(base_path('locale/locale.json'));
     $json = json_decode($locales, true);
     foreach ($json as $locale) {
         echo '<option value="' . $locale['language'] . '"' . selected($active, $locale['language'], false) . '>'
