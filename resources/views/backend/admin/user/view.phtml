@@ -9,7 +9,9 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
+use function App\Shared\Helpers\cms_dropdown_languages;
 use function App\Shared\Helpers\current_user_can;
+use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_current_user_id;
 use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
@@ -23,8 +25,6 @@ $this->block('backend', function ($params) {
 Registry::getInstance()->{'set'}('screen_parent', 'users');
 Registry::getInstance()->{'set'}('screen_child', 'all-users');
 Action::getInstance()->doAction('update_user_init');
-$username = get_user_option('username', $params['user']->id) === '' ? get_userdata($params['user']->id)->login : get_user_option('username', $params['user']->id);
-
 ?>
 
     <!-- form start -->
@@ -68,7 +68,7 @@ $username = get_user_option('username', $params['user']->id) === '' ? get_userda
                             <div class="box-body">
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Username', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" id="user_login" name="login" value="<?=$username;?>" readonly="readonly" required/>
+                                    <input type="text" class="form-control" id="user_login" name="login" value="<?=$params['user']->login;?>" readonly="readonly" required/>
                                     <?php if (current_user_can('update:users')) : ?>
                                         <button type="button" class="btn btn-primary" id="enable_button" style="display:none"><?= esc_html__(string: 'Change username', domain: 'devflow'); ?></button>
                                         <button type="button" class="btn btn-danger" id="disable_button" style="display:none"><?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
@@ -77,17 +77,17 @@ $username = get_user_option('username', $params['user']->id) === '' ? get_userda
 
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'First Name', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="fname" value="<?= get_user_option('fname', $params['user']->id); ?>" required>
+                                    <input type="text" class="form-control" name="fname" value="<?=$params['user']->fname;?>" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Middle Name', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="mname" value="<?= get_user_option('mname', $params['user']->id); ?>">
+                                    <input type="text" class="form-control" name="mname" value="<?=$params['user']->mname;?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="lname" value="<?= get_user_option('lname', $params['user']->id); ?>" required>
+                                    <input type="text" class="form-control" name="lname" value="<?=$params['user']->lname;?>" required>
                                 </div>
                             </div>
                         </div>
@@ -101,16 +101,61 @@ $username = get_user_option('username', $params['user']->id) === '' ? get_userda
 
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Email', domain: 'devflow'); ?></strong></label>
-                                    <input type="email" class="form-control" name="email" value="<?= get_user_option('email', $params['user']->id); ?>" required>
+                                    <input type="email" class="form-control" name="email" value="<?=$params['user']->email;?>" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'URL', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="url" value="<?= $params['user']->url; ?>" />
+                                    <input type="text" class="form-control" name="url" value="<?=$params['user']->url;?>" />
                                 </div>
 
                             </div>
                         </div>
+
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= esc_html__(string: 'Date/Time', domain: 'devflow'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><strong><?= esc_html__(string: 'Timezone', domain: 'devflow'); ?></strong></label>
+                                    <select class="form-control select2" name="timezone" style="width: 100%;">
+                                        <option value=""> ------------------------- </option>
+                                        <?php foreach (generate_timezone_list() as $k => $v) : ?>
+                                            <option value="<?=$k;?>"<?=selected($params['user']->timezone, $k, false); ?>><?=$v;?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><strong><?= esc_html__(string: 'Date Format', domain: 'devflow'); ?></strong></label>
+                                    <input type="text" class="form-control" name="date_format" value="<?= $params['user']->dateFormat; ?>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label><strong><?= esc_html__(string: 'Time Format', domain: 'devflow'); ?></strong></label>
+                                    <input type="text" class="form-control" name="time_format" value="<?= $params['user']->timeFormat; ?>" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= esc_html__(string: 'Locale', domain: 'devflow'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><strong><?= esc_html__(string: 'Language', domain: 'devflow'); ?></strong></label>
+                                    <select class="form-control select2" name="locale" style="width: 100%;">
+                                        <option value=""> ------------------------- </option>
+                                        <?php cms_dropdown_languages($params['user']->locale); ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><?= esc_html__(string: 'About the user', domain: 'devflow'); ?></h3>
@@ -125,7 +170,7 @@ $username = get_user_option('username', $params['user']->id) === '' ? get_userda
 
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Profile Picture', domain: 'devflow'); ?></strong></label>
-                                    <div><?= get_user_avatar(get_user_option('email', $params['user']->id), 100);?></div>
+                                    <div><?= get_user_avatar($params['user']->email, 100);?></div>
                                 </div>
 
                             </div>
