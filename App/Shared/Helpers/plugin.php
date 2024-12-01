@@ -105,7 +105,12 @@ function active_plugins(): array|false
 {
     $dfdb = dfdb();
 
-    return $dfdb->getResults(query: "SELECT * FROM {$dfdb->prefix}plugin");
+    try {
+        return $dfdb->getResults(query: "SELECT * FROM {$dfdb->prefix}plugin");
+    } catch (PDOException $e) {
+    }
+
+    return false;
 }
 
 /**
