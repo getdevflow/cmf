@@ -11,7 +11,6 @@ use App\Shared\Services\Image;
 use Codefy\Framework\Application;
 use Codefy\Framework\Codefy;
 use Qubus\Support\ArrayHelper;
-use Qubus\Support\Inflector;
 use Qubus\Support\StringHelper;
 use stdClass;
 
@@ -22,7 +21,6 @@ use stdClass;
  * @property-read NativePhpCookies $cookies
  * @property-read StringHelper $string
  * @property-read ArrayHelper $array
- * @property-read Inflector $inflect
  */
 final class Devflow extends stdClass
 {
@@ -57,6 +55,6 @@ final class Devflow extends stdClass
 
     public function release(): string
     {
-        return '1.0.0-rc.2';
+        return '1.0.0-rc.3';
     }
 }
