@@ -36,6 +36,11 @@ class CreateSiteTable extends Migration
                     $table->dateTime('site_registered');
                     $table->dateTime('site_modified');
                     $table->unique(['site_slug', 'site_domain', 'site_path'], $tablePrefix . 'siteIndex');
+
+                    $table->foreign(columns: 'site_owner', name: $tablePrefix . 'siteOwner')
+                            ->references($tablePrefix . 'user', 'user_id')
+                            ->onDelete('cascade')
+                            ->onUpdate('cascade');
                 });
         }
     }

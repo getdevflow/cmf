@@ -31,6 +31,11 @@ class CreateContentmetaTable extends Migration
                         $table->string(name: 'meta_key', length: 191);
                         $table->text(name: 'meta_value')->size(value: 'big');
                         $table->unique(['content_id', 'meta_key'], $tablePrefix . 'contentMetaIndex');
+
+                        $table->foreign(columns: 'content_id', name: $tablePrefix . 'contentIdMeta')
+                                ->references($tablePrefix . 'content', 'content_id')
+                                ->onDelete('cascade')
+                                ->onUpdate('cascade');
                     }
                 );
         }

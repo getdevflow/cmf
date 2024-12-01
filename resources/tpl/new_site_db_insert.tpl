@@ -1,9 +1,16 @@
+CREATE TABLE `{site_prefix}content_type` (
+`content_type_id` varchar(36) NOT NULL,
+`content_type_title` varchar(191) DEFAULT NULL,
+`content_type_slug` varchar(191) DEFAULT NULL,
+`content_type_description` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE `{site_prefix}content` (
 `content_id` varchar(36) NOT NULL,
 `content_title` varchar(191) NOT NULL,
 `content_slug` varchar(191) NOT NULL,
 `content_body` longtext DEFAULT NULL,
-`content_author` varchar(36) NOT NULL,
+`content_author` varchar(36) DEFAULT NULL,
 `content_type` varchar(191) NOT NULL,
 `content_parent` varchar(36) DEFAULT NULL,
 `content_sidebar` int(11) DEFAULT 0,
@@ -24,13 +31,6 @@ CREATE TABLE `{site_prefix}contentmeta` (
 `content_id` varchar(36) NOT NULL,
 `meta_key` varchar(191) DEFAULT NULL,
 `meta_value` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE `{site_prefix}content_type` (
-`content_type_id` varchar(36) NOT NULL,
-`content_type_title` varchar(191) DEFAULT NULL,
-`content_type_slug` varchar(191) DEFAULT NULL,
-`content_type_description` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `{site_prefix}elfinder_file` (
@@ -111,7 +111,7 @@ CREATE TABLE `{site_prefix}product` (
 `product_title` varchar(191) NOT NULL,
 `product_slug` varchar(191) NOT NULL,
 `product_body` longtext DEFAULT NULL,
-`product_author` varchar(36) NOT NULL,
+`product_author` varchar(36) DEFAULT NULL,
 `product_sku` varchar(191) NOT NULL,
 `product_price` varchar(191) DEFAULT '0',
 `product_currency` varchar(255) DEFAULT 'USD',
@@ -138,10 +138,10 @@ CREATE TABLE `{site_prefix}productmeta` (
 ALTER TABLE `{site_prefix}content`
 ADD PRIMARY KEY (`content_id`),
 ADD UNIQUE KEY `{site_prefix}contentId` (`content_id`),
-ADD KEY `{site_prefix}contentIndex` (`content_slug`,`content_type`,`content_parent`),
 ADD KEY `{site_prefix}contentAuthor` (`content_author`),
 ADD KEY `{site_prefix}contentTypeSlug` (`content_type`),
-ADD KEY `{site_prefix}contentParent` (`content_parent`);
+ADD KEY `{site_prefix}contentParent` (`content_parent`),
+ADD KEY `{site_prefix}contentIndex` (`content_slug`,`content_type`,`content_parent`);
 
 ALTER TABLE `{site_prefix}contentmeta`
 ADD PRIMARY KEY (`meta_id`),
@@ -181,8 +181,8 @@ ADD UNIQUE KEY `{site_prefix}pluginIndex` (`plugin_classname`);
 ALTER TABLE `{site_prefix}product`
 ADD PRIMARY KEY (`product_id`),
 ADD UNIQUE KEY `{site_prefix}productId` (`product_id`),
-ADD KEY `{site_prefix}productIndex` (`product_slug`,`product_sku`),
-ADD KEY `{site_prefix}productAuthor` (`product_author`);
+ADD KEY `{site_prefix}productAuthor` (`product_author`),
+ADD KEY `{site_prefix}productIndex` (`product_slug`,`product_sku`);
 
 ALTER TABLE `{site_prefix}productmeta`
 ADD PRIMARY KEY (`meta_id`),
@@ -196,15 +196,15 @@ ALTER TABLE `{site_prefix}elfinder_trash`
 MODIFY `id` int(7) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 ALTER TABLE `{site_prefix}content`
-ADD CONSTRAINT `{site_prefix}contentAuthor` FOREIGN KEY (`content_author`) REFERENCES `{base_prefix}user` (`user_id`),
-ADD CONSTRAINT `{site_prefix}contentParent` FOREIGN KEY (`content_parent`) REFERENCES `{site_prefix}content` (`content_id`),
-ADD CONSTRAINT `{site_prefix}contentTypeSlug` FOREIGN KEY (`content_type`) REFERENCES `{site_prefix}content_type` (`content_type_slug`);
+ADD CONSTRAINT `{site_prefix}contentAuthor` FOREIGN KEY (`content_author`) REFERENCES `{base_prefix}user` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+ADD CONSTRAINT `{site_prefix}contentParent` FOREIGN KEY (`content_parent`) REFERENCES `{site_prefix}content` (`content_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+ADD CONSTRAINT `{site_prefix}contentTypeSlug` FOREIGN KEY (`content_type`) REFERENCES `{site_prefix}content_type` (`content_type_slug`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `{site_prefix}contentmeta`
-ADD CONSTRAINT `{site_prefix}contentIdMeta` FOREIGN KEY (`content_id`) REFERENCES `{site_prefix}content` (`content_id`);
+ADD CONSTRAINT `{site_prefix}contentIdMeta` FOREIGN KEY (`content_id`) REFERENCES `{site_prefix}content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `{site_prefix}product`
-ADD CONSTRAINT `{site_prefix}productAuthor` FOREIGN KEY (`product_author`) REFERENCES `{base_prefix}user` (`user_id`);
+ADD CONSTRAINT `{site_prefix}productAuthor` FOREIGN KEY (`product_author`) REFERENCES `{site_prefix}user` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 ALTER TABLE `{site_prefix}productmeta`
-ADD CONSTRAINT `{site_prefix}productIdMeta` FOREIGN KEY (`product_id`) REFERENCES `{site_prefix}product` (`product_id`);
+ADD CONSTRAINT `{site_prefix}productIdMeta` FOREIGN KEY (`product_id`) REFERENCES `{site_prefix}product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;

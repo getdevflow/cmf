@@ -27,10 +27,7 @@ class CreateProductMetaTable extends Migration
                     $table->string(name: 'meta_key', length: 191);
                     $table->text(name: 'meta_value')->size(value: 'big');
                     $table->unique(['product_id', 'meta_key'], $tablePrefix . 'productMetaIndex');
-                });
 
-            $this->schema()
-                ->alter(table: $tablePrefix . 'productmeta', callback: function (AlterTable $table) use ($tablePrefix) {
                     $table->foreign(columns: 'product_id', name: $tablePrefix . 'productIdMeta')
                             ->references($tablePrefix . 'product', 'product_id')
                             ->onDelete('cascade')

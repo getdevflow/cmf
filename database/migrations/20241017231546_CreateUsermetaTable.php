@@ -28,6 +28,11 @@ class CreateUsermetaTable extends Migration
                     $table->string(name: 'meta_key', length: 191);
                     $table->text(name: 'meta_value')->size(value: 'big');
                     $table->unique(['user_id', 'meta_key'], $tablePrefix . 'userMetaIndex');
+
+                    $table->foreign(columns: 'user_id', name: $tablePrefix . 'userId')
+                            ->references($tablePrefix . 'user', 'user_id')
+                            ->onDelete('cascade')
+                            ->onUpdate('cascade');
                 });
         }
     }
