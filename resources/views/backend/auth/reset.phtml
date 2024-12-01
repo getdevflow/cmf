@@ -1,9 +1,10 @@
 <?php
 
+use App\Application\Devflow;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
+use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\get_auth_screen_logo;
-use function App\Shared\Helpers\site_url;
 use function Qubus\Security\Helpers\esc_attr__;
 use function Qubus\Security\Helpers\t__;
 
@@ -13,12 +14,13 @@ $this->block('auth', function () {
 
     <div class="brand">
         <?=get_auth_screen_logo();?>
+        <?=Devflow::inst()::$APP->flash->display();?>
     </div>
 
     <div class="card fat">
         <div class="card-body">
             <?php Action::getInstance()->doAction('reset_form_top'); ?>
-            <form method="post" action="<?= site_url('reset-password/'); ?>" class="my-login-validation" novalidate="" autocomplete="off">
+            <form method="post" action="<?= admin_url('reset-password/'); ?>" class="my-login-validation" novalidate="" autocomplete="off">
                 <div class="form-group">
                     <label for="username"><?=t__(msgid: 'Email', domain: 'devflow');?></label>
                     <input id="email" type="email" class="form-control" name="email" required="required" autofocus>

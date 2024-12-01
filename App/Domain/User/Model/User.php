@@ -265,6 +265,8 @@ final class User extends stdClass
      */
     public function toArray(): array
     {
+        unset($this->dfdb);
+
         return get_object_vars($this);
     }
 

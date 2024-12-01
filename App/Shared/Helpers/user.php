@@ -1337,7 +1337,7 @@ function cms_update_user(array|ServerRequestInterface|User $userdata): string|Us
      * @var User $currentUser
      */
     $currentUser = get_current_user();
-    if ($currentUser->id === $id) {
+    if (is_user_logged_in() && $currentUser->id === $id) {
         if (isset($userdata['login']) && $userdata['token'] !== $currentUser->token) {
             /**
              * Retrieve data from the old secure cookie to set expiration.
@@ -1601,8 +1601,8 @@ function send_reset_password_email(object|array $user, string $password): bool
     );
     $message .= sprintf(esc_html__(string: 'Password: %s', domain: 'devflow'), $password) . "</p>";
     $message .= "<p>" . sprintf(
-        esc_html__(
-            string: 'If you still have problems with logging in, please contact us at <a href="mailto:%s">%s</a>.',
+        t__(
+            msgid: 'If you still have problems with logging in, please contact us at <a href="mailto:%s">%s</a>.',
             domain: 'devflow'
         ),
         $option->read(optionKey: 'admin_email'),
@@ -1670,8 +1670,8 @@ function send_password_change_email(object|array $user, string $password, array 
     );
     $message .= sprintf(esc_html__(string: 'Password: %s', domain: 'devflow'), $password) . "</p>";
     $message .= "<p>" . sprintf(
-        esc_html__(
-            string: 'If you did not initiate a password change/update, please contact us at <a href="mailto:%s">%s</a>.',
+        t__(
+            msgid: 'If you did not initiate a password change/update, please contact us at <a href="mailto:%s">%s</a>.',
             domain: 'devflow'
         ),
         $option->read(optionKey: 'admin_email'),
@@ -1738,8 +1738,8 @@ function send_email_change_email(object|array $user, array $userdata): bool
     );
     $message .= sprintf(esc_html__(string: 'Email: %s', domain: 'devflow'), $userdata['email']) . "</p>";
     $message .= "<p>" . sprintf(
-        esc_html__(
-            string: 'If you did not initiate an email change/update, please contact us at <a href="mailto:%s">%s</a>.',
+        t__(
+            msgid: 'If you did not initiate an email change/update, please contact us at <a href="mailto:%s">%s</a>.',
             domain: 'devflow'
         ),
         $option->read(optionKey: 'admin_email'),

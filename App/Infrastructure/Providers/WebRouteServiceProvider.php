@@ -68,6 +68,10 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
                     ->name('admin.logout')
                     ->middleware(['user.session.expire']);
 
+            // Password Reset
+            $group->get(uri: '/reset-password/', callback: 'AdminAuthController@resetPasswordView');
+            $group->post(uri: '/reset-password/', callback: 'AdminAuthController@resetPasswordChange');
+
             // Plugin routes
             $group->get(uri: '/plugin/', callback: 'AdminPluginController@plugins')
                     ->name('admin.plugins');

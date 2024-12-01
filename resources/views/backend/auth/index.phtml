@@ -2,6 +2,7 @@
 
 use App\Application\Devflow;
 
+use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\get_auth_screen_logo;
 use function Qubus\Security\Helpers\esc_attr__;
 use function Qubus\Security\Helpers\t__;
@@ -28,7 +29,7 @@ $this->block('auth', function ($params) {
 
                 <div class="form-group">
                     <label for="password"><?=t__('Password');?>
-                        <a href="reset-password/" class="float-right">
+                        <a href="<?=admin_url('reset-password/');?>" class="float-right">
                             <?=t__(msgid: 'Forgot Password?', domain: 'devflow');?>
                         </a>
                     </label>
