@@ -16,7 +16,6 @@ use ReflectionException;
 use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\config;
 use function file_get_contents;
-use function Qubus\Security\Helpers\esc_url;
 use function Qubus\Security\Helpers\load_textdomain;
 
 /**
