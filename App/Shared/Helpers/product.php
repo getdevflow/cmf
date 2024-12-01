@@ -2029,7 +2029,7 @@ function cms_insert_product(array|ServerRequestInterface|Product $productdata): 
                 'id' => ProductId::fromString($productId->toNative()),
                 'title' => new StringLiteral($productTitle),
                 'slug' => new StringLiteral($productSlug),
-                'body' => new StringLiteral($productBody ?? ''),
+                'body' => new StringLiteral($productBody),
                 'author' => UserId::fromString($productAuthor),
                 'sku' => new StringLiteral($productSku),
                 'price' => new Money(new IntegerNumber($productPrice), new Currency(CurrencyCode::$productCurrency())),

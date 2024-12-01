@@ -369,7 +369,7 @@ final class AdminUserController extends BaseController
      * @throws TypeException
      * @throws \Qubus\Exception\Exception
      */
-    public function userDelete(ServerRequest $request, string $userId): ResponseInterface
+    public function userDelete(ServerRequest $request): ResponseInterface
     {
         if (false === $this->user->can(permissionName: 'delete:users', request: $request)) {
             Devflow::inst()::$APP->flash->error(
@@ -379,7 +379,10 @@ final class AdminUserController extends BaseController
         }
 
         try {
-            $delete = cms_delete_user($userId);
+            $delete = cms_delete_user(
+                $request->getParsedBody()['user_id'],
+                $request->getParsedBody()['assign_id']
+            );
 
             if (is_error($delete) || is_false__($delete)) {
                 Devflow::inst()::$APP->flash->error(

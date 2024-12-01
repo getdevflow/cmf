@@ -356,12 +356,9 @@ final class DatabaseUserProjection extends BaseProjection implements UserProject
     {
         try {
             $this->dfdb->qb()->transactional(callback: function () use ($event) {
-                $this->dfdb->qb()->setStructure(primaryKeyName: 'user_id');
-
                 $this->dfdb->qb()
                     ->table(tableName: $this->dfdb->basePrefix . 'user')
-                    ->reset()
-                    ->findOne($event->userId()->__toString())
+                    ->where('user_id = ?', $event->userId()->toNative())
                     ->delete();
             });
         } catch (OrmException $e) {

@@ -348,7 +348,7 @@ final class User extends EventSourcedAggregate implements AggregateRoot
         if ($userId->isEmpty()) {
             throw new Exception(message: t__(msgid: 'User id cannot be null.', domain: 'devflow'));
         }
-        if ($this->userId->toNative() !== $userId->toNative()) {
+        if (!$userId->equals($this->userId)) {
             return;
         }
         $this->recordApplyAndPublishThat(UserWasDeleted::withData($this->userId));

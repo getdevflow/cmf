@@ -86,7 +86,7 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                         <a<?= ae('delete:users'); ?> href="#" data-toggle="modal" data-target="#delete-<?= $user['id']; ?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
                                     <?php endif; ?>
 
-                                    <div class="modal" id="delete-<?= $user['id']; ?>">
+                                    <div class="modal" id="delete-<?=$user['id'];?>">
                                         <form method="post" action="<?=admin_url('user/' . $user['id'] . '/d/');?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -99,11 +99,12 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                                         <p><?= esc_html__(string: 'Are you sure you want to remove the user from this site?', domain: 'devflow'); ?></p>
                                                         <div class="alert alert-info"><?=esc_html__(string: "Would you like to assign this user's content to a different user? Choose below.", domain: 'devflow');?></div>
                                                         <select class="form-control select2" name="assign_id" style="width: 100%;">
-                                                            <option>&nbsp;</option>
+                                                            <option value="null">&nbsp;</option>
                                                             <?php get_users_reassign($user['id']); ?>
                                                         </select>
                                                     </div>
                                                     <div class="modal-footer">
+                                                        <input type="hidden" name="user_id" value="<?=$user['id'];?>" />
                                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
                                                         <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
                                                     </div>

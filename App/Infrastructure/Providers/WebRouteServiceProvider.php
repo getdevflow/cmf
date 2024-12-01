@@ -100,7 +100,7 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
             $group->post(uri: '/site/', callback: 'AdminSiteController@siteCreate')
                 ->middleware(['csrf.protection']);
             $group->get(uri: '/site/users/', callback: 'AdminSiteController@siteUsers');
-            $group->get(uri: '/site/users/{userId}/d/', callback: 'AdminSiteController@siteUsersDelete')
+            $group->post(uri: '/site/users/{userId}/d/', callback: 'AdminSiteController@siteUsersDelete')
                 ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
             $group->get(uri: '/site/{siteId}/', callback: 'AdminSiteController@siteView')
                 ->where(['siteId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+'])
@@ -120,7 +120,7 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
 
             // User routes
             $group->get(uri: '/user/', callback: 'AdminUserController@users');
-            $group->map(['GET', 'POST'], '/user/profile/', callback: 'AdminUserController@userProfile')
+            $group->map(['GET', 'POST'], '/user/profile/', 'AdminUserController@userProfile')
                 ->middleware(['csrf.token', 'csrf.protection']);
             $group->get(uri: '/user/create/', callback: 'AdminUserController@userCreateView')
                 ->middleware(['csrf.token', 'csrf.protection']);
@@ -135,7 +135,7 @@ final class WebRouteServiceProvider extends CodefyServiceProvider
             )
                 ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+'])
                 ->middleware(['csrf.protection']);
-            $group->get(
+            $group->post(
                 uri: '/user/{userId}/d/',
                 callback: 'AdminUserController@userDelete'
             )
