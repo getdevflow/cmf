@@ -553,13 +553,14 @@ function cms_charset(string $charset = null)
 function get_auth_screen_logo(): string
 {
     $locations = [];
+    $siteKey = Registry::getInstance()->has('siteKey') ? Registry::getInstance()->get('siteKey') : '';
     /**
      * First, check to see if a custom logo exists for a specific site.
      * @var string $locations['site'] Custom logo for a specific site.
      */
     $locations['site'] = [
-        'path' => public_path('sites/' . Registry::getInstance()->get('siteKey') . '/uploads/auth-logo.png'),
-        'relative' => site_url('sites/' . Registry::getInstance()->get('siteKey') . '/uploads/auth-logo.png'),
+        'path' => public_path('sites/' . $siteKey . '/uploads/auth-logo.png'),
+        'relative' => site_url('sites/' . $siteKey . '/uploads/auth-logo.png'),
     ];
     /**
      * Second, check to see if a custom global logo exists for the system.

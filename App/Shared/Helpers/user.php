@@ -62,6 +62,7 @@ use function array_map;
 use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\mail;
 use function Codefy\Framework\Helpers\storage_path;
+use function dd;
 use function in_array;
 use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
@@ -1383,7 +1384,9 @@ function cms_delete_user(string $userId, ?string $assignId = null): bool
         return false;
     }
 
-    if (!is_null__($assignId)) {
+    $cleanAssignId = trim__($assignId);
+
+    if (!is_null__($cleanAssignId) && 'null' !== $cleanAssignId) {
         /**
          * Filter hook is triggered when assign_id is greater than zero.
          *

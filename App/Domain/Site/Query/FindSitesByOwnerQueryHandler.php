@@ -42,18 +42,16 @@ class FindSitesByOwnerQueryHandler implements QueryHandler
     {
         $sql = "SELECT * FROM {$this->dfdb->basePrefix}site WHERE site_owner = ?";
 
-        $data = $this->dfdb->getRow($this->dfdb->prepare($sql, [$query->siteOwner->toNative()]), Database::ARRAY_A);
+        $data = $this->dfdb->getResults($this->dfdb->prepare($sql, [$query->siteOwner->toNative()]), Database::ARRAY_A);
 
-        if (is_null__($data)) {
-            return [];
+        $contents = [];
+
+        if (!is_null__($data)) {
+            foreach ($data as $content) {
+                $contents[] = $this->populate($content);
+            }
         }
 
-        $content = $this->populate($data);
-
-        if (is_array($content)) {
-            $content = convert_array_to_object($content);
-        }
-
-        return $content;
+        return convert_array_to_object($contents);
     }
 }

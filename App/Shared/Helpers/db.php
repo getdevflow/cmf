@@ -730,12 +730,13 @@ function if_user_has_sites(string $userId): bool
  *
  * @file App/Shared/Helpers/db.php
  * @param string $userId The owner's id.
- * @return array
+ * @return array|object
  * @throws CommandPropertyNotFoundException
  * @throws ReflectionException
+ * @throws TypeException
  * @throws UnresolvableQueryHandlerException
  */
-function get_owner_sites(string $userId): array
+function get_owner_sites(string $userId): array|object
 {
     if ('' === $userId) {
         return [];
@@ -747,7 +748,7 @@ function get_owner_sites(string $userId): array
     $enquirer = new Enquire(bus: new SynchronousQueryBus($resolver));
 
     $query = new FindSitesByOwnerQuery([
-        'userId' => $userId,
+        'siteOwner' => UserId::fromString($userId),
     ]);
 
     return $enquirer->execute($query);

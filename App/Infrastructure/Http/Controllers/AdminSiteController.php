@@ -363,16 +363,16 @@ final class AdminSiteController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        if (isset($request->getParsedBody()['assign_id']) && '' !== $request->getParsedBody()['assign_id']) {
+        if (isset($request->getParsedBody()['assign_id']) && 'null' !== $request->getParsedBody()['assign_id']) {
             $siteUser = cms_delete_site_user(
-                $userId,
+                $request->getParsedBody()['user_id'],
                 [
                     'assign_id' => $request->getParsedBody()['assign_id'],
                     'role' => $request->getParsedBody()['role'],
                 ]
             );
         } else {
-            $siteUser = cms_delete_site_user($userId);
+            $siteUser = cms_delete_site_user($request->getParsedBody()['user_id']);
         }
 
         if (is_error($siteUser)) {

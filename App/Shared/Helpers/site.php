@@ -1210,7 +1210,7 @@ function cms_delete_site_user(string $userId, array $params = []): Error|bool
 
     $sites = get_owner_sites($userId);
 
-    if ('' !== $params['assign_id']) {
+    if (isset($params['assign_id']) && !is_null__($params['assign_id']) && 'null' !== $params['assign_id']) {
         /** @var User $assignUser */
         $assignUser = get_userdata($params['assign_id']);
         /**
@@ -1312,7 +1312,7 @@ function cms_delete_site_user(string $userId, array $params = []): Error|bool
      * Action hook fires immediately after a user has been deleted from the usermeta document.
      *
      * @file App/Shared/Helpers/site.php
-     * @param string $userId     ID of the user who was deleted.
+     * @param string $userId   ID of the user who was deleted.
      * @param array $params    User parameters (assign_id and role).
      */
     Action::getInstance()->doAction('deleted_site_user', $userId, $params);
