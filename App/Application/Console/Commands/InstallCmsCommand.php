@@ -251,7 +251,7 @@ class InstallCmsCommand extends ConsoleCommand
              * @param Site $site     Site object.
              * @param bool $update   Whether this is an existing site or a new site.
              */
-            Action::getInstance()->doAction('save_site', $siteId->toNative(), $site, false);
+            Action::getInstance()->doAction('save_new_site', $siteId->toNative(), $site, false);
         } catch (
             CommandCouldNotBeHandledException |
             UnresolvableCommandHandlerException |
