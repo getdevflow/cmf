@@ -204,7 +204,7 @@ ALTER TABLE `{site_prefix}contentmeta`
 ADD CONSTRAINT `{site_prefix}contentIdMeta` FOREIGN KEY (`content_id`) REFERENCES `{site_prefix}content` (`content_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `{site_prefix}product`
-ADD CONSTRAINT `{site_prefix}productAuthor` FOREIGN KEY (`product_author`) REFERENCES `{site_prefix}user` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ADD CONSTRAINT `{site_prefix}productAuthor` FOREIGN KEY (`product_author`) REFERENCES `{base_prefix}user` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 ALTER TABLE `{site_prefix}productmeta`
 ADD CONSTRAINT `{site_prefix}productIdMeta` FOREIGN KEY (`product_id`) REFERENCES `{site_prefix}product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;

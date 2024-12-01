@@ -19,7 +19,7 @@ try {
     $default = $app->configContainer->getConfigKey(key: 'database.default');
     try {
         $dsn = sprintf(
-            '%s:dbname=%s;host=%s',
+            '%s:dbname=%s;host=%s;charset=utf8mb4',
             $app->configContainer->getConfigKey(key: "database.connections.{$default}.driver"),
             $app->configContainer->getConfigKey(key: "database.connections.{$default}.dbname"),
             $app->configContainer->getConfigKey(key: "database.connections.{$default}.host")
@@ -32,7 +32,11 @@ try {
         ':dsn' => $dsn,
         ':username' => $app->configContainer->getConfigKey(key: "database.connections.{$default}.username"),
         ':password' => $app->configContainer->getConfigKey(key: "database.connections.{$default}.password"),
-        ':options' => [],
+        ':options' => [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_PERSISTENT => false,
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci"
+        ],
     ]);
     $app->alias(Database::class, NativePdoDatabase::class);
     $app->share(nameOrInstance: $app);
