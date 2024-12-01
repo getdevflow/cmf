@@ -65,7 +65,7 @@ return [
         /*
          * Application Service Providers.
          */
-        App\Infrastructure\Providers\CacheAdapterServiceProvider::class,
+        \Cms\Providers\CacheAdapterServiceProvider::class,
         App\Infrastructure\Providers\AppServiceProvider::class,
         App\Infrastructure\Providers\SiteServiceProvider::class,
         App\Infrastructure\Providers\DatabaseServiceProvider::class,

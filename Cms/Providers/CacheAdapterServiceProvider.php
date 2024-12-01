@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Providers;
+namespace Cms\Providers;
 
 use App\Shared\Services\Registry;
 use Codefy\Framework\Support\CodefyServiceProvider;
