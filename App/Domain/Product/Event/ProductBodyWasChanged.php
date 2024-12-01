@@ -57,8 +57,6 @@ final class ProductBodyWasChanged extends AggregateChanged
     public function productBody(): StringLiteral
     {
         if (is_null__($this->productBody)) {
-            $this->productBody = null;
-        } else {
             $this->productBody = StringLiteral::fromNative($this->payload()['product_body']);
         }
 
