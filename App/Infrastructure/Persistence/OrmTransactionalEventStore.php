@@ -54,6 +54,7 @@ final class OrmTransactionalEventStore implements TransactionalEventStore
                         'transaction_id' => $transactionId::fromString(transactionId: $transactionId->toNative()),
                         'event_type' => $event->eventType(),
                         'event_classname' => get_class($event),
+                        'site' => $this->dfdb->prefix,
                         'payload' => json_encode(value: $event->payload(), flags: JSON_PRETTY_PRINT),
                         'metadata' => json_encode(value: [
                             '__aggregate_type' => $event->metaParam(name: Metadata::AGGREGATE_TYPE),
@@ -113,7 +114,9 @@ final class OrmTransactionalEventStore implements TransactionalEventStore
     {
         $query = $this->dfdb->qb()->table(tableName: $this->dfdb->basePrefix . 'event_store')
         ->select(columns: '*')
-        ->where(condition: 'aggregate_id', parameters: (string) $aggregateId);
+        ->where(condition: 'aggregate_id', parameters: (string) $aggregateId)
+        ->and__()
+        ->where('site', $this->dfdb->prefix);
 
         return $this->eventStream($query, $aggregateId);
     }
