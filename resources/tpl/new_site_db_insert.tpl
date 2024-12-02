@@ -69,19 +69,6 @@ CREATE TABLE `{site_prefix}elfinder_trash` (
 
 INSERT INTO `{site_prefix}elfinder_trash` VALUES(1, 0, 'DB Trash', '', 0, 0, 'directory', '1', '1', '0', '0', 0, 0);
 
-CREATE TABLE `{site_prefix}event_store` (
-`event_id` varchar(36) NOT NULL,
-`transaction_id` varchar(36) DEFAULT NULL,
-`event_type` varchar(191) NOT NULL,
-`event_classname` varchar(191) NOT NULL,
-`payload` longtext NOT NULL,
-`metadata` longtext NOT NULL,
-`aggregate_id` varchar(36) NOT NULL,
-`aggregate_type` varchar(191) NOT NULL,
-`aggregate_playhead` int(11) NOT NULL,
-`recorded_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 CREATE TABLE `{site_prefix}option` (
 `option_id` varchar(36) NOT NULL,
 `option_key` varchar(191) DEFAULT NULL,
@@ -162,11 +149,6 @@ ALTER TABLE `{site_prefix}elfinder_trash`
 ADD PRIMARY KEY (`id`),
 ADD UNIQUE KEY `parent_name` (`parent_id`,`name`),
 ADD KEY `parent_id` (`parent_id`);
-
-ALTER TABLE `{site_prefix}event_store`
-ADD PRIMARY KEY (`event_id`),
-ADD UNIQUE KEY `{site_prefix}eventId` (`event_id`),
-ADD UNIQUE KEY `{site_prefix}domainEvent` (`aggregate_id`,`aggregate_type`,`aggregate_playhead`);
 
 ALTER TABLE `{site_prefix}option`
 ADD PRIMARY KEY (`option_id`),

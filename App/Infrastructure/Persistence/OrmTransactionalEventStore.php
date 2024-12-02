@@ -48,7 +48,7 @@ final class OrmTransactionalEventStore implements TransactionalEventStore
         try {
             $this->dfdb->qb()->transactional(callback: function () use ($event, $transactionId) {
                 $this->dfdb->qb()
-                    ->table(tableName: $this->dfdb->prefix . 'event_store')
+                    ->table(tableName: $this->dfdb->basePrefix . 'event_store')
                     ->set([
                         'event_id' => $event->eventId()->__toString(),
                         'transaction_id' => $transactionId::fromString(transactionId: $transactionId->toNative()),
@@ -111,7 +111,7 @@ final class OrmTransactionalEventStore implements TransactionalEventStore
      */
     public function getAggregateHistoryFor(AggregateId $aggregateId): EventStream
     {
-        $query = $this->dfdb->qb()->table(tableName: $this->dfdb->prefix . 'event_store')
+        $query = $this->dfdb->qb()->table(tableName: $this->dfdb->basePrefix . 'event_store')
         ->select(columns: '*')
         ->where(condition: 'aggregate_id', parameters: (string) $aggregateId);
 
@@ -125,7 +125,7 @@ final class OrmTransactionalEventStore implements TransactionalEventStore
      */
     public function loadFromPlayhead(AggregateId $aggregateId, int $playhead): EventStream
     {
-        $query = $this->dfdb->qb()->table(tableName: $this->dfdb->prefix . 'event_store')
+        $query = $this->dfdb->qb()->table(tableName: $this->dfdb->basePrefix . 'event_store')
             ->select(columns: '*')
             ->where(condition: 'aggregate_id', parameters: (string) $aggregateId)
             ->and__()
