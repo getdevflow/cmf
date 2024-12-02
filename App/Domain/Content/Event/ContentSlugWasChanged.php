@@ -26,7 +26,7 @@ final class ContentSlugWasChanged extends AggregateChanged
         $event = self::occur(
             aggregateId: $contentId,
             payload: [
-                'content_slug' => $contentSlug,
+                'content_slug' => $contentSlug->toNative(),
             ],
             metadata: [
                 Metadata::AGGREGATE_TYPE => 'content',

@@ -75,11 +75,11 @@ Action::getInstance()->doAction('update_content_init');
                             <div class="box-body">
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Title', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control input-lg" name="title" id="title" value="<?= $params['content']->title; ?>" required/>
+                                    <input type="text" class="form-control input-lg" name="title" id="content_title" value="<?= $params['content']->title; ?>" required/>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Slug', domain: 'devflow'); ?></strong> <a href="#slug" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
-                                    <input type="text" class="form-control" name="slug" id="slug" value="<?= $params['content']->slug; ?>" />
+                                    <input type="text" class="form-control" name="slug" id="content_slug" value="<?= $params['content']->slug; ?>" />
                                 </div>
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Content', domain: 'devflow'); ?></strong></label>
