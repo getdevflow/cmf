@@ -22,7 +22,7 @@ use ReflectionException;
 
 final class CmsUserSessionMiddleware implements MiddlewareInterface
 {
-    public const SESSION_ATTRIBUTE = 'USERSESSION';
+    public const string SESSION_ATTRIBUTE = 'USERSESSION';
 
     public function __construct(protected ConfigContainer $configContainer, protected SessionService $sessionService)
     {
