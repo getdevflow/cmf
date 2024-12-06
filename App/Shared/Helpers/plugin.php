@@ -207,6 +207,7 @@ function is_plugin_activated(string $plugin): bool
  * @throws NotFoundExceptionInterface
  * @throws ReflectionException
  * @throws TypeException
+ * @throws \Qubus\Exception\Exception
  */
 function load_active_plugins(): void
 {
@@ -215,6 +216,13 @@ function load_active_plugins(): void
     if (!is_false__($activePlugins)) {
         foreach ($activePlugins as $plugin) {
             Devflow::inst()::$APP->execute([$plugin->plugin_classname, 'handle']);
+
+            /**
+             * Fires once a single activated plugin has loaded.
+             *
+             * @param $string $plugin Class name of the plugin that was loaded.
+             */
+            Action::getInstance()->doAction('plugin_loaded', $plugin->plugin_classname);
         }
     }
 }
