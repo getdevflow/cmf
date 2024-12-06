@@ -46,7 +46,6 @@ use function App\Shared\Helpers\get_user_timezone;
 use function Codefy\Framework\Helpers\config;
 use function Qubus\Security\Helpers\esc_html__;
 use function Qubus\Security\Helpers\t__;
-use function Qubus\Security\Helpers\unslash;
 use function Qubus\Support\Helpers\is_false__;
 use function sprintf;
 
@@ -94,7 +93,6 @@ final class AdminOptionsController extends BaseController
                     $value = trim($value);
                 }
 
-                $value = unslash($value);
                 Options::factory()->update($option, $value);
             }
 
@@ -106,15 +104,17 @@ final class AdminOptionsController extends BaseController
     }
 
     /**
-     * @throws ContainerExceptionInterface
+     * @param ServerRequest $request
+     * @return string|ResponseInterface
      * @throws CommandPropertyNotFoundException
-     * @throws NotFoundExceptionInterface
-     * @throws UnresolvableQueryHandlerException
-     * @throws InvalidArgumentException
+     * @throws ContainerExceptionInterface
      * @throws Exception
+     * @throws InvalidArgumentException
+     * @throws NotFoundExceptionInterface
      * @throws ReflectionException
      * @throws SessionException
      * @throws TypeException
+     * @throws UnresolvableQueryHandlerException
      */
     public function generalOptions(ServerRequest $request): string|ResponseInterface
     {
@@ -125,35 +125,36 @@ final class AdminOptionsController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        $resolver = new NativeCommandHandlerResolver(
-            container: ContainerFactory::make(config: config('commandbus.container'))
-        );
-        $odin = new Odin(bus: new SynchronousCommandBus($resolver));
-
-        $options = [
+        try {
+            $options = [
             'sitename', 'site_description', 'charset', 'admin_email', 'site_locale',
             'cookieexpire', 'cookiepath', 'site_timezone', 'api_key'
-        ];
-        foreach ($options as $optionName) {
-            if (!isset($request->getParsedBody()[$optionName])) {
-                continue;
+            ];
+
+            foreach ($options as $optionName) {
+                if (!isset($request->getParsedBody()[$optionName])) {
+                    continue;
+                }
+
+                $value = $request->getParsedBody()[$optionName];
+                Options::factory()->update($optionName, $value);
             }
 
-            $value = $request->getParsedBody()[$optionName];
-            Options::factory()->update($optionName, $value);
-        }
-
             /** @var Site $currentSite */
-        $currentSite = get_site_by('key', get_current_site_key());
+            $currentSite = get_site_by('key', get_current_site_key());
 
-        if (!is_false__($currentSite) && $currentSite->name !== $request->getParsedBody()['sitename']) {
-            $siteSlug = cms_unique_site_slug(
-                $currentSite->slug,
-                $request->getParsedBody()['sitename'],
-                $currentSite->id
-            );
+            if (!is_false__($currentSite) && $currentSite->name !== $request->getParsedBody()['sitename']) {
+                $siteSlug = cms_unique_site_slug(
+                    $currentSite->slug,
+                    $request->getParsedBody()['sitename'],
+                    $currentSite->id
+                );
 
-            try {
+                $resolver = new NativeCommandHandlerResolver(
+                    container: ContainerFactory::make(config: config('commandbus.container'))
+                );
+                $odin = new Odin(bus: new SynchronousCommandBus($resolver));
+
                 $command = new UpdateSiteCommand([
                     'siteId' => SiteId::fromString($currentSite->id),
                     'siteName' => new StringLiteral($request->getParsedBody()['sitename']),
@@ -164,35 +165,43 @@ final class AdminOptionsController extends BaseController
                     'siteOwner' => UserId::fromString($currentSite->owner),
                     'siteStatus' => new StringLiteral($currentSite->status),
                     'siteModified' => QubusDateTimeImmutable::now(get_user_timezone()),
-                ]);
+                    ]);
 
                 $odin->execute($command);
-            } catch (
-                CommandCouldNotBeHandledException | UnresolvableCommandHandlerException | ReflectionException $e
-            ) {
-                FileLoggerFactory::getLogger()->error(
-                    sprintf(
-                        'SQLSTATE[%s]: %s',
-                        $e->getCode(),
-                        $e->getMessage()
-                    ),
-                    [
-                    'Route' => '/admin/general/'
-                    ]
-                );
-
-                Devflow::inst()::$APP->flash->error(
-                    message: esc_html__(
-                        string: 'Options not updated.',
-                        domain: 'devflow'
-                    )
-                );
             }
-        }
 
-        Devflow::inst()::$APP->flash->success(
-            Devflow::inst()::$APP->flash->notice(200),
-        );
+            Devflow::inst()::$APP->flash->success(
+                Devflow::inst()::$APP->flash->notice(200),
+            );
+        } catch (
+            CommandCouldNotBeHandledException |
+            CommandPropertyNotFoundException |
+            ContainerExceptionInterface |
+            InvalidArgumentException |
+            NotFoundExceptionInterface |
+            UnresolvableCommandHandlerException |
+            UnresolvableQueryHandlerException |
+            ReflectionException |
+            TypeException $e
+        ) {
+            FileLoggerFactory::getLogger()->error(
+                sprintf(
+                    'SQLSTATE[%s]: %s',
+                    $e->getCode(),
+                    $e->getMessage()
+                ),
+                [
+                    'Route' => '/admin/general/'
+                ]
+            );
+
+            Devflow::inst()::$APP->flash->error(
+                message: esc_html__(
+                    string: 'General options exception occurred and was logged.',
+                    domain: 'devflow'
+                )
+            );
+        }
 
         return $this->redirect($request->getServerParams()['HTTP_REFERER']);
     }
@@ -246,22 +255,49 @@ final class AdminOptionsController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        $options = [
-            'content_per_page', 'charset', 'date_format', 'time_format'
-        ];
+        try {
+            $options = [
+                'content_per_page', 'charset', 'date_format', 'time_format'
+            ];
 
-        foreach ($options as $optionName) {
-            if (!isset($request->getParsedBody()[$optionName])) {
-                continue;
+            foreach ($options as $optionName) {
+                if (!isset($request->getParsedBody()[$optionName])) {
+                    continue;
+                }
+
+                $value = $request->getParsedBody()[$optionName];
+                Options::factory()->update($optionName, $value);
             }
 
-            $value = $request->getParsedBody()[$optionName];
-            Options::factory()->update($optionName, $value);
-        }
+            Devflow::inst()::$APP->flash->{'success'}(
+                Devflow::inst()::$APP->flash->notice(num: 200),
+            );
+        } catch (
+            InvalidArgumentException |
+            TypeException |
+            Exception |
+            ReflectionException |
+            NotFoundExceptionInterface |
+            ContainerExceptionInterface $e
+        ) {
+            FileLoggerFactory::getLogger()->error(
+                sprintf(
+                    'SQLSTATE[%s]: %s',
+                    $e->getCode(),
+                    $e->getMessage()
+                ),
+                [
+                    'Route' => '/admin/general/'
+                ]
+            );
 
-        Devflow::inst()::$APP->flash->{'success'}(
-            Devflow::inst()::$APP->flash->notice(num: 200),
-        );
+            Devflow::inst()::$APP->flash->error(
+                message: esc_html__(
+                    string: 'Reading options exception occurred and was logged.',
+                    domain: 'devflow'
+                )
+            );
+        }
 
         return $this->redirect($request->getServerParams()['HTTP_REFERER']);
     }

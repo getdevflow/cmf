@@ -47,6 +47,7 @@ use function Codefy\Framework\Helpers\config;
 use function Qubus\Error\Helpers\is_error;
 use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_false__;
+use function sprintf;
 
 final class AdminSiteController extends BaseController
 {
@@ -63,15 +64,13 @@ final class AdminSiteController extends BaseController
     /**
      * @param ServerRequest $request
      * @return ResponseInterface|null
-     * @throws CommandCouldNotBeHandledException
+     * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
+     * @throws NotFoundExceptionInterface
      * @throws ReflectionException
      * @throws SessionException
      * @throws TypeException
-     * @throws UnresolvableCommandHandlerException
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface|DateInvalidTimeZoneException
      */
     public function siteCreate(ServerRequest $request): ?ResponseInterface
     {
@@ -99,7 +98,13 @@ final class AdminSiteController extends BaseController
 
             Devflow::inst()::$APP->flash->success(Devflow::inst()::$APP->flash->notice(num: 201));
         } catch (
+            CommandCouldNotBeHandledException |
             CommandPropertyNotFoundException |
+            ContainerExceptionInterface |
+            DateInvalidTimeZoneException |
+            InvalidArgumentException |
+            NotFoundExceptionInterface |
+            UnresolvableCommandHandlerException |
             UnresolvableQueryHandlerException |
             TypeException |
             Exception |
@@ -107,7 +112,7 @@ final class AdminSiteController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Insertion exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Insertion exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -142,9 +147,9 @@ final class AdminSiteController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        $connection = config(key: 'database.default');
-
         try {
+            $connection = config(key: 'database.default');
+
             $sites = get_all_sites();
 
             return $this->view->render(
@@ -159,7 +164,7 @@ final class AdminSiteController extends BaseController
         } catch (UnresolvableQueryHandlerException | ReflectionException $e) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Query error.', domain: 'devflow')
+                message: t__(msgid: 'Exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -170,7 +175,6 @@ final class AdminSiteController extends BaseController
      * @param ServerRequest $request
      * @param string $siteId
      * @return ResponseInterface|null
-     * @throws CommandCouldNotBeHandledException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
@@ -178,7 +182,6 @@ final class AdminSiteController extends BaseController
      * @throws ReflectionException
      * @throws SessionException
      * @throws TypeException
-     * @throws UnresolvableCommandHandlerException|DateInvalidTimeZoneException
      */
     public function siteChange(ServerRequest $request, string $siteId): ?ResponseInterface
     {
@@ -208,7 +211,13 @@ final class AdminSiteController extends BaseController
 
             Devflow::inst()::$APP->flash->success(Devflow::inst()::$APP->flash->notice(num: 200));
         } catch (
+            CommandCouldNotBeHandledException |
             CommandPropertyNotFoundException |
+            ContainerExceptionInterface |
+            DateInvalidTimeZoneException |
+            InvalidArgumentException |
+            NotFoundExceptionInterface |
+            UnresolvableCommandHandlerException |
             UnresolvableQueryHandlerException |
             TypeException |
             Exception |
@@ -216,7 +225,7 @@ final class AdminSiteController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Change exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Change exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -334,7 +343,6 @@ final class AdminSiteController extends BaseController
      * @param ServerRequest $request
      * @param string $userId
      * @return ResponseInterface
-     * @throws CommandPropertyNotFoundException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
@@ -342,7 +350,6 @@ final class AdminSiteController extends BaseController
      * @throws ReflectionException
      * @throws SessionException
      * @throws TypeException
-     * @throws UnresolvableQueryHandlerException
      */
     public function siteUsersDelete(ServerRequest $request, string $userId): ResponseInterface
     {
@@ -363,28 +370,45 @@ final class AdminSiteController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        if (isset($request->getParsedBody()['assign_id']) && 'null' !== $request->getParsedBody()['assign_id']) {
-            $siteUser = cms_delete_site_user(
-                $request->getParsedBody()['user_id'],
-                [
-                    'assign_id' => $request->getParsedBody()['assign_id'],
-                    'role' => $request->getParsedBody()['role'],
-                ]
-            );
-        } else {
-            $siteUser = cms_delete_site_user($request->getParsedBody()['user_id']);
-        }
+        try {
+            if (isset($request->getParsedBody()['assign_id']) && 'null' !== $request->getParsedBody()['assign_id']) {
+                $siteUser = cms_delete_site_user(
+                    $request->getParsedBody()['user_id'],
+                    [
+                        'assign_id' => $request->getParsedBody()['assign_id'],
+                        'role' => $request->getParsedBody()['role'],
+                    ]
+                );
+            } else {
+                $siteUser = cms_delete_site_user($request->getParsedBody()['user_id']);
+            }
 
-        if (is_error($siteUser)) {
+            if (is_error($siteUser)) {
+                Devflow::inst()::$APP->flash->error(
+                    sprintf(
+                        'ERROR[%s]: %s',
+                        $siteUser->getCode(),
+                        $siteUser->getMessage()
+                    ),
+                );
+            } else {
+                Devflow::inst()::$APP->flash->success(Devflow::inst()::$APP->flash->notice(num: 200));
+            }
+        } catch (
+            CommandPropertyNotFoundException |
+            Exception |
+            InvalidArgumentException |
+            SessionException |
+            UnresolvableQueryHandlerException |
+            TypeException |
+            NotFoundExceptionInterface |
+            ContainerExceptionInterface |
+            ReflectionException $e
+        ) {
+            FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                sprintf(
-                    'ERROR[%s]: %s',
-                    $siteUser->getCode(),
-                    $siteUser->getMessage()
-                ),
+                t__(msgid: 'Delete exception occurred and was logged.', domain: 'devflow')
             );
-        } else {
-            Devflow::inst()::$APP->flash->success(Devflow::inst()::$APP->flash->notice(num: 200));
         }
 
         return $this->redirect(admin_url('site/users/'));
@@ -394,7 +418,6 @@ final class AdminSiteController extends BaseController
      * @param ServerRequest $request
      * @param string $siteId
      * @return ResponseInterface
-     * @throws CommandPropertyNotFoundException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
@@ -402,7 +425,6 @@ final class AdminSiteController extends BaseController
      * @throws ReflectionException
      * @throws SessionException
      * @throws TypeException
-     * @throws UnresolvableQueryHandlerException
      */
     public function siteDelete(ServerRequest $request, string $siteId): ResponseInterface
     {
@@ -420,19 +442,32 @@ final class AdminSiteController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        $connection = config(key: 'database.default');
+        try {
+            $connection = config(key: 'database.default');
 
-        /** @var Site $checkSite */
-        $checkSite = get_site_by('id', $siteId);
+            /** @var Site $checkSite */
+            $checkSite = get_site_by('id', $siteId);
 
-        if (
-                $checkSite->key === config(key: "database.connections.$connection.prefix") ||
-                $checkSite->domain === config(key: 'cms.main_site_url')
+            if (
+                    $checkSite->key === config(key: "database.connections.$connection.prefix") ||
+                    $checkSite->domain === config(key: 'cms.main_site_url')
+            ) {
+                Devflow::inst()::$APP->flash->error(
+                    message: t__(msgid: 'This action is not allowed.', domain: 'devflow')
+                );
+                return $this->redirect(admin_url('site/'));
+            }
+        } catch (
+            CommandPropertyNotFoundException |
+            UnresolvableQueryHandlerException |
+            TypeException |
+            ReflectionException |
+            Exception $e
         ) {
+            FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'This action is not allowed.', domain: 'devflow')
+                t__(msgid: 'A site check exception occurred and was logged.', domain: 'devflow')
             );
-            return $this->redirect(admin_url('site/'));
         }
 
         try {
@@ -454,7 +489,7 @@ final class AdminSiteController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'A deletion exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'A site deletion exception occurred and was logged.', domain: 'devflow')
             );
         }
 

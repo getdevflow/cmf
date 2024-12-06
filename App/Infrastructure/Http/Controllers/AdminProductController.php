@@ -136,20 +136,18 @@ final class AdminProductController extends BaseController
         } catch (
             CommandCouldNotBeHandledException |
             CommandPropertyNotFoundException |
+            InvalidArgumentException |
             UnresolvableCommandHandlerException |
             UnresolvableQueryHandlerException |
             TypeException |
             Exception |
-            ReflectionException $e
+            ReflectionException |
+            NotFoundExceptionInterface |
+            ContainerExceptionInterface $e
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Insertion exception occurred.', domain: 'devflow')
-            );
-        } catch (NotFoundExceptionInterface | ContainerExceptionInterface $e) {
-            FileLoggerFactory::getLogger()->error($e->getMessage());
-            Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Insertion exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Insertion exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -193,7 +191,6 @@ final class AdminProductController extends BaseController
      * @param ServerRequest $request
      * @param string $productId
      * @return ResponseInterface|null
-     * @throws CommandCouldNotBeHandledException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
@@ -201,7 +198,6 @@ final class AdminProductController extends BaseController
      * @throws ReflectionException
      * @throws SessionException
      * @throws TypeException
-     * @throws UnresolvableCommandHandlerException
      */
     public function productChange(
         ServerRequest $request,
@@ -226,7 +222,12 @@ final class AdminProductController extends BaseController
 
             Devflow::inst()::$APP->flash->success(Devflow::inst()::$APP->flash->notice(num: 200));
         } catch (
+            CommandCouldNotBeHandledException |
+            ContainerExceptionInterface |
+            InvalidArgumentException |
             CommandPropertyNotFoundException |
+            NotFoundExceptionInterface |
+            UnresolvableCommandHandlerException |
             UnresolvableQueryHandlerException |
             TypeException |
             Exception |
@@ -234,7 +235,7 @@ final class AdminProductController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Change exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Change exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -283,7 +284,11 @@ final class AdminProductController extends BaseController
                 ]
             );
         } catch (
+            ContainerExceptionInterface |
             CommandPropertyNotFoundException |
+            Exception |
+            InvalidArgumentException |
+            NotFoundExceptionInterface |
             UnresolvableQueryHandlerException |
             TypeException |
             ReflectionException $e
@@ -298,7 +303,6 @@ final class AdminProductController extends BaseController
      * @param ServerRequest $request
      * @param string $productId
      * @return ResponseInterface|null
-     * @throws CommandPropertyNotFoundException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
@@ -316,12 +320,12 @@ final class AdminProductController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        $resolver = new NativeCommandHandlerResolver(
-            container: ContainerFactory::make(config: config('commandbus.container'))
-        );
-        $odin = new Odin(bus: new SynchronousCommandBus($resolver));
-
         try {
+            $resolver = new NativeCommandHandlerResolver(
+                container: ContainerFactory::make(config: config('commandbus.container'))
+            );
+            $odin = new Odin(bus: new SynchronousCommandBus($resolver));
+
             $command = new RemoveFeaturedImageCommand([
                 'productId'  => ProductId::fromString($productId),
                 'productFeaturedImage' => new StringLiteral('')
@@ -332,10 +336,16 @@ final class AdminProductController extends BaseController
             Devflow::inst()::$APP->flash->success(
                 message: t__(msgid: 'Removal of featured image was successful.', domain: 'devflow')
             );
-        } catch (CommandCouldNotBeHandledException | UnresolvableCommandHandlerException | ReflectionException $e) {
+        } catch (
+            CommandCouldNotBeHandledException |
+            CommandPropertyNotFoundException |
+            UnresolvableCommandHandlerException |
+            TypeException |
+            ReflectionException $e
+        ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Removal error.', domain: 'devflow')
+                message: t__(msgid: 'Removal exception error and was logged.', domain: 'devflow')
             );
         }
 
@@ -374,6 +384,9 @@ final class AdminProductController extends BaseController
         } catch (
             CommandCouldNotBeHandledException |
             CommandPropertyNotFoundException |
+            ContainerExceptionInterface |
+            InvalidArgumentException |
+            NotFoundExceptionInterface |
             UnresolvableCommandHandlerException |
             TypeException |
             Exception |
@@ -381,7 +394,7 @@ final class AdminProductController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'A deletion exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'A deletion exception occurred and was logged.', domain: 'devflow')
             );
         }
 

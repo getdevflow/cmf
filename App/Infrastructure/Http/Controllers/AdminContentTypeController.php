@@ -90,7 +90,7 @@ final class AdminContentTypeController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Insertion exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Insertion exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -183,7 +183,7 @@ final class AdminContentTypeController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Change exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Change exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -294,7 +294,7 @@ final class AdminContentTypeController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Delete exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Delete exception occurred and was logged.', domain: 'devflow')
             );
         }
 

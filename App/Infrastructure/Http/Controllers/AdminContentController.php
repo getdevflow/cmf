@@ -105,12 +105,12 @@ final class AdminContentController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Insertion exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Insertion exception occurred and was logged.', domain: 'devflow')
             );
         } catch (NotFoundExceptionInterface | ContainerExceptionInterface $e) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Insertion exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Final catch insertion exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -121,7 +121,6 @@ final class AdminContentController extends BaseController
      * @param ServerRequest $request
      * @param string $contentTypeSlug
      * @return ResponseInterface|string|null
-     * @throws CommandPropertyNotFoundException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
@@ -129,7 +128,6 @@ final class AdminContentController extends BaseController
      * @throws ReflectionException
      * @throws SessionException
      * @throws TypeException
-     * @throws UnresolvableQueryHandlerException
      * @throws \Exception
      */
     public function contentCreateView(ServerRequest $request, string $contentTypeSlug): ResponseInterface|null|string
@@ -141,22 +139,37 @@ final class AdminContentController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        $getContentType = get_content_type_by('slug', $contentTypeSlug);
-        if (empty($getContentType->id) || is_false__($getContentType)) {
-            return JsonResponseFactory::create(
-                data: t__('The content type does not exist.', domain: 'devflow'),
-                status: 404
+        try {
+            $getContentType = get_content_type_by('slug', $contentTypeSlug);
+            if (empty($getContentType->id) || is_false__($getContentType)) {
+                return JsonResponseFactory::create(
+                    data: t__('The content type does not exist.', domain: 'devflow'),
+                    status: 404
+                );
+            }
+
+            return $this->view->render(
+                template: 'framework::backend/admin/content/create',
+                data: [
+                    'title' => sprintf(esc_html__('Create %s Content', domain: 'devflow'), $getContentType->title),
+                    'type' => $getContentType,
+                    'request' => $request->getParsedBody(),
+                    'form' => (new ContentForm())->buildForm($request->getParsedBody(), $getContentType->slug, null),
+                ]
             );
+        } catch (
+            CommandPropertyNotFoundException |
+            UnresolvableQueryHandlerException |
+            TypeException |
+            ReflectionException |
+            \Exception $e
+        ) {
+            FileLoggerFactory::getLogger()->error($e->getMessage());
         }
 
-        return $this->view->render(
-            template: 'framework::backend/admin/content/create',
-            data: [
-                'title' => sprintf(esc_html__('Create %s Content', domain: 'devflow'), $getContentType->title),
-                'type' => $getContentType,
-                'request' => $request->getParsedBody(),
-                'form' => (new ContentForm())->buildForm($request->getParsedBody(), $getContentType->slug, null),
-            ]
+        return JsonResponseFactory::create(
+            data: t__('The content type does not exist.', domain: 'devflow'),
+            status: 404
         );
     }
 
@@ -165,7 +178,6 @@ final class AdminContentController extends BaseController
      * @param string $contentTypeSlug
      * @param string $contentId
      * @return ResponseInterface|null
-     * @throws CommandCouldNotBeHandledException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
@@ -173,7 +185,6 @@ final class AdminContentController extends BaseController
      * @throws ReflectionException
      * @throws SessionException
      * @throws TypeException
-     * @throws UnresolvableCommandHandlerException
      */
     public function contentChange(
         ServerRequest $request,
@@ -199,7 +210,9 @@ final class AdminContentController extends BaseController
 
             Devflow::inst()::$APP->flash->success(Devflow::inst()::$APP->flash->notice(num: 200));
         } catch (
+            CommandCouldNotBeHandledException |
             CommandPropertyNotFoundException |
+            UnresolvableCommandHandlerException |
             UnresolvableQueryHandlerException |
             TypeException |
             Exception |
@@ -207,7 +220,7 @@ final class AdminContentController extends BaseController
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Change exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'Change exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -265,7 +278,10 @@ final class AdminContentController extends BaseController
             FileLoggerFactory::getLogger()->error($e->getMessage());
         }
 
-        return JsonResponseFactory::create(data: t__('The content does not exist.', domain: 'devflow'), status: 404);
+        return JsonResponseFactory::create(
+            data: t__('The content does not exist.', domain: 'devflow'),
+            status: 404
+        );
     }
 
     /**
@@ -292,12 +308,15 @@ final class AdminContentController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        $getContentType = get_content_type_by('slug', $contentTypeSlug);
-        if (empty($getContentType->id) || is_false__($getContentType)) {
-            return JsonResponseFactory::create(data: t__(msgid: 'Content not found.', domain: 'devflow'), status: 404);
-        }
-
         try {
+            $getContentType = get_content_type_by('slug', $contentTypeSlug);
+            if (empty($getContentType->id) || is_false__($getContentType)) {
+                return JsonResponseFactory::create(
+                    data: t__(msgid: 'Content not found.', domain: 'devflow'),
+                    status: 404
+                );
+            }
+
             /** @var Content $content */
             $content = get_all_content_with_filters($contentTypeSlug);
 
@@ -328,7 +347,6 @@ final class AdminContentController extends BaseController
      * @param ServerRequest $request
      * @param string $contentId
      * @return ResponseInterface|null
-     * @throws CommandPropertyNotFoundException
      * @throws ContainerExceptionInterface
      * @throws Exception
      * @throws InvalidArgumentException
@@ -346,12 +364,12 @@ final class AdminContentController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        $resolver = new NativeCommandHandlerResolver(
-            container: ContainerFactory::make(config: config('commandbus.container'))
-        );
-        $odin = new Odin(bus: new SynchronousCommandBus($resolver));
-
         try {
+            $resolver = new NativeCommandHandlerResolver(
+                container: ContainerFactory::make(config: config('commandbus.container'))
+            );
+            $odin = new Odin(bus: new SynchronousCommandBus($resolver));
+
             $command = new RemoveFeaturedImageCommand([
                 'contentId'  => ContentId::fromString($contentId),
                 'contentFeaturedImage' => new StringLiteral('')
@@ -362,10 +380,16 @@ final class AdminContentController extends BaseController
             Devflow::inst()::$APP->flash->success(
                 message: t__(msgid: 'Removal of featured image was successful.', domain: 'devflow')
             );
-        } catch (CommandCouldNotBeHandledException | UnresolvableCommandHandlerException | ReflectionException $e) {
+        } catch (
+            CommandCouldNotBeHandledException |
+            CommandPropertyNotFoundException |
+            TypeException |
+            UnresolvableCommandHandlerException |
+            ReflectionException $e
+        ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Removal error.', domain: 'devflow')
+                message: t__(msgid: 'Removal exception occurred and was logged.', domain: 'devflow')
             );
         }
 
@@ -402,24 +426,26 @@ final class AdminContentController extends BaseController
                     message: t__(msgid: 'A deletion error occurred.', domain: 'devflow')
                 );
             }
+
+            Devflow::inst()::$APP->flash->success(
+                message: t__(msgid: 'Removal was successful.', domain: 'devflow')
+            );
         } catch (
             CommandCouldNotBeHandledException |
+            ContainerExceptionInterface |
             CommandPropertyNotFoundException |
+            InvalidArgumentException |
+            NotFoundExceptionInterface |
             UnresolvableCommandHandlerException |
-            UnresolvableQueryHandlerException |
             TypeException |
             Exception |
             ReflectionException $e
         ) {
             FileLoggerFactory::getLogger()->error($e->getMessage());
             Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'A deletion exception occurred.', domain: 'devflow')
+                message: t__(msgid: 'A deletion exception occurred and was logged.', domain: 'devflow')
             );
         }
-
-        Devflow::inst()::$APP->flash->success(
-            message: t__(msgid: 'Removal was successful.', domain: 'devflow')
-        );
 
         return $this->redirect(admin_url("content-type/{$contentTypeSlug}/"));
     }

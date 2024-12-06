@@ -7,6 +7,7 @@ namespace App\Infrastructure\Http\Controllers;
 use App\Application\Devflow;
 use App\Infrastructure\Persistence\Database;
 use App\Infrastructure\Services\UserAuth;
+use Codefy\Framework\Factory\FileLoggerFactory;
 use Codefy\Framework\Http\BaseController;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -82,11 +83,19 @@ final class AdminPluginController extends BaseController
             Devflow::inst()::$APP->flash->error(
                 message: t__(msgid: 'Access denied.', domain: 'devflow')
             );
-
             return $this->redirect(admin_url());
         }
 
-        activate_plugin($request->getQueryParams()['id']);
+        try {
+            activate_plugin($request->getQueryParams()['id']);
+
+            Devflow::inst()::$APP->flash->success(t__(msgid: 'Plugin activated.', domain: 'devflow'));
+        } catch (NotFoundExceptionInterface | ContainerExceptionInterface | ReflectionException $e) {
+            FileLoggerFactory::getLogger()->error($e->getMessage());
+            Devflow::inst()::$APP->flash->error(
+                message: t__(msgid: 'Plugin activation exception occurred and was logged.', domain: 'devflow')
+            );
+        }
 
         return $this->redirect($request->getServerParams()['HTTP_REFERER']);
     }
@@ -109,7 +118,16 @@ final class AdminPluginController extends BaseController
             return $this->redirect(admin_url());
         }
 
-        deactivate_plugin($request->getQueryParams()['id']);
+        try {
+            deactivate_plugin($request->getQueryParams()['id']);
+
+            Devflow::inst()::$APP->flash->success(t__(msgid: 'Plugin deactivated.', domain: 'devflow'));
+        } catch (NotFoundExceptionInterface | ContainerExceptionInterface | ReflectionException $e) {
+            FileLoggerFactory::getLogger()->error($e->getMessage());
+            Devflow::inst()::$APP->flash->error(
+                message: t__(msgid: 'Plugin deactivation exception occurred and was logged.', domain: 'devflow')
+            );
+        }
 
         return $this->redirect($request->getServerParams()['HTTP_REFERER']);
     }

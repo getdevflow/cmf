@@ -8,9 +8,8 @@ use App\Application\Devflow;
 use App\Domain\User\Model\User;
 use App\Infrastructure\Persistence\Database;
 use App\Infrastructure\Services\UserAuth;
-use Codefy\CommandBus\Exceptions\CommandPropertyNotFoundException;
+use Codefy\Framework\Factory\FileLoggerFactory;
 use Codefy\Framework\Http\BaseController;
-use Codefy\QueryBus\UnresolvableQueryHandlerException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -37,7 +36,6 @@ use function App\Shared\Helpers\get_user_by;
 use function App\Shared\Helpers\login_url;
 use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\config;
-use function dd;
 use function Qubus\Error\Helpers\is_error;
 use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_false__;
@@ -57,38 +55,46 @@ final class AdminAuthController extends BaseController
     /**
      * @param ServerRequest $request
      * @return ResponseInterface
-     * @throws ContainerExceptionInterface
-     * @throws Exception
-     * @throws InvalidArgumentException
-     * @throws NotFoundExceptionInterface
-     * @throws ReflectionException
      * @throws SessionException
      */
     public function auth(ServerRequest $request): ResponseInterface
     {
-        /**
-         * Filters where the admin should be redirected after successful login.
-         */
-        $loginLink = Filter::getInstance()->applyFilter(
-            'admin_login_redirect',
-            admin_url()
-        );
+        try {
+            /**
+             * Filters where the admin should be redirected after successful login.
+             */
+            $loginLink = Filter::getInstance()->applyFilter(
+                'admin_login_redirect',
+                admin_url()
+            );
 
-        cms_authenticate_user(
-            login: $request->getParsedBody()['user_login'],
-            password: $request->getParsedBody()['user_pass'],
-            rememberme: $request->getParsedBody()['rememberme'] ?? 'no'
-        );
+            cms_authenticate_user(
+                login: $request->getParsedBody()['user_login'],
+                password: $request->getParsedBody()['user_pass'],
+                rememberme: $request->getParsedBody()['rememberme'] ?? 'no'
+            );
 
-        /**
-         * Fires after the user has logged in.
-         *
-         * @param $sessionService SessionService
-         * @param $request ServerRequest
-         */
-        Action::getInstance()->doAction('login_init', $this->sessionService, $request);
+            /**
+             * Fires after the user has logged in.
+             *
+             * @param $sessionService SessionService
+             * @param $request ServerRequest
+             */
+            Action::getInstance()->doAction('login_init', $this->sessionService, $request);
 
-        return $this->redirect($loginLink);
+            return $this->redirect($loginLink);
+        } catch (
+            NotFoundExceptionInterface |
+            ContainerExceptionInterface |
+            InvalidArgumentException |
+            SessionException |
+            Exception |
+            ReflectionException $e
+        ) {
+            Devflow::inst()::$APP->flash->error($e->getMessage());
+        }
+
+        return $this->redirect($request->getServerParams()['HTTP_REFERER']);
     }
 
     /**
@@ -174,55 +180,58 @@ final class AdminAuthController extends BaseController
     /**
      * @param ServerRequest $request
      * @return ResponseInterface
-     * @throws ContainerExceptionInterface
-     * @throws Exception
      * @throws InvalidArgumentException
-     * @throws NotFoundExceptionInterface
-     * @throws ReflectionException
      * @throws SessionException
-     * @throws TypeException
-     * @throws CommandPropertyNotFoundException
-     * @throws UnresolvableQueryHandlerException
+     * @throws ReflectionException
      */
     public function resetPasswordChange(ServerRequest $request): ResponseInterface
     {
-        $user = get_user_by('email', $request->getParsedBody()['email']);
-        if (is_false__($user)) {
-            Devflow::inst()::$APP->flash->error(
-                message: t__(msgid: 'Request error.', domain: 'devflow')
-            );
-
-            return $this->redirect($request->getServerParams()['HTTP_REFERER']);
-        }
-
-        if ('' !== $user->id) {
-            $password = generate_random_password(config(key: 'cms.password_length'));
-            $_user = (new User($this->dfdb))->findBy(field: 'email', value: $user->email);
-
-            foreach ($user->toArray() as $key => $value) {
-                unset($_user->pass);
-                $_user->{$key} = $value;
-            }
-            $_user->pass = $password;
-            $update = cms_update_user($_user);
-
-            if (is_error($update)) {
+        try {
+            $user = get_user_by('email', $request->getParsedBody()['email']);
+            if (is_false__($user)) {
                 Devflow::inst()::$APP->flash->error(
                     message: t__(msgid: 'Request error.', domain: 'devflow')
                 );
 
                 return $this->redirect($request->getServerParams()['HTTP_REFERER']);
-            } else {
-                Devflow::inst()::$APP->flash->success(
-                    message: t__(
-                        msgid: 'A new password was sent to your email. May take a few minutes to arrive, 
-                                so please be patient',
-                        domain: 'devflow'
-                    )
-                );
             }
+
+            if ('' !== $user->id) {
+                $password = generate_random_password(config(key: 'cms.password_length'));
+                $_user = (new User($this->dfdb))->findBy(field: 'email', value: $user->email);
+
+                foreach ($user->toArray() as $key => $value) {
+                    unset($_user->pass);
+                    $_user->{$key} = $value;
+                }
+                $_user->pass = $password;
+                $update = cms_update_user($_user);
+
+                if (is_error($update)) {
+                    Devflow::inst()::$APP->flash->error(
+                        message: t__(msgid: 'Request error.', domain: 'devflow')
+                    );
+
+                    return $this->redirect($request->getServerParams()['HTTP_REFERER']);
+                } else {
+                    Devflow::inst()::$APP->flash->success(
+                        message: t__(
+                            msgid: 'A new password was sent to your email. May take a few minutes to arrive, 
+                                so please be patient',
+                            domain: 'devflow'
+                        )
+                    );
+                }
+            }
+
+            return $this->redirect($this->router->url(name: 'admin.login'));
+        } catch (\Exception | NotFoundExceptionInterface | ContainerExceptionInterface $e) {
+            FileLoggerFactory::getLogger()->error($e->getMessage());
+            Devflow::inst()::$APP->flash->error(
+                t__(msgid: 'Password reset exception occurred and was logged.', domain: 'devflow')
+            );
+            return $this->redirect($request->getServerParams()['HTTP_REFERER']);
         }
-        return $this->redirect($this->router->url(name: 'admin.login'));
     }
 
     public function resetPasswordView(): ?string
