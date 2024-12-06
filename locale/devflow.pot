@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow\n"
-"POT-Creation-Date: 2024-12-01 10:41-0800\n"
+"POT-Creation-Date: 2024-12-06 11:02-0800\n"
 "PO-Revision-Date: 2024-11-29 13:36-0800\n"
 "Last-Translator: \n"
 "Language-Team: https://nomadicjosh.com/\n"
@@ -188,32 +188,36 @@ msgstr ""
 msgid "User meta cannot be empty."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminAuthController.php:115
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:121
 msgid "Login"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminAuthController.php:153
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:159
 msgid "You are already logged out."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminAuthController.php:192
-#: App/Infrastructure/Http/Controllers/AdminAuthController.php:211
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:193
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:212
 msgid "Request error."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminAuthController.php:218
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:219
 msgid ""
 "A new password was sent to your email. May take a few minutes to arrive, \n"
 "                                so please be patient"
 msgstr ""
 
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:231
+msgid "Password reset exception occurred and was logged."
+msgstr ""
+
 #: App/Infrastructure/Http/Controllers/AdminContentController.php:81
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:139
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:185
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:234
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:290
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:344
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:392
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:137
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:196
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:247
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:306
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:362
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:416
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:68
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:116
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:159
@@ -224,127 +228,128 @@ msgstr ""
 #: App/Infrastructure/Http/Controllers/AdminDashboardController.php:117
 #: App/Infrastructure/Http/Controllers/AdminDashboardController.php:167
 #: App/Infrastructure/Http/Controllers/AdminMediaController.php:142
-#: App/Infrastructure/Http/Controllers/AdminPluginController.php:57
-#: App/Infrastructure/Http/Controllers/AdminPluginController.php:83
-#: App/Infrastructure/Http/Controllers/AdminPluginController.php:107
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:58
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:84
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:116
 #: App/Infrastructure/Http/Controllers/AdminProductController.php:80
 #: App/Infrastructure/Http/Controllers/AdminProductController.php:120
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:177
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:212
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:261
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:314
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:361
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:80
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:87
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:133
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:140
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:187
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:194
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:243
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:250
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:304
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:311
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:354
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:175
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:208
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:262
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:318
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:371
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:79
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:86
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:138
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:145
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:190
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:197
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:252
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:259
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:313
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:320
 #: App/Infrastructure/Http/Controllers/AdminSiteController.php:361
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:411
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:418
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:93
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:194
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:223
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:329
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:376
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:425
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:465
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:503
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:548
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:627
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:368
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:433
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:440
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:95
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:211
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:241
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:349
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:398
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:449
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:486
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:537
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:598
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:690
 msgid "Access denied."
 msgstr ""
 
 #: App/Infrastructure/Http/Controllers/AdminContentController.php:90
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:77
 #: App/Infrastructure/Http/Controllers/AdminProductController.php:129
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:96
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:95
 msgid "Insertion error occurred."
 msgstr ""
 
 #: App/Infrastructure/Http/Controllers/AdminContentController.php:108
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:113
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:93
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:147
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:152
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:110
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:172
-msgid "Insertion exception occurred."
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:150
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:115
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:189
+msgid "Insertion exception occurred and was logged."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:147
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:113
+msgid "Final catch insertion exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:146
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:171
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:221
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:228
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:250
 msgid "The content type does not exist."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:155
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:154
 #, php-format
 msgid "Create %s Content"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:196
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:207
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:170
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:223
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:205
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:219
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:208
 msgid "Change error occurred."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:210
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:223
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:186
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:237
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:219
-msgid "Change exception occurred."
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:238
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:228
+msgid "Change exception occurred and was logged."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:245
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:268
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:322
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:258
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:282
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:341
 msgid "The content does not exist."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:297
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:315
 msgid "Content not found."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:307
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:326
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:363
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:333
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:381
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:337
 msgid "Removal of featured image was successful."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:368
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:338
-msgid "Removal error."
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:392
+msgid "Removal exception occurred and was logged."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:402
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:371
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:389
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:404
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:426
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:381
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:411
 msgid "A deletion error occurred."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:416
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:384
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:457
-msgid "A deletion exception occurred."
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:431
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:402
+msgid "Removal was successful."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminContentController.php:421
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:389
-msgid "Removal was successful."
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:446
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:397
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:428
+msgid "A deletion exception occurred and was logged."
 msgstr ""
 
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:128
@@ -364,7 +369,8 @@ msgid "Delete error occurred."
 msgstr ""
 
 #: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:297
-msgid "Delete exception occurred."
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:410
+msgid "Delete exception occurred and was logged."
 msgstr ""
 
 #: App/Infrastructure/Http/Controllers/AdminDashboardController.php:98
@@ -383,28 +389,48 @@ msgstr ""
 msgid "elFinder"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:82
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:81
 #: App/Infrastructure/Http/Controllers/AdminOptionsController.php:123
-#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:216
-#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:244
-#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:285
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:225
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:253
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:321
 msgid "Access denied"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:186
-msgid "Options not updated."
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:200
+msgid "General options exception occurred and was logged."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:223
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:232
 msgid "General Options"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:292
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:296
+msgid "Reading options exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:328
 msgid "Reading Options"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminPluginController.php:65
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:66
 msgid "Plugins"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:92
+msgid "Plugin activated."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:96
+msgid "Plugin activation exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:124
+msgid "Plugin deactivated."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:128
+msgid "Plugin deactivation exception occurred and was logged."
 msgstr ""
 
 #: App/Infrastructure/Http/Controllers/AdminProductController.php:91
@@ -412,8 +438,6 @@ msgid "Products"
 msgstr ""
 
 #: App/Infrastructure/Http/Controllers/AdminProductController.php:98
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:162
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:241
 msgid "Query error."
 msgstr ""
 
@@ -421,104 +445,144 @@ msgstr ""
 msgid "Products error"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:185
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:183
 msgid "Create Product"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:272
-#: App/Infrastructure/Http/Controllers/AdminProductController.php:294
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:273
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:299
 msgid "The product does not exist."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:153
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:348
+msgid "Removal exception error and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:158
 msgid "Sites"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:166
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:167
+msgid "Exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:171
 msgid "Content types error."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:261
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:283
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:270
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:292
 msgid "The site does not exist."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:327
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:336
 msgid "Manage Site Users"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminSiteController.php:433
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:456
 msgid "This action is not allowed."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:101
-#, php-format
-msgid "Passwords cannot be less than %s characters"
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:469
+msgid "A site check exception occurred and was logged."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:123
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:492
+msgid "A site deletion exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:103
+#, php-format
+msgid "Passwords cannot be less than %s characters."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:126
 msgid "Username cannot be empty or null."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:176
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:138
+msgid "User check exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:193
 msgid "Insertion error."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:202
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:219
 msgid "Create User"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:234
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:252
 msgid "Users"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:245
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:259
+msgid "Query exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:263
 msgid "Users error"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:264
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:282
 msgid "Permission denied."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:303
-msgid "Change error."
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:323
+msgid "User change exception occurred and was logged."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:341
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:361
 msgid "View User"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:355
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:378
 msgid "The user does not exist."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:471
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:493
 msgid "User not found."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:478
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:500
 #, php-format
 msgid "Password successfully updated for <strong>%s</strong>."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:511
-msgid "An error occurred."
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:517
+msgid "Reset password exception occurred and was logged."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:525
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:546
+msgid "An update error occurred."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:567
+msgid "An update exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:575
 msgid "User Profile"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:604
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:656
 msgid "User switching was successful."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:635
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:667
+msgid "User switching exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:699
 msgid "Cookie is not properly set for user switching."
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminUserController.php:694
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:758
 msgid "Switching back to previous user session was successful."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:769
+msgid "User switch back exception occurred and was logged."
 msgstr ""
 
 #: App/Infrastructure/Http/Controllers/ApiController.php:48
@@ -551,11 +615,11 @@ msgstr ""
 msgid "Wrong params in query with key %s."
 msgstr ""
 
-#: App/Infrastructure/Persistence/NativePdoDatabase.php:512
+#: App/Infrastructure/Persistence/NativePdoDatabase.php:514
 msgid "Database prefix cannot be null."
 msgstr ""
 
-#: App/Infrastructure/Persistence/NativePdoDatabase.php:516
+#: App/Infrastructure/Persistence/NativePdoDatabase.php:518
 msgid "Invalid database prefix."
 msgstr ""
 
