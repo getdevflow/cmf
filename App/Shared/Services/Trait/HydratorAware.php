@@ -14,7 +14,7 @@ trait HydratorAware
      */
     public static function hydrate(array $data): object
     {
-        return (new Hydrator())->hydrate(target: (object) self::class, data: $data);
+        return (new Hydrator())->hydrate(target: self::class, data: $data);
     }
 
     /**
