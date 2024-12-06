@@ -1,0 +1,935 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Devflow\n"
+"POT-Creation-Date: 2024-12-06 11:30-0800\n"
+"PO-Revision-Date: 2024-12-06 11:31-0800\n"
+"Last-Translator: \n"
+"Language-Team: https://nomadicjosh.com/\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: t__;esc_html__\n"
+"X-Poedit-SearchPath-0: App\n"
+"X-Poedit-SearchPath-1: Cms\n"
+
+#: App/Domain/Content/Content.php:234
+msgid "Content title cannot be empty."
+msgstr ""
+
+#: App/Domain/Content/Content.php:250
+msgid "Content slug cannot be empty."
+msgstr ""
+
+#: App/Domain/Content/Content.php:280
+msgid "Content author cannot be empty."
+msgstr ""
+
+#: App/Domain/Content/Content.php:294
+msgid "Content type cannot be empty."
+msgstr ""
+
+#: App/Domain/Content/Content.php:339
+msgid "Content sidebar must be an absolute integer."
+msgstr ""
+
+#: App/Domain/Content/Content.php:353
+msgid "Show in menu must be an absolute integer."
+msgstr ""
+
+#: App/Domain/Content/Content.php:367
+msgid "Show in search must be an absolute integer."
+msgstr ""
+
+#: App/Domain/Content/Content.php:397
+msgid "Content status cannot be empty."
+msgstr ""
+
+#: App/Domain/Content/Content.php:411
+msgid "Content published cannot be empty."
+msgstr ""
+
+#: App/Domain/Content/Content.php:425
+msgid "Content published gmt cannot be empty."
+msgstr ""
+
+#: App/Domain/Content/Content.php:471
+msgid "Content id cannot be null."
+msgstr ""
+
+#: App/Domain/ContentType/ContentType.php:86
+msgid "Content Type Title cannot be null."
+msgstr ""
+
+#: App/Domain/ContentType/ContentType.php:107
+msgid "Content Type Slug cannot be null."
+msgstr ""
+
+#: App/Domain/ContentType/ContentType.php:125
+msgid "Content Type Description cannot be null."
+msgstr ""
+
+#: App/Domain/ContentType/ContentType.php:145
+msgid "Content Type ID cannot be null."
+msgstr ""
+
+#: App/Domain/Product/Product.php:222
+msgid "Product title cannot be empty."
+msgstr ""
+
+#: App/Domain/Product/Product.php:238
+msgid "Product slug cannot be empty."
+msgstr ""
+
+#: App/Domain/Product/Product.php:254
+msgid "Product body cannot be empty."
+msgstr ""
+
+#: App/Domain/Product/Product.php:268
+msgid "Product author cannot be empty."
+msgstr ""
+
+#: App/Domain/Product/Product.php:282
+msgid "Product sku cannot be empty."
+msgstr ""
+
+#: App/Domain/Product/Product.php:322
+msgid "Product show in menu must be an absolute value."
+msgstr ""
+
+#: App/Domain/Product/Product.php:338
+msgid "Product show in search must be an absolute value."
+msgstr ""
+
+#: App/Domain/Product/Product.php:365
+msgid "Product status cannot be empty."
+msgstr ""
+
+#: App/Domain/Product/Product.php:392
+msgid "Product published date cannot be empty."
+msgstr ""
+
+#: App/Domain/Product/Product.php:406
+msgid "Product published gmt date cannot be empty."
+msgstr ""
+
+#: App/Domain/Site/Site.php:152
+msgid "Site name cannot be empty."
+msgstr ""
+
+#: App/Domain/Site/Site.php:170
+msgid "Site slug cannot be empty."
+msgstr ""
+
+#: App/Domain/Site/Site.php:186 App/Shared/Helpers/site.php:679
+msgid "Site domain cannot be empty."
+msgstr ""
+
+#: App/Domain/Site/Site.php:218
+msgid "Site path cannot be empty."
+msgstr ""
+
+#: App/Domain/Site/Site.php:234
+msgid "Owner cannot be empty."
+msgstr ""
+
+#: App/Domain/Site/Site.php:250
+msgid "Site status cannot be empty."
+msgstr ""
+
+#: App/Domain/Site/Site.php:282
+msgid "Site id cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:183
+msgid "Login/Username cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:199
+msgid "Email address cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:215
+msgid "Name cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:231
+msgid "Token cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:247
+msgid "Password cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:277
+msgid "Timezone cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:291
+msgid "Date format cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:305
+msgid "Time format cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:319
+msgid "Locale cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:349
+msgid "User id cannot be null."
+msgstr ""
+
+#: App/Domain/User/User.php:363
+msgid "User meta cannot be empty."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:121
+msgid "Login"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:159
+msgid "You are already logged out."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:193
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:212
+msgid "Request error."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:219
+msgid ""
+"A new password was sent to your email. May take a few minutes to arrive, so "
+"please be patient"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:230
+msgid "Password reset exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:81
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:137
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:196
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:247
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:306
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:362
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:416
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:68
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:116
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:159
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:210
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:271
+#: App/Infrastructure/Http/Controllers/AdminDashboardController.php:63
+#: App/Infrastructure/Http/Controllers/AdminDashboardController.php:89
+#: App/Infrastructure/Http/Controllers/AdminDashboardController.php:117
+#: App/Infrastructure/Http/Controllers/AdminDashboardController.php:167
+#: App/Infrastructure/Http/Controllers/AdminMediaController.php:142
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:58
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:84
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:116
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:80
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:120
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:175
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:208
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:262
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:318
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:371
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:79
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:86
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:138
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:145
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:190
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:197
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:252
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:259
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:313
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:320
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:361
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:368
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:433
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:440
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:95
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:211
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:241
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:349
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:398
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:449
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:486
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:537
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:598
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:690
+msgid "Access denied."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:90
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:77
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:129
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:95
+msgid "Insertion error occurred."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:108
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:93
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:150
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:115
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:189
+msgid "Insertion exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:113
+msgid "Final catch insertion exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:146
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:171
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:221
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:228
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:250
+msgid "The content type does not exist."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:154
+#, php-format
+msgid "Create %s Content"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:207
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:170
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:219
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:208
+msgid "Change error occurred."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:223
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:186
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:238
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:228
+msgid "Change exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:258
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:282
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:341
+msgid "The content does not exist."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:315
+msgid "Content not found."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:326
+#, php-format
+msgid "%s Content"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:381
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:337
+msgid "Removal of featured image was successful."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:392
+msgid "Removal exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:426
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:381
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:411
+msgid "A deletion error occurred."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:431
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:402
+msgid "Removal was successful."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentController.php:446
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:397
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:428
+msgid "A deletion exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:128
+msgid "Content Types"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:136
+msgid "Error fetching content types."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:140
+msgid "Content types error"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:281
+msgid "Delete error occurred."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminContentTypeController.php:297
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:410
+msgid "Delete exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminDashboardController.php:98
+msgid "System Snapshot"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminDashboardController.php:140
+msgid "Cache flushed successfully."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminMediaController.php:82
+msgid "Media Library"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminMediaController.php:150
+msgid "elFinder"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:81
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:123
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:225
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:253
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:321
+msgid "Access denied"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:200
+msgid "General options exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:232
+msgid "General Options"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:296
+msgid "Reading options exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminOptionsController.php:328
+msgid "Reading Options"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:66
+msgid "Plugins"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:92
+msgid "Plugin activated."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:96
+msgid "Plugin activation exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:124
+msgid "Plugin deactivated."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminPluginController.php:128
+msgid "Plugin deactivation exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:91
+msgid "Products"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:98
+msgid "Query error."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:102
+msgid "Products error"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:183
+msgid "Create Product"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:273
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:299
+msgid "The product does not exist."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminProductController.php:348
+msgid "Removal exception error and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:158
+msgid "Sites"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:167
+msgid "Exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:171
+msgid "Content types error."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:270
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:292
+msgid "The site does not exist."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:336
+msgid "Manage Site Users"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:456
+msgid "This action is not allowed."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:469
+msgid "A site check exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminSiteController.php:492
+msgid "A site deletion exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:103
+#, php-format
+msgid "Passwords cannot be less than %s characters."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:126
+msgid "Username cannot be empty or null."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:138
+msgid "User check exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:193
+msgid "Insertion error."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:219
+msgid "Create User"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:252
+msgid "Users"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:259
+msgid "Query exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:263
+msgid "Users error"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:282
+msgid "Permission denied."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:323
+msgid "User change exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:361
+msgid "View User"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:378
+msgid "The user does not exist."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:493
+msgid "User not found."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:500
+#, php-format
+msgid "Password successfully updated for <strong>%s</strong>."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:517
+msgid "Reset password exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:546
+msgid "An update error occurred."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:567
+msgid "An update exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:575
+msgid "User Profile"
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:656
+msgid "User switching was successful."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:667
+msgid "User switching exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:699
+msgid "Cookie is not properly set for user switching."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:758
+msgid "Switching back to previous user session was successful."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/AdminUserController.php:769
+msgid "User switch back exception occurred and was logged."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/ApiController.php:48
+#: App/Infrastructure/Http/Controllers/ApiController.php:102
+msgid "Database table does not exist."
+msgstr ""
+
+#: App/Infrastructure/Http/Controllers/ApiController.php:79
+#: App/Infrastructure/Http/Controllers/ApiController.php:119
+msgid "No data."
+msgstr ""
+
+#: App/Infrastructure/Persistence/NativePdoDatabase.php:163
+#, php-format
+msgid "The query argument of %s must have a placeholder."
+msgstr ""
+
+#: App/Infrastructure/Persistence/NativePdoDatabase.php:179
+#, php-format
+msgid "Unsupported value type (%s)."
+msgstr ""
+
+#: App/Infrastructure/Persistence/NativePdoDatabase.php:238
+#, php-format
+msgid "Wrong params in query at %s."
+msgstr ""
+
+#: App/Infrastructure/Persistence/NativePdoDatabase.php:246
+#, php-format
+msgid "Wrong params in query with key %s."
+msgstr ""
+
+#: App/Infrastructure/Persistence/NativePdoDatabase.php:514
+msgid "Database prefix cannot be null."
+msgstr ""
+
+#: App/Infrastructure/Persistence/NativePdoDatabase.php:518
+msgid "Invalid database prefix."
+msgstr ""
+
+#: App/Infrastructure/Providers/CmsHelperServiceProvider.php:113
+#, php-format
+msgid "Devflow %s"
+msgstr ""
+
+#: App/Shared/Helpers/auth.php:182
+msgid "Sorry, there was an error."
+msgstr ""
+
+#: App/Shared/Helpers/auth.php:208
+#, php-format
+msgid ""
+"Login was successful. Welcome <strong>%s</strong> to the admin dashboard."
+msgstr ""
+
+#: App/Shared/Helpers/auth.php:241
+msgid "<strong>ERROR</strong>: The username/email field is empty."
+msgstr ""
+
+#: App/Shared/Helpers/auth.php:251
+msgid "<strong>ERROR</strong>: The password field is empty."
+msgstr ""
+
+#: App/Shared/Helpers/auth.php:265
+msgid "<strong>ERROR</strong>: Invalid email address."
+msgstr ""
+
+#: App/Shared/Helpers/auth.php:277
+msgid "<strong>ERROR</strong>: Invalid username."
+msgstr ""
+
+#: App/Shared/Helpers/auth.php:288
+msgid "<strong>ERROR</strong>: The password you entered is incorrect."
+msgstr ""
+
+#: App/Shared/Helpers/content-type.php:285
+msgid "Invalid content_type id."
+msgstr ""
+
+#: App/Shared/Helpers/content-type.php:462
+msgid "Invalid content type id."
+msgstr ""
+
+#: App/Shared/Helpers/content-type.php:538
+msgid "The system was not able to delete the content type."
+msgstr ""
+
+#: App/Shared/Helpers/content.php:1918 App/Shared/Helpers/content.php:2468
+msgid "Invalid content id."
+msgstr ""
+
+#: App/Shared/Helpers/content.php:2052
+msgid "Content author cannot be null or empty."
+msgstr ""
+
+#: App/Shared/Helpers/content.php:2156
+msgid "The title and content are null."
+msgstr ""
+
+#: App/Shared/Helpers/content.php:2302
+msgid "Could not insert content into the content table."
+msgstr ""
+
+#: App/Shared/Helpers/content.php:2351
+msgid "Could not update content within the content table."
+msgstr ""
+
+#: App/Shared/Helpers/core.php:737
+msgid "Unknown"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:595
+#, php-format
+msgid "Reassign content error: %s"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:674
+#, php-format
+msgid "Reassign site error: %s"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:955 App/Shared/Helpers/db.php:1058
+msgid "Hi there,"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:958
+#, php-format
+msgid "Welcome to %s! Here's how to log in: "
+msgstr ""
+
+#: App/Shared/Helpers/db.php:964 App/Shared/Helpers/db.php:1067
+#, php-format
+msgid "Username: %s"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:965 App/Shared/Helpers/db.php:1068
+#: App/Shared/Helpers/user.php:1602 App/Shared/Helpers/user.php:1671
+#, php-format
+msgid "Password: %s"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:968 App/Shared/Helpers/db.php:1071
+#, php-format
+msgid ""
+"If you have any problems, please contact us at <a href=\"mailto:%s\">%s</a>."
+msgstr ""
+
+#: App/Shared/Helpers/db.php:975
+msgid "New Account"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:983
+#, php-format
+msgid "[%s] New Account"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:1061
+#, php-format
+msgid "Your password has been reset for %s: "
+msgstr ""
+
+#: App/Shared/Helpers/db.php:1078 App/Shared/Helpers/user.php:1612
+msgid "Password Reset"
+msgstr ""
+
+#: App/Shared/Helpers/db.php:1086
+#, php-format
+msgid "[%s] Password Reset"
+msgstr ""
+
+#: App/Shared/Helpers/hook.php:121
+msgid "Powered by"
+msgstr ""
+
+#: App/Shared/Helpers/hook.php:122
+msgid "Devflow"
+msgstr ""
+
+#: App/Shared/Helpers/hook.php:139 App/Shared/Helpers/hook.php:153
+msgid "Dev"
+msgstr ""
+
+#: App/Shared/Helpers/hook.php:139 App/Shared/Helpers/hook.php:153
+msgid "flow"
+msgstr ""
+
+#: App/Shared/Helpers/hook.php:777
+msgid ""
+"Your system is currently in `dev` mode. Please remember to set your system "
+"to `prod` mode after testing. When `prod` mode is set, this warning message "
+"will disappear."
+msgstr ""
+
+#: App/Shared/Helpers/product.php:1598 App/Shared/Helpers/product.php:2179
+msgid "Invalid product id."
+msgstr ""
+
+#: App/Shared/Helpers/product.php:1731
+msgid "Product author cannot be null or empty."
+msgstr ""
+
+#: App/Shared/Helpers/product.php:1865
+msgid "The title and product are null."
+msgstr ""
+
+#: App/Shared/Helpers/product.php:2013
+msgid "Could not insert product into the product table."
+msgstr ""
+
+#: App/Shared/Helpers/product.php:2062
+msgid "Could not update product within the product table."
+msgstr ""
+
+#: App/Shared/Helpers/site.php:607 App/Shared/Helpers/site.php:1058
+msgid "The ID of this entity is invalid."
+msgstr ""
+
+#: App/Shared/Helpers/site.php:689
+msgid "Sorry, that site already exists!"
+msgstr ""
+
+#: App/Shared/Helpers/site.php:790
+msgid "Sorry, that site domain and path is already used."
+msgstr ""
+
+#: App/Shared/Helpers/site.php:1120
+msgid "Site does not exist."
+msgstr ""
+
+#: App/Shared/Helpers/site.php:1204
+msgid "You are not allowed to delete the super administrator account."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:751 App/Shared/Helpers/user.php:1233
+#: App/Shared/Helpers/user.php:1240
+msgid "Invalid user id."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:812
+msgid "Cannot create a user with an empty username."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:817
+msgid "Username must be at least 3 characters long."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:822
+msgid "Username may not be longer than 60 characters."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:828
+msgid "Sorry, that username cannot be used."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:843
+#, php-format
+msgid "Sorry, the username <strong>%s</strong> is not allowed."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:884
+msgid "Sorry, that email address cannot be used."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1597
+#, php-format
+msgid ""
+"Hello %s! You requested that your password be reset. Please see your new "
+"password below: <br />"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1605
+#, php-format
+msgid ""
+"If you still have problems with logging in, please contact us at <a "
+"href=\"mailto:%s\">%s</a>."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1621
+#, php-format
+msgid "[%s] Notice of Password Reset"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1665
+#, php-format
+msgid ""
+"Hello %s! This is confirmation that your password on %s was updated to: <br /"
+">"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1674
+#, php-format
+msgid ""
+"If you did not initiate a password change/update, please contact us at <a "
+"href=\"mailto:%s\">%s</a>."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1681
+msgid "Notice of Password Change"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1690
+#, php-format
+msgid "[%s] Notice of Password Change"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1733
+#, php-format
+msgid ""
+"Hello %s! This is confirmation that your email on %s was updated to: <br />"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1739
+#, php-format
+msgid "Email: %s"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1742
+#, php-format
+msgid ""
+"If you did not initiate an email change/update, please contact us at <a "
+"href=\"mailto:%s\">%s</a>."
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1749
+msgid "Notice of Email Change"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1758
+#, php-format
+msgid "[%s] Notice of Email Change"
+msgstr ""
+
+#: App/Shared/Helpers/user.php:1910
+msgid "The password reset email has been queued for sending."
+msgstr ""
+
+#: App/Shared/Services/Parsecode.php:118 App/Shared/Services/Parsecode.php:150
+msgid "Invalid parsecode name: empty name given."
+msgstr ""
+
+#: App/Shared/Services/Parsecode.php:125
+#, php-format
+msgid ""
+"Invalid parsecode name: %s. Do not use spaces or reserved characters: & / < "
+"> [ ]"
+msgstr ""
+
+#: Cms/Http/Middleware/RestApiMiddleware.php:51
+msgid "Unauthorized."
+msgstr ""
