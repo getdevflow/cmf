@@ -102,7 +102,7 @@ function add_query_arg(string $key, string $value, string $url): string
     if ($uri['host']) {
         $result .= '//' . $uri['host'];
     }
-    if ($uri['port']) {
+    if (isset($uri['port'])) {
         $result .= Filter::getInstance()->applyFilter('query_arg_port', ':' . $uri['port']);
     }
     if ($uri['path']) {
