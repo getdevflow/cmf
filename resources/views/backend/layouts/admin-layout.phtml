@@ -89,7 +89,7 @@ $option = Options::factory();
                 <span class="logo-lg"><?= get_logo_large(); ?></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top">
+            <nav class="navbar navbar-static-top default-navbar">
                 <!-- Sidebar toggle button-->
                 <!--<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                       <span class="sr-only"><?=esc_html__(string: 'Toggle navigation', domain: 'devflow');?></span>
@@ -123,7 +123,7 @@ $option = Options::factory();
                                         </div>
                                     <?php endif; ?>
                                     <div class="pull-right">
-                                        <a href="<?= admin_url('logout/'); ?>?redirect_to=<?=login_url();?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Logout', domain: 'devflow');?></a>
+                                        <a href="<?= admin_url('logout/'); ?>?redirect_to=<?=admin_url('login/');?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Logout', domain: 'devflow');?></a>
                                     </div>
                                 </li>
                             </ul>
@@ -319,12 +319,21 @@ $option = Options::factory();
     <script src="static/assets/js/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
     <script src="static/assets/js/pages/datatable.js" type="text/javascript"></script>
     <script>
-        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
         elems.forEach(function (html) {
-            var switchery = new Switchery(html, {size: 'small', secondaryColor: '#ee0000'});
+            let switchery = new Switchery(html, {size: 'small', secondaryColor: '#ee0000'});
         });
     </script>
 
-    <?php admin_footer(); ?>
+    <?php
+
+    admin_footer();
+
+    /**
+     * Fires after Devflow has finished loading.
+     */
+    Action::getInstance()->doAction('init');
+    ?>
+
     </body>
     </html>

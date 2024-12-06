@@ -41,8 +41,6 @@ try {
     $app->alias(Database::class, NativePdoDatabase::class);
     $app->share(nameOrInstance: $app);
 
-    \Qubus\EventDispatcher\ActionFilter\Action::getInstance()->doAction('init');
-
     return $app;
 } catch (TypeException | \Qubus\Exception\Exception $e) {
     return $e->getMessage();
