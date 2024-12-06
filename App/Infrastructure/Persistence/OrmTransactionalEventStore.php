@@ -114,9 +114,7 @@ final class OrmTransactionalEventStore implements TransactionalEventStore
     {
         $query = $this->dfdb->qb()->table(tableName: $this->dfdb->basePrefix . 'event_store')
         ->select(columns: '*')
-        ->where(condition: 'aggregate_id', parameters: (string) $aggregateId)
-        ->and__()
-        ->where('site', $this->dfdb->prefix);
+        ->where(condition: 'aggregate_id', parameters: (string) $aggregateId);
 
         return $this->eventStream($query, $aggregateId);
     }
