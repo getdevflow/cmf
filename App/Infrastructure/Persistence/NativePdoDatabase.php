@@ -437,11 +437,13 @@ final class NativePdoDatabase implements Database
     }
 
     /**
+     * @param null $log
+     * @throws Exception
      * @throws ReflectionException
      */
     private function logPreparedStmt($log = null): void
     {
-        if (env('APP_DEBUG') === 'true') {
+        if ($this->configContainer->getConfigKey(key: 'app.debug') === true) {
             FileLoggerFactory::getLogger()->error(
                 sprintf(
                     'SQLQUERY[]: %s',
