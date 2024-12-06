@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow\n"
-"POT-Creation-Date: 2024-12-06 11:02-0800\n"
+"POT-Creation-Date: 2024-12-06 11:30-0800\n"
 "PO-Revision-Date: 2024-11-29 13:36-0800\n"
 "Last-Translator: \n"
 "Language-Team: https://nomadicjosh.com/\n"
@@ -203,11 +203,11 @@ msgstr ""
 
 #: App/Infrastructure/Http/Controllers/AdminAuthController.php:219
 msgid ""
-"A new password was sent to your email. May take a few minutes to arrive, \n"
-"                                so please be patient"
+"A new password was sent to your email. May take a few minutes to arrive, so "
+"please be patient"
 msgstr ""
 
-#: App/Infrastructure/Http/Controllers/AdminAuthController.php:231
+#: App/Infrastructure/Http/Controllers/AdminAuthController.php:230
 msgid "Password reset exception occurred and was logged."
 msgstr ""
 
@@ -772,9 +772,8 @@ msgstr ""
 #: App/Shared/Helpers/hook.php:777
 msgid ""
 "Your system is currently in `dev` mode. Please remember to set your system "
-"to `prod` \n"
-"            mode after testing. When `prod` mode is set, this warning "
-"message will disappear."
+"to `prod` mode after testing. When `prod` mode is set, this warning message "
+"will disappear."
 msgstr ""
 
 #: App/Shared/Helpers/product.php:1598 App/Shared/Helpers/product.php:2179

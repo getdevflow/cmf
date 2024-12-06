@@ -216,8 +216,7 @@ final class AdminAuthController extends BaseController
                 } else {
                     Devflow::inst()::$APP->flash->success(
                         message: t__(
-                            msgid: 'A new password was sent to your email. May take a few minutes to arrive, 
-                                so please be patient',
+                            msgid: 'A new password was sent to your email. May take a few minutes to arrive, so please be patient',
                             domain: 'devflow'
                         )
                     );
