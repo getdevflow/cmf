@@ -107,7 +107,7 @@ return [
     | application.
     */
     'base_middlewares' => [
-
+        'security.headers'
     ],
 
     /*

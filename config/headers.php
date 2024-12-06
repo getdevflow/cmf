@@ -86,7 +86,7 @@ return [
     |                  'strict-origin-when-cross-origin', 'unsafe-url'
     |--------------------------------------------------------------------------
     */
-    'referrer-policy' => 'no-referrer',
+    'referrer-policy' => 'same-origin',
 
     /*
     |--------------------------------------------------------------------------
@@ -113,7 +113,7 @@ return [
     | Available Value: 'same-site', 'same-origin', 'cross-origin'
     |--------------------------------------------------------------------------
     */
-    'cross-origin-resource-policy' => 'cross-origin',
+    'cross-origin-resource-policy' => 'same-origin',
 
     /*
     |--------------------------------------------------------------------------
@@ -142,13 +142,13 @@ return [
     |--------------------------------------------------------------------------
     */
     'hsts' => [
-        'enable' => false,
+        'enable' => true,
 
         'max-age' => 31536000,
 
-        'include-sub-domains' => false,
+        'include-sub-domains' => true,
 
-        'preload' => false,
+        'preload' => true,
     ],
 
     /*
@@ -157,11 +157,11 @@ return [
     |--------------------------------------------------------------------------
     */
     'expect-ct' => [
-        'enable' => false,
+        'enable' => true,
 
         'max-age' => 2147483648,
 
-        'enforce' => false,
+        'enforce' => true,
 
         // report uri must be absolute-URI
         'report-uri' => null,
@@ -187,27 +187,7 @@ return [
             'origins' => [],
         ],
 
-        'ambient-light-sensor' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'origins' => [],
-        ],
-
         'autoplay' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'origins' => [],
-        ],
-
-        'battery' => [
             'none' => false,
 
             '*' => false,
@@ -247,42 +227,12 @@ return [
             'origins' => [],
         ],
 
-        'document-domain' => [
-            'none' => false,
-
-            '*' => true,
-
-            'self' => false,
-
-            'origins' => [],
-        ],
-
         'encrypted-media' => [
             'none' => false,
 
             '*' => false,
 
             'self' => true,
-
-            'origins' => [],
-        ],
-
-        'execution-while-not-rendered' => [
-            'none' => false,
-
-            '*' => true,
-
-            'self' => false,
-
-            'origins' => [],
-        ],
-
-        'execution-while-out-of-viewport' => [
-            'none' => false,
-
-            '*' => true,
-
-            'self' => false,
 
             'origins' => [],
         ],
@@ -338,16 +288,6 @@ return [
         ],
 
         'midi' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'origins' => [],
-        ],
-
-        'navigation-override' => [
             'none' => false,
 
             '*' => false,
@@ -417,16 +357,6 @@ return [
             'origins' => [],
         ],
 
-        'web-share' => [
-            'none' => false,
-
-            '*' => false,
-
-            'self' => true,
-
-            'origins' => [],
-        ],
-
         'xr-spatial-tracking' => [
             'none' => false,
 
@@ -463,62 +393,50 @@ return [
          */
         'block-all-mixed-content' => false,
 
-        'upgrade-insecure-requests' => false,
+        'upgrade-insecure-requests' => true,
 
         'base-uri' => [
-            //
-        ],
-
-        'child-src' => [
-            //
+            'self' => true,
         ],
 
         'connect-src' => [
-            //
+            'self' => true,
         ],
 
         'default-src' => [
-            //
-        ],
-
-        'font-src' => [
-            //
+            'self' => true,
         ],
 
         'form-action' => [
-            //
-        ],
-
-        'frame-ancestors' => [
-            //
-        ],
-
-        'frame-src' => [
-            //
+            'self' => true,
         ],
 
         'img-src' => [
-            //
-        ],
+            'none' => false,
 
-        'manifest-src' => [
-            //
+            'self' => true,
+
+            'report-sample' => false,
+
+            'allow' => [
+                'gravatar.com',
+                'www.gravatar.com',
+            ],
+
+            'schemes' => [
+                'http:',
+                'https:',
+            ],
+
+            'unsafe-inline' => true,
         ],
 
         'media-src' => [
-            //
+            'self' => true,
         ],
 
         'navigate-to' => [
             'unsafe-allow-redirects' => false,
-        ],
-
-        'object-src' => [
-            //
-        ],
-
-        'prefetch-src' => [
-            //
         ],
 
         'require-trusted-types-for' => [
@@ -528,26 +446,27 @@ return [
         'script-src' => [
             'none' => false,
 
-            'self' => false,
+            'self' => true,
 
             'report-sample' => false,
 
             'allow' => [
-                // 'url',
+                'cdnjs.cloudflare.com',
+                'gitcdn.github.io',
             ],
 
             'schemes' => [
-                // 'data:',
-                // 'https:',
+                'http:',
+                'https:',
             ],
 
             /* The following only work for `script` and `style` related directives. */
 
-            'unsafe-inline' => false,
+            'unsafe-inline' => true,
 
-            'unsafe-eval' => false,
+            //'unsafe-eval' => false,
 
-            'unsafe-hashes' => false,
+            //'unsafe-hashes' => false,
 
             /*
             |------------------------------------------------------------------------------------
@@ -572,24 +491,50 @@ return [
             ],
         ],
 
-        'script-src-attr' => [
-            //
-        ],
+        'font-src' => [
+            'none' => false,
 
-        'script-src-elem' => [
-            //
+            'self' => true,
+
+            'report-sample' => false,
+
+            'allow' => [
+                'cdnjs.cloudflare.com',
+                'fonts.googleapis.com',
+                'gitcdn.github.io',
+                'fonts.gstatic.com',
+                'netdna.bootstrapcdn.com',
+            ],
+
+            'schemes' => [
+                'http:',
+                'https:',
+            ],
+
+            'unsafe-inline' => true,
         ],
 
         'style-src' => [
-            //
-        ],
+            'none' => false,
 
-        'style-src-attr' => [
-            //
-        ],
+            'self' => true,
 
-        'style-src-elem' => [
-            //
+            'report-sample' => false,
+
+            'allow' => [
+                'cdnjs.cloudflare.com',
+                'fonts.googleapis.com',
+                'gitcdn.github.io',
+                'fonts.gstatic.com',
+                'netdna.bootstrapcdn.com',
+            ],
+
+            'schemes' => [
+                'http:',
+                'https:',
+            ],
+
+            'unsafe-inline' => true,
         ],
 
         'trusted-types' => [
@@ -602,10 +547,6 @@ return [
             'policies' => [
                 //
             ],
-        ],
-
-        'worker-src' => [
-            //
         ],
     ],
 ];
