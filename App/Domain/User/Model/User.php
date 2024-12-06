@@ -29,6 +29,30 @@ use function Qubus\Support\Helpers\is_null__;
 use function sprintf;
 use function strtolower;
 
+/**
+ * @property string $id
+ * @property string $login
+ * @property string $token
+ * @property string $fname
+ * @property string $mname
+ * @property string $lname
+ * @property string $email
+ * @property string $pass
+ * @property string $url
+ * @property string $bio
+ * @property string $status
+ * @property string $role
+ * @property string $admin_layout
+ * @property string admin_sidebar
+ * @property string $admin_skin
+ * @property string $timezone
+ * @property string $dateFormat
+ * @property string $timeFormat
+ * @property string locale
+ * @property string $registered
+ * @property string $modified
+ * @property string $activationKey
+ */
 final class User extends stdClass
 {
     public function __construct(protected ?Database $dfdb = null)
@@ -188,8 +212,13 @@ final class User extends stdClass
      */
     public function __get(string $key): string
     {
-        $value = MetaData::factory(Registry::getInstance()->get('tblPrefix') . 'usermeta')
-                ->read('user', $this->id, Registry::getInstance()->get('tblPrefix') . $key, true);
+        if (isset($this->{$key})) {
+            $value = $this->{$key};
+        } else {
+            $value = MetaData::factory(Registry::getInstance()->get('tblPrefix') . 'usermeta')
+                    ->read('user', $this->id, Registry::getInstance()->get('tblPrefix') . $key, true);
+        }
+
         return purify_html($value);
     }
 

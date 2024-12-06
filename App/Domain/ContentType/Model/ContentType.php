@@ -9,6 +9,12 @@ use stdClass;
 
 use function get_object_vars;
 
+/**
+ * @property string $id
+ * @property string $title
+ * @property string $slug
+ * @property string $description
+ */
 final class ContentType extends stdClass
 {
     use HydratorAware;

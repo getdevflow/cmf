@@ -24,6 +24,27 @@ use function Qubus\Security\Helpers\purify_html;
 use function Qubus\Support\Helpers\convert_array_to_object;
 use function Qubus\Support\Helpers\is_null__;
 
+/**
+ * @property string $id
+ * @property string $title
+ * @property string $slug
+ * @property string $body
+ * @property string $author
+ * @property string $type
+ * @property string $parent
+ * @property string $sidebar
+ * @property string $showInMenu
+ * @property string $showInSearch
+ * @property string $relativeUrl
+ * @property string $featuredImage
+ * @property string $status
+ * @property string $created
+ * @property string $createdGmt
+ * @property string published
+ * @property string $publishedGmt
+ * @property string $modified
+ * @property string $modifiedGmt
+ */
 final class Content extends stdClass
 {
     use HydratorAware;
@@ -216,7 +237,7 @@ final class Content extends stdClass
                     ->read('content', $this->id, Registry::getInstance()->get('tblPrefix') . $key, true);
         }
 
-        return esc_html($value);
+        return purify_html($value);
     }
 
     /**
@@ -286,6 +307,8 @@ final class Content extends stdClass
      */
     public function toArray(): array
     {
+        unset($this->dfdb);
+
         return get_object_vars($this);
     }
 }

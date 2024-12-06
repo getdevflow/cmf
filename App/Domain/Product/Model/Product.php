@@ -23,6 +23,27 @@ use function Qubus\Security\Helpers\purify_html;
 use function Qubus\Support\Helpers\convert_array_to_object;
 use function Qubus\Support\Helpers\is_null__;
 
+/**
+ * @property string $id
+ * @property string $title
+ * @property string $slug
+ * @property string $body
+ * @property string $author
+ * @property string $sku
+ * @property string $price
+ * @property string $currency
+ * @property string $purchaseUrl
+ * @property string $showInMenu
+ * @property string $showInSearch
+ * @property string $featuredImage
+ * @property string $status
+ * @property string $created
+ * @property string $createdGmt
+ * @property string $published
+ * @property string $publishedGmt
+ * @property string $modified
+ * @property string $modifiedGmt
+ */
 final class Product extends stdClass
 {
     use HydratorAware;
@@ -269,6 +290,8 @@ final class Product extends stdClass
      */
     public function toArray(): array
     {
+        unset($this->dfdb);
+
         return get_object_vars($this);
     }
 }
