@@ -199,6 +199,7 @@ final class AdminContentController extends BaseController
         }
 
         $dataArrayMerge = array_merge(['id' => $contentId], $request->getParsedBody());
+        $type = $request->getParsedBody()['type'];
 
         try {
             $id = cms_update_content($dataArrayMerge);
@@ -224,7 +225,7 @@ final class AdminContentController extends BaseController
             );
         }
 
-        return $this->redirect(admin_url(path: "content-type/{$contentTypeSlug}/{$contentId}/"));
+        return $this->redirect(admin_url(path: "content-type/{$type}/{$contentId}/"));
     }
 
     /**
