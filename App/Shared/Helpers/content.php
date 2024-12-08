@@ -528,6 +528,7 @@ function content_status_label(string $status): string
     $label = [
         'published' => 'label-success',
         'draft' => 'label-warning',
+        'pending' => 'label-default',
         'archived' => 'label-danger'
     ];
 
