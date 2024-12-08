@@ -28,7 +28,7 @@ final class ProductModifiedGmtWasChanged extends AggregateChanged
         $event = self::occur(
             aggregateId: $productId,
             payload: [
-                'product_modified_gmt' => $productModifiedGmt
+                'product_modified_gmt' => (string) $productModifiedGmt
             ],
             metadata: [
                 Metadata::AGGREGATE_TYPE => 'product',
