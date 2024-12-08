@@ -49,6 +49,7 @@ use Qubus\Exception\Data\TypeException;
 use Qubus\Exception\Exception;
 use Qubus\Http\Session\SessionException;
 use Qubus\NoSql\NodeQ;
+use Qubus\Support\DateTime\QubusDateTimeImmutable;
 use Qubus\Support\Inflector;
 use ReflectionException;
 
@@ -532,19 +533,14 @@ function if_content_type_exists(string $contentType): bool
  * @file App/Shared/Helpers/db.php
  * @param string $userId ID of user being removed.
  * @param string $assignId ID of user to whom content will be assigned.
- * @param string $contentId ID of the content.
  * @return bool
- * @throws CommandPropertyNotFoundException
  * @throws ContainerExceptionInterface
  * @throws Exception
  * @throws NotFoundExceptionInterface
  * @throws ReflectionException
  * @throws SessionException
- * @throws TypeException
- * @throws CommandCouldNotBeHandledException
- * @throws UnresolvableCommandHandlerException
  */
-function reassign_content(string $userId, string $assignId, string $contentId): bool
+function reassign_content(string $userId, string $assignId): bool
 {
     $dfdb = dfdb();
 
@@ -573,22 +569,14 @@ function reassign_content(string $userId, string $assignId, string $contentId): 
     if ($count > 0) {
         try {
 
-            $resolver = new NativeCommandHandlerResolver(
-                container: ContainerFactory::make(config: config(key: 'commandbus.container'))
-            );
-            $odin = new Odin(bus: new SynchronousCommandBus($resolver));
-
-            $command = new UpdateContentAuthorCommand([
-                'contentId' => ContentId::fromString($contentId),
-                'contentAuthor' => UserId::fromString($assignId),
-                'contentModified' => (new DateTime(time: 'now', timezone: config(key: 'app.timezone'))),
-                'contentModifiedGmt' => (new DateTime())->gmtdate(),
-            ]);
-
-            $odin->execute($command);
+            $dfdb->qb()->transactional(function () use ($dfdb, $userId, $assignId) {
+                $dfdb->qb()->table(tableName: $dfdb->prefix . 'content')
+                    ->where(condition: 'content_author', parameters: $userId)
+                    ->update(data: ['content_author' => $assignId]);
+            });
 
             return true;
-        } catch (PDOException $e) {
+        } catch (PDOException | \Exception $e) {
             Devflow::inst()::$APP->flash->error(
                 sprintf(
                     esc_html__(
@@ -659,9 +647,9 @@ function reassign_sites(string $userId, array $params = []): bool
             $odin = new Odin(bus: new SynchronousCommandBus($resolver));
 
             $command = new UpdateSiteOwnerCommand([
-                'siteId' => SiteId::fromString($params['siteId']),
-                'siteOwner' => UserId::fromString($params['assignId']),
-                'siteModified' => (new DateTime(time: 'now', timezone: config(key: 'app.timezone'))),
+                'siteId' => SiteId::fromString($params['site_id']),
+                'siteOwner' => UserId::fromString($params['assign_id']),
+                'siteModified' => QubusDateTimeImmutable::now(Options::factory()->read(optionKey: 'site_timezone')),
             ]);
 
             $odin->execute($command);

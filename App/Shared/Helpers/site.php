@@ -59,6 +59,7 @@ use Qubus\ValueObjects\Identity\Ulid;
 use Qubus\ValueObjects\StringLiteral\StringLiteral;
 use ReflectionException;
 
+use function array_merge;
 use function Codefy\Framework\Helpers\app;
 use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\public_path;
@@ -1182,6 +1183,7 @@ function cms_delete_site(string $siteId): Error|string
  * @throws SessionException
  * @throws TypeException
  * @throws UnresolvableQueryHandlerException
+ * @throws \Exception
  */
 function cms_delete_site_user(string $userId, array $params = []): Error|bool
 {
@@ -1201,7 +1203,7 @@ function cms_delete_site_user(string $userId, array $params = []): Error|bool
     if ($user->role === 'super') {
         Codefy::$PHP->flash->error(
             esc_html__(
-                string: 'You are not allowed to delete the super administrator account.',
+                string: 'You are not allowed to delete a super administrator account.',
                 domain: 'devflow'
             )
         );
@@ -1224,35 +1226,38 @@ function cms_delete_site_user(string $userId, array $params = []): Error|bool
         if (!empty($sites)) {
             foreach ($sites as $site) {
                 SimpleCacheObjectCacheFactory::make(namespace: 'sites')->delete(key: md5($site->id));
+
                 add_user_to_site($params['assign_id'], $site->id, $params['role']);
+
+                $params = array_merge(['site_id' => $site->id], $params);
+
+                /**
+                 * Sites will be reassigned before the user is deleted.
+                 *
+                 * @file App/Shared/Helpers/site.php
+                 * @param string $userId  ID of user to be deleted.
+                 * @param array $params   User and site parameters (assign_id, role and site_id).
+                 */
+                Action::getInstance()->doAction('reassign_sites', $userId, $params);
             }
-            /**
-             * Sites will be reassigned before the user is deleted.
-             *
-             * @file App/Shared/Helpers/site.php
-             * @param string $userId  ID of user to be deleted.
-             * @param array $params   User parameters (assign_id and role).
-             */
-            $params = Filter::getInstance()->applyFilter('reassign_sites', $userId, $params);
         }
     } else {
         if (!empty($sites)) {
-            foreach ($sites as $oldSite) {
-                try {
-                    $dfdb->qb()->transactional(function () use ($dfdb, $userId) {
-                        $dfdb->qb()
+
+            try {
+                $dfdb->qb()->transactional(function () use ($dfdb, $userId) {
+                    $dfdb->qb()
                             ->table(tableName: $dfdb->basePrefix . 'site')
                             ->where(condition: 'site_owner = ?', parameters: $userId)
                             ->delete();
-                    });
-                } catch (PDOException $e) {
-                    return new SiteError($e->getCode(), $e->getMessage());
-                }
+                });
+            } catch (PDOException $e) {
+                return new SiteError($e->getCode(), $e->getMessage());
+            }
 
+            foreach ($sites as $oldSite) {
                 $site = new Site((array) $oldSite);
-
                 SimpleCacheObjectCacheFactory::make(namespace: 'sites')->delete(key: md5($site->id));
-
                 /**
                  * Action hook triggered after the site is deleted.
                  *
@@ -1274,7 +1279,7 @@ function cms_delete_site_user(string $userId, array $params = []): Error|bool
     Action::getInstance()->doAction('delete_site_user', $userId, $params);
 
     /**
-     * Finally delete the user.
+     * Finally delete the user and metadata.
      */
     try {
         $dfdb->qb()->transactional(function () use ($dfdb, $userId) {

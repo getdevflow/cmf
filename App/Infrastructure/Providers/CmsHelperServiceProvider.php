@@ -79,6 +79,8 @@ final class CmsHelperServiceProvider extends CodefyServiceProvider
         Action::getInstance()->addAction('deleted_site', 'App\Shared\Helpers\delete_site_tables', 5, 2);
         Action::getInstance()->addAction('deleted_site', 'App\Shared\Helpers\delete_site_directories', 5, 2);
         Action::getInstance()->addAction('reset_password_route', 'App\Shared\Helpers\send_reset_password_email', 5, 2);
+        Action::getInstance()->addAction('reassign_content', 'App\Shared\Helpers\reassign_content', 5, 2);
+        Action::getInstance()->addAction('reassign_sites', 'App\Shared\Helpers\reassign_sites', 5, 2);
         Action::getInstance()->addAction(
             'password_change_email',
             'App\Shared\Helpers\send_password_change_email',
@@ -106,8 +108,7 @@ final class CmsHelperServiceProvider extends CodefyServiceProvider
         );
         Filter::getInstance()->addFilter('cms_authenticate_user', '\App\Shared\Helpers\cms_authenticate', 5, 3);
         Filter::getInstance()->addFilter('cms_auth_cookie', '\App\Shared\Helpers\cms_set_auth_cookie', 5, 2);
-        Filter::getInstance()->addFilter('reassign_posts', 'App\Shared\Helpers\reassign_posts', 5, 2);
-        Filter::getInstance()->addFilter('reassign_sites', 'App\Shared\Helpers\reassign_sites', 5, 2);
+
         Filter::getInstance()->addFilter(
             'mail.xmailer',
             fn() => sprintf(esc_html__(string: 'Devflow %s', domain: 'devflow'), Devflow::inst()->release()),
