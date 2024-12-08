@@ -3,5 +3,10 @@
     "language": "en",
     "english_name": "English",
     "native_name": "English (US)"
+  },
+  {
+    "language": "es",
+    "english_name": "Spanish",
+    "native_name": "Español"
   }
 ]
