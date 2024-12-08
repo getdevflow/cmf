@@ -64,7 +64,7 @@ final class SiteWasCreated extends AggregateChanged
                 'site_path' => $sitePath->toNative(),
                 'site_owner' => $siteOwner->toNative(),
                 'site_status' => $siteStatus->toNative(),
-                'site_registered' => $siteRegistered,
+                'site_registered' => (string) $siteRegistered,
             ],
             metadata: [
                 Metadata::AGGREGATE_TYPE => 'site',

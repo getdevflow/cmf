@@ -29,7 +29,7 @@ final class SiteWasModified extends AggregateChanged
         $event = self::occur(
             aggregateId: $siteId,
             payload: [
-                    'site_modified' => $siteModified,
+                    'site_modified' => (string) $siteModified,
                 ],
             metadata: [
                     Metadata::AGGREGATE_TYPE => 'site'
