@@ -607,41 +607,44 @@ final class AdminUserController extends BaseController
                     'id' => get_current_user_id(),
                     'token' => get_userdata(get_current_user_id())->token,
                     'remember' => 'yes',
-                    'exp' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime') ?? 86400 + time()
+                    'exp' => (int) $this->configContainer->getConfigKey(
+                        key: 'cookies.lifetime',
+                        default: 86400
+                    ) + time()
                 ];
 
                 $cookies->setSecureCookie($switchCookie);
-            }
 
-            $vars = [];
-            parse_str($cookies->get('USERCOOKIEID'), $vars);
+                $vars = [];
+                parse_str($cookies->get('USERCOOKIEID'), $vars);
 
-            /**
-             * Checks to see if the cookie exists on the server.
-             * If it exists, we need to delete it.
-             */
-            $file = storage_path('app/cookies/cookie.' . $vars['data']);
-            if (file_exists($file)) {
-                unlink($file);
+                /**
+                 * Checks to see if the cookie exists on the server.
+                 * If it exists, we need to delete it.
+                 */
+                $file = storage_path('app/cookies/cookie.' . $vars['data']);
+                if (file_exists($file)) {
+                    unlink($file);
+                }
+                /**
+                 * Delete the old cookies.
+                 */
+                $cookies->remove('USERCOOKIEID');
             }
-            /**
-             * Delete the old cookies.
-             */
-            $cookies->remove('USERCOOKIEID');
 
             $authCookie = [
                 'key' => 'USERCOOKIEID',
                 'id' => $userId,
                 'token' => get_user_value($userId, 'token'),
                 'remember' => 'yes',
-                'exp' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime') ?? 86400 + time()
+                'exp' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime', default: 86400) + time()
             ];
 
             $cookies->setSecureCookie($authCookie);
 
             $this->sessionService::$options = [
-                    'cookie-name' => 'USERSESSID',
-                    'cookie-lifetime' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime') ?? 86400,
+                'cookie-name' => 'USERSESSID',
+                'cookie-lifetime' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime', default: 86400)
             ];
             $session = $this->sessionService->makeSession($request);
 
@@ -714,6 +717,21 @@ final class AdminUserController extends BaseController
             }
             $cookies->remove('USERCOOKIEID');
 
+            /**
+             * After the login as user cookies has been
+             * removed from the server and the browser,
+             * we need to set fresh cookies for the
+             * original logged-in user.
+             */
+            $switchCookie = [
+                'key' => 'USERCOOKIEID',
+                'id' => $userId,
+                'token' => get_user_value($userId, 'token'),
+                'remember' => 'yes',
+                'exp' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime', default: 86400) + time()
+            ];
+            $cookies->setSecureCookie($switchCookie);
+
             $vars2 = [];
             parse_str($cookies->get('SWITCH_USERBACK'), $vars2);
             /**
@@ -726,24 +744,12 @@ final class AdminUserController extends BaseController
             }
             $cookies->remove('SWITCH_USERBACK');
 
-            /**
-             * After the login as user cookies has been
-             * removed from the server and the browser,
-             * we need to set fresh cookies for the
-             * original logged-in user.
-             */
-            $switchCookie = [
-                'key' => 'USERCOOKIEID',
-                'id' => $userId,
-                'token' => get_user_value($userId, 'token'),
-                'remember' => 'yes',
-                'exp' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime') ?? 86400 + time()
-            ];
-            $cookies->setSecureCookie($switchCookie);
-
             $this->sessionService::$options = [
                 'cookie-name' => 'USERSESSID',
-                'cookie-lifetime' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime') ?? 86400,
+                'cookie-lifetime' => (int) $this->configContainer->getConfigKey(
+                    key: 'cookies.lifetime',
+                    default: 86400
+                )
             ];
             $session = $this->sessionService->makeSession($request);
 

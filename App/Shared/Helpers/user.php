@@ -352,15 +352,29 @@ function email_exists(string $email): false|string
  *
  * @file App/Shared/Helpers/user.php
  * @param string $status
- * @return string User's status
+ * @return array User's status
  * @throws Exception
  * @throws ReflectionException
  */
-function user_status_label(string $status): string
+function user_status_label(string $status): array
 {
     $label = [
-        'A' => 'label-success',
-        'I' => 'label-danger'
+        'A' => [
+            esc_html__(string: 'Active', domain: 'devflow'),
+            'label-success'
+        ],
+        'I' => [
+            esc_html__(string: 'Inactive', domain: 'devflow'),
+            'label-warning'
+        ],
+        'B' => [
+            esc_html__(string: 'Blocked', domain: 'devflow'),
+            'label-default'
+        ],
+        'S' => [
+            esc_html__(string: 'Spammer', domain: 'devflow'),
+            'label-danger'
+        ]
     ];
 
     /**
@@ -1388,34 +1402,34 @@ function cms_delete_user(string $userId, ?string $assignId = null): bool
 
     if (!is_null__($cleanAssignId) && 'null' !== $cleanAssignId) {
         /**
-         * Filter hook is triggered when assign_id is greater than zero.
+         * Action hook is triggered when assign_id is present and not null.
          *
-         * Posts will be reassigned before the user is deleted.
+         * Content will be reassigned before the user is deleted.
          *
          * @file App/Shared/Helpers/user.php
          * @param string $userId   ID of user to be deleted.
-         * @param string $assignId ID of user to reassign posts to.
-         *                       Default: NULL.
+         * @param string $assignId ID of user to reassign content to.
+         *                         Default: NULL.
          */
-        Filter::getInstance()->applyFilter('reassign_posts', $userId, $assignId);
+        Action::getInstance()->doAction('reassign_content', $userId, $assignId);
     }
 
     /**
      * Action hook fires immediately before a user is deleted from the user meta table.
      *
      * @file App/Shared/Helpers/user.php
-     * @param string      $userId  ID of the user to delete.
+     * @param string      $userId   ID of the user to delete.
      * @param string|null $reassign ID of the user to reassign posts to.
      *                              Default: NULL.
      */
     Action::getInstance()->doAction('cms_delete_user', $userId, $assignId);
 
-    $resolver = new NativeCommandHandlerResolver(
-        container: ContainerFactory::make(config: config(key: 'commandbus.container'))
-    );
-    $odin = new Odin(bus: new SynchronousCommandBus($resolver));
-
     try {
+        $resolver = new NativeCommandHandlerResolver(
+            container: ContainerFactory::make(config: config(key: 'commandbus.container'))
+        );
+        $odin = new Odin(bus: new SynchronousCommandBus($resolver));
+
         $command = new DeleteUserCommand([
             'id' => UserId::fromString($userId),
         ]);

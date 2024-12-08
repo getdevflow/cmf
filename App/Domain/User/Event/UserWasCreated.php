@@ -83,7 +83,7 @@ class UserWasCreated extends AggregateChanged
                 'user_date_format' => $dateFormat->toNative(),
                 'user_time_format' => $timeFormat->toNative(),
                 'user_locale' => $locale->toNative(),
-                'user_registered' => $registered,
+                'user_registered' => (string) $registered,
                 'meta' => $meta->toNative(),
             ],
             metadata: [

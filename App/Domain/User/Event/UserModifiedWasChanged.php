@@ -29,7 +29,7 @@ class UserModifiedWasChanged extends AggregateChanged
         $event = self::occur(
             aggregateId: $userId,
             payload: [
-                'user_modified' => $userModified
+                'user_modified' => (string) $userModified
             ],
             metadata: [
                 Metadata::AGGREGATE_TYPE => 'user'

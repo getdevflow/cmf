@@ -52,6 +52,9 @@ class UserMetaWasChanged extends AggregateChanged
         return $this->userId;
     }
 
+    /**
+     * @throws TypeException
+     */
     public function usermeta(): ArrayLiteral
     {
         if (is_null__($this->meta)) {

@@ -5,7 +5,6 @@
 
 use App\Application\Devflow;
 use App\Shared\Services\Registry;
-
 use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\admin_url;
@@ -67,8 +66,9 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                 <td class="text-center"><?= $user['fname']; ?></td>
                                 <td class="text-center"><?= $user['lname']; ?></td>
                                 <td class="text-center">
-                                    <span class="label <?= user_status_label(get_user_option('status', $user['id'])); ?>" style="font-size:1em;font-weight: bold;">
-                                        <?= (get_user_option('status', $user['id']) === 'A' ? esc_html__(string: 'Active', domain: 'devflow') : esc_html__(string: 'Inactive', domain: 'devflow')); ?>
+                                    <?php $status = user_status_label(get_user_option('status', $user['id'])); ?>
+                                    <span class="label <?= $status[1]; ?>" style="font-size:1em;font-weight: bold;">
+                                        <?=$status[0];?>
                                     </span>
                                 </td>
                                 <td class="text-center"><?= get_user_option('role', $user['id']);?></td>
