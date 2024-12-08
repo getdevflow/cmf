@@ -27,15 +27,17 @@ class DatabaseServiceProvider extends CodefyServiceProvider
         /** @var Database $database */
         $database = $this->codefy->make(Database::class);
 
-        Filter::getInstance()->removeFilter('core_locale', function ($locale) {
-            return '';
-        });
+        if (!$this->codefy->isRunningInConsole()) {
+            Filter::getInstance()->removeFilter('core_locale', function ($locale) {
+                return '';
+            });
 
-        Filter::getInstance()->addFilter('core_locale', function ($locale) use ($database) {
-            $sql = "SELECT option_value FROM {$database->prefix}option WHERE option_key = 'site_locale' LIMIT 1";
-            $locale = $database->getVar($sql);
-            return $locale;
-        });
+            Filter::getInstance()->addFilter('core_locale', function ($locale) use ($database) {
+                $sql = "SELECT option_value FROM {$database->prefix}option WHERE option_key = 'site_locale' LIMIT 1";
+                $locale = $database->getVar($sql);
+                return $locale;
+            });
+        }
 
         load_default_textdomain(domain: 'devflow', path: base_path('locale/'));
 
