@@ -91,10 +91,12 @@ Registry::getInstance()->{'set'}('screen_child', 'content');
                                     <!-- /.modal -->
                                 </td>
                                 <td>
-                                    <?php if ($content['author'] === get_current_user_id()) : ?>
+                                    <?php if (isset($content['author']) && $content['author'] === get_current_user_id()) : ?>
                                         <a href="<?= admin_url('user/profile/'); ?>"><?= get_name($content['author'], true); ?></a>
-                                    <?php else : ?>
+                                    <?php elseif(isset($content['author']) && !is_null__($content['author'])) : ?>
                                         <a href="<?= admin_url(sprintf('user/%s/', $content['author'])); ?>"><?= get_name($content['author'], true); ?></a>
+                                    <?php else: ?>
+                                        <p>null</p>
                                     <?php endif; ?>
                                 </td>
                                 <td><?=get_user_datetime($content['published'], 'Y-m-d @ h:i A');?></td>

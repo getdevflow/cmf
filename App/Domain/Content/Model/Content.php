@@ -164,7 +164,7 @@ final class Content extends stdClass
         $content->title = esc_html(string: $data['content_title']) ?? null;
         $content->slug = esc_html(string: $data['content_slug']) ?? null;
         $content->body = purify_html(string: $data['content_body']) ?? null;
-        $content->author = esc_html(string: $data['content_author']) ?? null;
+        $content->author = isset($data['content_author']) ? esc_html(string: $data['content_author']) : null;
         $content->type = esc_html($data['content_type']) ?? null;
         $content->parent = isset($data['content_parent']) ? esc_html(string: $data['content_parent']) : null;
         $content->sidebar = esc_html(string: (string) $data['content_sidebar']) ?? null;

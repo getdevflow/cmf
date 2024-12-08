@@ -100,7 +100,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                                     <select class="form-control select2" name="type" style="width: 100%;" required>
                                         <option>&nbsp;</option>
                                         <?php foreach (get_all_content_types() as $contentType) : ?>
-                                            <option value="<?= $contentType['slug']; ?>"<?= selected($contentType['slug'], $params['type']->slug, false); ?>><?=$params['type']->title;?></option>
+                                            <option value="<?= $contentType['slug']; ?>"<?= selected($contentType['slug'], $params['type']->slug, false); ?>><?=$contentType['title'];?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
