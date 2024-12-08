@@ -308,7 +308,10 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
             return;
         }
 
-        if ($contentParent->equals($this->contentParent)) {
+        if (
+                (!$contentParent->isEmpty() && !is_null__($this->contentParent)) &&
+                $contentParent->equals($this->contentParent)
+        ) {
             return;
         }
         $this->recordApplyAndPublishThat(ContentParentWasChanged::withData($this->contentId, $contentParent));
@@ -323,7 +326,10 @@ final class Content extends EventSourcedAggregate implements AggregateRoot
             return;
         }
 
-        if ($this->contentParent->equals($contentParent ?? new ContentId())) {
+        if (
+                (!is_null__($this->contentParent) && !is_null__($contentParent)) &&
+                (!$contentParent->equals($this->contentParent))
+        ) {
             return;
         }
 

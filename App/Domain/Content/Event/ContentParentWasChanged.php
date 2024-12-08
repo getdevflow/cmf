@@ -57,8 +57,6 @@ final class ContentParentWasChanged extends AggregateChanged
     {
         if (is_null__($this->contentParent)) {
             $this->contentParent = ContentId::fromString($this->payload()['content_parent']);
-        } else {
-            $this->contentParent = ContentId::fromString($this->payload()['content_parent']);
         }
 
         return $this->contentParent;

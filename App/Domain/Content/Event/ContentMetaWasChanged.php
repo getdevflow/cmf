@@ -22,7 +22,7 @@ class ContentMetaWasChanged extends AggregateChanged
 
     public static function withData(
         ContentId $contentId,
-        ArrayLiteral $meta = null
+        ArrayLiteral $meta
     ): ContentMetaWasChanged|DomainEvent|AggregateChanged {
         $event = self::occur(
             aggregateId: $contentId,

@@ -28,7 +28,7 @@ final class ContentModifiedWasChanged extends AggregateChanged
         $event = self::occur(
             aggregateId: $contentId,
             payload: [
-                'content_modified' => $contentModified,
+                'content_modified' => (string) $contentModified,
             ],
             metadata: [
                 Metadata::AGGREGATE_TYPE => 'content',

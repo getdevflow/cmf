@@ -26,7 +26,7 @@ final class ContentTypeWasChanged extends AggregateChanged
         $event = self::occur(
             aggregateId: $contentId,
             payload: [
-                'content_type' => $contentTypeSlug,
+                'content_type' => $contentTypeSlug->toNative(),
             ],
             metadata: [
                 Metadata::AGGREGATE_TYPE => 'content',
@@ -57,9 +57,7 @@ final class ContentTypeWasChanged extends AggregateChanged
     public function contentTypeSlug(): StringLiteral
     {
         if (is_null__($this->contentTypeSlug)) {
-            $this->contentTypeSlug = StringLiteral::fromNative(
-                $this->payload()['content_type']->toNative()
-            );
+            $this->contentTypeSlug = StringLiteral::fromNative($this->payload()['content_type']);
         }
 
         return $this->contentTypeSlug;
