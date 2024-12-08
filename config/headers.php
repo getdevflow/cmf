@@ -421,9 +421,11 @@ return [
             'allow' => [
                 'gravatar.com',
                 'www.gravatar.com',
+                'cdnjs.cloudflare.com/',
             ],
 
             'schemes' => [
+                'data:',
                 'http:',
                 'https:',
             ],
@@ -453,6 +455,8 @@ return [
             'allow' => [
                 'cdnjs.cloudflare.com',
                 'gitcdn.github.io',
+                'code.jquery.com',
+                'stackpath.bootstrapcdn.com'
             ],
 
             'schemes' => [
