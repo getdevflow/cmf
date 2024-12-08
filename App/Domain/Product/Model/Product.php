@@ -157,7 +157,7 @@ final class Product extends stdClass
         $product->title = esc_html(string: $data['product_title']) ?? null;
         $product->slug = esc_html(string: $data['product_slug']) ?? null;
         $product->body = purify_html(string: $data['product_body']) ?? null;
-        $product->author = esc_html(string: $data['product_author']) ?? null;
+        $product->author = isset($data['product_author']) ? esc_html(string: $data['product_author']) : null;
         $product->sku = esc_html((string) $data['product_sku']) ?? null;
         $product->price = esc_html(string: (string) $data['product_price']) ?? null;
         $product->currency = esc_html(string: (string) $data['product_currency']) ?? null;

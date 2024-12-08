@@ -93,10 +93,12 @@ Registry::getInstance()->{'set'}('screen_child', 'products');
                                     <!-- /.modal -->
                                 </td>
                                 <td>
-                                    <?php if ($product['author'] === get_current_user_id()) : ?>
+                                    <?php if (isset($product['author']) && $product['author'] === get_current_user_id()) : ?>
                                         <a href="<?= admin_url('user/profile/'); ?>"><?= get_name($product['author'], true); ?></a>
-                                    <?php else : ?>
+                                    <?php elseif(isset($product['author']) && !is_null__($product['author'])) : ?>
                                         <a href="<?= admin_url(sprintf('user/%s/', $product['author'])); ?>"><?= get_name($product['author'], true); ?></a>
+                                    <?php else: ?>
+                                        <p>null</p>
                                     <?php endif; ?>
                                 </td>
                                 <td><?=get_user_datetime($product['published'], 'Y-m-d @ h:i A');?></td>

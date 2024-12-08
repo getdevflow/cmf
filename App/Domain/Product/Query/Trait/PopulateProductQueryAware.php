@@ -23,7 +23,7 @@ trait PopulateProductQueryAware
             'slug' => esc_html(string: $data['product_slug']) ?? null,
             'title' => esc_html(string: $data['product_title']) ?? null,
             'body' => purify_html($data['product_body']) ?? null,
-            'author' => esc_html(string: $data['product_author']) ?? null,
+            'author' => isset($data['product_author']) ? esc_html(string: $data['product_author']) : null,
             'sku' => isset($data['product_sku']) ? esc_html(string: (string) $data['product_sku']) : null,
             'price' => esc_html(string: (string) $data['product_price']) ?? null,
             'currency' => esc_html(string: (string) $data['product_currency']) ?? null,
