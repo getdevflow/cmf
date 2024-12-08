@@ -9,6 +9,7 @@ use App\Domain\User\Model\User;
 use App\Infrastructure\Persistence\Database;
 use App\Infrastructure\Services\CmsUserSession;
 use App\Infrastructure\Services\NativePhpCookies;
+use App\Infrastructure\Services\Options;
 use App\Infrastructure\Services\UserAuth;
 use Codefy\CommandBus\Exceptions\CommandCouldNotBeHandledException;
 use Codefy\CommandBus\Exceptions\CommandPropertyNotFoundException;
@@ -637,14 +638,14 @@ final class AdminUserController extends BaseController
                 'id' => $userId,
                 'token' => get_user_value($userId, 'token'),
                 'remember' => 'yes',
-                'exp' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime', default: 86400) + time()
+                'exp' => (int) Options::factory()->read('cookieexpire', 172800) + time()
             ];
 
             $cookies->setSecureCookie($authCookie);
 
             $this->sessionService::$options = [
                 'cookie-name' => 'USERSESSID',
-                'cookie-lifetime' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime', default: 86400)
+                'cookie-lifetime' => (int) Options::factory()->read('cookieexpire', 172800)
             ];
             $session = $this->sessionService->makeSession($request);
 
@@ -728,7 +729,7 @@ final class AdminUserController extends BaseController
                 'id' => $userId,
                 'token' => get_user_value($userId, 'token'),
                 'remember' => 'yes',
-                'exp' => (int) $this->configContainer->getConfigKey(key: 'cookies.lifetime', default: 86400) + time()
+                'exp' => (int) Options::factory()->read('cookieexpire', 172800) + time()
             ];
             $cookies->setSecureCookie($switchCookie);
 
@@ -746,10 +747,7 @@ final class AdminUserController extends BaseController
 
             $this->sessionService::$options = [
                 'cookie-name' => 'USERSESSID',
-                'cookie-lifetime' => (int) $this->configContainer->getConfigKey(
-                    key: 'cookies.lifetime',
-                    default: 86400
-                )
+                'cookie-lifetime' => (int) Options::factory()->read('cookieexpire', 172800)
             ];
             $session = $this->sessionService->makeSession($request);
 
