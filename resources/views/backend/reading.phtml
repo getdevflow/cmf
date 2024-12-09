@@ -55,7 +55,7 @@ $option = Options::factory();
                             <div class="box-body">
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Charset', domain: 'devflow'); ?></strong></label>
-                                    <?=cms_charset($option->read('charset', 'utf8'));?>
+                                    <?=cms_charset($option->read('charset', 'utf8', ''));?>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Content per Page', domain: 'devflow'); ?></strong></label>

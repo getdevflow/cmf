@@ -71,7 +71,7 @@ $option = Options::factory();
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Locale', domain: 'devflow'); ?></strong></label>
                                     <select class="form-control select2" name="site_locale" style="width: 100%;" required>
                                         <option>&nbsp;</option>
-                                        <?php cms_dropdown_languages($option->read('site_locale')); ?>
+                                        <?php cms_dropdown_languages($option->read('site_locale', '')); ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -87,7 +87,7 @@ $option = Options::factory();
                                     <select class="form-control select2" name="site_timezone" style="width: 100%;" required>
                                         <option value=""> ------------------------- </option>
                                         <?php foreach (generate_timezone_list() as $k => $v) : ?>
-                                            <option value="<?=$k;?>"<?=selected($option->read('site_timezone'), $k, false); ?>><?=$v;?></option>
+                                            <option value="<?=$k;?>"<?=selected($option->read('site_timezone', ''), $k, false); ?>><?=$v;?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>

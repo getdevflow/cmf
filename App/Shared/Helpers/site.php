@@ -1380,6 +1380,7 @@ function new_site_schema(string $siteId, Site $site, bool $update): bool|string
     $insertData = str_replace('{ulid_10}', Ulid::generateAsString(), $insertData);
     $insertData = str_replace('{ulid_11}', Ulid::generateAsString(), $insertData);
     $insertData = str_replace('{ulid_12}', Ulid::generateAsString(), $insertData);
+    $insertData = str_replace('{ulid_13}', Ulid::generateAsString(), $insertData);
     $insertData = str_replace('{timezone}', config(key: 'app.timezone'), $insertData);
     $insertData = str_replace('{site_prefix}', $sitePrefix, $insertData);
     $insertData = str_replace('{base_prefix}', $basePrefix, $insertData);

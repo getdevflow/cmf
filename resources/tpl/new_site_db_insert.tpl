@@ -77,6 +77,7 @@ CREATE TABLE `{site_prefix}option` (
 
 INSERT INTO `{site_prefix}option` VALUES('{ulid_1}', 'sitename', '{sitename}');
 INSERT INTO `{site_prefix}option` VALUES('{ulid_2}', 'site_description', 'Just another Devflow site');
+INSERT INTO `{site_prefix}option` VALUES('{ulid_13}', 'charset', 'UTF-8');
 INSERT INTO `{site_prefix}option` VALUES('{ulid_3}', 'admin_email', '{admin_email}');
 INSERT INTO `{site_prefix}option` VALUES('{ulid_4}', 'site_locale', 'en');
 INSERT INTO `{site_prefix}option` VALUES('{ulid_5}', 'cookieexpire', '604800');
