@@ -32,6 +32,7 @@ use function in_array;
 use function mt_rand;
 use function ord;
 use function preg_replace_callback;
+use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
 use function Qubus\Security\Helpers\t__;
 use function Qubus\Support\Helpers\is_null__;
@@ -119,7 +120,7 @@ function cms_admin_copyright_footer()
     $copyright = '<!--  Copyright Line -->' . "\n";
     $copyright .= '<strong>&#169; ' . t__(msgid: sprintf('Copyright %s', date('Y')), domain: 'devflow') . ' | ' .
     t__(msgid: 'Powered by', domain: 'devflow') . ' <a href="//getdevflow.com/">' .
-    t__(msgid: 'Devflow', domain: 'devflow') . '</a></strong> ' .
+    esc_html('Devflow') . '</a></strong> ' .
     Devflow::inst()->release() . "\n";
     $copyright .= '<!--  End Copyright Line -->' . "\n";
 
@@ -136,7 +137,7 @@ function cms_admin_copyright_footer()
  */
 function get_logo_large(): string
 {
-    $logo = '<strong>' . t__(msgid: 'Dev', domain: 'devflow') . '</strong>' . t__(msgid: 'flow', domain: 'devflow');
+    $logo = '<strong>' . esc_html('Dev') . '</strong>' . esc_html('flow');
     return Filter::getInstance()->applyFilter('logo_large', $logo);
 }
 
@@ -150,7 +151,7 @@ function get_logo_large(): string
  */
 function get_logo_mini(): string
 {
-    $logo = '<strong>' . t__(msgid: 'Dev', domain: 'devflow') . '</strong>' . t__(msgid: 'flow', domain: 'devflow');
+    $logo = '<strong>' . esc_html('Dev') . '</strong>' . esc_html('flow');
     return Filter::getInstance()->applyFilter('logo_mini', $logo);
 }
 

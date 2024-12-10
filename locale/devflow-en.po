@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow\n"
-"POT-Creation-Date: 2024-12-08 18:09-0800\n"
-"PO-Revision-Date: 2024-12-08 18:09-0800\n"
+"POT-Creation-Date: 2024-12-09 13:53-0800\n"
+"PO-Revision-Date: 2024-12-09 13:53-0800\n"
 "Last-Translator: \n"
 "Language-Team: Joshua Parker\n"
 "Language: en_US\n"
@@ -779,27 +779,12 @@ msgstr ""
 msgid "[%s] Password Reset"
 msgstr ""
 
-#: App/Shared/Helpers/hook.php:121
+#: App/Shared/Helpers/hook.php:122
 #: resources/views/backend/layouts/auth-layout.phtml:43
 msgid "Powered by"
 msgstr ""
 
-#: App/Shared/Helpers/hook.php:122 resources/views/backend/elfinder.phtml:28
-#: resources/views/backend/layouts/admin-layout.phtml:46
-#: resources/views/backend/layouts/auth-layout.phtml:21
-#: resources/views/backend/layouts/auth-layout.phtml:43
-msgid "Devflow"
-msgstr ""
-
-#: App/Shared/Helpers/hook.php:139 App/Shared/Helpers/hook.php:153
-msgid "Dev"
-msgstr ""
-
-#: App/Shared/Helpers/hook.php:139 App/Shared/Helpers/hook.php:153
-msgid "flow"
-msgstr ""
-
-#: App/Shared/Helpers/hook.php:777
+#: App/Shared/Helpers/hook.php:778
 msgid ""
 "Your system is currently in `dev` mode. Please remember to set your system "
 "to `prod` mode after testing. When `prod` mode is set, this warning message "
@@ -1719,6 +1704,12 @@ msgstr ""
 msgid "By clicking \"Reset\" the system will email you a new password."
 msgstr ""
 
+#: resources/views/backend/elfinder.phtml:28
+#: resources/views/backend/layouts/auth-layout.phtml:21
+#: resources/views/backend/layouts/auth-layout.phtml:43
+msgid "Devflow"
+msgstr ""
+
 #: resources/views/backend/general.phtml:63
 msgid "Site Description"
 msgstr ""
@@ -1783,7 +1774,7 @@ msgid "MAIN NAVIGATION"
 msgstr ""
 
 #: resources/views/backend/layouts/admin-layout.phtml:163
-#: resources/views/backend/snapshot.phtml:34
+#: resources/views/backend/snapshot.phtml:35
 msgid "System Report"
 msgstr ""
 
@@ -1832,110 +1823,4 @@ msgstr ""
 
 #: resources/views/backend/reading.phtml:61
 msgid "Content per Page"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:49
-msgid "** DATA **"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:50
-msgid "Site URL:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:51
-msgid "Devflow Release:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:52
-msgid "API Key:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:52
-#: resources/views/backend/snapshot.phtml:73
-msgid "No"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:52
-#: resources/views/backend/snapshot.phtml:73
-msgid "Yes"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:53
-msgid "Active User Count:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:55
-msgid "** CONFIG **"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:56
-msgid "Environment:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:56
-msgid "Production"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:56
-msgid "Development"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:57
-msgid "Base Path:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:59
-msgid "** SERVER DATA **"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:60
-msgid "PHP Version:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:61
-msgid "PHP Handler:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:62
-msgid "Server Software:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:64
-msgid "** PHP CONFIGURATION **"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:65
-msgid "Memory Limit:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:66
-msgid "Upload Max Size:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:67
-msgid "Post Max Size:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:68
-msgid "Max Execution Time:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:69
-msgid "Max Input Vars:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:70
-msgid "Cookie Path:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:71
-msgid "Regular Cookie TTL:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:72
-msgid "Secure Cookie TTL:"
-msgstr ""
-
-#: resources/views/backend/snapshot.phtml:73
-msgid "cURL Enabled:"
 msgstr ""

@@ -16,6 +16,7 @@ use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\storage_path;
+use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -46,31 +47,31 @@ $option = Options::factory();
             <pre>
                 <?php
 
-                $report = "\n\t" . esc_html__(string: '** DATA **', domain: 'devflow') . PHP_EOL . PHP_EOL;
-                $report .= esc_html__(string: 'Site URL:', domain: 'devflow') . "\t\t\t\t\t\t" . site_url() . PHP_EOL;
-                $report .= esc_html__(string: 'Devflow Release:', domain: 'devflow') . "\t\t\t\t\t" . Devflow::inst()->release() . PHP_EOL;
-                $report .= esc_html__(string: 'API Key:', domain: 'devflow') . "\t\t\t\t\t\t" . (preg_match('/\s/', $option->read('api_key')) ? '<span style="color: red; ">' . esc_html__(string: 'No', domain: 'devflow') . '</span>': '<span style="color: green; ">' . esc_html__(string: 'Yes', domain: 'devflow') . '</span>') . PHP_EOL;
-                $report .= esc_html__(string: 'Active User Count:', domain: 'devflow') . "\t\t\t\t\t" . $params['users'] . PHP_EOL;
+                $report = "\n\t" . esc_html(string: '** DATA **'). PHP_EOL . PHP_EOL;
+                $report .= esc_html(string: 'Site URL:'). "\t\t\t\t\t\t" . site_url() . PHP_EOL;
+                $report .= esc_html(string: 'Devflow Release:'). "\t\t\t\t\t" . Devflow::inst()->release() . PHP_EOL;
+                $report .= esc_html(string: 'API Key:'). "\t\t\t\t\t\t" . (preg_match('/\s/', $option->read('api_key')) ? '<span style="color: red; ">' . esc_html(string: 'No'). '</span>': '<span style="color: green; ">' . esc_html(string: 'Yes'). '</span>') . PHP_EOL;
+                $report .= esc_html(string: 'Active User Count:'). "\t\t\t\t\t" . $params['users'] . PHP_EOL;
 
-                $report .= "\n\t" . esc_html__(string: '** CONFIG **', domain: 'devflow') . PHP_EOL . PHP_EOL;
-                $report .= esc_html__(string: 'Environment:', domain: 'devflow') . "\t\t\t\t\t\t" . (config(key: 'app.env') === 'prod' ? '<span style="color: green; ">' . esc_html__(string: 'Production', domain: 'devflow') . '</span>': '<span style="color: red; ">' . esc_html__(string: 'Development', domain: 'devflow') . '</span>') . PHP_EOL;
-                $report .= esc_html__(string: 'Base Path:', domain: 'devflow') . "\t\t\t\t\t\t" . base_path() . PHP_EOL;
+                $report .= "\n\t" . esc_html(string: '** CONFIG **'). PHP_EOL . PHP_EOL;
+                $report .= esc_html(string: 'Environment:'). "\t\t\t\t\t\t" . (config(key: 'app.env') === 'prod' ? '<span style="color: green; ">' . esc_html(string: 'Production'). '</span>': '<span style="color: red; ">' . esc_html(string: 'Development'). '</span>') . PHP_EOL;
+                $report .= esc_html(string: 'Base Path:'). "\t\t\t\t\t\t" . base_path() . PHP_EOL;
 
-                $report .= "\n\t" . esc_html__(string: '** SERVER DATA **', domain: 'devflow') . PHP_EOL . PHP_EOL;
-                $report .= esc_html__(string: 'PHP Version:', domain: 'devflow') . "\t\t\t\t\t\t" . PHP_VERSION . PHP_EOL;
-                $report .= esc_html__(string: 'PHP Handler:', domain: 'devflow') . "\t\t\t\t\t\t" . PHP_SAPI . PHP_EOL;
-                $report .= esc_html__(string: 'Server Software:', domain: 'devflow') . "\t\t\t\t\t" . $_SERVER['SERVER_SOFTWARE'] . PHP_EOL;
+                $report .= "\n\t" . esc_html(string: '** SERVER DATA **'). PHP_EOL . PHP_EOL;
+                $report .= esc_html(string: 'PHP Version:'). "\t\t\t\t\t\t" . PHP_VERSION . PHP_EOL;
+                $report .= esc_html(string: 'PHP Handler:'). "\t\t\t\t\t\t" . PHP_SAPI . PHP_EOL;
+                $report .= esc_html(string: 'Server Software:'). "\t\t\t\t\t" . $_SERVER['SERVER_SOFTWARE'] . PHP_EOL;
 
-                $report .= "\n\t" . esc_html__(string: '** PHP CONFIGURATION **', domain: 'devflow') . PHP_EOL . PHP_EOL;
-                $report .= esc_html__(string: 'Memory Limit:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('memory_limit') . PHP_EOL;
-                $report .= esc_html__(string: 'Upload Max Size:', domain: 'devflow') . "\t\t\t\t\t" . ini_get('upload_max_filesize') . PHP_EOL;
-                $report .= esc_html__(string: 'Post Max Size:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('post_max_size') . PHP_EOL;
-                $report .= esc_html__(string: 'Max Execution Time:', domain: 'devflow') . "\t\t\t\t\t" . ini_get('max_execution_time') . PHP_EOL;
-                $report .= esc_html__(string: 'Max Input Vars:', domain: 'devflow') . "\t\t\t\t\t\t" . ini_get('max_input_vars') . PHP_EOL;
-                $report .= esc_html__(string: 'Cookie Path:', domain: 'devflow') . "\t\t\t\t\t\t" . (is_writable(storage_path('app/cookies')) ? '<span style="color: green; ">' . storage_path('app/cookies') . '</span>': '<span style="color: red; ">' . storage_path('app/cookies') . '</span>') . PHP_EOL;
-                $report .= esc_html__(string: 'Regular Cookie TTL:', domain: 'devflow') . "\t\t\t\t\t" . convert_seconds_to_time((int) config('cookies.lifetime')) . PHP_EOL;
-                $report .= esc_html__(string: 'Secure Cookie TTL:', domain: 'devflow') . "\t\t\t\t\t" . convert_seconds_to_time((int) $option->read('cookieexpire')) . PHP_EOL;
-                $report .= esc_html__(string: 'cURL Enabled:', domain: 'devflow') . "\t\t\t\t\t\t" . (function_exists('curl_version') ? '<span style="color: green; ">' . esc_html__(string: 'Yes', domain: 'devflow') . '</span>': '<span style="color: red; ">' . esc_html__(string: 'No', domain: 'devflow') . '</span>') . PHP_EOL;
+                $report .= "\n\t" . esc_html(string: '** PHP CONFIGURATION **'). PHP_EOL . PHP_EOL;
+                $report .= esc_html(string: 'Memory Limit:'). "\t\t\t\t\t\t" . ini_get('memory_limit') . PHP_EOL;
+                $report .= esc_html(string: 'Upload Max Size:'). "\t\t\t\t\t" . ini_get('upload_max_filesize') . PHP_EOL;
+                $report .= esc_html(string: 'Post Max Size:'). "\t\t\t\t\t\t" . ini_get('post_max_size') . PHP_EOL;
+                $report .= esc_html(string: 'Max Execution Time:'). "\t\t\t\t\t" . ini_get('max_execution_time') . PHP_EOL;
+                $report .= esc_html(string: 'Max Input Vars:'). "\t\t\t\t\t\t" . ini_get('max_input_vars') . PHP_EOL;
+                $report .= esc_html(string: 'Cookie Path:'). "\t\t\t\t\t\t" . (is_writable(storage_path('app/cookies')) ? '<span style="color: green; ">' . storage_path('app/cookies') . '</span>': '<span style="color: red; ">' . storage_path('app/cookies') . '</span>') . PHP_EOL;
+                $report .= esc_html(string: 'Regular Cookie TTL:'). "\t\t\t\t\t" . convert_seconds_to_time((int) config('cookies.lifetime')) . PHP_EOL;
+                $report .= esc_html(string: 'Secure Cookie TTL:'). "\t\t\t\t\t" . convert_seconds_to_time((int) $option->read('cookieexpire')) . PHP_EOL;
+                $report .= esc_html(string: 'cURL Enabled:'). "\t\t\t\t\t\t" . (function_exists('curl_version') ? '<span style="color: green; ">' . esc_html(string: 'Yes'). '</span>': '<span style="color: red; ">' . esc_html(string: 'No'). '</span>') . PHP_EOL;
                 // end it all
                 $report .= PHP_EOL;
 

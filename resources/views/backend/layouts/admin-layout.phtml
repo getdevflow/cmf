@@ -43,7 +43,7 @@ $option = Options::factory();
         <base href="<?= site_url(); ?>">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><?=$this->esc($title ?? '') . ' &lsaquo; ' . $option->{'read'}('sitename'); ?> &#8212; <?=esc_html__(string: 'Devflow', domain: 'devflow');?></title>
+        <title><?=$this->esc($title ?? '') . ' &lsaquo; ' . $option->{'read'}('sitename'); ?> &#8212; <?=esc_html(string: 'Devflow');?></title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=6, user-scalable=yes" name="viewport">
         <meta name="theme-color" content="#ffffff">
