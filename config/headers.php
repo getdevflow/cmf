@@ -416,16 +416,17 @@ return [
 
             'self' => true,
 
+            'data' => true,
+
             'report-sample' => false,
 
             'allow' => [
                 'gravatar.com',
                 'www.gravatar.com',
-                'cdnjs.cloudflare.com/',
+                'cdnjs.cloudflare.com',
             ],
 
             'schemes' => [
-                'data:',
                 'http:',
                 'https:',
             ],
@@ -516,6 +517,21 @@ return [
             ],
 
             'unsafe-inline' => true,
+        ],
+
+        'frame-src' => [
+            'none' => false,
+            'self' => true,
+            'allow' => [
+                'cdnjs.cloudflare.com',
+            ],
+
+            'data' => true,
+
+            'schemes' => [
+                'http:',
+                'https:',
+            ],
         ],
 
         'style-src' => [
