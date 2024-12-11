@@ -48,7 +48,7 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 To create a new project, run the following command:
 
 ```bash
-composer create-project getdevflow/cmf:1.0.0-rc.7 my-app-name
+composer create-project getdevflow/cmf:1.0.0 my-app-name
 ```
 
 ## 🕑 Releases
