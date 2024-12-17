@@ -73,6 +73,7 @@ final class CmsHelperServiceProvider extends CodefyServiceProvider
          */
         Action::getInstance()->addAction('login_form_top', 'App\Shared\Helpers\cms_login_form_show_message', 5);
         Action::getInstance()->addAction('admin_notices', 'App\Shared\Helpers\cms_dev_mode', 5);
+        Action::getInstance()->addAction('admin_notices', 'App\Shared\Helpers\show_update_message', 5);
         Action::getInstance()->addAction('save_site', 'App\Shared\Helpers\new_site_schema', 5, 3);
         Action::getInstance()->addAction('save_site', 'App\Shared\Helpers\create_site_directories', 5, 3);
         Action::getInstance()->addAction('deleted_site', 'App\Shared\Helpers\delete_site_usermeta', 5, 2);

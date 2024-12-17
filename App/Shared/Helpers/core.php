@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Helpers;
 
+use App\Application\Devflow;
 use App\Infrastructure\Services\Options;
+use App\Infrastructure\Services\Updater;
 use App\Shared\Services\DateTime;
 use App\Shared\Services\ListUtil;
 use App\Shared\Services\Registry;
@@ -1474,4 +1476,41 @@ function time_ago(string $original): string
         }
     }
     return $print . ' ago';
+}
+
+/**
+ * @throws NotFoundExceptionInterface
+ * @throws ContainerExceptionInterface
+ * @throws ReflectionException
+ * @throws InvalidArgumentException
+ * @throws Exception
+ */
+function show_update_message(): void
+{
+    $currentUserId = get_current_user_id();
+
+    if (
+            get_user_option('role', $currentUserId) === 'super' ||
+            get_user_option('role', $currentUserId) === 'admin'
+    ) {
+        $update = new Updater();
+        $update->setCurrentVersion(Devflow::inst()->release());
+        $update->setUpdateUrl('https://devflow-cmf.s3.amazonaws.com/api/1.1/update-check');
+
+        if ($update->checkUpdate() !== false) {
+            if ($update->newVersionAvailable()) {
+                $alert = '<div class="alert alert-dismissible show alert-info center" role="alert">';
+                $alert .= sprintf(
+                    t__(
+                        msgid: 'Devflow release %s is available for download/upgrade. Before upgrading, make sure to backup your system.',
+                        domain: 'devflow'
+                    ),
+                    $update->getLatestVersion()
+                );
+                $alert .= '</div>';
+
+                echo Filter::getInstance()->applyFilter('update_message', $alert);
+            }
+        }
+    }
 }

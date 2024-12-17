@@ -19,6 +19,7 @@
         "ext-pdo": "*",
         "barryvdh/elfinder-flysystem-driver": "^0.5.0",
         "codefyphp/codefy": "^2",
+        "composer/semver": "^3.4",
         "erusev/parsedown": "^1.7",
         "forxer/gravatar": "^5.0",
         "franzl/whoops-middleware": "^2.0",
@@ -30,6 +31,12 @@
         "spatie/image-optimizer": "^1.7",
         "spatie/menu": "^3.2",
         "studio-42/elfinder": "^2.1"
+    },
+    "extra": {
+        "installer-types": ["devflow-plugin"],
+        "installer-paths": {
+            "public/plugins/{$name}/": ["type:devflow-plugin"]
+        }
     },
     "autoload": {
         "psr-4": {

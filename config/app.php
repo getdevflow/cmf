@@ -145,5 +145,7 @@ return [
         App\Application\Console\Commands\GenerateSaltStringCommand::class,
         App\Application\Console\Commands\InstallCmsCommand::class,
         App\Application\Console\Commands\EmailSendCommand::class,
+        App\Application\Console\Commands\UpdaterCheckCommand::class,
+        App\Application\Console\Commands\UpdaterCommand::class,
     ]
 ];
