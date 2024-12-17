@@ -302,6 +302,9 @@ final class Options
     }
 
     /**
+     * Update an array of options to the option's table.
+     * Best to validate the data array first before running this method.
+     *
      * @param array $options
      * @return bool
      * @throws Exception
