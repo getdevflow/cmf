@@ -16,5 +16,6 @@ storage/logs/*.log
 .php-cs-fixer.cache
 .phpunit.result.cache
 composer.lock
+difflist.txt
 releases.json
 update.json
