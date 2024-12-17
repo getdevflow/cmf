@@ -145,6 +145,10 @@ final class NativePhpCookies
      */
     public function getCookieVars(string $key, mixed $str): string
     {
+        if (!isset($_COOKIE[$key])) {
+            return '';
+        }
+
         $vars = [];
         parse_str($_COOKIE[$key], $vars);
         return $vars[$str];
