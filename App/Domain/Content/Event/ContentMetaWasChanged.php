@@ -35,7 +35,7 @@ class ContentMetaWasChanged extends AggregateChanged
         );
 
         $event->contentId = $contentId;
-        $event->meta -= $meta;
+        $event->meta = $meta;
 
         return $event;
     }

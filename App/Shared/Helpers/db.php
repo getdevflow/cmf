@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Shared\Helpers;
 
 use App\Application\Devflow;
+use App\Domain\Content\Model\Content;
 use App\Domain\ContentType\Model\ContentType;
 use App\Domain\Content\Command\UpdateContentAuthorCommand;
 use App\Domain\Content\Query\FindContentQuery;
@@ -97,12 +98,12 @@ function get_object_subtype(string $type, string $id): string
     $objectSubtype = '';
 
     if ($type === 'content') {
-        /** @var ContentType $contentType */
-        $contentType = get_content_type_by('id', $id);
-        if (is_false__($contentType)) {
+        /** @var Content $content */
+        $content = get_content_by_id($id);
+        if (is_false__($content)) {
             return '';
         }
-        $objectSubtype = $contentType->slug;
+        $objectSubtype = 'content';
     } elseif ($type === 'user') {
         /** @var User $user */
         $user = get_user_by(field: 'id', value: $id);
