@@ -53,6 +53,8 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 |                                                        *Login Screen*                                                         |                                                              *Dashboard*                                                              |
 | ![https://downloads.joshuaparker.blog/images/content-types.png](https://downloads.joshuaparker.blog/images/content-types.png) |    ![https://downloads.joshuaparker.blog/images/create-product.png](https://downloads.joshuaparker.blog/images/create-product.png)    |
 |                                                        *Content Types*                                                        |                                                           *Create Product*                                                            |
+| ![https://downloads.joshuaparker.blog/images/custom-fields.png](https://downloads.joshuaparker.blog/images/custom-fields.png) |   ![https://downloads.joshuaparker.blog/images/devflow-plugins.png](https://downloads.joshuaparker.blog/images/devflow-plugins.png)   |
+|                                                        *Custom Fields*                                                        |                                                          *Composer Plugins*                                                           |
 
 
 ## 📦 Installation
@@ -60,7 +62,7 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 To create a new project, run the following command:
 
 ```bash
-composer create-project getdevflow/cmf:1.1.1 my-app-name
+composer create-project getdevflow/cmf:1.2.0 my-app-name
 ```
 
 ## 🕑 Releases
