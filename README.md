@@ -5,9 +5,12 @@
 <p align="center">
     <a href="https://getdevflow.com/"><img src="https://img.shields.io/packagist/v/getdevflow/cmf?label=Devflow" alt="Latest Stable Version"></a>
     <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-8.3-777BB4.svg?style=flat&logo=php" alt="PHP 8.3"/></a>
-    <a href="https://packagist.org/packages/getdevflow/cmf"><img src="https://img.shields.io/packagist/l/getdevflow/cmf" alt="License"></a>
+    <a href="https://github.com/getdevflow/cmf/blob/1.x/LICENSE.md"><img src="https://img.shields.io/packagist/l/getdevflow/cmf" alt="License"></a>
     <a href="https://packagist.org/packages/getdevflow/cmf"><img src="https://img.shields.io/packagist/dt/getdevflow/cmf" alt="Total Downloads"></a>
+    <a href="https://matrix.to/#/#devflow:gitter.im"><img src="https://badges.gitter.im/join_chat.svg" alt="Chat on Gitter"></a>
 </p>
+
+🌟 Star me on [GitHub](https://github.com/getdevflow/cmf) to encourage continuous development!
 
 __Devflow__ is a powerful headless content management framework built for PHP programmers, designed to streamline web development 
 using __CQRS__ (Command Query Responsibility Segregation) and __domain-driven development__ principles. Offering an advanced architecture, 
@@ -42,6 +45,15 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 - Scheduler for scheduling tasks/jobs
 - Security and sanitizing helpers
 - NIST Level 2 Standard Role-Based Access Control
+
+## 🖼 Screenshots
+
+|  ![https://downloads.joshuaparker.blog/images/login-screen.png](https://downloads.joshuaparker.blog/images/login-screen.png)  | ![https://downloads.joshuaparker.blog/images/devflow-dashboard.png](https://downloads.joshuaparker.blog/images/devflow-dashboard.png) |
+|:-----------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------:|
+|                                                        *Login Screen*                                                         |                                                              *Dashboard*                                                              |
+| ![https://downloads.joshuaparker.blog/images/content-types.png](https://downloads.joshuaparker.blog/images/content-types.png) |    ![https://downloads.joshuaparker.blog/images/create-product.png](https://downloads.joshuaparker.blog/images/create-product.png)    |
+|                                                        *Content Types*                                                        |                                                           *Create Product*                                                            |
+
 
 ## 📦 Installation
 
