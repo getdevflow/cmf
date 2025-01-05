@@ -17,50 +17,22 @@
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-pdo": "*",
-        "barryvdh/elfinder-flysystem-driver": "^0.5.0",
-        "codefyphp/codefy": "^2",
-        "composer/semver": "^3.4",
-        "erusev/parsedown": "^1.7",
-        "forxer/gravatar": "^5.0",
-        "franzl/whoops-middleware": "^2.0",
-        "paragonie/csp-builder": "^2.9",
-        "qubus/form": "^1.0",
-        "qubus/hooks": "^1.0",
-        "qubus/nosql": "^3.0",
-        "spatie/image": "^3.7",
-        "spatie/image-optimizer": "^1.7",
-        "spatie/menu": "^3.2",
-        "studio-42/elfinder": "^2.1"
+        "getdevflow/core": "1.x-dev"
     },
     "extra": {
-        "installer-types": ["devflow-plugin"],
+        "installer-types": ["devflow-core","devflow-plugin","devflow-theme"],
         "installer-paths": {
-            "public/plugins/{$name}/": ["type:devflow-plugin"]
+            "core": ["type:devflow-core"],
+            "public/plugins/{$name}/": ["type:devflow-plugin"],
+            "public/themes/{$name}/": ["type:devflow-theme"]
         }
     },
     "autoload": {
         "psr-4": {
-            "App\\": "App/",
             "Cms\\": "Cms/",
             "Plugin\\": "public/plugins/",
             "Theme\\": "public/themes/"
-        },
-        "files": [
-            "App/Infrastructure/Http/Middleware/Csrf/helpers.php",
-            "App/Shared/Helpers/db.php",
-            "App/Shared/Helpers/core.php",
-            "App/Shared/Helpers/hook.php",
-            "App/Shared/Helpers/plugin.php",
-            "App/Shared/Helpers/content.php",
-            "App/Shared/Helpers/product.php",
-            "App/Shared/Helpers/user.php",
-            "App/Shared/Helpers/auth.php",
-            "App/Shared/Helpers/url.php",
-            "App/Shared/Helpers/domain.php",
-            "App/Shared/Helpers/site.php",
-            "App/Shared/Helpers/content-type.php",
-            "App/Shared/Helpers/menu.php"
-        ]
+        }
     },
     "scripts": {
         "test": "vendor/bin/pest",
@@ -72,11 +44,12 @@
         "sort-packages": true,
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
         }
     },
     "require-dev": {
-        "marcocesarato/markdown": "^0.1.11",
         "pestphp/pest": "^1.23",
         "qubus/qubus-coding-standard": "^1.1"
     },
