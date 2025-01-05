@@ -12,9 +12,10 @@
     <arg value="p"/>
 
     <!-- Paths to check -->
-    <file>App</file>
     <file>bootstrap</file>
+    <file>Cms</file>
     <file>config</file>
+    <file>core</file>
     <file>database</file>
 
     <!-- Include rules from the Qubus Coding Standard -->
