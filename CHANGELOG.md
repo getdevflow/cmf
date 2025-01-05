@@ -1,4 +1,11 @@
 
+## 1.2.0 (2024-01-05)
+- Removed unused imports in `db` helper
+- Core is now a composer component
+- Fixed issue with loading all the .mo files for translation
+- Added theme features
+- Added extension contract
+
 ## 1.1.1 (2024-12-19)
 - fix: bug in `ContentMetaWasChanged`
 - enhancement: added alternative location for custom views, under `Cms` namespace
