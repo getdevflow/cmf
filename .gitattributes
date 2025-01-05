@@ -1,12 +1,12 @@
-public/static/assets/* linguist-vendored
-*.js linguist-detectable=false
-*.css linguist-detectable=false
-*.less linguist-detectable=false
+public/static/* linguist-vendored
+public/vendor/* linguist-vendored
 
-# Reclassify .html files as .php
-*.html linguist-language=PHP
-
-# Configure diff output for .php and .phar files.
+* text=auto
+*.phtml diff=php
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
 *.php diff=php
 
+/.github export-ignore
 CHANGELOG.md export-ignore
