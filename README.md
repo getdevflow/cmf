@@ -10,11 +10,14 @@
     <a href="https://matrix.to/#/#devflow:gitter.im"><img src="https://badges.gitter.im/join_chat.svg" alt="Chat on Gitter"></a>
 </p>
 
-🌟 Star me on [GitHub](https://github.com/getdevflow/cmf) to encourage continuous development!
+<h1 align="center">Build high quality, optimized websites that scale</h1>
+
+<p align="center">🌟 Star me on <a href="https://github.com/getdevflow/cmf">GitHub</a> to encourage continuous development!</p>
 
 __Devflow__ is a powerful headless content management framework built for PHP programmers, designed to streamline web development 
 using __CQRS__ (Command Query Responsibility Segregation) and __domain-driven development__ principles. Offering an advanced architecture, 
 Devflow supports __event sourcing__ and __domain events__, allowing developers to easily manage complex workflows and data changes. 
+
 Its rich set of features includes __action__ and __filter__ hooks, enabling customization and extension. Devflow ensures that 
 content management is intuitive and tailored to your specific needs, providing flexibility and control for building scalable 
 and maintainable applications. Perfect for developers seeking a robust, modern solution for headless content management.
