@@ -1,0 +1,112 @@
+<?php
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\is_plugin_activated;
+use function App\Shared\Helpers\is_theme_active;
+use function App\Shared\Helpers\plugin_info;
+use function App\Shared\Helpers\theme_info;
+use function Codefy\Framework\Helpers\public_path;
+use function Qubus\Security\Helpers\esc_html__;
+use function Qubus\Security\Helpers\esc_url;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function () {
+Registry::getInstance()->{'set'}('screen_parent', 'themes');
+Registry::getInstance()->{'set'}('screen_child', 'installed-themes');
+?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-palette"></i>
+                <h3 class="box-title"><?= esc_html__(string: 'Themes', domain: 'devflow'); ?></h3>
+
+                <div class="pull-right">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?=Devflow::inst()::$APP->flash->display(); ?>
+
+            <div class="row">
+
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?=esc_html__(string: 'Themes', domain: 'devflow');?></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="text-center"><?= esc_html__(string: 'Screenshot', domain: 'devflow'); ?></th>
+                                    <th class="text-center"><?= esc_html__(string: 'Name', domain: 'devflow'); ?></th>
+                                    <th class="text-center"><?= esc_html__(string: 'Version', domain: 'devflow'); ?></th>
+                                    <th class="text-center"><?= esc_html__(string: 'Description', domain: 'devflow'); ?></th>
+                                    <th class="text-center"><?= esc_html__(string: 'Action', domain: 'devflow'); ?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach (theme_info(public_path('themes/')) as $theme) : ?>
+                                <?php if (is_theme_active($theme['className']) === true) : ?>
+                                <tr class="gradeX" style="background-color:#B0E0E6 !important;">
+                                    <?php else : ?>
+                                <tr class="gradeX">
+                                    <?php endif; ?>
+                                    <td class="text-center">
+                                        <a href="<?=$theme['screenshot'];?>" data-toggle="lightbox">
+                                            <img src="<?=$theme['screenshot'];?>" height="auto" width="150" alt="<?=$theme['name'];?>"/>
+                                        </a>
+                                    </td>
+                                    <td class="text-center"><?=$theme['name'];?></td>
+                                    <td class="text-center"><?=$theme['version'];?></td>
+                                    <td class="text-center">
+                                        <?= $theme['description']; ?> <br />
+                                        <strong><?=esc_html__(string: 'Developer:');?></strong>
+                                        <a href="<?=esc_url($theme['authorUri']);?>"><?=$theme['author'];?></a> |
+                                        <a href="<?=esc_url($theme['themeUri']);?>"><?=esc_html__(string: 'View Details', domain: 'devflow');?></a>
+                                    </td>
+                                    <?php if (is_theme_active($theme['className']) === true) : ?>
+                                        <td class="text-center"><a class="btn btn-danger" href="<?=admin_url('theme/deactivate/');?>"><i class="fa fa-minus-circle"></i></a></td>
+                                    <?php else : ?>
+                                        <td class="text-center"><a class="btn btn-success" href="<?=admin_url('theme/activate/?id=' . $theme['className']);?>"><i class="fa fa-plus-circle"></i></a></td>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th class="text-center"><?= esc_html__(string: 'Screenshot', domain: 'devflow'); ?></th>
+                                    <th class="text-center"><?= esc_html__(string: 'Name', domain: 'devflow'); ?></th>
+                                    <th class="text-center"><?= esc_html__(string: 'Version', domain: 'devflow'); ?></th>
+                                    <th class="text-center"><?= esc_html__(string: 'Description', domain: 'devflow'); ?></th>
+                                    <th class="text-center"><?= esc_html__(string: 'Action', domain: 'devflow'); ?></th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box-primary -->
+                </div>
+                <!-- /.left column -->
+
+            </div>
+            <!--/.row -->
+        </section>
+        <!-- /.Main content -->
+
+    </div>
+    <!-- /.Content Wrapper. Contains page content -->
+<?php }); ?>

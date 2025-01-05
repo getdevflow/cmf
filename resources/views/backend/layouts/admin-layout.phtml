@@ -240,6 +240,19 @@ $option = Options::factory();
                             <?php Action::getInstance()->doAction('plugins_submenu'); ?>
                         </ul>
                     </li>
+                    <li<?= ae('manage:themes'); ?> class="treeview<?=current_screen('screen_parent', 'themes');?>">
+                        <a href="#">
+                            <i class="fa fa-palette"></i>
+                            <span><?=esc_html__(string: 'Themes', domain: 'devflow');?></span>
+                            <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <?=add_dashboard_submenu(esc_html__(string: 'Themes', domain: 'devflow'), '/theme/', 'installed-themes');?>
+                            <?php Action::getInstance()->doAction('themes_submenu'); ?>
+                        </ul>
+                    </li>
                     <?php if (current_user_can('manage:users')) : ?>
                         <li class="treeview<?=current_screen('screen_parent', 'users'); ?>">
                             <a href="#">
