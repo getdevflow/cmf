@@ -43,6 +43,7 @@ class CreateElfinderFilePdoTable extends Migration
 
     /**
      * Undo the migration
+     * @throws Exception
      */
     public function down(): void
     {
