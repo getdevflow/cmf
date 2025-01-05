@@ -1,12 +1,14 @@
 public/static/* linguist-vendored
 public/vendor/* linguist-vendored
 
-* text=auto
 *.phtml diff=php
-*.css diff=css
-*.html diff=html
 *.md diff=markdown
 *.php diff=php
+
+*.html linguist-detectable=false
+*.js linguist-detectable=false
+*.css linguist-detectable=false
+*.less linguist-detectable=false
 
 /.github export-ignore
 CHANGELOG.md export-ignore
