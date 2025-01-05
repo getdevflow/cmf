@@ -1,7 +1,6 @@
 database/migrations/.migrations.log
-public/plugins/AdminBar
-public/plugins/CookieConsent
-public/plugins/NewsWidget
+public/plugins/*
+public/themes/*
 public/sites/cms_
 resources/views/*.tpl
 storage/app/cookies/cookie.*
