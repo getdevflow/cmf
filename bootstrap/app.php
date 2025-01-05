@@ -7,7 +7,7 @@ use App\Infrastructure\Persistence\NativePdoDatabase;
 use Codefy\Framework\Application;
 use Qubus\Exception\Data\TypeException;
 
-use function Codefy\Framework\Helpers\env;
+use function Qubus\Config\Helpers\env;
 
 try {
     $app = new Application(

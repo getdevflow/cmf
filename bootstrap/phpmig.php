@@ -8,7 +8,7 @@ use Qubus\Support\Container\ObjectStorageMap;
 
 use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\database_path;
-use function Codefy\Framework\Helpers\env;
+use function Qubus\Config\Helpers\env;
 
 require __DIR__ . '/../vendor/autoload.php';
 

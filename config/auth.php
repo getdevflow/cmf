@@ -1,6 +1,6 @@
 <?php
 
-use function Codefy\Framework\Helpers\env;
+use function Qubus\Config\Helpers\env;
 
 return [
     /**

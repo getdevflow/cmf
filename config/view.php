@@ -7,7 +7,6 @@ use Codefy\Framework\Codefy;
 use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\public_path;
 use function Codefy\Framework\Helpers\resource_path;
-use function Codefy\Framework\Helpers\storage_path;
 
 return [
     /*

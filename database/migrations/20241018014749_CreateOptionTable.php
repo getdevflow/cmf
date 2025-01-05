@@ -7,7 +7,6 @@ use Qubus\Dbal\Schema\CreateTable;
 use Qubus\Exception\Exception;
 
 use function Codefy\Framework\Helpers\config;
-use function Qubus\Config\Helpers\env;
 
 class CreateOptionTable extends Migration
 {

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use function Codefy\Framework\Helpers\env;
 use function Codefy\Framework\Helpers\storage_path;
+use function Qubus\Config\Helpers\env;
 
 return [
     /*
