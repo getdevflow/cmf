@@ -12,6 +12,7 @@ use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\convert_seconds_to_time;
+use function App\Shared\Helpers\is_multisite;
 use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\config;
@@ -56,6 +57,7 @@ $option = Options::factory();
                 $report .= "\n\t" . esc_html(string: '** CONFIG **'). PHP_EOL . PHP_EOL;
                 $report .= esc_html(string: 'Environment:'). "\t\t\t\t\t\t" . (config(key: 'app.env') === 'prod' ? '<span style="color: green; ">' . esc_html(string: 'Production'). '</span>': '<span style="color: red; ">' . esc_html(string: 'Development'). '</span>') . PHP_EOL;
                 $report .= esc_html(string: 'Base Path:'). "\t\t\t\t\t\t" . base_path() . PHP_EOL;
+                $report .= esc_html(string: 'Multisite:'). "\t\t\t\t\t\t" . (is_multisite() ? '<span style="color: green; ">' . esc_html(string: 'Enabled'). '</span>': '<span style="color: red; ">' . esc_html(string: 'Disabled'). '</span>') . PHP_EOL;
 
                 $report .= "\n\t" . esc_html(string: '** SERVER DATA **'). PHP_EOL . PHP_EOL;
                 $report .= esc_html(string: 'PHP Version:'). "\t\t\t\t\t\t" . PHP_VERSION . PHP_EOL;
