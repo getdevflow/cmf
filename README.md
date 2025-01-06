@@ -1,12 +1,12 @@
 <h1 align="center">
-    <a href="https://getdevflow.com/" target="_blank"><img src="https://downloads.joshuaparker.blog/images/Devflow-Logo.png" alt="Devflow Logo"></a>
+    <a href="https://getdevflow.com/" target="_blank"><img src="https://downloads.joshuaparker.blog/images/Devflow-Logo.png" alt="Devflow CMS"></a>
 </h1>
 
 <p align="center">
-    <a href="https://getdevflow.com/"><img src="https://img.shields.io/packagist/v/getdevflow/cmf?label=Devflow" alt="Latest Stable Version"></a>
+    <a href="https://getdevflow.com/"><img src="https://img.shields.io/packagist/v/getdevflow/cmf?label=Devflow" alt="Devflow Stable Version"></a>
     <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-8.3-777BB4.svg?style=flat&logo=php" alt="PHP 8.3"/></a>
-    <a href="https://github.com/getdevflow/cmf/blob/1.x/LICENSE.md"><img src="https://img.shields.io/packagist/l/getdevflow/cmf" alt="License"></a>
-    <a href="https://packagist.org/packages/getdevflow/cmf"><img src="https://img.shields.io/packagist/dt/getdevflow/cmf" alt="Total Downloads"></a>
+    <a href="https://github.com/getdevflow/cmf/blob/1.x/LICENSE.md"><img src="https://img.shields.io/packagist/l/getdevflow/cmf" alt="GPLv2-only"></a>
+    <a href="https://packagist.org/packages/getdevflow/cmf"><img src="https://img.shields.io/packagist/dt/getdevflow/cmf" alt="Devflow Downloads"></a>
     <a href="https://matrix.to/#/#devflow:gitter.im"><img src="https://badges.gitter.im/join_chat.svg" alt="Chat on Gitter"></a>
 </p>
 
@@ -14,7 +14,7 @@
 
 <p align="center">🌟 Star me on <a href="https://github.com/getdevflow/cmf">GitHub</a> to encourage continuous development!</p>
 
-__Devflow__ is a powerful headless content management framework built for PHP programmers, designed to streamline web development 
+__Devflow__ is a powerful headless content management framework and CMS built for PHP programmers, designed to streamline web development 
 using __CQRS__ (Command Query Responsibility Segregation) and __domain-driven development__ principles. Offering an advanced architecture, 
 Devflow supports __event sourcing__ and __domain events__, allowing developers to easily manage complex workflows and data changes. 
 
