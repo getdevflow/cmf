@@ -7,7 +7,7 @@
     <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-8.3-777BB4.svg?style=flat&logo=php" alt="PHP 8.3"/></a>
     <a href="https://github.com/getdevflow/cmf/blob/1.x/LICENSE.md"><img src="https://img.shields.io/packagist/l/getdevflow/cmf" alt="GPLv2-only"></a>
     <a href="https://packagist.org/packages/getdevflow/cmf"><img src="https://img.shields.io/packagist/dt/getdevflow/cmf" alt="Devflow Downloads"></a>
-    <a href="https://matrix.to/#/#devflow:gitter.im"><img src="https://badges.gitter.im/join_chat.svg" alt="Chat on Gitter"></a>
+    <a href="https://discord.gg/52CyYu4e"><img src="https://img.shields.io/static/v1?label=Discord&message=chat&color=738adb&logo=discord" alt="Chat on Discord"></a>
 </p>
 
 <h1 align="center">Build high quality, optimized websites that scale</h1>
