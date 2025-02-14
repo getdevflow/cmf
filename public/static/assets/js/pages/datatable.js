@@ -9,12 +9,28 @@ $(function () {
         "autoWidth": true,
         "deferRender": true
     });
-    $('#example2').DataTable({
+    $('#content').DataTable({
         "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": false,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
         "info": true,
-        "autoWidth": false
+        "autoWidth": true
+    });
+    $('#product').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true
+    });
+    $('#user').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true
     });
 });
