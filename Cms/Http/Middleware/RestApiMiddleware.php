@@ -19,6 +19,8 @@ use Qubus\Http\Factories\JsonResponseFactory;
 use ReflectionException;
 
 use function Qubus\Security\Helpers\t__;
+use function sprintf;
+use function substr;
 
 class RestApiMiddleware implements MiddlewareInterface
 {
@@ -43,6 +45,14 @@ class RestApiMiddleware implements MiddlewareInterface
         if (
             isset($request->getQueryParams()['key']) &&
                 $request->getQueryParams()['key'] === Options::factory()->read('api_key')
+        ) {
+            return $handler->handle($request);
+        }
+
+        if (
+            str_starts_with($request->getHeaderLine('authorization'), 'Bearer ') &&
+                $request->getHeaderLine('authorization') ===
+                sprintf('Bearer %s', Options::factory()->read(optionKey: 'api_key'))
         ) {
             return $handler->handle($request);
         }
