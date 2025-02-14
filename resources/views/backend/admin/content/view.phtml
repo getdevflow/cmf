@@ -85,7 +85,7 @@ Action::getInstance()->doAction('update_content_init');
                                     <label><strong><?= esc_html__(string: 'Content', domain: 'devflow'); ?></strong></label>
                                     <textarea id="content_body" class="form-control" name="body"><?= $params['content']->body; ?></textarea>
                                 </div>
-                                <?=Filter::getInstance()->applyFilter('content_metabox', $params['form']);?>
+                                <?=Filter::getInstance()->applyFilter('content_metabox', $params['form'], $params['type']->slug, $params['content']->id);?>
                             </div>
                             <!-- /.box-body -->
                         </div>

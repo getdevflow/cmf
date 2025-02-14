@@ -80,7 +80,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                                     <label class="div-label"><?= esc_html__(string: 'Content', domain: 'devflow'); ?></label>
                                     <textarea id="content_body" class="form-control" name="body"><?= $params['request']['body'] ?? ''; ?></textarea>
                                 </div>
-                                <?=Filter::getInstance()->applyFilter('content_metabox', $params['form']);?>
+                                <?=Filter::getInstance()->applyFilter('content_metabox', $params['form'], $params['type']->slug, null);?>
                             </div>
                             <!-- /.box-body -->
                         </div>
