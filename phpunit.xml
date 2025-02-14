@@ -11,7 +11,7 @@
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">./App</directory>
+            <directory suffix=".php">./Cms</directory>
         </include>
     </coverage>
 </phpunit>
