@@ -10,6 +10,8 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use function App\Shared\Helpers\add_dashboard_submenu;
 use function App\Shared\Helpers\admin_footer;
 use function App\Shared\Helpers\admin_head;
+use function App\Shared\Helpers\admin_login_url;
+use function App\Shared\Helpers\admin_logout_url;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
 use function App\Shared\Helpers\cms_admin_copyright_footer;
@@ -29,6 +31,7 @@ use function App\Shared\Helpers\site_url;
 use function Qubus\Security\Helpers\esc_attr;
 use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
+use function Qubus\Security\Helpers\t__;
 
 if (isset($_COOKIE['SWITCH_USERBACK'])) :
     $cookie = get_secure_cookie_data(key: 'SWITCH_USERBACK');
@@ -90,9 +93,9 @@ $option = Options::factory();
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top default-navbar">
                 <!-- Sidebar toggle button-->
-                <!--<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                      <span class="sr-only"><?=esc_html__(string: 'Toggle navigation', domain: 'devflow');?></span>
-                    </a>-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                  <span class="sr-only"><?=esc_html__(string: 'Toggle navigation', domain: 'devflow');?></span>
+                </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <!-- User Account: style can be found in dropdown.less -->
@@ -122,7 +125,7 @@ $option = Options::factory();
                                         </div>
                                     <?php endif; ?>
                                     <div class="pull-right">
-                                        <a href="<?= admin_url('logout/'); ?>?redirect_to=<?=admin_url('login/');?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Logout', domain: 'devflow');?></a>
+                                        <a href="<?=admin_logout_url(admin_login_url());?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Logout', domain: 'devflow');?></a>
                                     </div>
                                 </li>
                             </ul>
@@ -300,13 +303,31 @@ $option = Options::factory();
 
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <?php //cms_release(); ?>
+                <div id="remainder"></div>
             </div>
             <?= cms_admin_copyright_footer(); ?>
         </footer>
     </div>
     <!-- ./wrapper -->
 
+    <script>
+        var endDate = new Date("<?=(new DateTime())->timestampToDate('Y-m-d H:i:s', get_secure_cookie_data(key: 'USERCOOKIEID')->exp);?>").getTime();
+        var timer = setInterval(function () {
+            let now = new Date().getTime();
+            let t = endDate - now;
+            if (t >= 0) {
+                document.getElementById("remainder").innerHTML =
+                    "<?=t__(msgid: 'Login expires in ', domain: 'devflow');?>" +
+                    Math.floor(t / (1000 * 60 * 60 * 24)) + "day(s) " +
+                    ("0" + Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).slice(-2) + "h:" +
+                    ("0" + Math.floor((t % (1000 * 60 * 60)) / (1000 * 60))).slice(-2) + "m:" +
+                    ("0" + Math.floor((t % (1000 * 60)) / 1000)).slice(-2) + "s";
+            } else {
+                document.getElementById("remainder").innerHTML = "End of timer.";
+            }
+
+        }, 1000);
+    </script>
     <script>
         var basePath = '<?= site_url(); ?>';
     </script>
