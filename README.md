@@ -35,6 +35,7 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 - Fileinfo PHP Extension
 - GD Library
 - Imagick PHP Extension
+- XMLWriter PHP Extension
 
 ## 🏆 Highlighted Features
 - Domain-Driven Development
@@ -65,7 +66,7 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 To create a new project, run the following command:
 
 ```bash
-composer create-project getdevflow/cmf:1.2.0 my-app-name
+composer create-project getdevflow/cmf:1.3.0 my-app-name
 ```
 
 ## 🕑 Releases
