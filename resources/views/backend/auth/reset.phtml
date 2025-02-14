@@ -3,8 +3,10 @@
 use App\Application\Devflow;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
+use function App\Shared\Helpers\admin_login_url;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\get_auth_screen_logo;
+use function App\Shared\Helpers\login_url;
 use function Qubus\Security\Helpers\esc_attr__;
 use function Qubus\Security\Helpers\t__;
 
@@ -22,7 +24,11 @@ $this->block('auth', function () {
             <?php Action::getInstance()->doAction('reset_form_top'); ?>
             <form method="post" action="<?= admin_url('reset-password/'); ?>" class="my-login-validation" novalidate="" autocomplete="off">
                 <div class="form-group">
-                    <label for="username"><?=t__(msgid: 'Email', domain: 'devflow');?></label>
+                    <label for="username"><?=t__(msgid: 'Email', domain: 'devflow');?>
+                        <a href="<?=admin_login_url('admin');?>" class="float-right">
+                            <?=t__(msgid: 'Log-in', domain: 'devflow');?>
+                        </a>
+                    </label>
                     <input id="email" type="email" class="form-control" name="email" required="required" autofocus>
                     <div class="invalid-feedback">
                         <?=t__(msgid: 'Email is invalid.', domain: 'devflow');?>
