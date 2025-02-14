@@ -17,7 +17,7 @@
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-pdo": "*",
-        "getdevflow/core": "^1"
+        "getdevflow/core": "1.x-dev"
     },
     "extra": {
         "installer-types": ["devflow-core","devflow-plugin","devflow-theme"],
