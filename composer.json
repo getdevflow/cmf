@@ -19,14 +19,6 @@
         "ext-pdo": "*",
         "getdevflow/core": "1.x-dev"
     },
-    "extra": {
-        "installer-types": ["devflow-core","devflow-plugin","devflow-theme"],
-        "installer-paths": {
-            "core": ["type:devflow-core"],
-            "public/plugins/{$name}/": ["type:devflow-plugin"],
-            "public/themes/{$name}/": ["type:devflow-theme"]
-        }
-    },
     "autoload": {
         "psr-4": {
             "Cms\\": "Cms/",
@@ -34,6 +26,17 @@
             "Theme\\": "public/themes/"
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "core",
+            "options": {
+                "versions": {
+                    "getdevflow/core": "1.x-dev"
+                }
+            }
+        }
+    ],
     "scripts": {
         "test": "vendor/bin/pest",
         "cs-check": "phpcs",
@@ -62,5 +65,13 @@
         "webonyx/graphql-php": "A PHP implementation of the GraphQL specification based on the reference implementation in JavaScript.",
         "spatie/schema-org": "Provides a fluent builder for all Schema.org types and their properties.",
         "arcanedev/seo-helper": "SEO Helper is a package that provides tools and helpers for SEO (Search Engine Optimization)."
+    },
+    "extra": {
+        "installer-types": ["devflow-core","devflow-plugin","devflow-theme"],
+        "installer-paths": {
+            "core": ["type:devflow-core"],
+            "public/plugins/{$name}/": ["type:devflow-plugin"],
+            "public/themes/{$name}/": ["type:devflow-theme"]
+        }
     }
 }
