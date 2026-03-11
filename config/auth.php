@@ -1,8 +1,16 @@
 <?php
 
 use function Qubus\Config\Helpers\env;
+use function Qubus\Security\Helpers\t__;
 
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | User session cookie name.
+    |--------------------------------------------------------------------------
+    */
+    'cookie_name' => 'USERSESSID',
+
     /**
      * Do not use the default app encryption key found in .env.example.
      * Generate a new encryption key by running this console command:
@@ -10,7 +18,7 @@ return [
      */
     'encryption_key' => env(key: 'APP_ENCRYPTION_KEY'),
 
-    'login_route' => '/login/',
+    'login_route' => 'login',
 
     'login_url' => env(key: 'APP_BASE_URL') . '/admin/login/',
 
@@ -35,4 +43,12 @@ return [
 
     /** Where should users be redirected when authentication fails? */
     'http_redirect' => '',
+
+    'redirect_guests_to' => '/admin/login/',
+
+    'password_min_length' => 26,
+
+    'username_min_length' => 6,
+
+    'access_denied_message' => t__(msgid: 'Access denied.', domain: 'devflow'),
 ];

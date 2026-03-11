@@ -1,8 +1,8 @@
 {
     "name": "getdevflow/cmf",
     "type": "project",
-    "description": "Developer-centric, headless content management framework.",
-    "keywords": ["devflow","framework","content-management"],
+    "description": "Developer-centric content management framework.",
+    "keywords": ["framework","content-management","cms","cmf","content-management-system","headless","headless-cms"],
     "license": "GPL-2.0-only",
     "authors": [
         {
@@ -13,15 +13,18 @@
         }
     ],
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-pdo": "*",
-        "getdevflow/core": "1.x-dev"
+        "getdevflow/core": "2.x-dev"
     },
     "autoload": {
         "psr-4": {
-            "Cms\\": "Cms/",
+            "Application\\": "Cms/Application",
+            "Domain\\": "Cms/Domain",
+            "Database\\Seeders\\": "database/seeders/",
+            "Infrastructure\\": "Cms/Infrastructure",
             "Plugin\\": "public/plugins/",
             "Theme\\": "public/themes/"
         }
@@ -32,7 +35,7 @@
             "url": "core",
             "options": {
                 "versions": {
-                    "getdevflow/core": "1.x-dev"
+                    "getdevflow/core": "2.x-dev"
                 }
             }
         }
@@ -40,8 +43,13 @@
     "scripts": {
         "test": "vendor/bin/pest",
         "cs-check": "phpcs",
-        "cs-fix": "phpcbf"
+        "cs-fix": "phpcbf",
+        "post-create-project-cmd": [
+            "touch .enc.key",
+            "cp .env.example .env"
+        ]
     },
+    "minimum-stability": "dev",
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true,
@@ -53,8 +61,7 @@
         }
     },
     "require-dev": {
-        "pestphp/pest": "^1.23",
-        "qubus/qubus-coding-standard": "^1.1"
+        "qubus/qubus-coding-standard": "^2.1.2"
     },
     "suggest": {
         "fenom/fenom": "Lightweight and fast template engine for PHP.",
@@ -62,9 +69,7 @@
         "foil/foil": "Write simple, clean, and concise templates with nothing more than PHP.",
         "jolicode/jolinotif": "Send notifications to your desktop directly from your PHP script",
         "mobiledetect/mobiledetectlib": "Mobile Detect is a lightweight PHP class for detecting mobile devices (including tablets).",
-        "webonyx/graphql-php": "A PHP implementation of the GraphQL specification based on the reference implementation in JavaScript.",
-        "spatie/schema-org": "Provides a fluent builder for all Schema.org types and their properties.",
-        "arcanedev/seo-helper": "SEO Helper is a package that provides tools and helpers for SEO (Search Engine Optimization)."
+        "webonyx/graphql-php": "A PHP implementation of the GraphQL specification based on the reference implementation in JavaScript."
     },
     "extra": {
         "installer-types": ["devflow-core","devflow-plugin","devflow-theme"],

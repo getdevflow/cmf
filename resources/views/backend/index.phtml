@@ -33,7 +33,7 @@ Registry::getInstance()->{'set'}('screen_child', 'home');
 
             <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-            <?=Devflow::inst()::$APP->flash->display();?>
+            <?=Devflow::$PHP->flash->display();?>
 
             <div class="row">
                 <?php //top widgets can go here.?>

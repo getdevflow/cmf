@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cms\Http\Middleware;
+namespace Application\Http\Middleware;
 
 use App\Infrastructure\Persistence\Database;
 use App\Infrastructure\Services\Options;
@@ -20,7 +20,6 @@ use ReflectionException;
 
 use function Qubus\Security\Helpers\t__;
 use function sprintf;
-use function substr;
 
 class RestApiMiddleware implements MiddlewareInterface
 {

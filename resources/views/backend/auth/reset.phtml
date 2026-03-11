@@ -16,7 +16,7 @@ $this->block('auth', function () {
 
     <div class="brand">
         <?=get_auth_screen_logo();?>
-        <?=Devflow::inst()::$APP->flash->display();?>
+        <?=Devflow::$PHP->flash->display();?>
     </div>
 
     <div class="card fat">

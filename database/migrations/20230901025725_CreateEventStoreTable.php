@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Codefy\Framework\Migration\Migration;
-use Qubus\Dbal\Schema\CreateTable;
 use Qubus\Exception\Exception;
+use Qubus\Expressive\Migration\Migration;
+use Qubus\Expressive\Schema\CreateTable;
 
 use function Codefy\Framework\Helpers\config;
 

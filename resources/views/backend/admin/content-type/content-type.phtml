@@ -2,9 +2,6 @@
 
 use App\Application\Devflow;
 use App\Shared\Services\Registry;
-
-use Codefy\Framework\Codefy;
-
 use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\admin_url;
@@ -47,7 +44,7 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
 
                 <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-                <?= Devflow::inst()::$APP->flash->display(); ?>
+                <?= Devflow::$PHP->flash->display(); ?>
 
                 <div class="row">
                     <!-- left column -->

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Shared\Http\RequestMethod;
+use Codefy\Framework\Support\RequestMethod;
 
 /*
 |--------------------------------------------------------------------------

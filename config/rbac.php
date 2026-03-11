@@ -41,6 +41,12 @@ return [
                 'delete:sites' => ['description' => 'Delete sites.'],
             ]
         ],
+        'webmaster' => [
+            'description' => 'Website creator and builder.',
+            'permissions' => [
+                'vihzhuo:manage' => ['description' => 'Can use the Vihzhuo pagebuilder to build pages.'],
+            ],
+        ],
     ],
 
     'roles' => [
@@ -69,6 +75,7 @@ return [
                 'manage:themes',
                 'activate:plugins',
                 'deactivate:plugins',
+                'webmaster',
             ],
         ],
         'editor' => [
@@ -86,7 +93,9 @@ return [
                 'delete:product',
                 'publish:product',
                 'manage:media',
+                'webmaster',
             ],
         ],
+        'user' => [],
     ],
 ];

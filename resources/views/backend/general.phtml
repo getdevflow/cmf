@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 use App\Application\Devflow;
-use App\Infrastructure\Services\Options;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\cms_dropdown_languages;
 use function App\Shared\Helpers\generate_timezone_list;
+use function App\Shared\Helpers\option;
 use function App\Shared\Helpers\selected;
 use function Qubus\Security\Helpers\esc_html__;
 
@@ -20,7 +20,7 @@ Registry::getInstance()->{'set'}('screen_child', 'options-general');
 
 Action::getInstance()->doAction('options_init');
 
-$option = Options::factory();
+$option = option();
 ?>
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url('general/'); ?>" id="form" autocomplete="off">
@@ -43,7 +43,7 @@ $option = Options::factory();
 
                 <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-                <?= Devflow::inst()::$APP->flash->display(); ?>
+                <?= Devflow::$PHP->flash->display(); ?>
 
                 <div class="row">
                     <!-- left column -->

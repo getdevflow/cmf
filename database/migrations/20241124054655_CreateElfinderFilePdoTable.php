@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Application\Devflow;
-use Codefy\Framework\Migration\Migration;
 use Qubus\Exception\Exception;
+use Qubus\Expressive\Migration\Migration;
 
 use function Codefy\Framework\Helpers\config;
 
@@ -37,7 +37,7 @@ class CreateElfinderFilePdoTable extends Migration
                     
                     INSERT INTO `{$tablePrefix}elfinder_file` VALUES(1, 0, 'DATABASE', '', 0, 0, 'directory', '1', '1', '0', '0', 0, 0);";
 
-            Devflow::inst()::$APP->getDB()->getConnection()->getPdo()->exec($sql);
+            Devflow::$PHP->getDB()->getConnection()->pdo->exec($sql);
         }
     }
 

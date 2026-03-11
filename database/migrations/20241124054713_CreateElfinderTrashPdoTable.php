@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Application\Devflow;
-use Codefy\Framework\Migration\Migration;
 use Qubus\Exception\Exception;
+use Qubus\Expressive\Migration\Migration;
 
 use function Codefy\Framework\Helpers\config;
 
@@ -33,11 +33,11 @@ class CreateElfinderTrashPdoTable extends Migration
                     `hidden` enum('1','0') NOT NULL DEFAULT '0',
                     `width` int(5) NOT NULL DEFAULT 0,
                     `height` int(5) NOT NULL DEFAULT 0
-                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                    );
                     
                     INSERT INTO `{$tablePrefix}elfinder_trash` VALUES(1, 0, 'DB Trash', '', 0, 0, 'directory', '1', '1', '0', '0', 0, 0);";
 
-            Devflow::inst()::$APP->getDB()->getConnection()->getPdo()->exec($sql);
+            Devflow::$PHP->getDB()->getConnection()->pdo->exec($sql);
         }
     }
 

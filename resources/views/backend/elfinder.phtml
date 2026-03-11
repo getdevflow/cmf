@@ -9,14 +9,13 @@ declare(strict_types=1);
  * tinyMCE.
  */
 
-use App\Infrastructure\Services\Options;
-
+use function App\Shared\Helpers\option;
 use function App\Shared\Helpers\site_url;
 use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/blank-layout');
 $this->block('blank', function () {
-$option = Options::factory()
+$option = option()
 ?>
 
     <!DOCTYPE html>

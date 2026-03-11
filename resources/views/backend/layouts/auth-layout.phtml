@@ -3,19 +3,19 @@
 declare(strict_types=1);
 
 use App\Application\Devflow;
-use App\Infrastructure\Services\Options;
 
+use function App\Shared\Helpers\option;
 use function App\Shared\Helpers\site_url;
 use function Qubus\Security\Helpers\esc_html__;
 use function Qubus\Security\Helpers\t__;
 
-$option = Options::factory();
+$option = option();
 ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="<?=Devflow::$PHP->language;?>">
     <head>
         <base href="<?= site_url(); ?>">
-        <meta charset="utf-8">
+        <meta charset="<?=Devflow::$PHP->charset;?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
         <title><?= t__(msgid: 'Login', domain: 'devflow') . ' &lsaquo; ' . $option->{'read'}('sitename'); ?> &#8212; <?= t__(msgid: 'Devflow', domain: 'devflow'); ?></title>
@@ -40,7 +40,7 @@ $option = Options::factory();
                         <footer>
                             <div class="container">
                                 <div class="col-md-12 col-md-offset-1 text-center">
-                                    <h6 style="font-size:14px;font-weight:400;"><?= esc_html__(string: 'Powered by', domain: 'devflow'); ?> <a href="//getdevflow.com"><?= esc_html__(string: 'Devflow', domain: 'devflow'); ?></a> r<?=Devflow::inst()->release();?></h6>
+                                    <h6 style="font-size:14px;font-weight:400;"><?= esc_html__(string: 'Powered by', domain: 'devflow'); ?> <a href="//getdevflow.com"><?= esc_html__(string: 'Devflow', domain: 'devflow'); ?></a> r<?=Devflow::release();?></h6>
                                 </div>
                             </div>
                         </footer>

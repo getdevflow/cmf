@@ -33,7 +33,7 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
         <!-- Main content -->
         <section class="content">
 
-            <?=Devflow::inst()::$APP->flash->display(); ?>
+            <?=Devflow::$PHP->flash->display(); ?>
 
             <div class="row">
 
@@ -57,7 +57,7 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                                 </thead>
                                 <tbody>
                                 <?php foreach (plugin_info(public_path('plugins/')) as $plugin) : ?>
-                                <?php if (is_plugin_activated($plugin['className']) === true) : ?>
+                                <?php if (is_plugin_activated($plugin['className']) === true && class_exists($plugin['className'])) : ?>
                                 <tr class="gradeX" style="background-color:#B0E0E6 !important;">
                                     <?php else : ?>
                                 <tr class="gradeX">
@@ -70,7 +70,7 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                                         <a href="<?=esc_url($plugin['authorUri']);?>"><?=$plugin['author'];?></a> |
                                         <a href="<?=esc_url($plugin['pluginUri']);?>"><?=esc_html__('View Details');?></a>
                                     </td>
-                                    <?php if (is_plugin_activated($plugin['className']) === true) : ?>
+                                    <?php if (is_plugin_activated($plugin['className']) === true && class_exists($plugin['className'])) : ?>
                                         <td class="text-center"><a class="btn btn-danger" href="<?=admin_url('plugin/deactivate/?id=' . $plugin['className']);?>"><i class="fa fa-minus-circle"></i></a></td>
                                     <?php else : ?>
                                         <td class="text-center"><a class="btn btn-success" href="<?=admin_url('plugin/activate/?id=' . $plugin['className']);?>"><i class="fa fa-plus-circle"></i></a></td>

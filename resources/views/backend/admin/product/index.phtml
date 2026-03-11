@@ -42,7 +42,7 @@ Registry::getInstance()->{'set'}('screen_child', 'products');
 
             <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-            <?= Devflow::inst()::$APP->flash->display(); ?>
+            <?= Devflow::$PHP->flash->display(); ?>
 
             <!-- SELECT2 EXAMPLE -->
             <div class="box box-default">

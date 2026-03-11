@@ -1,4 +1,8 @@
+.ddev
+core/composer.lock
+core/vendor
 database/migrations/.migrations.log
+public/server.php
 public/plugins/*
 public/themes/*
 public/sites/cms_
@@ -9,8 +13,9 @@ storage/install.lock
 storage/logs/*.log
 /vendor/
 .idea
+.enc.key
 .env
-.env.local
+.env.old
 .phpcs-cache
 .php-cs-fixer.cache
 .phpunit.result.cache

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cms\Providers;
+namespace Application\Provider;
 
 use App\Shared\Services\Registry;
 use Codefy\Framework\Support\CodefyServiceProvider;
@@ -18,10 +18,6 @@ class CacheAdapterServiceProvider extends CodefyServiceProvider
      */
     public function register(): void
     {
-        /*if ($this->codefy->isRunningInConsole()) {
-            return;
-        }*/
-
         $this->codefy->alias(original: CacheAdapter::class, alias: FileSystemCacheAdapter::class);
         $this->codefy->define(
             name: FileSystemCacheAdapter::class,
@@ -29,7 +25,6 @@ class CacheAdapterServiceProvider extends CodefyServiceProvider
         );
 
         $this->codefy->share(nameOrInstance: CacheAdapter::class);
-
 
         /** Do not touch or you will break the system. */
         Registry::getInstance()->set('cacheAdapter', $this->codefy->make(name: CacheAdapter::class));

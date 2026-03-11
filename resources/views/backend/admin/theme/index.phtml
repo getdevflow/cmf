@@ -4,9 +4,7 @@ use App\Application\Devflow;
 use App\Shared\Services\Registry;
 
 use function App\Shared\Helpers\admin_url;
-use function App\Shared\Helpers\is_plugin_activated;
 use function App\Shared\Helpers\is_theme_active;
-use function App\Shared\Helpers\plugin_info;
 use function App\Shared\Helpers\theme_info;
 use function Codefy\Framework\Helpers\public_path;
 use function Qubus\Security\Helpers\esc_html__;
@@ -35,7 +33,7 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-themes');
         <!-- Main content -->
         <section class="content">
 
-            <?=Devflow::inst()::$APP->flash->display(); ?>
+            <?=Devflow::$PHP->flash->display(); ?>
 
             <div class="row">
 

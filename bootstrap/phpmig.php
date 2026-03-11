@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-use Codefy\Framework\Migration\Adapter\DbalMigrationAdapter;
-use Qubus\Dbal\DB;
+use App\Application\Devflow;
+use Qubus\Expressive\Migration\Adapter\DbalMigrationAdapter;
 use Qubus\Support\Container\ObjectStorageMap;
 
-use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\database_path;
 use function Qubus\Config\Helpers\env;
 
@@ -16,7 +15,7 @@ $connection = env(key: 'DB_CONNECTION', default: 'default');
 
 $objectmap = new ObjectStorageMap();
 
-$objectmap['db'] = fn () => DB::connection(config: (array) config(key: "database.connections.{$connection}"));
+$objectmap['db'] = fn () => Devflow::$PHP->getDbConnection();
 
 $objectmap['phpmig.adapter'] = function ($c) {
     return new DbalMigrationAdapter(connection: $c['db'], tableName: 'migration');

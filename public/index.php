@@ -2,19 +2,17 @@
 
 declare(strict_types=1);
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require __DIR__ . '/../vendor/autoload.php';
 
-use Codefy\Framework\Http\Kernel;
-use Dotenv\Dotenv;
+use Codefy\Framework\Contracts\Http\Kernel;
 
-use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\get_fresh_bootstrap;
-
-$dotenv = Dotenv::createImmutable(paths: base_path());
-$dotenv->safeLoad();
 
 $app = get_fresh_bootstrap();
 
 $kernel = $app->make(Kernel::class);
-
 $kernel->boot();

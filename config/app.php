@@ -2,7 +2,12 @@
 
 declare(strict_types=1);
 
-use function Qubus\Config\Helpers\env;
+use Codefy\Framework\Configuration\Middleware;
+use Codefy\Framework\Providers\AssetsServiceProvider;
+use Codefy\Framework\Providers\LocalizationServiceProvider;
+use Codefy\Framework\Support\CodefyServiceProvider;
+
+use function Codefy\Framework\Helpers\env;
 
 return [
     /*
@@ -56,25 +61,66 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application HTML Charset
+    |--------------------------------------------------------------------------
+    */
+    'charset' => 'UTF-8',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application HTML Language
+    |--------------------------------------------------------------------------
+    */
+    'language' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Locale Domain
+    |--------------------------------------------------------------------------
+    */
+    'locale_domain' => 'devflow',
+
+    /*
+    |--------------------------------------------------------------------------
+    | API key for restful routes.
+    |--------------------------------------------------------------------------
+    */
+    'api_key' => env(key: 'APP_KEY'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Encryption Key
+    |--------------------------------------------------------------------------
+    */
+    'crypto_key' => file_get_contents(filename: __DIR__ . '/../.enc.key'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Event Listener Provider and Dispatcher
+    |--------------------------------------------------------------------------
+    */
+    'event_listener' => Qubus\EventDispatcher\Providers\PrioritizedProvider::class,
+    'event_dispatcher' => Qubus\EventDispatcher\EventDispatcher::class,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Controller Namespace
+    |--------------------------------------------------------------------------
+    */
+    //'controller_namespace' => 'Application\\Http\\Controller',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Configured Service Providers
     |--------------------------------------------------------------------------
     | These service providers will automatically load when the application is
     | requested. Feel free to add your own service providers.
     */
-    'providers' => [
-        /*
-         * Application Service Providers.
-         */
-        \Cms\Providers\CacheAdapterServiceProvider::class,
-        App\Infrastructure\Providers\AppServiceProvider::class,
-        App\Infrastructure\Providers\SiteServiceProvider::class,
-        App\Infrastructure\Providers\DatabaseServiceProvider::class,
-        App\Infrastructure\Providers\RbacServiceProvider::class,
-        App\Infrastructure\Providers\MiddlewareServiceProvider::class,
-        App\Infrastructure\Providers\ApiRouteServiceProvider::class,
-        App\Infrastructure\Providers\CmsHelperServiceProvider::class,
-        App\Infrastructure\Providers\WebRouteServiceProvider::class,
-    ],
+    'providers' => CodefyServiceProvider::defaultProviders()->merge([
+        //
+    ])
+    ->except([LocalizationServiceProvider::class, AssetsServiceProvider::class])
+    ->toArray(),
 
     /*
     |--------------------------------------------------------------------------
@@ -83,21 +129,10 @@ return [
     | Middleware aliases are registered here, but to use a middleware, you
     | can add them to a route, a group of routes or controllers.
     */
-    'middlewares' => [
-        /** Uncomment to use whoops in dev mode to override system error handler. */
-        //'whoops' => Franzl\Middleware\Whoops\WhoopsMiddleware::class,
-        'security.headers' => App\Infrastructure\Http\Middleware\SecureHeaders\ContentSecurityPolicyMiddleware::class,
-        'csrf.token' => App\Infrastructure\Http\Middleware\Csrf\CsrfTokenMiddleware::class,
-        'csrf.protection' => App\Infrastructure\Http\Middleware\Csrf\CsrfProtectionMiddleware::class,
-        'cors' => App\Infrastructure\Http\Middleware\CorsMiddleware::class,
-        'file.logger' => App\Infrastructure\Http\Middleware\LoggingMiddleware::class,
-        'honeypot' => App\Infrastructure\Http\Middleware\HoneyPotMiddleware::class,
-        'user.authenticate' => Codefy\Framework\Auth\Middleware\AuthenticationMiddleware::class,
-        'user.session' => \Cms\Http\Middleware\CmsUserSessionMiddleware::class,
-        'user.authorization' => App\Infrastructure\Http\Middleware\UserAuthorizationMiddleware::class,
-        'user.session.expire' => App\Infrastructure\Http\Middleware\ExpireUserSessionMiddleware::class,
-        'rest.api' => \Cms\Http\Middleware\RestApiMiddleware::class,
-    ],
+    'middlewares' => Middleware::defaultMiddlewares()->merge([
+        'rest.api' => \Application\Http\Middleware\RestApiMiddleware::class,
+        'fence' => App\Infrastructure\Http\Middleware\UserAuthMiddleware::class,
+    ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +142,14 @@ return [
     | application.
     */
     'base_middlewares' => [
-        'security.headers'
+        'security.headers',
+        'csrf.token',
+        'csrf.protection',
+        'http.cache.prevention',
+        'user.cookie.decrypt',
+        'bind.request',
+        'php.debugbar',
+        //'http.exception', //uncomment in production
     ],
 
     /*
@@ -119,28 +161,9 @@ return [
     */
     'commands' => [
         /*
-         * Codefy Framework Console Commands . . .
-         */
-        Codefy\Framework\Console\Commands\MakeCommand::class,
-        Codefy\Framework\Console\Commands\ScheduleRunCommand::class,
-        Codefy\Framework\Console\Commands\PasswordHashCommand::class,
-        Codefy\Framework\Console\Commands\InitCommand::class,
-        Codefy\Framework\Console\Commands\StatusCommand::class,
-        Codefy\Framework\Console\Commands\CheckCommand::class,
-        Codefy\Framework\Console\Commands\GenerateCommand::class,
-        Codefy\Framework\Console\Commands\UpCommand::class,
-        Codefy\Framework\Console\Commands\DownCommand::class,
-        Codefy\Framework\Console\Commands\MigrateCommand::class,
-        Codefy\Framework\Console\Commands\RollbackCommand::class,
-        Codefy\Framework\Console\Commands\RedoCommand::class,
-        Codefy\Framework\Console\Commands\ListCommand::class,
-        Codefy\Framework\Console\Commands\ServeCommand::class,
-        Codefy\Framework\Console\Commands\UuidCommand::class,
-        Codefy\Framework\Console\Commands\UlidCommand::class,
-
-        /*
          * Application Console Commands . . .
          */
+        App\Application\Console\Commands\ClearCacheCommand::class,
         App\Application\Console\Commands\GenerateEncryptionKeyCommand::class,
         App\Application\Console\Commands\GenerateSaltStringCommand::class,
         App\Application\Console\Commands\InstallCmsCommand::class,

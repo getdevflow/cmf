@@ -91,7 +91,7 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
 
                 <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-                <?= Devflow::inst()::$APP->flash->display(); ?>
+                <?= Devflow::$PHP->flash->display(); ?>
 
                 <div class="row">
                     <!-- left column -->

@@ -8,7 +8,7 @@ declare(strict_types=1);
 |--------------------------------------------------------------------------
 */
 
-use Cms\Http\Routes\TestRoute;
+use Application\Http\Route\TestRoute;
 
 return [
     'localhost' => TestRoute::class,

@@ -56,7 +56,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
 
                 <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-                <?= Devflow::inst()::$APP->flash->display(); ?>
+                <?= Devflow::$PHP->flash->display(); ?>
 
                 <div class="row">
                     <!-- left column -->
@@ -131,6 +131,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                                         <option>&nbsp;</option>
                                         <?php if (current_user_can('publish:content')) : ?>
                                             <option value="published"<?= selected('published', $params['request']['status'] ?? '', false); ?>><?= esc_html__(string: 'Publish', domain: 'devflow'); ?></option>
+                                            <option value="scheduled"<?= selected('scheduled', $params['request']['status'] ?? '', false); ?>><?= esc_html__(string: 'Schedule', domain: 'devflow'); ?></option>
                                         <?php endif; ?>
                                         <option value="draft"<?= selected('draft', $params['request']['status'] ?? '', false); ?>><?= esc_html__(string: 'Draft', domain: 'devflow'); ?></option>
                                         <option value="pending"<?= selected('pending', $params['request']['status'] ?? '', false); ?>><?= esc_html__(string: 'Pending', domain: 'devflow'); ?></option>

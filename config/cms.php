@@ -2,10 +2,18 @@
 
 declare(strict_types=1);
 
+use function Codefy\Framework\Helpers\env;
 use function Codefy\Framework\Helpers\public_path;
-use function Qubus\Config\Helpers\env;
 
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Once you set the salt in your .env file,
+    | do not change it, or you will break the
+    | system.
+    |--------------------------------------------------------------------------
+    */
+    'app_salt' => env(key: 'APP_SALT'),
     /*
     |--------------------------------------------------------------------------
     | Plugin's base directory.
@@ -68,7 +76,7 @@ return [
     | own risk.
     |--------------------------------------------------------------------------
     */
-    'multisite' => false,
+    'multisite' => true,
     /*
     |--------------------------------------------------------------------------
     | Set the minimum character length for passwords.

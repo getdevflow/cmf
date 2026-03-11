@@ -66,7 +66,7 @@ return [
     | Otherwise the header will still be included in the response.
     |--------------------------------------------------------------------------
     */
-    'x-powered-by' => sprintf('Devflow-%s', \App\Application\Devflow::inst()->release()),
+    'x-powered-by' => sprintf('Devflow-%s', \App\Application\Devflow::release()),
 
     /*
     |--------------------------------------------------------------------------

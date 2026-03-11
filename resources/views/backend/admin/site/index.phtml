@@ -49,7 +49,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites');
 
                 <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-                <?= Devflow::inst()::$APP->flash->display(); ?>
+                <?= Devflow::$PHP->flash->display(); ?>
 
                 <div class="row">
                     <!-- left column -->

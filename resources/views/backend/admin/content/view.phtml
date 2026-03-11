@@ -62,7 +62,7 @@ Action::getInstance()->doAction('update_content_init');
             <!-- Main content -->
             <section class="content">
                 <?php Action::getInstance()->doAction('admin_notices'); ?>
-                <?= Devflow::inst()::$APP->flash->display(); ?>
+                <?= Devflow::$PHP->flash->display(); ?>
                 <div class="row">
                     <!-- left column -->
                     <div class="col-md-9">
@@ -136,6 +136,7 @@ Action::getInstance()->doAction('update_content_init');
                                         <option>&nbsp;</option>
                                         <?php if (current_user_can('publish:content')) : ?>
                                             <option value="published"<?= selected('published', $params['content']->status, false); ?>><?= esc_html__(string: 'Publish', domain: 'devflow'); ?></option>
+                                            <option value="scheduled"<?= selected('scheduled', $params['content']->status, false); ?>><?= esc_html__(string: 'Schedule', domain: 'devflow'); ?></option>
                                         <?php endif; ?>
                                         <option value="draft"<?= selected('draft', $params['content']->status, false); ?>><?= esc_html__(string: 'Draft', domain: 'devflow'); ?></option>
                                         <option value="pending"<?= selected('pending', $params['content']->status, false); ?>><?= esc_html__(string: 'Pending', domain: 'devflow'); ?></option>
