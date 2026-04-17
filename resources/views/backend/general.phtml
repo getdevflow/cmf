@@ -9,7 +9,7 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\cms_dropdown_languages;
 use function App\Shared\Helpers\generate_timezone_list;
-use function App\Shared\Helpers\option;
+use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\selected;
 use function Qubus\Security\Helpers\esc_html__;
 
@@ -19,8 +19,6 @@ Registry::getInstance()->{'set'}('screen_parent', 'options');
 Registry::getInstance()->{'set'}('screen_child', 'options-general');
 
 Action::getInstance()->doAction('options_init');
-
-$option = option();
 ?>
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url('general/'); ?>" id="form" autocomplete="off">
@@ -57,43 +55,43 @@ $option = option();
                             <div class="box-body">
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Site Name', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="sitename" value="<?= $option->read('sitename'); ?>" required/>
+                                    <input type="text" class="form-control" name="sitename" value="<?= get_option(key: 'sitename'); ?>" required/>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Site Description', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="site_description" value="<?= $option->read('site_description'); ?>" />
+                                    <input type="text" class="form-control" name="site_description" value="<?= get_option(key: 'site_description'); ?>" />
                                 </div>
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Admin Email', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="admin_email" value="<?= $option->read('admin_email'); ?>" required/>
+                                    <input type="text" class="form-control" name="admin_email" value="<?= get_option(key: 'admin_email'); ?>" required/>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Locale', domain: 'devflow'); ?></strong></label>
                                     <select class="form-control select2" name="site_locale" style="width: 100%;" required>
                                         <option>&nbsp;</option>
-                                        <?php cms_dropdown_languages($option->read('site_locale', '')); ?>
+                                        <?php cms_dropdown_languages(get_option(key: 'site_locale', default: '')); ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Cookie Expire', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="cookieexpire" value="<?= $option->read('cookieexpire'); ?>" required/>
+                                    <input type="text" class="form-control" name="cookieexpire" value="<?= get_option(key: 'cookieexpire'); ?>" required/>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Cookie Path', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="cookiepath" value="<?= $option->read('cookiepath'); ?>" required/>
+                                    <input type="text" class="form-control" name="cookiepath" value="<?= get_option(key: 'cookiepath'); ?>" required/>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'System Timezone', domain: 'devflow'); ?></strong></label>
                                     <select class="form-control select2" name="site_timezone" style="width: 100%;" required>
                                         <option value=""> ------------------------- </option>
                                         <?php foreach (generate_timezone_list() as $k => $v) : ?>
-                                            <option value="<?=$k;?>"<?=selected($option->read('site_timezone', ''), $k, false); ?>><?=$v;?></option>
+                                            <option value="<?=$k;?>"<?=selected(get_option(key: 'site_timezone', default: ''), $k, false); ?>><?=$v;?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'API Key', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="api_key" value="<?= $option->read('api_key'); ?>" required/>
+                                    <input type="text" class="form-control" name="api_key" value="<?= get_option(key: 'api_key'); ?>" required/>
                                 </div>
                                 <?php Action::getInstance()->doAction('options_general_form'); ?>
                             </div>

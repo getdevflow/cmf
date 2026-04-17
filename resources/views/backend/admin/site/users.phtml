@@ -83,7 +83,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                             </select>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <input type="hidden" name="role" value="admin" />
+                                                            <input type="hidden" name="role" value="<?=get_user_option('role', $user['id']);?>" />
                                                             <input type="hidden" name="user_id" value="<?=$user['id'];?>" />
                                                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
                                                             <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>

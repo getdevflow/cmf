@@ -22,12 +22,12 @@ use function App\Shared\Helpers\get_current_user_id;
 use function App\Shared\Helpers\get_logo_large;
 use function App\Shared\Helpers\get_logo_mini;
 use function App\Shared\Helpers\get_name;
+use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\get_secure_cookie_data;
 use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
 use function App\Shared\Helpers\get_userdata;
 use function App\Shared\Helpers\is_multisite;
-use function App\Shared\Helpers\option;
 use function App\Shared\Helpers\site_url;
 use function Qubus\Security\Helpers\esc_attr;
 use function Qubus\Security\Helpers\esc_html;
@@ -39,7 +39,6 @@ if (isset($_COOKIE['SWITCH_USERBACK'])) :
 endif;
 /** @var User $user */
 $user = get_userdata(get_current_user_id());
-$option = option();
 ?>
     <!DOCTYPE html>
     <html lang="<?=Devflow::$PHP->language;?>">
@@ -47,7 +46,7 @@ $option = option();
         <base href="<?= site_url(); ?>">
         <meta charset="<?=Devflow::$PHP->charset;?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><?=$this->esc($title ?? '') . ' &lsaquo; ' . $option->{'read'}('sitename'); ?> &#8212; <?=esc_html(string: 'Devflow');?></title>
+        <title><?=$this->esc($title ?? '') . ' &lsaquo; ' . get_option(key: 'sitename'); ?> &#8212; <?=esc_html(string: 'Devflow');?></title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=6, user-scalable=yes" name="viewport">
         <meta name="theme-color" content="#ffffff">
@@ -58,7 +57,7 @@ $option = option();
         <link href="static/assets/css/iCheck/all.css" type="text/css" rel="stylesheet" />
         <?php admin_head(); ?>
     </head>
-    <body class="hold-transition <?= get_user_option('admin_skin', $user->id); ?> <?= (get_user_option('admin_layout', $user->id) === '0' ? 'fixed ' : ''); ?><?= (get_user_option('admin_sidebar', $user->id) === '0' ? 'sidebar-collapse ' : ''); ?>sidebar-mini">
+    <body class="hold-transition <?= get_user_option('admin.skin', $user->id); ?> <?= (get_user_option('admin.layout', $user->id) === 0 ? 'fixed ' : ''); ?><?= (get_user_option('admin.sidebar', $user->id) === 0 ? 'sidebar-collapse ' : ''); ?>sidebar-mini">
     <div class="wrapper">
 
         <header class="main-header">
@@ -90,7 +89,7 @@ $option = option();
 
                                     <p>
                                         <?= get_name(get_current_user_id()); ?>
-                                        <small><?=esc_html__(string: 'Member since', domain: 'devflow'); ?> <?= (new DateTime())->db2date('M Y', $user->registered); ?></small>
+                                        <small><?=esc_html__(string: 'Member since', domain: 'devflow'); ?> <?= new DateTime()->db2date('M Y', $user->registered); ?></small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -253,7 +252,7 @@ $option = option();
                             </ul>
                         </li>
                     <?php else : ?>
-                        <li>
+                        <li class="treeview<?=current_screen('screen_child', 'profile');?>">
                             <a href="<?= admin_url('user/profile/'); ?>">
                                 <i class="fa fa-id-card"></i> <span><?=esc_html__(string: 'Your Profile', domain: 'devflow');?></span>
                             </a>
@@ -290,7 +289,7 @@ $option = option();
     <!-- ./wrapper -->
 
     <script>
-        var endDate = new Date("<?=(new DateTime())->timestampToDate('Y-m-d H:i:s', get_secure_cookie_data(key: 'USERCOOKIEID')->exp);?>").getTime();
+        var endDate = new Date("<?=new DateTime()->timestampToDate('Y-m-d H:i:s', get_secure_cookie_data(key: 'USERCOOKIEID')->exp);?>").getTime();
         var timer = setInterval(function () {
             let now = new Date().getTime();
             let t = endDate - now;

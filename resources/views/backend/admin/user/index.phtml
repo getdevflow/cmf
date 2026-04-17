@@ -71,7 +71,7 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                         <?=$status[0];?>
                                     </span>
                                 </td>
-                                <td class="text-center"><?= get_user_option('role', $user['id']);?></td>
+                                <td class="text-center"><?=$data->role;?></td>
                                 <td class="text-center">
                                     <?php if ($user['id'] === get_current_user_id()) : ?>
                                         <a href="<?= admin_url('user/profile/'); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Update', domain: 'devflow'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
@@ -82,7 +82,7 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                     <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && $user['id'] !== get_current_user_id()) : ?>
                                         <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', $user['id'])); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Switch to', domain: 'devflow'); ?>"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
                                     <?php endif; ?>
-                                    <?php if ($user['role'] !== 'super' && $user['id'] !== get_current_user_id()) : ?>
+                                    <?php if ($data->role !== 'super' && $user['id'] !== get_current_user_id()) : ?>
                                         <a<?= ae('delete:users'); ?> href="#" data-toggle="modal" data-target="#delete-<?= $user['id']; ?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
                                     <?php endif; ?>
 

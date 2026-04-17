@@ -11,8 +11,8 @@ use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\convert_seconds_to_time;
+use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\is_multisite;
-use function App\Shared\Helpers\option;
 use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\config;
@@ -24,7 +24,6 @@ $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
 Registry::getInstance()->{'set'}('screen_parent', 'dashboard');
 Registry::getInstance()->{'set'}('screen_child', 'snapshot');
-$option = option();
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -51,7 +50,7 @@ $option = option();
                 $report = "\n\t" . esc_html(string: '** DATA **'). PHP_EOL . PHP_EOL;
                 $report .= esc_html(string: 'Site URL:'). "\t\t\t\t\t\t" . site_url() . PHP_EOL;
                 $report .= esc_html(string: 'Devflow Release:'). "\t\t\t\t\t" . Devflow::release() . PHP_EOL;
-                $report .= esc_html(string: 'API Key:'). "\t\t\t\t\t\t" . (preg_match('/\s/', $option->read('api_key')) ? '<span style="color: red; ">' . esc_html(string: 'No'). '</span>': '<span style="color: green; ">' . esc_html(string: 'Yes'). '</span>') . PHP_EOL;
+                $report .= esc_html(string: 'API Key:'). "\t\t\t\t\t\t" . (preg_match('/\s/', get_option(key: 'api_key')) ? '<span style="color: red; ">' . esc_html(string: 'No'). '</span>': '<span style="color: green; ">' . esc_html(string: 'Yes'). '</span>') . PHP_EOL;
                 $report .= esc_html(string: 'Active User Count:'). "\t\t\t\t\t" . $params['users'] . PHP_EOL;
 
                 $report .= "\n\t" . esc_html(string: '** CONFIG **'). PHP_EOL . PHP_EOL;
@@ -72,7 +71,7 @@ $option = option();
                 $report .= esc_html(string: 'Max Input Vars:'). "\t\t\t\t\t\t" . ini_get('max_input_vars') . PHP_EOL;
                 $report .= esc_html(string: 'Cookie Path:'). "\t\t\t\t\t\t" . (is_writable(storage_path('app/cookies')) ? '<span style="color: green; ">' . storage_path('app/cookies') . '</span>': '<span style="color: red; ">' . storage_path('app/cookies') . '</span>') . PHP_EOL;
                 $report .= esc_html(string: 'Regular Cookie TTL:'). "\t\t\t\t\t" . convert_seconds_to_time((int) config('cookies.lifetime')) . PHP_EOL;
-                $report .= esc_html(string: 'Secure Cookie TTL:'). "\t\t\t\t\t" . convert_seconds_to_time((int) $option->read('cookieexpire')) . PHP_EOL;
+                $report .= esc_html(string: 'Secure Cookie TTL:'). "\t\t\t\t\t" . convert_seconds_to_time((int) get_option(key: 'cookieexpire')) . PHP_EOL;
                 $report .= esc_html(string: 'cURL Enabled:'). "\t\t\t\t\t\t" . (function_exists('curl_version') ? '<span style="color: green; ">' . esc_html(string: 'Yes'). '</span>': '<span style="color: red; ">' . esc_html(string: 'No'). '</span>') . PHP_EOL;
                 // end it all
                 $report .= PHP_EOL;

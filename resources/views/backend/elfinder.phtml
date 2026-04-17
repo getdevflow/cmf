@@ -9,13 +9,12 @@ declare(strict_types=1);
  * tinyMCE.
  */
 
-use function App\Shared\Helpers\option;
+use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\site_url;
 use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/blank-layout');
 $this->block('blank', function () {
-$option = option()
 ?>
 
     <!DOCTYPE html>
@@ -24,7 +23,7 @@ $option = option()
         <base href="<?= site_url(); ?>">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><?=$this->esc($title ?? '') . ' &lsaquo; ' . $option->read('sitename'); ?> &#8212; <?= esc_html__(string: 'Devflow', domain: 'devflow');?></title>
+        <title><?=$this->esc($title ?? '') . ' &lsaquo; ' . get_option(key: 'sitename'); ?> &#8212; <?= esc_html__(string: 'Devflow', domain: 'devflow');?></title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">

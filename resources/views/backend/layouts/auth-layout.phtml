@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 use App\Application\Devflow;
 
-use function App\Shared\Helpers\option;
+use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\site_url;
 use function Qubus\Security\Helpers\esc_html__;
 use function Qubus\Security\Helpers\t__;
-
-$option = option();
 ?>
     <!DOCTYPE html>
     <html lang="<?=Devflow::$PHP->language;?>">
@@ -18,7 +16,7 @@ $option = option();
         <meta charset="<?=Devflow::$PHP->charset;?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-        <title><?= t__(msgid: 'Login', domain: 'devflow') . ' &lsaquo; ' . $option->{'read'}('sitename'); ?> &#8212; <?= t__(msgid: 'Devflow', domain: 'devflow'); ?></title>
+        <title><?= t__(msgid: 'Login', domain: 'devflow') . ' &lsaquo; ' . get_option(key: 'sitename'); ?> &#8212; <?= t__(msgid: 'Devflow', domain: 'devflow'); ?></title>
         <link rel="stylesheet" href="static/assets/css/auth/bootstrap.min.css">
         <link rel="stylesheet" href="static/assets/css/auth/auth.min.css">
         <!-- Favicon Package -->

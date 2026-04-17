@@ -1,6 +1,7 @@
 <?php
 
 use App\Application\Devflow;
+use App\Domain\Content\ValueObject\ContentId;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
@@ -56,7 +57,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
 
                 <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-                <?= Devflow::$PHP->flash->display(); ?>
+                <?=Devflow::$PHP->flash->display();?>
 
                 <div class="row">
                     <!-- left column -->
@@ -199,6 +200,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                                 <button type="button" id="set_image" class="btn btn-primary" style="display:none;"><?= esc_html__(string: 'Set featured image', domain: 'devflow'); ?></button>
                                 <button type="button" id="remove_image" class="btn btn-primary" style="display:none;"><?= esc_html__(string: 'Remove featured image', domain: 'devflow'); ?></button>
                                 <input type="hidden" class="form-control" name="featuredImage" id="upload_image" />
+                                <input type="hidden" class="form-control" name="id" value="<?=ContentId::generateAsString();?>" />
                             </div>
                             <!-- /.box-body -->
                         </div>

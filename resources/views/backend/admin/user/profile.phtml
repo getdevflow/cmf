@@ -65,16 +65,16 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Fixed Layout', domain: 'devflow'); ?></strong></label>
                                     <div class="ios-switch switch-md pull-left">
-                                        <input type="hidden" class="js-switch" name="admin_layout" value="0" />
-                                        <input type="checkbox" class="js-switch" name="admin_layout"<?= checked('1', get_user_option('admin_layout', $param['user']->id)); ?> value="1" />
+                                        <input type="hidden" class="js-switch" name="adminLayout" value="0" />
+                                        <input type="checkbox" class="js-switch" name="adminLayout"<?= checked(1, get_user_option('admin.layout', $param['user']->id)); ?> value="1" />
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Toggle Sidebar', domain: 'devflow'); ?></strong></label>
                                     <div class="ios-switch switch-md pull-left">
-                                        <input type="hidden" class="js-switch" name="admin_sidebar" value="0" />
-                                        <input type="checkbox" class="js-switch" name="admin_sidebar"<?= checked('1', get_user_option('admin_sidebar', $param['user']->id)); ?> value="1" />
+                                        <input type="hidden" class="js-switch" name="adminSidebar" value="0" />
+                                        <input type="checkbox" class="js-switch" name="adminSidebar"<?= checked(1, get_user_option('admin.sidebar', $param['user']->id)); ?> value="1" />
                                     </div>
                                 </div>
 
@@ -82,84 +82,84 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
                                     <label><strong><?= esc_html__(string: 'Admin Skin', domain: 'devflow'); ?></strong></label>
                                     <ul style="list-style: none;margin:0px 0px 0px -30px;">
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-blue', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-blue" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-blue', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-blue" />
                                             <a href="javascript:void(0)" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-black', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-black" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-black', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-black" />
                                             <a href="javascript:void(0)" data-skin="skin-black" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-purple', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-purple" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-purple', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-purple" />
                                             <a href="javascript:void(0)" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-green', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-green" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-green', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-green" />
                                             <a href="javascript:void(0)" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-red', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-red" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-red', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-red" />
                                             <a href="javascript:void(0)" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-yellow', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-yellow" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-yellow', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-yellow" />
                                             <a href="javascript:void(0)" data-skin="skin-yellow" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-blue-light', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-blue-light" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-blue-light', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-blue-light" />
                                             <a href="javascript:void(0)" data-skin="skin-blue-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-black-light', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-black-light" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-black-light', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-black-light" />
                                             <a href="javascript:void(0)" data-skin="skin-black-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-purple-light', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-purple-light" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-purple-light', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-purple-light" />
                                             <a href="javascript:void(0)" data-skin="skin-purple-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-green-light', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-green-light" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-green-light', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-green-light" />
                                             <a href="javascript:void(0)" data-skin="skin-green-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-red-light', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-red-light" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-red-light', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-red-light" />
                                             <a href="javascript:void(0)" data-skin="skin-red-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
                                             </a>
                                         </li>
                                         <li style="float:left; width: 25%; padding: 5px;">
-                                            <input type="radio" class="flat-red" name="admin_skin"<?= checked('skin-yellow-light', get_user_option('admin_skin', $param['user']->id)); ?> value="skin-yellow-light" />
+                                            <input type="radio" class="flat-red" name="adminSkin"<?= checked('skin-yellow-light', get_user_option('admin.skin', $param['user']->id)); ?> value="skin-yellow-light" />
                                             <a href="javascript:void(0)" data-skin="skin-yellow-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
                                                 <div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span></div>
                                                 <div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>
@@ -315,7 +315,7 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
 
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Biography', domain: 'devflow'); ?></strong></label>
-                                    <textarea class="form-control" name="bio" rows="5"><?= get_user_option('bio', $param['user']->id); ?></textarea>
+                                    <textarea class="form-control" name="bio" rows="5"><?=$param['user']->bio;?></textarea>
                                 </div>
 
                                 <div class="form-group">

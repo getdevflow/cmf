@@ -57,15 +57,15 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><?=esc_html__(string: 'Content Type Name', domain: 'devflow');?></label>
+                                    <label><strong><span style="color: red; ">*</span> <?=esc_html__(string: 'Content Type Name', domain: 'devflow');?></strong></label>
                                     <input type="text" class="form-control input-lg" name="title" id="type_title" value="<?= $params['request']['title'] ?? ''; ?>" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label><?=esc_html__(string: 'Content Type Slug', domain: 'devflow');?> <a href="#slug" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
+                                    <label><strong><span style="color: red; ">*</span> <?=esc_html__(string: 'Content Type Slug', domain: 'devflow');?></strong> <a href="#slug" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
                                     <input type="text" class="form-control" name="slug" id="type_slug" value="<?= $params['request']['slug'] ?? ''; ?>" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label><?=esc_html__(string: 'Content Type Description', domain: 'devflow');?></label>
+                                    <label><strong><span style="color: red; ">*</span> <?=esc_html__(string: 'Content Type Description', domain: 'devflow');?></strong></label>
                                     <textarea class="form-control" name="description" required><?= $params['request']['description'] ?? ''; ?></textarea>
                                 </div>
                             </div>

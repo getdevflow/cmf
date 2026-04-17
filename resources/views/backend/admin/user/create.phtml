@@ -10,8 +10,8 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\generate_random_password;
 use function App\Shared\Helpers\get_user_roles;
-use function App\Shared\Helpers\get_users_dropdown;
 use function App\Shared\Helpers\selected;
+use function App\Shared\Helpers\user_lookup;
 use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -117,7 +117,7 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
 
                                     <select id="user_select" class="form-control select2" name="id" style="width: 100%;" disabled="disabled">
                                         <option value=""> ------------Existing User?------------ </option>
-                                        <?php get_users_dropdown($params['request']['id'] ?? ''); ?>
+                                        <?php user_lookup($params['request']['id'] ?? ''); ?>
                                     </select>
                                 </div>
 

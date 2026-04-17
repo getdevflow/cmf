@@ -8,7 +8,7 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\cms_charset;
-use function App\Shared\Helpers\option;
+use function App\Shared\Helpers\get_option;
 use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -17,8 +17,6 @@ Registry::getInstance()->{'set'}('screen_parent', 'options');
 Registry::getInstance()->{'set'}('screen_child', 'options-reading');
 
 Action::getInstance()->doAction('options_init');
-
-$option = option();
 ?>
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url('reading/'); ?>" id="form" autocomplete="off">
@@ -55,19 +53,19 @@ $option = option();
                             <div class="box-body">
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Charset', domain: 'devflow'); ?></strong></label>
-                                    <?=cms_charset($option->read('charset', 'utf8', ''));?>
+                                    <?=cms_charset(get_option(key: 'charset', default: 'utf8'));?>
                                 </div>
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Content per Page', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="content_per_page" value="<?= $option->read('content_per_page'); ?>" />
+                                    <input type="text" class="form-control" name="content_per_page" value="<?= get_option(key: 'content_per_page'); ?>" />
                                 </div>
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Date Format', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="date_format" value="<?= $option->read('date_format'); ?>" />
+                                    <input type="text" class="form-control" name="date_format" value="<?= get_option(key: 'date_format'); ?>" />
                                 </div>
                                 <div class="form-group">
                                     <label><strong><?= esc_html__(string: 'Time Format', domain: 'devflow'); ?></strong></label>
-                                    <input type="text" class="form-control" name="time_format" value="<?= $option->read('time_format'); ?>" />
+                                    <input type="text" class="form-control" name="time_format" value="<?= get_option(key: 'time_format'); ?>" />
                                 </div>
                                 <?php Action::getInstance()->doAction('options_reading_form'); ?>
                             </div>

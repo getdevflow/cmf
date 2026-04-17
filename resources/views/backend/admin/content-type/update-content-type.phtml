@@ -17,8 +17,8 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
     <script src="static/assets/js/url_slug.js" type="text/javascript"></script>
     <script>
         $(function(){
-            $('#contenttype_title').keyup(function() {
-                $('#contenttype_slug').val(url_slug($(this).val()));
+            $('#type_title').keyup(function() {
+                $('#type_slug').val(url_slug($(this).val()));
             });
         });
     </script>
@@ -53,16 +53,16 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Name', domain: 'devflow'); ?></label>
-                                    <input type="text" class="form-control input-lg" name="title" id="title" value="<?=$params['type']->title;?>" required/>
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Name', domain: 'devflow'); ?></strong></label>
+                                    <input type="text" class="form-control input-lg" name="title" id="type_title" value="<?=$params['type']->title;?>" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Slug', domain: 'devflow'); ?></label>
-                                    <input type="text" class="form-control" name="slug" id="slug" value="<?=$params['type']->slug;?>" required/>
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Slug', domain: 'devflow'); ?></strong></label>
+                                    <input type="text" class="form-control" name="slug" id="type_slug" value="<?=$params['type']->slug;?>" required/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label><?= esc_html__(string: 'Content Type Description', domain: 'devflow'); ?></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Description', domain: 'devflow'); ?></strong> <a href="#slug" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
                                     <textarea class="form-control" rows="3" name="description" required><?=$params['type']->description;?></textarea>
                                 </div>
                             </div>
@@ -76,6 +76,28 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
 
             </section>
             <!-- /.content -->
+
+            <!-- modal -->
+            <div class="modal" id="slug">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"><?=esc_html__(string: 'Content Type Slug', domain: 'devflow');?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><?=esc_html__(string: "If left blank, the system will auto generate the content type slug.", domain: 'devflow');?></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
 
         </div>
         <!-- /.content-wrapper -->
