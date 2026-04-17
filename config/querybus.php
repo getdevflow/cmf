@@ -8,7 +8,7 @@ use App\Domain\ContentType\Repository\ContentTypeQueryRepository;
 use App\Domain\Product\Repository\ProductQueryRepository;
 use App\Domain\Site\Repository\SitesQueryRepository;
 use App\Domain\User\Repository\UserQueryRepository;
-use App\Infrastructure\Persistence\Database;
+use Qubus\Expressive\Database;
 use App\Infrastructure\Persistence\NativePdoDatabase;
 use App\Infrastructure\Persistence\Repository\QueryBusContentRepository;
 use App\Infrastructure\Persistence\Repository\QueryBusContentTypeRepository;
@@ -17,6 +17,8 @@ use App\Infrastructure\Persistence\Repository\QueryBusSitesRepository;
 use App\Infrastructure\Persistence\Repository\QueryBusUserRepository;
 use Codefy\CommandBus\Container;
 use Codefy\CommandBus\Containers\InjectorContainer;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use Psr\EventDispatcher\ListenerProviderInterface;
 use Qubus\Config\Collection;
 use Qubus\Config\ConfigContainer;
 use Qubus\Injector\Injector;
@@ -34,7 +36,7 @@ return [
     'aliases' => [
         Injector::ARGUMENT_DEFINITIONS => [
             NativePdoDatabase::class => [
-                'pdo' => Devflow::$PHP->getDbConnection()->pdo,
+                'connection' => Devflow::$PHP->getDbConnection(),
                 'configContainer' => Devflow::$PHP->configContainer,
             ],
             Collection::class => [
@@ -54,6 +56,8 @@ return [
             ProductQueryRepository::class => QueryBusProductRepository::class,
             SitesQueryRepository::class => QueryBusSitesRepository::class,
             UserQueryRepository::class => QueryBusUserRepository::class,
+            ListenerProviderInterface::class => Devflow::$PHP->configContainer->string(key: 'app.event_listener'),
+            EventDispatcherInterface::class => Devflow::$PHP->configContainer->string(key: 'app.event_dispatcher'),
         ],
     ],
 ];

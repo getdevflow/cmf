@@ -13,13 +13,6 @@ return [
     'default' => env(key: 'DB_CONNECTION'),
     /*
     |--------------------------------------------------------------------------
-    | Set to true if you would like to cache raw database queries:
-    | getVar, getCol, getRow, getResults or raw.
-    |--------------------------------------------------------------------------
-    */
-    'cache' => false,
-    /*
-    |--------------------------------------------------------------------------
     | Database Connections
     |--------------------------------------------------------------------------
     */
@@ -48,6 +41,7 @@ return [
             'dsn' => env(key: 'DB_DSN'),
             'username' => env(key: 'DB_USER'),
             'password' => env(key: 'DB_PASSWORD'),
+            'prefix' => env(key: 'DB_TABLE_PREFIX'),
             'options' => [
                 PDO::ATTR_EMULATE_PREPARES => false,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

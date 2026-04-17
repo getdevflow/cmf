@@ -16,13 +16,13 @@ return [
      * Generate a new encryption key by running this console command:
      * php codex generate:key
      */
-    'encryption_key' => env(key: 'APP_ENCRYPTION_KEY'),
+    'encryption_key' => file_get_contents(filename: __DIR__ . '/../.enc.key'),
 
     'login_route' => 'login',
 
-    'login_url' => env(key: 'APP_BASE_URL') . '/admin/login/',
+    'login_url' => env(key: 'APP_BASE_URL') . 'admin/login/',
 
-    'admin_url' => env(key: 'APP_BASE_URL') . '/admin/',
+    'admin_url' => env(key: 'APP_BASE_URL') . 'admin/',
 
     'pdo' => [
         /** name of the user's table */

@@ -401,6 +401,9 @@ return [
 
         'connect-src' => [
             'self' => true,
+            'allow' => [
+                '*.cloudflare.com',
+            ]
         ],
 
         'default-src' => [
@@ -510,6 +513,8 @@ return [
                 'fonts.gstatic.com',
                 'netdna.bootstrapcdn.com',
             ],
+
+            'data' => true,
 
             'schemes' => [
                 'http:',

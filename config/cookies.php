@@ -7,6 +7,7 @@ use function Qubus\Config\Helpers\env;
 return [
     'path' => '/',
     'domain' => '',
+    'httponly' => true,
     'lifetime' => (int) 86400,
     'remember' => (int) 604800,
     'secure' => false,
