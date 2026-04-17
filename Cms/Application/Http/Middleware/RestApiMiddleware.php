@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace Application\Http\Middleware;
 
-use App\Infrastructure\Persistence\Database;
+use Qubus\Expressive\Database;
 use App\Infrastructure\Services\Options;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\SimpleCache\InvalidArgumentException;
-use Qubus\Config\ConfigContainer;
 use Qubus\Exception\Exception;
 use Qubus\Http\Factories\JsonResponseFactory;
 use ReflectionException;
@@ -23,7 +20,7 @@ use function sprintf;
 
 class RestApiMiddleware implements MiddlewareInterface
 {
-    public function __construct(protected Database $dfdb, ConfigContainer $configContainer)
+    public function __construct(protected Database $dfdb, protected Options $option)
     {
     }
 
@@ -32,8 +29,6 @@ class RestApiMiddleware implements MiddlewareInterface
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      * @return ResponseInterface
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      * @throws InvalidArgumentException
      * @throws Exception
      * @throws ReflectionException
@@ -43,7 +38,7 @@ class RestApiMiddleware implements MiddlewareInterface
     {
         if (
             isset($request->getQueryParams()['key']) &&
-                $request->getQueryParams()['key'] === Options::factory()->read('api_key')
+                $request->getQueryParams()['key'] === $this->option->read(optionKey: 'api_key')
         ) {
             return $handler->handle($request);
         }
@@ -51,7 +46,7 @@ class RestApiMiddleware implements MiddlewareInterface
         if (
             str_starts_with($request->getHeaderLine('authorization'), 'Bearer ') &&
                 $request->getHeaderLine('authorization') ===
-                sprintf('Bearer %s', Options::factory()->read(optionKey: 'api_key'))
+                sprintf('Bearer %s', $this->option->read(optionKey: 'api_key'))
         ) {
             return $handler->handle($request);
         }
