@@ -16,7 +16,8 @@ class CreateContentTable extends Migration
      */
     public function up(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if (!$this->schema()->hasTable(table: $tablePrefix . 'content_type')) {
             $this->schema()
@@ -24,8 +25,8 @@ class CreateContentTable extends Migration
                     table: $tablePrefix . 'content_type',
                     callback: function (CreateTable $table) use ($tablePrefix) {
                         $table->string(name: 'content_type_id', length: 36)
-                                ->primary(name: 'contentTypeId')
-                                ->unique(name: $tablePrefix . 'contentTypeId');
+                            ->primary(name: 'contentTypeId')
+                            ->unique(name: $tablePrefix . 'contentTypeId');
                         $table->string(name: 'content_type_title', length: 191);
                         $table->string(name: 'content_type_slug', length: 191);
                         $table->text(name: 'content_type_description')->size(value: 'big');
@@ -43,6 +44,7 @@ class CreateContentTable extends Migration
                     $table->string(name: 'content_title', length: 191)->notNull();
                     $table->string(name: 'content_slug', length: 191)->notNull();
                     $table->text(name: 'content_body')->size(value: 'big');
+                    $table->text(name: 'content_attribute')->size(value: 'big');
                     $table->string(name: 'content_author', length: 36);
                     $table->string(name: 'content_type', length: 191)->notNull();
                     $table->string(name: 'content_parent', length: 36);
@@ -60,17 +62,17 @@ class CreateContentTable extends Migration
                     $table->index(['content_slug','content_type','content_parent'], $tablePrefix . 'contentIndex');
 
                     $table->foreign('content_author', $tablePrefix . 'contentAuthor')
-                            ->references($tablePrefix . 'user', 'user_id')
-                            ->onDelete('set null')
-                            ->onUpdate('cascade');
+                        ->references($tablePrefix . 'user', 'user_id')
+                        ->onDelete('set null')
+                        ->onUpdate('cascade');
                     $table->foreign('content_type', $tablePrefix . 'contentTypeSlug')
-                            ->references($tablePrefix . 'content_type', 'content_type_slug')
-                            ->onDelete('cascade')
-                            ->onUpdate('cascade');
+                        ->references($tablePrefix . 'content_type', 'content_type_slug')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
                     $table->foreign('content_parent', $tablePrefix . 'contentParent')
-                            ->references($tablePrefix . 'content', 'content_id')
-                            ->onDelete('set null')
-                            ->onUpdate('cascade');
+                        ->references($tablePrefix . 'content', 'content_id')
+                        ->onDelete('set null')
+                        ->onUpdate('cascade');
                 });
         }
     }
@@ -81,7 +83,8 @@ class CreateContentTable extends Migration
      */
     public function down(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if ($this->schema()->hasTable(table: $tablePrefix . 'content')) {
             $this->schema()->drop(table: $tablePrefix . 'content');

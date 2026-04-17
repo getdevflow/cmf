@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 use App\Application\Devflow;
 use Qubus\Exception\Exception;
+use Qubus\Expressive\Database;
+use Qubus\Exception\Data\TypeException;
 use Qubus\Expressive\Migration\Migration;
+use Qubus\Expressive\Schema\CreateTable;
 
 use function Codefy\Framework\Helpers\config;
 
@@ -12,32 +15,36 @@ class CreateElfinderTrashPdoTable extends Migration
 {
     /**
      * Do the migration
+     * @throws TypeException
      * @throws Exception
      */
     public function up(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if (!$this->schema()->hasTable(table: $tablePrefix . 'elfinder_trash')) {
-            $sql = "CREATE TABLE `{$tablePrefix}elfinder_trash` (
-                    `id` int(7) UNSIGNED NOT NULL,
-                    `parent_id` int(7) UNSIGNED NOT NULL,
-                    `name` varchar(255) NOT NULL,
-                    `content` longblob NOT NULL,
-                    `size` int(10) UNSIGNED NOT NULL DEFAULT 0,
-                    `mtime` int(10) UNSIGNED NOT NULL DEFAULT 0,
-                    `mime` varchar(256) NOT NULL DEFAULT 'unknown',
-                    `read` enum('1','0') NOT NULL DEFAULT '1',
-                    `write` enum('1','0') NOT NULL DEFAULT '1',
-                    `locked` enum('1','0') NOT NULL DEFAULT '0',
-                    `hidden` enum('1','0') NOT NULL DEFAULT '0',
-                    `width` int(5) NOT NULL DEFAULT 0,
-                    `height` int(5) NOT NULL DEFAULT 0
-                    );
-                    
-                    INSERT INTO `{$tablePrefix}elfinder_trash` VALUES(1, 0, 'DB Trash', '', 0, 0, 'directory', '1', '1', '0', '0', 0, 0);";
+            $this->schema()
+                ->create(table: $tablePrefix . 'elfinder_trash', callback: function (CreateTable $table) use ($tablePrefix) {
+                    $table->integer(name: 'id')->size(value: 'normal')->unsigned()->notNull();
+                    $table->integer(name: 'parent_id')->size(value: 'normal')->unsigned()->notNull();
+                    $table->string(name: 'name')->notNull();
+                    $table->binary(name: 'content')->size(value: 'big')->notNull();
+                    $table->integer(name: 'size')->size(value: 'normal')->unsigned()->notNull()->defaultValue(value: 0);
+                    $table->integer(name: 'mtime')->size(value: 'normal')->unsigned()->notNull()->defaultValue(value: 0);
+                    $table->string(name: 'mime', length: 256)->notNull()->defaultValue(value: 'unknown');
+                    $table->string(name: 'read')->size(value: 'tiny')->notNull()->defaultValue(value: '1');
+                    $table->string(name: 'write')->size(value: 'tiny')->notNull()->defaultValue(value: '1');
+                    $table->string(name: 'locked')->size(value: 'tiny')->notNull()->defaultValue(value: '0');
+                    $table->string(name: 'hidden')->size(value: 'tiny')->notNull()->defaultValue(value: '0');
+                    $table->integer(name: 'width')->size(value: 'normal')->notNull()->defaultValue(value: 0);
+                    $table->integer(name: 'height')->size(value: 'normal')->notNull()->defaultValue(value: 0);
+                });
 
-            Devflow::$PHP->getDB()->getConnection()->pdo->exec($sql);
+            $sql = "INSERT INTO `{$tablePrefix}elfinder_trash` VALUES(1, 0, 'DB Trash', '', 0, 0, 'directory', '1', '1', '0', '0', 0, 0);";
+            /** @var Database $dfdb */
+            $dfdb = Devflow::$PHP->make(name: Database::class);
+            $dfdb->getConnection()->pdo->exec($sql);
         }
     }
 
@@ -47,7 +54,8 @@ class CreateElfinderTrashPdoTable extends Migration
      */
     public function down(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if ($this->schema()->hasTable(table: $tablePrefix . 'elfinder_trash')) {
             $this->schema()->drop(table: $tablePrefix . 'elfinder_trash');

@@ -17,17 +17,19 @@ class CreateProductTable extends Migration
      */
     public function up(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if (!$this->schema()->hasTable(table: $tablePrefix . 'product')) {
             $this->schema()
                 ->create(table: $tablePrefix . 'product', callback: function (CreateTable $table) use ($tablePrefix) {
                     $table->string(name: 'product_id', length: 36)
-                            ->primary('productId')
-                            ->unique(name: $tablePrefix . 'productId');
+                        ->primary('productId')
+                        ->unique(name: $tablePrefix . 'productId');
                     $table->string(name: 'product_title', length: 191)->notNull();
                     $table->string(name: 'product_slug', length: 191)->notNull();
                     $table->text(name: 'product_body')->size(value: 'big');
+                    $table->text(name: 'product_attribute')->size(value: 'big');
                     $table->string(name: 'product_author', length: 36);
                     $table->string(name: 'product_sku', length: 191)->notNull();
                     $table->string(name: 'product_price', length: 191)->defaultValue(0.00);
@@ -46,9 +48,9 @@ class CreateProductTable extends Migration
                     $table->index(['product_slug','product_sku'], $tablePrefix . 'productIndex');
 
                     $table->foreign('product_author', $tablePrefix . 'productAuthor')
-                            ->references($tablePrefix . 'user', 'user_id')
-                            ->onDelete('set null')
-                            ->onUpdate('cascade');
+                        ->references($tablePrefix . 'user', 'user_id')
+                        ->onDelete('set null')
+                        ->onUpdate('cascade');
                 });
         }
     }
@@ -59,7 +61,8 @@ class CreateProductTable extends Migration
      */
     public function down(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if ($this->schema()->hasTable(table: $tablePrefix . 'product')) {
             $this->schema()

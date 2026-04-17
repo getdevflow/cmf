@@ -16,7 +16,8 @@ class CreateEventStoreTable extends Migration
      */
     public function up(): void
     {
-        $tablePrefix = config(key: 'database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if (!$this->schema()->hasTable(table: $tablePrefix . 'event_store')) {
             $this->schema()->create(
@@ -29,7 +30,6 @@ class CreateEventStoreTable extends Migration
                     $table->string(name: 'transaction_id', length: 36);
                     $table->string(name: 'event_type', length: 191)->notNull();
                     $table->string(name: 'event_classname', length: 191)->notNull();
-                    $table->string(name: 'site', length: 191)->notNull();
                     $table->text(name: 'payload')->size(value: 'big')->notNull();
                     $table->text(name: 'metadata')->size(value: 'big')->notNull();
                     $table->string(name: 'aggregate_id', length: 36)->notNull();
@@ -37,7 +37,7 @@ class CreateEventStoreTable extends Migration
                     $table->integer(name: 'aggregate_playhead')->size(value: 'large')->notNull();
                     $table->dateTime(name: 'recorded_at')->notNull();
                     $table->unique(
-                        columns: ['site','aggregate_id','aggregate_type','aggregate_playhead'],
+                        columns: ['aggregate_id','aggregate_type','aggregate_playhead'],
                         name: $tablePrefix . 'domainEvent'
                     );
                 }
@@ -51,7 +51,8 @@ class CreateEventStoreTable extends Migration
      */
     public function down(): void
     {
-        $tablePrefix = config(key: 'database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if ($this->schema()->hasTable(table: $tablePrefix . 'event_store')) {
             $this->schema()->drop(table: $tablePrefix . 'event_store');

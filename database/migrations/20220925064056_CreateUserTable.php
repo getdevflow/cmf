@@ -16,7 +16,8 @@ class CreateUserTable extends Migration
      */
     public function up(): void
     {
-        $tablePrefix = config(key: 'database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if (!$this->schema()->hasTable(table: $tablePrefix . 'user')) {
             $this->schema()
@@ -39,6 +40,7 @@ class CreateUserTable extends Migration
                         ->unique(name: $tablePrefix . 'userToken')
                         ->notNull();
                     $table->string(name: 'user_url', length: 191);
+                    $table->text(name: 'user_bio')->size(value: 'big');
                     $table->string(name: 'user_timezone', length: 191);
                     $table->string(name: 'user_date_format', length: 191);
                     $table->string(name: 'user_time_format', length: 191);
@@ -56,7 +58,8 @@ class CreateUserTable extends Migration
      */
     public function down(): void
     {
-        $tablePrefix = config(key: 'database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if ($this->schema()->hasTable(table: $tablePrefix . 'user')) {
             $this->schema()->drop(table: $tablePrefix . 'user');

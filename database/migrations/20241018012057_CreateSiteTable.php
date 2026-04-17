@@ -16,14 +16,15 @@ class CreateSiteTable extends Migration
      */
     public function up(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if (!$this->schema()->hasTable(table: $tablePrefix . 'site')) {
             $this->schema()
                 ->create(table: $tablePrefix . 'site', callback: function (CreateTable $table) use ($tablePrefix) {
                     $table->string(name: 'site_id', length: 36)
-                            ->primary(name: 'siteId')
-                            ->unique(name: $tablePrefix . 'siteId');
+                        ->primary(name: 'siteId')
+                        ->unique(name: $tablePrefix . 'siteId');
                     $table->string(name: 'site_key', length: 191)
                         ->unique(name: $tablePrefix . 'siteKey');
                     $table->string(name: 'site_name', length: 191);
@@ -38,9 +39,9 @@ class CreateSiteTable extends Migration
                     $table->unique(['site_slug', 'site_domain', 'site_path'], $tablePrefix . 'siteIndex');
 
                     $table->foreign(columns: 'site_owner', name: $tablePrefix . 'siteOwner')
-                            ->references($tablePrefix . 'user', 'user_id')
-                            ->onDelete('cascade')
-                            ->onUpdate('cascade');
+                        ->references($tablePrefix . 'user', 'user_id')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
                 });
         }
     }
@@ -51,7 +52,8 @@ class CreateSiteTable extends Migration
      */
     public function down(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if ($this->schema()->hasTable(table: $tablePrefix . 'site')) {
             $this->schema()->drop(table: $tablePrefix . 'site');

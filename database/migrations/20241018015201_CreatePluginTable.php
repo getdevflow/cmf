@@ -16,7 +16,8 @@ class CreatePluginTable extends Migration
      */
     public function up(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if (!$this->schema()->hasTable(table: $tablePrefix . 'plugin')) {
             $this->schema()
@@ -39,7 +40,8 @@ class CreatePluginTable extends Migration
      */
     public function down(): void
     {
-        $tablePrefix = config('database.connections.default.prefix');
+        $default = config()->string(key: 'database.default');
+        $tablePrefix = config()->string(key: "database.connections.{$default}.prefix");
 
         if ($this->schema()->hasTable(table: $tablePrefix . 'plugin')) {
             $this->schema()->drop(table: $tablePrefix . 'plugin');
