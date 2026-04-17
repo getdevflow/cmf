@@ -15,9 +15,11 @@ try {
     )
     //->withEncryptedEnv(bool: true)
     ->withProviders([
+        App\Infrastructure\Providers\SiteServiceProvider::class,
         App\Infrastructure\Providers\DatabaseServiceProvider::class,
         App\Infrastructure\Providers\OptionsServiceProvider::class,
         App\Infrastructure\Providers\RbacServiceProvider::class,
+        \Application\Provider\EventListenerServiceProvider::class,
         \Application\Provider\ViewServiceProvider::class,
     ])
     ->withSingletons([
