@@ -15,10 +15,10 @@ $connection = env(key: 'DB_CONNECTION', default: 'default');
 
 $objectmap = new ObjectStorageMap();
 
-$objectmap['db'] = fn () => Devflow::$PHP->getDbConnection();
+$objectmap['connection'] = fn () => Devflow::$PHP->getDbConnection();
 
 $objectmap['phpmig.adapter'] = function ($c) {
-    return new DbalMigrationAdapter(connection: $c['db'], tableName: 'migration');
+    return new DbalMigrationAdapter(connection: $c['connection'], tableName: 'migration');
 };
 
 $objectmap['phpmig.migrations_path'] = database_path(path: 'migrations');
