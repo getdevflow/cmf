@@ -142,14 +142,14 @@ return [
     | application.
     */
     'base_middlewares' => [
-        'security.headers',
         'csrf.token',
         'csrf.protection',
         'http.cache.prevention',
         'user.cookie.decrypt',
         'bind.request',
-        'php.debugbar',
-        //'http.exception', //uncomment in production
+        'security.headers',
+        'http.exception',
+        //'php.debugbar'
     ],
 
     /*
