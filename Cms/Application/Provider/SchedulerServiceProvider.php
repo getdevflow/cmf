@@ -33,7 +33,7 @@ class SchedulerServiceProvider extends CodefyServiceProvider
             $schedule->command(command: function () {
                 $protocol = is_ssl() ? 'https://' : 'http://';
                 $cron = set_url_scheme(
-                    url: $protocol . env(key: 'APP_BASE_URL') . '/cron/'
+                    url: $protocol . env(key: 'APP_BASE_URL') . '/admin/cron/master/'
                 );
                 $ch = curl_init($cron);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
