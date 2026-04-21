@@ -22,6 +22,5 @@ final class ViewServiceProvider extends CodefyServiceProvider
                 extension: 'phtml'
             );
         });
-        $this->codefy->share(nameOrInstance: Renderer::class);
     }
 }
