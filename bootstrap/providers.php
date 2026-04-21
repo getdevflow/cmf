@@ -8,5 +8,5 @@ return [
     App\Infrastructure\Providers\MiddlewareServiceProvider::class,
     App\Infrastructure\Providers\CmsHelperServiceProvider::class,
     App\Infrastructure\Providers\DebugBarServiceProvider::class,
-    //App\Infrastructure\Providers\VihzhuoBlocksServiceProvider::class,
+    Application\Provider\VihzhuoBlocksServiceProvider::class,
 ];

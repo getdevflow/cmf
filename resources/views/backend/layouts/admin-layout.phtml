@@ -24,11 +24,13 @@ use function App\Shared\Helpers\get_logo_mini;
 use function App\Shared\Helpers\get_name;
 use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\get_secure_cookie_data;
+use function App\Shared\Helpers\get_theme;
 use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
 use function App\Shared\Helpers\get_userdata;
 use function App\Shared\Helpers\is_multisite;
 use function App\Shared\Helpers\site_url;
+use function Codefy\Framework\Helpers\config;
 use function Qubus\Security\Helpers\esc_attr;
 use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
@@ -234,6 +236,13 @@ $user = get_userdata(get_current_user_id());
                             <?php Action::getInstance()->doAction('themes_submenu'); ?>
                         </ul>
                     </li>
+                    <?php if(config()->boolean(key: 'vihzhuo.enable') && !empty(get_theme())) : ?>
+                    <li<?= ae('vihzhuo:manage'); ?> class="treeview<?=current_screen('screen_parent', 'vihzhuo');?>">
+                        <a href="<?= admin_url('manager/'); ?>">
+                            <i class="fa fa-layer-group"></i> <span><?=esc_html__(string: 'Vihzhuo', domain: 'devflow');?></span>
+                        </a>
+                    </li>
+                    <?php endif; ?>
                     <?php if (current_user_can('manage:users')) : ?>
                         <li class="treeview<?=current_screen('screen_parent', 'users'); ?>">
                             <a href="#">

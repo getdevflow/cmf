@@ -1,0 +1,79 @@
+<?php
+
+use App\Application\Devflow;
+
+use function App\Shared\Helpers\admin_login_url;
+
+?>
+<!doctype html>
+<html lang="<?=Devflow::$PHP->language;?>">
+<head>
+    <meta charset="<?=Devflow::$PHP->charset;?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vihzhuo</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="<?=phpb_asset('websitemanager/images/favicon-32x32.png');?>">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2ff 100%);
+            display: flex;
+            align-items: center;
+        }
+        .hero-card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 1rem 3rem rgba(0,0,0,.08);
+        }
+        .brand-title {
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+        .intro-links a {
+            margin: 0 .5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <div class="card hero-card text-center p-5">
+                <h1 class="brand-title mb-3">
+                    <i class="fa-solid fa-layer-group text-primary me-2"></i>
+                    Vihzhuo
+                </h1>
+
+                <p class="lead text-muted mb-4">
+                    A simple and elegant front page builder.
+                </p>
+
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="<?=admin_login_url();?>" class="btn btn-primary btn-lg px-4">
+                        <i class="fa-solid fa-rocket me-2"></i> Get Started
+                    </a>
+
+                    <a href="https://github.com/nomadicjosh/vihzhuo" class="btn btn-outline-dark btn-lg px-4">
+                        <i class="fab fa-github me-2"></i> GitHub
+                    </a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="<?=phpb_asset('pagebuilder/jquery-3.4.1.min.js');?>"></script>
+<!-- Bootstrap 5 JS Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

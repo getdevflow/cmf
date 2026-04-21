@@ -52,7 +52,7 @@ return [
     'roles' => [
         'super' => [
             'description' => 'Super administrator',
-            'permissions' => ['admin','sites'],
+            'permissions' => ['admin','sites','webmaster'],
         ],
         'admin' => [
             'description' => 'Administrator',

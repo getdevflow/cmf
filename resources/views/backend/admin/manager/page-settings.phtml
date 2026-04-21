@@ -1,0 +1,174 @@
+<?php
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+
+use function Qubus\Security\Helpers\esc_html__;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+Registry::getInstance()->{'set'}('screen_parent', 'vihzhuo');
+Registry::getInstance()->{'set'}('screen_child', 'vihzhuo-index');
+
+    $pageUrlParam = '';
+    if (isset($params['page'])) {
+        $pageUrlParam = '&page=' . phpb_e($params['page']->getId());
+    }
+
+    $pageTranslations = $params['page'] ? $params['page']->getTranslations() : [];
+?>
+
+    <!-- form start -->
+    <form name="form" method="post" data-toggle="validator" action="<?= phpb_url('website_manager', ['route' => 'page_settings', 'action' => $params['action']]) ?><?= $pageUrlParam ?>" id="form" autocomplete="off">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <i class="fa fa-layer-group"></i>
+                    <h3 class="box-title">
+                        <?php
+                        if ($params['action'] === 'create'):
+                            echo phpb_trans('website-manager.add-new-page');
+                        else:
+                            echo phpb_trans('website-manager.edit-page');
+                        endif;
+                        ?>
+                    </h3>
+
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?= esc_html__(string: 'Save', domain: 'devflow'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location='<?= phpb_url('website_manager') ?>'"><i class="fa fa-minus-circle"></i> <?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <?=Devflow::$PHP->flash->display(); ?>
+
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-9">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?=esc_html__('Page');?></h3>
+                            </div>
+
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="div-label"><span style="color: red; ">*</span> <?= phpb_trans('website-manager.name') ?></label>
+                                    <input type="text" class="form-control input-lg" id="name" name="name" value="<?= phpb_field_value('name', $params['page']) ?>" required>
+                                </div>
+
+                                <?php
+                                foreach (array_keys(phpb_active_languages()) as $languageCode):
+                                    ?>
+
+                                    <h4 class="pt-2 display-6"><?= phpb_trans('languages.' . $languageCode) ?></h4>
+
+                                    <div class="pt-2 pl-3 pr-3">
+                                        <div class="form-group required mb-4">
+                                            <label for="page-title"><span style="color: red; ">*</span> <?= phpb_trans('website-manager.page-title') ?></label>
+                                            <input type="text" class="form-control" id="page-title" name="title[<?= phpb_e($languageCode) ?>]" value="<?= phpb_e($pageTranslations[$languageCode]['title'] ?? '') ?>" required>
+                                        </div>
+
+                                        <div class="form-group mb-4">
+                                            <label for="page-meta-title"><?= phpb_trans('website-manager.page-meta-title') ?></label>
+                                            <input type="text" class="form-control" id="page-meta-title" name="meta_title[<?= phpb_e($languageCode) ?>]" value="<?= phpb_e($pageTranslations[$languageCode]['meta_title'] ?? '') ?>">
+                                        </div>
+
+                                        <div class="form-group mb-4">
+                                            <label for="page-meta-description"><?= phpb_trans('website-manager.page-meta-description') ?></label>
+                                            <textarea class="form-control" id="page-meta-description" name="meta_description[<?= phpb_e($languageCode) ?>]"><?= phpb_e($pageTranslations[$languageCode]['meta_description'] ?? '') ?></textarea>
+                                        </div>
+
+                                        <div class="form-group required mb-4">
+                                            <label for="route"><span style="color: red; ">*</span> <?=esc_html__(string: 'URI', domain: 'devflow') ?></label>
+                                            <small><?=esc_html__(string: 'Note: add the uri without a trailing slash.', domain: 'devflow');?></small>
+                                            <input type="text" class="form-control" id="route" name="route[<?= phpb_e($languageCode) ?>]" value="<?= phpb_e($pageTranslations[$languageCode]['route'] ?? '') ?>" required>
+                                        </div>
+                                    </div>
+                                <?php
+                                endforeach;
+                                ?>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-primary -->
+                    </div>
+                    <!-- /.left column -->
+
+                    <div class="col-md-3">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= esc_html__(string: 'Attributes', domain: 'devflow'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= phpb_trans('website-manager.show-in-nav') ?></strong></label>
+                                    <select class="form-control select2" id="show-in-nav" name="show_in_nav" required>
+                                        <?php $value = phpb_field_value('show_in_nav', $params['page']); ?>
+                                        <option value="">--------------------</option>
+                                        <option value="yes" <?=$value === 'yes' ? 'selected' : '';?>>Yes</option>
+                                        <option value="no" <?=$value === 'no' ? 'selected' : '';?>>No</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= phpb_trans('website-manager.nav-position') ?></strong></label>
+                                    <select class="form-control select2" id="nav-position" name="nav_position" required>
+                                        <?php $value = phpb_field_value('nav_position', $params['page']); ?>
+                                        <?php $positions = 20; ?>
+                                        <?php for ($i = 0; $i < $positions; $i++) : ?>
+                                            <option value="<?=$i;?>" <?=(int) $value === $i ? 'selected' : '';?>><?=$i;?></option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= phpb_trans('website-manager.nav-type') ?></strong></label>
+                                    <select class="form-control select2" id="nav-type" name="nav_type" required>
+                                        <?php $value = phpb_field_value('nav_type', $params['page']); ?>
+                                        <option value="">--------------------</option>
+                                        <option value="primary" <?=$value === 'primary' ? 'selected' : '';?>>Primary</option>
+                                        <option value="secondary" <?=$value === 'secondary' ? 'selected' : '';?>>Secondary</option>
+                                        <option value="footer" <?=$value === 'footer' ? 'selected' : '';?>>Footer</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= phpb_trans('website-manager.layout') ?></strong></label>
+                                    <select class="form-control select2" id="layout" name="layout" required>
+                                        <?php
+                                        $value = phpb_field_value('layout', $params['page']);
+                                        foreach ($params['theme']->getThemeLayouts() as $layout):
+                                            if ($layout->getSlug() === $value):
+                                                echo '<option value="' . phpb_e($layout->getSlug()) . '" selected>' . phpb_e($layout->getTitle()) . '</option>';
+                                            else:
+                                                echo '<option value="' . phpb_e($layout->getSlug()) . '">' . phpb_e($layout->getTitle()) . '</option>';
+                                            endif;
+                                        endforeach;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-primary -->
+                    </div>
+
+                </div>
+                <!--/.row -->
+            </section>
+            <!-- /.Main content -->
+
+        </div>
+        <!-- /.Content Wrapper. Contains page content -->
+    </form>
+<?php }); ?>

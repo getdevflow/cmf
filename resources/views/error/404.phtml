@@ -1,0 +1,21 @@
+<?php
+
+use App\Application\Devflow;
+
+use function Codefy\Framework\Helpers\site_url;
+
+?>
+<!DOCTYPE html>
+<html lang="<?=Devflow::$PHP->language;?>">
+<head>
+    <base href="<?=site_url()?>">
+    <meta charset="<?=Devflow::$PHP->charset;?>">
+    <link rel="stylesheet" type="text/css" href="<?=$this->url('static/assets/css/error.css');?>"/>
+    <title>Error 404</title>
+</head>
+<body>
+<div class="error-middle">
+    <h1>Error 404 - Not Found</h1>
+</div>
+</body>
+</html>

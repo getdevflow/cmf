@@ -10,26 +10,42 @@ use function Codefy\Framework\Helpers\config;
 use function Qubus\Security\Helpers\__observer;
 
 return function (\Qubus\Routing\Psr7Router $router) {
-    /** @var Request $request */
-    $request = app(RequestInterface::class);
-
     // Custom plugin routes
     __observer()->filter->applyFilter('plugin.route', $router);
     // Custom theme routes
     __observer()->filter->applyFilter('theme.route', $router);
 
-    /*
-     * Set the default controller namespace for custom Devflow development.
-     */
-    $router->setDefaultNamespace(namespace: '\\Application\\Http\\Controller');
-    $router->get(uri: '/cron/', callback: 'CronController@cron');
-    $cmsRoutes = config()->array(key: 'routes');
+    if(config()->boolean(key: 'vihzhuo.enable')) {
+        $router
+            ->any(
+                uri: config()->string(key: 'vihzhuo.general.assets_url') . '{any}',
+                callback: 'PageBuilderController@assets'
+            )
+            ->where(['any' => '.*']);
 
-    if (!empty($cmsRoutes)) {
-        foreach ($cmsRoutes as $host => $route) {
-            if ($host === $request->getUri()->getHost()) {
-                app()->execute(callableOrMethodStr: [$route, 'handle']);
-            }
+        $router
+            ->any(
+                uri: config()->string(key: 'vihzhuo.general.uploads_url') . '{any}',
+                callback: 'PageBuilderController@uploads'
+            )
+            ->where(['any' => '.*']);
+
+        if (config()->boolean(key: 'vihzhuo.website_manager.use_website_manager')) {
+            $router
+                ->any(
+                    uri: config()->string(key: 'vihzhuo.website_manager.url') . '{any}',
+                    callback: 'PageBuilderController@websiteManager'
+                )
+                ->where(['any' => '.*']);
+        }
+
+        if (config()->boolean(key: 'vihzhuo.router.use_router')) {
+            $router
+                ->any(
+                    uri: '/{any}',
+                    callback: 'PageBuilderController@any'
+                )
+                ->where(['any' => '.*']);
         }
     }
 };

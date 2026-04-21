@@ -1,5 +1,20 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
+
+# Rewrite /themes/{theme}/{file} to /themes/{theme}/public/{file}
+RewriteRule ^themes/([^/]+)/(?!public/)(.*)$ themes/$1/public/$2 [L]
+# Rewrite /plugins/{plugin}/{file} to /plugins/{plugin}/public/{file}
+RewriteRule ^plugins/([^/]+)/(?!public/)(.*)$ plugins/$1/public/$2 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]
+
+# Allow direct access to theme files with URL format: /themes/{theme}/public/{file}
+RewriteRule ^themes/([^/]+)/public/(.*)$ themes/$1/public/$2 [L]
+# Allow direct access to plugins files with URL format: /plugins/{plugin}/public/{file}
+RewriteRule ^plugins/([^/]+)/public/(.*)$ plugins/$1/public/$2 [L]
+
+# Allow direct access to uploaded files with URL format: /uploads/{filepath}
+RewriteRule ^uploads/(.*)$ uploads/$1 [L]
 </IfModule>

@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use Psr\Http\Message\RequestInterface;
+use Qubus\Http\Request;
+
+use function Codefy\Framework\Helpers\app;
 use function Codefy\Framework\Helpers\config;
 
 return function (\Qubus\Routing\Psr7Router $router) {
@@ -198,6 +202,31 @@ return function (\Qubus\Routing\Psr7Router $router) {
                 callback: 'AdminProductController@productDelete'
             )
             ->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+
+            // Page Builder Manager
+            $group->get(
+                uri: '/manager/',
+                callback: 'WebsiteManagerController@index'
+            );
+
+            // Master cron route
+            $group->get(
+                uri: '/cron/master/',
+                callback: 'CronController@master'
+            );
         }
     );
+
+    /** @var Request $request */
+    $request = app(RequestInterface::class);
+
+    $cmsRoutes = config()->array(key: 'routes');
+
+    if (!empty($cmsRoutes)) {
+        foreach ($cmsRoutes as $host => $route) {
+            if ($host === $request->getHost()) {
+                app()->execute(callableOrMethodStr: [$route, 'handle'], args: [':router' => $router]);
+            }
+        }
+    }
 };
