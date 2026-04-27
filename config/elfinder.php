@@ -65,8 +65,8 @@ return [
     'options' => [
         'debug' => false,
         'locale' => 'en_US.UTF-8',
-        'uploadTempPath' => public_path('sites/tmp/'),
-        'commonTempPath' => public_path('sites/tmp/'),
+        'uploadTempPath' => public_path('site/tmp/'),
+        'commonTempPath' => public_path('site/tmp/'),
     ],
 
     /*

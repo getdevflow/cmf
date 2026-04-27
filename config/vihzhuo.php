@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Application\Devflow;
 
+use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\env;
 use function Codefy\Framework\Helpers\public_path;
 use function Codefy\Framework\Helpers\storage_path;
@@ -20,7 +21,7 @@ return [
      |
      */
     'general' => [
-        'base_url' => env('APP_BASE_URL'),
+        'base_url' => site_url(),
         'language' => 'en',
         'assets_url' => '/phpb-assets',
         'uploads_url' => '/uploads'
@@ -76,7 +77,7 @@ return [
     'website_manager' => [
         'use_website_manager' => true,
         'class' => Vihzhuo\Modules\WebsiteManager\WebsiteManager::class,
-        'url' => '/admin/manager'
+        'url' => '/admin/manager/'
     ],
 
     /*
@@ -101,9 +102,9 @@ return [
      */
     'pagebuilder' => [
         'class' => Vihzhuo\Modules\GrapesJS\PageBuilder::class,
-        'url' => '/admin/manager/pagebuilder',
+        'url' => '/admin/manager/pagebuilder/',
         'actions' => [
-            'back' => '/admin/manager'
+            'back' => '/admin/manager/'
         ]
     ],
 
