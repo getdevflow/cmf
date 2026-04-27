@@ -18,7 +18,9 @@ final class ViewServiceProvider extends CodefyServiceProvider
         $this->codefy->singleton(Renderer::class, function () {
             return new NativeLoader(
                 namespaces: $this->codefy->configContainer->array(key: 'view.path'),
-                functions: [],
+                functions: [
+                    'url' => 'App\Shared\Helpers\site_url'
+                ],
                 extension: 'phtml'
             );
         });
