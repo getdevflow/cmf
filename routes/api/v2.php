@@ -24,9 +24,9 @@ return function (\Qubus\Routing\Psr7Router $router) {
         $group->map(verbs: ['PUT', 'PATCH'], uri: '/user/{id}/', callback: 'UserRestController@update')
             ->where(['id' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+'])
             ->name('v2.user.update');
-        $group->delete(uri: '/user/{id}/', callback: 'UserRestController@destroy')
+        $group->delete(uri: '/user/{id}/', callback: 'UserRestController@remove')
             ->where(['id' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+'])
-            ->name('v2.user.destroy');
+            ->name('v2.user.remove');
 
         $group->get(uri: '/product/', callback: 'ProductRestController@index')
             ->name('v2.product.index');

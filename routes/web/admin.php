@@ -84,6 +84,10 @@ return function (\Qubus\Routing\Psr7Router $router) {
             // Site routes
             $group->get(uri: '/site/', callback: 'AdminSiteController@sites');
             $group->post(uri: '/site/', callback: 'AdminSiteController@siteCreate');
+            $group->post(
+                uri: '/site/user/assign/',
+                callback: 'AdminSiteController@siteUserAssign'
+            );
             $group->get(uri: '/site/users/', callback: 'AdminSiteController@siteUsers');
             $group->post(uri: '/site/users/{userId}/d/', callback: 'AdminSiteController@siteUsersDelete')
                 ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
