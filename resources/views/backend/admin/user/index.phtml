@@ -16,6 +16,7 @@ use function App\Shared\Helpers\get_user_option;
 use function App\Shared\Helpers\get_userdata;
 use function App\Shared\Helpers\get_users_reassign;
 use function Qubus\Security\Helpers\esc_attr__;
+use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -60,51 +61,51 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($params['users'] as $user) : $data = get_userdata($user['user_id']); ?>
+                        <?php foreach ($params['users'] as $user) : $data = get_userdata(esc_html($user['user_id'])); ?>
                             <tr class="gradeX">
-                                <td class="text-center"><?= $user['user_login']; ?></td>
-                                <td class="text-center"><?= $user['user_fname']; ?></td>
-                                <td class="text-center"><?= $user['user_lname']; ?></td>
+                                <td class="text-center"><?= esc_html($user['user_login']); ?></td>
+                                <td class="text-center"><?= esc_html($user['user_fname']); ?></td>
+                                <td class="text-center"><?= esc_html($user['user_lname']); ?></td>
                                 <td class="text-center">
-                                    <?php $status = get_user_option('status', $user['user_id']); ?>
+                                    <?php $status = get_user_option('status', esc_html($user['user_id'])); ?>
                                     <span class="label <?=UserStatus::{$status}->color();?>" style="font-size:1em;font-weight: bold;">
                                         <?=UserStatus::{$status}->label();?>
                                     </span>
                                 </td>
                                 <td class="text-center"><?=$data->role;?></td>
                                 <td class="text-center">
-                                    <?php if ($user['user_id'] === get_current_user_id()) : ?>
+                                    <?php if (esc_html($user['user_id']) === get_current_user_id()) : ?>
                                         <a href="<?= admin_url('user/profile/'); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Update', domain: 'devflow'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
                                     <?php else : ?>
-                                        <a href="<?= admin_url(sprintf('user/%s/', $user['user_id'] )); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Update', domain: 'devflow'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
+                                        <a href="<?= admin_url(sprintf('user/%s/', esc_html($user['user_id']) )); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Update', domain: 'devflow'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
                                     <?php endif; ?>
-                                    <a href="<?= admin_url(sprintf('user/%s/reset-password/', $user['user_id'])); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Reset Password', domain: 'devflow'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-redo"></i></button></a>
-                                    <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && $user['user_id'] !== get_current_user_id()) : ?>
-                                        <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', $user['user_id'])); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Switch to', domain: 'devflow'); ?>"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
+                                    <a href="<?= admin_url(sprintf('user/%s/reset-password/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Reset Password', domain: 'devflow'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-redo"></i></button></a>
+                                    <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && esc_html($user['user_id']) !== get_current_user_id()) : ?>
+                                        <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Switch to', domain: 'devflow'); ?>"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
                                     <?php endif; ?>
-                                    <?php if ($data->role !== 'super' && $user['user_id'] !== get_current_user_id()) : ?>
-                                        <a<?= ae('delete:users'); ?> href="#" data-toggle="modal" data-target="#delete-<?= $user['user_id']; ?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
+                                    <?php if ($data->role !== 'super' && esc_html($user['user_id']) !== get_current_user_id()) : ?>
+                                        <a<?= ae('delete:users'); ?> href="#" data-toggle="modal" data-target="#delete-<?= esc_html($user['user_id']); ?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
                                     <?php endif; ?>
 
-                                    <div class="modal" id="delete-<?=$user['user_id'];?>">
-                                        <form method="post" action="<?=admin_url('user/' . $user['user_id'] . '/d/');?>">
+                                    <div class="modal" id="delete-<?=esc_html($user['user_id']);?>">
+                                        <form method="post" action="<?=admin_url('user/' . esc_html($user['user_id']) . '/d/');?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title"><?= get_name($user['user_id']); ?></h4>
+                                                        <h4 class="modal-title"><?= get_name(esc_html($user['user_id'])); ?></h4>
                                                     </div>
                                                     <div class="modal-body">
                                                         <p><?= esc_html__(string: 'Are you sure you want to remove the user from this site?', domain: 'devflow'); ?></p>
                                                         <div class="alert alert-info"><?=esc_html__(string: "Would you like to assign this user's content to a different user? Choose below.", domain: 'devflow');?></div>
                                                         <select class="form-control select2" name="assign_id" style="width: 100%;">
                                                             <option value="null">&nbsp;</option>
-                                                            <?php get_users_reassign($user['user_id']); ?>
+                                                            <?php get_users_reassign(esc_html($user['user_id'])); ?>
                                                         </select>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <input type="hidden" name="user_id" value="<?=$user['user_id'];?>" />
+                                                        <input type="hidden" name="user_id" value="<?=esc_html($user['user_id']);?>" />
                                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
                                                         <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
                                                     </div>
