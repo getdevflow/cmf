@@ -147,6 +147,7 @@ return [
         'http.cache.prevention',
         'user.cookie.decrypt',
         'bind.request',
+        'cors',
         'security.headers',
         'http.exception',
         //'php.debugbar'
