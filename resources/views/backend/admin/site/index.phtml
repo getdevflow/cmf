@@ -119,7 +119,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites');
                                             </td>
                                             <td class="text-center">
                                                 <button type="button"<?= ae('update:sites');?> class="btn btn-success" onclick="window.location = '<?= admin_url('site/' . $site['id'] . '/'); ?>'"><i class="fa fa-pencil-alt"></i></button>
-                                                <?php if ($site['domain'] <> config('cms.main_site_url') || $site['key'] <> config(sprintf('database.connections.%s.prefix', $params['connection']))) : ?>
+                                                <?php if ($site['domain'] <> config()->string('cms.main_site_url') || $site['key'] <> config()->string(sprintf('database.connections.%s.prefix', $params['connection']))) : ?>
                                                     <button type="button"<?= ae('delete:sites'); ?> class="btn bg-red" data-toggle="modal" data-target="#delete-<?= $site['id']; ?>"><i class="fa fa-trash"></i></button>
                                                 <?php endif; ?>
                                                 <div class="modal" id="delete-<?=$site['id'];?>">

@@ -9,6 +9,8 @@ declare(strict_types=1);
  * tinyMCE.
  */
 
+use App\Application\Devflow;
+
 use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\site_url;
 use function Qubus\Security\Helpers\esc_html__;
@@ -18,10 +20,10 @@ $this->block('blank', function () {
 ?>
 
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="<?=Devflow::$PHP->configContainer->string('app.language');?>">
     <head>
         <base href="<?= site_url(); ?>">
-        <meta charset="utf-8">
+        <meta charset="<?=Devflow::$PHP->configContainer->string('app.charset');?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?=$this->esc($title ?? '') . ' &lsaquo; ' . get_option(key: 'sitename'); ?> &#8212; <?= esc_html__(string: 'Devflow', domain: 'devflow');?></title>
         <!-- Tell the browser to be responsive to screen width -->

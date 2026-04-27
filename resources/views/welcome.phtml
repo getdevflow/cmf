@@ -3,12 +3,13 @@
 use App\Application\Devflow;
 
 use function App\Shared\Helpers\admin_login_url;
+use function Qubus\Security\Helpers\t__;
 
 ?>
 <!doctype html>
-<html lang="<?=Devflow::$PHP->language;?>">
+<html lang="<?=Devflow::$PHP->configContainer->string('app.language');?>">
 <head>
-    <meta charset="<?=Devflow::$PHP->charset;?>">
+    <meta charset="<?=Devflow::$PHP->configContainer->string('app.charset');?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vihzhuo</title>
     <!-- Bootstrap 5 -->
@@ -51,12 +52,12 @@ use function App\Shared\Helpers\admin_login_url;
                 </h1>
 
                 <p class="lead text-muted mb-4">
-                    A simple and elegant front page builder.
+                    <?=t__(msgid: 'A simple and elegant front page builder.', domain: 'devflow');?>
                 </p>
 
                 <div class="d-flex justify-content-center gap-3">
                     <a href="<?=admin_login_url();?>" class="btn btn-primary btn-lg px-4">
-                        <i class="fa-solid fa-rocket me-2"></i> Get Started
+                        <i class="fa-solid fa-rocket me-2"></i> <?=t__(msgid: 'Get Started', domain: 'devflow');?>
                     </a>
 
                     <a href="https://github.com/nomadicjosh/vihzhuo" class="btn btn-outline-dark btn-lg px-4">

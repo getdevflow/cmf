@@ -1,6 +1,7 @@
 <?php
 
 use App\Application\Devflow;
+use App\Domain\ContentType\ValueObject\ContentTypeId;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
@@ -35,6 +36,7 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
 
                     <div class="pull-right">
                         <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?= esc_html__(string: 'Save', domain: 'devflow'); ?></button>
+                        <input type="hidden" name="id" value="<?=ContentTypeId::generateAsString();?>">
                     </div>
                 </div>
             </div>

@@ -31,6 +31,7 @@ use function App\Shared\Helpers\get_userdata;
 use function App\Shared\Helpers\is_multisite;
 use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\config;
+use function Qubus\Routing\Helpers\request;
 use function Qubus\Security\Helpers\esc_attr;
 use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_html__;
@@ -43,10 +44,10 @@ endif;
 $user = get_userdata(get_current_user_id());
 ?>
     <!DOCTYPE html>
-    <html lang="<?=Devflow::$PHP->language;?>">
+    <html lang="<?=Devflow::$PHP->configContainer->string('app.language');?>">
     <head>
         <base href="<?= site_url(); ?>">
-        <meta charset="<?=Devflow::$PHP->charset;?>">
+        <meta charset="<?=Devflow::$PHP->configContainer->string('app.charset');?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?=$this->esc($title ?? '') . ' &lsaquo; ' . get_option(key: 'sitename'); ?> &#8212; <?=esc_html(string: 'Devflow');?></title>
         <!-- Tell the browser to be responsive to screen width -->
@@ -59,7 +60,7 @@ $user = get_userdata(get_current_user_id());
         <link href="static/assets/css/iCheck/all.css" type="text/css" rel="stylesheet" />
         <?php admin_head(); ?>
     </head>
-    <body class="hold-transition <?= get_user_option('admin.skin', $user->id); ?> <?= (get_user_option('admin.layout', $user->id) === 0 ? 'fixed ' : ''); ?><?= (get_user_option('admin.sidebar', $user->id) === 0 ? 'sidebar-collapse ' : ''); ?>sidebar-mini">
+    <body class="hold-transition <?= get_user_option('admin.skin', $user->id) ?: 'skin-red'; ?> <?= (get_user_option('admin.layout', $user->id) === 0 ? 'fixed ' : ''); ?><?= (get_user_option('admin.sidebar', $user->id) === 0 ? 'sidebar-collapse ' : ''); ?>sidebar-mini">
     <div class="wrapper">
 
         <header class="main-header">
@@ -97,7 +98,9 @@ $user = get_userdata(get_current_user_id());
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="<?= admin_url('user/profile/'); ?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Profile', domain: 'devflow');?></a>
+                                        <?php if(null !== get_user_option('role', $user->id)) : ?>
+                                        <a<?= ae('manage:profile'); ?> href="<?= admin_url('user/profile/'); ?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Profile', domain: 'devflow');?></a>
+                                        <?php endif; ?>
                                     </div>
                                     <?php if (isset($_COOKIE['SWITCH_USERBACK'])) : ?>
                                         <div class="pull-left">
@@ -152,7 +155,7 @@ $user = get_userdata(get_current_user_id());
                             <i class="fa fa-broom"></i> <span><?=esc_html__(string: 'Flush Cache', domain: 'devflow');?></span>
                         </a>
                     </li>
-                    <?php if(is_multisite()) : ?>
+                    <?php if(is_multisite() && (config()->string(key: 'cms.main_site_url') === request()->getHost())) : ?>
                     <li<?= ae('manage:sites'); ?> class="treeview<?=current_screen('screen_parent', 'sites'); ?>">
                         <a href="#">
                             <i class="fa fa-globe"></i>
@@ -228,8 +231,8 @@ $user = get_userdata(get_current_user_id());
                             <i class="fa fa-palette"></i>
                             <span><?=esc_html__(string: 'Themes', domain: 'devflow');?></span>
                             <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <?=add_dashboard_submenu(esc_html__(string: 'Themes', domain: 'devflow'), '/theme/', 'installed-themes');?>
@@ -261,11 +264,13 @@ $user = get_userdata(get_current_user_id());
                             </ul>
                         </li>
                     <?php else : ?>
-                        <li class="treeview<?=current_screen('screen_child', 'profile');?>">
+                    <?php if(null !== get_user_option('role', $user->id)) : ?>
+                        <li<?= ae('manage:profile'); ?> class="treeview<?=current_screen('screen_child', 'profile');?>">
                             <a href="<?= admin_url('user/profile/'); ?>">
                                 <i class="fa fa-id-card"></i> <span><?=esc_html__(string: 'Your Profile', domain: 'devflow');?></span>
                             </a>
                         </li>
+                    <?php endif; ?>
                     <?php endif; ?>
                     <li<?= ae('manage:options'); ?> class="treeview<?=current_screen('screen_parent', 'options');?>">
                         <a href="#">

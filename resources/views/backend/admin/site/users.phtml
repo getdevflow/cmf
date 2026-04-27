@@ -10,11 +10,15 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
 use function App\Shared\Helpers\get_current_user_id;
-use function App\Shared\Helpers\get_name;
+use function App\Shared\Helpers\get_owner_sites;
+use function App\Shared\Helpers\get_system_roles;
 use function App\Shared\Helpers\get_user_option;
 use function App\Shared\Helpers\get_users_reassign;
 use function App\Shared\Helpers\if_user_has_sites;
+use function App\Shared\Helpers\unassigned_sites;
+use function Qubus\Security\Helpers\esc_attr__;
 use function Qubus\Security\Helpers\esc_html__;
+use function Qubus\Support\Helpers\concat_ws;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -58,6 +62,50 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                 <td class="text-center"><?= $user['fname']; ?></td>
                                 <td class="text-center"><?= $user['lname']; ?></td>
                                 <td class="text-center">
+                                    <a href="#" data-toggle="modal" data-target="#add-site-<?= $user['id']; ?>" data-placement="top" title="<?= esc_attr__(string: 'Add to Site', domain: 'devflow'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-add"></i></button></a>
+                                    <div class="modal" id="add-site-<?= $user['id']; ?>">
+                                        <form method="post" action="<?= admin_url('site/user/assign/'); ?>" data-toggle="validator" autocomplete="off">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title"><?=concat_ws($user['lname'], $user['fname'], ', ');?></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p><?= esc_html__(string: "What site you want to add this user to?", domain: 'devflow'); ?></p>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Site', domain: 'devflow'); ?></strong></label>
+                                                            <select class="form-control select2" name="site_id" style="width: 100%;" required>
+                                                                <option value="null">&nbsp;</option>
+                                                                <?php unassigned_sites($user['id']); ?>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Role', domain: 'devflow'); ?></strong></label>
+                                                            <select class="form-control select2" name="user_role" style="width: 100%;" required>
+                                                                <option value="null">&nbsp;</option>
+                                                                <?php get_system_roles(); ?>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="modal-footer">
+                                                        <input type="hidden" name="user_id" value="<?=$user['id'];?>" />
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
+                                                        <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Assign', domain: 'devflow'); ?></button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </form>
+                                    </div>
+                                    <!-- /.modal -->
                                     <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && $user['id'] !== get_current_user_id()) : ?>
                                         <a<?= ae('switch:user'); ?> href="<?= admin_url('user/' . $user['id'] . '/switch-to/'); ?>" data-toggle="tooltip" data-placement="top" title="Switch to"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
                                     <?php endif; ?>
@@ -72,15 +120,24 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title"><?= get_name($user['id']); ?></h4>
+                                                            <h4 class="modal-title"><?=concat_ws($user['lname'], $user['fname'], ', ');?></h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p><?= esc_html__(string: "Are you sure you want to delete this site and all it's content", domain: 'devflow'); ?></p>
+                                                            <p><?= esc_html__(string: "Are you sure you want to delete this user and all their content?", domain: 'devflow'); ?></p>
+
+                                                            <?php if(!empty((array) get_owner_sites($user['id']))) : ?>
+
                                                             <div class="alert alert-info"><?=esc_html__(string: "Would you like to assign this user's site(s) to a different user? Choose below.", domain: 'devflow');?></div>
                                                             <select class="form-control select2" name="assign_id" style="width: 100%;">
                                                                 <option value="null">&nbsp;</option>
                                                                 <?php get_users_reassign($user['id']); ?>
                                                             </select>
+
+                                                            <?php else : ?>
+
+                                                            <input type="hidden" name="assign_id" value="null" />
+
+                                                            <?php endif; ?>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <input type="hidden" name="role" value="<?=get_user_option('role', $user['id']);?>" />
@@ -103,7 +160,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title"><?= get_name($user['id']); ?></h4>
+                                                            <h4 class="modal-title"><?=concat_ws($user['lname'], $user['fname'], ', ');?></h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <p><?= esc_html__(string: 'Are you sure you want to permanently delete this user?', domain: 'devflow'); ?></p>

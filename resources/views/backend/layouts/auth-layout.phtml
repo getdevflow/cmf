@@ -10,10 +10,10 @@ use function Qubus\Security\Helpers\esc_html__;
 use function Qubus\Security\Helpers\t__;
 ?>
     <!DOCTYPE html>
-    <html lang="<?=Devflow::$PHP->language;?>">
+    <html lang="<?=Devflow::$PHP->configContainer->string('app.language');?>">
     <head>
         <base href="<?= site_url(); ?>">
-        <meta charset="<?=Devflow::$PHP->charset;?>">
+        <meta charset="<?=Devflow::$PHP->configContainer->string('app.charset');?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
         <title><?= t__(msgid: 'Login', domain: 'devflow') . ' &lsaquo; ' . get_option(key: 'sitename'); ?> &#8212; <?= t__(msgid: 'Devflow', domain: 'devflow'); ?></title>
