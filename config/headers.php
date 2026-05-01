@@ -402,7 +402,9 @@ return [
         'connect-src' => [
             'self' => true,
             'allow' => [
+                '*.jsdelivr.net',
                 '*.cloudflare.com',
+                'stackpath.bootstrapcdn.com',
             ]
         ],
 
@@ -424,6 +426,7 @@ return [
             'report-sample' => false,
 
             'allow' => [
+                '*.w3.org',
                 'gravatar.com',
                 'www.gravatar.com',
                 'cdnjs.cloudflare.com',
@@ -454,9 +457,12 @@ return [
 
             'self' => true,
 
+            'data' => true,
+
             'report-sample' => false,
 
             'allow' => [
+                'cdn.jsdelivr.net',
                 'cdnjs.cloudflare.com',
                 'gitcdn.github.io',
                 'code.jquery.com',
@@ -507,6 +513,7 @@ return [
             'report-sample' => false,
 
             'allow' => [
+                '*.jsdelivr.net',
                 'cdnjs.cloudflare.com',
                 'fonts.googleapis.com',
                 'gitcdn.github.io',
@@ -544,9 +551,12 @@ return [
 
             'self' => true,
 
+            'data' => true,
+
             'report-sample' => false,
 
             'allow' => [
+                'cdn.jsdelivr.net',
                 'cdnjs.cloudflare.com',
                 'fonts.googleapis.com',
                 'gitcdn.github.io',
