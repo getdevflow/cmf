@@ -2,7 +2,7 @@
 
 return [
     Application\Provider\CacheAdapterServiceProvider::class,
-    App\Infrastructure\Providers\TranslatorServiceProvider::class,
+    App\Infrastructure\Providers\LocaleServiceProvider::class,
     App\Infrastructure\Providers\AppServiceProvider::class,
     Application\Provider\SchedulerServiceProvider::class,
     App\Infrastructure\Providers\MiddlewareServiceProvider::class,
