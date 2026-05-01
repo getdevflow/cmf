@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use Codefy\Framework\Application as CodefyApp;
+use Codefy\Framework\Application as DevflowApp;
 use Qubus\Exception\Data\TypeException;
 
 use function Codefy\Framework\Helpers\env;
 
 try {
-    $app = CodefyApp::create(
+    $app = DevflowApp::create(
         config: [
             'basePath' => env(key: 'APP_BASE_PATH', default: dirname(path: __DIR__))
         ]
