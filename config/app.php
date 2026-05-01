@@ -104,13 +104,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Controller Namespace
-    |--------------------------------------------------------------------------
-    */
-    //'controller_namespace' => 'Application\\Http\\Controller',
-
-    /*
-    |--------------------------------------------------------------------------
     | Application Configured Service Providers
     |--------------------------------------------------------------------------
     | These service providers will automatically load when the application is
