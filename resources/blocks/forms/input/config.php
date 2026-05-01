@@ -1,46 +1,48 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-    'category' => 'Forms',
-    'title' => 'Input',
+    'category' => trans('Forms'),
+    'title' => trans('Input'),
     'icon' => 'fa fa-arrow-pointer',
     'settings' => [
         'input-label-text' => [
             'type' => 'text',
-            'label' => 'Label',
+            'label' => trans('Label'),
             'value' => 'Field Label',
         ],
         'input-field-type' => [
             'type' => 'select',
-            'label' => 'Input Type',
+            'label' => trans('Input Type'),
             'options' => [
-                ['value' => 'text', 'label' => 'Text'],
-                ['value' => 'email', 'label' => 'Email'],
-                ['value' => 'password', 'label' => 'Password'],
-                ['value' => 'hidden', 'label' => 'Hidden'],
-                ['value' => 'number', 'label' => 'Number'],
-                ['value' => 'tel', 'label' => 'Telephone'],
+                ['value' => 'text', 'label' => trans('Text')],
+                ['value' => 'email', 'label' => trans('Email')],
+                ['value' => 'password', 'label' => trans('Password')],
+                ['value' => 'hidden', 'label' => trans('Hidden')],
+                ['value' => 'number', 'label' => trans('Number')],
+                ['value' => 'tel', 'label' => trans('Telephone')],
             ],
             'value' => 'text'
         ],
         'input-field-name' => [
             'type' => 'text',
-            'label' => 'Field Name',
+            'label' => trans('Field Name'),
             'value' => 'text',
         ],
         'input-id' => [
             'type' => 'text',
-            'label' => 'Field ID',
+            'label' => trans('Field ID'),
             'value' => '',
         ],
         'input-required' => [
             'type' => 'yes_no',
-            'label' => 'Required?',
+            'label' => trans('Required?'),
             'value' => '1',
         ],
         'input-placeholder' => [
             'type' => 'text',
-            'label' => 'Placeholder',
+            'label' => trans('Placeholder'),
             'value' => 'text',
         ],
     ],

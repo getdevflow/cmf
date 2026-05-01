@@ -7,7 +7,7 @@ use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\admin_url;
-use function Qubus\Security\Helpers\esc_html__;
+use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -31,12 +31,12 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <i class="fa fa-thumb-tack"></i>
-                    <h3 class="box-title"><?= esc_html__(string: 'Update Content Type', domain: 'devflow'); ?></h3>
+                    <h3 class="box-title"><?= trans_html(string: 'Update Content Type'); ?></h3>
 
                     <div class="pull-right">
                         <input type="hidden" class="form-control" name="id" id="id" value="<?=$params['type']->id;?>" required/>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= esc_html__(string: 'Update', domain: 'devflow'); ?></button>
-                        <button type="button" class="btn btn-primary" onclick="window.location='<?=admin_url('content-type/');?>'"><i class="fa fa-ban"></i> <?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= trans_html(string: 'Update'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location='<?=admin_url('content-type/');?>'"><i class="fa fa-ban"></i> <?= trans_html(string: 'Cancel'); ?></button>
                     </div>
                 </div>
             </div>
@@ -53,16 +53,16 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Name', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Content Type Name'); ?></strong></label>
                                     <input type="text" class="form-control input-lg" name="title" id="type_title" value="<?=$params['type']->title;?>" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Slug', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Content Type Slug'); ?></strong></label>
                                     <input type="text" class="form-control" name="slug" id="type_slug" value="<?=$params['type']->slug;?>" required/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Content Type Description', domain: 'devflow'); ?></strong> <a href="#slug" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Content Type Description'); ?></strong> <a href="#slug" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
                                     <textarea class="form-control" rows="3" name="description" required><?=$params['type']->description;?></textarea>
                                 </div>
                             </div>
@@ -84,13 +84,13 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title"><?=esc_html__(string: 'Content Type Slug', domain: 'devflow');?></h4>
+                            <h4 class="modal-title"><?=trans_html(string: 'Content Type Slug');?></h4>
                         </div>
                         <div class="modal-body">
-                            <p><?=esc_html__(string: "If left blank, the system will auto generate the content type slug.", domain: 'devflow');?></p>
+                            <p><?=trans_html(string: "If left blank, the system will auto generate the content type slug.");?></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
                         </div>
                     </div>
                     <!-- /.modal-content -->

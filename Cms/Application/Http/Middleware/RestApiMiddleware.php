@@ -15,7 +15,7 @@ use Qubus\Exception\Exception;
 use Qubus\Http\Factories\JsonResponseFactory;
 use ReflectionException;
 
-use function Qubus\Security\Helpers\t__;
+use function Codefy\Framework\Helpers\trans;
 use function sprintf;
 
 class RestApiMiddleware implements MiddlewareInterface
@@ -52,7 +52,7 @@ class RestApiMiddleware implements MiddlewareInterface
         }
 
         return JsonResponseFactory::create(
-            data: t__(msgid: 'Unauthorized.', domain: 'devflow'),
+            data: trans('Unauthorized.'),
             status: 401
         );
     }

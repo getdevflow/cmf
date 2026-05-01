@@ -6,8 +6,7 @@ use App\Application\Devflow;
 
 use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\site_url;
-use function Qubus\Security\Helpers\esc_html__;
-use function Qubus\Security\Helpers\t__;
+use function Codefy\Framework\Helpers\trans_html;
 ?>
     <!DOCTYPE html>
     <html lang="<?=Devflow::$PHP->configContainer->string('app.language');?>">
@@ -16,7 +15,7 @@ use function Qubus\Security\Helpers\t__;
         <meta charset="<?=Devflow::$PHP->configContainer->string('app.charset');?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-        <title><?= t__(msgid: 'Login', domain: 'devflow') . ' &lsaquo; ' . get_option(key: 'sitename'); ?> &#8212; <?= t__(msgid: 'Devflow', domain: 'devflow'); ?></title>
+        <title><?= trans_html('Login') . ' &lsaquo; ' . get_option(key: 'sitename'); ?> &#8212; <?= trans_html('Devflow'); ?></title>
         <link rel="stylesheet" href="static/assets/css/auth/bootstrap.min.css">
         <link rel="stylesheet" href="static/assets/css/auth/auth.min.css">
         <!-- Favicon Package -->
@@ -38,7 +37,7 @@ use function Qubus\Security\Helpers\t__;
                         <footer>
                             <div class="container">
                                 <div class="col-md-12 col-md-offset-1 text-center">
-                                    <h6 style="font-size:14px;font-weight:400;"><?= esc_html__(string: 'Powered by', domain: 'devflow'); ?> <a href="//getdevflow.com"><?= esc_html__(string: 'Devflow', domain: 'devflow'); ?></a> r<?=Devflow::release();?></h6>
+                                    <h6 style="font-size:14px;font-weight:400;"><?= trans_html(string: 'Powered by'); ?> <a href="//getdevflow.com"><?= trans_html(string: 'Devflow'); ?></a> r<?=Devflow::release();?></h6>
                                 </div>
                             </div>
                         </footer>

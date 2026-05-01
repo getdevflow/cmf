@@ -6,9 +6,8 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use function App\Shared\Helpers\admin_login_url;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\get_auth_screen_logo;
-use function App\Shared\Helpers\login_url;
-use function Qubus\Security\Helpers\esc_attr__;
-use function Qubus\Security\Helpers\t__;
+use function Codefy\Framework\Helpers\trans_attr;
+use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/auth-layout');
 $this->block('auth', function () {
@@ -24,22 +23,22 @@ $this->block('auth', function () {
             <?php Action::getInstance()->doAction('reset_form_top'); ?>
             <form method="post" action="<?= admin_url('reset-password/'); ?>" class="my-login-validation" novalidate="" autocomplete="off">
                 <div class="form-group">
-                    <label for="username"><?=t__(msgid: 'Email', domain: 'devflow');?>
+                    <label for="username"><?=trans_html('Email');?>
                         <a href="<?=admin_login_url('admin');?>" class="float-right">
-                            <?=t__(msgid: 'Log-in', domain: 'devflow');?>
+                            <?=trans_html('Log-in');?>
                         </a>
                     </label>
                     <input id="email" type="email" class="form-control" name="email" required="required" autofocus>
                     <div class="invalid-feedback">
-                        <?=t__(msgid: 'Email is invalid.', domain: 'devflow');?>
+                        <?=trans_html('Email is invalid.');?>
                     </div>
                     <div class="form-text text-muted">
-                        <?=t__(msgid: 'By clicking "Reset" the system will email you a new password.', domain: 'devflow');?>
+                        <?=trans_html('By clicking "Reset" the system will email you a new password.');?>
                     </div>
                 </div>
 
                 <div class="form-group m-0">
-                    <input type="submit" name="reset_password" class="btn btn-submit btn-block" value="<?=esc_attr__(string: 'Reset', domain: 'devflow');?>">
+                    <input type="submit" name="reset_password" class="btn btn-submit btn-block" value="<?=trans_attr(string: 'Reset');?>">
                 </div>
             </form>
             <?php Action::getInstance()->doAction('reset_form_bottom'); ?>

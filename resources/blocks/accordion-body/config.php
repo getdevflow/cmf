@@ -1,6 +1,8 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
     'hidden' => true,
-    'category' => 'Component',
+    'category' => trans('Component'),
 ];

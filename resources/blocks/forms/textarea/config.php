@@ -1,23 +1,25 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-    'category' => 'Forms',
-    'title' => 'Textarea',
+    'category' => trans('Forms'),
+    'title' => trans('Textarea'),
     'icon' => 'fa fa-paragraph',
     'settings' => [
         'textarea-label' => [
             'type' => 'text',
-            'label' => 'Label',
+            'label' => trans('Label'),
             'value' => 'Textarea Label',
         ],
         'textarea-required' => [
             'type' => 'yes_no',
-            'label' => 'Required?',
+            'label' => trans('Required?'),
             'value' => '0',
         ],
         'textarea-placeholder' => [
             'type' => 'text',
-            'label' => 'Placeholder',
+            'label' => trans('Placeholder'),
             'value' => 'textarea',
         ],
     ],

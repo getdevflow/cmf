@@ -6,7 +6,7 @@ use App\Application\Devflow;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
-use function Qubus\Security\Helpers\esc_html__;
+use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
@@ -19,12 +19,12 @@ Registry::getInstance()->{'set'}('screen_child', 'home');
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                <?= esc_html__(string: 'Dashboard', domain: 'devflow'); ?>
-                <small><?= esc_html__(string: 'Control panel', domain: 'devflow'); ?></small>
+                <?= trans_html(string: 'Dashboard'); ?>
+                <small><?= trans_html(string: 'Control panel'); ?></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> <?= esc_html__(string: 'Home', domain: 'devflow'); ?></a></li>
-                <li class="active"><?= esc_html__(string: 'Dashboard', domain: 'devflow'); ?></li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> <?= trans_html(string: 'Home'); ?></a></li>
+                <li class="active"><?= trans_html(string: 'Dashboard'); ?></li>
             </ol>
         </section>
 

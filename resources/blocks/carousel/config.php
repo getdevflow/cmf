@@ -1,13 +1,15 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-    'category' => 'Component',
-    'title' => 'Carousel',
+    'category' => trans('Component'),
+    'title' => trans('Carousel'),
     'icon' => 'fa fa-panorama',
     'settings' => [
         'carousel_item_count' => [
             'type' => 'text',
-            'label' => 'Number of Items',
+            'label' => trans('Number of Items'),
             'value' => '2'
         ],
     ],

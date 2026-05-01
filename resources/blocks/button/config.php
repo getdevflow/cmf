@@ -1,43 +1,45 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-    'category' => 'Basic',
-    'title' => 'Button',
+    'category' => trans('Basic'),
+    'title' => trans('Button'),
     'icon' => 'fa fa-stop',
     'settings' => [
         'button-style' => [
             'type' => 'select',
-            'label' => 'Style',
+            'label' => trans('Style'),
             'options' => [
-                ['value' => 'btn-primary', 'label' => 'Primary'],
-                ['value' => 'btn-secondary', 'label' => 'Secondary'],
-                ['value' => 'btn-success', 'label' => 'Success'],
-                ['value' => 'btn-danger', 'label' => 'Danger'],
-                ['value' => 'btn-warning', 'label' => 'Warning'],
-                ['value' => 'btn-info', 'label' => 'Info'],
-                ['value' => 'btn-light', 'label' => 'Light'],
-                ['value' => 'btn-dark', 'label' => 'Dark'],
+                ['value' => 'btn-primary', 'label' => trans('Primary')],
+                ['value' => 'btn-secondary', 'label' => trans('Secondary')],
+                ['value' => 'btn-success', 'label' => trans('Success')],
+                ['value' => 'btn-danger', 'label' => trans('Danger')],
+                ['value' => 'btn-warning', 'label' => trans('Warning')],
+                ['value' => 'btn-info', 'label' => trans('Info')],
+                ['value' => 'btn-light', 'label' => trans('Light')],
+                ['value' => 'btn-dark', 'label' => trans('Dark')],
             ],
         ],
         'button-size' => [
             'type' => 'select',
-            'label' => 'Size',
+            'label' => trans('Size'),
             'options' => [
-                ['value' => 'btn-sm', 'label' => 'Small'],
-                ['value' => 'btn-lg', 'label' => 'Large'],
+                ['value' => 'btn-sm', 'label' => trans('Small')],
+                ['value' => 'btn-lg', 'label' => trans('Large')],
             ],
         ],
         'button-type' => [
             'type' => 'select',
-            'label' => 'Type',
+            'label' => trans('Type'),
             'options' => [
-                ['value' => 'button', 'label' => 'Button'],
-                ['value' => 'submit', 'label' => 'Submit'],
+                ['value' => 'button', 'label' => trans('Button')],
+                ['value' => 'submit', 'label' => trans('Submit')],
             ],
         ],
         'button-text' => [
             'type' => 'text',
-            'label' => 'Text',
+            'label' => trans('Text'),
             'value' => 'Button Text',
         ],
     ],

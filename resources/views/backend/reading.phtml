@@ -9,7 +9,7 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\cms_charset;
 use function App\Shared\Helpers\get_option;
-use function Qubus\Security\Helpers\esc_html__;
+use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
@@ -26,10 +26,10 @@ Action::getInstance()->doAction('options_init');
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <i class="fa fa-cogs"></i>
-                    <h3 class="box-title"><?= esc_html__(string: 'Reading Options', domain: 'devflow'); ?></h3>
+                    <h3 class="box-title"><?= trans_html(string: 'Reading Options'); ?></h3>
 
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= esc_html__(string: 'Update', domain: 'devflow'); ?></button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= trans_html(string: 'Update'); ?></button>
                     </div>
                 </div>
             </div>
@@ -47,24 +47,24 @@ Action::getInstance()->doAction('options_init');
                         <!-- general form elements -->
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'Reading Options', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'Reading Options'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Charset', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Charset'); ?></strong></label>
                                     <?=cms_charset(get_option(key: 'charset', default: 'utf8'));?>
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Content per Page', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Content per Page'); ?></strong></label>
                                     <input type="text" class="form-control" name="content_per_page" value="<?= get_option(key: 'content_per_page'); ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Date Format', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Date Format'); ?></strong></label>
                                     <input type="text" class="form-control" name="date_format" value="<?= get_option(key: 'date_format'); ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Time Format', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Time Format'); ?></strong></label>
                                     <input type="text" class="form-control" name="time_format" value="<?= get_option(key: 'time_format'); ?>" />
                                 </div>
                                 <?php Action::getInstance()->doAction('options_reading_form'); ?>

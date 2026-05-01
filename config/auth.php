@@ -1,7 +1,6 @@
 <?php
 
 use function Qubus\Config\Helpers\env;
-use function Qubus\Security\Helpers\t__;
 
 return [
     /*
@@ -50,5 +49,5 @@ return [
 
     'username_min_length' => 6,
 
-    'access_denied_message' => t__(msgid: 'Access denied.', domain: 'devflow'),
+    'access_denied_message' => 'Access denied.',
 ];

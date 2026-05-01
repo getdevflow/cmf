@@ -1,13 +1,15 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-        'category' => 'Layout',
-        'title' => 'Grid',
+        'category' => trans('Layout'),
+        'title' => trans('Grid'),
         'icon' => 'fa fa-border-all',
         'settings' => [
             'columns-lg' => [
                 'type' => 'select',
-                'label' => 'Columns',
+                'label' => trans('Columns'),
                 'options' => [
                     ['value' => '6-6', 'label' => '50%&nbsp;&nbsp;|&nbsp;&nbsp;50%'],
                     ['value' => '4-8', 'label' => '33%&nbsp;&nbsp;|&nbsp;&nbsp;66%'],
@@ -30,10 +32,10 @@ return [
             ],
                 'columns-md' => [
                         'type' => 'select',
-                        'label' => 'On small displays',
+                        'label' => trans('On small displays'),
                         'options' => [
-                                ['value' => 0, 'label' => 'Use default layout'],
-                                ['value' => '12', 'label' => 'Columns become rows'],
+                                ['value' => 0, 'label' => trans('Use default layout')],
+                                ['value' => '12', 'label' => trans('Columns become rows')],
                                 ['value' => '6-6', 'label' => '50%&nbsp;&nbsp;|&nbsp;&nbsp;50%'],
                                 ['value' => '4-8', 'label' => '33%&nbsp;&nbsp;|&nbsp;&nbsp;66%'],
                                 ['value' => '8-4', 'label' => '66%&nbsp;&nbsp;|&nbsp;&nbsp;33%'],
@@ -55,10 +57,10 @@ return [
                 ],
                 'columns-sm' => [
                         'type' => 'select',
-                        'label' => 'On tablets',
+                        'label' => trans('On tablets'),
                         'options' => [
-                                ['value' => 0, 'label' => 'Same layout as on small displays'],
-                                ['value' => '12', 'label' => 'Columns become rows'],
+                                ['value' => 0, 'label' => trans('Same layout as on small displays')],
+                                ['value' => '12', 'label' => trans('Columns become rows')],
                                 ['value' => '6-6', 'label' => '50%&nbsp;&nbsp;|&nbsp;&nbsp;50%'],
                                 ['value' => '4-8', 'label' => '33%&nbsp;&nbsp;|&nbsp;&nbsp;66%'],
                                 ['value' => '8-4', 'label' => '66%&nbsp;&nbsp;|&nbsp;&nbsp;33%'],
@@ -80,10 +82,10 @@ return [
                 ],
                 'columns-xs' => [
                         'type' => 'select',
-                        'label' => 'On mobile',
+                        'label' => trans('On mobile'),
                         'options' => [
-                                ['value' => 0, 'label' => 'Same layout as on tablets'],
-                                ['value' => '12', 'label' => 'Columns become rows'],
+                                ['value' => 0, 'label' => trans('Same layout as on tablets')],
+                                ['value' => '12', 'label' => trans('Columns become rows')],
                                 ['value' => '6-6', 'label' => '50%&nbsp;&nbsp;|&nbsp;&nbsp;50%'],
                                 ['value' => '4-8', 'label' => '33%&nbsp;&nbsp;|&nbsp;&nbsp;66%'],
                                 ['value' => '8-4', 'label' => '66%&nbsp;&nbsp;|&nbsp;&nbsp;33%'],
@@ -105,40 +107,40 @@ return [
                 ],
                 'gutter' => [
                         'type' => 'select',
-                        'label' => 'Space between columns',
+                        'label' => trans('Space between columns'),
                         'options' => [
-                                ['value' => 'g-0', 'label' => 'None'],
-                                ['value' => 'g-2', 'label' => 'Subtle'],
-                                ['value' => 'g-3', 'label' => 'Small'],
-                                ['value' => 'g-4', 'label' => 'Reduced'],
-                                ['value' => 'g-5', 'label' => 'Default'],
-                                ['value' => 'g-wide', 'label' => 'Wide'],
-                                ['value' => 'g-6', 'label' => 'Large'],
-                                ['value' => 'g-7', 'label' => 'Maximized']
+                                ['value' => 'g-0', 'label' => trans('None')],
+                                ['value' => 'g-2', 'label' => trans('Subtle')],
+                                ['value' => 'g-3', 'label' => trans('Small')],
+                                ['value' => 'g-4', 'label' => trans('Reduced')],
+                                ['value' => 'g-5', 'label' => trans('Default')],
+                                ['value' => 'g-wide', 'label' => trans('Wide')],
+                                ['value' => 'g-6', 'label' => trans('Large')],
+                                ['value' => 'g-7', 'label' => trans('Maximized')]
                         ],
                         'value' => 'g-5'
                 ],
                 'column_count' => [
                         'type' => 'text',
-                        'label' => 'Number of columns',
+                        'label' => trans('Number of columns'),
                         'value' => ''
                 ],
                 'order-lg' => [
                         'type' => 'select',
-                        'label' => 'Order of columns',
+                        'label' => trans('Order of columns'),
                         'options' => [
-                                ['value' => 'flex--row', 'label' => 'Columns in standard order'],
-                                ['value' => 'flex--row-reverse', 'label' => 'Columns in reversed order']
+                                ['value' => 'flex--row', 'label' => trans('Columns in standard order')],
+                                ['value' => 'flex--row-reverse', 'label' => trans('Columns in reversed order')]
                         ],
                         'value' => 'flex--row'
                 ],
                 'order-md' => [
                         'type' => 'select',
-                        'label' => 'Order on small displays',
+                        'label' => trans('Order on small displays'),
                         'options' => [
-                                ['value' => 0, 'label' => 'Use same as above'],
-                                ['value' => 'flex--row', 'label' => 'Columns in standard order'],
-                                ['value' => 'flex--row-reverse', 'label' => 'Columns in reversed order']
+                                ['value' => 0, 'label' => trans('Use same as above')],
+                                ['value' => 'flex--row', 'label' => trans('Columns in standard order')],
+                                ['value' => 'flex--row-reverse', 'label' => trans('Columns in reversed order')]
                         ],
                         'value' => 0
                 ],
@@ -146,19 +148,19 @@ return [
                         'type' => 'select',
                         'label' => 'Order on tablets',
                         'options' => [
-                                ['value' => 0, 'label' => 'Use same as on small displays'],
-                                ['value' => 'flex--row', 'label' => 'Columns in standard order'],
-                                ['value' => 'flex--row-reverse', 'label' => 'Columns in reversed order']
+                                ['value' => 0, 'label' => trans('Use same as on small displays')],
+                                ['value' => 'flex--row', 'label' => trans('Columns in standard order')],
+                                ['value' => 'flex--row-reverse', 'label' => trans('Columns in reversed order')]
                         ],
                         'value' => 0
                 ],
                 'order-xs' => [
                         'type' => 'select',
-                        'label' => 'Order on mobile',
+                        'label' => trans('Order on mobile'),
                         'options' => [
-                                ['value' => 0, 'label' => 'Use same as on small displays'],
-                                ['value' => 'flex-column', 'label' => 'Columns in standard order'],
-                                ['value' => 'flex-column-reverse', 'label' => 'Columns in reversed order']
+                                ['value' => 0, 'label' => trans('Use same as on small displays')],
+                                ['value' => 'flex-column', 'label' => trans('Columns in standard order')],
+                                ['value' => 'flex-column-reverse', 'label' => trans('Columns in reversed order')]
                         ],
                         'value' => 0
                 ],

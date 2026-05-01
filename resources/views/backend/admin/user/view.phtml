@@ -17,7 +17,7 @@ use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
 use function App\Shared\Helpers\get_system_roles;
 use function App\Shared\Helpers\selected;
-use function Qubus\Security\Helpers\esc_html__;
+use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -34,12 +34,12 @@ Action::getInstance()->doAction('update_user_init');
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <i class="fa fa-user"></i>
-                    <h3 class="box-title"><?= esc_html__(string: 'Update User', domain: 'devflow'); ?></h3>
+                    <h3 class="box-title"><?= trans_html(string: 'Update User'); ?></h3>
 
                     <div class="pull-right">
-                        <button type="button"<?=ae('create:users');?> class="btn btn-warning" onclick="window.location='<?= admin_url('user/create/'); ?>'"><i class="fa fa-plus"></i> <?= esc_html__(string: 'New User', domain: 'devflow'); ?></button>
-                        <button type="submit"<?=ae('update:users');?> class="btn btn-success"><i class="fa fa-save"></i> <?= esc_html__(string: 'Update', domain: 'devflow'); ?></button>
-                        <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('user/'); ?>'"><i class="fa fa-ban"></i> <?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
+                        <button type="button"<?=ae('create:users');?> class="btn btn-warning" onclick="window.location='<?= admin_url('user/create/'); ?>'"><i class="fa fa-plus"></i> <?= trans_html(string: 'New User'); ?></button>
+                        <button type="submit"<?=ae('update:users');?> class="btn btn-success"><i class="fa fa-save"></i> <?= trans_html(string: 'Update'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('user/'); ?>'"><i class="fa fa-ban"></i> <?= trans_html(string: 'Cancel'); ?></button>
                         <?php if ($params['user']->id === get_current_user_id()) : ?>
                             <input type="hidden" name="role" value="<?= get_user_option('role', $params['user']->id); ?>" />
                             <input type="hidden" name="status" value="<?= get_user_option('status', $params['user']->id); ?>" />
@@ -61,31 +61,31 @@ Action::getInstance()->doAction('update_user_init');
                         <!-- general form elements -->
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'Name', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'Name'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Username', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Username'); ?></strong></label>
                                     <input type="text" class="form-control" id="user_login" name="login" value="<?=$params['user']->login;?>" readonly="readonly" required/>
                                     <?php if (current_user_can('update:users')) : ?>
-                                        <button type="button" class="btn btn-primary" id="enable_button" style="display:none"><?= esc_html__(string: 'Change username', domain: 'devflow'); ?></button>
-                                        <button type="button" class="btn btn-danger" id="disable_button" style="display:none"><?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
+                                        <button type="button" class="btn btn-primary" id="enable_button" style="display:none"><?= trans_html(string: 'Change username'); ?></button>
+                                        <button type="button" class="btn btn-danger" id="disable_button" style="display:none"><?= trans_html(string: 'Cancel'); ?></button>
                                     <?php endif; ?>
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'First Name', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'First Name'); ?></strong></label>
                                     <input type="text" class="form-control" name="fname" value="<?=$params['user']->fname;?>" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Middle Name', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Middle Name'); ?></strong></label>
                                     <input type="text" class="form-control" name="mname" value="<?=$params['user']->mname;?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Last Name'); ?></strong></label>
                                     <input type="text" class="form-control" name="lname" value="<?=$params['user']->lname;?>" required>
                                 </div>
                             </div>
@@ -93,18 +93,18 @@ Action::getInstance()->doAction('update_user_init');
 
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'Contact info', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'Contact info'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
 
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Email', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Email'); ?></strong></label>
                                     <input type="email" class="form-control" name="email" value="<?=$params['user']->email;?>" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'URL', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'URL'); ?></strong></label>
                                     <input type="text" class="form-control" name="url" value="<?=$params['user']->url;?>" />
                                 </div>
 
@@ -113,18 +113,18 @@ Action::getInstance()->doAction('update_user_init');
 
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'About the user', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'About the user'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
 
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Biography', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Biography'); ?></strong></label>
                                     <textarea class="form-control" name="bio" rows="5"><?= get_user_option('bio', $params['user']->id); ?></textarea>
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Profile Picture', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Profile Picture'); ?></strong></label>
                                     <div><?= get_user_avatar($params['user']->email, 100);?></div>
                                 </div>
 
@@ -136,32 +136,32 @@ Action::getInstance()->doAction('update_user_init');
                     <div class="col-md-3">
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'User Status', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'User Status'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Status', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Status'); ?></strong></label>
                                     <select class="form-control select2" name="status" style="width: 100%;" required>
                                         <option value=""> ---------------------- </option>
-                                        <option value="A"<?= selected('A', get_user_option('status', $params['user']->id), false); ?>><?= esc_html__(string: 'Active', domain: 'devflow'); ?></option>
-                                        <option value="I"<?= selected('I', get_user_option('status', $params['user']->id), false); ?>><?= esc_html__(string: 'Inactive', domain: 'devflow'); ?></option>
-                                        <option value="S"<?= selected('S', get_user_option('status', $params['user']->id), false); ?>><?= esc_html__(string: 'Spammer', domain: 'devflow'); ?></option>
-                                        <option value="B"<?= selected('B', get_user_option('status', $params['user']->id), false); ?>><?= esc_html__(string: 'Blocked', domain: 'devflow'); ?></option>
+                                        <option value="A"<?= selected('A', get_user_option('status', $params['user']->id), false); ?>><?= trans_html(string: 'Active'); ?></option>
+                                        <option value="I"<?= selected('I', get_user_option('status', $params['user']->id), false); ?>><?= trans_html(string: 'Inactive'); ?></option>
+                                        <option value="S"<?= selected('S', get_user_option('status', $params['user']->id), false); ?>><?= trans_html(string: 'Spammer'); ?></option>
+                                        <option value="B"<?= selected('B', get_user_option('status', $params['user']->id), false); ?>><?= trans_html(string: 'Blocked'); ?></option>
                                     </select>
-                                    <p class="help-block"><?= esc_html__(string: 'If the account is Inactive, the user will be incapable of logging into the system.', domain: 'devflow'); ?></p>
+                                    <p class="help-block"><?= trans_html(string: 'If the account is Inactive, the user will be incapable of logging into the system.'); ?></p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'User Role', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'User Role'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Role', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Role'); ?></strong></label>
                                     <select class="form-control select2" name="role" style="width: 100%;" required>
                                         <option value=""> ---------------------- </option>
                                         <?php get_system_roles(get_user_option('role', $params['user']->id)); ?>
@@ -172,12 +172,12 @@ Action::getInstance()->doAction('update_user_init');
 
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'Date/Time', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'Date/Time'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Timezone', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Timezone'); ?></strong></label>
                                     <select class="form-control select2" name="timezone" style="width: 100%;">
                                         <option value=""> ------------------------- </option>
                                         <?php foreach (generate_timezone_list() as $k => $v) : ?>
@@ -187,12 +187,12 @@ Action::getInstance()->doAction('update_user_init');
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Date Format', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Date Format'); ?></strong></label>
                                     <input type="text" class="form-control" name="date_format" value="<?= $params['user']->dateFormat; ?>" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Time Format', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Time Format'); ?></strong></label>
                                     <input type="text" class="form-control" name="time_format" value="<?= $params['user']->timeFormat; ?>" />
                                 </div>
                             </div>
@@ -200,12 +200,12 @@ Action::getInstance()->doAction('update_user_init');
 
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'Locale', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'Locale'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Language', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Language'); ?></strong></label>
                                     <select class="form-control select2" name="locale" style="width: 100%;">
                                         <option value=""> ------------------------- </option>
                                         <?php cms_dropdown_languages($params['user']->locale); ?>

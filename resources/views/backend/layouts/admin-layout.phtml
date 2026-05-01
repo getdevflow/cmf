@@ -31,11 +31,10 @@ use function App\Shared\Helpers\get_userdata;
 use function App\Shared\Helpers\is_multisite;
 use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\config;
+use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Routing\Helpers\request;
 use function Qubus\Security\Helpers\esc_attr;
 use function Qubus\Security\Helpers\esc_html;
-use function Qubus\Security\Helpers\esc_html__;
-use function Qubus\Security\Helpers\t__;
 
 if (isset($_COOKIE['SWITCH_USERBACK'])) :
     $cookie = get_secure_cookie_data(key: 'SWITCH_USERBACK');
@@ -75,7 +74,7 @@ $user = get_userdata(get_current_user_id());
             <nav class="navbar navbar-static-top default-navbar">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                  <span class="sr-only"><?=esc_html__(string: 'Toggle navigation', domain: 'devflow');?></span>
+                  <span class="sr-only"><?=trans_html(string: 'Toggle navigation');?></span>
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
@@ -92,23 +91,23 @@ $user = get_userdata(get_current_user_id());
 
                                     <p>
                                         <?= get_name(get_current_user_id()); ?>
-                                        <small><?=esc_html__(string: 'Member since', domain: 'devflow'); ?> <?= new DateTime()->db2date('M Y', $user->registered); ?></small>
+                                        <small><?=trans_html(string: 'Member since'); ?> <?= new DateTime()->db2date('M Y', $user->registered); ?></small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <?php if(null !== get_user_option('role', $user->id)) : ?>
-                                        <a<?= ae('manage:profile'); ?> href="<?= admin_url('user/profile/'); ?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Profile', domain: 'devflow');?></a>
+                                        <a<?= ae('manage:profile'); ?> href="<?= admin_url('user/profile/'); ?>" class="btn btn-default btn-flat"><?=trans_html(string: 'Profile');?></a>
                                         <?php endif; ?>
                                     </div>
                                     <?php if (isset($_COOKIE['SWITCH_USERBACK'])) : ?>
                                         <div class="pull-left">
-                                            <a href="<?= admin_url('user/' . $cookie->id . '/switch-back/'); ?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Switch back', domain: 'devflow');?></a>
+                                            <a href="<?= admin_url('user/' . $cookie->id . '/switch-back/'); ?>" class="btn btn-default btn-flat"><?=trans_html(string: 'Switch back');?></a>
                                         </div>
                                     <?php endif; ?>
                                     <div class="pull-right">
-                                        <a href="<?=admin_logout_url(admin_login_url());?>" class="btn btn-default btn-flat"><?=esc_html__(string: 'Logout', domain: 'devflow');?></a>
+                                        <a href="<?=admin_logout_url(admin_login_url());?>" class="btn btn-default btn-flat"><?=trans_html(string: 'Logout');?></a>
                                     </div>
                                 </li>
                             </ul>
@@ -130,43 +129,43 @@ $user = get_userdata(get_current_user_id());
                     </div>
                     <div class="pull-left info">
                         <p><?= get_name(get_current_user_id()); ?></p>
-                        <a><i class="fa fa-circle" style="color:#2ecc71"></i> <?=esc_html__(string: 'Online', domain: 'devflow');?></a>
+                        <a><i class="fa fa-circle" style="color:#2ecc71"></i> <?=trans_html(string: 'Online');?></a>
                     </div>
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
-                    <li class="header"><?=esc_html__(string: 'MAIN NAVIGATION', domain: 'devflow');?></li>
+                    <li class="header"><?=trans_html(string: 'MAIN NAVIGATION');?></li>
                     <li class="treeview<?=current_screen('screen_parent', 'dashboard'); ?>">
                         <a href="#">
                             <i class="fa fa-tachometer-alt"></i>
-                            <span><?=esc_html__(string: 'Dashboard', domain: 'devflow');?></span>
+                            <span><?=trans_html(string: 'Dashboard');?></span>
                             <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?= add_dashboard_submenu(esc_html__(string: 'Home', domain: 'devflow'), '/', 'home'); ?>
-                            <?= add_dashboard_submenu(esc_html__(string: 'System Report', domain: 'devflow'), '/snapshot/', 'snapshot', 'manage:settings'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'Home'), '/', 'home'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'System Report'), '/snapshot/', 'snapshot', 'manage:settings'); ?>
                             <?php Action::getInstance()->doAction('dashboard_submenu'); ?>
                         </ul>
                     </li>
                     <li<?= ae('manage:settings'); ?> class="treeview">
                         <a href="<?= admin_url('flush-cache/'); ?>">
-                            <i class="fa fa-broom"></i> <span><?=esc_html__(string: 'Flush Cache', domain: 'devflow');?></span>
+                            <i class="fa fa-broom"></i> <span><?=trans_html(string: 'Flush Cache');?></span>
                         </a>
                     </li>
                     <?php if(is_multisite() && (config()->string(key: 'cms.main_site_url') === request()->getHost())) : ?>
                     <li<?= ae('manage:sites'); ?> class="treeview<?=current_screen('screen_parent', 'sites'); ?>">
                         <a href="#">
                             <i class="fa fa-globe"></i>
-                            <span><?=esc_html__(string: 'Sites', domain: 'devflow');?></span>
+                            <span><?=trans_html(string: 'Sites');?></span>
                             <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?= add_dashboard_submenu(esc_html__(string: 'Manage', domain: 'devflow'), '/site/', 'sites'); ?>
-                            <?= add_dashboard_submenu(esc_html__(string: 'Users', domain: 'devflow'), '/site/users/', 'sites-user'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'Manage'), '/site/', 'sites'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'Users'), '/site/users/', 'sites-user'); ?>
                             <?php Action::getInstance()->doAction('sites_submenu'); ?>
                         </ul>
                     </li>
@@ -174,19 +173,19 @@ $user = get_userdata(get_current_user_id());
                     <li<?= ae('manage:product'); ?> class="treeview<?=current_screen('screen_parent', 'product');?>">
                         <a href="#">
                             <i class="fa fa-archive"></i>
-                            <span><?=esc_html__(string: 'Products', domain: 'devflow');?></span>
+                            <span><?=trans_html(string: 'Products');?></span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?= add_dashboard_submenu(esc_html__(string: 'All Products', domain: 'devflow'), '/product/', 'products'); ?>
-                            <?= add_dashboard_submenu(esc_html__(string: 'Add New', domain: 'devflow'), '/product/create/', 'product-create'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'All Products'), '/product/', 'products'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'Add New'), '/product/create/', 'product-create'); ?>
                         </ul>
                     </li>
                     <li<?= ae('manage:content'); ?> class="treeview<?=current_screen('screen_parent', 'content_types');?>">
                         <a href="<?= admin_url('content-type/'); ?>">
-                            <i class="fa fa-cubes"></i> <span><?=esc_html__(string: 'Content Types', domain: 'devflow');?></span>
+                            <i class="fa fa-cubes"></i> <span><?=trans_html(string: 'Content Types');?></span>
                         </a>
                     </li>
                     <?php if(count(get_all_content_types()) > 0) : ?>
@@ -200,8 +199,8 @@ $user = get_userdata(get_current_user_id());
                                     </span>
                             </a>
                             <ul class="treeview-menu">
-                                <?= add_dashboard_submenu(esc_html__(string: 'All', domain: 'devflow') . ' ' . esc_html($contentType['title']), '/content-type/' . $contentType['slug'] . '/', $contentType['slug']); ?>
-                                <?= add_dashboard_submenu(esc_html__(string: 'Add New', domain: 'devflow'), '/content-type/' . $contentType['slug'] . '/create/', $contentType['slug'] . '-create'); ?>
+                                <?= add_dashboard_submenu(trans_html(string: 'All') . ' ' . esc_html($contentType['title']), '/content-type/' . $contentType['slug'] . '/', $contentType['slug']); ?>
+                                <?= add_dashboard_submenu(trans_html(string: 'Add New'), '/content-type/' . $contentType['slug'] . '/create/', $contentType['slug'] . '-create'); ?>
                                 <?php Action::getInstance()->doAction('content_type_submenu', $contentType['slug']); ?>
                             </ul>
                         </li>
@@ -210,39 +209,39 @@ $user = get_userdata(get_current_user_id());
                     <?php Action::getInstance()->doAction('content_type_menu'); ?>
                     <li<?= ae('manage:media'); ?> class="treeview<?=current_screen('screen_parent', 'media');?>">
                         <a href="<?= admin_url('media/'); ?>">
-                            <i class="fa fa-camera"></i> <span><?=esc_html__(string: 'Media Library', domain: 'devflow');?></span>
+                            <i class="fa fa-camera"></i> <span><?=trans_html(string: 'Media Library');?></span>
                         </a>
                     </li>
                     <li<?= ae('manage:plugins'); ?> class="treeview<?=current_screen('screen_parent', 'plugins');?>">
                         <a href="#">
                             <i class="fa fa-plug"></i>
-                            <span><?=esc_html__(string: 'Plugins', domain: 'devflow');?></span>
+                            <span><?=trans_html(string: 'Plugins');?></span>
                             <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?=add_dashboard_submenu(esc_html__(string: 'Plugins', domain: 'devflow'), '/plugin/', 'installed-plugins');?>
+                            <?=add_dashboard_submenu(trans_html(string: 'Plugins'), '/plugin/', 'installed-plugins');?>
                             <?php Action::getInstance()->doAction('plugins_submenu'); ?>
                         </ul>
                     </li>
                     <li<?= ae('manage:themes'); ?> class="treeview<?=current_screen('screen_parent', 'themes');?>">
                         <a href="#">
                             <i class="fa fa-palette"></i>
-                            <span><?=esc_html__(string: 'Themes', domain: 'devflow');?></span>
+                            <span><?=trans_html(string: 'Themes');?></span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?=add_dashboard_submenu(esc_html__(string: 'Themes', domain: 'devflow'), '/theme/', 'installed-themes');?>
+                            <?=add_dashboard_submenu(trans_html(string: 'Themes'), '/theme/', 'installed-themes');?>
                             <?php Action::getInstance()->doAction('themes_submenu'); ?>
                         </ul>
                     </li>
                     <?php if(config()->boolean(key: 'vihzhuo.enable') && !empty(get_theme())) : ?>
                     <li<?= ae('vihzhuo:manage'); ?> class="treeview<?=current_screen('screen_parent', 'vihzhuo');?>">
                         <a href="<?= admin_url('manager/'); ?>">
-                            <i class="fa fa-layer-group"></i> <span><?=esc_html__(string: 'Vihzhuo', domain: 'devflow');?></span>
+                            <i class="fa fa-layer-group"></i> <span><?=trans_html(string: 'Vihzhuo');?></span>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -250,16 +249,16 @@ $user = get_userdata(get_current_user_id());
                         <li class="treeview<?=current_screen('screen_parent', 'users'); ?>">
                             <a href="#">
                                 <i class="fa fa-user"></i>
-                                <span><?=esc_html__(string: 'Users', domain: 'devflow');?></span>
+                                <span><?=trans_html(string: 'Users');?></span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
                                 <?php Action::getInstance()->doAction('admin_submenu_users'); ?>
-                                <?= add_dashboard_submenu(esc_html__(string: 'All Users', domain: 'devflow'), '/user/', 'all-users', 'manage:users'); ?>
-                                <?= add_dashboard_submenu(esc_html__(string: 'Add New', domain: 'devflow'), '/user/create/', 'create-user', 'create:users'); ?>
-                                <?= add_dashboard_submenu(esc_html__(string: 'Your Profile', domain: 'devflow'), '/user/profile/', 'profile'); ?>
+                                <?= add_dashboard_submenu(trans_html(string: 'All Users'), '/user/', 'all-users', 'manage:users'); ?>
+                                <?= add_dashboard_submenu(trans_html(string: 'Add New'), '/user/create/', 'create-user', 'create:users'); ?>
+                                <?= add_dashboard_submenu(trans_html(string: 'Your Profile'), '/user/profile/', 'profile'); ?>
                                 <?php Action::getInstance()->doAction('users_submenu'); ?>
                             </ul>
                         </li>
@@ -267,7 +266,7 @@ $user = get_userdata(get_current_user_id());
                     <?php if(null !== get_user_option('role', $user->id)) : ?>
                         <li<?= ae('manage:profile'); ?> class="treeview<?=current_screen('screen_child', 'profile');?>">
                             <a href="<?= admin_url('user/profile/'); ?>">
-                                <i class="fa fa-id-card"></i> <span><?=esc_html__(string: 'Your Profile', domain: 'devflow');?></span>
+                                <i class="fa fa-id-card"></i> <span><?=trans_html(string: 'Your Profile');?></span>
                             </a>
                         </li>
                     <?php endif; ?>
@@ -275,14 +274,14 @@ $user = get_userdata(get_current_user_id());
                     <li<?= ae('manage:options'); ?> class="treeview<?=current_screen('screen_parent', 'options');?>">
                         <a href="#">
                             <i class="fa fa-cogs"></i>
-                            <span><?=esc_html__(string: 'Options', domain: 'devflow');?></span>
+                            <span><?=trans_html(string: 'Options');?></span>
                             <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?= add_dashboard_submenu(esc_html__(string: 'General', domain: 'devflow'), '/general/', 'options-general'); ?>
-                            <?= add_dashboard_submenu(esc_html__(string: 'Reading', domain: 'devflow'), '/reading/', 'options-reading'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'General'), '/general/', 'options-general'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'Reading'), '/reading/', 'options-reading'); ?>
                             <?php Action::getInstance()->doAction('options_submenu'); ?>
                         </ul>
                     </li>
@@ -309,7 +308,7 @@ $user = get_userdata(get_current_user_id());
             let t = endDate - now;
             if (t >= 0) {
                 document.getElementById("remainder").innerHTML =
-                    "<?=t__(msgid: 'Login expires in ', domain: 'devflow');?>" +
+                    "<?=trans_html('Login expires in ');?>" +
                     Math.floor(t / (1000 * 60 * 60 * 24)) + "day(s) " +
                     ("0" + Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).slice(-2) + "h:" +
                     ("0" + Math.floor((t % (1000 * 60 * 60)) / (1000 * 60))).slice(-2) + "m:" +

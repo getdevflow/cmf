@@ -16,8 +16,8 @@ use function App\Shared\Helpers\get_user_option;
 use function App\Shared\Helpers\get_users_reassign;
 use function App\Shared\Helpers\if_user_has_sites;
 use function App\Shared\Helpers\unassigned_sites;
-use function Qubus\Security\Helpers\esc_attr__;
-use function Qubus\Security\Helpers\esc_html__;
+use function Codefy\Framework\Helpers\trans_attr;
+use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Support\Helpers\concat_ws;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -32,7 +32,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
         <div class="box box-solid">
             <div class="box-header with-border">
                 <i class="fa fa-user"></i>
-                <h3 class="box-title"><?= esc_html__(string: 'Multisite Users', domain: 'devflow'); ?></h3>
+                <h3 class="box-title"><?= trans_html(string: 'Multisite Users'); ?></h3>
             </div>
         </div>
 
@@ -49,10 +49,10 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                     <table id="example1" class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th class="text-center"><?= esc_html__(string: 'Username', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'First Name', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Action', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Username'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'First Name'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Last Name'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Action'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,7 +62,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                 <td class="text-center"><?= $user['fname']; ?></td>
                                 <td class="text-center"><?= $user['lname']; ?></td>
                                 <td class="text-center">
-                                    <a href="#" data-toggle="modal" data-target="#add-site-<?= $user['id']; ?>" data-placement="top" title="<?= esc_attr__(string: 'Add to Site', domain: 'devflow'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-add"></i></button></a>
+                                    <a href="#" data-toggle="modal" data-target="#add-site-<?= $user['id']; ?>" data-placement="top" title="<?= trans_attr(string: 'Add to Site'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-add"></i></button></a>
                                     <div class="modal" id="add-site-<?= $user['id']; ?>">
                                         <form method="post" action="<?= admin_url('site/user/assign/'); ?>" data-toggle="validator" autocomplete="off">
                                             <div class="modal-dialog">
@@ -74,10 +74,10 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                         <h4 class="modal-title"><?=concat_ws($user['lname'], $user['fname'], ', ');?></h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p><?= esc_html__(string: "What site you want to add this user to?", domain: 'devflow'); ?></p>
+                                                        <p><?= trans_html(string: "What site you want to add this user to?"); ?></p>
 
                                                         <div class="form-group col-md-6">
-                                                            <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Site', domain: 'devflow'); ?></strong></label>
+                                                            <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Site'); ?></strong></label>
                                                             <select class="form-control select2" name="site_id" style="width: 100%;" required>
                                                                 <option value="null">&nbsp;</option>
                                                                 <?php unassigned_sites($user['id']); ?>
@@ -85,7 +85,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                         </div>
 
                                                         <div class="form-group col-md-6">
-                                                            <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Role', domain: 'devflow'); ?></strong></label>
+                                                            <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Role'); ?></strong></label>
                                                             <select class="form-control select2" name="user_role" style="width: 100%;" required>
                                                                 <option value="null">&nbsp;</option>
                                                                 <?php get_system_roles(); ?>
@@ -96,8 +96,8 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                     <div class="clearfix"></div>
                                                     <div class="modal-footer">
                                                         <input type="hidden" name="user_id" value="<?=$user['id'];?>" />
-                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
-                                                        <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Assign', domain: 'devflow'); ?></button>
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
+                                                        <button type="submit" class="btn btn-primary"><?= trans_html(string: 'Assign'); ?></button>
                                                     </div>
                                                 </div>
                                                 <!-- /.modal-content -->
@@ -123,11 +123,13 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                             <h4 class="modal-title"><?=concat_ws($user['lname'], $user['fname'], ', ');?></h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p><?= esc_html__(string: "Are you sure you want to delete this user and all their content?", domain: 'devflow'); ?></p>
+                                                            <p><?= trans_html(string: "Are you sure you want to delete this user and all their content?"); ?></p>
 
                                                             <?php if(!empty((array) get_owner_sites($user['id']))) : ?>
 
-                                                            <div class="alert alert-info"><?=esc_html__(string: "Would you like to assign this user's site(s) to a different user? Choose below.", domain: 'devflow');?></div>
+                                                            <div class="alert alert-info">
+                                                                <?=trans_html(string: "Would you like to assign this user's site(s) to a different user? Choose below.");?>
+                                                            </div>
                                                             <select class="form-control select2" name="assign_id" style="width: 100%;">
                                                                 <option value="null">&nbsp;</option>
                                                                 <?php get_users_reassign($user['id']); ?>
@@ -142,8 +144,8 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                         <div class="modal-footer">
                                                             <input type="hidden" name="role" value="<?=get_user_option('role', $user['id']);?>" />
                                                             <input type="hidden" name="user_id" value="<?=$user['id'];?>" />
-                                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
-                                                            <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
+                                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
+                                                            <button type="submit" class="btn btn-primary"><?= trans_html(string: 'Confirm'); ?></button>
                                                         </div>
                                                     </div>
                                                     <!-- /.modal-content -->
@@ -163,11 +165,11 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                                             <h4 class="modal-title"><?=concat_ws($user['lname'], $user['fname'], ', ');?></h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p><?= esc_html__(string: 'Are you sure you want to permanently delete this user?', domain: 'devflow'); ?></p>
+                                                            <p><?= trans_html(string: 'Are you sure you want to permanently delete this user?'); ?></p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
-                                                            <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
+                                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
+                                                            <button type="submit" class="btn btn-primary"><?= trans_html(string: 'Confirm'); ?></button>
                                                         </div>
                                                     </div>
                                                     <!-- /.modal-content -->
@@ -183,10 +185,10 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th class="text-center"><?= esc_html__(string: 'Username', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'First Name', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Action', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Username'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'First Name'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Last Name'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Action'); ?></th>
                         </tr>
                         </tfoot>
                     </table>

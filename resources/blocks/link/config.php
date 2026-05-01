@@ -1,7 +1,9 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-    'category' => 'Basic',
-    'title' => 'Button Link',
+    'category' => trans('Basic'),
+    'title' => trans('Button Link'),
     'icon' => 'fa fa-link',
 ];

@@ -1,13 +1,15 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-    'category' => 'Basic',
-    'title' => 'Heading',
+    'category' => trans('Basic'),
+    'title' => trans('Heading'),
     'icon' => 'fa fa-header',
     'settings' => [
         'heading-type' => [
             'type' => 'select',
-            'label' => 'Heading',
+            'label' => trans('Heading'),
             'options' => [
                 ['value' => '1', 'label' => 'H1'],
                 ['value' => '2', 'label' => 'H2'],
@@ -20,25 +22,25 @@ return [
         ],
         'heading-display' => [
             'type' => 'select',
-            'label' => 'Display',
+            'label' => trans('Display'),
             'options' => [
-                ['value' => 'display-0', 'label' => 'None'],
-                ['value' => 'display-1', 'label' => 'Display 1'],
-                ['value' => 'display-2', 'label' => 'Display 2'],
-                ['value' => 'display-3', 'label' => 'Display 3'],
-                ['value' => 'display-4', 'label' => 'Display 4'],
-                ['value' => 'display-5', 'label' => 'Display 5'],
-                ['value' => 'display-6', 'label' => 'Display 6'],
+                ['value' => 'display-0', 'label' => trans('None')],
+                ['value' => 'display-1', 'label' => trans('Display 1')],
+                ['value' => 'display-2', 'label' => trans('Display 2')],
+                ['value' => 'display-3', 'label' => trans('Display 3')],
+                ['value' => 'display-4', 'label' => trans('Display 4')],
+                ['value' => 'display-5', 'label' => trans('Display 5')],
+                ['value' => 'display-6', 'label' => trans('Display 6')],
             ],
         ],
         'primary-text' => [
             'type' => 'text',
-            'label' => 'Primary Text',
+            'label' => trans('Primary Text'),
             'value' => 'Heading',
         ],
         'secondary-text' => [
             'type' => 'text',
-            'label' => 'Secondary Text',
+            'label' => trans('Secondary Text'),
             'value' => '',
         ],
     ],

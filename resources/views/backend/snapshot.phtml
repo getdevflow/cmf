@@ -17,8 +17,8 @@ use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\base_path;
 use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\storage_path;
+use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Security\Helpers\esc_html;
-use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -32,7 +32,7 @@ Registry::getInstance()->{'set'}('screen_child', 'snapshot');
         <div class="box box-solid">
             <div class="box-header with-border">
                 <i class="fa fa-file-image-o"></i>
-                <h3 class="box-title"><?= esc_html__(string: 'System Report', domain: 'devflow'); ?></h3>
+                <h3 class="box-title"><?= trans_html(string: 'System Report'); ?></h3>
             </div>
         </div>
 

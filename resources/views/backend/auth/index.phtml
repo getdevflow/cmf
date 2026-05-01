@@ -4,8 +4,8 @@ use App\Application\Devflow;
 
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\get_auth_screen_logo;
-use function Qubus\Security\Helpers\esc_attr__;
-use function Qubus\Security\Helpers\t__;
+use function Codefy\Framework\Helpers\trans_attr;
+use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/auth-layout');
 $this->block('auth', function ($params) {
@@ -20,34 +20,34 @@ $this->block('auth', function ($params) {
         <div class="card-body">
             <form method="post" action="<?=$params['url'];?>" class="my-login-validation" novalidate="" autocomplete="off">
                 <div class="form-group">
-                    <label for="username"><?=t__(msgid: 'Username', domain: 'devflow');?></label>
+                    <label for="username"><?=trans_html('Username');?></label>
                     <input id="username" type="text" class="form-control" name="user_login" required="required" autofocus>
                     <div class="invalid-feedback">
-                        <?=t__(msgid: 'Username is invalid.', domain: 'devflow');?>
+                        <?=trans_html('Username is invalid.');?>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password"><?=t__('Password');?>
+                    <label for="password"><?=trans_html('Password');?>
                         <a href="<?=admin_url('reset-password/');?>" class="float-right">
-                            <?=t__(msgid: 'Forgot Password?', domain: 'devflow');?>
+                            <?=trans_html('Forgot Password?');?>
                         </a>
                     </label>
                     <input id="password" type="password" class="form-control" name="user_pass" required="required" data-eye>
                     <div class="invalid-feedback">
-                        <?=t__(msgid: 'Password is required.', domain: 'devflow');?>
+                        <?=trans_html('Password is required.');?>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="custom-checkbox custom-control">
                         <input type="checkbox" name="rememberme" value="yes" id="remember" class="custom-control-input">
-                        <label for="remember" class="custom-control-label"><?=t__(msgid: 'Remember Me', domain: 'devflow');?></label>
+                        <label for="remember" class="custom-control-label"><?=trans_html('Remember Me');?></label>
                     </div>
                 </div>
 
                 <div class="form-group m-0">
-                    <input type="submit" name="login-submit" class="btn btn-submit btn-block" value="<?=esc_attr__(string: 'Login', domain: 'devflow');?>">
+                    <input type="submit" name="login-submit" class="btn btn-submit btn-block" value="<?=trans_attr(string: 'Login');?>">
                 </div>
             </form>
         </div>

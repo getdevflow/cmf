@@ -1,23 +1,25 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-    'category' => 'Forms',
-    'title' => 'Checkbox',
+    'category' => trans('Forms'),
+    'title' => trans('Checkbox'),
     'icon' => 'fa fa-square-check',
     'settings' => [
         'checkbox-label' => [
             'type' => 'text',
-            'label' => 'Label',
+            'label' => trans('Label'),
             'value' => 'Checkbox Label',
         ],
         'checkbox-value' => [
             'type' => 'text',
-            'label' => 'Checkbox Value',
+            'label' => trans('Checkbox Value'),
             'value' => '0',
         ],
         'checkbox-required' => [
             'type' => 'yes_no',
-            'label' => 'Required?',
+            'label' => trans('Required?'),
             'value' => '0',
         ],
     ],

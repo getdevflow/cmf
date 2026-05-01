@@ -11,7 +11,7 @@ use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\generate_random_password;
 use function App\Shared\Helpers\get_user_roles;
 use function App\Shared\Helpers\selected;
-use function Qubus\Security\Helpers\esc_html__;
+use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -44,11 +44,11 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <i class="fa fa-user"></i>
-                    <h3 class="box-title"><?= esc_html__(string: 'Create User', domain: 'devflow'); ?></h3>
+                    <h3 class="box-title"><?= trans_html(string: 'Create User'); ?></h3>
 
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?= esc_html__(string: 'Save', domain: 'devflow'); ?></button>
-                        <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('user/'); ?>'"><i class="fa fa-ban"></i> <?= esc_html__(string: 'Cancel', domain: 'devflow'); ?></button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?= trans_html(string: 'Save'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('user/'); ?>'"><i class="fa fa-ban"></i> <?= trans_html(string: 'Cancel'); ?></button>
                     </div>
                 </div>
             </div>
@@ -66,27 +66,27 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
                         <!-- general form elements -->
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'Name', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'Name'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Username', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Username'); ?></strong></label>
                                     <input id="user_input" type="text" class="form-control" name="login" placeholder="Username" value="<?= $params['request']['login'] ?? ''; ?>" required/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'First Name', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'First Name'); ?></strong></label>
                                     <input id="fname" type="text" class="form-control" name="fname" value="<?= $params['request']['fname'] ?? ''; ?>" required/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Middle Name', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Middle Name'); ?></strong></label>
                                     <input id="mname" type="text" class="form-control" name="mname" value="<?= $params['request']['mname'] ?? ''; ?>" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Last Name'); ?></strong></label>
                                     <input id="lname" type="text" class="form-control" name="lname" value="<?= $params['request']['lname'] ?? ''; ?>" required/>
                                 </div>
 
@@ -101,13 +101,13 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
 
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'Contact info', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'Contact info'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
 
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Email', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Email'); ?></strong></label>
                                     <input id="email" type="email" class="form-control" name="email" value="<?= $params['request']['email'] ?? ''; ?>" required/>
                                 </div>
 
@@ -123,24 +123,24 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
 
                         <div id="send_email" class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'Email / Password', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'Email / Password'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Send Email', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Send Email'); ?></strong></label>
                                     <div class="ios-switch switch-md">
                                         <input type="hidden" class="js-switch" name="sendemail" value="0" />
                                         <input type="checkbox" class="js-switch" name="sendemail" value="1" />
                                         <div>
-                                            <p class="help-block"><?=esc_html__(string: 'Send username & password to the user.', domain: 'devflow');?></p>
+                                            <p class="help-block"><?=trans_html(string: 'Send username & password to the user.');?></p>
                                         </div>
 
                                         <div class="form-group password">
-                                            <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Password', domain: 'devflow'); ?></strong></label>
+                                            <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Password'); ?></strong></label>
                                             <input id="password" type="text" class="form-control" name="pass" value="<?= generate_random_password(length: 28); ?>" required/><br />
-                                            <button type="button" class="btn btn-default" id="show_password"><?= esc_html__(string: 'Show Password', domain: 'devflow'); ?></button>
-                                            <button type="button" class="btn btn-primary" id="hide_password"><?= esc_html__(string: 'Hide Password', domain: 'devflow'); ?></button>
+                                            <button type="button" class="btn btn-default" id="show_password"><?= trans_html(string: 'Show Password'); ?></button>
+                                            <button type="button" class="btn btn-primary" id="hide_password"><?= trans_html(string: 'Hide Password'); ?></button>
                                         </div>
 
                                         <?php
@@ -161,21 +161,21 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
                         <!-- general form elements -->
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'User Status', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'User Status'); ?></h3>
                             </div>
                             <!-- /.box-header -->
 
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Status', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Status'); ?></strong></label>
                                     <select class="form-control select2" name="status" style="width: 100%;" required>
                                         <option value=""> ---------------------- </option>
-                                        <option value="A"<?= selected('A', $params['request']['status'] ?? '', false); ?>><?= esc_html__(string: 'Active', domain: 'devflow'); ?></option>
-                                        <option value="I"<?= selected('I', $params['request']['status'] ?? '', false); ?>><?= esc_html__(string: 'Inactive', domain: 'devflow'); ?></option>
-                                        <option value="S"<?= selected('S', $params['request']['status'] ?? '', false); ?>><?= esc_html__(string: 'Spammer', domain: 'devflow'); ?></option>
-                                        <option value="B"<?= selected('B', $params['request']['status'] ?? '', false); ?>><?= esc_html__(string: 'Blocked', domain: 'devflow'); ?></option>
+                                        <option value="A"<?= selected('A', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Active'); ?></option>
+                                        <option value="I"<?= selected('I', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Inactive'); ?></option>
+                                        <option value="S"<?= selected('S', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Spammer'); ?></option>
+                                        <option value="B"<?= selected('B', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Blocked'); ?></option>
                                     </select>
-                                    <p class="help-block"><?= esc_html__(string: 'If the account is Inactive, the user will be incapable of logging in.', domain: 'devflow'); ?></p>
+                                    <p class="help-block"><?= trans_html(string: 'If the account is Inactive, the user will be incapable of logging in.'); ?></p>
                                 </div>
                             </div>
 
@@ -183,13 +183,13 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
 
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'User Role', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'User Role'); ?></h3>
                             </div>
                             <!-- /.box-header -->
 
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Role', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Role'); ?></strong></label>
                                     <select class="form-control select2" name="role" style="width: 100%;" required>
                                         <option value=""> ---------------------- </option>
                                         <?php foreach (get_user_roles() as $role => $permissions) : ?>

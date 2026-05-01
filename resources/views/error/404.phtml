@@ -3,7 +3,7 @@
 use App\Application\Devflow;
 
 use function Codefy\Framework\Helpers\site_url;
-use function Qubus\Security\Helpers\t__;
+use function Codefy\Framework\Helpers\trans_html;
 
 ?>
 <!DOCTYPE html>
@@ -12,11 +12,11 @@ use function Qubus\Security\Helpers\t__;
     <base href="<?=site_url()?>">
     <meta charset="<?=Devflow::$PHP->configContainer->string('app.charset');?>">
     <link rel="stylesheet" type="text/css" href="<?=$this->url('static/assets/css/error.css');?>"/>
-    <title><?=t__(msgid: 'Error 404', domain: 'devflow');?></title>
+    <title><?=trans_html('Error 404');?></title>
 </head>
 <body>
 <div class="error-middle">
-    <h1><?=t__(msgid: 'Error 404 - Not Found', domain: 'devflow');?></h1>
+    <h1><?=trans_html('Error 404 - Not Found');?></h1>
 </div>
 </body>
 </html>

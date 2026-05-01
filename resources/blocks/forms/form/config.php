@@ -1,18 +1,20 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
-    'category' => 'Forms',
-    'title' => 'Form',
+    'category' => trans('Forms'),
+    'title' => trans('Form'),
     'icon' => 'fa fa-pen-to-square',
     'settings' => [
         'form-id' => [
             'type' => 'text',
-            'label' => 'Form ID',
+            'label' => trans('Form ID'),
             'value' => 'contactForm',
         ],
         'form-action' => [
             'type' => 'text',
-            'label' => 'Form Action',
+            'label' => trans('Form Action'),
             'value' => '',
         ],
     ],

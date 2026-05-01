@@ -7,7 +7,7 @@ use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\is_plugin_activated;
 use function App\Shared\Helpers\plugin_info;
 use function Codefy\Framework\Helpers\public_path;
-use function Qubus\Security\Helpers\esc_html__;
+use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Security\Helpers\esc_url;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -22,7 +22,7 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
         <div class="box box-solid">
             <div class="box-header with-border">
                 <i class="fa fa-plug"></i>
-                <h3 class="box-title"><?= esc_html__('Plugins'); ?></h3>
+                <h3 class="box-title"><?= trans_html('Plugins'); ?></h3>
 
                 <div class="pull-right">
 
@@ -42,17 +42,17 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><?=esc_html__('Plugins');?></h3>
+                            <h3 class="box-title"><?=trans_html('Plugins');?></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="text-center"><?= esc_html__('Name'); ?></th>
-                                    <th class="text-center"><?= esc_html__('Version'); ?></th>
-                                    <th class="text-center"><?= esc_html__('Description'); ?></th>
-                                    <th class="text-center"><?= esc_html__('Action'); ?></th>
+                                    <th class="text-center"><?= trans_html('Name'); ?></th>
+                                    <th class="text-center"><?= trans_html('Version'); ?></th>
+                                    <th class="text-center"><?= trans_html('Description'); ?></th>
+                                    <th class="text-center"><?= trans_html('Action'); ?></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,9 +66,9 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                                     <td class="text-center"><?=$plugin['version'];?></td>
                                     <td class="text-center">
                                         <?= $plugin['description']; ?> <br />
-                                        <strong><?=esc_html__('Developer:');?></strong>
+                                        <strong><?=trans_html('Developer:');?></strong>
                                         <a href="<?=esc_url($plugin['authorUri']);?>"><?=$plugin['author'];?></a> |
-                                        <a href="<?=esc_url($plugin['pluginUri']);?>"><?=esc_html__('View Details');?></a>
+                                        <a href="<?=esc_url($plugin['pluginUri']);?>"><?=trans_html('View Details');?></a>
                                     </td>
                                     <?php if (is_plugin_activated($plugin['className']) === true && class_exists($plugin['className'])) : ?>
                                         <td class="text-center"><a class="btn btn-danger" href="<?=admin_url('plugin/deactivate/?id=' . $plugin['className']);?>"><i class="fa fa-minus-circle"></i></a></td>
@@ -79,10 +79,10 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th class="text-center"><?= esc_html__('Name'); ?></th>
-                                    <th class="text-center"><?= esc_html__('Version'); ?></th>
-                                    <th class="text-center"><?= esc_html__('Description'); ?></th>
-                                    <th class="text-center"><?= esc_html__('Action'); ?></th>
+                                    <th class="text-center"><?= trans_html('Name'); ?></th>
+                                    <th class="text-center"><?= trans_html('Version'); ?></th>
+                                    <th class="text-center"><?= trans_html('Description'); ?></th>
+                                    <th class="text-center"><?= trans_html('Action'); ?></th>
                                 </tr>
                                 </tfoot>
                             </table>

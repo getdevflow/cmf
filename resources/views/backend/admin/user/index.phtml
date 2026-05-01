@@ -15,9 +15,9 @@ use function App\Shared\Helpers\get_name;
 use function App\Shared\Helpers\get_user_option;
 use function App\Shared\Helpers\get_userdata;
 use function App\Shared\Helpers\get_users_reassign;
-use function Qubus\Security\Helpers\esc_attr__;
+use function Codefy\Framework\Helpers\trans_attr;
+use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Security\Helpers\esc_html;
-use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -31,10 +31,10 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
         <div class="box box-solid">
             <div class="box-header with-border">
                 <i class="fa fa-user"></i>
-                <h3 class="box-title"><?= esc_html__(string: 'Users', domain: 'devflow'); ?></h3>
+                <h3 class="box-title"><?= trans_html(string: 'Users'); ?></h3>
 
                 <div class="pull-right">
-                    <button type="button"<?=ae('create:users');?> class="btn btn-warning" onclick="window.location='<?=admin_url('user/create/');?>'"><i class="fa fa-plus"></i> <?= esc_html__(string: 'New User', domain: 'devflow'); ?></button>
+                    <button type="button"<?=ae('create:users');?> class="btn btn-warning" onclick="window.location='<?=admin_url('user/create/');?>'"><i class="fa fa-plus"></i> <?= trans_html(string: 'New User'); ?></button>
                 </div>
             </div>
         </div>
@@ -52,12 +52,12 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                     <table id="user" class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th class="text-center"><?= esc_html__(string: 'Username', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'First Name', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Status', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Role', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Action', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Username'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'First Name'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Last Name'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Status'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Role'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Action'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -75,13 +75,13 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                 <td class="text-center"><?=$data->role;?></td>
                                 <td class="text-center">
                                     <?php if (esc_html($user['user_id']) === get_current_user_id()) : ?>
-                                        <a href="<?= admin_url('user/profile/'); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Update', domain: 'devflow'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
+                                        <a href="<?= admin_url('user/profile/'); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Update'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
                                     <?php else : ?>
-                                        <a href="<?= admin_url(sprintf('user/%s/', esc_html($user['user_id']) )); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Update', domain: 'devflow'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
+                                        <a href="<?= admin_url(sprintf('user/%s/', esc_html($user['user_id']) )); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Update'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
                                     <?php endif; ?>
-                                    <a href="<?= admin_url(sprintf('user/%s/reset-password/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Reset Password', domain: 'devflow'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-redo"></i></button></a>
+                                    <a href="<?= admin_url(sprintf('user/%s/reset-password/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Reset Password'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-redo"></i></button></a>
                                     <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && esc_html($user['user_id']) !== get_current_user_id()) : ?>
-                                        <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= esc_attr__(string: 'Switch to', domain: 'devflow'); ?>"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
+                                        <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Switch to'); ?>"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
                                     <?php endif; ?>
                                     <?php if ($data->role !== 'super' && esc_html($user['user_id']) !== get_current_user_id()) : ?>
                                         <a<?= ae('delete:users'); ?> href="#" data-toggle="modal" data-target="#delete-<?= esc_html($user['user_id']); ?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
@@ -97,8 +97,8 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                                         <h4 class="modal-title"><?= get_name(esc_html($user['user_id'])); ?></h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p><?= esc_html__(string: 'Are you sure you want to remove the user from this site?', domain: 'devflow'); ?></p>
-                                                        <div class="alert alert-info"><?=esc_html__(string: "Would you like to assign this user's content to a different user? Choose below.", domain: 'devflow');?></div>
+                                                        <p><?= trans_html(string: 'Are you sure you want to remove the user from this site?'); ?></p>
+                                                        <div class="alert alert-info"><?=trans_html(string: "Would you like to assign this user's content to a different user? Choose below.");?></div>
                                                         <select class="form-control select2" name="assign_id" style="width: 100%;">
                                                             <option value="null">&nbsp;</option>
                                                             <?php get_users_reassign(esc_html($user['user_id'])); ?>
@@ -106,8 +106,8 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                                     </div>
                                                     <div class="modal-footer">
                                                         <input type="hidden" name="user_id" value="<?=esc_html($user['user_id']);?>" />
-                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
-                                                        <button type="submit" class="btn btn-primary"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
+                                                        <button type="submit" class="btn btn-primary"><?= trans_html(string: 'Confirm'); ?></button>
                                                     </div>
                                                 </div>
                                                 <!-- /.modal-content -->
@@ -122,12 +122,12 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th class="text-center"><?= esc_html__(string: 'Username', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'First Name', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Last Name', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Status', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Role', domain: 'devflow'); ?></th>
-                            <th class="text-center"><?= esc_html__(string: 'Action', domain: 'devflow'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Username'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'First Name'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Last Name'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Status'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Role'); ?></th>
+                            <th class="text-center"><?= trans_html(string: 'Action'); ?></th>
                         </tr>
                         </tfoot>
                     </table>

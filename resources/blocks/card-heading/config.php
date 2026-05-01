@@ -1,7 +1,9 @@
 <?php
 
+use function Codefy\Framework\Helpers\trans;
+
 return [
     'hidden' => true,
-    'category' => 'Component',
-    'title' => 'Card Heading',
+    'category' => trans('Component'),
+    'title' => trans('Card Heading'),
 ];

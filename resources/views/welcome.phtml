@@ -3,7 +3,7 @@
 use App\Application\Devflow;
 
 use function App\Shared\Helpers\admin_login_url;
-use function Qubus\Security\Helpers\t__;
+use function Codefy\Framework\Helpers\trans_html;
 
 ?>
 <!doctype html>
@@ -52,12 +52,12 @@ use function Qubus\Security\Helpers\t__;
                 </h1>
 
                 <p class="lead text-muted mb-4">
-                    <?=t__(msgid: 'A simple and elegant front page builder.', domain: 'devflow');?>
+                    <?=trans_html('A simple and elegant front page builder.');?>
                 </p>
 
                 <div class="d-flex justify-content-center gap-3">
                     <a href="<?=admin_login_url();?>" class="btn btn-primary btn-lg px-4">
-                        <i class="fa-solid fa-rocket me-2"></i> <?=t__(msgid: 'Get Started', domain: 'devflow');?>
+                        <i class="fa-solid fa-rocket me-2"></i> <?=trans_html('Get Started');?>
                     </a>
 
                     <a href="https://github.com/nomadicjosh/vihzhuo" class="btn btn-outline-dark btn-lg px-4">

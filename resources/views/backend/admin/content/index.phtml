@@ -12,8 +12,7 @@ use function App\Shared\Helpers\content_status_label;
 use function App\Shared\Helpers\get_current_user_id;
 use function App\Shared\Helpers\get_name;
 use function App\Shared\Helpers\get_user_datetime;
-use function Qubus\Security\Helpers\esc_html__;
-use function Qubus\Security\Helpers\t__;
+use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Support\Helpers\is_null__;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -29,7 +28,7 @@ Registry::getInstance()->{'set'}('screen_child', 'content');
         <div class="box box-solid">
             <div class="box-header with-border">
                 <i class="fa fa-text-width"></i>
-                <h3 class="box-title"><?=t__(msgid: 'All Content', domain: 'devflow');?></h3>
+                <h3 class="box-title"><?=trans_html('All Content');?></h3>
                 <div class="pull-right">
                 </div>
             </div>
@@ -48,10 +47,10 @@ Registry::getInstance()->{'set'}('screen_child', 'content');
                     <table id="content" class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th><?= esc_html__(string: 'Title', domain: 'devflow'); ?></th>
-                            <th><?= esc_html__(string: 'Author', domain: 'devflow'); ?></th>
-                            <th><?= esc_html__(string: 'Date', domain: 'devflow'); ?></th>
-                            <th><?= esc_html__(string: 'Last Modified', domain: 'devflow'); ?></th>
+                            <th><?= trans_html(string: 'Title'); ?></th>
+                            <th><?= trans_html(string: 'Author'); ?></th>
+                            <th><?= trans_html(string: 'Date'); ?></th>
+                            <th><?= trans_html(string: 'Last Modified'); ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -65,8 +64,8 @@ Registry::getInstance()->{'set'}('screen_child', 'content');
                                         </span>
                                     </div>
                                     <div class="row-actions">
-                                        <span class="edit"><a href="<?= admin_url(sprintf('content-type/%s/%s/', $content['contentType'], $content['id'])); ?>"><?=esc_html__(string: 'Edit', domain: 'devflow');?></a></span> |
-                                        <span class="delete"><a<?= ae('delete:content');?> href="#" data-toggle="modal" data-target="#delete-<?= $content['id']; ?>"><?=esc_html__(string: 'Delete', domain: 'devflow');?></a></span>
+                                        <span class="edit"><a href="<?= admin_url(sprintf('content-type/%s/%s/', $content['contentType'], $content['id'])); ?>"><?=trans_html(string: 'Edit');?></a></span> |
+                                        <span class="delete"><a<?= ae('delete:content');?> href="#" data-toggle="modal" data-target="#delete-<?= $content['id']; ?>"><?=trans_html(string: 'Delete');?></a></span>
                                     </div>
                                     <div class="modal" id="delete-<?= $content['id']; ?>">
                                         <div class="modal-dialog">
@@ -77,11 +76,11 @@ Registry::getInstance()->{'set'}('screen_child', 'content');
                                                     <h4 class="modal-title"><?= $content['title']; ?></h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p><?=esc_html__(string: 'Are you sure you want to delete this content?', domain: 'devflow');?></p>
+                                                    <p><?=trans_html(string: 'Are you sure you want to delete this content?');?></p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= esc_html__(string: 'Close', domain: 'devflow'); ?></button>
-                                                    <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url(sprintf('content-type/%s/%s/d/', $content['contentType'], $content['id'])); ?>'"><?= esc_html__(string: 'Confirm', domain: 'devflow'); ?></button>
+                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
+                                                    <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url(sprintf('content-type/%s/%s/d/', $content['contentType'], $content['id'])); ?>'"><?= trans_html(string: 'Confirm'); ?></button>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->
@@ -106,10 +105,10 @@ Registry::getInstance()->{'set'}('screen_child', 'content');
                         </tbody>
                         <tfoot>
                         <tr>
-                            <th><?= esc_html__(string: 'Title', domain: 'devflow'); ?></th>
-                            <th><?= esc_html__(string: 'Author', domain: 'devflow'); ?></th>
-                            <th><?= esc_html__(string: 'Date', domain: 'devflow'); ?></th>
-                            <th><?= esc_html__(string: 'Last Modified', domain: 'devflow'); ?></th>
+                            <th><?= trans_html(string: 'Title'); ?></th>
+                            <th><?= trans_html(string: 'Author'); ?></th>
+                            <th><?= trans_html(string: 'Date'); ?></th>
+                            <th><?= trans_html(string: 'Last Modified'); ?></th>
                         </tr>
                         </tfoot>
                     </table>

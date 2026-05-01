@@ -11,7 +11,7 @@ use function App\Shared\Helpers\cms_dropdown_languages;
 use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\selected;
-use function Qubus\Security\Helpers\esc_html__;
+use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
@@ -28,10 +28,10 @@ Action::getInstance()->doAction('options_init');
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <i class="fa fa-cogs"></i>
-                    <h3 class="box-title"><?= esc_html__(string: 'General Options', domain: 'devflow'); ?></h3>
+                    <h3 class="box-title"><?= trans_html(string: 'General Options'); ?></h3>
 
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= esc_html__(string: 'Update', domain: 'devflow'); ?></button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= trans_html(string: 'Update'); ?></button>
                     </div>
                 </div>
             </div>
@@ -49,39 +49,39 @@ Action::getInstance()->doAction('options_init');
                         <!-- general form elements -->
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><?= esc_html__(string: 'General Options', domain: 'devflow'); ?></h3>
+                                <h3 class="box-title"><?= trans_html(string: 'General Options'); ?></h3>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Site Name', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Site Name'); ?></strong></label>
                                     <input type="text" class="form-control" name="sitename" value="<?= get_option(key: 'sitename'); ?>" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><?= esc_html__(string: 'Site Description', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><?= trans_html(string: 'Site Description'); ?></strong></label>
                                     <input type="text" class="form-control" name="site_description" value="<?= get_option(key: 'site_description'); ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Admin Email', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Admin Email'); ?></strong></label>
                                     <input type="text" class="form-control" name="admin_email" value="<?= get_option(key: 'admin_email'); ?>" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Locale', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Locale'); ?></strong></label>
                                     <select class="form-control select2" name="site_locale" style="width: 100%;" required>
                                         <option>&nbsp;</option>
                                         <?php cms_dropdown_languages(get_option(key: 'site_locale', default: '')); ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Cookie Expire', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Cookie Expire'); ?></strong></label>
                                     <input type="text" class="form-control" name="cookieexpire" value="<?= get_option(key: 'cookieexpire'); ?>" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'Cookie Path', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Cookie Path'); ?></strong></label>
                                     <input type="text" class="form-control" name="cookiepath" value="<?= get_option(key: 'cookiepath'); ?>" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'System Timezone', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'System Timezone'); ?></strong></label>
                                     <select class="form-control select2" name="site_timezone" style="width: 100%;" required>
                                         <option value=""> ------------------------- </option>
                                         <?php foreach (generate_timezone_list() as $k => $v) : ?>
@@ -90,7 +90,7 @@ Action::getInstance()->doAction('options_init');
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label><strong><span style="color: red; ">*</span> <?= esc_html__(string: 'API Key', domain: 'devflow'); ?></strong></label>
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'API Key'); ?></strong></label>
                                     <input type="text" class="form-control" name="api_key" value="<?= get_option(key: 'api_key'); ?>" required/>
                                 </div>
                                 <?php Action::getInstance()->doAction('options_general_form'); ?>
