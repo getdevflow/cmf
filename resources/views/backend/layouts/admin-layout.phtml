@@ -14,7 +14,7 @@ use function App\Shared\Helpers\admin_login_url;
 use function App\Shared\Helpers\admin_logout_url;
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
-use function App\Shared\Helpers\cms_admin_copyright_footer;
+use function App\Shared\Helpers\cms_release_value;
 use function App\Shared\Helpers\current_screen;
 use function App\Shared\Helpers\current_user_can;
 use function App\Shared\Helpers\get_all_content_types;
@@ -296,7 +296,7 @@ $user = get_userdata(get_current_user_id());
             <div class="pull-right hidden-xs">
                 <div id="remainder"></div>
             </div>
-            <?= cms_admin_copyright_footer(); ?>
+            <?= cms_release_value(); ?>
         </footer>
     </div>
     <!-- ./wrapper -->
