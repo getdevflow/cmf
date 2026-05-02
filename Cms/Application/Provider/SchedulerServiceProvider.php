@@ -7,6 +7,7 @@ namespace Application\Provider;
 use Codefy\Framework\Scheduler\Schedule;
 use Codefy\Framework\Support\CodefyServiceProvider;
 use Qubus\EventDispatcher\ActionFilter\Action;
+use ReflectionException;
 
 use function App\Shared\Helpers\is_ssl;
 use function App\Shared\Helpers\set_url_scheme;
@@ -16,6 +17,9 @@ use const CURLOPT_RETURNTRANSFER;
 
 class SchedulerServiceProvider extends CodefyServiceProvider
 {
+    /**
+     * @throws ReflectionException
+     */
     public function register(): void
     {
         /** Email Schedule */
@@ -33,7 +37,8 @@ class SchedulerServiceProvider extends CodefyServiceProvider
             $schedule->command(command: function () {
                 $protocol = is_ssl() ? 'https://' : 'http://';
                 $cron = set_url_scheme(
-                    url: $protocol . env(key: 'APP_BASE_URL') . '/admin/cron/master/'
+                    url: env(key: 'APP_BASE_URL') . 'admin/cron/master/',
+                    scheme: $protocol
                 );
                 $ch = curl_init($cron);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
