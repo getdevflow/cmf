@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow CMF\n"
-"POT-Creation-Date: 2026-05-01 16:57-0700\n"
-"PO-Revision-Date: 2026-05-01 16:57-0700\n"
+"POT-Creation-Date: 2026-05-02 06:31-0700\n"
+"PO-Revision-Date: 2026-05-02 06:35-0700\n"
 "Last-Translator: Joshua Parker <joshua@joshuaparker.dev>\n"
 "Language-Team: Joshua Parker\n"
 "Language: es\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: devflow\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: "
 "t__;esc_html__;esc_attr__;trans;trans_html;trans_attr\n"
@@ -547,10 +547,8 @@ msgid "The user does not exist."
 msgstr "El usuario no existe."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:409
-#, fuzzy
-#| msgid "Removal exception occurred and was logged."
 msgid "A removal exception occurred and was logged."
-msgstr "Se produjo una excepción por la retirada que fue registrada."
+msgstr "Se produjo una excepción de eliminación y se registró."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:467
 msgid "User not found."
@@ -634,13 +632,11 @@ msgid "Bad request."
 msgstr "Solicitud incorrecta."
 
 #: core/Infrastructure/Http/Controllers/UserRestController.php:145
-#, fuzzy
 msgid "User removed from site."
 msgstr "Usuario eliminado del sitio."
 
 #: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:83
 #: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:111
-#, fuzzy
 msgid "Website Manager"
 msgstr "Gestor de sitios web"
 
@@ -786,11 +782,11 @@ msgstr "No se pudo insertar contenido en la tabla de contenido."
 msgid "Could not update content within the content table."
 msgstr "No se pudo actualizar el contenido dentro de la tabla de contenido."
 
-#: core/Shared/Helpers/core.php:751
+#: core/Shared/Helpers/core.php:747
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: core/Shared/Helpers/core.php:1435
+#: core/Shared/Helpers/core.php:1431
 #, fuzzy, php-format
 #| msgid ""
 #| "Devflow release %s is available for download/upgrade. Before upgrading, "
@@ -859,11 +855,7 @@ msgstr "Restablecimiento de Contraseña"
 msgid "[%s] Password Reset"
 msgstr "[%s] Restablecer Contraseña"
 
-#: core/Shared/Helpers/hook.php:115
-msgid "Powered by"
-msgstr "Desarrollado por"
-
-#: core/Shared/Helpers/hook.php:788
+#: core/Shared/Helpers/hook.php:781
 #, fuzzy
 #| msgid ""
 #| "Your system is currently in `dev` mode. Please remember to set your "
@@ -922,22 +914,16 @@ msgid "You are not allowed to delete a super administrator account."
 msgstr "No está permitido eliminar una cuenta de superadministrador."
 
 #: core/Shared/Helpers/site.php:1144
-#, fuzzy
-#| msgid "A site deletion exception occurred and was logged."
 msgid "Site deletion exception occurred."
 msgstr "Se produjo una excepción por eliminación del sitio."
 
 #: core/Shared/Helpers/site.php:1192
-#, fuzzy
-#| msgid "Delete exception occurred and was logged."
 msgid "User delete exception occurred."
-msgstr "Se produjo una excepción de eliminación por parte del usuario."
+msgstr "Se produjo una excepción al eliminar el usuario."
 
 #: core/Shared/Helpers/site.php:1252
-#, fuzzy
-#| msgid "You are not allowed to delete a super administrator account."
 msgid "You are not allowed to remove super admins from this site."
-msgstr "No está permitido eliminar superadministradores de este sitio."
+msgstr "No tienes permitido eliminar a los superadministradores de este sitio."
 
 #: core/Shared/Helpers/user.php:595 core/Shared/Helpers/user.php:1092
 #: core/Shared/Helpers/user.php:1099
@@ -2489,6 +2475,10 @@ msgstr "Lectura"
 #, fuzzy
 msgid "Login expires in "
 msgstr "El inicio de sesión expira en "
+
+#: resources/views/backend/layouts/auth-layout.phtml:40
+msgid "Powered by"
+msgstr "Desarrollado por"
 
 #: resources/views/backend/reading.phtml:55
 msgid "Charset"
