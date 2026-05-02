@@ -1,8 +1,43 @@
 [
   {
+    "language": "cn",
+    "english_name": "Chinese",
+    "native_name": "中国人 (简体)"
+  },
+  {
     "language": "en",
     "english_name": "English",
     "native_name": "English (US)"
+  },
+  {
+    "language": "fr",
+    "english_name": "French",
+    "native_name": "Français"
+  },
+  {
+    "language": "de",
+    "english_name": "German",
+    "native_name": "Deutsch"
+  },
+  {
+    "language": "it",
+    "english_name": "Italian",
+    "native_name": "Italiano"
+  },
+  {
+    "language": "ja",
+    "english_name": "Japanese",
+    "native_name": "日本語"
+  },
+  {
+    "language": "br",
+    "english_name": "Portuguese",
+    "native_name": "Português"
+  },
+  {
+    "language": "ru",
+    "english_name": "Russian",
+    "native_name": "Русский"
   },
   {
     "language": "es",

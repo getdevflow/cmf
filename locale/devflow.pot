@@ -1,8 +1,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Devflow\n"
-"POT-Creation-Date: 2026-03-11 15:47-0700\n"
+"Project-Id-Version: Devflow CMF\n"
+"POT-Creation-Date: 2026-05-01 16:56-0700\n"
 "PO-Revision-Date: 2024-11-29 13:36-0800\n"
 "Last-Translator: \n"
 "Language-Team: Joshua Parker\n"
@@ -14,13 +14,15 @@ msgstr ""
 "X-Domain: devflow\n"
 "X-Generator: Poedit 3.8\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: t__;esc_html__\n"
+"X-Poedit-KeywordsList: "
+"t__;esc_html__;trans;trans_html;trans_attr;esc_attr__\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: Cms\n"
 "X-Poedit-SearchPath-1: resources/views/backend\n"
 "X-Poedit-SearchPath-2: core\n"
+"X-Poedit-SearchPath-3: resources/blocks\n"
 
-#: Cms/Application/Http/Middleware/RestApiMiddleware.php:60
+#: Cms/Application/Http/Middleware/RestApiMiddleware.php:55
 msgid "Unauthorized."
 msgstr ""
 
@@ -32,96 +34,100 @@ msgstr ""
 msgid "Content slug cannot be empty."
 msgstr ""
 
-#: core/Domain/Content/Content.php:280
+#: core/Domain/Content/Content.php:277
 msgid "Content author cannot be empty."
 msgstr ""
 
-#: core/Domain/Content/Content.php:294
+#: core/Domain/Content/Content.php:291
 msgid "Content type cannot be empty."
 msgstr ""
 
-#: core/Domain/Content/Content.php:345
+#: core/Domain/Content/Content.php:338
 msgid "Content sidebar must be an absolute integer."
 msgstr ""
 
-#: core/Domain/Content/Content.php:359
+#: core/Domain/Content/Content.php:352
 msgid "Show in menu must be an absolute integer."
 msgstr ""
 
-#: core/Domain/Content/Content.php:373
+#: core/Domain/Content/Content.php:366
 msgid "Show in search must be an absolute integer."
 msgstr ""
 
-#: core/Domain/Content/Content.php:403
+#: core/Domain/Content/Content.php:393
 msgid "Content status cannot be empty."
 msgstr ""
 
-#: core/Domain/Content/Content.php:417
+#: core/Domain/Content/Content.php:407
 msgid "Content published cannot be empty."
 msgstr ""
 
-#: core/Domain/Content/Content.php:431
+#: core/Domain/Content/Content.php:421
 msgid "Content published gmt cannot be empty."
 msgstr ""
 
-#: core/Domain/Content/Content.php:477
+#: core/Domain/Content/Content.php:467
 msgid "Content id cannot be null."
 msgstr ""
 
-#: core/Domain/ContentType/ContentType.php:86
+#: core/Domain/ContentType/ContentType.php:85
 msgid "Content Type Title cannot be null."
 msgstr ""
 
-#: core/Domain/ContentType/ContentType.php:107
+#: core/Domain/ContentType/ContentType.php:106
 msgid "Content Type Slug cannot be null."
 msgstr ""
 
-#: core/Domain/ContentType/ContentType.php:125
+#: core/Domain/ContentType/ContentType.php:124
 msgid "Content Type Description cannot be null."
 msgstr ""
 
-#: core/Domain/ContentType/ContentType.php:145
+#: core/Domain/ContentType/ContentType.php:144
 msgid "Content Type ID cannot be null."
 msgstr ""
 
-#: core/Domain/Product/Product.php:222
+#: core/Domain/Product/Product.php:227
 msgid "Product title cannot be empty."
 msgstr ""
 
-#: core/Domain/Product/Product.php:238
+#: core/Domain/Product/Product.php:243
 msgid "Product slug cannot be empty."
 msgstr ""
 
-#: core/Domain/Product/Product.php:254
+#: core/Domain/Product/Product.php:259
 msgid "Product body cannot be empty."
 msgstr ""
 
-#: core/Domain/Product/Product.php:268
+#: core/Domain/Product/Product.php:273
 msgid "Product author cannot be empty."
 msgstr ""
 
-#: core/Domain/Product/Product.php:282
+#: core/Domain/Product/Product.php:287
 msgid "Product sku cannot be empty."
 msgstr ""
 
-#: core/Domain/Product/Product.php:322
+#: core/Domain/Product/Product.php:324
 msgid "Product show in menu must be an absolute value."
 msgstr ""
 
-#: core/Domain/Product/Product.php:338
+#: core/Domain/Product/Product.php:340
 msgid "Product show in search must be an absolute value."
 msgstr ""
 
-#: core/Domain/Product/Product.php:365
+#: core/Domain/Product/Product.php:367
 msgid "Product status cannot be empty."
 msgstr ""
 
-#: core/Domain/Product/Product.php:392
+#: core/Domain/Product/Product.php:390
 msgid "Product published date cannot be empty."
 msgstr ""
 
-#: core/Domain/Product/Product.php:406
+#: core/Domain/Product/Product.php:404
 msgid "Product published gmt date cannot be empty."
+msgstr ""
+
+#: core/Domain/Product/Product.php:442
+msgid "Product id cannot be null."
 msgstr ""
 
 #: core/Domain/Site/Site.php:152
@@ -132,7 +138,7 @@ msgstr ""
 msgid "Site slug cannot be empty."
 msgstr ""
 
-#: core/Domain/Site/Site.php:186 core/Shared/Helpers/site.php:641
+#: core/Domain/Site/Site.php:186 core/Shared/Helpers/site.php:593
 msgid "Site domain cannot be empty."
 msgstr ""
 
@@ -152,541 +158,536 @@ msgstr ""
 msgid "Site id cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:183
+#: core/Domain/User/Enum/UserStatus.php:19
+msgid "Active"
+msgstr ""
+
+#: core/Domain/User/Enum/UserStatus.php:20
+msgid "Inactive"
+msgstr ""
+
+#: core/Domain/User/Enum/UserStatus.php:21
+msgid "Blocked"
+msgstr ""
+
+#: core/Domain/User/Enum/UserStatus.php:22
+msgid "Spammer"
+msgstr ""
+
+#: core/Domain/User/User.php:186
 msgid "Login/Username cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:199
+#: core/Domain/User/User.php:202
 msgid "Email address cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:215
+#: core/Domain/User/User.php:218
 msgid "Name cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:231
+#: core/Domain/User/User.php:234
 msgid "Token cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:247
+#: core/Domain/User/User.php:250
 msgid "Password cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:277
+#: core/Domain/User/User.php:280
 msgid "Timezone cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:291
+#: core/Domain/User/User.php:294
 msgid "Date format cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:305
+#: core/Domain/User/User.php:308
 msgid "Time format cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:319
+#: core/Domain/User/User.php:322
 msgid "Locale cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:349
+#: core/Domain/User/User.php:352
 msgid "User id cannot be null."
 msgstr ""
 
-#: core/Domain/User/User.php:363
+#: core/Domain/User/User.php:366
 msgid "User meta cannot be empty."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:118
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:105
 msgid "Login"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:154
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:142
 msgid "You are already logged out."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:186
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:205
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:174
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:193
 msgid "Request error."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:212
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:198
 msgid ""
 "A new password was sent to your email. May take a few minutes to arrive, so "
 "please be patient"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:223
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:208
 msgid "Password reset exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:79
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:135
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:194
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:246
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:305
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:361
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:415
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:68
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:116
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:159
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:210
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:271
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:66
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:92
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:120
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:171
-#: core/Infrastructure/Http/Controllers/AdminMediaController.php:148
-#: core/Infrastructure/Http/Controllers/AdminPluginController.php:58
-#: core/Infrastructure/Http/Controllers/AdminPluginController.php:84
-#: core/Infrastructure/Http/Controllers/AdminPluginController.php:116
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:80
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:120
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:175
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:208
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:261
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:315
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:368
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:79
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:86
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:136
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:143
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:188
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:195
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:249
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:256
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:310
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:317
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:361
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:368
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:430
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:437
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:61
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:109
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:143
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:97
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:209
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:239
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:345
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:393
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:443
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:480
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:531
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:592
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:687
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:105
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:176
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:211
+#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:67
+#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:119
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:50
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:76
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:105
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:155
+#: core/Infrastructure/Http/Controllers/AdminMediaController.php:135
+#: core/Infrastructure/Http/Controllers/AdminPluginController.php:44
+#: core/Infrastructure/Http/Controllers/AdminPluginController.php:70
+#: core/Infrastructure/Http/Controllers/AdminPluginController.php:102
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:63
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:125
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:190
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:63
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:117
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:168
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:225
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:283
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:328
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:384
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:447
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:47
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:95
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:129
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:89
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:196
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:224
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:320
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:369
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:432
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:460
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:510
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:569
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:668
+#: core/Infrastructure/Http/Controllers/PageBuilderController.php:62
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:49
 msgid "Access denied."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:88
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:77
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:129
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:95
-msgid "Insertion error occurred."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:106
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:93
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:150
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:113
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:187
-msgid "Insertion exception occurred and was logged."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:111
-msgid "Final catch insertion exception occurred and was logged."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:144
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:169
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:221
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:228
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:250
-msgid "The content type does not exist."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:152
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:115
 #, php-format
 msgid "Create %s Content"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:206
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:170
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:219
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:206
-msgid "Change error occurred."
-msgstr ""
-
 #: core/Infrastructure/Http/Controllers/AdminContentController.php:222
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:186
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:237
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:225
-msgid "Change exception occurred and was logged."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:257
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:281
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:340
-msgid "The content does not exist."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:314
 msgid "Content not found."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:325
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:231
 #, php-format
 msgid "%s Content"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:380
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:334
-msgid "Removal of featured image was successful."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:391
-msgid "Removal exception occurred and was logged."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:425
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:378
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:406
-msgid "A deletion error occurred."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:430
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:398
-msgid "Removal was successful."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:445
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:393
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:422
-msgid "A deletion exception occurred and was logged."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:128
+#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:77
 msgid "Content Types"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:136
-msgid "Error fetching content types."
+#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:131
+#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:139
+msgid "The content type does not exist."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:140
-msgid "Content types error"
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:281
-msgid "Delete error occurred."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:297
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:407
-msgid "Delete exception occurred and was logged."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:101
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:85
 msgid "System Snapshot"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:144
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:129
 msgid "Cache flushed successfully."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminMediaController.php:88
+#: core/Infrastructure/Http/Controllers/AdminMediaController.php:74
 msgid "Media Library"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminMediaController.php:156
+#: core/Infrastructure/Http/Controllers/AdminMediaController.php:143
 msgid "elFinder"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:82
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:124
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:225
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:253
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:321
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:61
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:101
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:194
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:222
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:289
 msgid "Access denied"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:200
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:171
 msgid "General options exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:232
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:201
 msgid "General Options"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:296
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:266
 msgid "Reading options exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:328
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:296
 msgid "Reading Options"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminPluginController.php:66
+#: core/Infrastructure/Http/Controllers/AdminPluginController.php:52
 msgid "Plugins"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminPluginController.php:92
+#: core/Infrastructure/Http/Controllers/AdminPluginController.php:78
 msgid "Plugin activated."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminPluginController.php:96
+#: core/Infrastructure/Http/Controllers/AdminPluginController.php:82
 msgid "Plugin activation exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminPluginController.php:124
+#: core/Infrastructure/Http/Controllers/AdminPluginController.php:110
 msgid "Plugin deactivated."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminPluginController.php:128
+#: core/Infrastructure/Http/Controllers/AdminPluginController.php:115
 msgid "Plugin deactivation exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:91
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:73
 msgid "Products"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:98
-msgid "Query error."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:102
-msgid "Products error"
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:183
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:133
 msgid "Create Product"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:272
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:296
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:201
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:223
+#: core/Infrastructure/Services/Product/ProductService.php:75
 msgid "The product does not exist."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:345
-msgid "Removal exception error and was logged."
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:70
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:124
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:175
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:232
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:290
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:334
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:391
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:454
+msgid "Multisite is not enabled."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:156
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:79
+msgid "Insertion error occurred."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:95
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:174
+#: core/Infrastructure/Services/ContentType/ContentTypeService.php:85
+msgid "Insertion exception occurred and was logged."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:137
 msgid "Sites"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:165
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:146
 msgid "Exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:169
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:150
 msgid "Content types error."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:267
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:289
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:186
+msgid "Change error occurred."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:203
+#: core/Infrastructure/Services/Content/ContentService.php:170
+#: core/Infrastructure/Services/ContentType/ContentTypeService.php:120
+#: core/Infrastructure/Services/Product/ProductService.php:150
+msgid "Change exception occurred and was logged."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:243
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:263
 msgid "The site does not exist."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:335
-msgid "Manage Site Users"
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:297
+msgid "The action is not allowed."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:453
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:308
+msgid "Manage System Users"
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:340
+msgid "You cannot submit an empty site id."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:346
+msgid "You cannot submit an empty user role."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:356
+msgid "An error occurred."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:426
+#: core/Infrastructure/Services/ContentType/ContentTypeService.php:144
+msgid "Delete exception occurred and was logged."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:470
 msgid "This action is not allowed."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:466
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:481
 msgid "A site check exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:489
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:504
 msgid "A site deletion exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:91
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:77
 msgid "Themes"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:117
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:103
 msgid "Theme activated."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:121
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:107
 msgid "Theme activation exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:151
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:137
 msgid "Theme deactivated."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:155
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:141
 msgid "Theme deactivation exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:105
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:97
 #, php-format
 msgid "Passwords cannot be less than %s characters."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:128
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:120
 msgid "Username cannot be empty or null."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:139
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:131
 msgid "User check exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:191
-msgid "Insertion error."
-msgstr ""
-
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:217
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:204
 msgid "Create User"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:250
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:236
 msgid "Users"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:257
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:243
 msgid "Query exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:261
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:247
 msgid "Users error"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:280
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:265
 msgid "Permission denied."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:319
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:298
 msgid "User change exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:357
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:336
 msgid "View User"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:373
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:350
 msgid "The user does not exist."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:487
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:409
+msgid "A removal exception occurred and was logged."
+msgstr ""
+
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:467
 msgid "User not found."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:494
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:474
 #, php-format
 msgid "Password successfully updated for <strong>%s</strong>."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:511
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:490
 msgid "Reset password exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:540
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:521
 msgid "An update error occurred."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:561
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:537
 msgid "An update exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:569
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:545
 msgid "User Profile"
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:653
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:632
 msgid "User switching was successful."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:664
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:645
 msgid "User switching exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:696
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:679
 msgid "Cookie is not properly set for user switching."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:755
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:741
 msgid "Switching back to previous user session was successful."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:766
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:754
 msgid "User switch back exception occurred and was logged."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/ApiController.php:48
-#: core/Infrastructure/Http/Controllers/ApiController.php:103
+#: core/Infrastructure/Http/Controllers/ApiController.php:35
+#: core/Infrastructure/Http/Controllers/ApiController.php:89
 msgid "Database table does not exist."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/ApiController.php:79
-#: core/Infrastructure/Http/Controllers/ApiController.php:137
-#: core/Infrastructure/Http/Controllers/ContentRestController.php:66
-#: core/Infrastructure/Http/Controllers/ContentRestController.php:89
-#: core/Infrastructure/Http/Controllers/ContentRestController.php:113
-#: core/Infrastructure/Http/Controllers/ContentRestController.php:139
-#: core/Infrastructure/Http/Controllers/ContentRestController.php:160
-#: core/Infrastructure/Http/Controllers/ProductRestController.php:71
-#: core/Infrastructure/Http/Controllers/ProductRestController.php:94
-#: core/Infrastructure/Http/Controllers/ProductRestController.php:118
-#: core/Infrastructure/Http/Controllers/ProductRestController.php:144
+#: core/Infrastructure/Http/Controllers/ApiController.php:66
+#: core/Infrastructure/Http/Controllers/ApiController.php:123
+#: core/Infrastructure/Http/Controllers/ContentRestController.php:67
+#: core/Infrastructure/Http/Controllers/ContentRestController.php:91
+#: core/Infrastructure/Http/Controllers/ContentRestController.php:116
+#: core/Infrastructure/Http/Controllers/ContentRestController.php:143
+#: core/Infrastructure/Http/Controllers/ContentRestController.php:165
+#: core/Infrastructure/Http/Controllers/ProductRestController.php:67
+#: core/Infrastructure/Http/Controllers/ProductRestController.php:91
+#: core/Infrastructure/Http/Controllers/ProductRestController.php:116
+#: core/Infrastructure/Http/Controllers/ProductRestController.php:143
 #: core/Infrastructure/Http/Controllers/ProductRestController.php:165
-#: core/Infrastructure/Http/Controllers/UserRestController.php:40
-#: core/Infrastructure/Http/Controllers/UserRestController.php:63
-#: core/Infrastructure/Http/Controllers/UserRestController.php:85
-#: core/Infrastructure/Http/Controllers/UserRestController.php:109
-#: core/Infrastructure/Http/Controllers/UserRestController.php:130
+#: core/Infrastructure/Http/Controllers/UserRestController.php:41
+#: core/Infrastructure/Http/Controllers/UserRestController.php:65
+#: core/Infrastructure/Http/Controllers/UserRestController.php:88
+#: core/Infrastructure/Http/Controllers/UserRestController.php:113
 msgid "No data."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/ContentRestController.php:164
+#: core/Infrastructure/Http/Controllers/ContentRestController.php:169
 #: core/Infrastructure/Http/Controllers/ProductRestController.php:169
-#: core/Infrastructure/Http/Controllers/UserRestController.php:134
 msgid "Resource deleted."
 msgstr ""
 
-#: core/Infrastructure/Http/Controllers/ContentRestController.php:170
+#: core/Infrastructure/Http/Controllers/ContentRestController.php:175
 #: core/Infrastructure/Http/Controllers/ProductRestController.php:175
-#: core/Infrastructure/Http/Controllers/UserRestController.php:140
+#: core/Infrastructure/Http/Controllers/UserRestController.php:142
 msgid "Bad request."
 msgstr ""
 
-#: core/Infrastructure/Persistence/NativePdoDatabase.php:181
-#, php-format
-msgid "The query argument of %s must have a placeholder."
+#: core/Infrastructure/Http/Controllers/UserRestController.php:145
+msgid "User removed from site."
 msgstr ""
 
-#: core/Infrastructure/Persistence/NativePdoDatabase.php:197
-#, php-format
-msgid "Unsupported value type (%s)."
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:83
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:111
+msgid "Website Manager"
 msgstr ""
 
-#: core/Infrastructure/Persistence/NativePdoDatabase.php:256
-#, php-format
-msgid "Wrong params in query at %s."
-msgstr ""
-
-#: core/Infrastructure/Persistence/NativePdoDatabase.php:264
-#, php-format
-msgid "Wrong params in query with key %s."
-msgstr ""
-
-#: core/Infrastructure/Persistence/NativePdoDatabase.php:533
-msgid "Database prefix cannot be null."
-msgstr ""
-
-#: core/Infrastructure/Persistence/NativePdoDatabase.php:537
-msgid "Invalid database prefix."
-msgstr ""
-
-#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:132
+#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:125
 #, php-format
 msgid "Devflow %s"
 msgstr ""
 
-#: core/Shared/Helpers/auth.php:175
+#: core/Infrastructure/Services/Content/ContentService.php:96
+msgid "The content does not exist."
+msgstr ""
+
+#: core/Infrastructure/Services/Content/ContentService.php:123
+msgid "Content added successfully."
+msgstr ""
+
+#: core/Infrastructure/Services/Content/ContentService.php:136
+msgid "Could not create content. Please try again later."
+msgstr ""
+
+#: core/Infrastructure/Services/Content/ContentService.php:196
+#: core/Infrastructure/Services/Product/ProductService.php:176
+msgid "Removal of featured image was successful."
+msgstr ""
+
+#: core/Infrastructure/Services/Content/ContentService.php:206
+#: core/Infrastructure/Services/Product/ProductService.php:186
+msgid "Removal exception occurred and was logged."
+msgstr ""
+
+#: core/Infrastructure/Services/Content/ContentService.php:255
+#: core/Infrastructure/Services/Content/ContentService.php:283
+#: core/Infrastructure/Services/Product/ProductService.php:230
+msgid "A deletion exception occurred and was logged."
+msgstr ""
+
+#: core/Infrastructure/Services/Content/ContentService.php:273
+#: core/Infrastructure/Services/Product/ProductService.php:220
+msgid "Removal was successful."
+msgstr ""
+
+#: core/Infrastructure/Services/ContentType/ContentTypeService.php:50
+msgid "Error fetching content types."
+msgstr ""
+
+#: core/Infrastructure/Services/Product/ProductService.php:102
+msgid "Product added successfully."
+msgstr ""
+
+#: core/Infrastructure/Services/Product/ProductService.php:116
+msgid "Could not create product. Please try again later."
+msgstr ""
+
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:63
+#, php-format
+msgid "No row found for site \"%s\" and user \"%s\"."
+msgstr ""
+
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:119
+msgid "User attribute not found"
+msgstr ""
+
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:128
+msgid "Attribute patch callback must return an AttributeBag instance."
+msgstr ""
+
+#: core/Shared/Helpers/auth.php:176
 msgid "Sorry, there was an error."
 msgstr ""
 
@@ -696,124 +697,119 @@ msgid ""
 "Login was successful. Welcome <strong>%s</strong> to the admin dashboard."
 msgstr ""
 
-#: core/Shared/Helpers/auth.php:234
+#: core/Shared/Helpers/auth.php:233
 msgid "<strong>ERROR</strong>: The username/email field is empty."
 msgstr ""
 
-#: core/Shared/Helpers/auth.php:244
+#: core/Shared/Helpers/auth.php:242
 msgid "<strong>ERROR</strong>: The password field is empty."
 msgstr ""
 
-#: core/Shared/Helpers/auth.php:258
+#: core/Shared/Helpers/auth.php:256
 msgid "<strong>ERROR</strong>: Invalid email address."
 msgstr ""
 
-#: core/Shared/Helpers/auth.php:270
+#: core/Shared/Helpers/auth.php:268
 msgid "<strong>ERROR</strong>: Invalid username."
 msgstr ""
 
-#: core/Shared/Helpers/auth.php:281
+#: core/Shared/Helpers/auth.php:279
 msgid "<strong>ERROR</strong>: The password you entered is incorrect."
 msgstr ""
 
-#: core/Shared/Helpers/content-type.php:285
+#: core/Shared/Helpers/content-type.php:270
 msgid "Invalid content_type id."
 msgstr ""
 
-#: core/Shared/Helpers/content-type.php:464
+#: core/Shared/Helpers/content-type.php:441
 msgid "Invalid content type id."
 msgstr ""
 
-#: core/Shared/Helpers/content-type.php:540
+#: core/Shared/Helpers/content-type.php:510
 msgid "The system was not able to delete the content type."
 msgstr ""
 
-#: core/Shared/Helpers/content.php:1928 core/Shared/Helpers/content.php:2503
+#: core/Shared/Helpers/content.php:1768 core/Shared/Helpers/content.php:2331
 msgid "Invalid content id."
 msgstr ""
 
-#: core/Shared/Helpers/content.php:2075
+#: core/Shared/Helpers/content.php:1915
 msgid "Content author cannot be null or empty."
 msgstr ""
 
-#: core/Shared/Helpers/content.php:2179
+#: core/Shared/Helpers/content.php:2019
 msgid "The title and content are null."
 msgstr ""
 
-#: core/Shared/Helpers/content.php:2337
+#: core/Shared/Helpers/content.php:2173
 msgid "Could not insert content into the content table."
 msgstr ""
 
-#: core/Shared/Helpers/content.php:2386
+#: core/Shared/Helpers/content.php:2222
 msgid "Could not update content within the content table."
 msgstr ""
 
-#: core/Shared/Helpers/core.php:748
+#: core/Shared/Helpers/core.php:751
 msgid "Unknown"
 msgstr ""
 
-#: core/Shared/Helpers/core.php:1446
+#: core/Shared/Helpers/core.php:1435
 #, php-format
 msgid ""
-"Devflow release %s is available for download/upgrade. Before upgrading, make "
-"sure to backup your system."
+"Devflow release %s is available for download or upgrade. Before upgrading, "
+"make sure to backup your system."
 msgstr ""
 
-#: core/Shared/Helpers/db.php:586
+#: core/Shared/Helpers/db.php:618
 #, php-format
 msgid "Reassign content error: %s"
 msgstr ""
 
-#: core/Shared/Helpers/db.php:664
-#, php-format
-msgid "Reassign site error: %s"
-msgstr ""
-
-#: core/Shared/Helpers/db.php:946 core/Shared/Helpers/db.php:1049
+#: core/Shared/Helpers/db.php:830 core/Shared/Helpers/db.php:931
 msgid "Hi there,"
 msgstr ""
 
-#: core/Shared/Helpers/db.php:949
+#: core/Shared/Helpers/db.php:833
 #, php-format
 msgid "Welcome to %s! Here's how to log in: "
 msgstr ""
 
-#: core/Shared/Helpers/db.php:955 core/Shared/Helpers/db.php:1058
+#: core/Shared/Helpers/db.php:838 core/Shared/Helpers/db.php:939
 #, php-format
 msgid "Username: %s"
 msgstr ""
 
-#: core/Shared/Helpers/db.php:956 core/Shared/Helpers/db.php:1059
-#: core/Shared/Helpers/user.php:1603 core/Shared/Helpers/user.php:1672
+#: core/Shared/Helpers/db.php:839 core/Shared/Helpers/db.php:940
+#: core/Shared/Helpers/user.php:1354 core/Shared/Helpers/user.php:1416
 #, php-format
 msgid "Password: %s"
 msgstr ""
 
-#: core/Shared/Helpers/db.php:959 core/Shared/Helpers/db.php:1062
+#: core/Shared/Helpers/db.php:842 core/Shared/Helpers/db.php:943
 #, php-format
 msgid ""
 "If you have any problems, please contact us at <a href=\"mailto:%s\">%s</a>."
 msgstr ""
 
-#: core/Shared/Helpers/db.php:966
+#: core/Shared/Helpers/db.php:848
 msgid "New Account"
 msgstr ""
 
-#: core/Shared/Helpers/db.php:974
+#: core/Shared/Helpers/db.php:856
 #, php-format
 msgid "[%s] New Account"
 msgstr ""
 
-#: core/Shared/Helpers/db.php:1052
+#: core/Shared/Helpers/db.php:934
 #, php-format
 msgid "Your password has been reset for %s: "
 msgstr ""
 
-#: core/Shared/Helpers/db.php:1069 core/Shared/Helpers/user.php:1613
+#: core/Shared/Helpers/db.php:949 core/Shared/Helpers/user.php:1363
 msgid "Password Reset"
 msgstr ""
 
-#: core/Shared/Helpers/db.php:1077
+#: core/Shared/Helpers/db.php:957
 #, php-format
 msgid "[%s] Password Reset"
 msgstr ""
@@ -822,221 +818,646 @@ msgstr ""
 msgid "Powered by"
 msgstr ""
 
-#: core/Shared/Helpers/hook.php:767
+#: core/Shared/Helpers/hook.php:788
 msgid ""
-"Your system is currently in `dev` mode. Please remember to set your system "
-"to `prod` mode after testing. When `prod` mode is set, this warning message "
-"will disappear."
+"Your system is currently in dev mode. Please remember to set your system to "
+"prod mode after testing. When prod mode is set, this warning message will "
+"disappear."
 msgstr ""
 
-#: core/Shared/Helpers/product.php:1586 core/Shared/Helpers/product.php:2174
+#: core/Shared/Helpers/product.php:1424 core/Shared/Helpers/product.php:2011
 msgid "Invalid product id."
 msgstr ""
 
-#: core/Shared/Helpers/product.php:1723
+#: core/Shared/Helpers/product.php:1561
 msgid "Product author cannot be null or empty."
 msgstr ""
 
-#: core/Shared/Helpers/product.php:1859
+#: core/Shared/Helpers/product.php:1697
 msgid "The title and body should not be null."
 msgstr ""
 
-#: core/Shared/Helpers/product.php:2014
+#: core/Shared/Helpers/product.php:1852
 msgid "Could not insert product into the product table."
 msgstr ""
 
-#: core/Shared/Helpers/product.php:2063
+#: core/Shared/Helpers/product.php:1901
 msgid "Could not update product within the product table."
 msgstr ""
 
-#: core/Shared/Helpers/site.php:565 core/Shared/Helpers/site.php:1014
+#: core/Shared/Helpers/site.php:518 core/Shared/Helpers/site.php:965
 msgid "The ID of this entity is invalid."
 msgstr ""
 
-#: core/Shared/Helpers/site.php:651
+#: core/Shared/Helpers/site.php:602
 msgid "Sorry, that site already exists!"
 msgstr ""
 
-#: core/Shared/Helpers/site.php:752
+#: core/Shared/Helpers/site.php:702
 msgid "Sorry, that site domain and path is already used."
 msgstr ""
 
-#: core/Shared/Helpers/site.php:1073
+#: core/Shared/Helpers/site.php:1010
 msgid "Site does not exist."
 msgstr ""
 
-#: core/Shared/Helpers/site.php:1158
+#: core/Shared/Helpers/site.php:1094
 msgid "You are not allowed to delete a super administrator account."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:348
-msgid "Active"
+#: core/Shared/Helpers/site.php:1144
+msgid "Site deletion exception occurred."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:352
-msgid "Inactive"
+#: core/Shared/Helpers/site.php:1192
+msgid "User delete exception occurred."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:356
-msgid "Blocked"
+#: core/Shared/Helpers/site.php:1252
+msgid "You are not allowed to remove super admins from this site."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:360
-msgid "Spammer"
-msgstr ""
-
-#: core/Shared/Helpers/user.php:747 core/Shared/Helpers/user.php:1239
-#: core/Shared/Helpers/user.php:1246
+#: core/Shared/Helpers/user.php:595 core/Shared/Helpers/user.php:1092
+#: core/Shared/Helpers/user.php:1099
 msgid "Invalid user id."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:822
+#: core/Shared/Helpers/user.php:669
 msgid "Cannot create a user with an empty username."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:827
+#: core/Shared/Helpers/user.php:673
 msgid "Username must be at least 3 characters long."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:832
+#: core/Shared/Helpers/user.php:677
 msgid "Username may not be longer than 60 characters."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:838
+#: core/Shared/Helpers/user.php:682
 msgid "Sorry, that username cannot be used."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:853
+#: core/Shared/Helpers/user.php:697
 #, php-format
 msgid "Sorry, the username <strong>%s</strong> is not allowed."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:894
+#: core/Shared/Helpers/user.php:737
 msgid "Sorry, that email address cannot be used."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1598
+#: core/Shared/Helpers/user.php:1350
 #, php-format
 msgid ""
 "Hello %s! You requested that your password be reset. Please see your new "
 "password below: <br />"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1606
+#: core/Shared/Helpers/user.php:1357
 #, php-format
 msgid ""
 "If you still have problems with logging in, please contact us at <a "
 "href=\"mailto:%s\">%s</a>."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1622
+#: core/Shared/Helpers/user.php:1372
 #, php-format
 msgid "[%s] Notice of Password Reset"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1666
+#: core/Shared/Helpers/user.php:1411
 #, php-format
 msgid ""
 "Hello %s! This is confirmation that your password on %s was updated to: <br /"
 ">"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1675
+#: core/Shared/Helpers/user.php:1419
 #, php-format
 msgid ""
 "If you did not initiate a password change/update, please contact us at <a "
 "href=\"mailto:%s\">%s</a>."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1682
+#: core/Shared/Helpers/user.php:1425
 msgid "Notice of Password Change"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1691
+#: core/Shared/Helpers/user.php:1434
 #, php-format
 msgid "[%s] Notice of Password Change"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1734
+#: core/Shared/Helpers/user.php:1472
 #, php-format
 msgid ""
 "Hello %s! This is confirmation that your email on %s was updated to: <br />"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1740
+#: core/Shared/Helpers/user.php:1477
 #, php-format
 msgid "Email: %s"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1743
+#: core/Shared/Helpers/user.php:1480
 #, php-format
 msgid ""
 "If you did not initiate an email change/update, please contact us at <a "
 "href=\"mailto:%s\">%s</a>."
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1750
+#: core/Shared/Helpers/user.php:1486
 msgid "Notice of Email Change"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1759
+#: core/Shared/Helpers/user.php:1495
 #, php-format
 msgid "[%s] Notice of Email Change"
 msgstr ""
 
-#: core/Shared/Helpers/user.php:1905
+#: core/Shared/Helpers/user.php:1640
 msgid "The password reset email has been queued for sending."
 msgstr ""
 
-#: core/Shared/Services/Parsecode.php:119
-#: core/Shared/Services/Parsecode.php:148
+#: core/Shared/Services/Parsecode.php:117
+#: core/Shared/Services/Parsecode.php:145
 msgid "Invalid parsecode name: empty name given."
 msgstr ""
 
-#: core/Shared/Services/Parsecode.php:126
+#: core/Shared/Services/Parsecode.php:124
 #, php-format
 msgid ""
 "Invalid parsecode name: %s. Do not use spaces or reserved characters: & / < "
 "> [ ]"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:37
+#: resources/blocks/accordion-body/config.php:7
+#: resources/blocks/accordion-header/config.php:7
+#: resources/blocks/accordion/config.php:6 resources/blocks/alert/config.php:6
+#: resources/blocks/card-heading/config.php:7
+#: resources/blocks/card-text/config.php:7 resources/blocks/card/config.php:6
+#: resources/blocks/carousel-item/config.php:7
+#: resources/blocks/carousel/config.php:6
+#: resources/blocks/content-image/config.php:6
+msgid "Component"
+msgstr ""
+
+#: resources/blocks/accordion/config.php:7
+msgid "Accordion"
+msgstr ""
+
+#: resources/blocks/accordion/config.php:12
+#: resources/blocks/carousel/config.php:12
+msgid "Number of Items"
+msgstr ""
+
+#: resources/blocks/alert/config.php:7
+msgid "Alert"
+msgstr ""
+
+#: resources/blocks/alert/config.php:12
+msgid "Context"
+msgstr ""
+
+#: resources/blocks/alert/config.php:14 resources/blocks/button/config.php:14
+msgid "Primary"
+msgstr ""
+
+#: resources/blocks/alert/config.php:15 resources/blocks/button/config.php:15
+msgid "Secondary"
+msgstr ""
+
+#: resources/blocks/alert/config.php:16 resources/blocks/button/config.php:16
+msgid "Success"
+msgstr ""
+
+#: resources/blocks/alert/config.php:17 resources/blocks/button/config.php:17
+msgid "Danger"
+msgstr ""
+
+#: resources/blocks/alert/config.php:18 resources/blocks/button/config.php:18
+msgid "Warning"
+msgstr ""
+
+#: resources/blocks/alert/config.php:19 resources/blocks/button/config.php:19
+msgid "Info"
+msgstr ""
+
+#: resources/blocks/alert/config.php:20 resources/blocks/button/config.php:20
+msgid "Light"
+msgstr ""
+
+#: resources/blocks/alert/config.php:21 resources/blocks/button/config.php:21
+msgid "Dark"
+msgstr ""
+
+#: resources/blocks/button/config.php:6 resources/blocks/divider/config.php:6
+#: resources/blocks/google-map/config.php:6
+#: resources/blocks/heading/config.php:6 resources/blocks/image/config.php:6
+#: resources/blocks/lead/config.php:6 resources/blocks/link/config.php:6
+#: resources/blocks/spacer/config.php:6 resources/blocks/text/config.php:6
+#: resources/blocks/youtube/config.php:6
+msgid "Basic"
+msgstr ""
+
+#: resources/blocks/button/config.php:7 resources/blocks/button/config.php:36
+msgid "Button"
+msgstr ""
+
+#: resources/blocks/button/config.php:12
+msgid "Style"
+msgstr ""
+
+#: resources/blocks/button/config.php:26
+msgid "Size"
+msgstr ""
+
+#: resources/blocks/button/config.php:28
+#: resources/blocks/container/config.php:15
+#: resources/blocks/grid/config.php:114
+msgid "Small"
+msgstr ""
+
+#: resources/blocks/button/config.php:29
+#: resources/blocks/container/config.php:17
+#: resources/blocks/grid/config.php:118
+msgid "Large"
+msgstr ""
+
+#: resources/blocks/button/config.php:34
+msgid "Type"
+msgstr ""
+
+#: resources/blocks/button/config.php:37
+msgid "Submit"
+msgstr ""
+
+#: resources/blocks/button/config.php:42
+#: resources/blocks/forms/input/config.php:19
+msgid "Text"
+msgstr ""
+
+#: resources/blocks/card-heading/config.php:8
+msgid "Card Heading"
+msgstr ""
+
+#: resources/blocks/card-text/config.php:8
+msgid "Card Text"
+msgstr ""
+
+#: resources/blocks/card/config.php:7
+msgid "Card"
+msgstr ""
+
+#: resources/blocks/carousel/config.php:7
+msgid "Carousel"
+msgstr ""
+
+#: resources/blocks/container/config.php:6 resources/blocks/grid/config.php:6
+#: resources/blocks/layout-blocks-container/config.php:7
+msgid "Layout"
+msgstr ""
+
+#: resources/blocks/container/config.php:7
+msgid "Container"
+msgstr ""
+
+#: resources/blocks/container/config.php:12
+msgid "Container Width"
+msgstr ""
+
+#: resources/blocks/container/config.php:14
+#: resources/blocks/grid/config.php:116
+msgid "Default"
+msgstr ""
+
+#: resources/blocks/container/config.php:16
+msgid "Medium"
+msgstr ""
+
+#: resources/blocks/container/config.php:18
+msgid "Extra Large"
+msgstr ""
+
+#: resources/blocks/container/config.php:19
+msgid "Extra Extra Large"
+msgstr ""
+
+#: resources/blocks/container/config.php:20
+msgid "Fluid"
+msgstr ""
+
+#: resources/blocks/content-image/config.php:7
+msgid "Content Image"
+msgstr ""
+
+#: resources/blocks/divider/config.php:7
+msgid "Divider"
+msgstr ""
+
+#: resources/blocks/forms/checkbox/config.php:6
+#: resources/blocks/forms/form/config.php:6
+#: resources/blocks/forms/input/config.php:6
+#: resources/blocks/forms/textarea/config.php:6
+msgid "Forms"
+msgstr ""
+
+#: resources/blocks/forms/checkbox/config.php:7
+msgid "Checkbox"
+msgstr ""
+
+#: resources/blocks/forms/checkbox/config.php:12
+#: resources/blocks/forms/input/config.php:12
+#: resources/blocks/forms/textarea/config.php:12
+msgid "Label"
+msgstr ""
+
+#: resources/blocks/forms/checkbox/config.php:17
+msgid "Checkbox Value"
+msgstr ""
+
+#: resources/blocks/forms/checkbox/config.php:22
+#: resources/blocks/forms/input/config.php:40
+#: resources/blocks/forms/textarea/config.php:17
+msgid "Required?"
+msgstr ""
+
+#: resources/blocks/forms/form/config.php:7
+msgid "Form"
+msgstr ""
+
+#: resources/blocks/forms/form/config.php:12
+msgid "Form ID"
+msgstr ""
+
+#: resources/blocks/forms/form/config.php:17
+msgid "Form Action"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:7
+msgid "Input"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:17
+msgid "Input Type"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:20
+msgid "Email"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:21
+msgid "Password"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:22
+msgid "Hidden"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:23
+msgid "Number"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:24
+msgid "Telephone"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:30
+msgid "Field Name"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:35
+msgid "Field ID"
+msgstr ""
+
+#: resources/blocks/forms/input/config.php:45
+#: resources/blocks/forms/textarea/config.php:22
+msgid "Placeholder"
+msgstr ""
+
+#: resources/blocks/forms/textarea/config.php:7
+msgid "Textarea"
+msgstr ""
+
+#: resources/blocks/google-map/config.php:7
+msgid "Google Maps"
+msgstr ""
+
+#: resources/blocks/google-map/config.php:12
+msgid "Google Map Embed Url"
+msgstr ""
+
+#: resources/blocks/grid/config.php:7
+msgid "Grid"
+msgstr ""
+
+#: resources/blocks/grid/config.php:12
+msgid "Columns"
+msgstr ""
+
+#: resources/blocks/grid/config.php:35
+msgid "On small displays"
+msgstr ""
+
+#: resources/blocks/grid/config.php:37
+msgid "Use default layout"
+msgstr ""
+
+#: resources/blocks/grid/config.php:38 resources/blocks/grid/config.php:63
+#: resources/blocks/grid/config.php:88
+msgid "Columns become rows"
+msgstr ""
+
+#: resources/blocks/grid/config.php:60
+msgid "On tablets"
+msgstr ""
+
+#: resources/blocks/grid/config.php:62
+msgid "Same layout as on small displays"
+msgstr ""
+
+#: resources/blocks/grid/config.php:85
+msgid "On mobile"
+msgstr ""
+
+#: resources/blocks/grid/config.php:87
+msgid "Same layout as on tablets"
+msgstr ""
+
+#: resources/blocks/grid/config.php:110
+msgid "Space between columns"
+msgstr ""
+
+#: resources/blocks/grid/config.php:112 resources/blocks/heading/config.php:27
+msgid "None"
+msgstr ""
+
+#: resources/blocks/grid/config.php:113
+msgid "Subtle"
+msgstr ""
+
+#: resources/blocks/grid/config.php:115
+msgid "Reduced"
+msgstr ""
+
+#: resources/blocks/grid/config.php:117
+msgid "Wide"
+msgstr ""
+
+#: resources/blocks/grid/config.php:119
+msgid "Maximized"
+msgstr ""
+
+#: resources/blocks/grid/config.php:125
+msgid "Number of columns"
+msgstr ""
+
+#: resources/blocks/grid/config.php:130
+msgid "Order of columns"
+msgstr ""
+
+#: resources/blocks/grid/config.php:132 resources/blocks/grid/config.php:142
+#: resources/blocks/grid/config.php:152 resources/blocks/grid/config.php:162
+msgid "Columns in standard order"
+msgstr ""
+
+#: resources/blocks/grid/config.php:133 resources/blocks/grid/config.php:143
+#: resources/blocks/grid/config.php:153 resources/blocks/grid/config.php:163
+msgid "Columns in reversed order"
+msgstr ""
+
+#: resources/blocks/grid/config.php:139
+msgid "Order on small displays"
+msgstr ""
+
+#: resources/blocks/grid/config.php:141
+msgid "Use same as above"
+msgstr ""
+
+#: resources/blocks/grid/config.php:151 resources/blocks/grid/config.php:161
+msgid "Use same as on small displays"
+msgstr ""
+
+#: resources/blocks/grid/config.php:159
+msgid "Order on mobile"
+msgstr ""
+
+#: resources/blocks/heading/config.php:7 resources/blocks/heading/config.php:12
+msgid "Heading"
+msgstr ""
+
+#: resources/blocks/heading/config.php:25
+msgid "Display"
+msgstr ""
+
+#: resources/blocks/heading/config.php:28
+msgid "Display 1"
+msgstr ""
+
+#: resources/blocks/heading/config.php:29
+msgid "Display 2"
+msgstr ""
+
+#: resources/blocks/heading/config.php:30
+msgid "Display 3"
+msgstr ""
+
+#: resources/blocks/heading/config.php:31
+msgid "Display 4"
+msgstr ""
+
+#: resources/blocks/heading/config.php:32
+msgid "Display 5"
+msgstr ""
+
+#: resources/blocks/heading/config.php:33
+msgid "Display 6"
+msgstr ""
+
+#: resources/blocks/heading/config.php:38
+msgid "Primary Text"
+msgstr ""
+
+#: resources/blocks/heading/config.php:43
+msgid "Secondary Text"
+msgstr ""
+
+#: resources/blocks/image/config.php:7
+msgid "Image"
+msgstr ""
+
+#: resources/blocks/lead/config.php:7
+msgid "Lead"
+msgstr ""
+
+#: resources/blocks/link/config.php:7
+msgid "Button Link"
+msgstr ""
+
+#: resources/blocks/spacer/config.php:7
+msgid "Spacer"
+msgstr ""
+
+#: resources/blocks/text/config.php:7
+msgid "Text Editor"
+msgstr ""
+
+#: resources/blocks/youtube/config.php:7
+msgid "YouTube Video"
+msgstr ""
+
+#: resources/blocks/youtube/config.php:12
+msgid "Youtube Embed URL"
+msgstr ""
+
+#: resources/blocks/youtube/config.php:17
+msgid "Embed Width"
+msgstr ""
+
+#: resources/blocks/youtube/config.php:22
+msgid "Embed Height"
+msgstr ""
+
+#: resources/views/backend/admin/content-type/content-type.phtml:38
 #: resources/views/backend/admin/content/create.phtml:48
+#: resources/views/backend/admin/manager/page-settings.phtml:40
 #: resources/views/backend/admin/product/create.phtml:47
 #: resources/views/backend/admin/site/index.phtml:42
-#: resources/views/backend/admin/user/create.phtml:83
+#: resources/views/backend/admin/user/create.phtml:50
 msgid "Save"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:55
+#: resources/views/backend/admin/content-type/content-type.phtml:57
 msgid "Add New Content Type"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:60
+#: resources/views/backend/admin/content-type/content-type.phtml:62
 #: resources/views/backend/admin/content-type/update-content-type.phtml:56
 msgid "Content Type Name"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:64
-#: resources/views/backend/admin/content-type/content-type.phtml:160
+#: resources/views/backend/admin/content-type/content-type.phtml:66
+#: resources/views/backend/admin/content-type/content-type.phtml:162
 #: resources/views/backend/admin/content-type/update-content-type.phtml:60
+#: resources/views/backend/admin/content-type/update-content-type.phtml:87
 msgid "Content Type Slug"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:68
+#: resources/views/backend/admin/content-type/content-type.phtml:70
 #: resources/views/backend/admin/content-type/update-content-type.phtml:65
 msgid "Content Type Description"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:90
-#: resources/views/backend/admin/content-type/content-type.phtml:133
+#: resources/views/backend/admin/content-type/content-type.phtml:92
+#: resources/views/backend/admin/content-type/content-type.phtml:135
 #: resources/views/backend/admin/content/create.phtml:95
 #: resources/views/backend/admin/content/view.phtml:100
 msgid "Content Type"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:91
-#: resources/views/backend/admin/content-type/content-type.phtml:134
+#: resources/views/backend/admin/content-type/content-type.phtml:93
+#: resources/views/backend/admin/content-type/content-type.phtml:136
 #: resources/views/backend/admin/plugin/index.phtml:54
 #: resources/views/backend/admin/plugin/index.phtml:84
 #: resources/views/backend/admin/theme/index.phtml:55
@@ -1044,78 +1465,82 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:92
-#: resources/views/backend/admin/content-type/content-type.phtml:135
+#: resources/views/backend/admin/content-type/content-type.phtml:94
+#: resources/views/backend/admin/content-type/content-type.phtml:137
 #: resources/views/backend/admin/content/create.phtml:76
-#: resources/views/backend/admin/content/create.phtml:228
+#: resources/views/backend/admin/content/create.phtml:229
 #: resources/views/backend/admin/content/view.phtml:81
 #: resources/views/backend/admin/content/view.phtml:242
-#: resources/views/backend/admin/product/create.phtml:75
-#: resources/views/backend/admin/product/create.phtml:213
-#: resources/views/backend/admin/product/view.phtml:77
+#: resources/views/backend/admin/product/create.phtml:76
+#: resources/views/backend/admin/product/create.phtml:214
+#: resources/views/backend/admin/product/view.phtml:76
 msgid "Slug"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:93
-#: resources/views/backend/admin/content-type/content-type.phtml:136
+#: resources/views/backend/admin/content-type/content-type.phtml:95
+#: resources/views/backend/admin/content-type/content-type.phtml:138
 msgid "Count"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:94
-#: resources/views/backend/admin/content-type/content-type.phtml:137
+#: resources/views/backend/admin/content-type/content-type.phtml:96
+#: resources/views/backend/admin/content-type/content-type.phtml:139
 #: resources/views/backend/admin/plugin/index.phtml:55
 #: resources/views/backend/admin/plugin/index.phtml:85
 #: resources/views/backend/admin/site/index.phtml:106
 #: resources/views/backend/admin/site/index.phtml:156
-#: resources/views/backend/admin/site/users.phtml:51
-#: resources/views/backend/admin/site/users.phtml:132
+#: resources/views/backend/admin/site/users.phtml:55
+#: resources/views/backend/admin/site/users.phtml:191
 #: resources/views/backend/admin/theme/index.phtml:56
 #: resources/views/backend/admin/theme/index.phtml:92
-#: resources/views/backend/admin/user/index.phtml:59
-#: resources/views/backend/admin/user/index.phtml:129
+#: resources/views/backend/admin/user/index.phtml:60
+#: resources/views/backend/admin/user/index.phtml:130
 msgid "Action"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:115
+#: resources/views/backend/admin/content-type/content-type.phtml:117
 msgid ""
 "Are you sure you want to delete this content type? By deleting this content "
 "type, you also delete all content connected to this content type as well."
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:118
-#: resources/views/backend/admin/content-type/content-type.phtml:166
+#: resources/views/backend/admin/content-type/content-type.phtml:120
+#: resources/views/backend/admin/content-type/content-type.phtml:168
+#: resources/views/backend/admin/content-type/update-content-type.phtml:93
 #: resources/views/backend/admin/content/content-by-type.phtml:81
-#: resources/views/backend/admin/content/create.phtml:234
-#: resources/views/backend/admin/content/index.phtml:83
+#: resources/views/backend/admin/content/create.phtml:235
+#: resources/views/backend/admin/content/index.phtml:82
 #: resources/views/backend/admin/content/view.phtml:248
 #: resources/views/backend/admin/content/view.phtml:270
-#: resources/views/backend/admin/product/create.phtml:219
-#: resources/views/backend/admin/product/create.phtml:241
-#: resources/views/backend/admin/product/index.phtml:85
-#: resources/views/backend/admin/product/view.phtml:240
-#: resources/views/backend/admin/product/view.phtml:262
+#: resources/views/backend/admin/product/create.phtml:220
+#: resources/views/backend/admin/product/create.phtml:242
+#: resources/views/backend/admin/product/index.phtml:84
+#: resources/views/backend/admin/product/view.phtml:239
+#: resources/views/backend/admin/product/view.phtml:261
 #: resources/views/backend/admin/site/index.phtml:137
 #: resources/views/backend/admin/site/index.phtml:185
-#: resources/views/backend/admin/site/users.phtml:88
-#: resources/views/backend/admin/site/users.phtml:112
-#: resources/views/backend/admin/user/index.phtml:108
+#: resources/views/backend/admin/site/users.phtml:99
+#: resources/views/backend/admin/site/users.phtml:147
+#: resources/views/backend/admin/site/users.phtml:171
+#: resources/views/backend/admin/user/index.phtml:109
 msgid "Close"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:119
+#: resources/views/backend/admin/content-type/content-type.phtml:121
 #: resources/views/backend/admin/content/content-by-type.phtml:82
-#: resources/views/backend/admin/content/index.phtml:84
+#: resources/views/backend/admin/content/index.phtml:83
 #: resources/views/backend/admin/content/view.phtml:271
-#: resources/views/backend/admin/product/index.phtml:86
-#: resources/views/backend/admin/product/view.phtml:263
+#: resources/views/backend/admin/manager/index.phtml:79
+#: resources/views/backend/admin/product/index.phtml:85
+#: resources/views/backend/admin/product/view.phtml:262
 #: resources/views/backend/admin/site/index.phtml:138
-#: resources/views/backend/admin/site/users.phtml:89
-#: resources/views/backend/admin/site/users.phtml:113
-#: resources/views/backend/admin/user/index.phtml:109
+#: resources/views/backend/admin/site/users.phtml:148
+#: resources/views/backend/admin/site/users.phtml:172
+#: resources/views/backend/admin/user/index.phtml:110
 msgid "Confirm"
 msgstr ""
 
-#: resources/views/backend/admin/content-type/content-type.phtml:163
+#: resources/views/backend/admin/content-type/content-type.phtml:165
+#: resources/views/backend/admin/content-type/update-content-type.phtml:90
 msgid "If left blank, the system will auto generate the content type slug."
 msgstr ""
 
@@ -1127,24 +1552,28 @@ msgstr ""
 #: resources/views/backend/admin/content/view.phtml:50
 #: resources/views/backend/admin/content/view.phtml:54
 #: resources/views/backend/admin/content/view.phtml:72
-#: resources/views/backend/admin/product/view.phtml:50
+#: resources/views/backend/admin/product/view.phtml:49
 #: resources/views/backend/admin/site/view.phtml:41
+#: resources/views/backend/admin/user/index.phtml:78
+#: resources/views/backend/admin/user/index.phtml:80
 #: resources/views/backend/admin/user/profile.phtml:42
 #: resources/views/backend/admin/user/view.phtml:41
-#: resources/views/backend/general.phtml:36
-#: resources/views/backend/reading.phtml:34
+#: resources/views/backend/general.phtml:34
+#: resources/views/backend/reading.phtml:32
 msgid "Update"
 msgstr ""
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:39
 #: resources/views/backend/admin/content/create.phtml:49
 #: resources/views/backend/admin/content/view.phtml:56
+#: resources/views/backend/admin/manager/index.phtml:78
+#: resources/views/backend/admin/manager/page-settings.phtml:41
 #: resources/views/backend/admin/product/create.phtml:48
-#: resources/views/backend/admin/product/view.phtml:52
+#: resources/views/backend/admin/product/view.phtml:51
 #: resources/views/backend/admin/site/view.phtml:42
-#: resources/views/backend/admin/user/create.phtml:84
+#: resources/views/backend/admin/user/create.phtml:51
 #: resources/views/backend/admin/user/profile.phtml:43
-#: resources/views/backend/admin/user/profile.phtml:191
+#: resources/views/backend/admin/user/profile.phtml:193
 #: resources/views/backend/admin/user/view.phtml:42
 #: resources/views/backend/admin/user/view.phtml:73
 msgid "Cancel"
@@ -1158,63 +1587,63 @@ msgstr ""
 #: resources/views/backend/admin/content/content-by-type.phtml:49
 #: resources/views/backend/admin/content/content-by-type.phtml:111
 #: resources/views/backend/admin/content/create.phtml:72
-#: resources/views/backend/admin/content/index.phtml:51
-#: resources/views/backend/admin/content/index.phtml:109
+#: resources/views/backend/admin/content/index.phtml:50
+#: resources/views/backend/admin/content/index.phtml:108
 #: resources/views/backend/admin/content/view.phtml:77
-#: resources/views/backend/admin/product/create.phtml:71
-#: resources/views/backend/admin/product/index.phtml:53
-#: resources/views/backend/admin/product/index.phtml:111
-#: resources/views/backend/admin/product/view.phtml:73
+#: resources/views/backend/admin/product/create.phtml:72
+#: resources/views/backend/admin/product/index.phtml:52
+#: resources/views/backend/admin/product/index.phtml:110
+#: resources/views/backend/admin/product/view.phtml:72
 msgid "Title"
 msgstr ""
 
 #: resources/views/backend/admin/content/content-by-type.phtml:50
 #: resources/views/backend/admin/content/content-by-type.phtml:112
 #: resources/views/backend/admin/content/create.phtml:142
-#: resources/views/backend/admin/content/index.phtml:52
-#: resources/views/backend/admin/content/index.phtml:110
+#: resources/views/backend/admin/content/index.phtml:51
+#: resources/views/backend/admin/content/index.phtml:109
 #: resources/views/backend/admin/content/view.phtml:147
-#: resources/views/backend/admin/product/create.phtml:125
-#: resources/views/backend/admin/product/index.phtml:54
-#: resources/views/backend/admin/product/index.phtml:112
-#: resources/views/backend/admin/product/view.phtml:127
+#: resources/views/backend/admin/product/create.phtml:126
+#: resources/views/backend/admin/product/index.phtml:53
+#: resources/views/backend/admin/product/index.phtml:111
+#: resources/views/backend/admin/product/view.phtml:126
 msgid "Author"
 msgstr ""
 
 #: resources/views/backend/admin/content/content-by-type.phtml:51
 #: resources/views/backend/admin/content/content-by-type.phtml:113
-#: resources/views/backend/admin/content/index.phtml:53
-#: resources/views/backend/admin/content/index.phtml:111
-#: resources/views/backend/admin/product/index.phtml:55
-#: resources/views/backend/admin/product/index.phtml:113
+#: resources/views/backend/admin/content/index.phtml:52
+#: resources/views/backend/admin/content/index.phtml:110
+#: resources/views/backend/admin/product/index.phtml:54
+#: resources/views/backend/admin/product/index.phtml:112
 msgid "Date"
 msgstr ""
 
 #: resources/views/backend/admin/content/content-by-type.phtml:52
 #: resources/views/backend/admin/content/content-by-type.phtml:114
-#: resources/views/backend/admin/content/index.phtml:54
-#: resources/views/backend/admin/content/index.phtml:112
-#: resources/views/backend/admin/product/index.phtml:56
-#: resources/views/backend/admin/product/index.phtml:114
+#: resources/views/backend/admin/content/index.phtml:53
+#: resources/views/backend/admin/content/index.phtml:111
+#: resources/views/backend/admin/product/index.phtml:55
+#: resources/views/backend/admin/product/index.phtml:113
 msgid "Last Modified"
 msgstr ""
 
 #: resources/views/backend/admin/content/content-by-type.phtml:66
-#: resources/views/backend/admin/content/index.phtml:68
-#: resources/views/backend/admin/product/index.phtml:70
+#: resources/views/backend/admin/content/index.phtml:67
+#: resources/views/backend/admin/product/index.phtml:69
 msgid "Edit"
 msgstr ""
 
 #: resources/views/backend/admin/content/content-by-type.phtml:67
-#: resources/views/backend/admin/content/index.phtml:69
+#: resources/views/backend/admin/content/index.phtml:68
 #: resources/views/backend/admin/content/view.phtml:55
-#: resources/views/backend/admin/product/index.phtml:71
-#: resources/views/backend/admin/product/view.phtml:51
+#: resources/views/backend/admin/product/index.phtml:70
+#: resources/views/backend/admin/product/view.phtml:50
 msgid "Delete"
 msgstr ""
 
 #: resources/views/backend/admin/content/content-by-type.phtml:78
-#: resources/views/backend/admin/content/index.phtml:80
+#: resources/views/backend/admin/content/index.phtml:79
 #: resources/views/backend/admin/content/view.phtml:267
 msgid "Are you sure you want to delete this content?"
 msgstr ""
@@ -1222,8 +1651,8 @@ msgstr ""
 #: resources/views/backend/admin/content/create.phtml:67
 #: resources/views/backend/admin/content/create.phtml:80
 #: resources/views/backend/admin/content/view.phtml:85
-#: resources/views/backend/admin/product/create.phtml:79
-#: resources/views/backend/admin/product/view.phtml:81
+#: resources/views/backend/admin/product/create.phtml:80
+#: resources/views/backend/admin/product/view.phtml:80
 msgid "Content"
 msgstr ""
 
@@ -1231,59 +1660,59 @@ msgstr ""
 #: resources/views/backend/admin/content/create.phtml:133
 #: resources/views/backend/admin/content/view.phtml:120
 #: resources/views/backend/admin/content/view.phtml:138
-#: resources/views/backend/admin/product/create.phtml:98
-#: resources/views/backend/admin/product/create.phtml:116
-#: resources/views/backend/admin/product/view.phtml:100
-#: resources/views/backend/admin/product/view.phtml:118
+#: resources/views/backend/admin/product/create.phtml:99
+#: resources/views/backend/admin/product/create.phtml:117
+#: resources/views/backend/admin/product/view.phtml:99
+#: resources/views/backend/admin/product/view.phtml:117
 msgid "Publish"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:120
 #: resources/views/backend/admin/content/view.phtml:125
-#: resources/views/backend/admin/product/create.phtml:103
-#: resources/views/backend/admin/product/view.phtml:105
+#: resources/views/backend/admin/product/create.phtml:104
+#: resources/views/backend/admin/product/view.phtml:104
 msgid "Publication Date"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:129
 #: resources/views/backend/admin/content/view.phtml:134
-#: resources/views/backend/admin/product/create.phtml:112
-#: resources/views/backend/admin/product/view.phtml:114
+#: resources/views/backend/admin/product/create.phtml:113
+#: resources/views/backend/admin/product/view.phtml:113
 #: resources/views/backend/admin/site/index.phtml:105
 #: resources/views/backend/admin/site/index.phtml:155
 #: resources/views/backend/admin/site/view.phtml:88
-#: resources/views/backend/admin/user/create.phtml:178
-#: resources/views/backend/admin/user/index.phtml:57
-#: resources/views/backend/admin/user/index.phtml:127
-#: resources/views/backend/admin/user/view.phtml:185
+#: resources/views/backend/admin/user/create.phtml:170
+#: resources/views/backend/admin/user/index.phtml:58
+#: resources/views/backend/admin/user/index.phtml:128
+#: resources/views/backend/admin/user/view.phtml:144
 msgid "Status"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:134
 #: resources/views/backend/admin/content/view.phtml:139
-#: resources/views/backend/admin/product/create.phtml:117
-#: resources/views/backend/admin/product/view.phtml:119
+#: resources/views/backend/admin/product/create.phtml:118
+#: resources/views/backend/admin/product/view.phtml:118
 msgid "Schedule"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:136
 #: resources/views/backend/admin/content/view.phtml:141
-#: resources/views/backend/admin/product/create.phtml:119
-#: resources/views/backend/admin/product/view.phtml:121
+#: resources/views/backend/admin/product/create.phtml:120
+#: resources/views/backend/admin/product/view.phtml:120
 msgid "Draft"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:137
 #: resources/views/backend/admin/content/view.phtml:142
-#: resources/views/backend/admin/product/create.phtml:120
-#: resources/views/backend/admin/product/view.phtml:122
+#: resources/views/backend/admin/product/create.phtml:121
+#: resources/views/backend/admin/product/view.phtml:121
 msgid "Pending"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:138
 #: resources/views/backend/admin/content/view.phtml:143
-#: resources/views/backend/admin/product/create.phtml:121
-#: resources/views/backend/admin/product/view.phtml:123
+#: resources/views/backend/admin/product/create.phtml:122
+#: resources/views/backend/admin/product/view.phtml:122
 #: resources/views/backend/admin/site/view.phtml:92
 msgid "Archive"
 msgstr ""
@@ -1305,50 +1734,86 @@ msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:174
 #: resources/views/backend/admin/content/view.phtml:181
-#: resources/views/backend/admin/product/create.phtml:159
-#: resources/views/backend/admin/product/view.phtml:174
+#: resources/views/backend/admin/product/create.phtml:160
+#: resources/views/backend/admin/product/view.phtml:173
 msgid "Show in Menu"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:180
 #: resources/views/backend/admin/content/view.phtml:188
-#: resources/views/backend/admin/product/create.phtml:165
-#: resources/views/backend/admin/product/view.phtml:181
+#: resources/views/backend/admin/product/create.phtml:166
+#: resources/views/backend/admin/product/view.phtml:180
 msgid "Show in Search"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:193
 #: resources/views/backend/admin/content/view.phtml:203
-#: resources/views/backend/admin/product/create.phtml:178
-#: resources/views/backend/admin/product/view.phtml:195
+#: resources/views/backend/admin/product/create.phtml:179
+#: resources/views/backend/admin/product/view.phtml:194
 msgid "Featured Image"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:199
 #: resources/views/backend/admin/content/view.phtml:212
-#: resources/views/backend/admin/product/create.phtml:184
-#: resources/views/backend/admin/product/view.phtml:204
+#: resources/views/backend/admin/product/create.phtml:185
+#: resources/views/backend/admin/product/view.phtml:203
 msgid "Set featured image"
 msgstr ""
 
 #: resources/views/backend/admin/content/create.phtml:200
 #: resources/views/backend/admin/content/view.phtml:210
 #: resources/views/backend/admin/content/view.phtml:213
-#: resources/views/backend/admin/product/create.phtml:185
-#: resources/views/backend/admin/product/view.phtml:202
-#: resources/views/backend/admin/product/view.phtml:205
+#: resources/views/backend/admin/product/create.phtml:186
+#: resources/views/backend/admin/product/view.phtml:201
+#: resources/views/backend/admin/product/view.phtml:204
 msgid "Remove featured image"
 msgstr ""
 
-#: resources/views/backend/admin/content/create.phtml:231
+#: resources/views/backend/admin/content/create.phtml:232
 #: resources/views/backend/admin/content/view.phtml:245
-#: resources/views/backend/admin/product/create.phtml:216
+#: resources/views/backend/admin/product/create.phtml:217
 #, php-format
 msgid "If left blank, the system will auto generate the %s slug."
 msgstr ""
 
-#: resources/views/backend/admin/content/index.phtml:32
+#: resources/views/backend/admin/content/index.phtml:31
 msgid "All Content"
+msgstr ""
+
+#: resources/views/backend/admin/manager/index.phtml:22
+msgid "Page Builder"
+msgstr ""
+
+#: resources/views/backend/admin/manager/index.phtml:43
+msgid "Pages"
+msgstr ""
+
+#: resources/views/backend/admin/manager/index.phtml:75
+msgid "Are you sure you want to delete this page?"
+msgstr ""
+
+#: resources/views/backend/admin/manager/index.phtml:110
+msgid "Languages"
+msgstr ""
+
+#: resources/views/backend/admin/manager/index.phtml:118
+msgid "Use Ctrl/Cmd to select multiple."
+msgstr ""
+
+#: resources/views/backend/admin/manager/page-settings.phtml:57
+msgid "Page"
+msgstr ""
+
+#: resources/views/backend/admin/manager/page-settings.phtml:90
+msgid "URI"
+msgstr ""
+
+#: resources/views/backend/admin/manager/page-settings.phtml:91
+msgid "Note: add the uri without a trailing slash."
+msgstr ""
+
+#: resources/views/backend/admin/manager/page-settings.phtml:109
+msgid "Attributes"
 msgstr ""
 
 #: resources/views/backend/admin/plugin/index.phtml:52
@@ -1357,8 +1822,8 @@ msgstr ""
 #: resources/views/backend/admin/site/index.phtml:153
 #: resources/views/backend/admin/theme/index.phtml:53
 #: resources/views/backend/admin/theme/index.phtml:89
-#: resources/views/backend/admin/user/create.phtml:102
-#: resources/views/backend/admin/user/profile.phtml:183
+#: resources/views/backend/admin/user/create.phtml:69
+#: resources/views/backend/admin/user/profile.phtml:185
 #: resources/views/backend/admin/user/view.phtml:64
 msgid "Name"
 msgstr ""
@@ -1380,59 +1845,59 @@ msgstr ""
 msgid "View Details"
 msgstr ""
 
-#: resources/views/backend/admin/product/create.phtml:83
-#: resources/views/backend/admin/product/create.phtml:235
-#: resources/views/backend/admin/product/view.phtml:85
+#: resources/views/backend/admin/product/create.phtml:84
+#: resources/views/backend/admin/product/create.phtml:236
+#: resources/views/backend/admin/product/view.phtml:84
 msgid "Purchase Url"
 msgstr ""
 
-#: resources/views/backend/admin/product/create.phtml:139
-#: resources/views/backend/admin/product/view.phtml:141
+#: resources/views/backend/admin/product/create.phtml:140
+#: resources/views/backend/admin/product/view.phtml:140
 msgid "Product Attributes"
 msgstr ""
 
-#: resources/views/backend/admin/product/create.phtml:144
-#: resources/views/backend/admin/product/view.phtml:146
+#: resources/views/backend/admin/product/create.phtml:145
+#: resources/views/backend/admin/product/view.phtml:145
 msgid "Sku"
 msgstr ""
 
-#: resources/views/backend/admin/product/create.phtml:148
-#: resources/views/backend/admin/product/view.phtml:155
+#: resources/views/backend/admin/product/create.phtml:149
+#: resources/views/backend/admin/product/view.phtml:154
 msgid "Price"
 msgstr ""
 
-#: resources/views/backend/admin/product/create.phtml:152
+#: resources/views/backend/admin/product/create.phtml:153
 msgid "Currency"
 msgstr ""
 
-#: resources/views/backend/admin/product/create.phtml:238
+#: resources/views/backend/admin/product/create.phtml:239
 msgid "The purchase url is where customers can purchase your product."
 msgstr ""
 
-#: resources/views/backend/admin/product/index.phtml:32
-#: resources/views/backend/layouts/admin-layout.phtml:179
+#: resources/views/backend/admin/product/index.phtml:31
+#: resources/views/backend/layouts/admin-layout.phtml:182
 msgid "All Products"
 msgstr ""
 
-#: resources/views/backend/admin/product/index.phtml:35
-#: resources/views/backend/admin/product/view.phtml:49
+#: resources/views/backend/admin/product/index.phtml:34
+#: resources/views/backend/admin/product/view.phtml:48
 msgid "New Product"
 msgstr ""
 
-#: resources/views/backend/admin/product/index.phtml:82
-#: resources/views/backend/admin/product/view.phtml:259
+#: resources/views/backend/admin/product/index.phtml:81
+#: resources/views/backend/admin/product/view.phtml:258
 msgid "Are you sure you want to delete this product?"
 msgstr ""
 
-#: resources/views/backend/admin/product/view.phtml:68
+#: resources/views/backend/admin/product/view.phtml:67
 msgid "Product"
 msgstr ""
 
-#: resources/views/backend/admin/product/view.phtml:234
+#: resources/views/backend/admin/product/view.phtml:233
 msgid "Product Slug"
 msgstr ""
 
-#: resources/views/backend/admin/product/view.phtml:237
+#: resources/views/backend/admin/product/view.phtml:236
 msgid "If left blank, the system will auto generate the Product slug."
 msgstr ""
 
@@ -1446,7 +1911,7 @@ msgstr ""
 
 #: resources/views/backend/admin/site/index.phtml:69
 #: resources/views/backend/admin/site/view.phtml:70
-#: resources/views/backend/general.phtml:59
+#: resources/views/backend/general.phtml:57
 msgid "Site Name"
 msgstr ""
 
@@ -1462,7 +1927,7 @@ msgstr ""
 
 #: resources/views/backend/admin/site/index.phtml:102
 #: resources/views/backend/admin/site/index.phtml:152
-#: resources/views/backend/admin/user/profile.phtml:232
+#: resources/views/backend/admin/user/profile.phtml:234
 #: resources/views/backend/admin/user/view.phtml:107
 msgid "URL"
 msgstr ""
@@ -1473,7 +1938,6 @@ msgid "Admin"
 msgstr ""
 
 #: resources/views/backend/admin/site/index.phtml:134
-#: resources/views/backend/admin/site/users.phtml:78
 msgid "Are you sure you want to delete this site and all it's content"
 msgstr ""
 
@@ -1487,48 +1951,76 @@ msgid ""
 "out the correct path."
 msgstr ""
 
-#: resources/views/backend/admin/site/users.phtml:31
+#: resources/views/backend/admin/site/users.phtml:35
 msgid "Multisite Users"
 msgstr ""
 
-#: resources/views/backend/admin/site/users.phtml:48
-#: resources/views/backend/admin/site/users.phtml:129
-#: resources/views/backend/admin/user/create.phtml:107
-#: resources/views/backend/admin/user/index.phtml:54
-#: resources/views/backend/admin/user/index.phtml:124
-#: resources/views/backend/admin/user/profile.phtml:188
+#: resources/views/backend/admin/site/users.phtml:52
+#: resources/views/backend/admin/site/users.phtml:188
+#: resources/views/backend/admin/user/create.phtml:74
+#: resources/views/backend/admin/user/index.phtml:55
+#: resources/views/backend/admin/user/index.phtml:125
+#: resources/views/backend/admin/user/profile.phtml:190
 #: resources/views/backend/admin/user/view.phtml:69
 #: resources/views/backend/auth/index.phtml:23
 msgid "Username"
 msgstr ""
 
-#: resources/views/backend/admin/site/users.phtml:49
-#: resources/views/backend/admin/site/users.phtml:130
-#: resources/views/backend/admin/user/create.phtml:125
-#: resources/views/backend/admin/user/index.phtml:55
-#: resources/views/backend/admin/user/index.phtml:125
-#: resources/views/backend/admin/user/profile.phtml:195
+#: resources/views/backend/admin/site/users.phtml:53
+#: resources/views/backend/admin/site/users.phtml:189
+#: resources/views/backend/admin/user/create.phtml:79
+#: resources/views/backend/admin/user/index.phtml:56
+#: resources/views/backend/admin/user/index.phtml:126
+#: resources/views/backend/admin/user/profile.phtml:197
 #: resources/views/backend/admin/user/view.phtml:78
 msgid "First Name"
 msgstr ""
 
-#: resources/views/backend/admin/site/users.phtml:50
-#: resources/views/backend/admin/site/users.phtml:131
-#: resources/views/backend/admin/user/create.phtml:135
-#: resources/views/backend/admin/user/index.phtml:56
-#: resources/views/backend/admin/user/index.phtml:126
-#: resources/views/backend/admin/user/profile.phtml:205
+#: resources/views/backend/admin/site/users.phtml:54
+#: resources/views/backend/admin/site/users.phtml:190
+#: resources/views/backend/admin/user/create.phtml:89
+#: resources/views/backend/admin/user/index.phtml:57
+#: resources/views/backend/admin/user/index.phtml:127
+#: resources/views/backend/admin/user/profile.phtml:207
 #: resources/views/backend/admin/user/view.phtml:88
 msgid "Last Name"
 msgstr ""
 
-#: resources/views/backend/admin/site/users.phtml:79
+#: resources/views/backend/admin/site/users.phtml:65
+msgid "Add to Site"
+msgstr ""
+
+#: resources/views/backend/admin/site/users.phtml:77
+msgid "What site you want to add this user to?"
+msgstr ""
+
+#: resources/views/backend/admin/site/users.phtml:80
+msgid "Site"
+msgstr ""
+
+#: resources/views/backend/admin/site/users.phtml:88
+#: resources/views/backend/admin/user/create.phtml:192
+#: resources/views/backend/admin/user/index.phtml:59
+#: resources/views/backend/admin/user/index.phtml:129
+#: resources/views/backend/admin/user/view.phtml:164
+msgid "Role"
+msgstr ""
+
+#: resources/views/backend/admin/site/users.phtml:100
+msgid "Assign"
+msgstr ""
+
+#: resources/views/backend/admin/site/users.phtml:126
+msgid "Are you sure you want to delete this user and all their content?"
+msgstr ""
+
+#: resources/views/backend/admin/site/users.phtml:131
 msgid ""
 "Would you like to assign this user's site(s) to a different user? Choose "
 "below."
 msgstr ""
 
-#: resources/views/backend/admin/site/users.phtml:109
+#: resources/views/backend/admin/site/users.phtml:168
 msgid "Are you sure you want to permanently delete this user?"
 msgstr ""
 
@@ -1553,177 +2045,162 @@ msgstr ""
 msgid "Screenshot"
 msgstr ""
 
-#: resources/views/backend/admin/user/create.phtml:109
-msgid "New User?"
-msgstr ""
-
-#: resources/views/backend/admin/user/create.phtml:130
-#: resources/views/backend/admin/user/profile.phtml:200
+#: resources/views/backend/admin/user/create.phtml:84
+#: resources/views/backend/admin/user/profile.phtml:202
 #: resources/views/backend/admin/user/view.phtml:83
 msgid "Middle Name"
 msgstr ""
 
-#: resources/views/backend/admin/user/create.phtml:150
-#: resources/views/backend/admin/user/profile.phtml:221
+#: resources/views/backend/admin/user/create.phtml:104
+#: resources/views/backend/admin/user/profile.phtml:223
 #: resources/views/backend/admin/user/view.phtml:96
 msgid "Contact info"
 msgstr ""
 
-#: resources/views/backend/admin/user/create.phtml:156
-#: resources/views/backend/admin/user/profile.phtml:227
-#: resources/views/backend/admin/user/view.phtml:102
-#: resources/views/backend/auth/reset.phtml:27
-msgid "Email"
-msgstr ""
-
-#: resources/views/backend/admin/user/create.phtml:172
-#: resources/views/backend/admin/user/view.phtml:180
-msgid "User Status"
-msgstr ""
-
-#: resources/views/backend/admin/user/create.phtml:186
-msgid "If the account is Inactive, the user will be incapable of logging in."
-msgstr ""
-
-#: resources/views/backend/admin/user/create.phtml:193
-#: resources/views/backend/admin/user/view.phtml:200
-msgid "User Role"
-msgstr ""
-
-#: resources/views/backend/admin/user/create.phtml:199
-#: resources/views/backend/admin/user/index.phtml:58
-#: resources/views/backend/admin/user/index.phtml:128
-#: resources/views/backend/admin/user/view.phtml:205
-msgid "Role"
-msgstr ""
-
-#: resources/views/backend/admin/user/create.phtml:212
+#: resources/views/backend/admin/user/create.phtml:126
 msgid "Email / Password"
 msgstr ""
 
-#: resources/views/backend/admin/user/create.phtml:218
+#: resources/views/backend/admin/user/create.phtml:131
 msgid "Send Email"
 msgstr ""
 
-#: resources/views/backend/admin/user/create.phtml:223
+#: resources/views/backend/admin/user/create.phtml:136
 msgid "Send username & password to the user."
 msgstr ""
 
-#: resources/views/backend/admin/user/create.phtml:227
-#: resources/views/backend/auth/index.phtml:31
-msgid "Password"
-msgstr ""
-
-#: resources/views/backend/admin/user/create.phtml:229
+#: resources/views/backend/admin/user/create.phtml:142
 msgid "Show Password"
 msgstr ""
 
-#: resources/views/backend/admin/user/create.phtml:230
+#: resources/views/backend/admin/user/create.phtml:143
 msgid "Hide Password"
 msgstr ""
 
-#: resources/views/backend/admin/user/index.phtml:36
+#: resources/views/backend/admin/user/create.phtml:164
+#: resources/views/backend/admin/user/view.phtml:139
+msgid "User Status"
+msgstr ""
+
+#: resources/views/backend/admin/user/create.phtml:178
+msgid "If the account is Inactive, the user will be incapable of logging in."
+msgstr ""
+
+#: resources/views/backend/admin/user/create.phtml:186
+#: resources/views/backend/admin/user/view.phtml:159
+msgid "User Role"
+msgstr ""
+
+#: resources/views/backend/admin/user/index.phtml:37
 #: resources/views/backend/admin/user/view.phtml:40
 msgid "New User"
 msgstr ""
 
-#: resources/views/backend/admin/user/index.phtml:99
-msgid "Are you sure you want to remove the user from this site?"
+#: resources/views/backend/admin/user/index.phtml:82
+msgid "Reset Password"
+msgstr ""
+
+#: resources/views/backend/admin/user/index.phtml:84
+msgid "Switch to"
 msgstr ""
 
 #: resources/views/backend/admin/user/index.phtml:100
+msgid "Are you sure you want to remove the user from this site?"
+msgstr ""
+
+#: resources/views/backend/admin/user/index.phtml:101
 msgid ""
 "Would you like to assign this user's content to a different user? Choose "
 "below."
 msgstr ""
 
 #: resources/views/backend/admin/user/profile.phtml:36
-#: resources/views/backend/layouts/admin-layout.phtml:99
+#: resources/views/backend/layouts/admin-layout.phtml:101
 msgid "Profile"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:61
+#: resources/views/backend/admin/user/profile.phtml:62
 msgid "Layout Options"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:66
+#: resources/views/backend/admin/user/profile.phtml:67
 msgid "Fixed Layout"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:74
+#: resources/views/backend/admin/user/profile.phtml:75
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:82
+#: resources/views/backend/admin/user/profile.phtml:83
 msgid "Admin Skin"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:190
+#: resources/views/backend/admin/user/profile.phtml:192
 #: resources/views/backend/admin/user/view.phtml:72
 msgid "Change username"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:250
-#: resources/views/backend/admin/user/view.phtml:116
-msgid "Date/Time"
-msgstr ""
-
-#: resources/views/backend/admin/user/profile.phtml:255
-#: resources/views/backend/admin/user/view.phtml:121
-msgid "Timezone"
-msgstr ""
-
-#: resources/views/backend/admin/user/profile.phtml:265
-#: resources/views/backend/admin/user/view.phtml:131
-#: resources/views/backend/reading.phtml:65
-msgid "Date Format"
-msgstr ""
-
-#: resources/views/backend/admin/user/profile.phtml:270
-#: resources/views/backend/admin/user/view.phtml:136
-#: resources/views/backend/reading.phtml:69
-msgid "Time Format"
-msgstr ""
-
-#: resources/views/backend/admin/user/profile.phtml:286
-#: resources/views/backend/admin/user/view.phtml:144
-#: resources/views/backend/general.phtml:71
-msgid "Locale"
-msgstr ""
-
-#: resources/views/backend/admin/user/profile.phtml:291
-#: resources/views/backend/admin/user/view.phtml:149
-msgid "Language"
-msgstr ""
-
-#: resources/views/backend/admin/user/profile.phtml:311
+#: resources/views/backend/admin/user/profile.phtml:252
 msgid "About yourself"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:317
-#: resources/views/backend/admin/user/view.phtml:166
+#: resources/views/backend/admin/user/profile.phtml:258
+#: resources/views/backend/admin/user/view.phtml:122
 msgid "Biography"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:322
-#: resources/views/backend/admin/user/view.phtml:171
+#: resources/views/backend/admin/user/profile.phtml:263
+#: resources/views/backend/admin/user/view.phtml:127
 msgid "Profile Picture"
 msgstr ""
 
-#: resources/views/backend/admin/user/profile.phtml:324
+#: resources/views/backend/admin/user/profile.phtml:265
 #, php-format
 msgid "You can change your profile picture on <a href=\"%s\">Gravatar</a>."
+msgstr ""
+
+#: resources/views/backend/admin/user/profile.phtml:292
+#: resources/views/backend/admin/user/view.phtml:175
+msgid "Date/Time"
+msgstr ""
+
+#: resources/views/backend/admin/user/profile.phtml:297
+#: resources/views/backend/admin/user/view.phtml:180
+msgid "Timezone"
+msgstr ""
+
+#: resources/views/backend/admin/user/profile.phtml:307
+#: resources/views/backend/admin/user/view.phtml:190
+#: resources/views/backend/reading.phtml:63
+msgid "Date Format"
+msgstr ""
+
+#: resources/views/backend/admin/user/profile.phtml:312
+#: resources/views/backend/admin/user/view.phtml:195
+#: resources/views/backend/reading.phtml:67
+msgid "Time Format"
+msgstr ""
+
+#: resources/views/backend/admin/user/profile.phtml:328
+#: resources/views/backend/admin/user/view.phtml:203
+#: resources/views/backend/general.phtml:69
+msgid "Locale"
+msgstr ""
+
+#: resources/views/backend/admin/user/profile.phtml:333
+#: resources/views/backend/admin/user/view.phtml:208
+msgid "Language"
 msgstr ""
 
 #: resources/views/backend/admin/user/view.phtml:37
 msgid "Update User"
 msgstr ""
 
-#: resources/views/backend/admin/user/view.phtml:160
+#: resources/views/backend/admin/user/view.phtml:116
 msgid "About the user"
 msgstr ""
 
-#: resources/views/backend/admin/user/view.phtml:193
+#: resources/views/backend/admin/user/view.phtml:152
 msgid ""
 "If the account is Inactive, the user will be incapable of logging into the "
 "system."
@@ -1745,51 +2222,55 @@ msgstr ""
 msgid "Remember Me"
 msgstr ""
 
-#: resources/views/backend/auth/reset.phtml:29
+#: resources/views/backend/auth/reset.phtml:28
 msgid "Log-in"
 msgstr ""
 
-#: resources/views/backend/auth/reset.phtml:34
+#: resources/views/backend/auth/reset.phtml:33
 msgid "Email is invalid."
 msgstr ""
 
-#: resources/views/backend/auth/reset.phtml:37
+#: resources/views/backend/auth/reset.phtml:36
 msgid "By clicking \"Reset\" the system will email you a new password."
 msgstr ""
 
-#: resources/views/backend/elfinder.phtml:27
-#: resources/views/backend/layouts/auth-layout.phtml:21
-#: resources/views/backend/layouts/auth-layout.phtml:43
+#: resources/views/backend/auth/reset.phtml:41
+msgid "Reset"
+msgstr ""
+
+#: resources/views/backend/elfinder.phtml:28
+#: resources/views/backend/layouts/auth-layout.phtml:18
+#: resources/views/backend/layouts/auth-layout.phtml:40
 msgid "Devflow"
 msgstr ""
 
-#: resources/views/backend/general.phtml:63
+#: resources/views/backend/general.phtml:61
 msgid "Site Description"
 msgstr ""
 
-#: resources/views/backend/general.phtml:67
+#: resources/views/backend/general.phtml:65
 msgid "Admin Email"
 msgstr ""
 
-#: resources/views/backend/general.phtml:78
+#: resources/views/backend/general.phtml:76
 msgid "Cookie Expire"
 msgstr ""
 
-#: resources/views/backend/general.phtml:82
+#: resources/views/backend/general.phtml:80
 msgid "Cookie Path"
 msgstr ""
 
-#: resources/views/backend/general.phtml:86
+#: resources/views/backend/general.phtml:84
 msgid "System Timezone"
 msgstr ""
 
-#: resources/views/backend/general.phtml:95
+#: resources/views/backend/general.phtml:93
 msgid "API Key"
 msgstr ""
 
 #: resources/views/backend/index.phtml:22
 #: resources/views/backend/index.phtml:27
-#: resources/views/backend/layouts/admin-layout.phtml:138
+#: resources/views/backend/layouts/admin-layout.phtml:141
 msgid "Dashboard"
 msgstr ""
 
@@ -1798,86 +2279,90 @@ msgid "Control panel"
 msgstr ""
 
 #: resources/views/backend/index.phtml:26
-#: resources/views/backend/layouts/admin-layout.phtml:144
+#: resources/views/backend/layouts/admin-layout.phtml:147
 msgid "Home"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:76
+#: resources/views/backend/layouts/admin-layout.phtml:77
 msgid "Toggle navigation"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:93
+#: resources/views/backend/layouts/admin-layout.phtml:94
 msgid "Member since"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:103
+#: resources/views/backend/layouts/admin-layout.phtml:106
 msgid "Switch back"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:107
+#: resources/views/backend/layouts/admin-layout.phtml:110
 msgid "Logout"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:129
+#: resources/views/backend/layouts/admin-layout.phtml:132
 msgid "Online"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:134
+#: resources/views/backend/layouts/admin-layout.phtml:137
 msgid "MAIN NAVIGATION"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:145
-#: resources/views/backend/snapshot.phtml:36
+#: resources/views/backend/layouts/admin-layout.phtml:148
+#: resources/views/backend/snapshot.phtml:35
 msgid "System Report"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:151
+#: resources/views/backend/layouts/admin-layout.phtml:154
 msgid "Flush Cache"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:164
+#: resources/views/backend/layouts/admin-layout.phtml:167
 msgid "Manage"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:180
-#: resources/views/backend/layouts/admin-layout.phtml:200
-#: resources/views/backend/layouts/admin-layout.phtml:250
+#: resources/views/backend/layouts/admin-layout.phtml:183
+#: resources/views/backend/layouts/admin-layout.phtml:203
+#: resources/views/backend/layouts/admin-layout.phtml:260
 msgid "Add New"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:199
+#: resources/views/backend/layouts/admin-layout.phtml:202
 msgid "All"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:249
+#: resources/views/backend/layouts/admin-layout.phtml:244
+msgid "Vihzhuo"
+msgstr ""
+
+#: resources/views/backend/layouts/admin-layout.phtml:259
 msgid "All Users"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:251
-#: resources/views/backend/layouts/admin-layout.phtml:258
+#: resources/views/backend/layouts/admin-layout.phtml:261
+#: resources/views/backend/layouts/admin-layout.phtml:269
 msgid "Your Profile"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:265
+#: resources/views/backend/layouts/admin-layout.phtml:277
 msgid "Options"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:271
+#: resources/views/backend/layouts/admin-layout.phtml:283
 msgid "General"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:272
+#: resources/views/backend/layouts/admin-layout.phtml:284
 msgid "Reading"
 msgstr ""
 
-#: resources/views/backend/layouts/admin-layout.phtml:299
+#: resources/views/backend/layouts/admin-layout.phtml:311
 msgid "Login expires in "
 msgstr ""
 
-#: resources/views/backend/reading.phtml:57
+#: resources/views/backend/reading.phtml:55
 msgid "Charset"
 msgstr ""
 
-#: resources/views/backend/reading.phtml:61
+#: resources/views/backend/reading.phtml:59
 msgid "Content per Page"
 msgstr ""

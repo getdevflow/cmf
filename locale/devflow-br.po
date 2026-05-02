@@ -1,15 +1,16 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow CMF\n"
 "POT-Creation-Date: 2026-05-01 16:56-0700\n"
-"PO-Revision-Date: 2026-05-01 16:57-0700\n"
+"PO-Revision-Date: 2026-05-01 16:56-0700\n"
 "Last-Translator: Joshua Parker <joshua@joshuaparker.dev>\n"
 "Language-Team: Joshua Parker\n"
-"Language: en_US\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Domain: devflow\n"
 "X-Generator: Poedit 3.8\n"
 "X-Poedit-Basepath: ..\n"
@@ -23,222 +24,271 @@ msgstr ""
 
 #: Cms/Application/Http/Middleware/RestApiMiddleware.php:55
 msgid "Unauthorized."
-msgstr ""
+msgstr "Não autorizado."
 
 #: core/Domain/Content/Content.php:234
+#, fuzzy
 msgid "Content title cannot be empty."
-msgstr ""
+msgstr "O título do conteúdo não pode estar vazio."
 
 #: core/Domain/Content/Content.php:250
+#, fuzzy
 msgid "Content slug cannot be empty."
-msgstr ""
+msgstr "O conteúdo slug não pode estar vazio."
 
 #: core/Domain/Content/Content.php:277
+#, fuzzy
 msgid "Content author cannot be empty."
-msgstr ""
+msgstr "O autor de conteúdo não pode estar vazio."
 
 #: core/Domain/Content/Content.php:291
+#, fuzzy
 msgid "Content type cannot be empty."
-msgstr ""
+msgstr "O tipo de conteúdo não pode ser vazio."
 
 #: core/Domain/Content/Content.php:338
+#, fuzzy
 msgid "Content sidebar must be an absolute integer."
-msgstr ""
+msgstr "A barra lateral de conteúdo deve ser um inteiro absoluto."
 
 #: core/Domain/Content/Content.php:352
+#, fuzzy
 msgid "Show in menu must be an absolute integer."
-msgstr ""
+msgstr "Mostrar no menu deve ser um inteiro absoluto."
 
 #: core/Domain/Content/Content.php:366
+#, fuzzy
 msgid "Show in search must be an absolute integer."
-msgstr ""
+msgstr "Mostrar na busca deve ser um inteiro absoluto."
 
 #: core/Domain/Content/Content.php:393
+#, fuzzy
 msgid "Content status cannot be empty."
-msgstr ""
+msgstr "O status de conteúdo não pode estar vazio."
 
 #: core/Domain/Content/Content.php:407
+#, fuzzy
 msgid "Content published cannot be empty."
-msgstr ""
+msgstr "O conteúdo publicado não pode ser vazio."
 
 #: core/Domain/Content/Content.php:421
+#, fuzzy
 msgid "Content published gmt cannot be empty."
-msgstr ""
+msgstr "Conteúdo publicado GMT não pode estar vazio."
 
 #: core/Domain/Content/Content.php:467
+#, fuzzy
 msgid "Content id cannot be null."
-msgstr ""
+msgstr "Content ID não pode ser nulo."
 
 #: core/Domain/ContentType/ContentType.php:85
+#, fuzzy
 msgid "Content Type Title cannot be null."
-msgstr ""
+msgstr "Tipo de conteúdo Título não pode ser nulo."
 
 #: core/Domain/ContentType/ContentType.php:106
+#, fuzzy
 msgid "Content Type Slug cannot be null."
-msgstr ""
+msgstr "O Tipo de Conteúdo Slug não pode ser nulo."
 
 #: core/Domain/ContentType/ContentType.php:124
+#, fuzzy
 msgid "Content Type Description cannot be null."
-msgstr ""
+msgstr "A Descrição do Tipo de Conteúdo não pode ser nula."
 
 #: core/Domain/ContentType/ContentType.php:144
+#, fuzzy
 msgid "Content Type ID cannot be null."
-msgstr ""
+msgstr "O ID do Tipo de Conteúdo não pode ser nulo."
 
 #: core/Domain/Product/Product.php:227
+#, fuzzy
 msgid "Product title cannot be empty."
-msgstr ""
+msgstr "O título do produto não pode estar vazio."
 
 #: core/Domain/Product/Product.php:243
+#, fuzzy
 msgid "Product slug cannot be empty."
-msgstr ""
+msgstr "O slug do produto não pode ser vazio."
 
 #: core/Domain/Product/Product.php:259
+#, fuzzy
 msgid "Product body cannot be empty."
-msgstr ""
+msgstr "O corpo do produto não pode ficar vazio."
 
 #: core/Domain/Product/Product.php:273
+#, fuzzy
 msgid "Product author cannot be empty."
-msgstr ""
+msgstr "O autor do produto não pode ficar vazio."
 
 #: core/Domain/Product/Product.php:287
+#, fuzzy
 msgid "Product sku cannot be empty."
-msgstr ""
+msgstr "O SKU do produto não pode estar vazio."
 
 #: core/Domain/Product/Product.php:324
+#, fuzzy
 msgid "Product show in menu must be an absolute value."
-msgstr ""
+msgstr "A exibição do produto no cardápio deve ser um valor absoluto."
 
 #: core/Domain/Product/Product.php:340
+#, fuzzy
 msgid "Product show in search must be an absolute value."
-msgstr ""
+msgstr "A exibição de produto na busca deve ser um valor absoluto."
 
 #: core/Domain/Product/Product.php:367
+#, fuzzy
 msgid "Product status cannot be empty."
-msgstr ""
+msgstr "O status do produto não pode ser vazio."
 
 #: core/Domain/Product/Product.php:390
+#, fuzzy
 msgid "Product published date cannot be empty."
-msgstr ""
+msgstr "A data de publicação do produto não pode estar vazia."
 
 #: core/Domain/Product/Product.php:404
+#, fuzzy
 msgid "Product published gmt date cannot be empty."
-msgstr ""
+msgstr "A data GMT publicada pelo produto não pode estar vazia."
 
 #: core/Domain/Product/Product.php:442
+#, fuzzy
 msgid "Product id cannot be null."
-msgstr ""
+msgstr "O id do produto não pode ser nulo."
 
 #: core/Domain/Site/Site.php:152
+#, fuzzy
 msgid "Site name cannot be empty."
-msgstr ""
+msgstr "O nome do site não pode estar vazio."
 
 #: core/Domain/Site/Site.php:170
+#, fuzzy
 msgid "Site slug cannot be empty."
-msgstr ""
+msgstr "O slug do site não pode estar vazio."
 
 #: core/Domain/Site/Site.php:186 core/Shared/Helpers/site.php:593
+#, fuzzy
 msgid "Site domain cannot be empty."
-msgstr ""
+msgstr "O domínio do site não pode estar vazio."
 
 #: core/Domain/Site/Site.php:214
+#, fuzzy
 msgid "Site path cannot be empty."
-msgstr ""
+msgstr "O caminho do local não pode estar vazio."
 
 #: core/Domain/Site/Site.php:230
 msgid "Owner cannot be empty."
-msgstr ""
+msgstr "O proprietário não pode ser vazio."
 
 #: core/Domain/Site/Site.php:246
+#, fuzzy
 msgid "Site status cannot be empty."
-msgstr ""
+msgstr "O status do local não pode estar vazio."
 
 #: core/Domain/Site/Site.php:278
+#, fuzzy
 msgid "Site id cannot be null."
-msgstr ""
+msgstr "O ID do site não pode ser nulo."
 
 #: core/Domain/User/Enum/UserStatus.php:19
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 #: core/Domain/User/Enum/UserStatus.php:20
 msgid "Inactive"
-msgstr ""
+msgstr "Inativo"
 
 #: core/Domain/User/Enum/UserStatus.php:21
 msgid "Blocked"
-msgstr ""
+msgstr "Bloqueado"
 
 #: core/Domain/User/Enum/UserStatus.php:22
 msgid "Spammer"
-msgstr ""
+msgstr "Spammer"
 
 #: core/Domain/User/User.php:186
+#, fuzzy
 msgid "Login/Username cannot be null."
-msgstr ""
+msgstr "Login/Nome de usuário não pode ser nulo."
 
 #: core/Domain/User/User.php:202
+#, fuzzy
 msgid "Email address cannot be null."
-msgstr ""
+msgstr "Endereço de e-mail não pode ser nulo."
 
 #: core/Domain/User/User.php:218
+#, fuzzy
 msgid "Name cannot be null."
-msgstr ""
+msgstr "O nome não pode ser nulo."
 
 #: core/Domain/User/User.php:234
+#, fuzzy
 msgid "Token cannot be null."
-msgstr ""
+msgstr "Token não pode ser nulo."
 
 #: core/Domain/User/User.php:250
+#, fuzzy
 msgid "Password cannot be null."
-msgstr ""
+msgstr "A senha não pode ser nula."
 
 #: core/Domain/User/User.php:280
+#, fuzzy
 msgid "Timezone cannot be null."
-msgstr ""
+msgstr "O fuso horário não pode ser nulo."
 
 #: core/Domain/User/User.php:294
+#, fuzzy
 msgid "Date format cannot be null."
-msgstr ""
+msgstr "O formato de data não pode ser nulo."
 
 #: core/Domain/User/User.php:308
+#, fuzzy
 msgid "Time format cannot be null."
-msgstr ""
+msgstr "O formato de tempo não pode ser nulo."
 
 #: core/Domain/User/User.php:322
+#, fuzzy
 msgid "Locale cannot be null."
-msgstr ""
+msgstr "Localização não pode ser nula."
 
 #: core/Domain/User/User.php:352
+#, fuzzy
 msgid "User id cannot be null."
-msgstr ""
+msgstr "O ID de usuário não pode ser nulo."
 
 #: core/Domain/User/User.php:366
+#, fuzzy
 msgid "User meta cannot be empty."
-msgstr ""
+msgstr "Meta do usuário não pode ser vazio."
 
 #: core/Infrastructure/Http/Controllers/AdminAuthController.php:105
 msgid "Login"
-msgstr ""
+msgstr "Entrar"
 
 #: core/Infrastructure/Http/Controllers/AdminAuthController.php:142
+#, fuzzy
 msgid "You are already logged out."
-msgstr ""
+msgstr "Você já está deslogado."
 
 #: core/Infrastructure/Http/Controllers/AdminAuthController.php:174
 #: core/Infrastructure/Http/Controllers/AdminAuthController.php:193
+#, fuzzy
 msgid "Request error."
-msgstr ""
+msgstr "Solicito erro."
 
 #: core/Infrastructure/Http/Controllers/AdminAuthController.php:198
+#, fuzzy
 msgid ""
 "A new password was sent to your email. May take a few minutes to arrive, so "
 "please be patient"
 msgstr ""
+"Uma nova senha foi enviada para seu e-mail. Pode demorar alguns minutos para "
+"chegar, então por favor, tenha paciência"
 
 #: core/Infrastructure/Http/Controllers/AdminAuthController.php:208
+#, fuzzy
 msgid "Password reset exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de redefinição de senha ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminContentController.php:105
 #: core/Infrastructure/Http/Controllers/AdminContentController.php:176
@@ -280,46 +330,50 @@ msgstr ""
 #: core/Infrastructure/Http/Controllers/PageBuilderController.php:62
 #: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:49
 msgid "Access denied."
-msgstr ""
+msgstr "Acesso negado."
 
 #: core/Infrastructure/Http/Controllers/AdminContentController.php:115
-#, php-format
+#, fuzzy, php-format
 msgid "Create %s Content"
-msgstr ""
+msgstr "Criar %s Conteúdo"
 
 #: core/Infrastructure/Http/Controllers/AdminContentController.php:222
+#, fuzzy
 msgid "Content not found."
-msgstr ""
+msgstr "Conteúdo não encontrado."
 
 #: core/Infrastructure/Http/Controllers/AdminContentController.php:231
 #, php-format
 msgid "%s Content"
-msgstr ""
+msgstr "Conteúdo do %s"
 
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:77
 msgid "Content Types"
-msgstr ""
+msgstr "Tipos de conteúdo"
 
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:131
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:139
+#, fuzzy
 msgid "The content type does not exist."
-msgstr ""
+msgstr "O tipo de conteúdo não existe."
 
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:85
+#, fuzzy
 msgid "System Snapshot"
-msgstr ""
+msgstr "Snapshot do Sistema"
 
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:129
 msgid "Cache flushed successfully."
-msgstr ""
+msgstr "Cache flush com sucesso."
 
 #: core/Infrastructure/Http/Controllers/AdminMediaController.php:74
 msgid "Media Library"
-msgstr ""
+msgstr "Biblioteca de mídia"
 
 #: core/Infrastructure/Http/Controllers/AdminMediaController.php:143
+#, fuzzy
 msgid "elFinder"
-msgstr ""
+msgstr "elFinder"
 
 #: core/Infrastructure/Http/Controllers/AdminOptionsController.php:61
 #: core/Infrastructure/Http/Controllers/AdminOptionsController.php:101
@@ -327,57 +381,63 @@ msgstr ""
 #: core/Infrastructure/Http/Controllers/AdminOptionsController.php:222
 #: core/Infrastructure/Http/Controllers/AdminOptionsController.php:289
 msgid "Access denied"
-msgstr ""
+msgstr "Acesso negado"
 
 #: core/Infrastructure/Http/Controllers/AdminOptionsController.php:171
+#, fuzzy
 msgid "General options exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu exceção de opções gerais e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminOptionsController.php:201
 msgid "General Options"
-msgstr ""
+msgstr "Opções Gerais"
 
 #: core/Infrastructure/Http/Controllers/AdminOptionsController.php:266
+#, fuzzy
 msgid "Reading options exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu uma exceção de opções de leitura e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminOptionsController.php:296
+#, fuzzy
 msgid "Reading Options"
-msgstr ""
+msgstr "Opções de leitura"
 
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:52
 msgid "Plugins"
-msgstr ""
+msgstr "Plugins"
 
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:78
 msgid "Plugin activated."
-msgstr ""
+msgstr "Plugin ativado."
 
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:82
+#, fuzzy
 msgid "Plugin activation exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de ativação do plugin ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:110
 msgid "Plugin deactivated."
-msgstr ""
+msgstr "Plugin desativado."
 
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:115
+#, fuzzy
 msgid "Plugin deactivation exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de desativação de plugins ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminProductController.php:73
 msgid "Products"
-msgstr ""
+msgstr "Produtos"
 
 #: core/Infrastructure/Http/Controllers/AdminProductController.php:133
 msgid "Create Product"
-msgstr ""
+msgstr "Criar Produto"
 
 #: core/Infrastructure/Http/Controllers/AdminProductController.php:201
 #: core/Infrastructure/Http/Controllers/AdminProductController.php:223
 #: core/Infrastructure/Services/Product/ProductService.php:75
+#, fuzzy
 msgid "The product does not exist."
-msgstr ""
+msgstr "O produto não existe."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:70
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:124
@@ -387,202 +447,238 @@ msgstr ""
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:334
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:391
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:454
+#, fuzzy
 msgid "Multisite is not enabled."
-msgstr ""
+msgstr "Multisite não está ativado."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:79
+#, fuzzy
 msgid "Insertion error occurred."
-msgstr ""
+msgstr "Ocorreu erro de inserção."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:95
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:174
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:85
+#, fuzzy
 msgid "Insertion exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de inserção ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:137
 msgid "Sites"
-msgstr ""
+msgstr "Sites"
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:146
+#, fuzzy
 msgid "Exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu exceção e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:150
+#, fuzzy
 msgid "Content types error."
-msgstr ""
+msgstr "Erro de tipos de conteúdo."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:186
+#, fuzzy
 msgid "Change error occurred."
-msgstr ""
+msgstr "Ocorreu erro de mudança."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:203
 #: core/Infrastructure/Services/Content/ContentService.php:170
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:120
 #: core/Infrastructure/Services/Product/ProductService.php:150
+#, fuzzy
 msgid "Change exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu exceção de mudança e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:243
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:263
+#, fuzzy
 msgid "The site does not exist."
-msgstr ""
+msgstr "O local não existe."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:297
+#, fuzzy
 msgid "The action is not allowed."
-msgstr ""
+msgstr "A ação não é permitida."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:308
+#, fuzzy
 msgid "Manage System Users"
-msgstr ""
+msgstr "Gerencie Usuários do Sistema"
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:340
+#, fuzzy
 msgid "You cannot submit an empty site id."
-msgstr ""
+msgstr "Você não pode enviar um ID de site vazio."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:346
+#, fuzzy
 msgid "You cannot submit an empty user role."
-msgstr ""
+msgstr "Você não pode enviar uma vaga de usuário vazia."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:356
 msgid "An error occurred."
-msgstr ""
+msgstr "Ocorreu um erro."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:426
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:144
+#, fuzzy
 msgid "Delete exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de exclusão ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:470
+#, fuzzy
 msgid "This action is not allowed."
-msgstr ""
+msgstr "Essa ação não é permitida."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:481
+#, fuzzy
 msgid "A site check exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu uma exceção de verificação de local e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:504
+#, fuzzy
 msgid "A site deletion exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu uma exceção por exclusão de sites que foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:77
 msgid "Themes"
-msgstr ""
+msgstr "Temas"
 
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:103
+#, fuzzy
 msgid "Theme activated."
-msgstr ""
+msgstr "Tema ativado."
 
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:107
+#, fuzzy
 msgid "Theme activation exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu uma exceção de ativação de tema e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:137
+#, fuzzy
 msgid "Theme deactivated."
-msgstr ""
+msgstr "Tema desativado."
 
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:141
+#, fuzzy
 msgid "Theme deactivation exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu uma exceção de desativação de tema e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:97
-#, php-format
+#, fuzzy, php-format
 msgid "Passwords cannot be less than %s characters."
-msgstr ""
+msgstr "Senhas não podem ter menos de %s caracteres."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:120
+#, fuzzy
 msgid "Username cannot be empty or null."
-msgstr ""
+msgstr "O nome de usuário não pode ser vazio ou nulo."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:131
+#, fuzzy
 msgid "User check exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de verificação do usuário ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:204
 msgid "Create User"
-msgstr ""
+msgstr "Criar usuário"
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:236
+#, fuzzy
 msgid "Users"
-msgstr ""
+msgstr "Usuários"
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:243
+#, fuzzy
 msgid "Query exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de consulta ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:247
+#, fuzzy
 msgid "Users error"
-msgstr ""
+msgstr "Erro do usuário"
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:265
 msgid "Permission denied."
-msgstr ""
+msgstr "Permissão negada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:298
+#, fuzzy
 msgid "User change exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de mudança de usuário ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:336
 msgid "View User"
-msgstr ""
+msgstr "Ver Usuário"
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:350
 msgid "The user does not exist."
-msgstr ""
+msgstr "O usuário não existe."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:409
+#, fuzzy
 msgid "A removal exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu uma exceção de remoção e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:467
 msgid "User not found."
-msgstr ""
+msgstr "Usuário não encontrado."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:474
-#, php-format
+#, fuzzy, php-format
 msgid "Password successfully updated for <strong>%s</strong>."
-msgstr ""
+msgstr "Senha atualizada com sucesso para <strong>%s</strong>."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:490
+#, fuzzy
 msgid "Reset password exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de redefinição de senha ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:521
+#, fuzzy
 msgid "An update error occurred."
-msgstr ""
+msgstr "Ocorreu um erro de atualização."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:537
+#, fuzzy
 msgid "An update exception occurred and was logged."
-msgstr ""
+msgstr "Uma exceção de atualização ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:545
 msgid "User Profile"
-msgstr ""
+msgstr "Perfil do Usuário"
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:632
+#, fuzzy
 msgid "User switching was successful."
-msgstr ""
+msgstr "A troca de usuários foi bem-sucedida."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:645
+#, fuzzy
 msgid "User switching exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de troca de usuário ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:679
+#, fuzzy
 msgid "Cookie is not properly set for user switching."
-msgstr ""
+msgstr "O cookie não está configurado corretamente para a troca de usuários."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:741
+#, fuzzy
 msgid "Switching back to previous user session was successful."
-msgstr ""
+msgstr "Voltar para a sessão anterior do usuário foi bem-sucedido."
 
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:754
+#, fuzzy
 msgid "User switch back exception occurred and was logged."
-msgstr ""
+msgstr "A exceção de retorno de troca de usuários ocorreu e foi registrada."
 
 #: core/Infrastructure/Http/Controllers/ApiController.php:35
 #: core/Infrastructure/Http/Controllers/ApiController.php:89
+#, fuzzy
 msgid "Database table does not exist."
-msgstr ""
+msgstr "Tabela de banco de dados não existe."
 
 #: core/Infrastructure/Http/Controllers/ApiController.php:66
 #: core/Infrastructure/Http/Controllers/ApiController.php:123
@@ -601,395 +697,472 @@ msgstr ""
 #: core/Infrastructure/Http/Controllers/UserRestController.php:88
 #: core/Infrastructure/Http/Controllers/UserRestController.php:113
 msgid "No data."
-msgstr ""
+msgstr "Sem informações."
 
 #: core/Infrastructure/Http/Controllers/ContentRestController.php:169
 #: core/Infrastructure/Http/Controllers/ProductRestController.php:169
+#, fuzzy
 msgid "Resource deleted."
-msgstr ""
+msgstr "Recursos excluídos."
 
 #: core/Infrastructure/Http/Controllers/ContentRestController.php:175
 #: core/Infrastructure/Http/Controllers/ProductRestController.php:175
 #: core/Infrastructure/Http/Controllers/UserRestController.php:142
 msgid "Bad request."
-msgstr ""
+msgstr "Erro no pedido."
 
 #: core/Infrastructure/Http/Controllers/UserRestController.php:145
+#, fuzzy
 msgid "User removed from site."
-msgstr ""
+msgstr "Usuário removido do site."
 
 #: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:83
 #: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:111
+#, fuzzy
 msgid "Website Manager"
-msgstr ""
+msgstr "Gerente de Sites"
 
 #: core/Infrastructure/Providers/CmsHelperServiceProvider.php:125
-#, php-format
+#, fuzzy, php-format
 msgid "Devflow %s"
-msgstr ""
+msgstr "Devflow %s"
 
 #: core/Infrastructure/Services/Content/ContentService.php:96
+#, fuzzy
 msgid "The content does not exist."
-msgstr ""
+msgstr "O conteúdo não existe."
 
 #: core/Infrastructure/Services/Content/ContentService.php:123
+#, fuzzy
 msgid "Content added successfully."
-msgstr ""
+msgstr "Conteúdo adicionado com sucesso."
 
 #: core/Infrastructure/Services/Content/ContentService.php:136
+#, fuzzy
 msgid "Could not create content. Please try again later."
 msgstr ""
+"Não foi possível criar conteúdo. Por favor, tente novamente mais tarde."
 
 #: core/Infrastructure/Services/Content/ContentService.php:196
 #: core/Infrastructure/Services/Product/ProductService.php:176
+#, fuzzy
 msgid "Removal of featured image was successful."
-msgstr ""
+msgstr "A remoção da imagem em destaque foi bem-sucedida."
 
 #: core/Infrastructure/Services/Content/ContentService.php:206
 #: core/Infrastructure/Services/Product/ProductService.php:186
+#, fuzzy
 msgid "Removal exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu exceção de remoção e foi registrada."
 
 #: core/Infrastructure/Services/Content/ContentService.php:255
 #: core/Infrastructure/Services/Content/ContentService.php:283
 #: core/Infrastructure/Services/Product/ProductService.php:230
+#, fuzzy
 msgid "A deletion exception occurred and was logged."
-msgstr ""
+msgstr "Ocorreu uma exceção por exclusão e foi registrada."
 
 #: core/Infrastructure/Services/Content/ContentService.php:273
 #: core/Infrastructure/Services/Product/ProductService.php:220
+#, fuzzy
 msgid "Removal was successful."
-msgstr ""
+msgstr "A remoção foi bem-sucedida."
 
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:50
+#, fuzzy
 msgid "Error fetching content types."
-msgstr ""
+msgstr "Tipos de conteúdo ao buscar erros."
 
 #: core/Infrastructure/Services/Product/ProductService.php:102
 msgid "Product added successfully."
-msgstr ""
+msgstr "Produto adicionado com sucesso."
 
 #: core/Infrastructure/Services/Product/ProductService.php:116
+#, fuzzy
 msgid "Could not create product. Please try again later."
-msgstr ""
+msgstr "Não consegui criar produto. Por favor, tente novamente mais tarde."
 
 #: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:63
-#, php-format
+#, fuzzy, php-format
 msgid "No row found for site \"%s\" and user \"%s\"."
 msgstr ""
+"Não foi encontrada nenhuma linha para o site \"%s\" e o usuário \"%s\"."
 
 #: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:119
+#, fuzzy
 msgid "User attribute not found"
-msgstr ""
+msgstr "Atributo do usuário não encontrado"
 
 #: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:128
+#, fuzzy
 msgid "Attribute patch callback must return an AttributeBag instance."
 msgstr ""
+"O callback de patch de atributos deve retornar uma instância AttributeBag."
 
 #: core/Shared/Helpers/auth.php:176
+#, fuzzy
 msgid "Sorry, there was an error."
-msgstr ""
+msgstr "Desculpe, houve um erro."
 
 #: core/Shared/Helpers/auth.php:201
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Login was successful. Welcome <strong>%s</strong> to the admin dashboard."
 msgstr ""
+"O login foi bem-sucedido. Bem-vindo <strong>%s</strong> ao painel de "
+"administração."
 
 #: core/Shared/Helpers/auth.php:233
+#, fuzzy
 msgid "<strong>ERROR</strong>: The username/email field is empty."
-msgstr ""
+msgstr "<strong>ERRO</strong>: O campo de nome de usuário/e-mail está vazio."
 
 #: core/Shared/Helpers/auth.php:242
 msgid "<strong>ERROR</strong>: The password field is empty."
-msgstr ""
+msgstr "<strong> ERRO </strong>: O campo da senha está vazio."
 
 #: core/Shared/Helpers/auth.php:256
 msgid "<strong>ERROR</strong>: Invalid email address."
-msgstr ""
+msgstr "<strong>ERRO</strong>: E-mail Inválido."
 
 #: core/Shared/Helpers/auth.php:268
 msgid "<strong>ERROR</strong>: Invalid username."
-msgstr ""
+msgstr "<strong>ERRO:</strong> Usuário Inválido."
 
 #: core/Shared/Helpers/auth.php:279
 msgid "<strong>ERROR</strong>: The password you entered is incorrect."
-msgstr ""
+msgstr "<strong>ERRO</strong>: A senha que digitou está incorreta."
 
 #: core/Shared/Helpers/content-type.php:270
+#, fuzzy
 msgid "Invalid content_type id."
-msgstr ""
+msgstr "Documento de content_type inválido."
 
 #: core/Shared/Helpers/content-type.php:441
+#, fuzzy
 msgid "Invalid content type id."
-msgstr ""
+msgstr "ID de tipo de conteúdo inválido."
 
 #: core/Shared/Helpers/content-type.php:510
+#, fuzzy
 msgid "The system was not able to delete the content type."
-msgstr ""
+msgstr "O sistema não conseguiu excluir o tipo de conteúdo."
 
 #: core/Shared/Helpers/content.php:1768 core/Shared/Helpers/content.php:2331
+#, fuzzy
 msgid "Invalid content id."
-msgstr ""
+msgstr "ID de conteúdo inválido."
 
 #: core/Shared/Helpers/content.php:1915
+#, fuzzy
 msgid "Content author cannot be null or empty."
-msgstr ""
+msgstr "O autor de conteúdo não pode ser nulo ou vazio."
 
 #: core/Shared/Helpers/content.php:2019
+#, fuzzy
 msgid "The title and content are null."
-msgstr ""
+msgstr "O título e o conteúdo são nulos."
 
 #: core/Shared/Helpers/content.php:2173
+#, fuzzy
 msgid "Could not insert content into the content table."
-msgstr ""
+msgstr "Não foi possível inserir conteúdo na tabela de conteúdo."
 
 #: core/Shared/Helpers/content.php:2222
+#, fuzzy
 msgid "Could not update content within the content table."
-msgstr ""
+msgstr "Não foi possível atualizar o conteúdo dentro da tabela de conteúdo."
 
 #: core/Shared/Helpers/core.php:751
 msgid "Unknown"
-msgstr ""
+msgstr "Desconhecido"
 
 #: core/Shared/Helpers/core.php:1435
-#, php-format
+#, fuzzy, php-format
+#| msgid ""
+#| "Devflow release %s is available for download/upgrade. Before upgrading, "
+#| "make sure to backup your system."
 msgid ""
 "Devflow release %s is available for download or upgrade. Before upgrading, "
 "make sure to backup your system."
 msgstr ""
+"A versão %s do Devflow está disponível para download ou atualização. Antes "
+"de atualizar, certifique-se de fazer o backup do seu sistema."
 
 #: core/Shared/Helpers/db.php:618
-#, php-format
+#, fuzzy, php-format
 msgid "Reassign content error: %s"
-msgstr ""
+msgstr "Erro de reatribuição de conteúdo: %s"
 
 #: core/Shared/Helpers/db.php:830 core/Shared/Helpers/db.php:931
 msgid "Hi there,"
-msgstr ""
+msgstr "Olá,"
 
 #: core/Shared/Helpers/db.php:833
-#, php-format
+#, fuzzy, php-format
 msgid "Welcome to %s! Here's how to log in: "
-msgstr ""
+msgstr "Bem-vindo à %s! Veja como fazer login: "
 
 #: core/Shared/Helpers/db.php:838 core/Shared/Helpers/db.php:939
 #, php-format
 msgid "Username: %s"
-msgstr ""
+msgstr "Usuário: %s"
 
 #: core/Shared/Helpers/db.php:839 core/Shared/Helpers/db.php:940
 #: core/Shared/Helpers/user.php:1354 core/Shared/Helpers/user.php:1416
 #, php-format
 msgid "Password: %s"
-msgstr ""
+msgstr "Senha: %s"
 
 #: core/Shared/Helpers/db.php:842 core/Shared/Helpers/db.php:943
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "If you have any problems, please contact us at <a href=\"mailto:%s\">%s</a>."
 msgstr ""
+"Se você tiver algum problema, entre em contato conosco pelo <a href=\"mailto:"
+"%s\">%s</a>."
 
 #: core/Shared/Helpers/db.php:848
 msgid "New Account"
-msgstr ""
+msgstr "Nova Conta"
 
 #: core/Shared/Helpers/db.php:856
-#, php-format
+#, fuzzy, php-format
 msgid "[%s] New Account"
-msgstr ""
+msgstr "[%s] Nova Conta"
 
 #: core/Shared/Helpers/db.php:934
-#, php-format
+#, fuzzy, php-format
 msgid "Your password has been reset for %s: "
-msgstr ""
+msgstr "Sua senha foi redefinida para %s: "
 
 #: core/Shared/Helpers/db.php:949 core/Shared/Helpers/user.php:1363
 msgid "Password Reset"
-msgstr ""
+msgstr "Redefinir Senha"
 
 #: core/Shared/Helpers/db.php:957
 #, php-format
 msgid "[%s] Password Reset"
-msgstr ""
+msgstr "[%s] Redefinir Senha"
 
 #: core/Shared/Helpers/hook.php:115
 msgid "Powered by"
-msgstr ""
+msgstr "Desenvolvido por"
 
 #: core/Shared/Helpers/hook.php:788
+#, fuzzy
+#| msgid ""
+#| "Your system is currently in `dev` mode. Please remember to set your "
+#| "system to `prod` mode after testing. When `prod` mode is set, this "
+#| "warning message will disappear."
 msgid ""
 "Your system is currently in dev mode. Please remember to set your system to "
 "prod mode after testing. When prod mode is set, this warning message will "
 "disappear."
 msgstr ""
+"Seu sistema está atualmente em modo de desenvolvimento. Por favor, lembre-se "
+"de configurar seu sistema para o modo de produção após os testes. Quando o "
+"modo de produção for configurado, esta mensagem de aviso desaparecerá."
 
 #: core/Shared/Helpers/product.php:1424 core/Shared/Helpers/product.php:2011
+#, fuzzy
 msgid "Invalid product id."
-msgstr ""
+msgstr "ID do produto inválido."
 
 #: core/Shared/Helpers/product.php:1561
+#, fuzzy
 msgid "Product author cannot be null or empty."
-msgstr ""
+msgstr "O autor do produto não pode ser nulo ou vazio."
 
 #: core/Shared/Helpers/product.php:1697
+#, fuzzy
 msgid "The title and body should not be null."
-msgstr ""
+msgstr "O título e o corpo não devem ser nulos."
 
 #: core/Shared/Helpers/product.php:1852
+#, fuzzy
 msgid "Could not insert product into the product table."
-msgstr ""
+msgstr "Não foi possível inserir o produto na tabela de produtos."
 
 #: core/Shared/Helpers/product.php:1901
+#, fuzzy
 msgid "Could not update product within the product table."
-msgstr ""
+msgstr "Não foi possível atualizar o produto dentro da tabela de produtos."
 
 #: core/Shared/Helpers/site.php:518 core/Shared/Helpers/site.php:965
+#, fuzzy
 msgid "The ID of this entity is invalid."
-msgstr ""
+msgstr "O ID desta entidade é inválido."
 
 #: core/Shared/Helpers/site.php:602
 msgid "Sorry, that site already exists!"
-msgstr ""
+msgstr "Desculpe, este site já existe!"
 
 #: core/Shared/Helpers/site.php:702
+#, fuzzy
 msgid "Sorry, that site domain and path is already used."
-msgstr ""
+msgstr "Desculpe, esse domínio e caminho do site já estão usados."
 
 #: core/Shared/Helpers/site.php:1010
+#, fuzzy
 msgid "Site does not exist."
-msgstr ""
+msgstr "O local não existe."
 
 #: core/Shared/Helpers/site.php:1094
+#, fuzzy
 msgid "You are not allowed to delete a super administrator account."
-msgstr ""
+msgstr "Você não pode excluir uma conta de super administrador."
 
 #: core/Shared/Helpers/site.php:1144
+#, fuzzy
 msgid "Site deletion exception occurred."
-msgstr ""
+msgstr "Ocorreu exceção por exclusão de sites."
 
 #: core/Shared/Helpers/site.php:1192
+#, fuzzy
 msgid "User delete exception occurred."
-msgstr ""
+msgstr "Ocorreu uma exceção de exclusão do usuário."
 
 #: core/Shared/Helpers/site.php:1252
+#, fuzzy
 msgid "You are not allowed to remove super admins from this site."
-msgstr ""
+msgstr "Você não pode remover super administradores deste site."
 
 #: core/Shared/Helpers/user.php:595 core/Shared/Helpers/user.php:1092
 #: core/Shared/Helpers/user.php:1099
+#, fuzzy
 msgid "Invalid user id."
-msgstr ""
+msgstr "ID de usuário inválido."
 
 #: core/Shared/Helpers/user.php:669
+#, fuzzy
 msgid "Cannot create a user with an empty username."
-msgstr ""
+msgstr "Não é possível criar um usuário com um nome de usuário vazio."
 
 #: core/Shared/Helpers/user.php:673
+#, fuzzy
 msgid "Username must be at least 3 characters long."
-msgstr ""
+msgstr "O nome de usuário deve ter pelo menos 3 caracteres."
 
 #: core/Shared/Helpers/user.php:677
 msgid "Username may not be longer than 60 characters."
-msgstr ""
+msgstr "Nome de usuário não pode ser superior a 60 caracteres."
 
 #: core/Shared/Helpers/user.php:682
+#, fuzzy
 msgid "Sorry, that username cannot be used."
-msgstr ""
+msgstr "Desculpe, esse nome de usuário não pode ser usado."
 
 #: core/Shared/Helpers/user.php:697
-#, php-format
+#, fuzzy, php-format
 msgid "Sorry, the username <strong>%s</strong> is not allowed."
-msgstr ""
+msgstr "Desculpe, o nome <strong>%s</strong> de usuário não é permitido."
 
 #: core/Shared/Helpers/user.php:737
+#, fuzzy
 msgid "Sorry, that email address cannot be used."
-msgstr ""
+msgstr "Desculpe, esse endereço de e-mail não pode ser usado."
 
 #: core/Shared/Helpers/user.php:1350
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Hello %s! You requested that your password be reset. Please see your new "
 "password below: <br />"
 msgstr ""
+"Olá %s! Você pediu que sua senha fosse redefinida. Por favor, veja sua nova "
+"senha abaixo: <br />"
 
 #: core/Shared/Helpers/user.php:1357
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "If you still have problems with logging in, please contact us at <a "
 "href=\"mailto:%s\">%s</a>."
 msgstr ""
+"Se você ainda tiver problemas para fazer login, entre em contato conosco "
+"pelo <a href=\"mailto:%s\">%s</a>."
 
 #: core/Shared/Helpers/user.php:1372
-#, php-format
+#, fuzzy, php-format
 msgid "[%s] Notice of Password Reset"
-msgstr ""
+msgstr "[%s] Aviso de Redefinição de Senha"
 
 #: core/Shared/Helpers/user.php:1411
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Hello %s! This is confirmation that your password on %s was updated to: <br /"
 ">"
 msgstr ""
+"Olá %s! Esta é a confirmação de que sua senha foi %s atualizada para: <br />"
 
 #: core/Shared/Helpers/user.php:1419
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "If you did not initiate a password change/update, please contact us at <a "
 "href=\"mailto:%s\">%s</a>."
 msgstr ""
+"Se você não iniciou uma alteração/atualização de senha, por favor, entre em "
+"contato conosco pelo <a href=\"mailto:%s\">%s</a>."
 
 #: core/Shared/Helpers/user.php:1425
+#, fuzzy
 msgid "Notice of Password Change"
-msgstr ""
+msgstr "Aviso de Mudança de Senha"
 
 #: core/Shared/Helpers/user.php:1434
 #, php-format
 msgid "[%s] Notice of Password Change"
-msgstr ""
+msgstr "[%s] Aviso de alteração de senha"
 
 #: core/Shared/Helpers/user.php:1472
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Hello %s! This is confirmation that your email on %s was updated to: <br />"
 msgstr ""
+"Olá %s! Esta é a confirmação de que seu e-mail foi %s atualizado para: <br />"
 
 #: core/Shared/Helpers/user.php:1477
 #, php-format
 msgid "Email: %s"
-msgstr ""
+msgstr "E-mail: %s"
 
 #: core/Shared/Helpers/user.php:1480
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "If you did not initiate an email change/update, please contact us at <a "
 "href=\"mailto:%s\">%s</a>."
 msgstr ""
+"Se você não iniciou uma alteração/atualização de e-mail, por favor, entre em "
+"contato conosco pelo <a href=\"mailto:%s\">%s</a>."
 
 #: core/Shared/Helpers/user.php:1486
+#, fuzzy
 msgid "Notice of Email Change"
-msgstr ""
+msgstr "Aviso de Alteração de E-mail"
 
 #: core/Shared/Helpers/user.php:1495
 #, php-format
 msgid "[%s] Notice of Email Change"
-msgstr ""
+msgstr "[%s] Aviso de alteração de e-mail"
 
 #: core/Shared/Helpers/user.php:1640
+#, fuzzy
 msgid "The password reset email has been queued for sending."
-msgstr ""
+msgstr "O e-mail de redefinição de senha foi enfileirado para envio."
 
 #: core/Shared/Services/Parsecode.php:117
 #: core/Shared/Services/Parsecode.php:145
+#, fuzzy
 msgid "Invalid parsecode name: empty name given."
-msgstr ""
+msgstr "Nome parsecado inválido: nome vazio dado."
 
 #: core/Shared/Services/Parsecode.php:124
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Invalid parsecode name: %s. Do not use spaces or reserved characters: & / < "
 "> [ ]"
 msgstr ""
+"Nome parsecodo inválido: %s. Não use espaços ou caracteres reservados: & / < "
+"> [ ]"
 
 #: resources/blocks/accordion-body/config.php:7
 #: resources/blocks/accordion-header/config.php:7
@@ -1000,56 +1173,56 @@ msgstr ""
 #: resources/blocks/carousel/config.php:6
 #: resources/blocks/content-image/config.php:6
 msgid "Component"
-msgstr ""
+msgstr "Componente"
 
 #: resources/blocks/accordion/config.php:7
 msgid "Accordion"
-msgstr ""
+msgstr "Acordeão"
 
 #: resources/blocks/accordion/config.php:12
 #: resources/blocks/carousel/config.php:12
 msgid "Number of Items"
-msgstr ""
+msgstr "Número de Itens"
 
 #: resources/blocks/alert/config.php:7
 msgid "Alert"
-msgstr ""
+msgstr "Alerta"
 
 #: resources/blocks/alert/config.php:12
 msgid "Context"
-msgstr ""
+msgstr "Contexto"
 
 #: resources/blocks/alert/config.php:14 resources/blocks/button/config.php:14
 msgid "Primary"
-msgstr ""
+msgstr "Primária"
 
 #: resources/blocks/alert/config.php:15 resources/blocks/button/config.php:15
 msgid "Secondary"
-msgstr ""
+msgstr "Secundário"
 
 #: resources/blocks/alert/config.php:16 resources/blocks/button/config.php:16
 msgid "Success"
-msgstr ""
+msgstr "Sucesso"
 
 #: resources/blocks/alert/config.php:17 resources/blocks/button/config.php:17
 msgid "Danger"
-msgstr ""
+msgstr "Perigo"
 
 #: resources/blocks/alert/config.php:18 resources/blocks/button/config.php:18
 msgid "Warning"
-msgstr ""
+msgstr "Atenção"
 
 #: resources/blocks/alert/config.php:19 resources/blocks/button/config.php:19
 msgid "Info"
-msgstr ""
+msgstr "Informação"
 
 #: resources/blocks/alert/config.php:20 resources/blocks/button/config.php:20
 msgid "Light"
-msgstr ""
+msgstr "Claro"
 
 #: resources/blocks/alert/config.php:21 resources/blocks/button/config.php:21
 msgid "Dark"
-msgstr ""
+msgstr "Escuro"
 
 #: resources/blocks/button/config.php:6 resources/blocks/divider/config.php:6
 #: resources/blocks/google-map/config.php:6
@@ -1058,365 +1231,389 @@ msgstr ""
 #: resources/blocks/spacer/config.php:6 resources/blocks/text/config.php:6
 #: resources/blocks/youtube/config.php:6
 msgid "Basic"
-msgstr ""
+msgstr "Básico"
 
 #: resources/blocks/button/config.php:7 resources/blocks/button/config.php:36
 msgid "Button"
-msgstr ""
+msgstr "Botão"
 
 #: resources/blocks/button/config.php:12
 msgid "Style"
-msgstr ""
+msgstr "Estilo"
 
 #: resources/blocks/button/config.php:26
 msgid "Size"
-msgstr ""
+msgstr "Tamanho"
 
 #: resources/blocks/button/config.php:28
 #: resources/blocks/container/config.php:15
 #: resources/blocks/grid/config.php:114
 msgid "Small"
-msgstr ""
+msgstr "Pequeno"
 
 #: resources/blocks/button/config.php:29
 #: resources/blocks/container/config.php:17
 #: resources/blocks/grid/config.php:118
 msgid "Large"
-msgstr ""
+msgstr "Grande"
 
 #: resources/blocks/button/config.php:34
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: resources/blocks/button/config.php:37
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: resources/blocks/button/config.php:42
 #: resources/blocks/forms/input/config.php:19
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: resources/blocks/card-heading/config.php:8
+#, fuzzy
 msgid "Card Heading"
-msgstr ""
+msgstr "Cabeçalho do cartão"
 
 #: resources/blocks/card-text/config.php:8
+#, fuzzy
 msgid "Card Text"
-msgstr ""
+msgstr "Texto do Cartão"
 
 #: resources/blocks/card/config.php:7
 msgid "Card"
-msgstr ""
+msgstr "Cartão"
 
 #: resources/blocks/carousel/config.php:7
 msgid "Carousel"
-msgstr ""
+msgstr "Carrossel"
 
 #: resources/blocks/container/config.php:6 resources/blocks/grid/config.php:6
 #: resources/blocks/layout-blocks-container/config.php:7
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: resources/blocks/container/config.php:7
 msgid "Container"
-msgstr ""
+msgstr "Contêiner"
 
 #: resources/blocks/container/config.php:12
 msgid "Container Width"
-msgstr ""
+msgstr "Tela mega do menu e largura do recipiente"
 
 #: resources/blocks/container/config.php:14
 #: resources/blocks/grid/config.php:116
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
 #: resources/blocks/container/config.php:16
 msgid "Medium"
-msgstr ""
+msgstr "Médio"
 
 #: resources/blocks/container/config.php:18
 msgid "Extra Large"
-msgstr ""
+msgstr "Extra grande"
 
 #: resources/blocks/container/config.php:19
 msgid "Extra Extra Large"
-msgstr ""
+msgstr "Extra Extra Grande"
 
 #: resources/blocks/container/config.php:20
 msgid "Fluid"
-msgstr ""
+msgstr "Fluido"
 
 #: resources/blocks/content-image/config.php:7
 msgid "Content Image"
-msgstr ""
+msgstr "Imagem do conteúdo"
 
 #: resources/blocks/divider/config.php:7
 msgid "Divider"
-msgstr ""
+msgstr "Divisor"
 
 #: resources/blocks/forms/checkbox/config.php:6
 #: resources/blocks/forms/form/config.php:6
 #: resources/blocks/forms/input/config.php:6
 #: resources/blocks/forms/textarea/config.php:6
 msgid "Forms"
-msgstr ""
+msgstr "Formulários"
 
 #: resources/blocks/forms/checkbox/config.php:7
 msgid "Checkbox"
-msgstr ""
+msgstr "Checkbox"
 
 #: resources/blocks/forms/checkbox/config.php:12
 #: resources/blocks/forms/input/config.php:12
 #: resources/blocks/forms/textarea/config.php:12
 msgid "Label"
-msgstr ""
+msgstr "Rótulo"
 
 #: resources/blocks/forms/checkbox/config.php:17
+#, fuzzy
 msgid "Checkbox Value"
-msgstr ""
+msgstr "Valor da Caixa de Seleção"
 
 #: resources/blocks/forms/checkbox/config.php:22
 #: resources/blocks/forms/input/config.php:40
 #: resources/blocks/forms/textarea/config.php:17
 msgid "Required?"
-msgstr ""
+msgstr "Obrigatório?"
 
 #: resources/blocks/forms/form/config.php:7
 msgid "Form"
-msgstr ""
+msgstr "Formulário"
 
 #: resources/blocks/forms/form/config.php:12
 msgid "Form ID"
-msgstr ""
+msgstr "ID do Formulário"
 
 #: resources/blocks/forms/form/config.php:17
 msgid "Form Action"
-msgstr ""
+msgstr "Formulário de Acção"
 
 #: resources/blocks/forms/input/config.php:7
 msgid "Input"
-msgstr ""
+msgstr "Entrada"
 
 #: resources/blocks/forms/input/config.php:17
 msgid "Input Type"
-msgstr ""
+msgstr "Tipo de entrada"
 
 #: resources/blocks/forms/input/config.php:20
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: resources/blocks/forms/input/config.php:21
+#, fuzzy
 msgid "Password"
-msgstr ""
+msgstr "Senha"
 
 #: resources/blocks/forms/input/config.php:22
 msgid "Hidden"
-msgstr ""
+msgstr "Escondido"
 
 #: resources/blocks/forms/input/config.php:23
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 #: resources/blocks/forms/input/config.php:24
 msgid "Telephone"
-msgstr ""
+msgstr "Telefone"
 
 #: resources/blocks/forms/input/config.php:30
 msgid "Field Name"
-msgstr ""
+msgstr "Nome do campo"
 
 #: resources/blocks/forms/input/config.php:35
 msgid "Field ID"
-msgstr ""
+msgstr "ID do Campo"
 
 #: resources/blocks/forms/input/config.php:45
 #: resources/blocks/forms/textarea/config.php:22
 msgid "Placeholder"
-msgstr ""
+msgstr "Placeholder"
 
 #: resources/blocks/forms/textarea/config.php:7
 msgid "Textarea"
-msgstr ""
+msgstr "Área de Texto"
 
 #: resources/blocks/google-map/config.php:7
 msgid "Google Maps"
-msgstr ""
+msgstr "Google Maps"
 
 #: resources/blocks/google-map/config.php:12
+#, fuzzy
 msgid "Google Map Embed Url"
-msgstr ""
+msgstr "URL de embeding do Google Maps"
 
 #: resources/blocks/grid/config.php:7
 msgid "Grid"
-msgstr ""
+msgstr "Grade"
 
 #: resources/blocks/grid/config.php:12
 msgid "Columns"
-msgstr ""
+msgstr "Colunas"
 
 #: resources/blocks/grid/config.php:35
+#, fuzzy
 msgid "On small displays"
-msgstr ""
+msgstr "Em pequenas exposições"
 
 #: resources/blocks/grid/config.php:37
 msgid "Use default layout"
-msgstr ""
+msgstr "Usar o layout padrão"
 
 #: resources/blocks/grid/config.php:38 resources/blocks/grid/config.php:63
 #: resources/blocks/grid/config.php:88
+#, fuzzy
 msgid "Columns become rows"
-msgstr ""
+msgstr "Colunas viram fileiras"
 
 #: resources/blocks/grid/config.php:60
+#, fuzzy
 msgid "On tablets"
-msgstr ""
+msgstr "Em tablets"
 
 #: resources/blocks/grid/config.php:62
+#, fuzzy
 msgid "Same layout as on small displays"
-msgstr ""
+msgstr "Mesma disposição das pequenas exposições"
 
 #: resources/blocks/grid/config.php:85
 msgid "On mobile"
-msgstr ""
+msgstr "No celular"
 
 #: resources/blocks/grid/config.php:87
+#, fuzzy
 msgid "Same layout as on tablets"
-msgstr ""
+msgstr "Mesmo layout dos tablets"
 
 #: resources/blocks/grid/config.php:110
 msgid "Space between columns"
-msgstr ""
+msgstr "Espaço entre as colunas"
 
 #: resources/blocks/grid/config.php:112 resources/blocks/heading/config.php:27
 msgid "None"
-msgstr ""
+msgstr "Nenhum"
 
 #: resources/blocks/grid/config.php:113
 msgid "Subtle"
-msgstr ""
+msgstr "Sutil"
 
 #: resources/blocks/grid/config.php:115
 msgid "Reduced"
-msgstr ""
+msgstr "Reduzido"
 
 #: resources/blocks/grid/config.php:117
 msgid "Wide"
-msgstr ""
+msgstr "Largo"
 
 #: resources/blocks/grid/config.php:119
+#, fuzzy
 msgid "Maximized"
-msgstr ""
+msgstr "Maximizado"
 
 #: resources/blocks/grid/config.php:125
 msgid "Number of columns"
-msgstr ""
+msgstr "Número de colunas"
 
 #: resources/blocks/grid/config.php:130
+#, fuzzy
 msgid "Order of columns"
-msgstr ""
+msgstr "Ordem das colunas"
 
 #: resources/blocks/grid/config.php:132 resources/blocks/grid/config.php:142
 #: resources/blocks/grid/config.php:152 resources/blocks/grid/config.php:162
+#, fuzzy
 msgid "Columns in standard order"
-msgstr ""
+msgstr "Colunas em ordem padrão"
 
 #: resources/blocks/grid/config.php:133 resources/blocks/grid/config.php:143
 #: resources/blocks/grid/config.php:153 resources/blocks/grid/config.php:163
+#, fuzzy
 msgid "Columns in reversed order"
-msgstr ""
+msgstr "Colunas em ordem invertida"
 
 #: resources/blocks/grid/config.php:139
+#, fuzzy
 msgid "Order on small displays"
-msgstr ""
+msgstr "Ordem em pequenas exposições"
 
 #: resources/blocks/grid/config.php:141
+#, fuzzy
 msgid "Use same as above"
-msgstr ""
+msgstr "Use o mesmo que acima"
 
 #: resources/blocks/grid/config.php:151 resources/blocks/grid/config.php:161
+#, fuzzy
 msgid "Use same as on small displays"
-msgstr ""
+msgstr "Use igual a displays pequenos"
 
 #: resources/blocks/grid/config.php:159
 msgid "Order on mobile"
-msgstr ""
+msgstr "Ocultar no Celular"
 
 #: resources/blocks/heading/config.php:7 resources/blocks/heading/config.php:12
 msgid "Heading"
-msgstr ""
+msgstr "Cabeçalho"
 
 #: resources/blocks/heading/config.php:25
 msgid "Display"
-msgstr ""
+msgstr "Exibição"
 
 #: resources/blocks/heading/config.php:28
+#, fuzzy
 msgid "Display 1"
-msgstr ""
+msgstr "Display 1"
 
 #: resources/blocks/heading/config.php:29
+#, fuzzy
 msgid "Display 2"
-msgstr ""
+msgstr "Display 2"
 
 #: resources/blocks/heading/config.php:30
+#, fuzzy
 msgid "Display 3"
-msgstr ""
+msgstr "Display 3"
 
 #: resources/blocks/heading/config.php:31
+#, fuzzy
 msgid "Display 4"
-msgstr ""
+msgstr "Display 4"
 
 #: resources/blocks/heading/config.php:32
+#, fuzzy
 msgid "Display 5"
-msgstr ""
+msgstr "Display 5"
 
 #: resources/blocks/heading/config.php:33
+#, fuzzy
 msgid "Display 6"
-msgstr ""
+msgstr "Display 6"
 
 #: resources/blocks/heading/config.php:38
 msgid "Primary Text"
-msgstr ""
+msgstr "Texto primário"
 
 #: resources/blocks/heading/config.php:43
 msgid "Secondary Text"
-msgstr ""
+msgstr "Texto Secundário"
 
 #: resources/blocks/image/config.php:7
 msgid "Image"
-msgstr ""
+msgstr "Imagem"
 
 #: resources/blocks/lead/config.php:7
 msgid "Lead"
-msgstr ""
+msgstr "Lead"
 
 #: resources/blocks/link/config.php:7
 msgid "Button Link"
-msgstr ""
+msgstr "Link do Botão"
 
 #: resources/blocks/spacer/config.php:7
 msgid "Spacer"
-msgstr ""
+msgstr "Espaçador"
 
 #: resources/blocks/text/config.php:7
 msgid "Text Editor"
-msgstr ""
+msgstr "Editor de texto"
 
 #: resources/blocks/youtube/config.php:7
 msgid "YouTube Video"
-msgstr ""
+msgstr "Vídeo do YouTube"
 
 #: resources/blocks/youtube/config.php:12
+#, fuzzy
 msgid "Youtube Embed URL"
-msgstr ""
+msgstr "URL de Incorporação do Youtube"
 
 #: resources/blocks/youtube/config.php:17
 msgid "Embed Width"
-msgstr ""
+msgstr "Largura de incorporação"
 
 #: resources/blocks/youtube/config.php:22
 msgid "Embed Height"
-msgstr ""
+msgstr "Incorporar Altura"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:38
 #: resources/views/backend/admin/content/create.phtml:48
@@ -1425,35 +1622,37 @@ msgstr ""
 #: resources/views/backend/admin/site/index.phtml:42
 #: resources/views/backend/admin/user/create.phtml:50
 msgid "Save"
-msgstr ""
+msgstr "Salvar"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:57
 msgid "Add New Content Type"
-msgstr ""
+msgstr "Adicionar novo tipo de conteúdo"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:62
 #: resources/views/backend/admin/content-type/update-content-type.phtml:56
 msgid "Content Type Name"
-msgstr ""
+msgstr "Nome do tipo de conteúdo"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:66
 #: resources/views/backend/admin/content-type/content-type.phtml:162
 #: resources/views/backend/admin/content-type/update-content-type.phtml:60
 #: resources/views/backend/admin/content-type/update-content-type.phtml:87
+#, fuzzy
 msgid "Content Type Slug"
-msgstr ""
+msgstr "Tipo de Conteúdo Slug"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:70
 #: resources/views/backend/admin/content-type/update-content-type.phtml:65
+#, fuzzy
 msgid "Content Type Description"
-msgstr ""
+msgstr "Descrição do Tipo de Conteúdo"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:92
 #: resources/views/backend/admin/content-type/content-type.phtml:135
 #: resources/views/backend/admin/content/create.phtml:95
 #: resources/views/backend/admin/content/view.phtml:100
 msgid "Content Type"
-msgstr ""
+msgstr "Tipo de conteúdo"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:93
 #: resources/views/backend/admin/content-type/content-type.phtml:136
@@ -1462,7 +1661,7 @@ msgstr ""
 #: resources/views/backend/admin/theme/index.phtml:55
 #: resources/views/backend/admin/theme/index.phtml:91
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:94
 #: resources/views/backend/admin/content-type/content-type.phtml:137
@@ -1474,12 +1673,12 @@ msgstr ""
 #: resources/views/backend/admin/product/create.phtml:214
 #: resources/views/backend/admin/product/view.phtml:76
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:95
 #: resources/views/backend/admin/content-type/content-type.phtml:138
 msgid "Count"
-msgstr ""
+msgstr "Contagem"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:96
 #: resources/views/backend/admin/content-type/content-type.phtml:139
@@ -1494,13 +1693,16 @@ msgstr ""
 #: resources/views/backend/admin/user/index.phtml:60
 #: resources/views/backend/admin/user/index.phtml:130
 msgid "Action"
-msgstr ""
+msgstr "Ação"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:117
+#, fuzzy
 msgid ""
 "Are you sure you want to delete this content type? By deleting this content "
 "type, you also delete all content connected to this content type as well."
 msgstr ""
+"Você tem certeza de que quer deletar esse tipo de conteúdo? Ao deletar esse "
+"tipo de conteúdo, você também exclui todo o conteúdo relacionado a esse tipo."
 
 #: resources/views/backend/admin/content-type/content-type.phtml:120
 #: resources/views/backend/admin/content-type/content-type.phtml:168
@@ -1522,7 +1724,7 @@ msgstr ""
 #: resources/views/backend/admin/site/users.phtml:171
 #: resources/views/backend/admin/user/index.phtml:109
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:121
 #: resources/views/backend/admin/content/content-by-type.phtml:82
@@ -1536,16 +1738,19 @@ msgstr ""
 #: resources/views/backend/admin/site/users.phtml:172
 #: resources/views/backend/admin/user/index.phtml:110
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:165
 #: resources/views/backend/admin/content-type/update-content-type.phtml:90
+#, fuzzy
 msgid "If left blank, the system will auto generate the content type slug."
 msgstr ""
+"Se deixado em branco, o sistema gerará automaticamente o tipo de conteúdo "
+"slug."
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:34
 msgid "Update Content Type"
-msgstr ""
+msgstr "Atualizar o tipo de conteúdo"
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:38
 #: resources/views/backend/admin/content/view.phtml:50
@@ -1560,7 +1765,7 @@ msgstr ""
 #: resources/views/backend/general.phtml:34
 #: resources/views/backend/reading.phtml:32
 msgid "Update"
-msgstr ""
+msgstr "Atualizar"
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:39
 #: resources/views/backend/admin/content/create.phtml:49
@@ -1576,12 +1781,12 @@ msgstr ""
 #: resources/views/backend/admin/user/view.phtml:42
 #: resources/views/backend/admin/user/view.phtml:73
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:32
 #: resources/views/backend/admin/content/view.phtml:53
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:49
 #: resources/views/backend/admin/content/content-by-type.phtml:111
@@ -1594,7 +1799,7 @@ msgstr ""
 #: resources/views/backend/admin/product/index.phtml:110
 #: resources/views/backend/admin/product/view.phtml:72
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:50
 #: resources/views/backend/admin/content/content-by-type.phtml:112
@@ -1607,7 +1812,7 @@ msgstr ""
 #: resources/views/backend/admin/product/index.phtml:111
 #: resources/views/backend/admin/product/view.phtml:126
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:51
 #: resources/views/backend/admin/content/content-by-type.phtml:113
@@ -1616,7 +1821,7 @@ msgstr ""
 #: resources/views/backend/admin/product/index.phtml:54
 #: resources/views/backend/admin/product/index.phtml:112
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:52
 #: resources/views/backend/admin/content/content-by-type.phtml:114
@@ -1624,28 +1829,31 @@ msgstr ""
 #: resources/views/backend/admin/content/index.phtml:111
 #: resources/views/backend/admin/product/index.phtml:55
 #: resources/views/backend/admin/product/index.phtml:113
+#, fuzzy
 msgid "Last Modified"
-msgstr ""
+msgstr "Última Modificação"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:66
 #: resources/views/backend/admin/content/index.phtml:67
 #: resources/views/backend/admin/product/index.phtml:69
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:67
 #: resources/views/backend/admin/content/index.phtml:68
 #: resources/views/backend/admin/content/view.phtml:55
 #: resources/views/backend/admin/product/index.phtml:70
 #: resources/views/backend/admin/product/view.phtml:50
+#, fuzzy
 msgid "Delete"
-msgstr ""
+msgstr "Excluir"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:78
 #: resources/views/backend/admin/content/index.phtml:79
 #: resources/views/backend/admin/content/view.phtml:267
+#, fuzzy
 msgid "Are you sure you want to delete this content?"
-msgstr ""
+msgstr "Tem certeza de que quer deletar esse conteúdo?"
 
 #: resources/views/backend/admin/content/create.phtml:67
 #: resources/views/backend/admin/content/create.phtml:80
@@ -1653,7 +1861,7 @@ msgstr ""
 #: resources/views/backend/admin/product/create.phtml:80
 #: resources/views/backend/admin/product/view.phtml:80
 msgid "Content"
-msgstr ""
+msgstr "Conteúdo"
 
 #: resources/views/backend/admin/content/create.phtml:115
 #: resources/views/backend/admin/content/create.phtml:133
@@ -1664,14 +1872,14 @@ msgstr ""
 #: resources/views/backend/admin/product/view.phtml:99
 #: resources/views/backend/admin/product/view.phtml:117
 msgid "Publish"
-msgstr ""
+msgstr "Publicar"
 
 #: resources/views/backend/admin/content/create.phtml:120
 #: resources/views/backend/admin/content/view.phtml:125
 #: resources/views/backend/admin/product/create.phtml:104
 #: resources/views/backend/admin/product/view.phtml:104
 msgid "Publication Date"
-msgstr ""
+msgstr "Data de publicação"
 
 #: resources/views/backend/admin/content/create.phtml:129
 #: resources/views/backend/admin/content/view.phtml:134
@@ -1684,29 +1892,30 @@ msgstr ""
 #: resources/views/backend/admin/user/index.phtml:58
 #: resources/views/backend/admin/user/index.phtml:128
 #: resources/views/backend/admin/user/view.phtml:144
+#, fuzzy
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: resources/views/backend/admin/content/create.phtml:134
 #: resources/views/backend/admin/content/view.phtml:139
 #: resources/views/backend/admin/product/create.phtml:118
 #: resources/views/backend/admin/product/view.phtml:118
 msgid "Schedule"
-msgstr ""
+msgstr "Cronograma"
 
 #: resources/views/backend/admin/content/create.phtml:136
 #: resources/views/backend/admin/content/view.phtml:141
 #: resources/views/backend/admin/product/create.phtml:120
 #: resources/views/backend/admin/product/view.phtml:120
 msgid "Draft"
-msgstr ""
+msgstr "Rascunho"
 
 #: resources/views/backend/admin/content/create.phtml:137
 #: resources/views/backend/admin/content/view.phtml:142
 #: resources/views/backend/admin/product/create.phtml:121
 #: resources/views/backend/admin/product/view.phtml:121
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 #: resources/views/backend/admin/content/create.phtml:138
 #: resources/views/backend/admin/content/view.phtml:143
@@ -1714,50 +1923,52 @@ msgstr ""
 #: resources/views/backend/admin/product/view.phtml:122
 #: resources/views/backend/admin/site/view.phtml:92
 msgid "Archive"
-msgstr ""
+msgstr "Arquivo"
 
 #: resources/views/backend/admin/content/create.phtml:156
 #: resources/views/backend/admin/content/view.phtml:162
+#, fuzzy
 msgid "Content Attributes"
-msgstr ""
+msgstr "Atributos de Conteúdo"
 
 #: resources/views/backend/admin/content/create.phtml:161
 #: resources/views/backend/admin/content/view.phtml:167
 msgid "Parent"
-msgstr ""
+msgstr "Pai"
 
 #: resources/views/backend/admin/content/create.phtml:168
 #: resources/views/backend/admin/content/view.phtml:174
 msgid "Sidebar"
-msgstr ""
+msgstr "Barra Lateral"
 
 #: resources/views/backend/admin/content/create.phtml:174
 #: resources/views/backend/admin/content/view.phtml:181
 #: resources/views/backend/admin/product/create.phtml:160
 #: resources/views/backend/admin/product/view.phtml:173
 msgid "Show in Menu"
-msgstr ""
+msgstr "Exibir no Menu"
 
 #: resources/views/backend/admin/content/create.phtml:180
 #: resources/views/backend/admin/content/view.phtml:188
 #: resources/views/backend/admin/product/create.phtml:166
 #: resources/views/backend/admin/product/view.phtml:180
 msgid "Show in Search"
-msgstr ""
+msgstr "Mostrar na pesquisa"
 
 #: resources/views/backend/admin/content/create.phtml:193
 #: resources/views/backend/admin/content/view.phtml:203
 #: resources/views/backend/admin/product/create.phtml:179
 #: resources/views/backend/admin/product/view.phtml:194
+#, fuzzy
 msgid "Featured Image"
-msgstr ""
+msgstr "Imagem em destaque"
 
 #: resources/views/backend/admin/content/create.phtml:199
 #: resources/views/backend/admin/content/view.phtml:212
 #: resources/views/backend/admin/product/create.phtml:185
 #: resources/views/backend/admin/product/view.phtml:203
 msgid "Set featured image"
-msgstr ""
+msgstr "Definir imagem destacada"
 
 #: resources/views/backend/admin/content/create.phtml:200
 #: resources/views/backend/admin/content/view.phtml:210
@@ -1766,54 +1977,56 @@ msgstr ""
 #: resources/views/backend/admin/product/view.phtml:201
 #: resources/views/backend/admin/product/view.phtml:204
 msgid "Remove featured image"
-msgstr ""
+msgstr "Remover imagem em destaque"
 
 #: resources/views/backend/admin/content/create.phtml:232
 #: resources/views/backend/admin/content/view.phtml:245
 #: resources/views/backend/admin/product/create.phtml:217
-#, php-format
+#, fuzzy, php-format
 msgid "If left blank, the system will auto generate the %s slug."
-msgstr ""
+msgstr "Se deixar em branco, o sistema gerará automaticamente o slug %s."
 
 #: resources/views/backend/admin/content/index.phtml:31
 msgid "All Content"
-msgstr ""
+msgstr "Todo o conteúdo"
 
 #: resources/views/backend/admin/manager/index.phtml:22
 msgid "Page Builder"
-msgstr ""
+msgstr "Construtor de Páginas"
 
 #: resources/views/backend/admin/manager/index.phtml:43
 msgid "Pages"
-msgstr ""
+msgstr "Páginas"
 
 #: resources/views/backend/admin/manager/index.phtml:75
 msgid "Are you sure you want to delete this page?"
-msgstr ""
+msgstr "Deseja deletar esta página?"
 
 #: resources/views/backend/admin/manager/index.phtml:110
 msgid "Languages"
-msgstr ""
+msgstr "Idiomas"
 
 #: resources/views/backend/admin/manager/index.phtml:118
+#, fuzzy
 msgid "Use Ctrl/Cmd to select multiple."
-msgstr ""
+msgstr "Use Ctrl/Cmd para selecionar vários."
 
 #: resources/views/backend/admin/manager/page-settings.phtml:57
 msgid "Page"
-msgstr ""
+msgstr "Página"
 
 #: resources/views/backend/admin/manager/page-settings.phtml:90
 msgid "URI"
-msgstr ""
+msgstr "URL"
 
 #: resources/views/backend/admin/manager/page-settings.phtml:91
+#, fuzzy
 msgid "Note: add the uri without a trailing slash."
-msgstr ""
+msgstr "Nota: adicione o URI sem barra final."
 
 #: resources/views/backend/admin/manager/page-settings.phtml:109
 msgid "Attributes"
-msgstr ""
+msgstr "Atributos"
 
 #: resources/views/backend/admin/plugin/index.phtml:52
 #: resources/views/backend/admin/plugin/index.phtml:82
@@ -1824,135 +2037,146 @@ msgstr ""
 #: resources/views/backend/admin/user/create.phtml:69
 #: resources/views/backend/admin/user/profile.phtml:185
 #: resources/views/backend/admin/user/view.phtml:64
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: resources/views/backend/admin/plugin/index.phtml:53
 #: resources/views/backend/admin/plugin/index.phtml:83
 #: resources/views/backend/admin/theme/index.phtml:54
 #: resources/views/backend/admin/theme/index.phtml:90
 msgid "Version"
-msgstr ""
+msgstr "Versão"
 
 #: resources/views/backend/admin/plugin/index.phtml:69
 #: resources/views/backend/admin/theme/index.phtml:75
+#, fuzzy
 msgid "Developer:"
-msgstr ""
+msgstr "Desenvolvedor:"
 
 #: resources/views/backend/admin/plugin/index.phtml:71
 #: resources/views/backend/admin/theme/index.phtml:77
 msgid "View Details"
-msgstr ""
+msgstr "Ver Detalhes"
 
 #: resources/views/backend/admin/product/create.phtml:84
 #: resources/views/backend/admin/product/create.phtml:236
 #: resources/views/backend/admin/product/view.phtml:84
+#, fuzzy
 msgid "Purchase Url"
-msgstr ""
+msgstr "URL de compra"
 
 #: resources/views/backend/admin/product/create.phtml:140
 #: resources/views/backend/admin/product/view.phtml:140
 msgid "Product Attributes"
-msgstr ""
+msgstr "Atributos do Produto"
 
 #: resources/views/backend/admin/product/create.phtml:145
 #: resources/views/backend/admin/product/view.phtml:145
 msgid "Sku"
-msgstr ""
+msgstr "Sku"
 
 #: resources/views/backend/admin/product/create.phtml:149
 #: resources/views/backend/admin/product/view.phtml:154
 msgid "Price"
-msgstr ""
+msgstr "Preço"
 
 #: resources/views/backend/admin/product/create.phtml:153
 msgid "Currency"
-msgstr ""
+msgstr "Moeda"
 
 #: resources/views/backend/admin/product/create.phtml:239
+#, fuzzy
 msgid "The purchase url is where customers can purchase your product."
-msgstr ""
+msgstr "O URL de compra é onde os clientes podem adquirir seu produto."
 
 #: resources/views/backend/admin/product/index.phtml:31
 #: resources/views/backend/layouts/admin-layout.phtml:182
 msgid "All Products"
-msgstr ""
+msgstr "Todos os Produtos"
 
 #: resources/views/backend/admin/product/index.phtml:34
 #: resources/views/backend/admin/product/view.phtml:48
 msgid "New Product"
-msgstr ""
+msgstr "Novo Produto"
 
 #: resources/views/backend/admin/product/index.phtml:81
 #: resources/views/backend/admin/product/view.phtml:258
 msgid "Are you sure you want to delete this product?"
-msgstr ""
+msgstr "Tem certeza de que deseja excluir este produto?"
 
 #: resources/views/backend/admin/product/view.phtml:67
 msgid "Product"
-msgstr ""
+msgstr "Produto"
 
 #: resources/views/backend/admin/product/view.phtml:233
 msgid "Product Slug"
-msgstr ""
+msgstr "Slug do produto"
 
 #: resources/views/backend/admin/product/view.phtml:236
+#, fuzzy
 msgid "If left blank, the system will auto generate the Product slug."
 msgstr ""
+"Se deixado em branco, o sistema gerará automaticamente o slug do Produto."
 
 #: resources/views/backend/admin/site/index.phtml:60
 msgid "Add New Site"
-msgstr ""
+msgstr "Adicionar novo site"
 
 #: resources/views/backend/admin/site/index.phtml:65
 msgid "Subdomain"
-msgstr ""
+msgstr "Subdomínio"
 
 #: resources/views/backend/admin/site/index.phtml:69
 #: resources/views/backend/admin/site/view.phtml:70
 #: resources/views/backend/general.phtml:57
 msgid "Site Name"
-msgstr ""
+msgstr "Nome do Site"
 
 #: resources/views/backend/admin/site/index.phtml:73
 #: resources/views/backend/admin/site/view.phtml:75
 msgid "Path"
-msgstr ""
+msgstr "Caminho"
 
 #: resources/views/backend/admin/site/index.phtml:77
 #: resources/views/backend/admin/site/view.phtml:80
 msgid "Administrator"
-msgstr ""
+msgstr "Administrador"
 
 #: resources/views/backend/admin/site/index.phtml:102
 #: resources/views/backend/admin/site/index.phtml:152
 #: resources/views/backend/admin/user/profile.phtml:234
 #: resources/views/backend/admin/user/view.phtml:107
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: resources/views/backend/admin/site/index.phtml:104
 #: resources/views/backend/admin/site/index.phtml:154
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: resources/views/backend/admin/site/index.phtml:134
+#, fuzzy
 msgid "Are you sure you want to delete this site and all it's content"
-msgstr ""
+msgstr "Você tem certeza de que quer deletar este site e todo o seu conteúdo?"
 
 #: resources/views/backend/admin/site/index.phtml:179
 msgid "Site Path"
-msgstr ""
+msgstr "Caminho do site"
 
 #: resources/views/backend/admin/site/index.phtml:182
+#, fuzzy
 msgid ""
 "Based on your setup and where you installed the CMS, the system will figure "
 "out the correct path."
 msgstr ""
+"Com base na sua configuração e onde você instalou o CMS, o sistema vai "
+"descobrir o caminho correto."
 
 #: resources/views/backend/admin/site/users.phtml:35
+#, fuzzy
 msgid "Multisite Users"
-msgstr ""
+msgstr "Usuários Multisite"
 
 #: resources/views/backend/admin/site/users.phtml:52
 #: resources/views/backend/admin/site/users.phtml:188
@@ -1963,7 +2187,7 @@ msgstr ""
 #: resources/views/backend/admin/user/view.phtml:69
 #: resources/views/backend/auth/index.phtml:23
 msgid "Username"
-msgstr ""
+msgstr "Nome de usuário"
 
 #: resources/views/backend/admin/site/users.phtml:53
 #: resources/views/backend/admin/site/users.phtml:189
@@ -1973,7 +2197,7 @@ msgstr ""
 #: resources/views/backend/admin/user/profile.phtml:197
 #: resources/views/backend/admin/user/view.phtml:78
 msgid "First Name"
-msgstr ""
+msgstr "Nome"
 
 #: resources/views/backend/admin/site/users.phtml:54
 #: resources/views/backend/admin/site/users.phtml:190
@@ -1982,20 +2206,23 @@ msgstr ""
 #: resources/views/backend/admin/user/index.phtml:127
 #: resources/views/backend/admin/user/profile.phtml:207
 #: resources/views/backend/admin/user/view.phtml:88
+#, fuzzy
 msgid "Last Name"
-msgstr ""
+msgstr "Sobrenome"
 
 #: resources/views/backend/admin/site/users.phtml:65
+#, fuzzy
 msgid "Add to Site"
-msgstr ""
+msgstr "Adicionar ao site"
 
 #: resources/views/backend/admin/site/users.phtml:77
+#, fuzzy
 msgid "What site you want to add this user to?"
-msgstr ""
+msgstr "Em qual site você quer adicionar esse usuário?"
 
 #: resources/views/backend/admin/site/users.phtml:80
 msgid "Site"
-msgstr ""
+msgstr "Site"
 
 #: resources/views/backend/admin/site/users.phtml:88
 #: resources/views/backend/admin/user/create.phtml:192
@@ -2003,365 +2230,391 @@ msgstr ""
 #: resources/views/backend/admin/user/index.phtml:129
 #: resources/views/backend/admin/user/view.phtml:164
 msgid "Role"
-msgstr ""
+msgstr "Função"
 
 #: resources/views/backend/admin/site/users.phtml:100
 msgid "Assign"
-msgstr ""
+msgstr "Atribuir"
 
 #: resources/views/backend/admin/site/users.phtml:126
+#, fuzzy
 msgid "Are you sure you want to delete this user and all their content?"
 msgstr ""
+"Você tem certeza de que quer excluir esse usuário e todo o conteúdo dele?"
 
 #: resources/views/backend/admin/site/users.phtml:131
+#, fuzzy
 msgid ""
 "Would you like to assign this user's site(s) to a different user? Choose "
 "below."
 msgstr ""
+"Você gostaria de atribuir o(s) site(s) desse usuário para outro usuário? "
+"Escolha abaixo."
 
 #: resources/views/backend/admin/site/users.phtml:168
+#, fuzzy
 msgid "Are you sure you want to permanently delete this user?"
-msgstr ""
+msgstr "Você tem certeza de que quer deletar esse usuário permanentemente?"
 
 #: resources/views/backend/admin/site/view.phtml:36
 msgid "Update Site"
-msgstr ""
+msgstr "Atualizar Site"
 
 #: resources/views/backend/admin/site/view.phtml:60
+#, fuzzy
 msgid "Site Domain"
-msgstr ""
+msgstr "Domínio do Sítio"
 
 #: resources/views/backend/admin/site/view.phtml:65
+#, fuzzy
 msgid "Site Mapping"
-msgstr ""
+msgstr "Mapeamento do Sítio"
 
 #: resources/views/backend/admin/site/view.phtml:91
 msgid "Public"
-msgstr ""
+msgstr "Público"
 
 #: resources/views/backend/admin/theme/index.phtml:52
 #: resources/views/backend/admin/theme/index.phtml:88
 msgid "Screenshot"
-msgstr ""
+msgstr "Capturas de tela"
 
 #: resources/views/backend/admin/user/create.phtml:84
 #: resources/views/backend/admin/user/profile.phtml:202
 #: resources/views/backend/admin/user/view.phtml:83
 msgid "Middle Name"
-msgstr ""
+msgstr "Nome do Meio"
 
 #: resources/views/backend/admin/user/create.phtml:104
 #: resources/views/backend/admin/user/profile.phtml:223
 #: resources/views/backend/admin/user/view.phtml:96
 msgid "Contact info"
-msgstr ""
+msgstr "Informações de contato"
 
 #: resources/views/backend/admin/user/create.phtml:126
+#, fuzzy
 msgid "Email / Password"
-msgstr ""
+msgstr "E-mail / Senha"
 
 #: resources/views/backend/admin/user/create.phtml:131
 msgid "Send Email"
-msgstr ""
+msgstr "Enviar Email"
 
 #: resources/views/backend/admin/user/create.phtml:136
+#, fuzzy
 msgid "Send username & password to the user."
-msgstr ""
+msgstr "Envie nome de usuário e senha para o usuário."
 
 #: resources/views/backend/admin/user/create.phtml:142
 msgid "Show Password"
-msgstr ""
+msgstr "Mostrar Senha"
 
 #: resources/views/backend/admin/user/create.phtml:143
 msgid "Hide Password"
-msgstr ""
+msgstr "Ocultar Senha"
 
 #: resources/views/backend/admin/user/create.phtml:164
 #: resources/views/backend/admin/user/view.phtml:139
 msgid "User Status"
-msgstr ""
+msgstr "Status do usuário"
 
 #: resources/views/backend/admin/user/create.phtml:178
+#, fuzzy
 msgid "If the account is Inactive, the user will be incapable of logging in."
-msgstr ""
+msgstr "Se a conta estiver Inativa, o usuário não poderá fazer login."
 
 #: resources/views/backend/admin/user/create.phtml:186
 #: resources/views/backend/admin/user/view.phtml:159
 msgid "User Role"
-msgstr ""
+msgstr "Papel do usuário"
 
 #: resources/views/backend/admin/user/index.phtml:37
 #: resources/views/backend/admin/user/view.phtml:40
 msgid "New User"
-msgstr ""
+msgstr "Novo Usuário"
 
 #: resources/views/backend/admin/user/index.phtml:82
 msgid "Reset Password"
-msgstr ""
+msgstr "Redefinir Senha"
 
 #: resources/views/backend/admin/user/index.phtml:84
 msgid "Switch to"
-msgstr ""
+msgstr "Mudar para"
 
 #: resources/views/backend/admin/user/index.phtml:100
+#, fuzzy
 msgid "Are you sure you want to remove the user from this site?"
-msgstr ""
+msgstr "Você tem certeza de que quer remover o usuário deste site?"
 
 #: resources/views/backend/admin/user/index.phtml:101
+#, fuzzy
 msgid ""
 "Would you like to assign this user's content to a different user? Choose "
 "below."
 msgstr ""
+"Você gostaria de atribuir o conteúdo desse usuário a outro usuário? Escolha "
+"abaixo."
 
 #: resources/views/backend/admin/user/profile.phtml:36
 #: resources/views/backend/layouts/admin-layout.phtml:101
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: resources/views/backend/admin/user/profile.phtml:62
 msgid "Layout Options"
-msgstr ""
+msgstr "Opções de layout"
 
 #: resources/views/backend/admin/user/profile.phtml:67
 msgid "Fixed Layout"
-msgstr ""
+msgstr "Layout fixo"
 
 #: resources/views/backend/admin/user/profile.phtml:75
 msgid "Toggle Sidebar"
-msgstr ""
+msgstr "Mostrar/Esconder Sidebar"
 
 #: resources/views/backend/admin/user/profile.phtml:83
+#, fuzzy
 msgid "Admin Skin"
-msgstr ""
+msgstr "Skin de Administrador"
 
 #: resources/views/backend/admin/user/profile.phtml:192
 #: resources/views/backend/admin/user/view.phtml:72
 msgid "Change username"
-msgstr ""
+msgstr "Alterar nome de usuário"
 
 #: resources/views/backend/admin/user/profile.phtml:252
 msgid "About yourself"
-msgstr ""
+msgstr "Sobre mim"
 
 #: resources/views/backend/admin/user/profile.phtml:258
 #: resources/views/backend/admin/user/view.phtml:122
 msgid "Biography"
-msgstr ""
+msgstr "Biografia"
 
 #: resources/views/backend/admin/user/profile.phtml:263
 #: resources/views/backend/admin/user/view.phtml:127
 msgid "Profile Picture"
-msgstr ""
+msgstr "Foto do perfil"
 
 #: resources/views/backend/admin/user/profile.phtml:265
 #, php-format
 msgid "You can change your profile picture on <a href=\"%s\">Gravatar</a>."
 msgstr ""
+"Você pode alterar sua foto de perfil em < a href = \" %s\" > Gravatar </a>."
 
 #: resources/views/backend/admin/user/profile.phtml:292
 #: resources/views/backend/admin/user/view.phtml:175
 msgid "Date/Time"
-msgstr ""
+msgstr "Data/Hora"
 
 #: resources/views/backend/admin/user/profile.phtml:297
 #: resources/views/backend/admin/user/view.phtml:180
 msgid "Timezone"
-msgstr ""
+msgstr "Fuso Horário"
 
 #: resources/views/backend/admin/user/profile.phtml:307
 #: resources/views/backend/admin/user/view.phtml:190
 #: resources/views/backend/reading.phtml:63
 msgid "Date Format"
-msgstr ""
+msgstr "Formato da Data"
 
 #: resources/views/backend/admin/user/profile.phtml:312
 #: resources/views/backend/admin/user/view.phtml:195
 #: resources/views/backend/reading.phtml:67
 msgid "Time Format"
-msgstr ""
+msgstr "Formato da Hora"
 
 #: resources/views/backend/admin/user/profile.phtml:328
 #: resources/views/backend/admin/user/view.phtml:203
 #: resources/views/backend/general.phtml:69
 msgid "Locale"
-msgstr ""
+msgstr "Idioma local"
 
 #: resources/views/backend/admin/user/profile.phtml:333
 #: resources/views/backend/admin/user/view.phtml:208
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: resources/views/backend/admin/user/view.phtml:37
 msgid "Update User"
-msgstr ""
+msgstr "Atualizar Usuário"
 
 #: resources/views/backend/admin/user/view.phtml:116
 msgid "About the user"
-msgstr ""
+msgstr "Sobre o Usuário"
 
 #: resources/views/backend/admin/user/view.phtml:152
+#, fuzzy
 msgid ""
 "If the account is Inactive, the user will be incapable of logging into the "
 "system."
-msgstr ""
+msgstr "Se a conta estiver Inativa, o usuário não poderá acessar o sistema."
 
 #: resources/views/backend/auth/index.phtml:26
 msgid "Username is invalid."
-msgstr ""
+msgstr "Nome de usuário Inválido."
 
 #: resources/views/backend/auth/index.phtml:33
 msgid "Forgot Password?"
-msgstr ""
+msgstr "Esqueceu a senha?"
 
 #: resources/views/backend/auth/index.phtml:38
 msgid "Password is required."
-msgstr ""
+msgstr "Senha é obrigatório."
 
 #: resources/views/backend/auth/index.phtml:45
 msgid "Remember Me"
-msgstr ""
+msgstr "Lembrar-me"
 
 #: resources/views/backend/auth/reset.phtml:28
+#, fuzzy
 msgid "Log-in"
-msgstr ""
+msgstr "Logar"
 
 #: resources/views/backend/auth/reset.phtml:33
 msgid "Email is invalid."
-msgstr ""
+msgstr "Email inválido."
 
 #: resources/views/backend/auth/reset.phtml:36
+#, fuzzy
 msgid "By clicking \"Reset\" the system will email you a new password."
-msgstr ""
+msgstr "Ao clicar em \"Reset\", o sistema enviará uma nova senha por e-mail."
 
 #: resources/views/backend/auth/reset.phtml:41
 msgid "Reset"
-msgstr ""
+msgstr "Redefinir"
 
 #: resources/views/backend/elfinder.phtml:28
 #: resources/views/backend/layouts/auth-layout.phtml:18
 #: resources/views/backend/layouts/auth-layout.phtml:40
+#, fuzzy
 msgid "Devflow"
-msgstr ""
+msgstr "Devflow"
 
 #: resources/views/backend/general.phtml:61
 msgid "Site Description"
-msgstr ""
+msgstr "Descrição do Site"
 
 #: resources/views/backend/general.phtml:65
 msgid "Admin Email"
-msgstr ""
+msgstr "Email do administrador"
 
 #: resources/views/backend/general.phtml:76
+#, fuzzy
 msgid "Cookie Expire"
-msgstr ""
+msgstr "Vencido do Cookie"
 
 #: resources/views/backend/general.phtml:80
 msgid "Cookie Path"
-msgstr ""
+msgstr "Caminho de Cookie"
 
 #: resources/views/backend/general.phtml:84
 msgid "System Timezone"
-msgstr ""
+msgstr "Fuso Horário do Sistema"
 
 #: resources/views/backend/general.phtml:93
 msgid "API Key"
-msgstr ""
+msgstr "Chave API"
 
 #: resources/views/backend/index.phtml:22
 #: resources/views/backend/index.phtml:27
 #: resources/views/backend/layouts/admin-layout.phtml:141
 msgid "Dashboard"
-msgstr ""
+msgstr "Painel"
 
 #: resources/views/backend/index.phtml:23
 msgid "Control panel"
-msgstr ""
+msgstr "Painel de controle"
 
 #: resources/views/backend/index.phtml:26
 #: resources/views/backend/layouts/admin-layout.phtml:147
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: resources/views/backend/layouts/admin-layout.phtml:77
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Alternar navegação"
 
 #: resources/views/backend/layouts/admin-layout.phtml:94
 msgid "Member since"
-msgstr ""
+msgstr "Membro desde"
 
 #: resources/views/backend/layouts/admin-layout.phtml:106
 msgid "Switch back"
-msgstr ""
+msgstr "Voltar"
 
 #: resources/views/backend/layouts/admin-layout.phtml:110
 msgid "Logout"
-msgstr ""
+msgstr "Sair"
 
 #: resources/views/backend/layouts/admin-layout.phtml:132
 msgid "Online"
-msgstr ""
+msgstr "Online"
 
 #: resources/views/backend/layouts/admin-layout.phtml:137
 msgid "MAIN NAVIGATION"
-msgstr ""
+msgstr "NAVEGAÇÃO PRINCIPAL"
 
 #: resources/views/backend/layouts/admin-layout.phtml:148
 #: resources/views/backend/snapshot.phtml:35
 msgid "System Report"
-msgstr ""
+msgstr "Relatório do sistema"
 
 #: resources/views/backend/layouts/admin-layout.phtml:154
+#, fuzzy
 msgid "Flush Cache"
-msgstr ""
+msgstr "Cache de Limpeza"
 
 #: resources/views/backend/layouts/admin-layout.phtml:167
 msgid "Manage"
-msgstr ""
+msgstr "Gerenciar"
 
 #: resources/views/backend/layouts/admin-layout.phtml:183
 #: resources/views/backend/layouts/admin-layout.phtml:203
 #: resources/views/backend/layouts/admin-layout.phtml:260
 msgid "Add New"
-msgstr ""
+msgstr "Adicionar Novo"
 
 #: resources/views/backend/layouts/admin-layout.phtml:202
 msgid "All"
-msgstr ""
+msgstr "Todos"
 
 #: resources/views/backend/layouts/admin-layout.phtml:244
+#, fuzzy
 msgid "Vihzhuo"
-msgstr ""
+msgstr "Vihzhuo"
 
 #: resources/views/backend/layouts/admin-layout.phtml:259
 msgid "All Users"
-msgstr ""
+msgstr "Todos os usuários"
 
 #: resources/views/backend/layouts/admin-layout.phtml:261
 #: resources/views/backend/layouts/admin-layout.phtml:269
 msgid "Your Profile"
-msgstr ""
+msgstr "Seu Perfil"
 
 #: resources/views/backend/layouts/admin-layout.phtml:277
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
 #: resources/views/backend/layouts/admin-layout.phtml:283
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: resources/views/backend/layouts/admin-layout.phtml:284
 msgid "Reading"
-msgstr ""
+msgstr "Lendo"
 
 #: resources/views/backend/layouts/admin-layout.phtml:311
+#, fuzzy
 msgid "Login expires in "
-msgstr ""
+msgstr "O login expira em "
 
 #: resources/views/backend/reading.phtml:55
 msgid "Charset"
-msgstr ""
+msgstr "Caracteres"
 
 #: resources/views/backend/reading.phtml:59
+#, fuzzy
 msgid "Content per Page"
-msgstr ""
+msgstr "Conteúdo por página"
