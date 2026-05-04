@@ -22,14 +22,11 @@ class SchedulerServiceProvider extends CodefyServiceProvider
      */
     public function register(): void
     {
-        /** Email Schedule */
         Action::getInstance()->addAction(hook: 'scheduler', callback: function (Schedule $schedule) {
-            $schedule->command(command: 'email:send')->everyMinute();
-        }, priority: 5);
-
-        /** Clear Cache Schedule */
-        Action::getInstance()->addAction(hook: 'scheduler', callback: function (Schedule $schedule) {
+            $schedule->php(script: 'codex queue:run')->everyMinute();
             $schedule->command(command: 'cache:clear')->hourly();
+            $schedule->command(command: 'cookies:clear')->hourly();
+            $schedule->command(command: 'logs:clear')->hourly();
         }, priority: 5);
 
         /** Cron Schedule */
