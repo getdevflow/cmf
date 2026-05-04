@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{notification_title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            background: #f9fafb;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1f2937;
+        }
+        .wrapper {
+            padding: 32px 16px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+        .header,
+        .body,
+        .footer {
+            padding: 28px 32px;
+        }
+        .header {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .badge {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 6px 10px;
+            background: #eef2ff;
+            color: #4338ca;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        h1 {
+            margin: 0 0 16px;
+            font-size: 23px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 18px;
+            background: #d24d57;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+        .footer {
+            border-top: 1px solid #e5e7eb;
+            font-size: 13px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="container">
+
+        <div class="header">
+            <div class="brand">{{site_name}}</div>
+        </div>
+
+        <div class="body">
+            <span class="badge">{{notification_type}}</span>
+
+            <h1>{{notification_title}}</h1>
+
+            <p>Hello {{user}},</p>
+
+            {{notification_message}}
+
+            <a href="{{action_url}}" class="button">{{action_label}}</a>
+        </div>
+
+        <div class="footer">
+            You received this notification from {{site_name}}.
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
