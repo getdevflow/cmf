@@ -59,7 +59,7 @@ $setting = phpb_instance('setting');
                                     <td class="text-center"><?=phpb_e($page->getName());?></td>
                                     <td class="text-center"><?=phpb_e($page->getRoute());?></td>
                                     <td class="text-center">
-                                        <a href="<?=phpb_e(phpb_full_url($page->getRoute()));?>" data-toggle="tooltip" data-placement="top" title="<?=phpb_trans('website-manager.view');?>"><button type="button" class="btn bg-yellow"><i class="fa fa-eye"></i></button></a>
+                                        <a href="<?=phpb_e(phpb_full_url($page->getRoute()));?>" data-toggle="tooltip" data-placement="top" title="<?=phpb_trans('website-manager.view');?>" target="_blank"><button type="button" class="btn bg-yellow"><i class="fa fa-up-right-from-square"></i></button></a>
                                         <a href="<?=phpb_url('pagebuilder', ['page' => $page->getId()]);?>" data-toggle="tooltip" data-placement="top" title="<?=phpb_trans('website-manager.edit');?>"><button type="button" class="btn bg-purple"><i class="fa fa-edit"></i></button></a>
                                         <a href="<?=phpb_url('website_manager', ['route' => 'page_settings', 'action' => 'edit', 'page' => $page->getId()]);?>" data-toggle="tooltip" data-placement="top" title="<?=phpb_trans('website-manager.settings');?>"><button type="button" class="btn bg-blue"><i class="fa fa-cog"></i></button></a>
                                         <a href="#" data-toggle="modal" data-target="#delete-<?=$page->getId();?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
