@@ -4,8 +4,8 @@
 
 <p align="center">
     <a href="https://getdevflow.com/"><img src="https://img.shields.io/packagist/v/getdevflow/cmf?label=Devflow" alt="Devflow Stable Version"></a>
-    <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-8.3-777BB4.svg?style=flat&logo=php" alt="PHP 8.3"/></a>
-    <a href="https://github.com/getdevflow/cmf/blob/1.x/LICENSE.md"><img src="https://img.shields.io/packagist/l/getdevflow/cmf" alt="GPLv2-only"></a>
+    <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-8.4-777BB4.svg?style=flat&logo=php" alt="PHP 8.4"/></a>
+    <a href="https://github.com/getdevflow/cmf/blob/2.x/LICENSE.md"><img src="https://img.shields.io/packagist/l/getdevflow/cmf" alt="GPLv2-only"></a>
     <a href="https://packagist.org/packages/getdevflow/cmf"><img src="https://img.shields.io/packagist/dt/getdevflow/cmf" alt="Devflow Downloads"></a>
     <a href="https://discord.gg/52CyYu4e"><img src="https://img.shields.io/static/v1?label=Discord&message=chat&color=738adb&logo=discord" alt="Chat on Discord"></a>
 </p>
@@ -23,7 +23,7 @@ content management is intuitive and tailored to your specific needs, providing f
 and maintainable applications. Perfect for developers seeking a robust, modern solution for headless content management.
 
 ## 📍 Requirement
-- PHP >= 8.3+
+- PHP >= 8.4+
 - BCMath PHP Extension
 - Gettext PHP Extension
 - Fileinfo PHP extension
@@ -39,16 +39,20 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 
 ## 🏆 Highlighted Features
 - Domain-Driven Development
-- Event Store for saving domain events
+- CQRS & Event Sourcing
 - Read Models for content, products, and users
 - Serializer - supports serializing and deserialization of data
-- CQRS & Event Sourcing
 - Custom Content Types
 - Provides a simple hook and event system without affecting core code
 - Ability to customize admin dashboard using hooks
 - Scheduler for scheduling tasks/jobs
 - Security and sanitizing helpers
 - NIST Level 2 Standard Role-Based Access Control
+- Authentication and User Session Middlewares
+- Http Cache Middleware
+- Content Cache Middleware
+- Minify Middlewares
+- Throttle Middleware
 
 ## 🖼 Screenshots
 
@@ -66,7 +70,7 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 To create a new project, run the following command:
 
 ```bash
-composer create-project getdevflow/cmf:1.3.0 my-app-name
+composer create-project getdevflow/cmf project
 ```
 
 ## 🕑 Releases
@@ -74,8 +78,8 @@ composer create-project getdevflow/cmf:1.3.0 my-app-name
 | Version | Minimum PHP Version | Release Date  | Bug Fixes Until | Security Fixes Until |
 |---------|---------------------|---------------|-----------------|----------------------|
 | 1 - LTS | 8.3                 | December 2024 | June 2027       | December 2028        |
-| 2       | 8.4                 | December 2025 | September 2027  | March 2028           |
-| 3 - LTS | 8.4                 | December 2026 | June 2029       | December 2030        |
+| 2       | 8.4                 | May 2026      | January 2028    | April 2030           |
+| 3 - LTS | 8.5                 | August 2026   | February 2036   | May 2038             |
 
 ## 📘 Documentation
 
