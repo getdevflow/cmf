@@ -50,7 +50,7 @@ return [
     | Application Timezone
     |--------------------------------------------------------------------------
     */
-    'timezone' => 'America/Los_Angeles',
+    'timezone' => 'America/Denver',
 
     /*
     |--------------------------------------------------------------------------
@@ -158,10 +158,14 @@ return [
          * Application Console Commands . . .
          */
         App\Application\Console\Commands\ClearCacheCommand::class,
+        App\Application\Console\Commands\ClearCookiesCommand::class,
+        App\Application\Console\Commands\ClearLogsCommand::class,
         App\Application\Console\Commands\GenerateEncryptionKeyCommand::class,
         App\Application\Console\Commands\GenerateSaltStringCommand::class,
+        App\Application\Console\Commands\GenerateSiteFolderCommand::class,
+        App\Application\Console\Commands\DevflowCmfSetupCommand::class,
+        App\Application\Console\Commands\DevflowCmfInstallCommand::class,
         App\Application\Console\Commands\InstallCmsCommand::class,
-        App\Application\Console\Commands\EmailSendCommand::class,
         App\Application\Console\Commands\UpdaterCheckCommand::class,
         App\Application\Console\Commands\UpdaterCommand::class,
     ]
