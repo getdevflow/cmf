@@ -18,6 +18,7 @@ use function App\Shared\Helpers\cms_release_value;
 use function App\Shared\Helpers\current_screen;
 use function App\Shared\Helpers\current_user_can;
 use function App\Shared\Helpers\get_all_content_types;
+use function App\Shared\Helpers\get_current_site_id;
 use function App\Shared\Helpers\get_current_user_id;
 use function App\Shared\Helpers\get_logo_large;
 use function App\Shared\Helpers\get_logo_mini;
@@ -28,11 +29,11 @@ use function App\Shared\Helpers\get_theme;
 use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
 use function App\Shared\Helpers\get_userdata;
+use function App\Shared\Helpers\is_main_site;
 use function App\Shared\Helpers\is_multisite;
 use function App\Shared\Helpers\site_url;
 use function Codefy\Framework\Helpers\config;
 use function Codefy\Framework\Helpers\trans_html;
-use function Qubus\Routing\Helpers\request;
 use function Qubus\Security\Helpers\esc_attr;
 use function Qubus\Security\Helpers\esc_html;
 
@@ -154,7 +155,7 @@ $user = get_userdata(get_current_user_id());
                             <i class="fa fa-broom"></i> <span><?=trans_html(string: 'Flush Cache');?></span>
                         </a>
                     </li>
-                    <?php if(is_multisite() && (config()->string(key: 'cms.main_site_url') === request()->getHost())) : ?>
+                    <?php if(is_multisite() && is_main_site(get_current_site_id())): ?>
                     <li<?= ae('manage:sites'); ?> class="treeview<?=current_screen('screen_parent', 'sites'); ?>">
                         <a href="#">
                             <i class="fa fa-globe"></i>
