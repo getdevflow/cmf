@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Application\Http\Route;
 
 use Qubus\Routing\Exceptions\TooLateToAddNewRouteException;
-use Qubus\Routing\Router;
+use Qubus\Routing\Psr7Router;
 
 class TestRoute
 {
     /**
      * @throws TooLateToAddNewRouteException
      */
-    public function handle(Router $router): void
+    public function handle(Psr7Router $router): void
     {
-        $router->get('/custom-route/test', function () {
-            return 'test';
+        $router->get('/admin/custom-route/test', function () {
+            return 'Hello World!';
         });
     }
 }
