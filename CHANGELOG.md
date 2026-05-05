@@ -1,10 +1,16 @@
-## 2.0.0 ()
+## 2.0.0 (TBD)
 - ➕ Http transport client
 - ➕ Schedule content to be published in the future
 - ➕ Schedule products to be published in the future
 - 💾 Check if plugin class exists before loading
 - 💾 Check if theme class exists before loading
 - ➕ New page builder
+- ➕ Event listener service provider
+- ➕ Scheduler service provider
+- ➕ Page builder service provider
+- 🔧 Dependency issue with Database
+- 💾 Updated namespace under `Cms`
+- ➕ Http cache
 - 🔧 Other minor fixes
 
 ## 1.3.0 (2025-02-14)
