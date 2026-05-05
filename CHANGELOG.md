@@ -1,3 +1,12 @@
+## 2.0.0 ()
+- ➕ Http transport client
+- ➕ Schedule content to be published in the future
+- ➕ Schedule products to be published in the future
+- 💾 Check if plugin class exists before loading
+- 💾 Check if theme class exists before loading
+- ➕ New page builder
+- 🔧 Other minor fixes
+
 ## 1.3.0 (2025-02-14)
 - 🔧 Fixed misspelling in `config/cms.php`
 - 💾 Update server is filterable (`updater_api_version`, `updater_base_url`, `updater_url`)
