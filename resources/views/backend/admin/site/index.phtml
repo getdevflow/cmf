@@ -63,7 +63,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites');
                             <div class="box-body">
                                 <div class="form-group">
                                     <label><?= trans_html(string: 'Subdomain'); ?></label>
-                                    <input type="text" class="form-control input-lg" name="subdomain" value="<?= $params['request']->getParsedBody()['subdomain'] ?? ''; ?>" required/>.<?= $params['request']->getServerParams()['HTTP_HOST']; ?>
+                                    <input type="text" class="form-control input-lg" name="subdomain" value="<?= $params['request']->getParsedBody()['subdomain'] ?? ''; ?>" required/>.<?=config()->string(key: 'cms.main_site_url'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label><?= trans_html(string: 'Site Name'); ?></label>
