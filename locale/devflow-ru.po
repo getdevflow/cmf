@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow CMF\n"
-"POT-Creation-Date: 2026-05-01 16:57-0700\n"
-"PO-Revision-Date: 2026-05-01 16:57-0700\n"
+"POT-Creation-Date: 2026-05-05 07:58-0600\n"
+"PO-Revision-Date: 2026-05-05 07:58-0600\n"
 "Last-Translator: Joshua Parker <joshua@joshuaparker.dev>\n"
 "Language-Team: Joshua Parker\n"
 "Language: ru\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Domain: devflow\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: "
 "t__;esc_html__;trans;trans_html;trans_attr;esc_attr__\n"
@@ -81,6 +81,31 @@ msgstr "Контент, опубликованный по GMT, не может �
 #, fuzzy
 msgid "Content id cannot be null."
 msgstr "Content id не может быть null."
+
+#: core/Domain/Content/Enum/ContentStatus.php:29
+#: core/Domain/Product/Enum/ProductStatus.php:29
+msgid "Published"
+msgstr "Опубликовано"
+
+#: core/Domain/Content/Enum/ContentStatus.php:30
+#: core/Domain/Product/Enum/ProductStatus.php:30
+msgid "Scheduled"
+msgstr "Запланировано"
+
+#: core/Domain/Content/Enum/ContentStatus.php:31
+#: core/Domain/Product/Enum/ProductStatus.php:31
+msgid "Draft"
+msgstr "Черновик"
+
+#: core/Domain/Content/Enum/ContentStatus.php:32
+#: core/Domain/Product/Enum/ProductStatus.php:32
+msgid "Pending"
+msgstr "В ожидании"
+
+#: core/Domain/Content/Enum/ContentStatus.php:33
+#: core/Domain/Product/Enum/ProductStatus.php:33
+msgid "Archived"
+msgstr "Архивировано"
 
 #: core/Domain/ContentType/ContentType.php:85
 #, fuzzy
@@ -157,41 +182,6 @@ msgstr "Дата публикации продукта в GMT не может б
 msgid "Product id cannot be null."
 msgstr "Id произведения не может быть нулевым."
 
-#: core/Domain/Site/Site.php:152
-#, fuzzy
-msgid "Site name cannot be empty."
-msgstr "Название сайта не должно быть пустым."
-
-#: core/Domain/Site/Site.php:170
-#, fuzzy
-msgid "Site slug cannot be empty."
-msgstr "Пуля сайта не может быть пустой."
-
-#: core/Domain/Site/Site.php:186 core/Shared/Helpers/site.php:593
-#, fuzzy
-msgid "Site domain cannot be empty."
-msgstr "Домен сайта не может быть пустым."
-
-#: core/Domain/Site/Site.php:214
-#, fuzzy
-msgid "Site path cannot be empty."
-msgstr "Путь сайта не может быть пустым."
-
-#: core/Domain/Site/Site.php:230
-#, fuzzy
-msgid "Owner cannot be empty."
-msgstr "Владелец не может быть пустым."
-
-#: core/Domain/Site/Site.php:246
-#, fuzzy
-msgid "Site status cannot be empty."
-msgstr "Статус сайта не может быть пустым."
-
-#: core/Domain/Site/Site.php:278
-#, fuzzy
-msgid "Site id cannot be null."
-msgstr "Идентификатор сайта не может быть нулем."
-
 #: core/Domain/User/Enum/UserStatus.php:19
 msgid "Active"
 msgstr "Активный"
@@ -208,77 +198,22 @@ msgstr "Заблокировано"
 msgid "Spammer"
 msgstr "Спамер"
 
-#: core/Domain/User/User.php:186
-#, fuzzy
-msgid "Login/Username cannot be null."
-msgstr "Логин/имя пользователя не могут быть null."
-
-#: core/Domain/User/User.php:202
-#, fuzzy
-msgid "Email address cannot be null."
-msgstr "Адрес электронной почты не может быть нулирован."
-
-#: core/Domain/User/User.php:218
-#, fuzzy
-msgid "Name cannot be null."
-msgstr "Имя не может быть нулевым."
-
-#: core/Domain/User/User.php:234
-#, fuzzy
-msgid "Token cannot be null."
-msgstr "Жетон не может быть нулевым."
-
-#: core/Domain/User/User.php:250
-#, fuzzy
-msgid "Password cannot be null."
-msgstr "Пароль не может быть null."
-
-#: core/Domain/User/User.php:280
-#, fuzzy
-msgid "Timezone cannot be null."
-msgstr "Часовой пояс не может быть нулем."
-
-#: core/Domain/User/User.php:294
-#, fuzzy
-msgid "Date format cannot be null."
-msgstr "Формат даты не может быть нулёвым."
-
-#: core/Domain/User/User.php:308
-#, fuzzy
-msgid "Time format cannot be null."
-msgstr "Формат времени не может быть нулевым."
-
-#: core/Domain/User/User.php:322
-#, fuzzy
-msgid "Locale cannot be null."
-msgstr "Местоположение не может быть нулевым."
-
-#: core/Domain/User/User.php:352
-#, fuzzy
-msgid "User id cannot be null."
-msgstr "User ID не может быть null."
-
-#: core/Domain/User/User.php:366
-#, fuzzy
-msgid "User meta cannot be empty."
-msgstr "Пользовательская мета не может быть пустой."
-
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:105
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:108
 msgid "Login"
 msgstr "Войти"
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:142
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:145
 #, fuzzy
 msgid "You are already logged out."
 msgstr "Вы уже вне системы."
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:174
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:193
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:177
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:188
 #, fuzzy
 msgid "Request error."
 msgstr "Ошибка запроса."
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:198
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:206
 #, fuzzy
 msgid ""
 "A new password was sent to your email. May take a few minutes to arrive, so "
@@ -287,7 +222,7 @@ msgstr ""
 "Новый пароль был отправлен на вашу почту. Прибытие может занять несколько "
 "минут, так что, пожалуйста, будьте терпеливы"
 
-#: core/Infrastructure/Http/Controllers/AdminAuthController.php:208
+#: core/Infrastructure/Http/Controllers/AdminAuthController.php:216
 #, fuzzy
 msgid "Password reset exception occurred and was logged."
 msgstr "Возникло исключение сброса пароля, которое было зафиксировано."
@@ -308,27 +243,27 @@ msgstr "Возникло исключение сброса пароля, кот�
 #: core/Infrastructure/Http/Controllers/AdminProductController.php:63
 #: core/Infrastructure/Http/Controllers/AdminProductController.php:125
 #: core/Infrastructure/Http/Controllers/AdminProductController.php:190
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:63
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:117
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:168
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:225
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:283
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:328
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:384
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:447
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:64
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:118
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:169
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:226
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:284
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:329
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:385
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:448
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:47
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:95
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:129
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:89
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:196
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:224
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:320
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:369
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:432
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:460
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:510
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:569
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:668
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:93
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:209
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:237
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:333
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:382
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:445
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:473
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:541
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:600
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:699
 #: core/Infrastructure/Http/Controllers/PageBuilderController.php:62
 #: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:49
 msgid "Access denied."
@@ -441,50 +376,50 @@ msgstr "Создать товар"
 msgid "The product does not exist."
 msgstr "Продукт не существует."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:70
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:124
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:175
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:232
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:290
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:334
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:391
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:454
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:71
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:125
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:176
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:233
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:291
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:335
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:392
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:455
 #, fuzzy
 msgid "Multisite is not enabled."
 msgstr "Мультисайт не включён."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:79
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:80
 #, fuzzy
 msgid "Insertion error occurred."
 msgstr "Произошла ошибка вставки."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:95
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:174
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:96
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:187
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:85
 #, fuzzy
 msgid "Insertion exception occurred and was logged."
 msgstr "Исключение вставки возникло и было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:137
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:138
 msgid "Sites"
 msgstr "Сайты"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:146
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:147
 #, fuzzy
 msgid "Exception occurred and was logged."
 msgstr "Произошло исключение, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:150
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:151
 #, fuzzy
 msgid "Content types error."
 msgstr "Ошибка типов контента."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:186
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:187
 #, fuzzy
 msgid "Change error occurred."
 msgstr "Произошла ошибка изменения."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:203
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:204
 #: core/Infrastructure/Services/Content/ContentService.php:170
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:120
 #: core/Infrastructure/Services/Product/ProductService.php:150
@@ -492,53 +427,53 @@ msgstr "Произошла ошибка изменения."
 msgid "Change exception occurred and was logged."
 msgstr "Произошло исключение изменения и было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:243
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:263
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:244
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:264
 #, fuzzy
 msgid "The site does not exist."
 msgstr "Такого сайта не существует."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:297
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:298
 #, fuzzy
 msgid "The action is not allowed."
 msgstr "Действие запрещено."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:308
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:309
 #, fuzzy
 msgid "Manage System Users"
 msgstr "Управление пользователями системы"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:340
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:341
 #, fuzzy
 msgid "You cannot submit an empty site id."
 msgstr "Вы не можете отправить пустой идентификатор сайта."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:346
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:347
 #, fuzzy
 msgid "You cannot submit an empty user role."
 msgstr "Вы не можете подать пустую пользовательскую роль."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:356
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:357
 msgid "An error occurred."
 msgstr "Произошла ошибка."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:426
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:427
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:144
 #, fuzzy
 msgid "Delete exception occurred and was logged."
 msgstr "Произошло исключение удаления, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:470
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:463
 #, fuzzy
 msgid "This action is not allowed."
 msgstr "Это действие запрещено."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:481
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:474
 #, fuzzy
 msgid "A site check exception occurred and was logged."
 msgstr "Произошло исключение проверки сайта, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:504
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:497
 #, fuzzy
 msgid "A site deletion exception occurred and was logged."
 msgstr "Произошло исключение удаления сайта, которое было зарегистрировано."
@@ -567,110 +502,115 @@ msgstr "Тема деактивирована."
 msgid "Theme deactivation exception occurred and was logged."
 msgstr "Возникло исключение деактивации темы, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:97
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:101
 #, fuzzy, php-format
 msgid "Passwords cannot be less than %s characters."
 msgstr "Пароли не могут быть менее %s символов."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:120
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:124
 #, fuzzy
 msgid "Username cannot be empty or null."
 msgstr "Имя пользователя не может быть пустым или нулевым."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:131
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:135
 #, fuzzy
 msgid "User check exception occurred and was logged."
 msgstr "Возникло исключение User Check и было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:204
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:217
 msgid "Create User"
 msgstr "Создать пользователя"
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:236
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:249
 msgid "Users"
 msgstr "Пользователи"
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:243
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:256
 #, fuzzy
 msgid "Query exception occurred and was logged."
 msgstr "Возникло исключение запроса, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:247
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:260
 #, fuzzy
 msgid "Users error"
 msgstr "Ошибка пользователя"
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:265
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:278
 msgid "Permission denied."
 msgstr "Доступ запрещен."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:298
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:311
 #, fuzzy
 msgid "User change exception occurred and was logged."
 msgstr "Возникло исключение смены пользователя, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:336
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:349
 msgid "View User"
 msgstr "Просмотреть данные пользователя"
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:350
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:363
 msgid "The user does not exist."
 msgstr "Пользователь не существует."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:409
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:422
 #, fuzzy
 msgid "A removal exception occurred and was logged."
 msgstr "Произошло исключение для удаления, которое было зарегистрировано."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:467
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:481
 msgid "User not found."
 msgstr "Пользователь не найден."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:474
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:488
 #, fuzzy, php-format
 msgid "Password successfully updated for <strong>%s</strong>."
 msgstr "Пароль успешно обновлён для <strong>%s</strong>."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:490
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:507
+#, fuzzy
+msgid "The password reset email has been queued for sending."
+msgstr "Письмо с сбросом пароля поставлено в очередь на отправку."
+
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:521
 #, fuzzy
 msgid "Reset password exception occurred and was logged."
 msgstr "Возникло исключение сброса пароля, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:521
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:552
 #, fuzzy
 msgid "An update error occurred."
 msgstr "Произошла ошибка обновления."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:537
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:568
 #, fuzzy
 msgid "An update exception occurred and was logged."
 msgstr "Произошло исключение обновления, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:545
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:576
 msgid "User Profile"
 msgstr "Профиль пользователя"
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:632
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:663
 #, fuzzy
 msgid "User switching was successful."
 msgstr "Переключение пользователей прошло успешно."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:645
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:676
 #, fuzzy
 msgid "User switching exception occurred and was logged."
 msgstr "Возникло исключение смены пользователей, которое было зафиксировано."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:679
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:710
 #, fuzzy
 msgid "Cookie is not properly set for user switching."
 msgstr "Cookie не настроен корректно для переключения пользователей."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:741
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:772
 #, fuzzy
 msgid "Switching back to previous user session was successful."
 msgstr "Возвращение к предыдущей пользовательской сессии прошло успешно."
 
-#: core/Infrastructure/Http/Controllers/AdminUserController.php:754
+#: core/Infrastructure/Http/Controllers/AdminUserController.php:785
 #, fuzzy
 msgid "User switch back exception occurred and was logged."
 msgstr ""
@@ -724,7 +664,7 @@ msgstr "Пользователь удалил с сайта."
 msgid "Website Manager"
 msgstr "Менеджер сайта"
 
-#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:125
+#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:113
 #, fuzzy, php-format
 msgid "Devflow %s"
 msgstr "Devflow %s"
@@ -784,17 +724,98 @@ msgstr "Продукт успешно добавлен."
 msgid "Could not create product. Please try again later."
 msgstr "Не смог создать продукт. Пожалуйста, попробуйте позже."
 
+#: core/Infrastructure/Services/Queue/EmailChangeNotification.php:45
+#, fuzzy, php-format
+msgid "This is confirmation that your email on %s was updated."
+msgstr "Это подтверждение того, что ваше письмо на %s было обновлено."
+
+#: core/Infrastructure/Services/Queue/EmailChangeNotification.php:50
+#, php-format
+msgid "<strong>Email:</strong> %s"
+msgstr "<strong>Email:</strong> %s"
+
+#: core/Infrastructure/Services/Queue/EmailChangeNotification.php:53
+#, fuzzy, php-format
+msgid ""
+"If you did not initiate an email change/update, please contact us at <a "
+"href=\"mailto:%s\">%s</a>."
+msgstr ""
+"Если вы не инициировали изменение или обновление электронной почты, "
+"пожалуйста, свяжитесь с нами по адресу <a href=\"mailto:%s\">%s</a>."
+
+#: core/Infrastructure/Services/Queue/EmailChangeNotification.php:69
+#, php-format
+msgid "[%s] Notice of Email Change"
+msgstr "%s - уведомление о смене адреса почты"
+
+#: core/Infrastructure/Services/Queue/EmailChangeNotification.php:76
+msgid "Profile Update"
+msgstr "Обновление профиля"
+
+#: core/Infrastructure/Services/Queue/EmailChangeNotification.php:77
+#, fuzzy
+msgid "Email Change"
+msgstr "Смена электронной почты"
+
+#: core/Infrastructure/Services/Queue/EmailChangeNotification.php:80
+#: core/Infrastructure/Services/Queue/NewAccountNotification.php:66
+#: core/Infrastructure/Services/Queue/ResetPasswordNotification.php:65
+msgid "Sign in"
+msgstr "Войти"
+
+#: core/Infrastructure/Services/Queue/NewAccountNotification.php:42
+#, fuzzy, php-format
+msgid "<strong>Username:</strong> %s"
+msgstr "<strong>Имя пользователя:</strong> %s"
+
+#: core/Infrastructure/Services/Queue/NewAccountNotification.php:43
+#, fuzzy, php-format
+msgid "<strong>Password:</strong> %s"
+msgstr "<strong>Пароль:</strong> %s"
+
+#: core/Infrastructure/Services/Queue/NewAccountNotification.php:55
+#, fuzzy, php-format
+msgid "[%s] New Account"
+msgstr "[%s] Новый аккаунт"
+
+#: core/Infrastructure/Services/Queue/NewAccountNotification.php:62
+msgid "Account"
+msgstr "Аккаунт"
+
+#: core/Infrastructure/Services/Queue/NewAccountNotification.php:63
+msgid "New Account"
+msgstr "Новый аккаунт"
+
+#: core/Infrastructure/Services/Queue/ResetPasswordNotification.php:42
+#, fuzzy, php-format
+msgid "Your newly generated password is: <strong>%s</strong>"
+msgstr "Ваш новый пароль: <strong>%s</strong>"
+
+#: core/Infrastructure/Services/Queue/ResetPasswordNotification.php:54
+#, php-format
+msgid "[%s] Password Reset"
+msgstr "[%s] Сброс пароля"
+
+#: core/Infrastructure/Services/Queue/ResetPasswordNotification.php:61
+#: resources/blocks/forms/input/config.php:21
+msgid "Password"
+msgstr "Пароль"
+
+#: core/Infrastructure/Services/Queue/ResetPasswordNotification.php:62
+msgid "New Password"
+msgstr "Новый пароль"
+
 #: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:63
 #, fuzzy, php-format
 msgid "No row found for site \"%s\" and user \"%s\"."
 msgstr "Строки для сайта «%s» и пользователя «%s» не найдено."
 
-#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:119
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:118
 #, fuzzy
 msgid "User attribute not found"
 msgstr "Пользовательский атрибут не найден"
 
-#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:128
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:127
 #, fuzzy
 msgid "Attribute patch callback must return an AttributeBag instance."
 msgstr ""
@@ -849,36 +870,36 @@ msgstr "Идентификатор типа содержимого недейс�
 msgid "The system was not able to delete the content type."
 msgstr "Система не смогла удалить тип контента."
 
-#: core/Shared/Helpers/content.php:1768 core/Shared/Helpers/content.php:2331
+#: core/Shared/Helpers/content.php:1770 core/Shared/Helpers/content.php:2333
 #, fuzzy
 msgid "Invalid content id."
 msgstr "Некорректный идентификатор контента."
 
-#: core/Shared/Helpers/content.php:1915
+#: core/Shared/Helpers/content.php:1917
 #, fuzzy
 msgid "Content author cannot be null or empty."
 msgstr "Автор контента не может быть null или empty."
 
-#: core/Shared/Helpers/content.php:2019
+#: core/Shared/Helpers/content.php:2021
 #, fuzzy
 msgid "The title and content are null."
 msgstr "Заголовок и содержание не имеют значения."
 
-#: core/Shared/Helpers/content.php:2173
+#: core/Shared/Helpers/content.php:2175
 #, fuzzy
 msgid "Could not insert content into the content table."
 msgstr "Не удалось вставить содержимое в таблицу содержания."
 
-#: core/Shared/Helpers/content.php:2222
+#: core/Shared/Helpers/content.php:2224
 #, fuzzy
 msgid "Could not update content within the content table."
 msgstr "Не удалось обновить содержимое внутри таблицы содержания."
 
-#: core/Shared/Helpers/core.php:751
+#: core/Shared/Helpers/core.php:748
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: core/Shared/Helpers/core.php:1435
+#: core/Shared/Helpers/core.php:1429
 #, fuzzy, php-format
 #| msgid ""
 #| "Devflow release %s is available for download/upgrade. Before upgrading, "
@@ -888,69 +909,14 @@ msgid ""
 "make sure to backup your system."
 msgstr ""
 "Релиз Devflow %s доступен для скачивания или обновления. Перед обновлением "
-"обязательно создайте резервную копию вашей системы."
+"обязательно сделайте резервную копию системы."
 
-#: core/Shared/Helpers/db.php:618
+#: core/Shared/Helpers/db.php:608
 #, fuzzy, php-format
 msgid "Reassign content error: %s"
 msgstr "Ошибка переназначения контента: %s"
 
-#: core/Shared/Helpers/db.php:830 core/Shared/Helpers/db.php:931
-msgid "Hi there,"
-msgstr "Привет,"
-
-#: core/Shared/Helpers/db.php:833
-#, fuzzy, php-format
-msgid "Welcome to %s! Here's how to log in: "
-msgstr "Добро пожаловать в %s! Вот как войти: "
-
-#: core/Shared/Helpers/db.php:838 core/Shared/Helpers/db.php:939
-#, php-format
-msgid "Username: %s"
-msgstr "Имя пользователя: %s"
-
-#: core/Shared/Helpers/db.php:839 core/Shared/Helpers/db.php:940
-#: core/Shared/Helpers/user.php:1354 core/Shared/Helpers/user.php:1416
-#, php-format
-msgid "Password: %s"
-msgstr "Пароль: %s"
-
-#: core/Shared/Helpers/db.php:842 core/Shared/Helpers/db.php:943
-#, fuzzy, php-format
-msgid ""
-"If you have any problems, please contact us at <a href=\"mailto:%s\">%s</a>."
-msgstr ""
-"Если у вас возникнут какие-либо проблемы, пожалуйста, свяжитесь с нами по "
-"адресу <a href=\"mailto:%s\">%s</a>."
-
-#: core/Shared/Helpers/db.php:848
-msgid "New Account"
-msgstr "Новый аккаунт"
-
-#: core/Shared/Helpers/db.php:856
-#, fuzzy, php-format
-msgid "[%s] New Account"
-msgstr "[%s] Новый аккаунт"
-
-#: core/Shared/Helpers/db.php:934
-#, fuzzy, php-format
-msgid "Your password has been reset for %s: "
-msgstr "Ваш пароль сброшен на %s: "
-
-#: core/Shared/Helpers/db.php:949 core/Shared/Helpers/user.php:1363
-msgid "Password Reset"
-msgstr "Сброс пароля"
-
-#: core/Shared/Helpers/db.php:957
-#, php-format
-msgid "[%s] Password Reset"
-msgstr "[%s] Сброс пароля"
-
-#: core/Shared/Helpers/hook.php:115
-msgid "Powered by"
-msgstr "Работает на"
-
-#: core/Shared/Helpers/hook.php:788
+#: core/Shared/Helpers/hook.php:779
 #, fuzzy
 #| msgid ""
 #| "Your system is currently in `dev` mode. Please remember to set your "
@@ -961,198 +927,114 @@ msgid ""
 "prod mode after testing. When prod mode is set, this warning message will "
 "disappear."
 msgstr ""
-"Ваша система в данный момент находится в режиме разработки (dev mode). "
-"Пожалуйста, не забудьте перевести систему в рабочий режим (prod mode) после "
-"завершения тестирования. При переходе в рабочий режим это предупреждение "
-"исчезнет."
+"Ваша система сейчас в режиме разработки. Пожалуйста, не забудьте установить "
+"систему в режим производства после тестирования. Когда установлен режим "
+"производства, это предупреждение исчезает."
 
-#: core/Shared/Helpers/product.php:1424 core/Shared/Helpers/product.php:2011
+#: core/Shared/Helpers/product.php:1426 core/Shared/Helpers/product.php:2013
 #, fuzzy
 msgid "Invalid product id."
 msgstr "Идентификатор недопустимого продукта."
 
-#: core/Shared/Helpers/product.php:1561
+#: core/Shared/Helpers/product.php:1563
 #, fuzzy
 msgid "Product author cannot be null or empty."
 msgstr "Автор продукта не может быть null или empty."
 
-#: core/Shared/Helpers/product.php:1697
+#: core/Shared/Helpers/product.php:1699
 #, fuzzy
 msgid "The title and body should not be null."
 msgstr "Титул и основная часть не должны быть нулевыми."
 
-#: core/Shared/Helpers/product.php:1852
+#: core/Shared/Helpers/product.php:1854
 #, fuzzy
 msgid "Could not insert product into the product table."
 msgstr "Не удалось вставить продукт в таблицу продукта."
 
-#: core/Shared/Helpers/product.php:1901
+#: core/Shared/Helpers/product.php:1903
 #, fuzzy
 msgid "Could not update product within the product table."
 msgstr "Не удалось обновить товар внутри таблицы товара."
 
-#: core/Shared/Helpers/site.php:518 core/Shared/Helpers/site.php:965
+#: core/Shared/Helpers/site.php:512 core/Shared/Helpers/site.php:952
 #, fuzzy
 msgid "The ID of this entity is invalid."
 msgstr "Идентификатор этого субъекта недействителен."
 
-#: core/Shared/Helpers/site.php:602
+#: core/Shared/Helpers/site.php:583
+#, fuzzy
+msgid "Site domain cannot be empty."
+msgstr "Домен сайта не может быть пустым."
+
+#: core/Shared/Helpers/site.php:592
 #, fuzzy
 msgid "Sorry, that site already exists!"
 msgstr "Извините, этот сайт уже существует!"
 
-#: core/Shared/Helpers/site.php:702
+#: core/Shared/Helpers/site.php:692
 #, fuzzy
 msgid "Sorry, that site domain and path is already used."
 msgstr "Извините, домен сайта и путь уже используются."
 
-#: core/Shared/Helpers/site.php:1010
+#: core/Shared/Helpers/site.php:998
 msgid "Site does not exist."
 msgstr "Сайт не существует"
 
-#: core/Shared/Helpers/site.php:1094
+#: core/Shared/Helpers/site.php:1082
 #, fuzzy
 msgid "You are not allowed to delete a super administrator account."
 msgstr "Вам запрещено удалять аккаунт суперадминистратора."
 
-#: core/Shared/Helpers/site.php:1144
+#: core/Shared/Helpers/site.php:1132
 #, fuzzy
 msgid "Site deletion exception occurred."
 msgstr "Произошло исключение удаления сайта."
 
-#: core/Shared/Helpers/site.php:1192
+#: core/Shared/Helpers/site.php:1180
 #, fuzzy
 msgid "User delete exception occurred."
 msgstr "Произошло исключение удаления пользователями."
 
-#: core/Shared/Helpers/site.php:1252
+#: core/Shared/Helpers/site.php:1240
 #, fuzzy
 msgid "You are not allowed to remove super admins from this site."
 msgstr "Вам запрещено удалять суперадминов с этого сайта."
 
-#: core/Shared/Helpers/user.php:595 core/Shared/Helpers/user.php:1092
-#: core/Shared/Helpers/user.php:1099
+#: core/Shared/Helpers/user.php:597 core/Shared/Helpers/user.php:1104
+#: core/Shared/Helpers/user.php:1111
 #, fuzzy
 msgid "Invalid user id."
 msgstr "Некорректный идентификатор пользователя."
 
-#: core/Shared/Helpers/user.php:669
+#: core/Shared/Helpers/user.php:676
 #, fuzzy
 msgid "Cannot create a user with an empty username."
 msgstr "Нельзя создать пользователя с пустым именем пользователя."
 
-#: core/Shared/Helpers/user.php:673
+#: core/Shared/Helpers/user.php:680
 #, fuzzy
 msgid "Username must be at least 3 characters long."
 msgstr "Имя пользователя должно состоять не менее трёх символов."
 
-#: core/Shared/Helpers/user.php:677
+#: core/Shared/Helpers/user.php:684
 #, fuzzy
 msgid "Username may not be longer than 60 characters."
 msgstr "Имя пользователя не должно превышать 60 символов."
 
-#: core/Shared/Helpers/user.php:682
+#: core/Shared/Helpers/user.php:689
 #, fuzzy
 msgid "Sorry, that username cannot be used."
 msgstr "Извините, это имя пользователя нельзя использовать."
 
-#: core/Shared/Helpers/user.php:697
+#: core/Shared/Helpers/user.php:704
 #, fuzzy, php-format
 msgid "Sorry, the username <strong>%s</strong> is not allowed."
 msgstr "Извините, имя <strong>%s</strong> пользователя не разрешено."
 
-#: core/Shared/Helpers/user.php:737
+#: core/Shared/Helpers/user.php:744
 #, fuzzy
 msgid "Sorry, that email address cannot be used."
 msgstr "Извините, этот адрес электронной почты нельзя использовать."
-
-#: core/Shared/Helpers/user.php:1350
-#, fuzzy, php-format
-msgid ""
-"Hello %s! You requested that your password be reset. Please see your new "
-"password below: <br />"
-msgstr ""
-"Здравствуйте %s! Вы попросили сбросить пароль. Пожалуйста, смотрите свой "
-"новый пароль ниже: <br />"
-
-#: core/Shared/Helpers/user.php:1357
-#, fuzzy, php-format
-msgid ""
-"If you still have problems with logging in, please contact us at <a "
-"href=\"mailto:%s\">%s</a>."
-msgstr ""
-"Если у вас всё ещё есть проблемы с входом, пожалуйста, свяжитесь с нами по "
-"адресу <a href=\"mailto:%s\">%s</a>."
-
-#: core/Shared/Helpers/user.php:1372
-#, fuzzy, php-format
-msgid "[%s] Notice of Password Reset"
-msgstr "[%s] Уведомление о сбросе пароля"
-
-#: core/Shared/Helpers/user.php:1411
-#, fuzzy, php-format
-msgid ""
-"Hello %s! This is confirmation that your password on %s was updated to: <br /"
-">"
-msgstr ""
-"Здравствуйте %s! Это подтверждение того, что ваш пароль %s был обновлён на: "
-"<br />"
-
-#: core/Shared/Helpers/user.php:1419
-#, fuzzy, php-format
-msgid ""
-"If you did not initiate a password change/update, please contact us at <a "
-"href=\"mailto:%s\">%s</a>."
-msgstr ""
-"Если вы не инициировали смену или обновление пароля, пожалуйста, свяжитесь с "
-"нами по адресу <a href=\"mailto:%s\">%s</a>."
-
-#: core/Shared/Helpers/user.php:1425
-#, fuzzy
-msgid "Notice of Password Change"
-msgstr "Уведомление о смене пароля"
-
-#: core/Shared/Helpers/user.php:1434
-#, php-format
-msgid "[%s] Notice of Password Change"
-msgstr "[%s] Уведомление об изменении пароля"
-
-#: core/Shared/Helpers/user.php:1472
-#, fuzzy, php-format
-msgid ""
-"Hello %s! This is confirmation that your email on %s was updated to: <br />"
-msgstr ""
-"Здравствуйте %s! Это подтверждение того, что ваше письмо %s было обновлено "
-"на: <br />"
-
-#: core/Shared/Helpers/user.php:1477
-#, php-format
-msgid "Email: %s"
-msgstr "Email: %s"
-
-#: core/Shared/Helpers/user.php:1480
-#, fuzzy, php-format
-msgid ""
-"If you did not initiate an email change/update, please contact us at <a "
-"href=\"mailto:%s\">%s</a>."
-msgstr ""
-"Если вы не инициировали изменение или обновление электронной почты, "
-"пожалуйста, свяжитесь с нами по адресу <a href=\"mailto:%s\">%s</a>."
-
-#: core/Shared/Helpers/user.php:1486
-#, fuzzy
-msgid "Notice of Email Change"
-msgstr "Уведомление об изменении электронной почты"
-
-#: core/Shared/Helpers/user.php:1495
-#, php-format
-msgid "[%s] Notice of Email Change"
-msgstr "%s - уведомление о смене адреса почты"
-
-#: core/Shared/Helpers/user.php:1640
-#, fuzzy
-msgid "The password reset email has been queued for sending."
-msgstr "Письмо с сбросом пароля поставлено в очередь на отправку."
 
 #: core/Shared/Services/Parsecode.php:117
 #: core/Shared/Services/Parsecode.php:145
@@ -1389,10 +1271,6 @@ msgstr "Тип ввода"
 msgid "Email"
 msgstr "Email"
 
-#: resources/blocks/forms/input/config.php:21
-msgid "Password"
-msgstr "Пароль"
-
 #: resources/blocks/forms/input/config.php:22
 msgid "Hidden"
 msgstr "Скрытый"
@@ -1620,7 +1498,7 @@ msgstr "Высота встраивания"
 #: resources/views/backend/admin/manager/page-settings.phtml:40
 #: resources/views/backend/admin/product/create.phtml:47
 #: resources/views/backend/admin/site/index.phtml:42
-#: resources/views/backend/admin/user/create.phtml:50
+#: resources/views/backend/admin/user/create.phtml:84
 msgid "Save"
 msgstr "Сохранить"
 
@@ -1778,7 +1656,7 @@ msgstr "Обновить"
 #: resources/views/backend/admin/product/create.phtml:48
 #: resources/views/backend/admin/product/view.phtml:51
 #: resources/views/backend/admin/site/view.phtml:42
-#: resources/views/backend/admin/user/create.phtml:51
+#: resources/views/backend/admin/user/create.phtml:85
 #: resources/views/backend/admin/user/profile.phtml:43
 #: resources/views/backend/admin/user/profile.phtml:193
 #: resources/views/backend/admin/user/view.phtml:42
@@ -1888,7 +1766,7 @@ msgstr "Дата публикации"
 #: resources/views/backend/admin/site/index.phtml:105
 #: resources/views/backend/admin/site/index.phtml:155
 #: resources/views/backend/admin/site/view.phtml:88
-#: resources/views/backend/admin/user/create.phtml:170
+#: resources/views/backend/admin/user/create.phtml:224
 #: resources/views/backend/admin/user/index.phtml:58
 #: resources/views/backend/admin/user/index.phtml:128
 #: resources/views/backend/admin/user/view.phtml:144
@@ -1901,20 +1779,6 @@ msgstr "Статус"
 #: resources/views/backend/admin/product/view.phtml:118
 msgid "Schedule"
 msgstr "Расписание"
-
-#: resources/views/backend/admin/content/create.phtml:136
-#: resources/views/backend/admin/content/view.phtml:141
-#: resources/views/backend/admin/product/create.phtml:120
-#: resources/views/backend/admin/product/view.phtml:120
-msgid "Draft"
-msgstr "Черновик"
-
-#: resources/views/backend/admin/content/create.phtml:137
-#: resources/views/backend/admin/content/view.phtml:142
-#: resources/views/backend/admin/product/create.phtml:121
-#: resources/views/backend/admin/product/view.phtml:121
-msgid "Pending"
-msgstr "В ожидании"
 
 #: resources/views/backend/admin/content/create.phtml:138
 #: resources/views/backend/admin/content/view.phtml:143
@@ -2032,7 +1896,7 @@ msgstr "Атрибуты"
 #: resources/views/backend/admin/site/index.phtml:153
 #: resources/views/backend/admin/theme/index.phtml:53
 #: resources/views/backend/admin/theme/index.phtml:89
-#: resources/views/backend/admin/user/create.phtml:69
+#: resources/views/backend/admin/user/create.phtml:103
 #: resources/views/backend/admin/user/profile.phtml:185
 #: resources/views/backend/admin/user/view.phtml:64
 msgid "Name"
@@ -2088,7 +1952,7 @@ msgid "The purchase url is where customers can purchase your product."
 msgstr "Адрес покупки — это место, где клиенты могут приобрести ваш продукт."
 
 #: resources/views/backend/admin/product/index.phtml:31
-#: resources/views/backend/layouts/admin-layout.phtml:182
+#: resources/views/backend/layouts/admin-layout.phtml:183
 msgid "All Products"
 msgstr "Все товары"
 
@@ -2177,7 +2041,7 @@ msgstr "Мультисайтовые пользователи"
 
 #: resources/views/backend/admin/site/users.phtml:52
 #: resources/views/backend/admin/site/users.phtml:188
-#: resources/views/backend/admin/user/create.phtml:74
+#: resources/views/backend/admin/user/create.phtml:108
 #: resources/views/backend/admin/user/index.phtml:55
 #: resources/views/backend/admin/user/index.phtml:125
 #: resources/views/backend/admin/user/profile.phtml:190
@@ -2188,7 +2052,7 @@ msgstr "Имя пользователя"
 
 #: resources/views/backend/admin/site/users.phtml:53
 #: resources/views/backend/admin/site/users.phtml:189
-#: resources/views/backend/admin/user/create.phtml:79
+#: resources/views/backend/admin/user/create.phtml:133
 #: resources/views/backend/admin/user/index.phtml:56
 #: resources/views/backend/admin/user/index.phtml:126
 #: resources/views/backend/admin/user/profile.phtml:197
@@ -2198,7 +2062,7 @@ msgstr "Имя"
 
 #: resources/views/backend/admin/site/users.phtml:54
 #: resources/views/backend/admin/site/users.phtml:190
-#: resources/views/backend/admin/user/create.phtml:89
+#: resources/views/backend/admin/user/create.phtml:143
 #: resources/views/backend/admin/user/index.phtml:57
 #: resources/views/backend/admin/user/index.phtml:127
 #: resources/views/backend/admin/user/profile.phtml:207
@@ -2221,7 +2085,7 @@ msgid "Site"
 msgstr "Сайт"
 
 #: resources/views/backend/admin/site/users.phtml:88
-#: resources/views/backend/admin/user/create.phtml:192
+#: resources/views/backend/admin/user/create.phtml:246
 #: resources/views/backend/admin/user/index.phtml:59
 #: resources/views/backend/admin/user/index.phtml:129
 #: resources/views/backend/admin/user/view.phtml:164
@@ -2274,51 +2138,55 @@ msgstr "Публичный"
 msgid "Screenshot"
 msgstr "Скриншот"
 
-#: resources/views/backend/admin/user/create.phtml:84
+#: resources/views/backend/admin/user/create.phtml:115
+msgid "New User?"
+msgstr "Новый пользователь?"
+
+#: resources/views/backend/admin/user/create.phtml:138
 #: resources/views/backend/admin/user/profile.phtml:202
 #: resources/views/backend/admin/user/view.phtml:83
 msgid "Middle Name"
 msgstr "Отчество"
 
-#: resources/views/backend/admin/user/create.phtml:104
+#: resources/views/backend/admin/user/create.phtml:158
 #: resources/views/backend/admin/user/profile.phtml:223
 #: resources/views/backend/admin/user/view.phtml:96
 msgid "Contact info"
 msgstr "Контактная информация"
 
-#: resources/views/backend/admin/user/create.phtml:126
+#: resources/views/backend/admin/user/create.phtml:180
 #, fuzzy
 msgid "Email / Password"
 msgstr "Электронная почта / Пароль"
 
-#: resources/views/backend/admin/user/create.phtml:131
+#: resources/views/backend/admin/user/create.phtml:185
 msgid "Send Email"
 msgstr "Отправить Email"
 
-#: resources/views/backend/admin/user/create.phtml:136
+#: resources/views/backend/admin/user/create.phtml:190
 #, fuzzy
 msgid "Send username & password to the user."
 msgstr "Отправьте пользователю имя пользователя и пароль."
 
-#: resources/views/backend/admin/user/create.phtml:142
+#: resources/views/backend/admin/user/create.phtml:196
 msgid "Show Password"
 msgstr "Показать пароль"
 
-#: resources/views/backend/admin/user/create.phtml:143
+#: resources/views/backend/admin/user/create.phtml:197
 msgid "Hide Password"
 msgstr "Скрыть пароль"
 
-#: resources/views/backend/admin/user/create.phtml:164
+#: resources/views/backend/admin/user/create.phtml:218
 #: resources/views/backend/admin/user/view.phtml:139
 msgid "User Status"
 msgstr "Статус пользователя"
 
-#: resources/views/backend/admin/user/create.phtml:178
+#: resources/views/backend/admin/user/create.phtml:232
 #, fuzzy
 msgid "If the account is Inactive, the user will be incapable of logging in."
 msgstr "Если аккаунт неактивен, пользователь не сможет войти."
 
-#: resources/views/backend/admin/user/create.phtml:186
+#: resources/views/backend/admin/user/create.phtml:240
 #: resources/views/backend/admin/user/view.phtml:159
 msgid "User Role"
 msgstr "Роль пользователя"
@@ -2351,7 +2219,7 @@ msgstr ""
 "Выберите ниже."
 
 #: resources/views/backend/admin/user/profile.phtml:36
-#: resources/views/backend/layouts/admin-layout.phtml:101
+#: resources/views/backend/layouts/admin-layout.phtml:102
 msgid "Profile"
 msgstr "Профиль"
 
@@ -2511,7 +2379,7 @@ msgstr "Ключ API"
 
 #: resources/views/backend/index.phtml:22
 #: resources/views/backend/index.phtml:27
-#: resources/views/backend/layouts/admin-layout.phtml:141
+#: resources/views/backend/layouts/admin-layout.phtml:142
 msgid "Dashboard"
 msgstr "Панель управления"
 
@@ -2520,88 +2388,92 @@ msgid "Control panel"
 msgstr "Панель управления"
 
 #: resources/views/backend/index.phtml:26
-#: resources/views/backend/layouts/admin-layout.phtml:147
+#: resources/views/backend/layouts/admin-layout.phtml:148
 msgid "Home"
 msgstr "Главная"
 
-#: resources/views/backend/layouts/admin-layout.phtml:77
+#: resources/views/backend/layouts/admin-layout.phtml:78
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
-#: resources/views/backend/layouts/admin-layout.phtml:94
+#: resources/views/backend/layouts/admin-layout.phtml:95
 msgid "Member since"
 msgstr "Участник с"
 
-#: resources/views/backend/layouts/admin-layout.phtml:106
+#: resources/views/backend/layouts/admin-layout.phtml:107
 #, fuzzy
 msgid "Switch back"
 msgstr "Переключиться назад"
 
-#: resources/views/backend/layouts/admin-layout.phtml:110
+#: resources/views/backend/layouts/admin-layout.phtml:111
 msgid "Logout"
 msgstr "Выйти"
 
-#: resources/views/backend/layouts/admin-layout.phtml:132
+#: resources/views/backend/layouts/admin-layout.phtml:133
 msgid "Online"
 msgstr "Онлайн"
 
-#: resources/views/backend/layouts/admin-layout.phtml:137
+#: resources/views/backend/layouts/admin-layout.phtml:138
 msgid "MAIN NAVIGATION"
 msgstr "ОСНОВНАЯ НАВИГАЦИЯ"
 
-#: resources/views/backend/layouts/admin-layout.phtml:148
+#: resources/views/backend/layouts/admin-layout.phtml:149
 #: resources/views/backend/snapshot.phtml:35
 msgid "System Report"
 msgstr "Системный отчет"
 
-#: resources/views/backend/layouts/admin-layout.phtml:154
+#: resources/views/backend/layouts/admin-layout.phtml:155
 msgid "Flush Cache"
 msgstr "Очистить кэш"
 
-#: resources/views/backend/layouts/admin-layout.phtml:167
+#: resources/views/backend/layouts/admin-layout.phtml:168
 msgid "Manage"
 msgstr "Управление"
 
-#: resources/views/backend/layouts/admin-layout.phtml:183
-#: resources/views/backend/layouts/admin-layout.phtml:203
-#: resources/views/backend/layouts/admin-layout.phtml:260
+#: resources/views/backend/layouts/admin-layout.phtml:184
+#: resources/views/backend/layouts/admin-layout.phtml:204
+#: resources/views/backend/layouts/admin-layout.phtml:261
 msgid "Add New"
 msgstr "Добавить новый"
 
-#: resources/views/backend/layouts/admin-layout.phtml:202
+#: resources/views/backend/layouts/admin-layout.phtml:203
 msgid "All"
 msgstr "Все"
 
-#: resources/views/backend/layouts/admin-layout.phtml:244
+#: resources/views/backend/layouts/admin-layout.phtml:245
 #, fuzzy
 msgid "Vihzhuo"
 msgstr "Вихжо"
 
-#: resources/views/backend/layouts/admin-layout.phtml:259
+#: resources/views/backend/layouts/admin-layout.phtml:260
 msgid "All Users"
 msgstr "Все пользователи"
 
-#: resources/views/backend/layouts/admin-layout.phtml:261
-#: resources/views/backend/layouts/admin-layout.phtml:269
+#: resources/views/backend/layouts/admin-layout.phtml:262
+#: resources/views/backend/layouts/admin-layout.phtml:270
 msgid "Your Profile"
 msgstr "Ваш профиль"
 
-#: resources/views/backend/layouts/admin-layout.phtml:277
+#: resources/views/backend/layouts/admin-layout.phtml:278
 msgid "Options"
 msgstr "Опции"
 
-#: resources/views/backend/layouts/admin-layout.phtml:283
+#: resources/views/backend/layouts/admin-layout.phtml:284
 msgid "General"
 msgstr "Общие"
 
-#: resources/views/backend/layouts/admin-layout.phtml:284
+#: resources/views/backend/layouts/admin-layout.phtml:285
 msgid "Reading"
 msgstr "Чтение"
 
-#: resources/views/backend/layouts/admin-layout.phtml:311
+#: resources/views/backend/layouts/admin-layout.phtml:312
 #, fuzzy
 msgid "Login expires in "
 msgstr "Срок действия входа истекает "
+
+#: resources/views/backend/layouts/auth-layout.phtml:40
+msgid "Powered by"
+msgstr "Работает на"
 
 #: resources/views/backend/reading.phtml:55
 msgid "Charset"
@@ -2611,3 +2483,149 @@ msgstr "Кодировка"
 #, fuzzy
 msgid "Content per Page"
 msgstr "Содержание на странице"
+
+#, fuzzy
+#~ msgid "Site name cannot be empty."
+#~ msgstr "Название сайта не должно быть пустым."
+
+#, fuzzy
+#~ msgid "Site slug cannot be empty."
+#~ msgstr "Пуля сайта не может быть пустой."
+
+#, fuzzy
+#~ msgid "Site path cannot be empty."
+#~ msgstr "Путь сайта не может быть пустым."
+
+#, fuzzy
+#~ msgid "Owner cannot be empty."
+#~ msgstr "Владелец не может быть пустым."
+
+#, fuzzy
+#~ msgid "Site status cannot be empty."
+#~ msgstr "Статус сайта не может быть пустым."
+
+#, fuzzy
+#~ msgid "Site id cannot be null."
+#~ msgstr "Идентификатор сайта не может быть нулем."
+
+#, fuzzy
+#~ msgid "Login/Username cannot be null."
+#~ msgstr "Логин/имя пользователя не могут быть null."
+
+#, fuzzy
+#~ msgid "Email address cannot be null."
+#~ msgstr "Адрес электронной почты не может быть нулирован."
+
+#, fuzzy
+#~ msgid "Name cannot be null."
+#~ msgstr "Имя не может быть нулевым."
+
+#, fuzzy
+#~ msgid "Token cannot be null."
+#~ msgstr "Жетон не может быть нулевым."
+
+#, fuzzy
+#~ msgid "Password cannot be null."
+#~ msgstr "Пароль не может быть null."
+
+#, fuzzy
+#~ msgid "Timezone cannot be null."
+#~ msgstr "Часовой пояс не может быть нулем."
+
+#, fuzzy
+#~ msgid "Date format cannot be null."
+#~ msgstr "Формат даты не может быть нулёвым."
+
+#, fuzzy
+#~ msgid "Time format cannot be null."
+#~ msgstr "Формат времени не может быть нулевым."
+
+#, fuzzy
+#~ msgid "Locale cannot be null."
+#~ msgstr "Местоположение не может быть нулевым."
+
+#, fuzzy
+#~ msgid "User id cannot be null."
+#~ msgstr "User ID не может быть null."
+
+#, fuzzy
+#~ msgid "User meta cannot be empty."
+#~ msgstr "Пользовательская мета не может быть пустой."
+
+#~ msgid "Hi there,"
+#~ msgstr "Привет,"
+
+#, fuzzy, php-format
+#~ msgid "Welcome to %s! Here's how to log in: "
+#~ msgstr "Добро пожаловать в %s! Вот как войти: "
+
+#, php-format
+#~ msgid "Username: %s"
+#~ msgstr "Имя пользователя: %s"
+
+#, php-format
+#~ msgid "Password: %s"
+#~ msgstr "Пароль: %s"
+
+#, fuzzy, php-format
+#~ msgid ""
+#~ "If you have any problems, please contact us at <a href=\"mailto:%s\">%s</"
+#~ "a>."
+#~ msgstr ""
+#~ "Если у вас возникнут какие-либо проблемы, пожалуйста, свяжитесь с нами по "
+#~ "адресу <a href=\"mailto:%s\">%s</a>."
+
+#, fuzzy, php-format
+#~ msgid "Your password has been reset for %s: "
+#~ msgstr "Ваш пароль сброшен на %s: "
+
+#~ msgid "Password Reset"
+#~ msgstr "Сброс пароля"
+
+#, fuzzy, php-format
+#~ msgid ""
+#~ "Hello %s! You requested that your password be reset. Please see your new "
+#~ "password below: <br />"
+#~ msgstr ""
+#~ "Здравствуйте %s! Вы попросили сбросить пароль. Пожалуйста, смотрите свой "
+#~ "новый пароль ниже: <br />"
+
+#, fuzzy, php-format
+#~ msgid ""
+#~ "If you still have problems with logging in, please contact us at <a "
+#~ "href=\"mailto:%s\">%s</a>."
+#~ msgstr ""
+#~ "Если у вас всё ещё есть проблемы с входом, пожалуйста, свяжитесь с нами "
+#~ "по адресу <a href=\"mailto:%s\">%s</a>."
+
+#, fuzzy, php-format
+#~ msgid "[%s] Notice of Password Reset"
+#~ msgstr "[%s] Уведомление о сбросе пароля"
+
+#, fuzzy, php-format
+#~ msgid ""
+#~ "Hello %s! This is confirmation that your password on %s was updated to: "
+#~ "<br />"
+#~ msgstr ""
+#~ "Здравствуйте %s! Это подтверждение того, что ваш пароль %s был обновлён "
+#~ "на: <br />"
+
+#, fuzzy, php-format
+#~ msgid ""
+#~ "If you did not initiate a password change/update, please contact us at <a "
+#~ "href=\"mailto:%s\">%s</a>."
+#~ msgstr ""
+#~ "Если вы не инициировали смену или обновление пароля, пожалуйста, "
+#~ "свяжитесь с нами по адресу <a href=\"mailto:%s\">%s</a>."
+
+#, fuzzy
+#~ msgid "Notice of Password Change"
+#~ msgstr "Уведомление о смене пароля"
+
+#, php-format
+#~ msgid "[%s] Notice of Password Change"
+#~ msgstr "[%s] Уведомление об изменении пароля"
+
+#, php-format
+#~ msgid "Email: %s"
+#~ msgstr "Email: %s"
