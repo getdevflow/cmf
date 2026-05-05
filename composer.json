@@ -12,11 +12,23 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "core",
+            "options": {
+                "versions": {
+                    "getdevflow/core": "2.x-dev"
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=8.4",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-pdo": "*",
+        "ext-zip": "*",
         "getdevflow/core": "2.x-dev"
     },
     "autoload": {
@@ -29,18 +41,8 @@
             "Theme\\": "public/themes/"
         }
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "core",
-            "options": {
-                "versions": {
-                    "getdevflow/core": "2.x-dev"
-                }
-            }
-        }
-    ],
     "scripts": {
+        "devstan": "phpstan analyse -l 2",
         "test": "vendor/bin/pest",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
