@@ -54,7 +54,7 @@ Registry::getInstance()->{'set'}('screen_child', 'snapshot');
                 $report .= esc_html(string: 'Active User Count:'). "\t\t\t\t\t" . $params['users'] . PHP_EOL;
 
                 $report .= "\n\t" . esc_html(string: '** CONFIG **'). PHP_EOL . PHP_EOL;
-                $report .= esc_html(string: 'Environment:'). "\t\t\t\t\t\t" . (config()->string(key: 'app.env') === 'prod' ? '<span style="color: green; ">' . esc_html(string: 'Production'). '</span>': '<span style="color: red; ">' . esc_html(string: 'Development'). '</span>') . PHP_EOL;
+                $report .= esc_html(string: 'Environment:'). "\t\t\t\t\t\t" . (config()->string(key: 'app.env') === 'production' ? '<span style="color: green; ">' . esc_html(string: 'Production'). '</span>': '<span style="color: red; ">' . esc_html(string: 'Development'). '</span>') . PHP_EOL;
                 $report .= esc_html(string: 'Base Path:'). "\t\t\t\t\t\t" . base_path() . PHP_EOL;
                 $report .= esc_html(string: 'Multisite:'). "\t\t\t\t\t\t" . (is_multisite() ? '<span style="color: green; ">' . esc_html(string: 'Enabled'). '</span>': '<span style="color: red; ">' . esc_html(string: 'Disabled'). '</span>') . PHP_EOL;
 
