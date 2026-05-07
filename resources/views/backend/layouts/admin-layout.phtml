@@ -222,7 +222,8 @@ $user = get_userdata(get_current_user_id());
                                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?=add_dashboard_submenu(trans_html(string: 'Plugins'), '/plugin/', 'installed-plugins');?>
+                            <?=add_dashboard_submenu(trans_html(string: 'Installed Plugins'), '/plugin/', 'installed-plugins');?>
+                            <?=add_dashboard_submenu(trans_html(string: 'Add Plugin'), '/plugin/install/', 'add-plugin');?>
                             <?php Action::getInstance()->doAction('plugins_submenu'); ?>
                         </ul>
                     </li>
@@ -236,6 +237,7 @@ $user = get_userdata(get_current_user_id());
                         </a>
                         <ul class="treeview-menu">
                             <?=add_dashboard_submenu(trans_html(string: 'Themes'), '/theme/', 'installed-themes');?>
+                            <?=add_dashboard_submenu(trans_html(string: 'Add Theme'), '/theme/install/', 'add-theme');?>
                             <?php Action::getInstance()->doAction('themes_submenu'); ?>
                         </ul>
                     </li>

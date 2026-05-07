@@ -1,0 +1,167 @@
+<?php
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\get_current_site_id;
+use function App\Shared\Helpers\is_main_site;
+use function Codefy\Framework\Helpers\trans_html;
+use function Qubus\Security\Helpers\esc_html;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+Registry::getInstance()->{'set'}('screen_parent', 'plugins');
+Registry::getInstance()->{'set'}('screen_child', 'add-plugin');
+?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-plug"></i>
+                <h3 class="box-title"><?= trans_html('Add Plugins'); ?></h3>
+
+                <div class="pull-right">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <?=Devflow::$PHP->flash->display(); ?>
+
+            <div class="row">
+
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><?=trans_html('Plugins (Experimental)');?></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th class="text-center"><?= trans_html('Vendor'); ?></th>
+                                    <th class="text-center"><?= trans_html('Description'); ?></th>
+                                    <th class="text-center"><?= trans_html('Status'); ?></th>
+                                    <th class="text-center"><?= trans_html('Action'); ?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($params['plugins'] as $plugin) : ?>
+                                    <tr>
+                                        <td class="text-center">
+                                            <code><?= esc_html($plugin['vendor']); ?></code>
+                                        </td>
+
+                                        <td>
+                                            <?= esc_html($plugin['description']); ?>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <?php if ($plugin['installed']) : ?>
+                                                <span class="label label-success"><?= trans_html('Installed'); ?></span>
+                                            <?php else : ?>
+                                                <span class="label label-default"><?= trans_html('Available'); ?></span>
+                                            <?php endif; ?>
+                                        </td>
+
+                                        <td class="text-center">
+                                            <?php if ($plugin['installed'] && is_main_site(get_current_site_id())) : ?>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-danger btn-extension-action"
+                                                    data-action="remove"
+                                                    data-package="<?= esc_html($plugin['name']); ?>"
+                                                    data-type="plugin"
+                                                >
+                                                    <i class="fa fa-trash"></i> <?= trans_html('Remove'); ?>
+                                                </button>
+                                            <?php elseif ($plugin['installed'] && !is_main_site(get_current_site_id())) : ?>
+                                                <span class="label label-danger"><i class="fa fa-trash"></i> <?= trans_html('Unavailable'); ?></span>
+                                            <?php else : ?>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-success btn-extension-action"
+                                                    data-action="install"
+                                                    data-package="<?= esc_html($plugin['name']); ?>"
+                                                    data-type="plugin"
+                                                >
+                                                    <i class="fa fa-download"></i> <?= trans_html('Install'); ?>
+                                                </button>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th class="text-center"><?= trans_html('Vendor'); ?></th>
+                                    <th class="text-center"><?= trans_html('Description'); ?></th>
+                                    <th class="text-center"><?= trans_html('Status'); ?></th>
+                                    <th class="text-center"><?= trans_html('Action'); ?></th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box-primary -->
+                </div>
+                <!-- /.left column -->
+
+            </div>
+            <!--/.row -->
+        </section>
+        <!-- /.Main content -->
+
+    </div>
+    <!-- /.Content Wrapper. Contains page content -->
+    <script>
+        (function ($) {
+            $('.btn-install-extension').on('click', function () {
+                const $button = $(this);
+
+                $button.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> <?= trans_html('Installing...'); ?>');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= admin_url('extension/install/'); ?>',
+                    dataType: 'json',
+                    data: {
+                        package: $button.data('package'),
+                        type: $button.data('type')
+                    }
+                }).done(function (response) {
+                    $('#installer-alert').html(
+                        '<div class="alert alert-success">' + response.message + '</div>'
+                    );
+
+                    $button
+                        .removeClass('btn-success')
+                        .addClass('btn-primary')
+                        .html('<i class="fa fa-check"></i> <?= trans_html('Installed'); ?>');
+                }).fail(function (xhr) {
+                    let message = <?= trans_html(string: 'Install failed.'); ?>;
+
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        message = xhr.responseJSON.message;
+                    }
+
+                    $('#installer-alert').html(
+                        '<div class="alert alert-danger">' + message + '</div>'
+                    );
+
+                    $button.prop('disabled', false).html('<i class="fa fa-download"></i> <?= trans_html('Install'); ?>');
+                });
+            });
+        })(jQuery);
+    </script>
+<?php }); ?>
