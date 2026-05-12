@@ -4,7 +4,12 @@ use App\Application\Devflow;
 use App\Shared\Services\Registry;
 
 use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\ae;
+use function App\Shared\Helpers\is_main_site;
+use function App\Shared\Helpers\is_multisite;
+use function App\Shared\Helpers\is_super_admin;
 use function App\Shared\Helpers\is_theme_active;
+use function App\Shared\Helpers\theme_available_for_subsites;
 use function App\Shared\Helpers\theme_info;
 use function Codefy\Framework\Helpers\public_path;
 use function Codefy\Framework\Helpers\trans_html;
@@ -14,6 +19,17 @@ $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
 Registry::getInstance()->{'set'}('screen_parent', 'themes');
 Registry::getInstance()->{'set'}('screen_child', 'installed-themes');
+$canManageNetworkThemes = is_main_site() && is_super_admin() && is_multisite();
+
+$themes = theme_info(public_path('themes/'));
+
+if (! is_main_site() && is_multisite()) {
+    $themes = array_filter(
+        $themes,
+        static fn (array $theme): bool =>
+        theme_available_for_subsites($theme['className'] ?? '')
+    );
+}
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -25,7 +41,9 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-themes');
                 <h3 class="box-title"><?= trans_html(string: 'Themes'); ?></h3>
 
                 <div class="pull-right">
-
+                    <div id="theme-visibility-alert-wrap"
+                         style="position: fixed; top: 70px; right: 20px; z-index: 9999; width: 320px;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,10 +72,13 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-themes');
                                     <th class="text-center"><?= trans_html(string: 'Version'); ?></th>
                                     <th class="text-center"><?= trans_html(string: 'Description'); ?></th>
                                     <th class="text-center"><?= trans_html(string: 'Action'); ?></th>
+                                    <?php if ($canManageNetworkThemes) : ?>
+                                        <th class="text-center"><?= trans_html(string: 'Show on Subsites'); ?></th>
+                                    <?php endif; ?>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach (theme_info(public_path('themes/')) as $theme) : ?>
+                                <?php foreach ($themes as $theme) : ?>
                                 <?php if (is_theme_active($theme['className']) === true) : ?>
                                 <tr class="gradeX" style="background-color:#B0E0E6 !important;">
                                     <?php else : ?>
@@ -77,9 +98,19 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-themes');
                                         <a href="<?=esc_url($theme['themeUri']);?>"><?=trans_html(string: 'View Details');?></a>
                                     </td>
                                     <?php if (is_theme_active($theme['className']) === true) : ?>
-                                        <td class="text-center"><a class="btn btn-danger" href="<?=admin_url('theme/deactivate/');?>"><i class="fa fa-minus-circle"></i></a></td>
+                                        <td<?= ae('deactivate:themes'); ?> class="text-center"><a class="btn btn-danger" href="<?=admin_url('theme/deactivate/');?>"><i class="fa fa-minus-circle"></i></a></td>
                                     <?php else : ?>
-                                        <td class="text-center"><a class="btn btn-success" href="<?=admin_url('theme/activate/?id=' . $theme['className']);?>"><i class="fa fa-plus-circle"></i></a></td>
+                                        <td<?= ae('deactivate:themes'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url('theme/activate/?id=' . $theme['className']);?>"><i class="fa fa-plus-circle"></i></a></td>
+                                    <?php endif; ?>
+                                    <?php if ($canManageNetworkThemes) : ?>
+                                        <td class="text-center">
+                                            <input
+                                                type="checkbox"
+                                                class="js-network-theme-toggle"
+                                                data-theme="<?= $theme['className']; ?>"
+                                                <?= theme_available_for_subsites($theme['className']) ? 'checked' : ''; ?>
+                                            >
+                                        </td>
                                     <?php endif; ?>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -90,6 +121,9 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-themes');
                                     <th class="text-center"><?= trans_html(string: 'Version'); ?></th>
                                     <th class="text-center"><?= trans_html(string: 'Description'); ?></th>
                                     <th class="text-center"><?= trans_html(string: 'Action'); ?></th>
+                                    <?php if ($canManageNetworkThemes) : ?>
+                                        <th class="text-center"><?= trans_html(string: 'Show on Subsites'); ?></th>
+                                    <?php endif; ?>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -107,4 +141,73 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-themes');
 
     </div>
     <!-- /.Content Wrapper. Contains page content -->
+    <script>
+        jQuery(function ($) {
+            function showThemeVisibilityAlert(type, message) {
+                const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+
+                const $alert = $(
+                    '<div class="alert ' + alertClass + ' alert-dismissible fade in" role="alert">' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                    '</button>' +
+                    message +
+                    '</div>'
+                );
+
+                $('#theme-visibility-alert-wrap').html($alert);
+
+                setTimeout(function () {
+                    $alert.alert('close');
+                }, 3500);
+            }
+
+            $('.js-network-theme-toggle').on('change', function () {
+                const $toggle = $(this);
+                const isAvailable = $toggle.is(':checked');
+
+                $.ajax({
+                    url: "<?= admin_url('theme/network-toggle/'); ?>",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        theme: $toggle.data('theme'),
+                        available: isAvailable ? 1 : 0
+                    },
+                    success: function (response) {
+                        if (! response.success) {
+                            $toggle.prop('checked', !isAvailable);
+
+                            showThemeVisibilityAlert(
+                                'error',
+                                response.message || 'Unable to update theme visibility.'
+                            );
+
+                            return;
+                        }
+
+                        if (isAvailable) {
+                            showThemeVisibilityAlert(
+                                'success',
+                                'Theme is now available on subsites.'
+                            );
+                        } else {
+                            showThemeVisibilityAlert(
+                                'success',
+                                'Theme has been removed from subsite theme lists.'
+                            );
+                        }
+                    },
+                    error: function () {
+                        $toggle.prop('checked', !isAvailable);
+
+                        showThemeVisibilityAlert(
+                            'error',
+                            'Unable to update theme visibility.'
+                        );
+                    }
+                });
+            });
+        });
+    </script>
 <?php }); ?>

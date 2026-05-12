@@ -18,7 +18,6 @@ use function App\Shared\Helpers\cms_release_value;
 use function App\Shared\Helpers\current_screen;
 use function App\Shared\Helpers\current_user_can;
 use function App\Shared\Helpers\get_all_content_types;
-use function App\Shared\Helpers\get_current_site_id;
 use function App\Shared\Helpers\get_current_user_id;
 use function App\Shared\Helpers\get_logo_large;
 use function App\Shared\Helpers\get_logo_mini;
@@ -42,6 +41,8 @@ if (isset($_COOKIE['SWITCH_USERBACK'])) :
 endif;
 /** @var User $user */
 $user = get_userdata(get_current_user_id());
+$canInstallPlugins = is_main_site() && current_user_can('install:plugins');
+$canInstallThemes = is_main_site() && current_user_can('install:themes');
 ?>
     <!DOCTYPE html>
     <html lang="<?=Devflow::$PHP->configContainer->string('app.language');?>">
@@ -155,7 +156,7 @@ $user = get_userdata(get_current_user_id());
                             <i class="fa fa-broom"></i> <span><?=trans_html(string: 'Flush Cache');?></span>
                         </a>
                     </li>
-                    <?php if(is_multisite() && is_main_site(get_current_site_id())): ?>
+                    <?php if(is_multisite() && is_main_site()): ?>
                     <li<?= ae('manage:sites'); ?> class="treeview<?=current_screen('screen_parent', 'sites'); ?>">
                         <a href="#">
                             <i class="fa fa-globe"></i>
@@ -223,7 +224,9 @@ $user = get_userdata(get_current_user_id());
                         </a>
                         <ul class="treeview-menu">
                             <?=add_dashboard_submenu(trans_html(string: 'Installed Plugins'), '/plugin/', 'installed-plugins');?>
+                            <?php if($canInstallPlugins) : ?>
                             <?=add_dashboard_submenu(trans_html(string: 'Add Plugin'), '/plugin/install/', 'add-plugin');?>
+                            <?php endif; ?>
                             <?php Action::getInstance()->doAction('plugins_submenu'); ?>
                         </ul>
                     </li>
@@ -237,7 +240,9 @@ $user = get_userdata(get_current_user_id());
                         </a>
                         <ul class="treeview-menu">
                             <?=add_dashboard_submenu(trans_html(string: 'Themes'), '/theme/', 'installed-themes');?>
+                            <?php if($canInstallThemes) : ?>
                             <?=add_dashboard_submenu(trans_html(string: 'Add Theme'), '/theme/install/', 'add-theme');?>
+                            <?php endif; ?>
                             <?php Action::getInstance()->doAction('themes_submenu'); ?>
                         </ul>
                     </li>

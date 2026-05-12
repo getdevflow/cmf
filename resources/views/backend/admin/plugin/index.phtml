@@ -4,7 +4,12 @@ use App\Application\Devflow;
 use App\Shared\Services\Registry;
 
 use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\ae;
+use function App\Shared\Helpers\is_main_site;
+use function App\Shared\Helpers\is_multisite;
 use function App\Shared\Helpers\is_plugin_activated;
+use function App\Shared\Helpers\is_super_admin;
+use function App\Shared\Helpers\plugin_available_for_subsites;
 use function App\Shared\Helpers\plugin_info;
 use function Codefy\Framework\Helpers\public_path;
 use function Codefy\Framework\Helpers\trans_html;
@@ -14,6 +19,17 @@ $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
 Registry::getInstance()->{'set'}('screen_parent', 'plugins');
 Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
+
+$canManageNetworkPlugins = is_main_site() && is_super_admin() && is_multisite();
+$plugins = plugin_info(public_path('plugins/'));
+
+if (! is_main_site() && is_multisite()) {
+    $plugins = array_filter(
+        $plugins,
+        static fn (array $plugin): bool =>
+        plugin_available_for_subsites($plugin['className'] ?? '')
+    );
+}
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -25,7 +41,9 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                 <h3 class="box-title"><?= trans_html('Plugins'); ?></h3>
 
                 <div class="pull-right">
-
+                    <div id="plugin-visibility-alert-wrap"
+                         style="position: fixed; top: 70px; right: 20px; z-index: 9999; width: 320px;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,10 +71,13 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                                     <th class="text-center"><?= trans_html('Version'); ?></th>
                                     <th class="text-center"><?= trans_html('Description'); ?></th>
                                     <th class="text-center"><?= trans_html('Action'); ?></th>
+                                    <?php if ($canManageNetworkPlugins) : ?>
+                                        <th class="text-center"><?= trans_html('Show on Subsites'); ?></th>
+                                    <?php endif; ?>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach (plugin_info(public_path('plugins/')) as $plugin) : ?>
+                                <?php foreach ($plugins as $plugin) : ?>
                                 <?php if (is_plugin_activated($plugin['className']) === true && class_exists($plugin['className'])) : ?>
                                 <tr class="gradeX" style="background-color:#B0E0E6 !important;">
                                     <?php else : ?>
@@ -71,9 +92,19 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                                         <a href="<?=esc_url($plugin['pluginUri']);?>"><?=trans_html('View Details');?></a>
                                     </td>
                                     <?php if (is_plugin_activated($plugin['className']) === true && class_exists($plugin['className'])) : ?>
-                                        <td class="text-center"><a class="btn btn-danger" href="<?=admin_url('plugin/deactivate/?id=' . $plugin['className']);?>"><i class="fa fa-minus-circle"></i></a></td>
+                                        <td<?= ae('deactivate:plugins'); ?> class="text-center"><a class="btn btn-danger" href="<?=admin_url('plugin/deactivate/?id=' . $plugin['className']);?>"><i class="fa fa-minus-circle"></i></a></td>
                                     <?php else : ?>
-                                        <td class="text-center"><a class="btn btn-success" href="<?=admin_url('plugin/activate/?id=' . $plugin['className']);?>"><i class="fa fa-plus-circle"></i></a></td>
+                                        <td<?= ae('activate:plugins'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url('plugin/activate/?id=' . $plugin['className']);?>"><i class="fa fa-plus-circle"></i></a></td>
+                                    <?php endif; ?>
+                                    <?php if ($canManageNetworkPlugins) : ?>
+                                        <td class="text-center">
+                                            <input
+                                                type="checkbox"
+                                                class="js-network-plugin-toggle"
+                                                data-plugin="<?= $plugin['className']; ?>"
+                                                <?= plugin_available_for_subsites($plugin['className']) ? 'checked' : ''; ?>
+                                            >
+                                        </td>
                                     <?php endif; ?>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -83,6 +114,9 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
                                     <th class="text-center"><?= trans_html('Version'); ?></th>
                                     <th class="text-center"><?= trans_html('Description'); ?></th>
                                     <th class="text-center"><?= trans_html('Action'); ?></th>
+                                    <?php if ($canManageNetworkPlugins) : ?>
+                                        <th class="text-center"><?= trans_html('Show on Subsites'); ?></th>
+                                    <?php endif; ?>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -100,4 +134,73 @@ Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
 
     </div>
     <!-- /.Content Wrapper. Contains page content -->
+    <script>
+        jQuery(function ($) {
+            function showPluginVisibilityAlert(type, message) {
+                const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+
+                const $alert = $(
+                    '<div class="alert ' + alertClass + ' alert-dismissible fade in" role="alert">' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                    '<span aria-hidden="true">&times;</span>' +
+                    '</button>' +
+                    message +
+                    '</div>'
+                );
+
+                $('#plugin-visibility-alert-wrap').html($alert);
+
+                setTimeout(function () {
+                    $alert.alert('close');
+                }, 3500);
+            }
+
+            $('.js-network-plugin-toggle').on('change', function () {
+                const $toggle = $(this);
+                const isAvailable = $toggle.is(':checked');
+
+                $.ajax({
+                    url: "<?= admin_url('plugin/network-toggle/'); ?>",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        plugin: $toggle.data('plugin'),
+                        available: isAvailable ? 1 : 0
+                    },
+                    success: function (response) {
+                        if (! response.success) {
+                            $toggle.prop('checked', !isAvailable);
+
+                            showPluginVisibilityAlert(
+                                'error',
+                                response.message || 'Unable to update plugin visibility.'
+                            );
+
+                            return;
+                        }
+
+                        if (isAvailable) {
+                            showPluginVisibilityAlert(
+                                'success',
+                                'Plugin is now available on subsites.'
+                            );
+                        } else {
+                            showPluginVisibilityAlert(
+                                'success',
+                                'Plugin has been removed from subsite plugin lists.'
+                            );
+                        }
+                    },
+                    error: function (xhr) {
+                        $toggle.prop('checked', !isAvailable);
+
+                        showPluginVisibilityAlert(
+                            'error',
+                            'Unable to update plugin visibility.'
+                        );
+                    }
+                });
+            });
+        });
+    </script>
 <?php }); ?>

@@ -53,6 +53,7 @@ return function (\Qubus\Routing\Psr7Router $router) {
                 ->name('admin.plugins');
             $group->get(uri: '/plugin/activate/', callback: 'AdminPluginController@activate');
             $group->get(uri: '/plugin/deactivate/', callback: 'AdminPluginController@deactivate');
+            $group->post(uri: '/plugin/network-toggle/', callback: 'AdminPluginController@networkPluginToggle');
             $group->get(uri: '/plugin/install/', callback: 'ExtensionInstallerController@plugins');
 
             // Theme routes
@@ -60,6 +61,7 @@ return function (\Qubus\Routing\Psr7Router $router) {
                 ->name('admin.themes');
             $group->get(uri: '/theme/activate/', callback: 'AdminThemeController@activate');
             $group->get(uri: '/theme/deactivate/', callback: 'AdminThemeController@deactivate');
+            $group->post(uri: '/theme/network-toggle/', callback: 'AdminThemeController@networkThemeToggle');
             $group->get(uri: '/theme/install/', callback: 'ExtensionInstallerController@themes');
 
 
