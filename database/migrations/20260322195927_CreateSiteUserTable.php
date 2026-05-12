@@ -9,7 +9,7 @@ use Qubus\Expressive\Schema\CreateTable;
 
 use function Codefy\Framework\Helpers\config;
 
-class CreatSiteUserTable extends Migration
+class CreateSiteUserTable extends Migration
 {
     /**
      * Do the migration
