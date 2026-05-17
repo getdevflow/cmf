@@ -25,7 +25,7 @@ class CreateOptionTable extends Migration
                     $table->string(name: 'option_id', length: 36)
                         ->primary(name: 'optionId')
                         ->unique(name: $tablePrefix . 'optionId');
-                    $table->string(name: 'option_key', length: 191);
+                    $table->string(name: 'option_key', length: 191)->unique($tablePrefix . 'option_key');
                     $table->text(name: 'option_value')->size(value: 'big');
                     $table->unique('option_key', $tablePrefix . 'optionIndex');
                 });

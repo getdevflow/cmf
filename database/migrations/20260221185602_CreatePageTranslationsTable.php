@@ -28,7 +28,7 @@ class CreatePageTranslationsTable extends Migration
                     $table->string(name: 'title')->notNull();
                     $table->string(name: 'meta_title')->notNull();
                     $table->string(name: 'meta_description')->notNull();
-                    $table->string(name: 'route')->notNull();
+                    $table->string(name: 'route')->notNull()->unique(name: $tablePrefix . 'route');
 
                     $table->unique(columns: ['page_id', 'locale'], name: $tablePrefix . 'idx_page_translations');
                     $table->foreign(columns: 'page_id')

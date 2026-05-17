@@ -28,7 +28,7 @@ class CreateContentTable extends Migration
                             ->primary(name: 'contentTypeId')
                             ->unique(name: $tablePrefix . 'contentTypeId');
                         $table->string(name: 'content_type_title', length: 191);
-                        $table->string(name: 'content_type_slug', length: 191);
+                        $table->string(name: 'content_type_slug', length: 191)->unique($tablePrefix . 'content_type_slug');
                         $table->text(name: 'content_type_description')->size(value: 'big');
                         $table->index('content_type_slug', $tablePrefix . 'contentTypeIndex');
                     }
