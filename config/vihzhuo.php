@@ -38,6 +38,7 @@ return [
     'storage' => [
         'use_database' => true,
         'database' => [
+            'driver' => env('DB_CONNECTION'),
             'dsn'    => env(key: 'DB_DSN'),
             'username'  => env('DB_USER'),
             'password'  => env('DB_PASSWORD'),
