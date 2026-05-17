@@ -536,6 +536,8 @@ return [
             'self' => true,
             'allow' => [
                 'cdnjs.cloudflare.com',
+                '*.youtube.com',
+                '*.vimeo.com',
             ],
 
             'data' => true,
