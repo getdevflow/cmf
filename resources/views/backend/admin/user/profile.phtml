@@ -7,10 +7,13 @@ use App\Application\Devflow;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
+use Qubus\EventDispatcher\ActionFilter\Filter;
+
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
 use function App\Shared\Helpers\checked;
 use function App\Shared\Helpers\cms_dropdown_languages;
+use function App\Shared\Helpers\cms_upload_image;
 use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
@@ -24,6 +27,8 @@ $this->block('backend', function ($param) {
 Registry::getInstance()->{'set'}('screen_parent', 'users');
 Registry::getInstance()->{'set'}('screen_child', 'profile');
 ?>
+
+<?=cms_upload_image();?>
 
     <!-- form start -->
     <form method="post" action="<?= admin_url('user/profile/'); ?>" data-toggle="validator" autocomplete="off">
@@ -283,6 +288,7 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
                          */
                         Action::getInstance()->doAction('user_profile', $param['user']);
                         ?>
+                        <?=Filter::getInstance()->applyFilter('user_attribute_box_extended', $param['user']->id);?>
 
                     </div>
 
@@ -347,6 +353,7 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
 
                             </div>
                         </div>
+                        <?=Filter::getInstance()->applyFilter('user_attribute_box_side', $param['user']->id);?>
                     </div>
                 </div>
                 <!-- /.box -->
@@ -372,4 +379,10 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
             $('#user_login').prop('readonly', false);
         });
     </script>
+    <?php
+    /**
+     * Fires before the user profile screen is fully loaded.
+     */
+    Action::getInstance()->doAction('enqueue_cms_editor');
+    ?>
 <?php }); ?>

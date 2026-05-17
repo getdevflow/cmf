@@ -80,11 +80,11 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                                     <label class="div-label"><?= trans_html(string: 'Content'); ?></label>
                                     <textarea id="content_body" class="form-control" name="body"><?= $params['request']['body'] ?? ''; ?></textarea>
                                 </div>
-                                <?=Filter::getInstance()->applyFilter('content_metabox', $params['form'], $params['type']->slug, null);?>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-body -->
+                        <?=Filter::getInstance()->applyFilter('content_attribute_box_extended', $params['form'], $params['type']->slug, null);?>
                     </div>
                     <!-- /.left column -->
 
@@ -204,6 +204,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
+                        <?=Filter::getInstance()->applyFilter('content_attribute_box_side', $params['form'], $params['type']->slug, null);?>
                     </div>
 
                 </div>

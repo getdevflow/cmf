@@ -7,7 +7,10 @@ use App\Application\Devflow;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
+use Qubus\EventDispatcher\ActionFilter\Filter;
+
 use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\cms_upload_image;
 use function App\Shared\Helpers\generate_random_password;
 use function App\Shared\Helpers\get_user_roles;
 use function App\Shared\Helpers\is_super_admin;
@@ -20,6 +23,8 @@ $this->block('backend', function ($params) {
 Registry::getInstance()->{'set'}('screen_parent', 'users');
 Registry::getInstance()->{'set'}('screen_child', 'create-user');
 ?>
+
+<?=cms_upload_image();?>
 
     <script type="text/javascript">
         $(document).ready(function(){
@@ -209,6 +214,7 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
+                        <?=Filter::getInstance()->applyFilter('user_attribute_box_extended', null);?>
                     </div>
 
                     <div class="col-md-3">
@@ -254,6 +260,7 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
                             </div>
 
                         </div>
+                        <?=Filter::getInstance()->applyFilter('user_attribute_box_side', null); ?>
                     </div>
                 </div>
 
@@ -263,4 +270,10 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
         <!-- /.content-wrapper -->
     </form>
     <!-- form end -->
+    <?php
+    /**
+     * Fires before the create user screen is fully loaded.
+     */
+    Action::getInstance()->doAction('enqueue_cms_editor');
+    ?>
 <?php }); ?>

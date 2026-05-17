@@ -85,11 +85,11 @@ Action::getInstance()->doAction('update_content_init');
                                     <label><strong><?= trans_html(string: 'Content'); ?></strong></label>
                                     <textarea id="content_body" class="form-control" name="body"><?= $params['content']->body; ?></textarea>
                                 </div>
-                                <?=Filter::getInstance()->applyFilter('content_metabox', $params['form'], $params['type']->slug, $params['content']->id);?>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-body -->
+                        <?=Filter::getInstance()->applyFilter('content_attribute_box_extended', $params['form'], $params['type']->slug, $params['content']->id);?>
                     </div>
                     <!-- /.left column -->
 
@@ -150,7 +150,6 @@ Action::getInstance()->doAction('update_content_init');
                                         <?php get_users_dropdown_list($params['content']->author); ?>
                                     </select>
                                 </div>
-                                <?php Action::getInstance()->doAction('content_metabox_publish', $params['type']->slug, $params['content']) ;?>
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -191,7 +190,6 @@ Action::getInstance()->doAction('update_content_init');
                                         <input type="checkbox" class="js-switch" name="showInSearch"<?= checked(1, (int) $params['content']->showInSearch, false); ?> value="1" />
                                     </div>
                                 </div>
-                                <?php Action::getInstance()->doAction('content_metabox_attributes', $params['type']->slug, $params['content']) ;?>
                             </div>
                             <!-- /.box-body -->
                         </div>
@@ -217,6 +215,7 @@ Action::getInstance()->doAction('update_content_init');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
+                        <?=Filter::getInstance()->applyFilter('content_attribute_box_side', $params['form'], $params['type']->slug, $params['content']->id);?>
                     </div>
 
                 </div>

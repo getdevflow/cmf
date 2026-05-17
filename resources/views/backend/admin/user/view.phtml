@@ -7,9 +7,12 @@ use App\Application\Devflow;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
+use Qubus\EventDispatcher\ActionFilter\Filter;
+
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
 use function App\Shared\Helpers\cms_dropdown_languages;
+use function App\Shared\Helpers\cms_upload_image;
 use function App\Shared\Helpers\current_user_can;
 use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_current_user_id;
@@ -25,6 +28,8 @@ Registry::getInstance()->{'set'}('screen_parent', 'users');
 Registry::getInstance()->{'set'}('screen_child', 'all-users');
 Action::getInstance()->doAction('update_user_init');
 ?>
+
+<?=cms_upload_image();?>
 
     <!-- form start -->
     <form method="post" action="<?= admin_url('user/' . $params['user']->id . '/'); ?>" data-toggle="validator" autocomplete="off">
@@ -130,6 +135,7 @@ Action::getInstance()->doAction('update_user_init');
 
                             </div>
                         </div>
+                        <?=Filter::getInstance()->applyFilter('user_attribute_box_extended', $params['user']->id);?>
 
                     </div>
 
@@ -213,6 +219,8 @@ Action::getInstance()->doAction('update_user_init');
                                 </div>
                             </div>
                         </div>
+
+                        <?=Filter::getInstance()->applyFilter('user_attribute_box_side', $params['user']->id);?>
                     </div>
 
                 </div>
@@ -239,4 +247,10 @@ Action::getInstance()->doAction('update_user_init');
             $('#user_login').prop('readonly', false);
         });
     </script>
+    <?php
+    /**
+     * Fires before the update user screen is fully loaded.
+     */
+    Action::getInstance()->doAction('enqueue_cms_editor');
+    ?>
 <?php }); ?>

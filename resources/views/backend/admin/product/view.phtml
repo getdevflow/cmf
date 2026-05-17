@@ -84,11 +84,11 @@ Registry::getInstance()->{'set'}('screen_child', $params['product']->slug);
                                     <label class="div-label"><?= trans_html(string: 'Purchase Url'); ?> <a href="#purchase-url" data-toggle="modal"><span class="badge"><i class="fa fa-question"></i></span></a></label>
                                     <input type="text" class="form-control" name="purchaseUrl" id="product_purchase_url" value="<?=$params['product']->purchaseUrl;?>" />
                                 </div>
-                                <?=Filter::getInstance()->applyFilter('product_metabox', $params['form'], $params['product']->id);?>
                             </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-body -->
+                        <?=Filter::getInstance()->applyFilter('product_attribute_box_extended', $params['form'], $params['product']->id);?>
                     </div>
                     <!-- /.left column -->
 
@@ -208,6 +208,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['product']->slug);
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
+                        <?=Filter::getInstance()->applyFilter('product_attribute_box_side', $params['form'], $params['product']->id);?>
                     </div>
 
                 </div>
