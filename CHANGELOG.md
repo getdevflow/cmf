@@ -1,4 +1,4 @@
-## 2.0.0 (TBD)
+## 2.0.0 (2026-05-18)
 - ➕ Http transport client
 - ➕ Schedule content to be published in the future
 - ➕ Schedule products to be published in the future
@@ -11,7 +11,11 @@
 - 🔧 Dependency issue with Database
 - 💾 Updated namespace under `Cms`
 - ➕ Http cache
-- 🔧 Other minor fixes
+- ➕ Plugin install screen
+- ➕ Theme install screen
+- ➕ Enable/disable plugins and themes for subsites
+- 🔧 Code refactoring
+- 🔧 Other minor fixes and improvements
 
 ## 1.3.0 (2025-02-14)
 - 🔧 Fixed misspelling in `config/cms.php`
