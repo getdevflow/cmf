@@ -17,6 +17,7 @@ use function App\Shared\Helpers\cms_upload_image;
 use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_user_avatar;
 use function App\Shared\Helpers\get_user_option;
+use function App\Shared\Helpers\has_filter;
 use function App\Shared\Helpers\selected;
 use function Codefy\Framework\Helpers\trans;
 use function Codefy\Framework\Helpers\trans_html;
@@ -288,7 +289,7 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
                          */
                         Action::getInstance()->doAction('user_profile', $param['user']);
                         ?>
-                        <?=Filter::getInstance()->applyFilter('user_attribute_box_extended', $param['user']->id);?>
+                        <?=Filter::getInstance()->applyFilter('user.attribute.box.extended', '', $param['user']->id);?>
 
                     </div>
 
@@ -353,7 +354,9 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
 
                             </div>
                         </div>
-                        <?=Filter::getInstance()->applyFilter('user_attribute_box_side', $param['user']->id);?>
+                        <?php if (has_filter('user.attribute.box.side')) : ?>
+                        <?=Filter::getInstance()->applyFilter('user.attribute.box.side', '', $param['user']->id);?>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <!-- /.box -->

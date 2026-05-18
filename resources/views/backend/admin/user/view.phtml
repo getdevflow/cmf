@@ -135,7 +135,7 @@ Action::getInstance()->doAction('update_user_init');
 
                             </div>
                         </div>
-                        <?=Filter::getInstance()->applyFilter('user_attribute_box_extended', $params['user']->id);?>
+                        <?=Filter::getInstance()->applyFilter('user.attribute.box.extended', '', $params['user']->id);?>
 
                     </div>
 
@@ -220,7 +220,7 @@ Action::getInstance()->doAction('update_user_init');
                             </div>
                         </div>
 
-                        <?=Filter::getInstance()->applyFilter('user_attribute_box_side', $params['user']->id);?>
+                        <?=Filter::getInstance()->applyFilter('user.attribute.box.side', '', $params['user']->id);?>
                     </div>
 
                 </div>
