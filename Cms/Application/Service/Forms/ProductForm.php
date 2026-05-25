@@ -9,6 +9,9 @@ use Qubus\Form\Form;
 use Qubus\Form\FormBuilder\Decorator\Bootstrap;
 use Qubus\Form\FormView;
 
+/**
+ * @deprecated since version 2.1.0. Use the CustomFields plugin instead.
+ */
 class ProductForm extends FormView
 {
     protected array $opts = [
