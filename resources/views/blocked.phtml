@@ -1,0 +1,51 @@
+<?php
+
+use App\Application\Devflow;
+
+use function Codefy\Framework\Helpers\trans_html;
+
+?>
+<!doctype html>
+<html lang="<?=Devflow::$PHP->configContainer->string('app.language');?>">
+<head>
+    <meta charset="<?=Devflow::$PHP->configContainer->string('app.charset');?>">
+    <title><?=trans_html('Request Blocked');?></title>
+    <link rel="manifest" href="<?=$this->url('site.webmanifest.json');?>" />
+    <link rel="icon" type="image/x-icon" href="<?=$this->url('favicon.ico');?>">
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+            color: #1f2937;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .box {
+            max-width: 560px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 32px;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, .08);
+        }
+        h1 {
+            margin-top: 0;
+            color: #b91c1c;
+        }
+        code {
+            background: #f3f4f6;
+            padding: 3px 6px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+<main class="box">
+    <h1><?=trans_html('Request Blocked');?></h1>
+    <p><?=trans_html('Your request was blocked by the application firewall.');?></p>
+    <p><?=trans_html('Threat type:');?> <code><?=$type;?></code></p>
+</main>
+</body>
+</html>

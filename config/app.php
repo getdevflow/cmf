@@ -43,7 +43,7 @@ return [
     | Application Base Url
     |--------------------------------------------------------------------------
     */
-    'url' => env(key: 'APP_URL', default: 'http://localhost'),
+    'url' => env(key: 'APP_URL', default: 'http://localhost:8080/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -124,7 +124,6 @@ return [
     */
     'middlewares' => Middleware::defaultMiddlewares()->merge([
         'rest.api' => \Application\Http\Middleware\RestApiMiddleware::class,
-        'fence' => App\Infrastructure\Http\Middleware\UserAuthMiddleware::class,
     ])->toArray(),
 
     /*
@@ -135,6 +134,7 @@ return [
     | application.
     */
     'base_middlewares' => [
+        'firewall',
         'csrf.token',
         'csrf.protection',
         'http.cache.prevention',

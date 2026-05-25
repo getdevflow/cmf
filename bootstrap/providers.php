@@ -9,4 +9,5 @@ return [
     App\Infrastructure\Providers\CmsHelperServiceProvider::class,
     App\Infrastructure\Providers\DebugBarServiceProvider::class,
     Application\Provider\VihzhuoBlocksServiceProvider::class,
+    App\Infrastructure\Providers\FirewallServiceProvider::class,
 ];
