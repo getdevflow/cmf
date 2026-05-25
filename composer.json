@@ -18,8 +18,8 @@
         "ext-mbstring": "*",
         "ext-pdo": "*",
         "ext-zip": "*",
-        "getdevflow/core": "2.x-dev",
         "composer/installers": "^2.3",
+        "getdevflow/core": "2.x-dev",
         "oomphinc/composer-installers-extender": "^2.0"
     },
     "autoload": {
