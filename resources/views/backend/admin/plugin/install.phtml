@@ -33,6 +33,7 @@ Registry::getInstance()->{'set'}('screen_child', 'add-plugin');
         <section class="content">
 
             <?=Devflow::$PHP->flash->display(); ?>
+            <div id="installer-alert"></div>
 
             <div class="row">
 
@@ -126,42 +127,152 @@ Registry::getInstance()->{'set'}('screen_child', 'add-plugin');
     <!-- /.Content Wrapper. Contains page content -->
     <script>
         (function ($) {
-            $('.btn-install-extension').on('click', function () {
-                const $button = $(this);
 
-                $button.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> <?= trans_html('Installing...'); ?>');
+            let pendingRemoveButton = null;
+
+            $(document).on('click', '.btn-extension-action', function () {
+                const $button = $(this);
+                const action = $button.data('action');
+
+                if (action === 'remove') {
+                    pendingRemoveButton = $button;
+
+                    $('#remove-extension-modal').modal('show');
+
+                    return;
+                }
+
+                runExtensionAction($button);
+            });
+
+            $(document).on('click', '.js-confirm-remove-extension', function () {
+                if (! pendingRemoveButton) {
+                    return;
+                }
+
+                $('#remove-extension-modal').modal('hide');
+
+                runExtensionAction(pendingRemoveButton);
+
+                pendingRemoveButton = null;
+            });
+
+            function runExtensionAction($button) {
+                const action = $button.data('action');
+                const packageName = $button.data('package');
+                const type = $button.data('type');
+
+                const isRemove = action === 'remove';
+
+                const url = isRemove
+                    ? '<?= admin_url('extension/remove/'); ?>'
+                    : '<?= admin_url('extension/install/'); ?>';
+
+                $button.prop('disabled', true).html(
+                    isRemove
+                        ? '<i class="fa fa-spinner fa-spin"></i> <?= trans_html('Removing...'); ?>'
+                        : '<i class="fa fa-spinner fa-spin"></i> <?= trans_html('Installing...'); ?>'
+                );
 
                 $.ajax({
                     type: 'POST',
-                    url: '<?= admin_url('extension/install/'); ?>',
+                    url: url,
                     dataType: 'json',
                     data: {
-                        package: $button.data('package'),
-                        type: $button.data('type')
+                        package: packageName,
+                        type: type
                     }
                 }).done(function (response) {
+
                     $('#installer-alert').html(
-                        '<div class="alert alert-success">' + response.message + '</div>'
+                        '<div class="alert alert-success alert-dismissible fade in">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        response.message +
+                        '</div>'
                     );
 
-                    $button
-                        .removeClass('btn-success')
-                        .addClass('btn-primary')
-                        .html('<i class="fa fa-check"></i> <?= trans_html('Installed'); ?>');
+                    if (isRemove) {
+                        $button
+                            .removeClass('btn-danger')
+                            .addClass('btn-success')
+                            .data('action', 'install')
+                            .html('<i class="fa fa-download"></i> <?= trans_html('Install'); ?>');
+                    } else {
+                        $button
+                            .removeClass('btn-success')
+                            .addClass('btn-danger')
+                            .data('action', 'remove')
+                            .html('<i class="fa fa-trash"></i> <?= trans_html('Remove'); ?>');
+                    }
+
+                    $button.prop('disabled', false);
+
                 }).fail(function (xhr) {
-                    let message = <?= trans_html(string: 'Install failed.'); ?>;
+
+                    let message = isRemove
+                        ? <?= json_encode(trans_html('Remove failed.')); ?>
+                        : <?= json_encode(trans_html('Install failed.')); ?>;
 
                     if (xhr.responseJSON && xhr.responseJSON.message) {
                         message = xhr.responseJSON.message;
                     }
 
                     $('#installer-alert').html(
-                        '<div class="alert alert-danger">' + message + '</div>'
+                        '<div class="alert alert-danger alert-dismissible fade in">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        message +
+                        '</div>'
                     );
 
-                    $button.prop('disabled', false).html('<i class="fa fa-download"></i> <?= trans_html('Install'); ?>');
+                    $button.prop('disabled', false).html(
+                        isRemove
+                            ? '<i class="fa fa-trash"></i> <?= trans_html('Remove'); ?>'
+                            : '<i class="fa fa-download"></i> <?= trans_html('Install'); ?>'
+                    );
                 });
-            });
+            }
+
         })(jQuery);
     </script>
+    <div class="modal fade" id="remove-extension-modal" tabindex="-1" role="dialog" aria-labelledby="remove-extension-label">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header bg-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <h4 class="modal-title" id="remove-extension-label">
+                        <i class="fa fa-trash"></i>
+                        <?= trans_html('Remove Plugin'); ?>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>
+                        <?= trans_html('Are you sure you want to remove this plugin from the system?'); ?>
+                    </p>
+
+                    <p class="text-danger">
+                        <strong>
+                            <?= trans_html('This action cannot be undone.'); ?>
+                        </strong>
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <?= trans_html('Cancel'); ?>
+                    </button>
+
+                    <button type="button" class="btn btn-danger js-confirm-remove-extension">
+                        <i class="fa fa-trash"></i>
+                        <?= trans_html('Remove'); ?>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 <?php }); ?>

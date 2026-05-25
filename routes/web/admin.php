@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Infrastructure\Http\Controllers\UpdatesController;
 use Psr\Http\Message\RequestInterface;
 use Qubus\Http\Request;
 
@@ -38,7 +39,7 @@ return function (\Qubus\Routing\Psr7Router $router) {
 
             $group->get(uri: "/{$loginRoute}/", callback: 'AdminAuthController@login')
                 ->name('admin.login')
-                ->middleware(['csrf.token']);
+                ->middleware(['rate.limiter']);
 
             $group->get(uri: '/logout/', callback: 'AdminAuthController@logout')
                 ->name('admin.logout')
@@ -51,19 +52,42 @@ return function (\Qubus\Routing\Psr7Router $router) {
             // Plugin routes
             $group->get(uri: '/plugin/', callback: 'AdminPluginController@plugins')
                 ->name('admin.plugins');
-            $group->get(uri: '/plugin/activate/', callback: 'AdminPluginController@activate');
-            $group->get(uri: '/plugin/deactivate/', callback: 'AdminPluginController@deactivate');
+            $group->get(uri: '/plugin/activate/', callback: 'AdminPluginController@activate')->name('plugin.activate');
+            $group->get(
+                uri: '/plugin/deactivate/',
+                callback: 'AdminPluginController@deactivate'
+            )->name('plugin.deactivate');
             $group->post(uri: '/plugin/network-toggle/', callback: 'AdminPluginController@networkPluginToggle');
-            $group->get(uri: '/plugin/install/', callback: 'ExtensionInstallerController@plugins');
+            $group->get(
+                uri: '/plugin/install/',
+                callback: 'ExtensionInstallerController@plugins'
+            )->name('plugin.install');
 
             // Theme routes
             $group->get(uri: '/theme/', callback: 'AdminThemeController@themes')
                 ->name('admin.themes');
-            $group->get(uri: '/theme/activate/', callback: 'AdminThemeController@activate');
-            $group->get(uri: '/theme/deactivate/', callback: 'AdminThemeController@deactivate');
+            $group->get(uri: '/theme/activate/', callback: 'AdminThemeController@activate')->name('theme.activate');
+            $group->get(
+                uri: '/theme/deactivate/',
+                callback: 'AdminThemeController@deactivate'
+            )->name('theme.deactivate');
             $group->post(uri: '/theme/network-toggle/', callback: 'AdminThemeController@networkThemeToggle');
-            $group->get(uri: '/theme/install/', callback: 'ExtensionInstallerController@themes');
+            $group->get(uri: '/theme/install/', callback: 'ExtensionInstallerController@themes')->name('theme.install');
 
+            $group->post(
+                uri: '/extension/install/',
+                callback: 'ExtensionInstallerController@install'
+            )->name('extension.install');
+            $group->post(
+                uri: '/extension/remove/',
+                callback: 'ExtensionInstallerController@remove'
+            )->name('extension.remove');
+
+            $group->get(uri: '/updates/', callback: 'UpdatesController@index');
+            $group->post(uri: '/updates/plugin/', callback: 'UpdatesController@updatePlugin');
+            $group->post(uri: '/updates/plugin/all/', callback: 'UpdatesController@updateAllPlugins');
+            $group->post(uri: '/updates/theme/', callback: 'UpdatesController@updateTheme');
+            $group->post(uri: '/updates/theme/all/', callback: 'UpdatesController@updateAllThemes');
 
             // Content type routes
             $group->get(uri: '/content-type/', callback: 'AdminContentTypeController@contentTypes');

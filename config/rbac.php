@@ -35,6 +35,7 @@ return [
                 'install:plugins' => ['description' => 'Install plugins.'],
                 'activate:plugins' => ['description' => 'Activate plugins.'],
                 'deactivate:plugins' => ['description' => 'Deactivate plugins.'],
+                'core:updates' => ['description' => 'Manage system updates.'],
             ],
         ],
         'sites' => [

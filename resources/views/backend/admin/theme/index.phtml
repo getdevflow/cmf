@@ -180,7 +180,7 @@ if (! is_main_site() && is_multisite()) {
 
                             showThemeVisibilityAlert(
                                 'error',
-                                response.message || 'Unable to update theme visibility.'
+                                response.message || '<?=trans_html('Unable to update theme visibility.');?>'
                             );
 
                             return;
@@ -189,22 +189,35 @@ if (! is_main_site() && is_multisite()) {
                         if (isAvailable) {
                             showThemeVisibilityAlert(
                                 'success',
-                                'Theme is now available on subsites.'
+                                '<?=trans_html('Theme is now available on subsites.');?>'
                             );
                         } else {
                             showThemeVisibilityAlert(
                                 'success',
-                                'Theme has been removed from subsite theme lists.'
+                                '<?=trans_html('Theme has been removed from subsite theme lists.');?>'
                             );
                         }
                     },
-                    error: function () {
+                    error: function (xhr) {
                         $toggle.prop('checked', !isAvailable);
 
-                        showThemeVisibilityAlert(
-                            'error',
-                            'Unable to update theme visibility.'
-                        );
+                        let message = '<?=trans_html('Unable to update theme visibility.');?>';
+
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            message = xhr.responseJSON.message;
+                        } else if (xhr.responseText) {
+                            try {
+                                const json = JSON.parse(xhr.responseText);
+
+                                if (json.message) {
+                                    message = json.message;
+                                }
+                            } catch (e) {
+                                console.log(xhr.responseText);
+                            }
+                        }
+
+                        showThemeVisibilityAlert('error', message);
                     }
                 });
             });

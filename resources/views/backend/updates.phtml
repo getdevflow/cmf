@@ -1,0 +1,138 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Shared\Services\Registry;
+use Qubus\Support\Inflector;
+
+use function App\Shared\Helpers\admin_url;
+use function Codefy\Framework\Helpers\trans;
+use function Codefy\Framework\Helpers\trans_html;
+use function Qubus\Security\Helpers\esc_attr;
+use function Qubus\Security\Helpers\esc_html;
+use function Qubus\Security\Helpers\esc_url;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function ($params) {
+Registry::getInstance()->{'set'}('screen_parent', 'dashboard');
+Registry::getInstance()->{'set'}('screen_child', 'updates');
+?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <?= trans_html(string: 'Updates'); ?>
+                <small><?= trans_html(string: 'Devflow CMF, plugins, and themes'); ?></small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="<?=admin_url();?>"><i class="fa fa-dashboard"></i> <?= trans_html(string: 'Dashboard'); ?></a></li>
+                <li class="active"><?= trans_html(string: 'Updates'); ?></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Devflow CMF</h3>
+                </div>
+                <div class="box-body">
+                    <?php if (!empty($params['updates']['stale'])) : ?>
+                        <div class="alert alert-warning">
+                            <?=trans_html('Update checks are temporarily unavailable. Showing cached or fallback results.');?>
+                        </div>
+                    <?php endif; ?>
+                    
+                    <?php if ($params['updates']['core']['available']) : ?>
+                        <div class="alert alert-info">
+                            <?=sprintf(trans('Devflow <strong>%s</strong> is available.'), esc_html($params['updates']['core']['latest']));?>
+                            <?=sprintf(trans('Current version: <strong>%s</strong>'), esc_html($params['updates']['core']['current']));?>
+                        </div>
+                        <p>
+                            <?=sprintf(trans('Run %s from the command line to update Devflow core.'), '<code>php codex cms:update</code>');?>
+                        </p>
+                    <?php else : ?>
+                        <div class="alert alert-success">
+                            <?=sprintf(trans_html('Devflow %s is up to date.'), esc_html($params['updates']['core']['current']));?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <?php $sections = [
+                'plugins' => ['title' => 'Plugins', 'single' => '/admin/updates/plugin/', 'all' => '/admin/updates/plugin/all/'],
+                'themes' => ['title' => 'Themes', 'single' => '/admin/updates/theme/', 'all' => '/admin/updates/theme/all/'],
+            ]; ?>
+
+            <?php foreach ($sections as $key => $section) : ?>
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><?=esc_html($section['title']);?></h3>
+
+                        <?php if (!empty($params['updates'][$key])) : ?>
+                            <div class="box-tools pull-right">
+                                <form method="post" action="<?=esc_url($section['all']);?>">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <?=sprintf(trans_html('Update All %s.'), esc_html($section['title']));?>
+                                    </button>
+                                </form>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="box-body table-responsive no-padding">
+                        <?php if (empty($params['updates'][$key])) : ?>
+                            <div class="p-3" style="padding:15px;">
+                                <div class="alert alert-success">
+                                    <?=sprintf(
+                                        trans_html('No %s updates available.'),
+                                        esc_html(Inflector::singularize(strtolower($section['title'])))
+                                    );?>
+                                </div>
+                            </div>
+                        <?php else : ?>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th><?= trans_html(string: 'Package'); ?></th>
+                                    <th><?= trans_html(string: 'Current'); ?></th>
+                                    <th><?= trans_html(string: 'Latest'); ?></th>
+                                    <th class="text-right"><?= trans_html(string: 'Action'); ?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($params['updates'][$key] as $package) : ?>
+                                    <tr>
+                                        <td>
+                                            <strong><?=esc_html($package['name']);?></strong>
+                                            <?php if (!empty($package['description'])) : ?>
+                                                <br><small><?=esc_html($package['description']);?></small>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td><?=esc_html($package['current']);?></td>
+                                        <td><?=esc_html($package['latest']);?></td>
+                                        <td class="text-right">
+                                            <form method="post" action="<?=esc_url($section['single']);?>" class="js-update-form">
+                                                <input type="hidden" name="package" value="<?=esc_attr($package['name']);?>">
+                                                <button type="submit" class="btn btn-success btn-sm">
+                                                    <?= trans_html(string: 'Update'); ?>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+<?php }); ?>

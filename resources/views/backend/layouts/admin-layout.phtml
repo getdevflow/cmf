@@ -147,6 +147,7 @@ $canInstallThemes = is_main_site() && current_user_can('install:themes');
                         </a>
                         <ul class="treeview-menu">
                             <?= add_dashboard_submenu(trans_html(string: 'Home'), '/', 'home'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'Updates'), '/updates/', 'updates', 'core:updates'); ?>
                             <?= add_dashboard_submenu(trans_html(string: 'System Report'), '/snapshot/', 'snapshot', 'manage:settings'); ?>
                             <?php Action::getInstance()->doAction('dashboard_submenu'); ?>
                         </ul>
