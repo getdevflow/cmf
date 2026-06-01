@@ -134,6 +134,7 @@ return [
     | application.
     */
     'base_middlewares' => [
+        'referrer.spam',
         'firewall',
         'csrf.token',
         'csrf.protection',
