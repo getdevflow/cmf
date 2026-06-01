@@ -105,7 +105,7 @@ $canInstallThemes = is_main_site() && current_user_can('install:themes');
                                     </div>
                                     <?php if (isset($_COOKIE['SWITCH_USERBACK'])) : ?>
                                         <div class="pull-left">
-                                            <a href="<?= admin_url('user/' . $cookie->id . '/switch-back/'); ?>" class="btn btn-default btn-flat"><?=trans_html(string: 'Switch back');?></a>
+                                            <a href="<?= admin_url(sprintf('user/%s/switch-back/', esc_html($cookie->id))); ?>" class="btn btn-default btn-flat"><?=trans_html(string: 'Switch back');?></a>
                                         </div>
                                     <?php endif; ?>
                                     <div class="pull-right">
@@ -147,7 +147,9 @@ $canInstallThemes = is_main_site() && current_user_can('install:themes');
                         </a>
                         <ul class="treeview-menu">
                             <?= add_dashboard_submenu(trans_html(string: 'Home'), '/', 'home'); ?>
+                            <?php if(is_main_site()) : ?>
                             <?= add_dashboard_submenu(trans_html(string: 'Updates'), '/updates/', 'updates', 'core:updates'); ?>
+                            <?php endif; ?>
                             <?= add_dashboard_submenu(trans_html(string: 'System Report'), '/snapshot/', 'snapshot', 'manage:settings'); ?>
                             <?php Action::getInstance()->doAction('dashboard_submenu'); ?>
                         </ul>
@@ -202,8 +204,8 @@ $canInstallThemes = is_main_site() && current_user_can('install:themes');
                                     </span>
                             </a>
                             <ul class="treeview-menu">
-                                <?= add_dashboard_submenu(trans_html(string: 'All') . ' ' . esc_html($contentType['title']), '/content-type/' . $contentType['slug'] . '/', $contentType['slug']); ?>
-                                <?= add_dashboard_submenu(trans_html(string: 'Add New'), '/content-type/' . $contentType['slug'] . '/create/', $contentType['slug'] . '-create'); ?>
+                                <?= add_dashboard_submenu(trans_html(string: 'All') . ' ' . esc_html($contentType['title']), sprintf('/content-type/%s/', $contentType['slug']), $contentType['slug']); ?>
+                                <?= add_dashboard_submenu(trans_html(string: 'Add New'), sprintf('/content-type/%s/create/', $contentType['slug']), $contentType['slug'] . '-create'); ?>
                                 <?php Action::getInstance()->doAction('content_type_submenu', $contentType['slug']); ?>
                             </ul>
                         </li>

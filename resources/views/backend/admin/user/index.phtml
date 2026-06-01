@@ -88,7 +88,7 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                     <?php endif; ?>
 
                                     <div class="modal" id="delete-<?=esc_html($user['user_id']);?>">
-                                        <form method="post" action="<?=admin_url('user/' . esc_html($user['user_id']) . '/d/');?>">
+                                        <form method="post" action="<?=admin_url(sprintf('user/%s/d/', esc_html($user['user_id'])));?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">

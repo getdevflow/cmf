@@ -1,0 +1,90 @@
+<?php
+
+use function App\Shared\Helpers\security_audit_result;
+use function Codefy\Framework\Helpers\trans_html;
+use function Qubus\Security\Helpers\esc_html;
+use function Qubus\Security\Helpers\esc_url;
+
+$audit = security_audit_result();
+?>
+
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">
+            <i class="fa fa-shield"></i>
+            <?=trans_html('Composer Security Advisories');?>
+        </h3>
+    </div>
+
+    <div class="box-body">
+        <?php if ($audit === null): ?>
+            <p><?=trans_html('No Composer security audit has been run yet.');?></p>
+            <p>
+                <?=trans_html('Run:');?>
+                <code>php codex security:audit</code>
+            </p>
+        <?php elseif ($audit->failed()): ?>
+            <div class="alert alert-warning">
+                <strong><?=trans_html('Security audit failed.');?></strong><br>
+                <?= esc_html($audit->message ?? trans_html('Unknown error.')); ?>
+            </div>
+
+            <p>
+                <?=trans_html('Last checked:');?> <?= esc_html(date('d F Y h:i A', strtotime($audit->checkedAt))); ?>
+            </p>
+        <?php elseif ($audit->hasAdvisories()): ?>
+            <div class="alert alert-danger">
+                <strong><?= esc_html((string) $audit->advisoryCount); ?> <?=trans_html('security advisories found.');?></strong>
+                <?=trans_html('Update the affected Composer packages as soon as possible.');?>
+            </div>
+
+            <p>
+                <?=trans_html('Last checked:');?> <?= esc_html(date('d F Y h:i A', strtotime($audit->checkedAt))); ?>
+            </p>
+
+            <?php foreach ($audit->packages as $package => $items): ?>
+                <h4><?= esc_html($package); ?></h4>
+
+                <ul>
+                    <?php foreach ($items as $item): ?>
+                        <li>
+                            <strong><?= esc_html($item['title'] ?: 'Security advisory'); ?></strong>
+
+                            <?php if (!empty($item['severity'])): ?>
+                                <span class="label label-danger">
+                                    <?= esc_html($item['severity']); ?>
+                                </span>
+                            <?php endif; ?>
+
+                            <?php if (!empty($item['cve'])): ?>
+                                <br>
+                                CVE: <?= esc_html($item['cve']); ?>
+                            <?php endif; ?>
+
+                            <?php if (!empty($item['affected_versions'])): ?>
+                                <br>
+                                <?=trans_html('Affected versions:');?>
+                                <code><?= esc_html($item['affected_versions']); ?></code>
+                            <?php endif; ?>
+
+                            <?php if (!empty($item['link'])): ?>
+                                <br>
+                                <a href="<?= esc_url($item['link']); ?>" target="_blank" rel="noopener noreferrer">
+                                    <?=trans_html('View advisory');?>
+                                </a>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="alert alert-success">
+                <strong><?=trans_html('No known Composer security advisories found.');?></strong>
+            </div>
+
+            <p>
+                <?=trans_html('Last checked:');?> <?= esc_html(date('d F Y h:i A', strtotime($audit->checkedAt))); ?>
+            </p>
+        <?php endif; ?>
+    </div>
+</div>

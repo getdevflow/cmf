@@ -13,7 +13,9 @@ use function App\Shared\Helpers\theme_available_for_subsites;
 use function App\Shared\Helpers\theme_info;
 use function Codefy\Framework\Helpers\public_path;
 use function Codefy\Framework\Helpers\trans_html;
+use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_url;
+use function Qubus\Security\Helpers\purify_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
@@ -27,7 +29,7 @@ if (! is_main_site() && is_multisite()) {
     $themes = array_filter(
         $themes,
         static fn (array $theme): bool =>
-        theme_available_for_subsites($theme['className'] ?? '')
+        theme_available_for_subsites(esc_html((string) $theme['className']) ?? '')
     );
 }
 ?>
@@ -79,36 +81,36 @@ if (! is_main_site() && is_multisite()) {
                                 </thead>
                                 <tbody>
                                 <?php foreach ($themes as $theme) : ?>
-                                <?php if (is_theme_active($theme['className']) === true) : ?>
+                                <?php if (is_theme_active(esc_html($theme['className'])) === true) : ?>
                                 <tr class="gradeX" style="background-color:#B0E0E6 !important;">
                                     <?php else : ?>
                                 <tr class="gradeX">
                                     <?php endif; ?>
                                     <td class="text-center">
-                                        <a href="<?=$theme['screenshot'];?>" data-toggle="lightbox">
-                                            <img src="<?=$theme['screenshot'];?>" height="auto" width="150" alt="<?=$theme['name'];?>"/>
+                                        <a href="<?=esc_url($theme['screenshot']);?>" data-toggle="lightbox">
+                                            <img src="<?=esc_url($theme['screenshot']);?>" height="auto" width="150" alt="<?=esc_html($theme['name']);?>"/>
                                         </a>
                                     </td>
-                                    <td class="text-center"><?=$theme['name'];?></td>
-                                    <td class="text-center"><?=$theme['version'];?></td>
+                                    <td class="text-center"><?=esc_html($theme['name']);?></td>
+                                    <td class="text-center"><?=esc_html($theme['version']);?></td>
                                     <td class="text-center">
-                                        <?= $theme['description']; ?> <br />
+                                        <?=purify_html($theme['description']);?> <br />
                                         <strong><?=trans_html(string: 'Developer:');?></strong>
-                                        <a href="<?=esc_url($theme['authorUri']);?>"><?=$theme['author'];?></a> |
+                                        <a href="<?=esc_url($theme['authorUri']);?>"><?=esc_html($theme['author']);?></a> |
                                         <a href="<?=esc_url($theme['themeUri']);?>"><?=trans_html(string: 'View Details');?></a>
                                     </td>
-                                    <?php if (is_theme_active($theme['className']) === true) : ?>
+                                    <?php if (is_theme_active(esc_html($theme['className'])) === true) : ?>
                                         <td<?= ae('deactivate:themes'); ?> class="text-center"><a class="btn btn-danger" href="<?=admin_url('theme/deactivate/');?>"><i class="fa fa-minus-circle"></i></a></td>
                                     <?php else : ?>
-                                        <td<?= ae('deactivate:themes'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url('theme/activate/?id=' . $theme['className']);?>"><i class="fa fa-plus-circle"></i></a></td>
+                                        <td<?= ae('deactivate:themes'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url(sprintf('theme/activate/?id=%s', $theme['className']));?>"><i class="fa fa-plus-circle"></i></a></td>
                                     <?php endif; ?>
                                     <?php if ($canManageNetworkThemes) : ?>
                                         <td class="text-center">
                                             <input
                                                 type="checkbox"
                                                 class="js-network-theme-toggle"
-                                                data-theme="<?= $theme['className']; ?>"
-                                                <?= theme_available_for_subsites($theme['className']) ? 'checked' : ''; ?>
+                                                data-theme="<?= esc_html($theme['className']); ?>"
+                                                <?= theme_available_for_subsites(esc_html($theme['className'])) ? 'checked' : ''; ?>
                                             >
                                         </td>
                                     <?php endif; ?>

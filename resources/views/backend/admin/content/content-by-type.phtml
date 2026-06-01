@@ -29,7 +29,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']);
                 <h3 class="box-title"><?=$params['title'];?></h3>
 
                 <div class="pull-right">
-                    <button type="button"<?= ae('create:content');?> class="btn btn-warning" onclick="window.location = '<?= admin_url('content-type' . '/' . $params['type'] . '/create/'); ?>'"><i class="fa fa-plus"></i> <?= trans_html(string: 'New'); ?> <?=$params['type'];?></button>
+                    <button type="button"<?= ae('create:content');?> class="btn btn-warning" onclick="window.location = '<?= admin_url(sprintf('content-type/%s/create/', $params['type'])); ?>'"><i class="fa fa-plus"></i> <?= trans_html(string: 'New'); ?> <?=$params['type'];?></button>
                 </div>
             </div>
         </div>

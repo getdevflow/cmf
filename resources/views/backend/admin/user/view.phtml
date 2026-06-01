@@ -32,7 +32,7 @@ Action::getInstance()->doAction('update_user_init');
 <?=cms_upload_image();?>
 
     <!-- form start -->
-    <form method="post" action="<?= admin_url('user/' . $params['user']->id . '/'); ?>" data-toggle="validator" autocomplete="off">
+    <form method="post" action="<?= admin_url(sprintf('user/%s/', $params['user']->id)); ?>" data-toggle="validator" autocomplete="off">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->

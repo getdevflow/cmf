@@ -35,7 +35,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
     </script>
 
     <!-- form start -->
-    <form name="form" method="post" data-toggle="validator" action="<?= admin_url('content-type' . '/' . $params['type']->slug . '/create/'); ?>" id="form" autocomplete="off">
+    <form name="form" method="post" data-toggle="validator" action="<?= admin_url(sprintf('content-type/%s/create/', $params['type']->slug)); ?>" id="form" autocomplete="off">
         <!-- Content Wrapper. Contains content -->
         <div class="content-wrapper">
             <!-- Content Header (Content header) -->
@@ -46,7 +46,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
 
                     <div class="pull-right">
                         <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?= trans_html(string: 'Save'); ?></button>
-                        <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url('content-type' . '/' . $params['type']->slug . '/');?>'"><i class="fa fa-minus-circle"></i> <?= trans_html(string: 'Cancel'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url(sprintf('content-type/%s/', $params['type']->slug));?>'"><i class="fa fa-minus-circle"></i> <?= trans_html(string: 'Cancel'); ?></button>
                     </div>
                 </div>
             </div>

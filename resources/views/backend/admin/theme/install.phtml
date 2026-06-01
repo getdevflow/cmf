@@ -8,6 +8,7 @@ use function App\Shared\Helpers\get_current_site_id;
 use function App\Shared\Helpers\is_main_site;
 use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Security\Helpers\esc_html;
+use function Qubus\Security\Helpers\purify_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -63,11 +64,11 @@ Registry::getInstance()->{'set'}('screen_child', 'add-theme');
                                         </td>
 
                                         <td>
-                                            <?= esc_html($theme['description']); ?>
+                                            <?= purify_html($theme['description']); ?>
                                         </td>
 
                                         <td class="text-center">
-                                            <?php if ($theme['installed']) : ?>
+                                            <?php if (esc_html($theme['installed'])) : ?>
                                                 <span class="label label-success"><?= trans_html(string: 'Installed'); ?></span>
                                             <?php else : ?>
                                                 <span class="label label-default"><?= trans_html(string: 'Available'); ?></span>
@@ -75,7 +76,7 @@ Registry::getInstance()->{'set'}('screen_child', 'add-theme');
                                         </td>
 
                                         <td class="text-center">
-                                            <?php if ($theme['installed'] && is_main_site(get_current_site_id())) : ?>
+                                            <?php if (esc_html($theme['installed']) && is_main_site(get_current_site_id())) : ?>
                                                 <button
                                                     type="button"
                                                     class="btn btn-danger btn-extension-action"
@@ -85,7 +86,7 @@ Registry::getInstance()->{'set'}('screen_child', 'add-theme');
                                                 >
                                                     <i class="fa fa-trash"></i> <?= trans_html(string: 'Remove'); ?>
                                                 </button>
-                                        <?php elseif ($theme['installed'] && !is_main_site(get_current_site_id())) : ?>
+                                        <?php elseif (esc_html($theme['installed']) && !is_main_site(get_current_site_id())) : ?>
                                                 <span class="label label-danger"><i class="fa fa-trash"></i> <?= trans_html(string: 'Unavailable'); ?></span>
                                             <?php else : ?>
                                                 <button

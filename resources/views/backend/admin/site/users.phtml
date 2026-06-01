@@ -107,14 +107,14 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                     </div>
                                     <!-- /.modal -->
                                     <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && $user['id'] !== get_current_user_id()) : ?>
-                                        <a<?= ae('switch:user'); ?> href="<?= admin_url('user/' . $user['id'] . '/switch-to/'); ?>" data-toggle="tooltip" data-placement="top" title="Switch to"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
+                                        <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', $user['id'])); ?>" data-toggle="tooltip" data-placement="top" title="Switch to"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
                                     <?php endif; ?>
                                     <?php if (get_user_option('role', $user['id']) !== 'super') : ?>
                                         <a<?= ae('delete:users'); ?> href="#" data-toggle="modal" data-target="#delete-<?= $user['id']; ?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
                                     <?php endif; ?>
                                     <?php if (if_user_has_sites($user['id'])) : ?>
                                         <div class="modal" id="delete-<?= $user['id']; ?>">
-                                            <form method="post" action="<?= admin_url('site/users/' . $user['id'] . '/d/'); ?>">
+                                            <form method="post" action="<?= admin_url(sprintf('site/users/%s/d/', $user['id'])); ?>">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -156,7 +156,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites-user');
                                         <!-- /.modal -->
                                     <?php else: ?>
                                         <div class="modal" id="delete-<?= $user['id']; ?>">
-                                            <form method="post" action="<?= admin_url('site/users/' . $user['id'] . '/d/'); ?>">
+                                            <form method="post" action="<?= admin_url(sprintf('site/users/%s/d/', $user['id'])); ?>">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

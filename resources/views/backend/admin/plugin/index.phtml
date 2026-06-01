@@ -13,7 +13,9 @@ use function App\Shared\Helpers\plugin_available_for_subsites;
 use function App\Shared\Helpers\plugin_info;
 use function Codefy\Framework\Helpers\public_path;
 use function Codefy\Framework\Helpers\trans_html;
+use function Qubus\Security\Helpers\esc_html;
 use function Qubus\Security\Helpers\esc_url;
+use function Qubus\Security\Helpers\purify_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
@@ -27,7 +29,7 @@ if (! is_main_site() && is_multisite()) {
     $plugins = array_filter(
         $plugins,
         static fn (array $plugin): bool =>
-        plugin_available_for_subsites($plugin['className'] ?? '')
+        plugin_available_for_subsites(esc_html((string) $plugin['className']) ?? '')
     );
 }
 ?>
@@ -78,31 +80,31 @@ if (! is_main_site() && is_multisite()) {
                                 </thead>
                                 <tbody>
                                 <?php foreach ($plugins as $plugin) : ?>
-                                <?php if (is_plugin_activated($plugin['className']) === true && class_exists($plugin['className'])) : ?>
+                                <?php if (is_plugin_activated(esc_html($plugin['className'])) === true && class_exists(esc_html($plugin['className']))) : ?>
                                 <tr class="gradeX" style="background-color:#B0E0E6 !important;">
                                     <?php else : ?>
                                 <tr class="gradeX">
                                     <?php endif; ?>
-                                    <td class="text-center"><?=$plugin['name'];?></td>
-                                    <td class="text-center"><?=$plugin['version'];?></td>
+                                    <td class="text-center"><?=esc_html($plugin['name']);?></td>
+                                    <td class="text-center"><?=esc_html($plugin['version']);?></td>
                                     <td class="text-center">
-                                        <?= $plugin['description']; ?> <br />
+                                        <?= purify_html($plugin['description']); ?> <br />
                                         <strong><?=trans_html('Developer:');?></strong>
-                                        <a href="<?=esc_url($plugin['authorUri']);?>"><?=$plugin['author'];?></a> |
+                                        <a href="<?=esc_url($plugin['authorUri']);?>"><?=esc_html($plugin['author']);?></a> |
                                         <a href="<?=esc_url($plugin['pluginUri']);?>"><?=trans_html('View Details');?></a>
                                     </td>
-                                    <?php if (is_plugin_activated($plugin['className']) === true && class_exists($plugin['className'])) : ?>
-                                        <td<?= ae('deactivate:plugins'); ?> class="text-center"><a class="btn btn-danger" href="<?=admin_url('plugin/deactivate/?id=' . $plugin['className']);?>"><i class="fa fa-minus-circle"></i></a></td>
+                                    <?php if (is_plugin_activated(esc_html($plugin['className'])) === true && class_exists(esc_html($plugin['className']))) : ?>
+                                        <td<?= ae('deactivate:plugins'); ?> class="text-center"><a class="btn btn-danger" href="<?=admin_url(sprintf('plugin/deactivate/?id=%s', esc_html($plugin['className'])));?>"><i class="fa fa-minus-circle"></i></a></td>
                                     <?php else : ?>
-                                        <td<?= ae('activate:plugins'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url('plugin/activate/?id=' . $plugin['className']);?>"><i class="fa fa-plus-circle"></i></a></td>
+                                        <td<?= ae('activate:plugins'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url(sprintf('plugin/activate/?id=%s', esc_html($plugin['className'])));?>"><i class="fa fa-plus-circle"></i></a></td>
                                     <?php endif; ?>
                                     <?php if ($canManageNetworkPlugins) : ?>
                                         <td class="text-center">
                                             <input
                                                 type="checkbox"
                                                 class="js-network-plugin-toggle"
-                                                data-plugin="<?= $plugin['className']; ?>"
-                                                <?= plugin_available_for_subsites($plugin['className']) ? 'checked' : ''; ?>
+                                                data-plugin="<?= esc_html($plugin['className']); ?>"
+                                                <?= plugin_available_for_subsites(esc_html($plugin['className'])) ? 'checked' : ''; ?>
                                             >
                                         </td>
                                     <?php endif; ?>

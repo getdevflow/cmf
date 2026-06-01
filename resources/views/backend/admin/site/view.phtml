@@ -26,7 +26,7 @@ Registry::getInstance()->{'set'}('screen_child', 'sites');
     </script>
 
     <!-- form start -->
-    <form method="post" action="<?= admin_url('site/' . $params['site']->id . '/'); ?>" data-toggle="validator" autocomplete="off">
+    <form method="post" action="<?= admin_url(sprintf('site/%s/', $params['site']->id)); ?>" data-toggle="validator" autocomplete="off">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
