@@ -1,3 +1,16 @@
+## 2.2.0 (2026-06-01)
+- ➕ Security audit advisory on updates screen
+- ➕ Site specific plugins
+- 🔧 Paginator
+- ➕ Firewall
+- ➕ Referrer spam
+
+## 2.1.0 (2026-05-25)
+- ➕ Site migrations and commands
+- ➕ Extension commands
+- 💾 Enhanced updater command
+- ➕ Plugin and Theme activate/deactivate/remove integrity
+
 ## 2.0.0 (2026-05-18)
 - ➕ Http transport client
 - ➕ Schedule content to be published in the future
