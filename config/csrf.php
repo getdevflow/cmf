@@ -19,7 +19,7 @@ return [
     'header' => 'X-CSRF-Token',
     /*
     |--------------------------------------------------------------------------
-    | Set to false, if you rather use an html form tag.
+    | Default behaviour. DO NOT TOUCH!
     |--------------------------------------------------------------------------
     */
     'request_header' => true,
