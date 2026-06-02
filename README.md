@@ -84,7 +84,7 @@ composer create-project getdevflow/cmf project
 ## 📘 Documentation
 
 Documentation is still a work in progress. Between the [Devflow Docs](https://docs.getdevflow.com/), [Qubus Components](https://docs.qubusphp.com/) documentation,
-and [CodefyPHP's](https://codefyphp.com/documentation/) documentation, that should help you get started.
+and [CodefyPHP's](https://codefyphp.com/docs/) documentation, that should help you get started.
 
 ## 🙌 Sponsors
 
