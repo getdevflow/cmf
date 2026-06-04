@@ -13,7 +13,6 @@ try {
             'basePath' => env(key: 'APP_BASE_PATH', default: dirname(path: __DIR__))
         ]
     )
-    //->withEncryptedEnv(bool: true)
     ->withProviders([
         App\Infrastructure\Providers\SiteServiceProvider::class,
         App\Infrastructure\Providers\DatabaseServiceProvider::class,
@@ -38,6 +37,6 @@ try {
     $app->share(nameOrInstance: $app);
 
     return $app::getInstance();
-} catch (TypeException|ReflectionException $e) {
+} catch (TypeException | ReflectionException $e) {
     return $e->getMessage();
 }
