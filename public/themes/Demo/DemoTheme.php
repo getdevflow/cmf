@@ -6,6 +6,7 @@ namespace Theme\Demo;
 
 use App\Infrastructure\Services\Theme;
 use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Filter;
 use Qubus\Exception\Exception;
 use ReflectionException;
 
@@ -29,7 +30,7 @@ final class DemoTheme extends Theme
             'id' => 'demo',
             'slug' => 'Demo',
             'author' => 'Joshua Parker',
-            'version' => '1.0.0',
+            'version' => '1.0.1',
             'description' => t__(
                 msgid: 'A demo theme to get started.',
                 domain: 'demo'
@@ -53,5 +54,6 @@ final class DemoTheme extends Theme
      */
     public function handle(): void
     {
+        Filter::getInstance()->addFilter('pagebuilder.support', fn() => true);
     }
 }
