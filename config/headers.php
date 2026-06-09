@@ -405,6 +405,7 @@ return [
                 '*.jsdelivr.net',
                 '*.cloudflare.com',
                 'stackpath.bootstrapcdn.com',
+                'www.google-analytics.com',
             ]
         ],
 
@@ -466,7 +467,8 @@ return [
                 'cdnjs.cloudflare.com',
                 'gitcdn.github.io',
                 'code.jquery.com',
-                'stackpath.bootstrapcdn.com'
+                'stackpath.bootstrapcdn.com',
+                'www.googletagmanager.com',
             ],
 
             'schemes' => [
@@ -538,6 +540,7 @@ return [
                 'cdnjs.cloudflare.com',
                 '*.youtube.com',
                 '*.vimeo.com',
+                'www.googletagmanager.com',
             ],
 
             'data' => true,
