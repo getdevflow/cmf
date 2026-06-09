@@ -241,6 +241,23 @@ return function (\Qubus\Routing\Psr7Router $router) {
                 callback: 'WebsiteManagerController@index'
             );
 
+            $group->map(
+                ['GET', 'POST'],
+                '/manager/create/',
+                callback: 'WebsiteManagerController@create'
+            );
+
+            $group->map(
+                ['GET', 'POST'],
+                '/manager/{pageId}/',
+                callback: 'WebsiteManagerController@edit'
+            )->where(['pageId' => '[0-9]+']);
+
+            $group->post(
+                uri: '/manager/{pageId}/d/',
+                callback: 'WebsiteManagerController@destroy'
+            )->where(['pageId' => '[0-9]+']);
+
             // Master cron route
             $group->get(
                 uri: '/cron/master/',

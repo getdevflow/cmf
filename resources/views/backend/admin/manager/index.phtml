@@ -3,6 +3,7 @@
 use App\Application\Devflow;
 use App\Shared\Services\Registry;
 
+use function App\Shared\Helpers\admin_url;
 use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -22,7 +23,7 @@ $setting = phpb_instance('setting');
                 <h3 class="box-title"><?= trans_html('Page Builder'); ?></h3>
 
                 <div class="pull-right">
-                    <a href="<?=phpb_url('website_manager', ['route' => 'page_settings', 'action' => 'create']);?>">
+                    <a href="<?= admin_url('manager/create/'); ?>">
                         <button type="button" class="btn btn-warning"><?=phpb_trans('website-manager.add-new-page');?></button>
                     </a>
                 </div>
@@ -61,7 +62,7 @@ $setting = phpb_instance('setting');
                                     <td class="text-center">
                                         <a href="<?=phpb_e(phpb_full_url($page->getRoute()));?>" data-toggle="tooltip" data-placement="top" title="<?=phpb_trans('website-manager.view');?>" target="_blank"><button type="button" class="btn bg-yellow"><i class="fa fa-up-right-from-square"></i></button></a>
                                         <a href="<?=phpb_url('pagebuilder', ['page' => $page->getId()]);?>" data-toggle="tooltip" data-placement="top" title="<?=phpb_trans('website-manager.edit');?>"><button type="button" class="btn bg-purple"><i class="fa fa-edit"></i></button></a>
-                                        <a href="<?=phpb_url('website_manager', ['route' => 'page_settings', 'action' => 'edit', 'page' => $page->getId()]);?>" data-toggle="tooltip" data-placement="top" title="<?=phpb_trans('website-manager.settings');?>"><button type="button" class="btn bg-blue"><i class="fa fa-cog"></i></button></a>
+                                        <a href="<?= admin_url('manager/' . $page->getId() . '/'); ?>" data-toggle="tooltip" data-placement="top" title="<?=phpb_trans('website-manager.settings');?>"><button type="button" class="btn bg-blue"><i class="fa fa-cog"></i></button></a>
                                         <a href="#" data-toggle="modal" data-target="#delete-<?=$page->getId();?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
                                         <div class="modal" id="delete-<?=$page->getId();?>">
                                             <div class="modal-dialog">
@@ -75,8 +76,15 @@ $setting = phpb_instance('setting');
                                                         <p><?= trans_html(string: 'Are you sure you want to delete this page?'); ?></p>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Cancel'); ?></button>
-                                                        <a href="<?=phpb_url('website_manager', ['route' => 'page_settings', 'action' => 'destroy', 'page' => $page->getId()]);?>"><button type="button" class="btn btn-primary"><?= trans_html(string: 'Confirm'); ?></button></a>
+                                                        <form method="post" action="<?= admin_url('manager/' . $page->getId() . '/d/'); ?>">
+                                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
+                                                                <?= trans_html(string: 'Cancel'); ?>
+                                                            </button>
+
+                                                            <button type="submit" class="btn btn-primary">
+                                                                <?= trans_html(string: 'Confirm'); ?>
+                                                            </button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <!-- /.modal-content -->

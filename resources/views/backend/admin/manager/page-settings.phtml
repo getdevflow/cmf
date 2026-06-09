@@ -3,6 +3,9 @@
 use App\Application\Devflow;
 use App\Shared\Services\Registry;
 
+use Qubus\EventDispatcher\ActionFilter\Filter;
+
+use function App\Shared\Helpers\admin_url;
 use function Codefy\Framework\Helpers\trans_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
@@ -10,16 +13,15 @@ $this->block('backend', function ($params) {
 Registry::getInstance()->{'set'}('screen_parent', 'vihzhuo');
 Registry::getInstance()->{'set'}('screen_child', 'vihzhuo-index');
 
-    $pageUrlParam = '';
-    if (isset($params['page'])) {
-        $pageUrlParam = '&page=' . phpb_e($params['page']->getId());
-    }
-
     $pageTranslations = $params['page'] ? $params['page']->getTranslations() : [];
+
+    $formAction = $params['action'] === 'create'
+        ? admin_url('manager/create/')
+        : admin_url('manager/' . phpb_e($params['page']->getId()) . '/');
 ?>
 
     <!-- form start -->
-    <form name="form" method="post" data-toggle="validator" action="<?= phpb_url('website_manager', ['route' => 'page_settings', 'action' => $params['action']]) ?><?= $pageUrlParam ?>" id="form" autocomplete="off">
+    <form name="form" method="post" data-toggle="validator" action="<?=$formAction;?>" id="form" autocomplete="off">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -99,6 +101,9 @@ Registry::getInstance()->{'set'}('screen_child', 'vihzhuo-index');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
+                        <?php if ($params['action'] !== 'create') : ?>
+                        <?=Filter::getInstance()->applyFilter('page_attribute_box_extended', '', phpb_e($params['page']?->getId() ?? null));?>
+                        <?php endif; ?>
                     </div>
                     <!-- /.left column -->
 
@@ -161,6 +166,9 @@ Registry::getInstance()->{'set'}('screen_child', 'vihzhuo-index');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
+                        <?php if ($params['action'] !== 'create') : ?>
+                        <?=Filter::getInstance()->applyFilter('page_attribute_box_side', '', phpb_e($params['page']?->getId() ?? null));?>
+                        <?php endif; ?>
                     </div>
 
                 </div>
