@@ -7,6 +7,8 @@ use App\Domain\User\Model\User;
 use App\Shared\Services\DateTime;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
+use Qubus\EventDispatcher\ActionFilter\Filter;
+
 use function App\Shared\Helpers\add_dashboard_submenu;
 use function App\Shared\Helpers\admin_footer;
 use function App\Shared\Helpers\admin_head;
@@ -43,6 +45,7 @@ endif;
 $user = get_userdata(get_current_user_id());
 $canInstallPlugins = is_main_site() && current_user_can('install:plugins');
 $canInstallThemes = is_main_site() && current_user_can('install:themes');
+$filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
 ?>
     <!DOCTYPE html>
     <html lang="<?=Devflow::$PHP->configContainer->string('app.language');?>">
@@ -249,7 +252,7 @@ $canInstallThemes = is_main_site() && current_user_can('install:themes');
                             <?php Action::getInstance()->doAction('themes_submenu'); ?>
                         </ul>
                     </li>
-                    <?php if(config()->boolean(key: 'vihzhuo.enable') && !empty(get_theme())) : ?>
+                    <?php if(config()->boolean(key: 'vihzhuo.enable') && !empty(get_theme()) && $filter) : ?>
                     <li<?= ae('vihzhuo:manage'); ?> class="treeview<?=current_screen('screen_parent', 'vihzhuo');?>">
                         <a href="<?= admin_url('manager/'); ?>">
                             <i class="fa fa-layer-group"></i> <span><?=trans_html(string: 'Vihzhuo');?></span>
