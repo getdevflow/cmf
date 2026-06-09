@@ -2,6 +2,8 @@
 
 use App\Application\Devflow;
 
+use Qubus\EventDispatcher\ActionFilter\Action;
+
 use function Codefy\Framework\Helpers\site_url;
 use function Codefy\Framework\Helpers\trans_html;
 
@@ -15,6 +17,7 @@ use function Codefy\Framework\Helpers\trans_html;
     <title><?=trans_html('Error 404');?></title>
 </head>
 <body>
+<?php Action::getInstance()->doAction('http.404'); ?>
 <div class="error-middle">
     <h1><?=trans_html('Error 404 - Not Found');?></h1>
 </div>
