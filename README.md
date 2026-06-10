@@ -70,7 +70,7 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 To create a new project, run the following command:
 
 ```bash
-composer create-project getdevflow/cmf project
+composer create-project getdevflow/cmf project-name
 ```
 
 ## 🕑 Releases
@@ -79,7 +79,7 @@ composer create-project getdevflow/cmf project
 |---------|---------------------|---------------|-----------------|----------------------|
 | 1 - LTS | 8.3                 | December 2024 | June 2027       | December 2028        |
 | 2       | 8.4                 | May 2026      | January 2028    | April 2030           |
-| 3 - LTS | 8.5                 | August 2026   | February 2036   | May 2038             |
+| 3 - LTS | 8.5                 | August 2026   | February 2029   | May 2030             |
 
 ## 📘 Documentation
 
