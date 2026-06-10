@@ -8,3 +8,43 @@
 @import url('bootstrap-switchery/switchery.min.css');
 @import url('AdminLTE.min.css');
 @import url('skins/_all-skins.min.css');
+.accessible-help-block {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: #f0f7ff; /* High contrast background */
+    border-left: 4px solid #0056b3; /* Visual anchor */
+    border-radius: 4px;
+    margin: 1.5rem 0;
+}
+
+.accessible-help-block p {
+    color: #666666;
+}
+
+.accessible-help-block__icon {
+    font-size: 1.5rem;
+    user-select: none;
+}
+
+.accessible-help-block__title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #002d62; /* High contrast text */
+    font-size: 1.2rem;
+}
+
+.accessible-help-block__link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: #0056b3;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Crucial: High-visibility focus indicator for keyboard users */
+.accessible-help-block__link:focus {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+    background-color: #fff;
+}
