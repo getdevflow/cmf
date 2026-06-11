@@ -236,6 +236,7 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                             <?php Action::getInstance()->doAction('plugins_submenu'); ?>
                         </ul>
                     </li>
+                    <?php Action::getInstance()->doAction('extension_plugins_menu'); ?>
                     <li<?= ae('manage:themes'); ?> class="treeview<?=current_screen('screen_parent', 'themes');?>">
                         <a href="#">
                             <i class="fa fa-palette"></i>
@@ -252,6 +253,7 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                             <?php Action::getInstance()->doAction('themes_submenu'); ?>
                         </ul>
                     </li>
+                    <?php Action::getInstance()->doAction('extension_themes_menu'); ?>
                     <?php if(config()->boolean(key: 'vihzhuo.enable') && !empty(get_theme()) && $filter) : ?>
                     <li<?= ae('vihzhuo:manage'); ?> class="treeview<?=current_screen('screen_parent', 'vihzhuo');?>">
                         <a href="<?= admin_url('manager/'); ?>">
