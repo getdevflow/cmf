@@ -88,7 +88,7 @@ Registry::getInstance()->{'set'}('screen_child', 'product-create');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-body -->
-                        <?=Filter::getInstance()->applyFilter('product_attribute_box_extended', $params['form'], null);?>
+                        <?=Filter::getInstance()->applyFilter('product.attribute.box.extended', '', null);?>
                     </div>
                     <!-- /.left column -->
 
@@ -189,7 +189,7 @@ Registry::getInstance()->{'set'}('screen_child', 'product-create');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
-                        <?=Filter::getInstance()->applyFilter('product_attribute_box_side', $params['form'], null);?>
+                        <?=Filter::getInstance()->applyFilter('product.attribute.box.side', '', null);?>
                     </div>
 
                 </div>

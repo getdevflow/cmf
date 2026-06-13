@@ -13,11 +13,11 @@ $this->block('backend', function ($params) {
 Registry::getInstance()->{'set'}('screen_parent', 'vihzhuo');
 Registry::getInstance()->{'set'}('screen_child', 'vihzhuo-index');
 
-    $pageTranslations = $params['page'] ? $params['page']->getTranslations() : [];
+$pageTranslations = $params['page'] ? $params['page']->getTranslations() : [];
 
-    $formAction = $params['action'] === 'create'
-        ? admin_url('manager/create/')
-        : admin_url('manager/' . phpb_e($params['page']->getId()) . '/');
+$formAction = $params['action'] === 'create'
+    ? admin_url('manager/create/')
+    : admin_url('manager/' . phpb_e($params['page']->getId()) . '/');
 ?>
 
     <!-- form start -->
@@ -102,7 +102,7 @@ Registry::getInstance()->{'set'}('screen_child', 'vihzhuo-index');
                         </div>
                         <!-- /.box-primary -->
                         <?php if ($params['action'] !== 'create') : ?>
-                        <?=Filter::getInstance()->applyFilter('page_attribute_box_extended', '', phpb_e($params['page']?->getId() ?? null));?>
+                        <?=Filter::getInstance()->applyFilter('page.attribute.box.extended', '', phpb_e($params['page']?->getId() ?? null));?>
                         <?php endif; ?>
                     </div>
                     <!-- /.left column -->
@@ -167,7 +167,7 @@ Registry::getInstance()->{'set'}('screen_child', 'vihzhuo-index');
                         </div>
                         <!-- /.box-primary -->
                         <?php if ($params['action'] !== 'create') : ?>
-                        <?=Filter::getInstance()->applyFilter('page_attribute_box_side', '', phpb_e($params['page']?->getId() ?? null));?>
+                        <?=Filter::getInstance()->applyFilter('page.attribute.box.side', '', phpb_e($params['page']?->getId() ?? null));?>
                         <?php endif; ?>
                     </div>
 
