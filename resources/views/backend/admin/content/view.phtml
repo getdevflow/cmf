@@ -89,7 +89,7 @@ Action::getInstance()->doAction('update_content_init');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-body -->
-                        <?=Filter::getInstance()->applyFilter('content_attribute_box_extended', $params['form'], $params['type']->slug, $params['content']->id);?>
+                        <?=Filter::getInstance()->applyFilter('content.attribute.box.extended', '', $params['type']->slug, $params['content']->id);?>
                     </div>
                     <!-- /.left column -->
 
@@ -215,7 +215,7 @@ Action::getInstance()->doAction('update_content_init');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
-                        <?=Filter::getInstance()->applyFilter('content_attribute_box_side', $params['form'], $params['type']->slug, $params['content']->id);?>
+                        <?=Filter::getInstance()->applyFilter('content.attribute.box.side', '', $params['type']->slug, $params['content']->id);?>
                     </div>
 
                 </div>

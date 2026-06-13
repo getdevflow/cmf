@@ -84,7 +84,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-body -->
-                        <?=Filter::getInstance()->applyFilter('content_attribute_box_extended', $params['form'], $params['type']->slug, null);?>
+                        <?=Filter::getInstance()->applyFilter('content.attribute.box.extended', '', $params['type']->slug, null);?>
                     </div>
                     <!-- /.left column -->
 
@@ -204,7 +204,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
-                        <?=Filter::getInstance()->applyFilter('content_attribute_box_side', $params['form'], $params['type']->slug, null);?>
+                        <?=Filter::getInstance()->applyFilter('content.attribute.box.side', '', $params['type']->slug, null);?>
                     </div>
 
                 </div>
