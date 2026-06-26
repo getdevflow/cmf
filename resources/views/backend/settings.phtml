@@ -1,0 +1,142 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Application\Devflow;
+use App\Shared\Services\Registry;
+use Qubus\EventDispatcher\ActionFilter\Action;
+
+use Qubus\EventDispatcher\ActionFilter\Filter;
+
+use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\cms_charset;
+use function App\Shared\Helpers\cms_dropdown_languages;
+use function App\Shared\Helpers\generate_timezone_list;
+use function App\Shared\Helpers\get_option;
+use function App\Shared\Helpers\selected;
+use function Codefy\Framework\Helpers\trans_html;
+
+$this->parent('framework::backend/layouts/admin-layout');
+$this->block('backend', function () {
+Registry::getInstance()->{'set'}('screen_parent', 'settings');
+Registry::getInstance()->{'set'}('screen_child', 'settings');
+
+Action::getInstance()->doAction('settings_init');
+?>
+    <!-- form start -->
+    <form name="form" method="post" data-toggle="validator" action="<?= admin_url('settings/'); ?>" id="form" autocomplete="off">
+        <!-- Content Wrapper. Contains post content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Post header) -->
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <i class="fa fa-cogs"></i>
+                    <h3 class="box-title"><?= trans_html(string: 'System Settings'); ?></h3>
+
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-pencil-alt"></i> <?= trans_html(string: 'Update'); ?></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <?php Action::getInstance()->doAction('admin_notices'); ?>
+
+                <?= Devflow::$PHP->flash->display(); ?>
+
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-9">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= trans_html(string: 'General Settings'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Site Name'); ?></strong></label>
+                                    <input type="text" class="form-control" name="sitename" value="<?= get_option(key: 'sitename'); ?>" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><?= trans_html(string: 'Site Description'); ?></strong></label>
+                                    <input type="text" class="form-control" name="site_description" value="<?= get_option(key: 'site_description'); ?>" />
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Admin Email'); ?></strong></label>
+                                    <input type="text" class="form-control" name="admin_email" value="<?= get_option(key: 'admin_email'); ?>" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Locale'); ?></strong></label>
+                                    <select class="form-control select2" name="site_locale" style="width: 100%;" required>
+                                        <option>&nbsp;</option>
+                                        <?php cms_dropdown_languages(get_option(key: 'site_locale', default: '')); ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Cookie Expire'); ?></strong></label>
+                                    <input type="text" class="form-control" name="cookieexpire" value="<?= get_option(key: 'cookieexpire'); ?>" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Cookie Path'); ?></strong></label>
+                                    <input type="text" class="form-control" name="cookiepath" value="<?= get_option(key: 'cookiepath'); ?>" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'System Timezone'); ?></strong></label>
+                                    <select class="form-control select2" name="site_timezone" style="width: 100%;" required>
+                                        <option value=""> ------------------------- </option>
+                                        <?php foreach (generate_timezone_list() as $k => $v) : ?>
+                                            <option value="<?=$k;?>"<?=selected(get_option(key: 'site_timezone', default: ''), $k, false); ?>><?=$v;?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'API Key'); ?></strong></label>
+                                    <input type="text" class="form-control" name="api_key" value="<?= get_option(key: 'api_key'); ?>" required/>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-primary -->
+                        <?=Filter::getInstance()->applyFilter('settings.box.extended', '');?>
+                    </div>
+                    <!-- /.left column -->
+                    <div class="col-md-3">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= trans_html(string: 'Reading Settings'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Charset'); ?></strong></label>
+                                    <?=cms_charset(get_option(key: 'charset', default: 'utf8'));?>
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><?= trans_html(string: 'Content per Page'); ?></strong></label>
+                                    <input type="text" class="form-control" name="content_per_page" value="<?= get_option(key: 'content_per_page'); ?>" />
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><?= trans_html(string: 'Date Format'); ?></strong></label>
+                                    <input type="text" class="form-control" name="date_format" value="<?= get_option(key: 'date_format'); ?>" />
+                                </div>
+                                <div class="form-group">
+                                    <label><strong><?= trans_html(string: 'Time Format'); ?></strong></label>
+                                    <input type="text" class="form-control" name="time_format" value="<?= get_option(key: 'time_format'); ?>" />
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-primary -->
+                        <?=Filter::getInstance()->applyFilter('settings.box.side', '');?>
+                    </div>
+                </div>
+                <!--/.row -->
+            </section>
+            <!-- /.Main content -->
+        </div>
+    </form>
+    <!-- /.Content Wrapper. Contains post content -->
+<?php }); ?>
