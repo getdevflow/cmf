@@ -6,7 +6,6 @@
 use App\Application\Devflow;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
-
 use Qubus\EventDispatcher\ActionFilter\Filter;
 
 use function App\Shared\Helpers\admin_url;
@@ -73,7 +72,7 @@ Action::getInstance()->doAction('update_user_init');
                                 <div class="form-group">
                                     <label><strong><?= trans_html(string: 'Username'); ?></strong></label>
                                     <input type="text" class="form-control" id="user_login" name="login" value="<?=$params['user']->login;?>" readonly="readonly" required/>
-                                    <?php if (current_user_can('update:users')) : ?>
+                                    <?php if (current_user_can('update:users') && current_user_can('change:username')) : ?>
                                         <button type="button" class="btn btn-primary" id="enable_button" style="display:none"><?= trans_html(string: 'Change username'); ?></button>
                                         <button type="button" class="btn btn-danger" id="disable_button" style="display:none"><?= trans_html(string: 'Cancel'); ?></button>
                                     <?php endif; ?>

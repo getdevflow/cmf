@@ -173,7 +173,7 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                             <?php if(is_main_site()) : ?>
                             <?= add_dashboard_submenu(trans_html(string: 'Updates'), '/updates/', 'updates', 'core:updates'); ?>
                             <?php endif; ?>
-                            <?= add_dashboard_submenu(trans_html(string: 'System Report'), '/snapshot/', 'snapshot', 'manage:settings'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'System Report'), '/snapshot/', 'snapshot', 'change:settings'); ?>
                             <?php Action::getInstance()->doAction('dashboard_submenu'); ?>
                         </ul>
                     </li>
@@ -208,12 +208,12 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                         </a>
                         <ul class="treeview-menu">
                             <?= add_dashboard_submenu(trans_html(string: 'All Products'), '/product/', 'products'); ?>
-                            <?= add_dashboard_submenu(trans_html(string: 'Add New'), '/product/create/', 'product-create'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'Add New'), '/product/create/', 'product-create', 'create:product'); ?>
                             <?php Action::getInstance()->doAction('products_submenu'); ?>
                         </ul>
                     </li>
                     <?php Action::getInstance()->doAction('after_product_menu'); ?>
-                    <li<?= ae('manage:content'); ?> class="treeview<?=current_screen('screen_parent', 'content_types');?>">
+                    <li<?= ae('create:content'); ?> class="treeview<?=current_screen('screen_parent', 'content_types');?>">
                         <a href="<?= admin_url('content-type/'); ?>">
                             <i class="fa fa-cubes"></i> <span><?=trans_html(string: 'Content Types');?></span>
                         </a>
@@ -230,7 +230,7 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                             </a>
                             <ul class="treeview-menu">
                                 <?= add_dashboard_submenu(trans_html(string: 'All') . ' ' . esc_html($contentType['title']), sprintf('/content-type/%s/', $contentType['slug']), $contentType['slug']); ?>
-                                <?= add_dashboard_submenu(trans_html(string: 'Add New'), sprintf('/content-type/%s/create/', $contentType['slug']), $contentType['slug'] . '-create'); ?>
+                                <?= add_dashboard_submenu(trans_html(string: 'Add New'), sprintf('/content-type/%s/create/', $contentType['slug']), $contentType['slug'] . '-create', 'create:content'); ?>
                                 <?php Action::getInstance()->doAction('content_type_submenu', $contentType['slug']); ?>
                             </ul>
                         </li>
