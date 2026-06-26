@@ -10,7 +10,6 @@ use function Codefy\Framework\Helpers\trans;
 use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Security\Helpers\esc_attr;
 use function Qubus\Security\Helpers\esc_html;
-use function Qubus\Security\Helpers\esc_url;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -68,8 +67,8 @@ Registry::getInstance()->{'set'}('screen_child', 'updates');
             </div>
 
             <?php $sections = [
-                'plugins' => ['title' => 'Plugins', 'single' => '/admin/updates/plugin/', 'all' => '/admin/updates/plugin/all/'],
-                'themes' => ['title' => 'Themes', 'single' => '/admin/updates/theme/', 'all' => '/admin/updates/theme/all/'],
+                'plugins' => ['title' => 'Plugins', 'single' => 'updates/plugin/', 'all' => 'updates/plugin/all/'],
+                'themes' => ['title' => 'Themes', 'single' => 'updates/theme/', 'all' => 'updates/theme/all/'],
             ]; ?>
 
             <?php foreach ($sections as $key => $section) : ?>
@@ -83,7 +82,7 @@ Registry::getInstance()->{'set'}('screen_child', 'updates');
 
                         <?php if (!empty($params['updates'][$key])) : ?>
                             <div class="box-tools pull-right">
-                                <form method="post" action="<?=esc_url($section['all']);?>">
+                                <form method="post" action="<?=admin_url($section['all']);?>">
                                     <button type="submit" class="btn btn-primary btn-sm">
                                         <?=sprintf(trans_html('Update All %s.'), esc_html($section['title']));?>
                                     </button>
@@ -124,7 +123,7 @@ Registry::getInstance()->{'set'}('screen_child', 'updates');
                                         <td><?=esc_html($package['current']);?></td>
                                         <td><?=esc_html($package['latest']);?></td>
                                         <td class="text-right">
-                                            <form method="post" action="<?=esc_url($section['single']);?>" class="js-update-form">
+                                            <form method="post" action="<?=admin_url($section['single']);?>" class="js-update-form">
                                                 <input type="hidden" name="package" value="<?=esc_attr($package['name']);?>">
                                                 <button type="submit" class="btn btn-success btn-sm">
                                                     <?= trans_html(string: 'Update'); ?>
