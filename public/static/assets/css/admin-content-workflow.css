@@ -1,0 +1,28 @@
+.editorial-comment.resolved-comment {
+    opacity: 0.75;
+    border-left: 4px solid #00a65a;
+}
+
+.editorial-comment blockquote {
+    margin: 8px 0;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.revision-diff,
+.revision-diff li,
+.revision-diff small,
+.revision-diff pre,
+.revision-diff code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.revision-diff pre {
+    max-height: 300px;
+    overflow: auto;
+    padding: 10px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+}
