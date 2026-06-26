@@ -12,13 +12,18 @@ use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
 use function App\Shared\Helpers\checked;
 use function App\Shared\Helpers\cms_upload_image;
+use function App\Shared\Helpers\content_status_transition_allowed;
+use function App\Shared\Helpers\content_workflow_stage_badge_class;
+use function App\Shared\Helpers\content_workflow_stage_label;
 use function App\Shared\Helpers\current_user_can;
 use function App\Shared\Helpers\get_all_content_types;
+use function App\Shared\Helpers\get_content_attribute;
 use function App\Shared\Helpers\get_content_parent_dropdown_list;
 use function App\Shared\Helpers\get_users_dropdown_list;
 use function App\Shared\Helpers\selected;
 use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Security\Helpers\esc_html;
+use function Qubus\Support\Helpers\concat_ws;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
@@ -26,6 +31,30 @@ Registry::getInstance()->{'set'}('screen_parent', $params['type']->slug);
 Registry::getInstance()->{'set'}('screen_child', $params['type']->slug);
 Registry::getInstance()->{'set'}('contentId', $params['content']->id);
 Action::getInstance()->doAction('update_content_init');
+
+$statuses = Filter::getInstance()->applyFilter('content.status.options', [
+    'published' => trans_html(string: 'Publish'),
+    'scheduled' => trans_html(string: 'Schedule'),
+    'draft' => trans_html(string: 'Draft'),
+    'pending' => trans_html(string: 'Pending Review'),
+    'archived' => trans_html(string: 'Archive'),
+], $params['type']->slug, $params['content']->id);
+
+$statuses = array_filter(
+    $statuses,
+    static fn(string $status): bool => content_status_transition_allowed(
+        fromStatus: (string) $params['content']->status,
+        toStatus: $status,
+        publishedGmt: (string) $params['content']->publishedGmt
+    ),
+    ARRAY_FILTER_USE_KEY
+);
+
+$workflow = get_content_attribute($params['content']->id, 'workflow');
+
+$stage = (string) ($workflow['stage'] ?? 'draft');
+$status = (string) ($params['content']->status ?? 'draft');
+$reviewerStatus = $workflow['reviewer_status'] ?? [];
 ?>
 
 <?=cms_upload_image();?>
@@ -89,6 +118,62 @@ Action::getInstance()->doAction('update_content_init');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-body -->
+
+                        <?php if (current_user_can(perm: 'view:content_comments')) : ?>
+                            <div class="box box-default">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><?= trans_html(string: 'Editorial Comments'); ?></h3>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" id="load-editorial-comments">
+                                            <i class="fa fa-refresh"></i>
+                                        </button>
+
+                                        <button type="button" class="btn btn-box-tool" id="toggle-editorial-comments">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="box-body" id="editorial-comments-body">
+                                    <?php if (current_user_can(perm: 'comment:content')) : ?>
+                                        <input type="hidden" id="editorial-comment-parent-id" value="">
+                                        <input type="hidden" id="editorial-comment-type" value="editorial">
+
+                                        <div id="editorial-comment-context" class="alert alert-info" style="display:none;">
+                                            <strong><?= trans_html(string: 'Replying to comment'); ?></strong>
+                                            <button type="button" class="close" id="cancel-comment-reply">&times;</button>
+                                        </div>
+
+                                        <textarea id="editorial-comment" class="form-control" rows="3" placeholder="<?= esc_html(string: trans_html(string: 'Add an editorial comment...')); ?>"></textarea>
+
+                                        <p class="help-block">
+                                            <?= trans_html(string: 'Optional: highlight text in the editor before commenting to save selected context.'); ?>
+                                        </p>
+
+                                        <button type="button" class="btn btn-default btn-sm" id="add-editorial-comment">
+                                            <?= trans_html(string: 'Add Comment'); ?>
+                                        </button>
+
+                                        <hr>
+                                    <?php endif; ?>
+
+                                    <div class="btn-group btn-group-xs" id="editorial-comment-filters" style="margin-bottom:10px;">
+                                        <button type="button" class="btn btn-primary js-comment-filter" data-status="open">
+                                            <?= trans_html(string: 'Open'); ?>
+                                        </button>
+                                        <button type="button" class="btn btn-default js-comment-filter" data-status="resolved">
+                                            <?= trans_html(string: 'Resolved'); ?>
+                                        </button>
+                                        <button type="button" class="btn btn-default js-comment-filter" data-status="all">
+                                            <?= trans_html(string: 'All'); ?>
+                                        </button>
+                                    </div>
+
+                                    <div id="editorial-comments"></div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
                         <?=Filter::getInstance()->applyFilter('content.attribute.box.extended', '', $params['type']->slug, $params['content']->id);?>
                     </div>
                     <!-- /.left column -->
@@ -134,13 +219,11 @@ Action::getInstance()->doAction('update_content_init');
                                     <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Status'); ?></strong></label>
                                     <select class="form-control select2" name="status" style="width: 100%;" required>
                                         <option>&nbsp;</option>
-                                        <?php if (current_user_can('publish:content')) : ?>
-                                            <option value="published"<?= selected('published', $params['content']->status, false); ?>><?= trans_html(string: 'Publish'); ?></option>
-                                            <option value="scheduled"<?= selected('scheduled', $params['content']->status, false); ?>><?= trans_html(string: 'Schedule'); ?></option>
-                                        <?php endif; ?>
-                                        <option value="draft"<?= selected('draft', $params['content']->status, false); ?>><?= trans_html(string: 'Draft'); ?></option>
-                                        <option value="pending"<?= selected('pending', $params['content']->status, false); ?>><?= trans_html(string: 'Pending'); ?></option>
-                                        <option value="archived"<?= selected('archived', $params['content']->status, false); ?>><?= trans_html(string: 'Archive'); ?></option>
+                                        <?php foreach ($statuses as $value => $label) : ?>
+                                            <option value="<?= esc_html(string: $value); ?>"<?= selected($value, $params['content']->status, false); ?>>
+                                                <?= esc_html(string: $label); ?>
+                                            </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -154,6 +237,251 @@ Action::getInstance()->doAction('update_content_init');
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box-primary -->
+
+                        <div class="box box-primary" id="content-workflow-box" data-content-id="<?= esc_html(string: $params['content']->id); ?>">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">
+                                    <?= trans_html(string: 'Editorial Workflow'); ?>
+                                    <span class="label label-warning" id="editorial-comments-open-count" style="display:none;">0</span>
+                                </h3>
+                            </div>
+
+                            <div class="box-body">
+                                <p>
+                                    <strong><?= trans_html(string: 'Stage'); ?>:</strong>
+                                    <?php $stage = (string) ($workflow['stage'] ?? 'draft'); ?>
+
+                                    <span
+                                            id="workflow-stage"
+                                            class="label <?= esc_html(string: content_workflow_stage_badge_class($stage)); ?>"
+                                            data-stage="<?= esc_html(string: $stage); ?>"
+                                    >
+                                        <?= esc_html(string: content_workflow_stage_label($stage)); ?>
+                                    </span>
+                                </p>
+
+                                <div id="workflow-last-message" class="text-muted" style="display:none;">
+                                    <hr>
+                                    <strong><?= trans_html(string: 'Last Message'); ?>:</strong>
+                                    <p id="workflow-last-message-text"></p>
+                                </div>
+
+                                <textarea id="workflow-message" class="form-control" rows="3" placeholder="<?= esc_html(string: trans_html(string: 'Optional message...')); ?>"></textarea>
+
+                                <br>
+
+                                <div id="workflow-actions">
+                                    <?php if (
+                                            current_user_can(perm: 'review:content') &&
+                                            in_array($stage, ['draft', 'changes_requested'], true)
+                                    ) : ?>
+                                        <button
+                                                type="button"
+                                                class="btn btn-warning btn-sm js-workflow-action"
+                                                data-action="request-review"
+                                                data-visible-stages="draft,changes_requested"
+                                        >
+                                            <?= trans_html(string: 'Request Review'); ?>
+                                        </button>
+                                    <?php endif; ?>
+
+                                    <?php if (
+                                            current_user_can(perm: 'review:content') &&
+                                            $status === 'pending' &&
+                                            $stage === 'in_review'
+                                    ) : ?>
+                                        <button type="button" class="btn btn-default btn-sm js-workflow-action"
+                                                data-action="withdraw-review"
+                                                data-visible-stages="in_review">
+                                            <?= trans_html(string: 'Withdraw Review'); ?>
+                                        </button>
+                                    <?php endif; ?>
+
+                                    <?php if (
+                                            current_user_can(perm: 'approve:content') &&
+                                            $status === 'pending' &&
+                                            $stage === 'in_review'
+                                    ) : ?>
+
+                                        <?php if (($workflow['review_ready'] ?? false) === false) : ?>
+                                            <p class="text-warning">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                                <?= trans_html(
+                                                        string: 'Not all reviewers have completed their review.'
+                                                ); ?>
+                                            </p>
+                                        <?php endif; ?>
+
+                                        <button type="button" class="btn btn-success btn-sm js-workflow-action"
+                                                data-action="approve"
+                                                data-visible-stages="in_review">
+                                            <?= trans_html(string: 'Approve'); ?>
+                                        </button>
+
+                                        <button type="button" class="btn btn-danger btn-sm js-workflow-action"
+                                                data-action="request-changes"
+                                                data-visible-stages="in_review">
+                                            <?= trans_html(string: 'Request Changes'); ?>
+                                        </button>
+                                    <?php endif; ?>
+
+                                    <?php if (
+                                            current_user_can(perm: 'publish:content') &&
+                                            $stage === 'approved'
+                                    ) : ?>
+                                        <button type="button" class="btn btn-primary btn-sm js-workflow-action"
+                                                data-action="publish"
+                                                data-visible-stages="approved">
+                                            <?= trans_html(string: 'Publish'); ?>
+                                        </button>
+                                    <?php endif; ?>
+
+                                    <?php if (
+                                            current_user_can(perm: 'approve:content') &&
+                                            $stage === 'in_review'
+                                    ) : ?>
+                                        <button
+                                                type="button"
+                                                class="btn btn-info btn-sm js-workflow-action"
+                                                data-action="complete-review"
+                                                data-visible-stages="in_review"
+                                        >
+                                            <?= trans_html(string: 'Mark Review Complete'); ?>
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+
+                                <?php if (current_user_can(perm: 'assign:content_reviewers')) : ?>
+                                    <hr>
+
+                                    <div class="form-group">
+                                        <label for="workflow-reviewers">
+                                            <?= trans_html(string: 'Reviewers'); ?>
+                                        </label>
+
+                                        <?php
+                                            $stage = (string) ($workflow['stage'] ?? 'draft');
+                                            $reviewerStatus = is_array($workflow['reviewer_status'] ?? null)
+                                                ? $workflow['reviewer_status']
+                                                : [];
+    
+                                            $isReviewActive = $stage === 'in_review';
+                                            $isReviewFinished = in_array($stage, ['approved', 'scheduled', 'published', 'archived'], true);
+                                        ?>
+
+                                        <div id="workflow-reviewer-summary">
+                                            <strong>
+                                                <?php if ($isReviewActive) : ?>
+                                                    <?= trans_html(string: 'Current Reviewers'); ?>:
+                                                <?php elseif ($isReviewFinished) : ?>
+                                                    <?= trans_html(string: 'Review Participants'); ?>:
+                                                <?php else : ?>
+                                                    <?= trans_html(string: 'Reviewers'); ?>:
+                                                <?php endif; ?>
+                                            </strong>
+
+                                            <?php if (! empty($params['workflowReviewers'])) : ?>
+                                                <ul class="list-unstyled" id="workflow-reviewer-list">
+                                                    <?php foreach ($params['workflowReviewers'] as $reviewer) : ?>
+                                                        <?php
+                                                        $reviewerId = (string) ($reviewer['id'] ?? '');
+                                                        $status = (string) ($reviewerStatus[$reviewerId]['status'] ?? 'pending');
+                                                        ?>
+                                                        <li>
+                                                            <i class="fa fa-user text-muted"></i>
+                                                            <?= esc_html(string: $reviewer['name']); ?>
+
+                                                            <?php if (! empty($reviewer['email'])) : ?>
+                                                                <small class="text-muted">
+                                                                    <?= esc_html(string: $reviewer['email']); ?>
+                                                                </small>
+                                                            <?php endif; ?>
+
+                                                            <?php if ($isReviewActive) : ?>
+                                                                <span class="label <?= esc_html($status) === 'complete' ? 'label-success' : 'label-warning'; ?>">
+                                                                    <?= esc_html($status) === 'complete'
+                                                                        ? trans_html(string: 'Complete')
+                                                                        : trans_html(string: 'Pending'); ?>
+                                                                </span>
+                                                            <?php elseif ($isReviewFinished) : ?>
+                                                                <span class="label label-success">
+                                                                    <?= trans_html(string: 'Review Closed'); ?>
+                                                                </span>
+                                                            <?php endif; ?>
+                                                        </li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            <?php else : ?>
+                                                <p class="text-muted" id="workflow-reviewer-empty">
+                                                    <?php if ($isReviewFinished) : ?>
+                                                        <?= trans_html(string: 'Review was completed without assigned reviewers.'); ?>
+                                                    <?php else : ?>
+                                                        <?= trans_html(string: 'No reviewers assigned yet.'); ?>
+                                                    <?php endif; ?>
+                                                </p>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <select id="workflow-reviewers" class="form-control" multiple>
+                                            <?php foreach ($params['reviewerCandidates'] ?? [] as $user) : ?>
+                                                <option value="<?= esc_html(string: $user['user_id']); ?>"
+                                                        <?= in_array(esc_html($user['user_id']), $workflow['reviewers'] ?? [], true) ? 'selected' : ''; ?>>
+                                                    <?= esc_html(string: concat_ws($user['user_fname'], $user['user_lname'], ' ') ?? esc_html($user['user_email'])); ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+
+                                        <p class="help-block">
+                                            <?= trans_html(string: 'Select one or more people who should review this content.'); ?>
+                                        </p>
+                                    </div>
+
+                                    <button type="button" class="btn btn-default btn-sm" id="save-workflow-reviewers">
+                                        <?= trans_html(string: 'Save Reviewers'); ?>
+                                    </button>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="box box-default" id="content-revisions-box" data-content-id="<?= esc_html(string: $params['content']->id); ?>">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= trans_html(string: 'Revision History'); ?></h3>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" id="load-content-revisions">
+                                        <i class="fa fa-refresh"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div id="content-revisions-list">
+                                    <p class="text-muted"><?= trans_html(string: 'Load revisions to view previous changes.'); ?></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box box-default" id="content-activity-box" data-content-id="<?= esc_html(string: $params['content']->id); ?>">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= trans_html(string: 'Workflow Activity'); ?></h3>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" id="load-content-activity">
+                                        <i class="fa fa-refresh"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="box-body">
+                                <ul class="timeline" id="content-activity-list">
+                                    <li>
+                                        <i class="fa fa-clock-o bg-gray"></i>
+                                        <div class="timeline-item">
+                                            <div class="timeline-body text-muted">
+                                                <?= trans_html(string: 'Load activity to view workflow history.'); ?>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <!-- general form elements -->
                         <div class="box box-primary">
@@ -275,5 +603,79 @@ Action::getInstance()->doAction('enqueue_cms_editor');
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+    <div class="modal fade" id="restore-revision-modal" tabindex="-1" role="dialog" aria-labelledby="restore-revision-modal-title">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= trans_html(string: 'Close'); ?>">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="restore-revision-modal-title">
+                        <?= trans_html(string: 'Restore Revision as Draft'); ?>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>
+                        <?= trans_html(string: 'Are you sure you want to restore this revision?'); ?>
+                    </p>
+                    <p class="text-muted">
+                        <?= trans_html(string: 'The selected revision will be restored as a draft. It will not be published automatically.'); ?>
+                    </p>
+
+                    <div id="restore-revision-modal-details" class="well well-sm" style="display:none;"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <?= trans_html(string: 'Cancel'); ?>
+                    </button>
+
+                    <button type="button" class="btn btn-warning" id="confirm-restore-revision">
+                        <?= trans_html(string: 'Restore as Draft'); ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="delete-editorial-comment-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= trans_html(string: 'Close'); ?>">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <h4 class="modal-title">
+                        <?= trans_html(string: 'Delete Editorial Comment'); ?>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>
+                        <?= trans_html(string: 'Are you sure you want to delete this editorial comment?'); ?>
+                    </p>
+
+                    <p class="text-muted">
+                        <?= trans_html(string: 'This action cannot be undone. If you want to keep the discussion for review history, consider resolving the comment instead.'); ?>
+                    </p>
+
+                    <div id="delete-editorial-comment-preview" class="well well-sm" style="display:none;"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">
+                        <?= trans_html(string: 'Cancel'); ?>
+                    </button>
+
+                    <button type="button" class="btn btn-danger" id="confirm-delete-editorial-comment">
+                        <?= trans_html(string: 'Delete Comment'); ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?php }); ?>

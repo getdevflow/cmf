@@ -31,7 +31,7 @@ class CreatePageTranslationsTable extends Migration
                     $table->string(name: 'route')->notNull()->unique(name: $tablePrefix . 'route');
 
                     $table->unique(columns: ['page_id', 'locale'], name: $tablePrefix . 'idx_page_translations');
-                    $table->foreign(columns: 'page_id')
+                    $table->foreign(columns: 'page_id', name: $tablePrefix . 'fx_page_trans_pid')
                         ->references($tablePrefix . 'pages', 'id')
                         ->onUpdate(action: 'cascade')
                         ->onDelete(action: 'cascade');

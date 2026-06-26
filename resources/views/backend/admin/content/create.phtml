@@ -15,12 +15,28 @@ use function App\Shared\Helpers\get_content_parent_dropdown_list;
 use function App\Shared\Helpers\get_current_user_id;
 use function App\Shared\Helpers\get_users_dropdown_list;
 use function App\Shared\Helpers\selected;
+use function App\Shared\Helpers\user_can_set_content_status;
 use function Codefy\Framework\Helpers\trans_html;
+use function Qubus\Security\Helpers\esc_html;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function ($params) {
 Registry::getInstance()->{'set'}('screen_parent', $params['type']->slug);
 Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-create');
+
+$statuses = Filter::getInstance()->applyFilter('content.status.options', [
+    'published' => trans_html(string: 'Publish'),
+    'scheduled' => trans_html(string: 'Schedule'),
+    'draft' => trans_html(string: 'Draft'),
+    'pending' => trans_html(string: 'Pending Review'),
+    'archived' => trans_html(string: 'Archive'),
+], $params['type']->slug, null);
+
+$statuses = array_filter(
+    $statuses,
+    static fn(string $status): bool => user_can_set_content_status($status),
+    ARRAY_FILTER_USE_KEY
+);
 ?>
 
 <?=cms_upload_image();?>
@@ -129,13 +145,11 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']->slug . '-creat
                                     <label><strong><span style="color: red; ">*</span> <?= trans_html(string: 'Status'); ?></strong></label>
                                     <select class="form-control select2" name="status" style="width: 100%;" required>
                                         <option>&nbsp;</option>
-                                        <?php if (current_user_can('publish:content')) : ?>
-                                            <option value="published"<?= selected('published', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Publish'); ?></option>
-                                            <option value="scheduled"<?= selected('scheduled', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Schedule'); ?></option>
-                                        <?php endif; ?>
-                                        <option value="draft"<?= selected('draft', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Draft'); ?></option>
-                                        <option value="pending"<?= selected('pending', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Pending'); ?></option>
-                                        <option value="archived"<?= selected('archived', $params['request']['status'] ?? '', false); ?>><?= trans_html(string: 'Archive'); ?></option>
+                                        <?php foreach ($statuses as $value => $label) : ?>
+                                            <option value="<?= esc_html(string: $value); ?>"<?= selected($value, $params['request']['status'] ?? '', false); ?>>
+                                                <?= esc_html(string: $label); ?>
+                                            </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">

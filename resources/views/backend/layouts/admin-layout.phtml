@@ -6,7 +6,6 @@ use App\Application\Devflow;
 use App\Domain\User\Model\User;
 use App\Shared\Services\DateTime;
 use Qubus\EventDispatcher\ActionFilter\Action;
-
 use Qubus\EventDispatcher\ActionFilter\Filter;
 
 use function App\Shared\Helpers\add_dashboard_submenu;
@@ -83,6 +82,27 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
+                        <?php if (current_user_can(perm: 'update:content')) : ?>
+                            <li class="dropdown notifications-menu" id="content-notification-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell"></i>
+                                    <span class="label label-warning" id="content-notification-count" style="display:none;">0</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header" id="content-notification-header">
+                                        <?= trans_html(string: 'No workflow notifications'); ?>
+                                    </li>
+                                    <li>
+                                        <ul class="menu" id="content-notification-list"></ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="#" id="mark-content-notifications-read">
+                                            <?= trans_html(string: 'Mark all as read'); ?>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php endif; ?>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -145,8 +165,8 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                             <i class="fa fa-tachometer-alt"></i>
                             <span><?=trans_html(string: 'Dashboard');?></span>
                             <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <?= add_dashboard_submenu(trans_html(string: 'Home'), '/', 'home'); ?>
@@ -157,7 +177,7 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                             <?php Action::getInstance()->doAction('dashboard_submenu'); ?>
                         </ul>
                     </li>
-                    <li<?= ae('manage:settings'); ?> class="treeview">
+                    <li<?= ae('flush:cache'); ?> class="treeview">
                         <a href="<?= admin_url('flush-cache/'); ?>">
                             <i class="fa fa-broom"></i> <span><?=trans_html(string: 'Flush Cache');?></span>
                         </a>
@@ -168,8 +188,8 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                             <i class="fa fa-globe"></i>
                             <span><?=trans_html(string: 'Sites');?></span>
                             <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <?= add_dashboard_submenu(trans_html(string: 'Manage'), '/site/', 'sites'); ?>
@@ -189,8 +209,10 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                         <ul class="treeview-menu">
                             <?= add_dashboard_submenu(trans_html(string: 'All Products'), '/product/', 'products'); ?>
                             <?= add_dashboard_submenu(trans_html(string: 'Add New'), '/product/create/', 'product-create'); ?>
+                            <?php Action::getInstance()->doAction('products_submenu'); ?>
                         </ul>
                     </li>
+                    <?php Action::getInstance()->doAction('after_product_menu'); ?>
                     <li<?= ae('manage:content'); ?> class="treeview<?=current_screen('screen_parent', 'content_types');?>">
                         <a href="<?= admin_url('content-type/'); ?>">
                             <i class="fa fa-cubes"></i> <span><?=trans_html(string: 'Content Types');?></span>
@@ -203,8 +225,8 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                                 <i class="fa fa-text-width"></i>
                                 <span><?= $contentType['title']; ?></span>
                                 <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
                             </a>
                             <ul class="treeview-menu">
                                 <?= add_dashboard_submenu(trans_html(string: 'All') . ' ' . esc_html($contentType['title']), sprintf('/content-type/%s/', $contentType['slug']), $contentType['slug']); ?>
@@ -225,8 +247,8 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                             <i class="fa fa-plug"></i>
                             <span><?=trans_html(string: 'Plugins');?></span>
                             <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <?=add_dashboard_submenu(trans_html(string: 'Installed Plugins'), '/plugin/', 'installed-plugins');?>
@@ -287,18 +309,17 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                         </li>
                     <?php endif; ?>
                     <?php endif; ?>
-                    <li<?= ae('manage:options'); ?> class="treeview<?=current_screen('screen_parent', 'options');?>">
+                    <li<?= ae('manage:settings'); ?> class="treeview<?=current_screen('screen_parent', 'settings');?>">
                         <a href="#">
                             <i class="fa fa-cogs"></i>
-                            <span><?=trans_html(string: 'Options');?></span>
+                            <span><?=trans_html(string: 'Settings');?></span>
                             <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
-                            <?= add_dashboard_submenu(trans_html(string: 'General'), '/general/', 'options-general'); ?>
-                            <?= add_dashboard_submenu(trans_html(string: 'Reading'), '/reading/', 'options-reading'); ?>
-                            <?php Action::getInstance()->doAction('options_submenu'); ?>
+                            <?= add_dashboard_submenu(trans_html(string: 'System Settings'), '/settings/', 'settings'); ?>
+                            <?php Action::getInstance()->doAction('settings_submenu'); ?>
                         </ul>
                     </li>
                 </ul>
@@ -337,6 +358,9 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
     </script>
     <script>
         var basePath = '<?= site_url(); ?>';
+        window.DevflowWorkflow = {
+            adminUrl: '<?= admin_url(); ?>'
+        };
     </script>
 
     <?php
