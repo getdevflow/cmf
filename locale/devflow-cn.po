@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow CMF\n"
-"POT-Creation-Date: 2026-05-25 14:34-0600\n"
-"PO-Revision-Date: 2026-05-25 14:34-0600\n"
+"POT-Creation-Date: 2026-06-25 23:04-0600\n"
+"PO-Revision-Date: 2026-06-25 23:04-0600\n"
 "Last-Translator: Joshua Parker <joshua@joshuaparker.dev>\n"
 "Language-Team: Joshua Parker\n"
 "Language: zh_CN\n"
@@ -224,33 +224,33 @@ msgstr "新密码已发送到您的电子邮件。可能需要几分钟到达，
 msgid "Password reset exception occurred and was logged."
 msgstr "密码重置异常发生并被记录。"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:113
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:185
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:220
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:122
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:199
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:247
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:67
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:119
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:54
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:80
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:109
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:169
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:171
 #: core/Infrastructure/Http/Controllers/AdminMediaController.php:135
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:52
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:78
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:110
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:64
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:127
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:193
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:63
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:126
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:191
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:64
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:118
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:169
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:227
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:285
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:330
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:386
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:449
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:288
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:336
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:392
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:455
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:56
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:104
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:138
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:140
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:93
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:209
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:237
@@ -266,21 +266,41 @@ msgstr "密码重置异常发生并被记录。"
 #: core/Infrastructure/Http/Controllers/ExtensionInstallerController.php:117
 #: core/Infrastructure/Http/Controllers/ExtensionInstallerController.php:217
 #: core/Infrastructure/Http/Controllers/PageBuilderController.php:62
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:49
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:46
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:53
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:78
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:100
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:121
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:142
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:51
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:60
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:94
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:101
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:142
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:149
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:203
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:210
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionDiffService.php:45
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:67
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:95
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:857
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1014
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1332
 msgid "Access denied."
 msgstr "拒绝访问。"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:123
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:132
 #, fuzzy, php-format
 msgid "Create %s Content"
 msgstr "创建%s内容"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:231
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:258
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:786
 #, fuzzy
 msgid "Content not found."
 msgstr "内容未找到。"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:240
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:267
 #, php-format
 msgid "%s Content"
 msgstr "%s 内容"
@@ -295,12 +315,33 @@ msgstr "内容类型"
 msgid "The content type does not exist."
 msgstr "内容类型不存在。"
 
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:84
+#, fuzzy
+msgid "Reviewers updated."
+msgstr "评论者更新。"
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:112
+#, fuzzy
+msgid "Review marked complete."
+msgstr "审核标记为完成。"
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:140
+#, fuzzy
+msgid "Review request withdrawn."
+msgstr "审查请求撤回。"
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:511
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:120
+#, fuzzy
+msgid "Revision restored as draft."
+msgstr "修订恢复为草稿。"
+
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:89
 #, fuzzy
 msgid "System Snapshot"
 msgstr "系统快照"
 
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:143
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:145
 msgid "Cache flushed successfully."
 msgstr "缓存成功刷新。"
 
@@ -313,31 +354,20 @@ msgstr "媒体库"
 msgid "elFinder"
 msgstr "elFinder"
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:61
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:101
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:194
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:222
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:289
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:64
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:107
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:201
 msgid "Access denied"
 msgstr "拒绝访问"
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:171
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:178
 #, fuzzy
-msgid "General options exception occurred and was logged."
-msgstr "发生了通用选项异常并被记录。"
+msgid "System settings exception occurred and was logged."
+msgstr "系统设置异常发生并被记录。"
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:201
-msgid "General Options"
-msgstr "常规选项"
-
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:266
-#, fuzzy
-msgid "Reading options exception occurred and was logged."
-msgstr "读取选项异常出现并被记录。"
-
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:296
-msgid "Reading Options"
-msgstr "阅读选项"
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:208
+msgid "System Settings"
+msgstr "系统设置"
 
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:60
 msgid "Plugins"
@@ -361,17 +391,17 @@ msgstr "插件已停用。"
 msgid "Plugin deactivation exception occurred and was logged."
 msgstr "插件停用异常发生并被记录。"
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:74
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:73
 msgid "Products"
 msgstr "产品"
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:135
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:134
 msgid "Create Product"
 msgstr "创建产品"
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:204
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:226
-#: core/Infrastructure/Services/Product/ProductService.php:75
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:202
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:223
+#: core/Infrastructure/Services/Product/ProductService.php:76
 #, fuzzy
 msgid "The product does not exist."
 msgstr "产品不存在。"
@@ -380,10 +410,10 @@ msgstr "产品不存在。"
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:125
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:176
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:234
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:292
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:336
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:393
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:456
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:295
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:342
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:399
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:462
 #, fuzzy
 msgid "Multisite is not enabled."
 msgstr "未启用多站点。"
@@ -415,9 +445,9 @@ msgid "Content types error."
 msgstr "内容类型错误。"
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:205
-#: core/Infrastructure/Services/Content/ContentService.php:170
+#: core/Infrastructure/Services/Content/ContentService.php:186
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:120
-#: core/Infrastructure/Services/Product/ProductService.php:150
+#: core/Infrastructure/Services/Product/ProductService.php:166
 #, fuzzy
 msgid "Change exception occurred and was logged."
 msgstr "变更异常发生并被记录。"
@@ -428,47 +458,47 @@ msgstr "变更异常发生并被记录。"
 msgid "The site does not exist."
 msgstr "该网站不存在。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:299
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:302
 #, fuzzy
 msgid "The action is not allowed."
 msgstr "这种行为是不允许的。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:310
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:313
 #, fuzzy
 msgid "Manage System Users"
 msgstr "管理系统用户"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:342
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:348
 #, fuzzy
 msgid "You cannot submit an empty site id."
 msgstr "你不能提交空的站点ID。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:348
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:354
 #, fuzzy
 msgid "You cannot submit an empty user role."
 msgstr "你不能提交空的用户角色。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:358
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:364
 msgid "An error occurred."
 msgstr "发生错误。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:428
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:434
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:144
 #, fuzzy
 msgid "Delete exception occurred and was logged."
 msgstr "删除异常发生并被记录。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:464
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:470
 #, fuzzy
 msgid "This action is not allowed."
 msgstr "此举不被允许。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:475
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:481
 #, fuzzy
 msgid "A site check exception occurred and was logged."
 msgstr "发生了站点检查异常并被记录。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:498
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:504
 #, fuzzy
 msgid "A site deletion exception occurred and was logged."
 msgstr "发生了网站删除异常并被记录。"
@@ -477,22 +507,22 @@ msgstr "发生了网站删除异常并被记录。"
 msgid "Themes"
 msgstr "主题"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:112
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:113
 #, fuzzy
 msgid "Theme activated."
 msgstr "主题已激活。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:116
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:117
 #, fuzzy
 msgid "Theme activation exception occurred and was logged."
 msgstr "主题激活异常发生并被记录。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:146
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:149
 #, fuzzy
 msgid "Theme deactivated."
 msgstr "主题已关闭。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:150
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:153
 #, fuzzy
 msgid "Theme deactivation exception occurred and was logged."
 msgstr "主题停用异常发生并被记录。"
@@ -702,13 +732,13 @@ msgstr "插件无法移除，因为它在一个或多个网站上被激活。"
 msgid "Theme cannot be removed because it is activated on one or more sites."
 msgstr "主题无法移除，因为它在一个或多个网站上激活了。"
 
-#: core/Infrastructure/Http/Controllers/UpdatesController.php:74
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:159
 #, fuzzy
 #| msgid "Cache flushed successfully."
 msgid "Package updated successfully."
 msgstr "包裹已成功更新。"
 
-#: core/Infrastructure/Http/Controllers/UpdatesController.php:91
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:176
 #, fuzzy
 #| msgid "Cache flushed successfully."
 msgid "Updates completed successfully."
@@ -719,68 +749,201 @@ msgstr "更新已成功完成。"
 msgid "User removed from site."
 msgstr "用户已被移除。"
 
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:83
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:111
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:74
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:258
 #, fuzzy
 msgid "Website Manager"
 msgstr "网站管理员"
 
-#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:113
+#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:107
 #, fuzzy, php-format
 msgid "Devflow %s"
 msgstr "开发流程%s"
 
-#: core/Infrastructure/Services/Content/ContentService.php:96
+#: core/Infrastructure/Services/Content/ContentService.php:97
 #, fuzzy
 msgid "The content does not exist."
 msgstr "内容不存在。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:123
+#: core/Infrastructure/Services/Content/ContentService.php:131
 #, fuzzy
 msgid "Content added successfully."
 msgstr "内容已成功添加。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:136
+#: core/Infrastructure/Services/Content/ContentService.php:144
 #, fuzzy
 msgid "Could not create content. Please try again later."
 msgstr "无法创作内容。请稍后再试。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:196
-#: core/Infrastructure/Services/Product/ProductService.php:176
+#: core/Infrastructure/Services/Content/ContentService.php:212
+#: core/Infrastructure/Services/Product/ProductService.php:192
 #, fuzzy
 msgid "Removal of featured image was successful."
 msgstr "重点图片的移除成功。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:206
-#: core/Infrastructure/Services/Product/ProductService.php:186
+#: core/Infrastructure/Services/Content/ContentService.php:222
+#: core/Infrastructure/Services/Product/ProductService.php:202
 #, fuzzy
 msgid "Removal exception occurred and was logged."
 msgstr "发生了移除异常并被记录。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:255
-#: core/Infrastructure/Services/Content/ContentService.php:283
-#: core/Infrastructure/Services/Product/ProductService.php:230
+#: core/Infrastructure/Services/Content/ContentService.php:271
+#: core/Infrastructure/Services/Content/ContentService.php:306
+#: core/Infrastructure/Services/Product/ProductService.php:253
 #, fuzzy
 msgid "A deletion exception occurred and was logged."
 msgstr "发生了删除异常并被记录。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:273
-#: core/Infrastructure/Services/Product/ProductService.php:220
+#: core/Infrastructure/Services/Content/ContentService.php:296
+#: core/Infrastructure/Services/Product/ProductService.php:243
 #, fuzzy
 msgid "Removal was successful."
 msgstr "清除行动成功。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionDiffService.php:114
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:176
+#, fuzzy
+#| msgid "User not found."
+msgid "Revision not found."
+msgstr "未找到修订版本。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:136
+#, fuzzy
+#| msgid "Remove failed."
+msgid "Revision restore failed."
+msgstr "版本恢复失败。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:250
+#, fuzzy, php-format
+msgid ""
+"Cannot restore this revision because the event history does not contain a "
+"complete snapshot. Missing: %s"
+msgstr "无法恢复这个版本，因为事件历史中没有完整的快照。缺失：%s"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:112
+#, fuzzy
+msgid "Content ready for review"
+msgstr "内容准备审核"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:113
+#, fuzzy
+msgid "A content item is ready for review."
+msgstr "内容项目已准备好供审核。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:183
+#, fuzzy
+msgid "Review assignment updated"
+msgstr "复习作业更新"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:184
+#, fuzzy
+msgid "You have been assigned to review content."
+msgstr "你被分配去审查内容。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:375
+#, fuzzy
+msgid "You are not assigned as a reviewer."
+msgstr "你没有被指定为审核员。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:415
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:429
+#, fuzzy
+msgid "All assigned reviewers have completed their review."
+msgstr "所有指定的审核员均已完成审核。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:428
+#, fuzzy
+msgid "Content ready for approval"
+msgstr "内容准备审批"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:548
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:848
+msgid "Comment cannot be empty."
+msgstr "评论不能为空。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:603
+#, fuzzy
+msgid "Content is not scheduled."
+msgstr "内容未排程。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:607
+#, fuzzy
+msgid "Scheduled publish date has not passed."
+msgstr "计划发布日期尚未过期。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:626
+#, fuzzy
+msgid "Scheduled content was published automatically."
+msgstr "排程内容会自动发布。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:723
+msgid "System"
+msgstr "系统"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:828
+#, fuzzy
+msgid "Content workflow update failed."
+msgstr "内容工作流程更新失败。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:910
+#, fuzzy
+msgid "Parent comment does not belong to this content."
+msgstr "家长评论不属于本内容。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1102
+msgid "Comment not found."
+msgstr "没有找到评论"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1204
+#, fuzzy
+msgid "Editorial Comment"
+msgstr "编辑评论"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1204
+#, fuzzy
+msgid "Editorial Workflow"
+msgstr "编辑工作流程"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1292
+#, fuzzy, php-format
+msgid "Invalid workflow stage. Expected one of [%s], current stage is [%s]."
+msgstr "工作流程阶段无效。预计为[%s]中的一级，当前阶段为[%s]。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1312
+#, fuzzy, php-format
+msgid "Invalid content status. Expected one of [%s], current status is [%s]."
+msgstr "内容状态无效。预计为[%s]中的一员，当前状态为[%s]。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1408
+msgid "View Content"
+msgstr "查看内容"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1470
+#, fuzzy
+msgid "New editorial comment reply"
+msgstr "新的编辑评论回复"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1470
+#, fuzzy
+msgid "New editorial comment"
+msgstr "新的编辑评论"
+
+#: core/Infrastructure/Services/Content/Workflow/Queue/ContentWorkflowEmailNotification.php:61
+#, php-format
+msgid "[%s] %s"
+msgstr "[%s] %s"
 
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:50
 #, fuzzy
 msgid "Error fetching content types."
 msgstr "错误获取内容类型。"
 
-#: core/Infrastructure/Services/Product/ProductService.php:102
+#: core/Infrastructure/Services/Product/ProductService.php:110
 #, fuzzy
 msgid "Product added successfully."
 msgstr "产品成功添加。"
 
-#: core/Infrastructure/Services/Product/ProductService.php:116
+#: core/Infrastructure/Services/Product/ProductService.php:124
 #, fuzzy
 msgid "Could not create product. Please try again later."
 msgstr "无法创造产品。请稍后再试。"
@@ -899,44 +1062,44 @@ msgstr "作曲家更新检查已超时。"
 msgid "No row found for site \"%s\" and user \"%s\"."
 msgstr "未找到站点“%s”和用户“%s”的行。"
 
-#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:133
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:130
 #, fuzzy
 msgid "User attribute not found"
 msgstr "用户属性未找到"
 
-#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:142
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:138
 #, fuzzy
 msgid "Attribute patch callback must return an AttributeBag instance."
 msgstr "属性补丁回调必须返回一个 AttributeBag 实例。"
 
-#: core/Shared/Helpers/auth.php:177
+#: core/Shared/Helpers/auth.php:178
 #, fuzzy
 msgid "Sorry, there was an error."
 msgstr "抱歉，出现了错误。"
 
-#: core/Shared/Helpers/auth.php:202
+#: core/Shared/Helpers/auth.php:203
 #, fuzzy, php-format
 msgid ""
 "Login was successful. Welcome <strong>%s</strong> to the admin dashboard."
 msgstr "登录成功了。欢迎 <strong>%s</strong> 来到管理员仪表盘。"
 
-#: core/Shared/Helpers/auth.php:234
+#: core/Shared/Helpers/auth.php:235
 msgid "<strong>ERROR</strong>: The username/email field is empty."
 msgstr "<strong>错误：</strong>用户名/电子邮件字段为空。"
 
-#: core/Shared/Helpers/auth.php:243
+#: core/Shared/Helpers/auth.php:244
 msgid "<strong>ERROR</strong>: The password field is empty."
 msgstr "<strong>错误</strong>:密码字段是空的。"
 
-#: core/Shared/Helpers/auth.php:257
+#: core/Shared/Helpers/auth.php:258
 msgid "<strong>ERROR</strong>: Invalid email address."
 msgstr "<strong>错误</strong>：请输入正确的邮箱"
 
-#: core/Shared/Helpers/auth.php:269
+#: core/Shared/Helpers/auth.php:270
 msgid "<strong>ERROR</strong>: Invalid username."
 msgstr "<strong>错误</strong>：无效手机号码。"
 
-#: core/Shared/Helpers/auth.php:280
+#: core/Shared/Helpers/auth.php:281
 msgid "<strong>ERROR</strong>: The password you entered is incorrect."
 msgstr "<strong>错误</strong>: 您输入的密码不正确."
 
@@ -955,36 +1118,36 @@ msgstr "内容类型ID无效。"
 msgid "The system was not able to delete the content type."
 msgstr "系统无法删除该内容类型。"
 
-#: core/Shared/Helpers/content.php:1770 core/Shared/Helpers/content.php:2332
+#: core/Shared/Helpers/content.php:1773 core/Shared/Helpers/content.php:2335
 #, fuzzy
 msgid "Invalid content id."
 msgstr "内容ID无效。"
 
-#: core/Shared/Helpers/content.php:1917
+#: core/Shared/Helpers/content.php:1920
 #, fuzzy
 msgid "Content author cannot be null or empty."
 msgstr "内容作者不能是空的。"
 
-#: core/Shared/Helpers/content.php:2021
+#: core/Shared/Helpers/content.php:2024
 #, fuzzy
 msgid "The title and content are null."
 msgstr "标题和内容均为无效。"
 
-#: core/Shared/Helpers/content.php:2175
+#: core/Shared/Helpers/content.php:2178
 #, fuzzy
 msgid "Could not insert content into the content table."
 msgstr "无法将内容插入内容表。"
 
-#: core/Shared/Helpers/content.php:2223
+#: core/Shared/Helpers/content.php:2226
 #, fuzzy
 msgid "Could not update content within the content table."
 msgstr "无法更新内容表中的内容。"
 
-#: core/Shared/Helpers/core.php:748
+#: core/Shared/Helpers/core.php:752
 msgid "Unknown"
 msgstr "未知"
 
-#: core/Shared/Helpers/core.php:1429
+#: core/Shared/Helpers/core.php:1569
 #, fuzzy, php-format
 #| msgid ""
 #| "Devflow release %s is available for download/upgrade. Before upgrading, "
@@ -999,7 +1162,7 @@ msgstr "Devflow发布%s可下载或升级。升级前，务必备份系统。"
 msgid "Reassign content error: %s"
 msgstr "内容重新分配错误：%s"
 
-#: core/Shared/Helpers/hook.php:780
+#: core/Shared/Helpers/hook.php:794
 #, fuzzy
 #| msgid ""
 #| "Your system is currently in `dev` mode. Please remember to set your "
@@ -1013,26 +1176,41 @@ msgstr ""
 "你的系统目前处于开发模式。请记得测试后将系统设置为生产模式。当生产模式设置为"
 "生产环境时，这个警告信息会消失。"
 
-#: core/Shared/Helpers/product.php:1426 core/Shared/Helpers/product.php:2013
+#: core/Shared/Helpers/hook.php:814
+#, fuzzy
+msgid "Composer security advisories found."
+msgstr "发现作曲家安全警示。"
+
+#: core/Shared/Helpers/hook.php:815
+#, fuzzy, php-format
+msgid "%s advisories were detected."
+msgstr "检测到%s条警报。"
+
+#: core/Shared/Helpers/hook.php:816
+#, fuzzy
+msgid "Visit the Updates screen for details."
+msgstr "详情请访问更新页面。"
+
+#: core/Shared/Helpers/product.php:1427 core/Shared/Helpers/product.php:2014
 msgid "Invalid product id."
 msgstr "无效的产品id."
 
-#: core/Shared/Helpers/product.php:1563
+#: core/Shared/Helpers/product.php:1564
 #, fuzzy
 msgid "Product author cannot be null or empty."
 msgstr "产品作者不能是空的或空的。"
 
-#: core/Shared/Helpers/product.php:1699
+#: core/Shared/Helpers/product.php:1700
 #, fuzzy
 msgid "The title and body should not be null."
 msgstr "标题和正文不应为无效。"
 
-#: core/Shared/Helpers/product.php:1854
+#: core/Shared/Helpers/product.php:1855
 #, fuzzy
 msgid "Could not insert product into the product table."
 msgstr "无法将产品插入产品表。"
 
-#: core/Shared/Helpers/product.php:1903
+#: core/Shared/Helpers/product.php:1904
 #, fuzzy
 msgid "Could not update product within the product table."
 msgstr "无法在产品表中更新产品。"
@@ -1084,37 +1262,37 @@ msgstr "发生了用户删除异常。"
 msgid "You are not allowed to remove super admins from this site."
 msgstr "你不允许将超级管理员从本网站移除。"
 
-#: core/Shared/Helpers/user.php:597 core/Shared/Helpers/user.php:1106
-#: core/Shared/Helpers/user.php:1113
+#: core/Shared/Helpers/user.php:577 core/Shared/Helpers/user.php:1086
+#: core/Shared/Helpers/user.php:1093
 #, fuzzy
 msgid "Invalid user id."
 msgstr "用户ID无效。"
 
-#: core/Shared/Helpers/user.php:676
+#: core/Shared/Helpers/user.php:656
 #, fuzzy
 msgid "Cannot create a user with an empty username."
 msgstr "无法创建用户名为空。"
 
-#: core/Shared/Helpers/user.php:680
+#: core/Shared/Helpers/user.php:660
 #, fuzzy
 msgid "Username must be at least 3 characters long."
 msgstr "用户名必须至少3个字符。"
 
-#: core/Shared/Helpers/user.php:684
+#: core/Shared/Helpers/user.php:664
 msgid "Username may not be longer than 60 characters."
 msgstr "手机号码不能超过11个字符。"
 
-#: core/Shared/Helpers/user.php:689
+#: core/Shared/Helpers/user.php:669
 #, fuzzy
 msgid "Sorry, that username cannot be used."
 msgstr "抱歉，这个用户名不能使用。"
 
-#: core/Shared/Helpers/user.php:704
+#: core/Shared/Helpers/user.php:684
 #, fuzzy, php-format
 msgid "Sorry, the username <strong>%s</strong> is not allowed."
 msgstr "抱歉，用户名 <strong>%s</strong> 不允许使用。"
 
-#: core/Shared/Helpers/user.php:744
+#: core/Shared/Helpers/user.php:724
 #, fuzzy
 msgid "Sorry, that email address cannot be used."
 msgstr "抱歉，那个邮箱地址不能用。"
@@ -1579,8 +1757,8 @@ msgid "Embed Height"
 msgstr "嵌入高度"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:38
-#: resources/views/backend/admin/content/create.phtml:48
-#: resources/views/backend/admin/manager/page-settings.phtml:40
+#: resources/views/backend/admin/content/create.phtml:64
+#: resources/views/backend/admin/manager/page-settings.phtml:42
 #: resources/views/backend/admin/product/create.phtml:47
 #: resources/views/backend/admin/site/index.phtml:42
 #: resources/views/backend/admin/user/create.phtml:89
@@ -1612,30 +1790,30 @@ msgstr "内容类型描述"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:92
 #: resources/views/backend/admin/content-type/content-type.phtml:135
-#: resources/views/backend/admin/content/create.phtml:95
-#: resources/views/backend/admin/content/view.phtml:100
+#: resources/views/backend/admin/content/create.phtml:111
+#: resources/views/backend/admin/content/view.phtml:185
 msgid "Content Type"
 msgstr "内容类型"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:93
 #: resources/views/backend/admin/content-type/content-type.phtml:136
-#: resources/views/backend/admin/plugin/index.phtml:72
-#: resources/views/backend/admin/plugin/index.phtml:115
-#: resources/views/backend/admin/plugin/install.phtml:53
-#: resources/views/backend/admin/plugin/install.phtml:108
-#: resources/views/backend/admin/theme/index.phtml:73
-#: resources/views/backend/admin/theme/index.phtml:122
-#: resources/views/backend/admin/theme/install.phtml:53
-#: resources/views/backend/admin/theme/install.phtml:108
+#: resources/views/backend/admin/plugin/index.phtml:74
+#: resources/views/backend/admin/plugin/index.phtml:117
+#: resources/views/backend/admin/plugin/install.phtml:54
+#: resources/views/backend/admin/plugin/install.phtml:109
+#: resources/views/backend/admin/theme/index.phtml:75
+#: resources/views/backend/admin/theme/index.phtml:124
+#: resources/views/backend/admin/theme/install.phtml:54
+#: resources/views/backend/admin/theme/install.phtml:109
 msgid "Description"
 msgstr "描述"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:94
 #: resources/views/backend/admin/content-type/content-type.phtml:137
-#: resources/views/backend/admin/content/create.phtml:76
-#: resources/views/backend/admin/content/create.phtml:230
-#: resources/views/backend/admin/content/view.phtml:81
-#: resources/views/backend/admin/content/view.phtml:241
+#: resources/views/backend/admin/content/create.phtml:92
+#: resources/views/backend/admin/content/create.phtml:244
+#: resources/views/backend/admin/content/view.phtml:110
+#: resources/views/backend/admin/content/view.phtml:569
 #: resources/views/backend/admin/product/create.phtml:76
 #: resources/views/backend/admin/product/create.phtml:215
 #: resources/views/backend/admin/product/view.phtml:76
@@ -1649,21 +1827,21 @@ msgstr "计数"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:96
 #: resources/views/backend/admin/content-type/content-type.phtml:139
-#: resources/views/backend/admin/plugin/index.phtml:73
-#: resources/views/backend/admin/plugin/index.phtml:116
-#: resources/views/backend/admin/plugin/install.phtml:55
-#: resources/views/backend/admin/plugin/install.phtml:110
+#: resources/views/backend/admin/plugin/index.phtml:75
+#: resources/views/backend/admin/plugin/index.phtml:118
+#: resources/views/backend/admin/plugin/install.phtml:56
+#: resources/views/backend/admin/plugin/install.phtml:111
 #: resources/views/backend/admin/site/index.phtml:106
 #: resources/views/backend/admin/site/index.phtml:156
 #: resources/views/backend/admin/site/users.phtml:55
 #: resources/views/backend/admin/site/users.phtml:191
-#: resources/views/backend/admin/theme/index.phtml:74
-#: resources/views/backend/admin/theme/index.phtml:123
-#: resources/views/backend/admin/theme/install.phtml:55
-#: resources/views/backend/admin/theme/install.phtml:110
+#: resources/views/backend/admin/theme/index.phtml:76
+#: resources/views/backend/admin/theme/index.phtml:125
+#: resources/views/backend/admin/theme/install.phtml:56
+#: resources/views/backend/admin/theme/install.phtml:111
 #: resources/views/backend/admin/user/index.phtml:60
 #: resources/views/backend/admin/user/index.phtml:130
-#: resources/views/backend/updates.phtml:103
+#: resources/views/backend/updates.phtml:111
 #, fuzzy
 msgid "Action"
 msgstr "行动"
@@ -1681,10 +1859,12 @@ msgstr ""
 #: resources/views/backend/admin/content-type/content-type.phtml:168
 #: resources/views/backend/admin/content-type/update-content-type.phtml:93
 #: resources/views/backend/admin/content/content-by-type.phtml:81
-#: resources/views/backend/admin/content/create.phtml:236
+#: resources/views/backend/admin/content/create.phtml:250
 #: resources/views/backend/admin/content/index.phtml:82
-#: resources/views/backend/admin/content/view.phtml:247
-#: resources/views/backend/admin/content/view.phtml:269
+#: resources/views/backend/admin/content/view.phtml:575
+#: resources/views/backend/admin/content/view.phtml:597
+#: resources/views/backend/admin/content/view.phtml:611
+#: resources/views/backend/admin/content/view.phtml:647
 #: resources/views/backend/admin/product/create.phtml:221
 #: resources/views/backend/admin/product/create.phtml:243
 #: resources/views/backend/admin/product/index.phtml:84
@@ -1703,8 +1883,8 @@ msgstr "结束"
 #: resources/views/backend/admin/content-type/content-type.phtml:121
 #: resources/views/backend/admin/content/content-by-type.phtml:82
 #: resources/views/backend/admin/content/index.phtml:83
-#: resources/views/backend/admin/content/view.phtml:270
-#: resources/views/backend/admin/manager/index.phtml:79
+#: resources/views/backend/admin/content/view.phtml:598
+#: resources/views/backend/admin/manager/index.phtml:85
 #: resources/views/backend/admin/product/index.phtml:85
 #: resources/views/backend/admin/product/view.phtml:263
 #: resources/views/backend/admin/site/index.phtml:138
@@ -1725,31 +1905,32 @@ msgid "Update Content Type"
 msgstr "更新内容类型"
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:38
-#: resources/views/backend/admin/content/view.phtml:50
-#: resources/views/backend/admin/content/view.phtml:54
-#: resources/views/backend/admin/content/view.phtml:72
+#: resources/views/backend/admin/content/view.phtml:79
+#: resources/views/backend/admin/content/view.phtml:83
+#: resources/views/backend/admin/content/view.phtml:101
 #: resources/views/backend/admin/product/view.phtml:49
 #: resources/views/backend/admin/site/view.phtml:41
 #: resources/views/backend/admin/user/index.phtml:78
 #: resources/views/backend/admin/user/index.phtml:80
 #: resources/views/backend/admin/user/profile.phtml:48
 #: resources/views/backend/admin/user/view.phtml:46
-#: resources/views/backend/general.phtml:34
-#: resources/views/backend/reading.phtml:32
-#: resources/views/backend/updates.phtml:121
+#: resources/views/backend/settings.phtml:37
+#: resources/views/backend/updates.phtml:129
 msgid "Update"
 msgstr "更新"
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:39
-#: resources/views/backend/admin/content/create.phtml:49
-#: resources/views/backend/admin/content/view.phtml:56
-#: resources/views/backend/admin/manager/index.phtml:78
-#: resources/views/backend/admin/manager/page-settings.phtml:41
-#: resources/views/backend/admin/plugin/install.phtml:266
+#: resources/views/backend/admin/content/create.phtml:65
+#: resources/views/backend/admin/content/view.phtml:85
+#: resources/views/backend/admin/content/view.phtml:632
+#: resources/views/backend/admin/content/view.phtml:670
+#: resources/views/backend/admin/manager/index.phtml:81
+#: resources/views/backend/admin/manager/page-settings.phtml:43
+#: resources/views/backend/admin/plugin/install.phtml:267
 #: resources/views/backend/admin/product/create.phtml:48
 #: resources/views/backend/admin/product/view.phtml:51
 #: resources/views/backend/admin/site/view.phtml:42
-#: resources/views/backend/admin/theme/install.phtml:266
+#: resources/views/backend/admin/theme/install.phtml:267
 #: resources/views/backend/admin/user/create.phtml:90
 #: resources/views/backend/admin/user/profile.phtml:49
 #: resources/views/backend/admin/user/profile.phtml:199
@@ -1759,17 +1940,17 @@ msgid "Cancel"
 msgstr "取消"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:32
-#: resources/views/backend/admin/content/view.phtml:53
+#: resources/views/backend/admin/content/view.phtml:82
 #, fuzzy
 msgid "New"
 msgstr "新"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:49
 #: resources/views/backend/admin/content/content-by-type.phtml:111
-#: resources/views/backend/admin/content/create.phtml:72
+#: resources/views/backend/admin/content/create.phtml:88
 #: resources/views/backend/admin/content/index.phtml:50
 #: resources/views/backend/admin/content/index.phtml:108
-#: resources/views/backend/admin/content/view.phtml:77
+#: resources/views/backend/admin/content/view.phtml:106
 #: resources/views/backend/admin/product/create.phtml:72
 #: resources/views/backend/admin/product/index.phtml:52
 #: resources/views/backend/admin/product/index.phtml:110
@@ -1779,10 +1960,10 @@ msgstr "标题"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:50
 #: resources/views/backend/admin/content/content-by-type.phtml:112
-#: resources/views/backend/admin/content/create.phtml:142
+#: resources/views/backend/admin/content/create.phtml:156
 #: resources/views/backend/admin/content/index.phtml:51
 #: resources/views/backend/admin/content/index.phtml:109
-#: resources/views/backend/admin/content/view.phtml:147
+#: resources/views/backend/admin/content/view.phtml:230
 #: resources/views/backend/admin/product/create.phtml:126
 #: resources/views/backend/admin/product/index.phtml:53
 #: resources/views/backend/admin/product/index.phtml:111
@@ -1816,7 +1997,7 @@ msgstr "编辑"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:67
 #: resources/views/backend/admin/content/index.phtml:68
-#: resources/views/backend/admin/content/view.phtml:55
+#: resources/views/backend/admin/content/view.phtml:84
 #: resources/views/backend/admin/product/index.phtml:70
 #: resources/views/backend/admin/product/view.phtml:50
 msgid "Delete"
@@ -1824,23 +2005,16 @@ msgstr "删除"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:78
 #: resources/views/backend/admin/content/index.phtml:79
-#: resources/views/backend/admin/content/view.phtml:266
+#: resources/views/backend/admin/content/view.phtml:594
 #, fuzzy
 msgid "Are you sure you want to delete this content?"
 msgstr "你确定要删除这些内容吗？"
 
-#: resources/views/backend/admin/content/create.phtml:67
-#: resources/views/backend/admin/content/create.phtml:80
-#: resources/views/backend/admin/content/view.phtml:85
-#: resources/views/backend/admin/product/create.phtml:80
-#: resources/views/backend/admin/product/view.phtml:80
-msgid "Content"
-msgstr "内容"
-
-#: resources/views/backend/admin/content/create.phtml:115
-#: resources/views/backend/admin/content/create.phtml:133
-#: resources/views/backend/admin/content/view.phtml:120
-#: resources/views/backend/admin/content/view.phtml:138
+#: resources/views/backend/admin/content/create.phtml:28
+#: resources/views/backend/admin/content/create.phtml:131
+#: resources/views/backend/admin/content/view.phtml:36
+#: resources/views/backend/admin/content/view.phtml:205
+#: resources/views/backend/admin/content/view.phtml:335
 #: resources/views/backend/admin/product/create.phtml:99
 #: resources/views/backend/admin/product/create.phtml:117
 #: resources/views/backend/admin/product/view.phtml:99
@@ -1848,24 +2022,52 @@ msgstr "内容"
 msgid "Publish"
 msgstr "发布"
 
-#: resources/views/backend/admin/content/create.phtml:120
-#: resources/views/backend/admin/content/view.phtml:125
+#: resources/views/backend/admin/content/create.phtml:29
+#: resources/views/backend/admin/content/view.phtml:37
+#: resources/views/backend/admin/product/create.phtml:118
+#: resources/views/backend/admin/product/view.phtml:118
+msgid "Schedule"
+msgstr "计划"
+
+#: resources/views/backend/admin/content/create.phtml:31
+#: resources/views/backend/admin/content/view.phtml:39
+msgid "Pending Review"
+msgstr "等待审核"
+
+#: resources/views/backend/admin/content/create.phtml:32
+#: resources/views/backend/admin/content/view.phtml:40
+#: resources/views/backend/admin/product/create.phtml:122
+#: resources/views/backend/admin/product/view.phtml:122
+#: resources/views/backend/admin/site/view.phtml:92
+msgid "Archive"
+msgstr "存档"
+
+#: resources/views/backend/admin/content/create.phtml:83
+#: resources/views/backend/admin/content/create.phtml:96
+#: resources/views/backend/admin/content/view.phtml:114
+#: resources/views/backend/admin/product/create.phtml:80
+#: resources/views/backend/admin/product/view.phtml:80
+msgid "Content"
+msgstr "内容"
+
+#: resources/views/backend/admin/content/create.phtml:136
+#: resources/views/backend/admin/content/view.phtml:210
 #: resources/views/backend/admin/product/create.phtml:104
 #: resources/views/backend/admin/product/view.phtml:104
 msgid "Publication Date"
 msgstr "发布日期"
 
-#: resources/views/backend/admin/content/create.phtml:129
-#: resources/views/backend/admin/content/view.phtml:134
-#: resources/views/backend/admin/plugin/install.phtml:54
-#: resources/views/backend/admin/plugin/install.phtml:109
+#: resources/views/backend/admin/content/create.phtml:145
+#: resources/views/backend/admin/content/view.phtml:219
+#: resources/views/backend/admin/plugin/install.phtml:55
+#: resources/views/backend/admin/plugin/install.phtml:110
 #: resources/views/backend/admin/product/create.phtml:113
 #: resources/views/backend/admin/product/view.phtml:113
 #: resources/views/backend/admin/site/index.phtml:105
 #: resources/views/backend/admin/site/index.phtml:155
 #: resources/views/backend/admin/site/view.phtml:88
-#: resources/views/backend/admin/theme/install.phtml:54
-#: resources/views/backend/admin/theme/install.phtml:109
+#: resources/views/backend/admin/theme/install.phtml:55
+#: resources/views/backend/admin/theme/install.phtml:110
 #: resources/views/backend/admin/user/create.phtml:230
 #: resources/views/backend/admin/user/index.phtml:58
 #: resources/views/backend/admin/user/index.phtml:128
@@ -1873,77 +2075,62 @@ msgstr "发布日期"
 msgid "Status"
 msgstr "状态"
 
-#: resources/views/backend/admin/content/create.phtml:134
-#: resources/views/backend/admin/content/view.phtml:139
-#: resources/views/backend/admin/product/create.phtml:118
-#: resources/views/backend/admin/product/view.phtml:118
-msgid "Schedule"
-msgstr "计划"
-
-#: resources/views/backend/admin/content/create.phtml:138
-#: resources/views/backend/admin/content/view.phtml:143
-#: resources/views/backend/admin/product/create.phtml:122
-#: resources/views/backend/admin/product/view.phtml:122
-#: resources/views/backend/admin/site/view.phtml:92
-msgid "Archive"
-msgstr "存档"
-
-#: resources/views/backend/admin/content/create.phtml:156
-#: resources/views/backend/admin/content/view.phtml:161
+#: resources/views/backend/admin/content/create.phtml:170
+#: resources/views/backend/admin/content/view.phtml:489
 #, fuzzy
 msgid "Content Attributes"
 msgstr "内容属性"
 
-#: resources/views/backend/admin/content/create.phtml:161
-#: resources/views/backend/admin/content/view.phtml:166
+#: resources/views/backend/admin/content/create.phtml:175
+#: resources/views/backend/admin/content/view.phtml:494
 msgid "Parent"
 msgstr "父级"
 
-#: resources/views/backend/admin/content/create.phtml:168
-#: resources/views/backend/admin/content/view.phtml:173
+#: resources/views/backend/admin/content/create.phtml:182
+#: resources/views/backend/admin/content/view.phtml:501
 msgid "Sidebar"
 msgstr "侧边栏"
 
-#: resources/views/backend/admin/content/create.phtml:174
-#: resources/views/backend/admin/content/view.phtml:180
+#: resources/views/backend/admin/content/create.phtml:188
+#: resources/views/backend/admin/content/view.phtml:508
 #: resources/views/backend/admin/product/create.phtml:160
 #: resources/views/backend/admin/product/view.phtml:173
 msgid "Show in Menu"
 msgstr "显示在菜单中"
 
-#: resources/views/backend/admin/content/create.phtml:180
-#: resources/views/backend/admin/content/view.phtml:187
+#: resources/views/backend/admin/content/create.phtml:194
+#: resources/views/backend/admin/content/view.phtml:515
 #: resources/views/backend/admin/product/create.phtml:166
 #: resources/views/backend/admin/product/view.phtml:180
 #, fuzzy
 msgid "Show in Search"
 msgstr "搜寻节目"
 
-#: resources/views/backend/admin/content/create.phtml:193
-#: resources/views/backend/admin/content/view.phtml:201
+#: resources/views/backend/admin/content/create.phtml:207
+#: resources/views/backend/admin/content/view.phtml:529
 #: resources/views/backend/admin/product/create.phtml:179
 #: resources/views/backend/admin/product/view.phtml:194
 msgid "Featured Image"
 msgstr "特色图片"
 
-#: resources/views/backend/admin/content/create.phtml:199
-#: resources/views/backend/admin/content/view.phtml:210
+#: resources/views/backend/admin/content/create.phtml:213
+#: resources/views/backend/admin/content/view.phtml:538
 #: resources/views/backend/admin/product/create.phtml:185
 #: resources/views/backend/admin/product/view.phtml:203
 msgid "Set featured image"
 msgstr "设置特色图片"
 
-#: resources/views/backend/admin/content/create.phtml:200
-#: resources/views/backend/admin/content/view.phtml:208
-#: resources/views/backend/admin/content/view.phtml:211
+#: resources/views/backend/admin/content/create.phtml:214
+#: resources/views/backend/admin/content/view.phtml:536
+#: resources/views/backend/admin/content/view.phtml:539
 #: resources/views/backend/admin/product/create.phtml:186
 #: resources/views/backend/admin/product/view.phtml:201
 #: resources/views/backend/admin/product/view.phtml:204
 msgid "Remove featured image"
 msgstr "移除特色图片"
 
-#: resources/views/backend/admin/content/create.phtml:233
-#: resources/views/backend/admin/content/view.phtml:244
+#: resources/views/backend/admin/content/create.phtml:247
+#: resources/views/backend/admin/content/view.phtml:572
 #: resources/views/backend/admin/product/create.phtml:218
 #, php-format
 msgid "If left blank, the system will auto generate the %s slug."
@@ -1953,176 +2140,363 @@ msgstr "如果留空，系统将自动生成 %s slug。"
 msgid "All Content"
 msgstr "所有内容"
 
-#: resources/views/backend/admin/manager/index.phtml:22
+#: resources/views/backend/admin/content/view.phtml:125
+#, fuzzy
+msgid "Editorial Comments"
+msgstr "编辑评论"
+
+#: resources/views/backend/admin/content/view.phtml:143
+#, fuzzy
+msgid "Replying to comment"
+msgstr "回复评论"
+
+#: resources/views/backend/admin/content/view.phtml:147
+#, fuzzy
+msgid "Add an editorial comment..."
+msgstr "添加一篇社论评论......"
+
+#: resources/views/backend/admin/content/view.phtml:150
+#, fuzzy
+msgid ""
+"Optional: highlight text in the editor before commenting to save selected "
+"context."
+msgstr "可选：在评论前在编辑器中选中文本以保存所选上下文。"
+
+#: resources/views/backend/admin/content/view.phtml:154
+msgid "Add Comment"
+msgstr "添加评论"
+
+#: resources/views/backend/admin/content/view.phtml:162
+msgid "Open"
+msgstr "打开"
+
+#: resources/views/backend/admin/content/view.phtml:165
+msgid "Resolved"
+msgstr "已解决"
+
+#: resources/views/backend/admin/content/view.phtml:168
+#: resources/views/backend/layouts/admin-layout.phtml:232
+msgid "All"
+msgstr "所有"
+
+#: resources/views/backend/admin/content/view.phtml:251
+msgid "Stage"
+msgstr "阶段"
+
+#: resources/views/backend/admin/content/view.phtml:265
+msgid "Last Message"
+msgstr "最后消息"
+
+#: resources/views/backend/admin/content/view.phtml:269
+#, fuzzy
+msgid "Optional message..."
+msgstr "可选留言......"
+
+#: resources/views/backend/admin/content/view.phtml:284
+#, fuzzy
+msgid "Request Review"
+msgstr "请求复核"
+
+#: resources/views/backend/admin/content/view.phtml:296
+#, fuzzy
+msgid "Withdraw Review"
+msgstr "退赛评测"
+
+#: resources/views/backend/admin/content/view.phtml:310
+#, fuzzy
+msgid "Not all reviewers have completed their review."
+msgstr "并非所有评审都完成了评审。"
+
+#: resources/views/backend/admin/content/view.phtml:318
+msgid "Approve"
+msgstr "批准"
+
+#: resources/views/backend/admin/content/view.phtml:324
+#, fuzzy
+msgid "Request Changes"
+msgstr "请求变更"
+
+#: resources/views/backend/admin/content/view.phtml:349
+#, fuzzy
+msgid "Mark Review Complete"
+msgstr "马克评测完成"
+
+#: resources/views/backend/admin/content/view.phtml:359
+#: resources/views/backend/admin/content/view.phtml:379
+msgid "Reviewers"
+msgstr "审核人"
+
+#: resources/views/backend/admin/content/view.phtml:375
+#, fuzzy
+msgid "Current Reviewers"
+msgstr "现任评审者"
+
+#: resources/views/backend/admin/content/view.phtml:377
+#, fuzzy
+msgid "Review Participants"
+msgstr "评审参与者"
+
+#: resources/views/backend/admin/content/view.phtml:403
+msgid "Complete"
+msgstr "完成"
+
+#: resources/views/backend/admin/content/view.phtml:408
+#, fuzzy
+msgid "Review Closed"
+msgstr "评论已结"
+
+#: resources/views/backend/admin/content/view.phtml:417
+#, fuzzy
+msgid "Review was completed without assigned reviewers."
+msgstr "评审在未指定评审人的情况下完成。"
+
+#: resources/views/backend/admin/content/view.phtml:419
+#, fuzzy
+msgid "No reviewers assigned yet."
+msgstr "还没有分配审核员。"
+
+#: resources/views/backend/admin/content/view.phtml:435
+#, fuzzy
+msgid "Select one or more people who should review this content."
+msgstr "请选择一位或多人来审阅本内容。"
+
+#: resources/views/backend/admin/content/view.phtml:440
+#, fuzzy
+msgid "Save Reviewers"
+msgstr "保存评论者"
+
+#: resources/views/backend/admin/content/view.phtml:448
+msgid "Revision History"
+msgstr "修正历史"
+
+#: resources/views/backend/admin/content/view.phtml:457
+#, fuzzy
+msgid "Load revisions to view previous changes."
+msgstr "加载修订版本以查看之前的更改。"
+
+#: resources/views/backend/admin/content/view.phtml:464
+msgid "Workflow Activity"
+msgstr "工作流活动"
+
+#: resources/views/backend/admin/content/view.phtml:478
+#, fuzzy
+msgid "Load activity to view workflow history."
+msgstr "加载活动以查看工作流程历史。"
+
+#: resources/views/backend/admin/content/view.phtml:615
+#, fuzzy
+msgid "Restore Revision as Draft"
+msgstr "恢复修订为草稿"
+
+#: resources/views/backend/admin/content/view.phtml:621
+#, fuzzy
+#| msgid "Are you sure you want to delete this page?"
+msgid "Are you sure you want to restore this revision?"
+msgstr "你确定要恢复这个修订吗？"
+
+#: resources/views/backend/admin/content/view.phtml:624
+#, fuzzy
+msgid ""
+"The selected revision will be restored as a draft. It will not be published "
+"automatically."
+msgstr "所选修订将以草稿形式恢复。它不会自动发布。"
+
+#: resources/views/backend/admin/content/view.phtml:636
+#, fuzzy
+msgid "Restore as Draft"
+msgstr "恢复为草图"
+
+#: resources/views/backend/admin/content/view.phtml:652
+#, fuzzy
+msgid "Delete Editorial Comment"
+msgstr "删除编辑评论"
+
+#: resources/views/backend/admin/content/view.phtml:658
+#, fuzzy
+msgid "Are you sure you want to delete this editorial comment?"
+msgstr "你确定要删除这条编辑评论吗？"
+
+#: resources/views/backend/admin/content/view.phtml:662
+#, fuzzy
+msgid ""
+"This action cannot be undone. If you want to keep the discussion for review "
+"history, consider resolving the comment instead."
+msgstr "这一行为无法撤销。如果你想保留讨论作为评论记录，可以考虑直接解决评论。"
+
+#: resources/views/backend/admin/content/view.phtml:674
+msgid "Delete Comment"
+msgstr "删除评论"
+
+#: resources/views/backend/admin/manager/index.phtml:23
 msgid "Page Builder"
 msgstr "页面生成器"
 
-#: resources/views/backend/admin/manager/index.phtml:43
+#: resources/views/backend/admin/manager/index.phtml:44
 msgid "Pages"
 msgstr "页面"
 
-#: resources/views/backend/admin/manager/index.phtml:75
+#: resources/views/backend/admin/manager/index.phtml:76
 msgid "Are you sure you want to delete this page?"
 msgstr "您确定要删除此页吗？"
 
-#: resources/views/backend/admin/manager/index.phtml:110
+#: resources/views/backend/admin/manager/index.phtml:118
 msgid "Languages"
 msgstr "语言"
 
-#: resources/views/backend/admin/manager/index.phtml:118
+#: resources/views/backend/admin/manager/index.phtml:126
 #, fuzzy
 msgid "Use Ctrl/Cmd to select multiple."
 msgstr "用Ctrl/Cmd选择多个。"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:57
+#: resources/views/backend/admin/manager/page-settings.phtml:59
 msgid "Page"
 msgstr "页面"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:90
+#: resources/views/backend/admin/manager/page-settings.phtml:92
 msgid "URI"
 msgstr "网址"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:91
+#: resources/views/backend/admin/manager/page-settings.phtml:93
 #, fuzzy
 msgid "Note: add the uri without a trailing slash."
 msgstr "注意：添加uri时不要带斜线。"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:109
+#: resources/views/backend/admin/manager/page-settings.phtml:114
 msgid "Attributes"
 msgstr "属性"
 
-#: resources/views/backend/admin/plugin/index.phtml:70
-#: resources/views/backend/admin/plugin/index.phtml:113
+#: resources/views/backend/admin/plugin/index.phtml:72
+#: resources/views/backend/admin/plugin/index.phtml:115
 #: resources/views/backend/admin/site/index.phtml:103
 #: resources/views/backend/admin/site/index.phtml:153
-#: resources/views/backend/admin/theme/index.phtml:71
-#: resources/views/backend/admin/theme/index.phtml:120
+#: resources/views/backend/admin/theme/index.phtml:73
+#: resources/views/backend/admin/theme/index.phtml:122
 #: resources/views/backend/admin/user/create.phtml:108
 #: resources/views/backend/admin/user/profile.phtml:191
 #: resources/views/backend/admin/user/view.phtml:69
 msgid "Name"
 msgstr "名称"
 
-#: resources/views/backend/admin/plugin/index.phtml:71
-#: resources/views/backend/admin/plugin/index.phtml:114
-#: resources/views/backend/admin/theme/index.phtml:72
-#: resources/views/backend/admin/theme/index.phtml:121
+#: resources/views/backend/admin/plugin/index.phtml:73
+#: resources/views/backend/admin/plugin/index.phtml:116
+#: resources/views/backend/admin/theme/index.phtml:74
+#: resources/views/backend/admin/theme/index.phtml:123
 msgid "Version"
 msgstr "版本"
 
-#: resources/views/backend/admin/plugin/index.phtml:75
-#: resources/views/backend/admin/plugin/index.phtml:118
-#: resources/views/backend/admin/theme/index.phtml:76
-#: resources/views/backend/admin/theme/index.phtml:125
+#: resources/views/backend/admin/plugin/index.phtml:77
+#: resources/views/backend/admin/plugin/index.phtml:120
+#: resources/views/backend/admin/theme/index.phtml:78
+#: resources/views/backend/admin/theme/index.phtml:127
 #, fuzzy
 msgid "Show on Subsites"
 msgstr "Subsites 上的节目"
 
-#: resources/views/backend/admin/plugin/index.phtml:90
-#: resources/views/backend/admin/theme/index.phtml:96
+#: resources/views/backend/admin/plugin/index.phtml:92
+#: resources/views/backend/admin/theme/index.phtml:98
 msgid "Developer:"
 msgstr "开发者："
 
-#: resources/views/backend/admin/plugin/index.phtml:92
-#: resources/views/backend/admin/theme/index.phtml:98
+#: resources/views/backend/admin/plugin/index.phtml:94
+#: resources/views/backend/admin/theme/index.phtml:100
 msgid "View Details"
 msgstr "查看详情"
 
-#: resources/views/backend/admin/plugin/index.phtml:176
-#: resources/views/backend/admin/plugin/index.phtml:197
+#: resources/views/backend/admin/plugin/index.phtml:178
+#: resources/views/backend/admin/plugin/index.phtml:199
 #, fuzzy
 msgid "Unable to update plugin visibility."
 msgstr "无法更新插件可见性。"
 
-#: resources/views/backend/admin/plugin/index.phtml:185
+#: resources/views/backend/admin/plugin/index.phtml:187
 #, fuzzy
 msgid "Plugin is now available on subsites."
 msgstr "插件现已在子网站提供。"
 
-#: resources/views/backend/admin/plugin/index.phtml:190
+#: resources/views/backend/admin/plugin/index.phtml:192
 #, fuzzy
 msgid "Plugin has been removed from subsite plugin lists."
 msgstr "插件已被从子站点插件列表中移除。"
 
-#: resources/views/backend/admin/plugin/install.phtml:24
+#: resources/views/backend/admin/plugin/install.phtml:25
 #, fuzzy
 msgid "Add Plugins (Experimental)"
 msgstr "添加插件（实验性）"
 
-#: resources/views/backend/admin/plugin/install.phtml:52
-#: resources/views/backend/admin/plugin/install.phtml:107
-#: resources/views/backend/admin/theme/install.phtml:52
-#: resources/views/backend/admin/theme/install.phtml:107
+#: resources/views/backend/admin/plugin/install.phtml:53
+#: resources/views/backend/admin/plugin/install.phtml:108
+#: resources/views/backend/admin/theme/install.phtml:53
+#: resources/views/backend/admin/theme/install.phtml:108
 msgid "Vendor"
 msgstr "供应商"
 
-#: resources/views/backend/admin/plugin/install.phtml:71
-#: resources/views/backend/admin/theme/install.phtml:71
+#: resources/views/backend/admin/plugin/install.phtml:72
+#: resources/views/backend/admin/theme/install.phtml:72
 msgid "Installed"
 msgstr "已安装"
 
-#: resources/views/backend/admin/plugin/install.phtml:73
-#: resources/views/backend/admin/theme/install.phtml:73
+#: resources/views/backend/admin/plugin/install.phtml:74
+#: resources/views/backend/admin/theme/install.phtml:74
 msgid "Available"
 msgstr "可用"
 
-#: resources/views/backend/admin/plugin/install.phtml:86
-#: resources/views/backend/admin/plugin/install.phtml:205
-#: resources/views/backend/admin/plugin/install.phtml:229
-#: resources/views/backend/admin/plugin/install.phtml:271
-#: resources/views/backend/admin/theme/install.phtml:86
-#: resources/views/backend/admin/theme/install.phtml:205
-#: resources/views/backend/admin/theme/install.phtml:229
-#: resources/views/backend/admin/theme/install.phtml:271
+#: resources/views/backend/admin/plugin/install.phtml:87
+#: resources/views/backend/admin/plugin/install.phtml:206
+#: resources/views/backend/admin/plugin/install.phtml:230
+#: resources/views/backend/admin/plugin/install.phtml:272
+#: resources/views/backend/admin/theme/install.phtml:87
+#: resources/views/backend/admin/theme/install.phtml:206
+#: resources/views/backend/admin/theme/install.phtml:230
+#: resources/views/backend/admin/theme/install.phtml:272
 msgid "Remove"
 msgstr "删除"
 
-#: resources/views/backend/admin/plugin/install.phtml:89
-#: resources/views/backend/admin/theme/install.phtml:89
+#: resources/views/backend/admin/plugin/install.phtml:90
+#: resources/views/backend/admin/theme/install.phtml:90
 msgid "Unavailable"
 msgstr "不可用"
 
-#: resources/views/backend/admin/plugin/install.phtml:98
-#: resources/views/backend/admin/plugin/install.phtml:199
-#: resources/views/backend/admin/plugin/install.phtml:230
-#: resources/views/backend/admin/theme/install.phtml:98
-#: resources/views/backend/admin/theme/install.phtml:199
-#: resources/views/backend/admin/theme/install.phtml:230
+#: resources/views/backend/admin/plugin/install.phtml:99
+#: resources/views/backend/admin/plugin/install.phtml:200
+#: resources/views/backend/admin/plugin/install.phtml:231
+#: resources/views/backend/admin/theme/install.phtml:99
+#: resources/views/backend/admin/theme/install.phtml:200
+#: resources/views/backend/admin/theme/install.phtml:231
 msgid "Install"
 msgstr "安装"
 
-#: resources/views/backend/admin/plugin/install.phtml:173
-#: resources/views/backend/admin/theme/install.phtml:173
+#: resources/views/backend/admin/plugin/install.phtml:174
+#: resources/views/backend/admin/theme/install.phtml:174
 msgid "Removing..."
 msgstr "正在删除..."
 
-#: resources/views/backend/admin/plugin/install.phtml:174
-#: resources/views/backend/admin/theme/install.phtml:174
+#: resources/views/backend/admin/plugin/install.phtml:175
+#: resources/views/backend/admin/theme/install.phtml:175
 msgid "Installing..."
 msgstr "安装中..."
 
-#: resources/views/backend/admin/plugin/install.phtml:213
-#: resources/views/backend/admin/theme/install.phtml:213
+#: resources/views/backend/admin/plugin/install.phtml:214
+#: resources/views/backend/admin/theme/install.phtml:214
 msgid "Remove failed."
 msgstr "删除失败."
 
-#: resources/views/backend/admin/plugin/install.phtml:214
-#: resources/views/backend/admin/theme/install.phtml:214
+#: resources/views/backend/admin/plugin/install.phtml:215
+#: resources/views/backend/admin/theme/install.phtml:215
 msgid "Install failed."
 msgstr "安装失败。"
 
-#: resources/views/backend/admin/plugin/install.phtml:248
+#: resources/views/backend/admin/plugin/install.phtml:249
 msgid "Remove Plugin"
 msgstr "移除插件"
 
-#: resources/views/backend/admin/plugin/install.phtml:254
+#: resources/views/backend/admin/plugin/install.phtml:255
 #, fuzzy
 #| msgid "Are you sure you want to remove the user from this site?"
 msgid "Are you sure you want to remove this plugin from the system?"
 msgstr "你确定要从系统中移除这个插件吗？"
 
-#: resources/views/backend/admin/plugin/install.phtml:259
-#: resources/views/backend/admin/theme/install.phtml:259
+#: resources/views/backend/admin/plugin/install.phtml:260
+#: resources/views/backend/admin/theme/install.phtml:260
 msgid "This action cannot be undone."
 msgstr "这个操作无法撤销。"
 
@@ -2158,7 +2532,7 @@ msgid "The purchase url is where customers can purchase your product."
 msgstr "购买网址是客户可以购买你产品的渠道。"
 
 #: resources/views/backend/admin/product/index.phtml:31
-#: resources/views/backend/layouts/admin-layout.phtml:185
+#: resources/views/backend/layouts/admin-layout.phtml:210
 msgid "All Products"
 msgstr "所有产品"
 
@@ -2196,7 +2570,7 @@ msgstr "子域名"
 
 #: resources/views/backend/admin/site/index.phtml:69
 #: resources/views/backend/admin/site/view.phtml:70
-#: resources/views/backend/general.phtml:57
+#: resources/views/backend/settings.phtml:60
 msgid "Site Name"
 msgstr "站点名称"
 
@@ -2335,40 +2709,40 @@ msgstr "遗址测绘"
 msgid "Public"
 msgstr "公开"
 
-#: resources/views/backend/admin/theme/index.phtml:70
-#: resources/views/backend/admin/theme/index.phtml:119
+#: resources/views/backend/admin/theme/index.phtml:72
+#: resources/views/backend/admin/theme/index.phtml:121
 #, fuzzy
 msgid "Screenshot"
 msgstr "截图"
 
-#: resources/views/backend/admin/theme/index.phtml:183
-#: resources/views/backend/admin/theme/index.phtml:204
+#: resources/views/backend/admin/theme/index.phtml:185
+#: resources/views/backend/admin/theme/index.phtml:206
 #, fuzzy
 msgid "Unable to update theme visibility."
 msgstr "无法更新主题可见性。"
 
-#: resources/views/backend/admin/theme/index.phtml:192
+#: resources/views/backend/admin/theme/index.phtml:194
 #, fuzzy
 msgid "Theme is now available on subsites."
 msgstr "主题现已在子网站上提供。"
 
-#: resources/views/backend/admin/theme/index.phtml:197
+#: resources/views/backend/admin/theme/index.phtml:199
 #, fuzzy
 msgid "Theme has been removed from subsite theme lists."
 msgstr "主题已被从子网站主题列表中移除。"
 
-#: resources/views/backend/admin/theme/install.phtml:24
+#: resources/views/backend/admin/theme/install.phtml:25
 #, fuzzy
 msgid "Add Themes (Experimental)"
 msgstr "添加主题（实验性）"
 
-#: resources/views/backend/admin/theme/install.phtml:248
+#: resources/views/backend/admin/theme/install.phtml:249
 #, fuzzy
 #| msgid "Remove featured image"
 msgid "Remove Theme"
 msgstr "移除主题"
 
-#: resources/views/backend/admin/theme/install.phtml:254
+#: resources/views/backend/admin/theme/install.phtml:255
 #, fuzzy
 #| msgid "Are you sure you want to remove the user from this site?"
 msgid "Are you sure you want to remove this theme from the system?"
@@ -2451,7 +2825,7 @@ msgid ""
 msgstr "您想将该用户的内容分配给其他用户吗？请选择下方。"
 
 #: resources/views/backend/admin/user/profile.phtml:42
-#: resources/views/backend/layouts/admin-layout.phtml:103
+#: resources/views/backend/layouts/admin-layout.phtml:126
 msgid "Profile"
 msgstr "个人资料"
 
@@ -2509,19 +2883,19 @@ msgstr "时区"
 
 #: resources/views/backend/admin/user/profile.phtml:314
 #: resources/views/backend/admin/user/view.phtml:196
-#: resources/views/backend/reading.phtml:63
+#: resources/views/backend/settings.phtml:122
 msgid "Date Format"
 msgstr "日期格式"
 
 #: resources/views/backend/admin/user/profile.phtml:319
 #: resources/views/backend/admin/user/view.phtml:201
-#: resources/views/backend/reading.phtml:67
+#: resources/views/backend/settings.phtml:126
 msgid "Time Format"
 msgstr "时间格式"
 
 #: resources/views/backend/admin/user/profile.phtml:335
 #: resources/views/backend/admin/user/view.phtml:209
-#: resources/views/backend/general.phtml:69
+#: resources/views/backend/settings.phtml:72
 msgid "Locale"
 msgstr "本地化"
 
@@ -2586,34 +2960,10 @@ msgstr "重置"
 msgid "Devflow"
 msgstr "Devflow"
 
-#: resources/views/backend/general.phtml:61
-msgid "Site Description"
-msgstr "网站描述"
-
-#: resources/views/backend/general.phtml:65
-msgid "Admin Email"
-msgstr "管理员电子邮件"
-
-#: resources/views/backend/general.phtml:76
-msgid "Cookie Expire"
-msgstr "饼干过期"
-
-#: resources/views/backend/general.phtml:80
-msgid "Cookie Path"
-msgstr "Cookie路径"
-
-#: resources/views/backend/general.phtml:84
-msgid "System Timezone"
-msgstr "系统时区"
-
-#: resources/views/backend/general.phtml:93
-msgid "API Key"
-msgstr "API密钥"
-
 #: resources/views/backend/index.phtml:22
 #: resources/views/backend/index.phtml:27
-#: resources/views/backend/layouts/admin-layout.phtml:143
-#: resources/views/backend/updates.phtml:30
+#: resources/views/backend/layouts/admin-layout.phtml:166
+#: resources/views/backend/updates.phtml:29
 msgid "Dashboard"
 msgstr "仪表盘"
 
@@ -2622,105 +2972,102 @@ msgid "Control panel"
 msgstr "控制"
 
 #: resources/views/backend/index.phtml:26
-#: resources/views/backend/layouts/admin-layout.phtml:149
+#: resources/views/backend/layouts/admin-layout.phtml:172
 msgid "Home"
 msgstr "首页"
 
-#: resources/views/backend/layouts/admin-layout.phtml:79
+#: resources/views/backend/layouts/admin-layout.phtml:81
 msgid "Toggle navigation"
 msgstr "切换导航"
 
-#: resources/views/backend/layouts/admin-layout.phtml:96
+#: resources/views/backend/layouts/admin-layout.phtml:93
+#, fuzzy
+msgid "No workflow notifications"
+msgstr "没有工作流程通知"
+
+#: resources/views/backend/layouts/admin-layout.phtml:100
+msgid "Mark all as read"
+msgstr "全部标记为已读"
+
+#: resources/views/backend/layouts/admin-layout.phtml:119
 msgid "Member since"
 msgstr "成员自"
 
-#: resources/views/backend/layouts/admin-layout.phtml:108
+#: resources/views/backend/layouts/admin-layout.phtml:131
 msgid "Switch back"
 msgstr "切换回经典Divi 生成器"
 
-#: resources/views/backend/layouts/admin-layout.phtml:112
+#: resources/views/backend/layouts/admin-layout.phtml:135
 msgid "Logout"
 msgstr "注销"
 
-#: resources/views/backend/layouts/admin-layout.phtml:134
+#: resources/views/backend/layouts/admin-layout.phtml:157
 msgid "Online"
 msgstr "在线"
 
-#: resources/views/backend/layouts/admin-layout.phtml:139
+#: resources/views/backend/layouts/admin-layout.phtml:162
 #, fuzzy
 msgid "MAIN NAVIGATION"
 msgstr "主导航"
 
-#: resources/views/backend/layouts/admin-layout.phtml:150
-#: resources/views/backend/updates.phtml:26
-#: resources/views/backend/updates.phtml:31
+#: resources/views/backend/layouts/admin-layout.phtml:174
+#: resources/views/backend/updates.phtml:25
+#: resources/views/backend/updates.phtml:30
 msgid "Updates"
 msgstr "更新"
 
-#: resources/views/backend/layouts/admin-layout.phtml:151
+#: resources/views/backend/layouts/admin-layout.phtml:176
 #: resources/views/backend/snapshot.phtml:35
 msgid "System Report"
 msgstr "系统报告"
 
-#: resources/views/backend/layouts/admin-layout.phtml:157
+#: resources/views/backend/layouts/admin-layout.phtml:182
 msgid "Flush Cache"
 msgstr "刷新缓存"
 
-#: resources/views/backend/layouts/admin-layout.phtml:170
+#: resources/views/backend/layouts/admin-layout.phtml:195
 msgid "Manage"
 msgstr "管理"
 
-#: resources/views/backend/layouts/admin-layout.phtml:186
-#: resources/views/backend/layouts/admin-layout.phtml:206
-#: resources/views/backend/layouts/admin-layout.phtml:269
+#: resources/views/backend/layouts/admin-layout.phtml:211
+#: resources/views/backend/layouts/admin-layout.phtml:233
+#: resources/views/backend/layouts/admin-layout.phtml:298
 msgid "Add New"
 msgstr "新增"
 
-#: resources/views/backend/layouts/admin-layout.phtml:205
-msgid "All"
-msgstr "所有"
-
-#: resources/views/backend/layouts/admin-layout.phtml:227
+#: resources/views/backend/layouts/admin-layout.phtml:254
 msgid "Installed Plugins"
 msgstr "安装插件"
 
-#: resources/views/backend/layouts/admin-layout.phtml:229
+#: resources/views/backend/layouts/admin-layout.phtml:256
 msgid "Add Plugin"
 msgstr "添加插件"
 
-#: resources/views/backend/layouts/admin-layout.phtml:245
+#: resources/views/backend/layouts/admin-layout.phtml:273
 #, fuzzy
 #| msgid "Themes"
 msgid "Add Theme"
 msgstr "添加主题"
 
-#: resources/views/backend/layouts/admin-layout.phtml:253
+#: resources/views/backend/layouts/admin-layout.phtml:282
 #, fuzzy
 msgid "Vihzhuo"
 msgstr "维卓"
 
-#: resources/views/backend/layouts/admin-layout.phtml:268
+#: resources/views/backend/layouts/admin-layout.phtml:297
 msgid "All Users"
 msgstr "所有用户"
 
-#: resources/views/backend/layouts/admin-layout.phtml:270
-#: resources/views/backend/layouts/admin-layout.phtml:278
+#: resources/views/backend/layouts/admin-layout.phtml:299
+#: resources/views/backend/layouts/admin-layout.phtml:307
 msgid "Your Profile"
 msgstr "你的个人资料"
 
-#: resources/views/backend/layouts/admin-layout.phtml:286
-msgid "Options"
-msgstr "选项"
+#: resources/views/backend/layouts/admin-layout.phtml:315
+msgid "Settings"
+msgstr "设置"
 
-#: resources/views/backend/layouts/admin-layout.phtml:292
-msgid "General"
-msgstr "常规"
-
-#: resources/views/backend/layouts/admin-layout.phtml:293
-msgid "Reading"
-msgstr "阅读"
-
-#: resources/views/backend/layouts/admin-layout.phtml:320
+#: resources/views/backend/layouts/admin-layout.phtml:348
 #, fuzzy
 msgid "Login expires in "
 msgstr "登录过期"
@@ -2729,70 +3076,175 @@ msgstr "登录过期"
 msgid "Powered by"
 msgstr "技术支持"
 
-#: resources/views/backend/reading.phtml:55
+#: resources/views/backend/partial/security-advisory.phtml:15
+#, fuzzy
+msgid "Composer Security Advisories"
+msgstr "作曲家安全警示"
+
+#: resources/views/backend/partial/security-advisory.phtml:21
+#, fuzzy
+msgid "No Composer security audit has been run yet."
+msgstr "目前还没有对Composer进行安全审计。"
+
+#: resources/views/backend/partial/security-advisory.phtml:23
+#, fuzzy
+msgid "Run:"
+msgstr "跑步："
+
+#: resources/views/backend/partial/security-advisory.phtml:28
+#, fuzzy
+msgid "Security audit failed."
+msgstr "安全审计失败了。"
+
+#: resources/views/backend/partial/security-advisory.phtml:29
+msgid "Unknown error."
+msgstr "未知错误."
+
+#: resources/views/backend/partial/security-advisory.phtml:33
+#: resources/views/backend/partial/security-advisory.phtml:42
+#: resources/views/backend/partial/security-advisory.phtml:86
+msgid "Last checked:"
+msgstr "上次检查:"
+
+#: resources/views/backend/partial/security-advisory.phtml:37
+#, fuzzy
+msgid "security advisories found."
+msgstr "安全警示已发布。"
+
+#: resources/views/backend/partial/security-advisory.phtml:38
+#, fuzzy
+msgid "Update the affected Composer packages as soon as possible."
+msgstr "请尽快更新受影响的Composer包。"
+
+#: resources/views/backend/partial/security-advisory.phtml:66
+#, fuzzy
+msgid "Affected versions:"
+msgstr "受影响版本："
+
+#: resources/views/backend/partial/security-advisory.phtml:73
+#, fuzzy
+#| msgid "View Details"
+msgid "View advisory"
+msgstr "查看警示"
+
+#: resources/views/backend/partial/security-advisory.phtml:82
+#, fuzzy
+msgid "No known Composer security advisories found."
+msgstr "未发现已知的作曲家安全警告。"
+
+#: resources/views/backend/settings.phtml:55
+msgid "General Settings"
+msgstr "常规设置"
+
+#: resources/views/backend/settings.phtml:64
+msgid "Site Description"
+msgstr "网站描述"
+
+#: resources/views/backend/settings.phtml:68
+msgid "Admin Email"
+msgstr "管理员电子邮件"
+
+#: resources/views/backend/settings.phtml:79
+msgid "Cookie Expire"
+msgstr "饼干过期"
+
+#: resources/views/backend/settings.phtml:83
+msgid "Cookie Path"
+msgstr "Cookie路径"
+
+#: resources/views/backend/settings.phtml:87
+msgid "System Timezone"
+msgstr "系统时区"
+
+#: resources/views/backend/settings.phtml:96
+msgid "API Key"
+msgstr "API密钥"
+
+#: resources/views/backend/settings.phtml:109
+msgid "Reading Settings"
+msgstr "阅读设置"
+
+#: resources/views/backend/settings.phtml:114
 msgid "Charset"
 msgstr "字符集"
 
-#: resources/views/backend/reading.phtml:59
+#: resources/views/backend/settings.phtml:118
 #, fuzzy
 msgid "Content per Page"
 msgstr "每页内容"
 
-#: resources/views/backend/updates.phtml:27
+#: resources/views/backend/updates.phtml:26
 #, fuzzy
 msgid "Devflow CMF, plugins, and themes"
 msgstr "Devflow CMF、插件和主题"
 
-#: resources/views/backend/updates.phtml:45
+#: resources/views/backend/updates.phtml:49
 #, fuzzy
 msgid ""
 "Update checks are temporarily unavailable. Showing cached or fallback "
 "results."
 msgstr "更新检查暂时无法使用。显示缓存或备用结果。"
 
-#: resources/views/backend/updates.phtml:51
+#: resources/views/backend/updates.phtml:55
 #, fuzzy, php-format
 msgid "Devflow <strong>%s</strong> is available."
 msgstr "Devflow <strong>%s</strong> 可用。"
 
-#: resources/views/backend/updates.phtml:52
+#: resources/views/backend/updates.phtml:56
 #, fuzzy, php-format
 #| msgid "Password successfully updated for <strong>%s</strong>."
 msgid "Current version: <strong>%s</strong>"
 msgstr "当前版本： <strong>%s</strong>"
 
-#: resources/views/backend/updates.phtml:55
+#: resources/views/backend/updates.phtml:59
 #, fuzzy, php-format
 msgid "Run %s from the command line to update Devflow core."
 msgstr "从命令行运行%s以更新 Devflow 核心。"
 
-#: resources/views/backend/updates.phtml:59
+#: resources/views/backend/updates.phtml:63
 #, fuzzy, php-format
 msgid "Devflow %s is up to date."
 msgstr "Devflow %s 是最新的。"
 
-#: resources/views/backend/updates.phtml:79
+#: resources/views/backend/updates.phtml:87
 #, fuzzy, php-format
 #| msgid "Update User"
 msgid "Update All %s."
 msgstr "更新所有情况%s。"
 
-#: resources/views/backend/updates.phtml:91
+#: resources/views/backend/updates.phtml:99
 #, fuzzy, php-format
 msgid "No %s updates available."
 msgstr "没有可用的%s更新。"
 
-#: resources/views/backend/updates.phtml:100
+#: resources/views/backend/updates.phtml:108
 msgid "Package"
 msgstr "套餐"
 
-#: resources/views/backend/updates.phtml:101
+#: resources/views/backend/updates.phtml:109
 msgid "Current"
 msgstr "当前"
 
-#: resources/views/backend/updates.phtml:102
+#: resources/views/backend/updates.phtml:110
 msgid "Latest"
 msgstr "最新"
+
+#, fuzzy
+#~ msgid "General options exception occurred and was logged."
+#~ msgstr "发生了通用选项异常并被记录。"
+
+#, fuzzy
+#~ msgid "Reading options exception occurred and was logged."
+#~ msgstr "读取选项异常出现并被记录。"
+
+#~ msgid "Options"
+#~ msgstr "选项"
+
+#~ msgid "General"
+#~ msgstr "常规"
+
+#~ msgid "Reading"
+#~ msgstr "阅读"
 
 #, fuzzy, php-format
 #~ msgid "Unable to fetch registry URL [%s]. Response: %s"

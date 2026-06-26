@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow CMF\n"
-"POT-Creation-Date: 2026-05-25 14:36-0600\n"
-"PO-Revision-Date: 2026-05-25 14:36-0600\n"
+"POT-Creation-Date: 2026-06-25 23:05-0600\n"
+"PO-Revision-Date: 2026-06-25 23:06-0600\n"
 "Last-Translator: Joshua Parker <joshua@joshuaparker.dev>\n"
 "Language-Team: Joshua Parker\n"
 "Language: ja\n"
@@ -226,33 +226,33 @@ msgstr ""
 msgid "Password reset exception occurred and was logged."
 msgstr "パスワードリセットの例外が発生し、記録されました。"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:113
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:185
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:220
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:122
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:199
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:247
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:67
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:119
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:54
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:80
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:109
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:169
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:171
 #: core/Infrastructure/Http/Controllers/AdminMediaController.php:135
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:52
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:78
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:110
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:64
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:127
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:193
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:63
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:126
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:191
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:64
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:118
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:169
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:227
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:285
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:330
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:386
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:449
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:288
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:336
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:392
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:455
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:56
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:104
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:138
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:140
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:93
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:209
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:237
@@ -268,20 +268,40 @@ msgstr "パスワードリセットの例外が発生し、記録されました
 #: core/Infrastructure/Http/Controllers/ExtensionInstallerController.php:117
 #: core/Infrastructure/Http/Controllers/ExtensionInstallerController.php:217
 #: core/Infrastructure/Http/Controllers/PageBuilderController.php:62
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:49
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:46
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:53
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:78
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:100
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:121
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:142
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:51
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:60
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:94
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:101
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:142
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:149
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:203
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:210
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionDiffService.php:45
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:67
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:95
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:857
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1014
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1332
 msgid "Access denied."
 msgstr "アクセスが拒否されました。"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:123
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:132
 #, fuzzy, php-format
 msgid "Create %s Content"
 msgstr "%sコンテンツを作成"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:231
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:258
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:786
 msgid "Content not found."
 msgstr "コンテンツが見つかりません。"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:240
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:267
 #, php-format
 msgid "%s Content"
 msgstr "%s コース内容"
@@ -296,12 +316,33 @@ msgstr "コンテンツタイプ"
 msgid "The content type does not exist."
 msgstr "コンテンツタイプは存在しません。"
 
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:84
+#, fuzzy
+msgid "Reviewers updated."
+msgstr "レビュアーの最新情報。"
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:112
+#, fuzzy
+msgid "Review marked complete."
+msgstr "レビュー完了。"
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:140
+#, fuzzy
+msgid "Review request withdrawn."
+msgstr "審査申請は取り下げられました。"
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:511
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:120
+#, fuzzy
+msgid "Revision restored as draft."
+msgstr "改訂はドラフトとして復元されました。"
+
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:89
 #, fuzzy
 msgid "System Snapshot"
 msgstr "システムスナップショット"
 
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:143
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:145
 #, fuzzy
 msgid "Cache flushed successfully."
 msgstr "キャッシュは無事に流された。"
@@ -314,32 +355,20 @@ msgstr "メディアライブラリー"
 msgid "elFinder"
 msgstr "File Field Sources - elFinder コネクター"
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:61
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:101
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:194
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:222
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:289
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:64
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:107
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:201
 msgid "Access denied"
 msgstr "アクセスが拒否されました"
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:171
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:178
 #, fuzzy
-msgid "General options exception occurred and was logged."
-msgstr "一般的なオプションの例外が発生し、ログに記録されました。"
+msgid "System settings exception occurred and was logged."
+msgstr "システム設定の例外が発生し、ログに記録されました。"
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:201
-msgid "General Options"
-msgstr "一般オプション"
-
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:266
-#, fuzzy
-msgid "Reading options exception occurred and was logged."
-msgstr "リーディングオプションの例外が発生し、記録されました。"
-
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:296
-#, fuzzy
-msgid "Reading Options"
-msgstr "読書オプション"
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:208
+msgid "System Settings"
+msgstr "システム設定"
 
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:60
 msgid "Plugins"
@@ -363,17 +392,17 @@ msgstr "プラグインを無効にしました。"
 msgid "Plugin deactivation exception occurred and was logged."
 msgstr "プラグインの無効化例外が発生し、ログに記録されました。"
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:74
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:73
 msgid "Products"
 msgstr "商品"
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:135
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:134
 msgid "Create Product"
 msgstr "商品を作成"
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:204
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:226
-#: core/Infrastructure/Services/Product/ProductService.php:75
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:202
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:223
+#: core/Infrastructure/Services/Product/ProductService.php:76
 #, fuzzy
 msgid "The product does not exist."
 msgstr "その製品は存在しません。"
@@ -382,10 +411,10 @@ msgstr "その製品は存在しません。"
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:125
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:176
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:234
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:292
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:336
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:393
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:456
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:295
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:342
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:399
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:462
 #, fuzzy
 msgid "Multisite is not enabled."
 msgstr "マルチサイトは有効になっていません。"
@@ -417,9 +446,9 @@ msgid "Content types error."
 msgstr "コンテンツタイプエラー。"
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:205
-#: core/Infrastructure/Services/Content/ContentService.php:170
+#: core/Infrastructure/Services/Content/ContentService.php:186
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:120
-#: core/Infrastructure/Services/Product/ProductService.php:150
+#: core/Infrastructure/Services/Product/ProductService.php:166
 #, fuzzy
 msgid "Change exception occurred and was logged."
 msgstr "変更例外が発生し、ログに記録されました。"
@@ -430,47 +459,47 @@ msgstr "変更例外が発生し、ログに記録されました。"
 msgid "The site does not exist."
 msgstr "そのサイトは存在しません。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:299
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:302
 #, fuzzy
 msgid "The action is not allowed."
 msgstr "その行動は許可されていません。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:310
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:313
 #, fuzzy
 msgid "Manage System Users"
 msgstr "システムユーザーの管理"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:342
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:348
 #, fuzzy
 msgid "You cannot submit an empty site id."
 msgstr "空のサイトIDは提出できません。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:348
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:354
 #, fuzzy
 msgid "You cannot submit an empty user role."
 msgstr "空のユーザーロールを提出することはできません。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:358
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:364
 msgid "An error occurred."
 msgstr "エラーが発生しました。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:428
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:434
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:144
 #, fuzzy
 msgid "Delete exception occurred and was logged."
 msgstr "削除例外が発生し、ログに記録されました。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:464
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:470
 #, fuzzy
 msgid "This action is not allowed."
 msgstr "この行動は許可されていません。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:475
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:481
 #, fuzzy
 msgid "A site check exception occurred and was logged."
 msgstr "サイトチェックの例外が発生し、記録されました。"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:498
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:504
 #, fuzzy
 msgid "A site deletion exception occurred and was logged."
 msgstr "サイト削除の例外が発生し、ログが記録されました。"
@@ -479,22 +508,22 @@ msgstr "サイト削除の例外が発生し、ログが記録されました。
 msgid "Themes"
 msgstr "テーマ"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:112
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:113
 #, fuzzy
 msgid "Theme activated."
 msgstr "テーマが起動しました。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:116
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:117
 #, fuzzy
 msgid "Theme activation exception occurred and was logged."
 msgstr "テーマアクティベーション例外が発生し、記録されました。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:146
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:149
 #, fuzzy
 msgid "Theme deactivated."
 msgstr "テーマが無効化されました。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:150
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:153
 #, fuzzy
 msgid "Theme deactivation exception occurred and was logged."
 msgstr "テーマの非アクティブ化例外が発生し、記録されました。"
@@ -707,12 +736,12 @@ msgstr "プラグインは1つ以上のサイトで有効化されているた�
 msgid "Theme cannot be removed because it is activated on one or more sites."
 msgstr "テーマは1つ以上のサイトで有効化されているため削除できません。"
 
-#: core/Infrastructure/Http/Controllers/UpdatesController.php:74
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:159
 #, fuzzy
 msgid "Package updated successfully."
 msgstr "パッケージの更新が正常に完了しました。"
 
-#: core/Infrastructure/Http/Controllers/UpdatesController.php:91
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:176
 #, fuzzy
 msgid "Updates completed successfully."
 msgstr "アップデートは正常に完了しました。"
@@ -722,68 +751,204 @@ msgstr "アップデートは正常に完了しました。"
 msgid "User removed from site."
 msgstr "ユーザーがサイトから削除されました。"
 
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:83
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:111
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:74
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:258
 #, fuzzy
 msgid "Website Manager"
 msgstr "ウェブサイトマネージャー"
 
-#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:113
+#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:107
 #, fuzzy, php-format
 msgid "Devflow %s"
 msgstr "Devflow %s"
 
-#: core/Infrastructure/Services/Content/ContentService.php:96
+#: core/Infrastructure/Services/Content/ContentService.php:97
 #, fuzzy
 msgid "The content does not exist."
 msgstr "その内容は存在しません。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:123
+#: core/Infrastructure/Services/Content/ContentService.php:131
 #, fuzzy
 msgid "Content added successfully."
 msgstr "内容は無事に追加されました。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:136
+#: core/Infrastructure/Services/Content/ContentService.php:144
 #, fuzzy
 msgid "Could not create content. Please try again later."
 msgstr "コンテンツを作成できませんでした。後でもう一度お試しください。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:196
-#: core/Infrastructure/Services/Product/ProductService.php:176
+#: core/Infrastructure/Services/Content/ContentService.php:212
+#: core/Infrastructure/Services/Product/ProductService.php:192
 #, fuzzy
 msgid "Removal of featured image was successful."
 msgstr "フィーチャー画像の削除は成功しました。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:206
-#: core/Infrastructure/Services/Product/ProductService.php:186
+#: core/Infrastructure/Services/Content/ContentService.php:222
+#: core/Infrastructure/Services/Product/ProductService.php:202
 #, fuzzy
 msgid "Removal exception occurred and was logged."
 msgstr "削除例外が発生し、記録されました。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:255
-#: core/Infrastructure/Services/Content/ContentService.php:283
-#: core/Infrastructure/Services/Product/ProductService.php:230
+#: core/Infrastructure/Services/Content/ContentService.php:271
+#: core/Infrastructure/Services/Content/ContentService.php:306
+#: core/Infrastructure/Services/Product/ProductService.php:253
 #, fuzzy
 msgid "A deletion exception occurred and was logged."
 msgstr "削除例外が発生し、記録されました。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:273
-#: core/Infrastructure/Services/Product/ProductService.php:220
+#: core/Infrastructure/Services/Content/ContentService.php:296
+#: core/Infrastructure/Services/Product/ProductService.php:243
 #, fuzzy
 msgid "Removal was successful."
 msgstr "除去は成功しました。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionDiffService.php:114
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:176
+#, fuzzy
+#| msgid "User not found."
+msgid "Revision not found."
+msgstr "修正が見つかりませんでした。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:136
+#, fuzzy
+#| msgid "Remove featured image"
+msgid "Revision restore failed."
+msgstr "リビジョンリストアに失敗しました。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:250
+#, fuzzy, php-format
+msgid ""
+"Cannot restore this revision because the event history does not contain a "
+"complete snapshot. Missing: %s"
+msgstr ""
+"イベント履歴に完全なスナップショットが含まれていないため、このリビジョンを復"
+"元できません。欠如:%s"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:112
+#, fuzzy
+msgid "Content ready for review"
+msgstr "内容はレビュー準備完了"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:113
+#, fuzzy
+msgid "A content item is ready for review."
+msgstr "コンテンツ項目がレビューの準備ができています。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:183
+#, fuzzy
+msgid "Review assignment updated"
+msgstr "レビュー課題更新"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:184
+#, fuzzy
+msgid "You have been assigned to review content."
+msgstr "内容のレビューを任されています。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:375
+#, fuzzy
+msgid "You are not assigned as a reviewer."
+msgstr "あなたはレビュアーとして割り当てられていません。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:415
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:429
+#, fuzzy
+msgid "All assigned reviewers have completed their review."
+msgstr "割り当てられたすべての査読者はレビューを完了しています。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:428
+#, fuzzy
+msgid "Content ready for approval"
+msgstr "承認待ちのコンテンツ"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:548
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:848
+#, fuzzy
+msgid "Comment cannot be empty."
+msgstr "コメントは空欄であってはなりません。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:603
+#, fuzzy
+msgid "Content is not scheduled."
+msgstr "コンテンツはスケジュールされていません。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:607
+#, fuzzy
+msgid "Scheduled publish date has not passed."
+msgstr "予定公開日はまだ過ぎていません。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:626
+#, fuzzy
+msgid "Scheduled content was published automatically."
+msgstr "スケジュールされたコンテンツは自動的に公開されました。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:723
+msgid "System"
+msgstr "システム"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:828
+#, fuzzy
+msgid "Content workflow update failed."
+msgstr "コンテンツワークフローの更新が失敗しました。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:910
+#, fuzzy
+msgid "Parent comment does not belong to this content."
+msgstr "親コメントはこのコンテンツには属しません。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1102
+msgid "Comment not found."
+msgstr "コメントが見つかりません。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1204
+msgid "Editorial Comment"
+msgstr "エディトリアルコメント"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1204
+#, fuzzy
+msgid "Editorial Workflow"
+msgstr "編集ワークフロー"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1292
+#, fuzzy, php-format
+msgid "Invalid workflow stage. Expected one of [%s], current stage is [%s]."
+msgstr ""
+"無効なワークフローステージ。予想は[%s]のうち1つで、現在のステージは[%s]です。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1312
+#, fuzzy, php-format
+msgid "Invalid content status. Expected one of [%s], current status is [%s]."
+msgstr "無効なコンテンツの状態。予想は[%s]の1つで、現在のステータスは[%s]。"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1408
+msgid "View Content"
+msgstr "ブロックエリア表示"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1470
+#, fuzzy
+msgid "New editorial comment reply"
+msgstr "新しい編集コメント返信"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1470
+#, fuzzy
+msgid "New editorial comment"
+msgstr "新しい編集コメント"
+
+#: core/Infrastructure/Services/Content/Workflow/Queue/ContentWorkflowEmailNotification.php:61
+#, php-format
+msgid "[%s] %s"
+msgstr "[%s] %s"
 
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:50
 #, fuzzy
 msgid "Error fetching content types."
 msgstr "エラー取得コンテンツタイプ。"
 
-#: core/Infrastructure/Services/Product/ProductService.php:102
+#: core/Infrastructure/Services/Product/ProductService.php:110
 #, fuzzy
 msgid "Product added successfully."
 msgstr "製品が無事に追加されました。"
 
-#: core/Infrastructure/Services/Product/ProductService.php:116
+#: core/Infrastructure/Services/Product/ProductService.php:124
 #, fuzzy
 msgid "Could not create product. Please try again later."
 msgstr "製品を作ることができませんでした。後でもう一度お試しください。"
@@ -903,47 +1068,47 @@ msgstr "作曲家の更新チェックがタイムアウトしました。"
 msgid "No row found for site \"%s\" and user \"%s\"."
 msgstr "サイト「%s」とユーザー「%s」の行は見つかりませんでした。"
 
-#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:133
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:130
 #, fuzzy
 msgid "User attribute not found"
 msgstr "ユーザー属性が見つかりません"
 
-#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:142
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:138
 #, fuzzy
 msgid "Attribute patch callback must return an AttributeBag instance."
 msgstr ""
 "属性パッチのコールバックはAttributeBagインスタンスを返す必要があります。"
 
-#: core/Shared/Helpers/auth.php:177
+#: core/Shared/Helpers/auth.php:178
 msgid "Sorry, there was an error."
 msgstr "申し訳ありませんが、エラーが発生しました。"
 
-#: core/Shared/Helpers/auth.php:202
+#: core/Shared/Helpers/auth.php:203
 #, fuzzy, php-format
 msgid ""
 "Login was successful. Welcome <strong>%s</strong> to the admin dashboard."
 msgstr ""
 "ログインは成功しました。管理ダッシュボードへようこそ <strong>%s</strong> 。"
 
-#: core/Shared/Helpers/auth.php:234
+#: core/Shared/Helpers/auth.php:235
 #, fuzzy
 msgid "<strong>ERROR</strong>: The username/email field is empty."
 msgstr "<strong>エラー</strong>:ユーザー名/メールアドレス欄が空です。"
 
-#: core/Shared/Helpers/auth.php:243
+#: core/Shared/Helpers/auth.php:244
 msgid "<strong>ERROR</strong>: The password field is empty."
 msgstr "<strong>エラー</strong>: パスワードを入力ください。"
 
-#: core/Shared/Helpers/auth.php:257
+#: core/Shared/Helpers/auth.php:258
 #, fuzzy
 msgid "<strong>ERROR</strong>: Invalid email address."
 msgstr "<strong>エラー</strong>:メールアドレスが無効です。"
 
-#: core/Shared/Helpers/auth.php:269
+#: core/Shared/Helpers/auth.php:270
 msgid "<strong>ERROR</strong>: Invalid username."
 msgstr "<strong>エラー</strong>: 無効なユーザー名です。"
 
-#: core/Shared/Helpers/auth.php:280
+#: core/Shared/Helpers/auth.php:281
 msgid "<strong>ERROR</strong>: The password you entered is incorrect."
 msgstr "<strong> エラー </strong>: 入力したパスワードが正しくありません。"
 
@@ -962,36 +1127,36 @@ msgstr "無効なコンテンツタイプIDです。"
 msgid "The system was not able to delete the content type."
 msgstr "システムはコンテンツタイプを削除できませんでした。"
 
-#: core/Shared/Helpers/content.php:1770 core/Shared/Helpers/content.php:2332
+#: core/Shared/Helpers/content.php:1773 core/Shared/Helpers/content.php:2335
 #, fuzzy
 msgid "Invalid content id."
 msgstr "無効なコンテンツIDです。"
 
-#: core/Shared/Helpers/content.php:1917
+#: core/Shared/Helpers/content.php:1920
 #, fuzzy
 msgid "Content author cannot be null or empty."
 msgstr "コンテンツ作成者はnullやemptyであってはなりません。"
 
-#: core/Shared/Helpers/content.php:2021
+#: core/Shared/Helpers/content.php:2024
 #, fuzzy
 msgid "The title and content are null."
 msgstr "タイトルも内容も無効です。"
 
-#: core/Shared/Helpers/content.php:2175
+#: core/Shared/Helpers/content.php:2178
 #, fuzzy
 msgid "Could not insert content into the content table."
 msgstr "コンテンツテーブルにコンテンツを挿入できませんでした。"
 
-#: core/Shared/Helpers/content.php:2223
+#: core/Shared/Helpers/content.php:2226
 #, fuzzy
 msgid "Could not update content within the content table."
 msgstr "コンテンツテーブル内のコンテンツを更新できませんでした。"
 
-#: core/Shared/Helpers/core.php:748
+#: core/Shared/Helpers/core.php:752
 msgid "Unknown"
 msgstr "不明"
 
-#: core/Shared/Helpers/core.php:1429
+#: core/Shared/Helpers/core.php:1569
 #, fuzzy, php-format
 #| msgid ""
 #| "Devflow release %s is available for download/upgrade. Before upgrading, "
@@ -1008,7 +1173,7 @@ msgstr ""
 msgid "Reassign content error: %s"
 msgstr "コンテンツ再割り当てエラー:%s"
 
-#: core/Shared/Helpers/hook.php:780
+#: core/Shared/Helpers/hook.php:794
 #, fuzzy
 #| msgid ""
 #| "Your system is currently in `dev` mode. Please remember to set your "
@@ -1022,26 +1187,41 @@ msgstr ""
 "あなたのシステムは現在開発モードです。テスト後は必ずシステムを本番モードに設"
 "定してください。本番モードを設定すると、この警告メッセージは消えます。"
 
-#: core/Shared/Helpers/product.php:1426 core/Shared/Helpers/product.php:2013
+#: core/Shared/Helpers/hook.php:814
+#, fuzzy
+msgid "Composer security advisories found."
+msgstr "作曲家のセキュリティ注意事項が確認されました。"
+
+#: core/Shared/Helpers/hook.php:815
+#, fuzzy, php-format
+msgid "%s advisories were detected."
+msgstr "%s警報が検出されました。"
+
+#: core/Shared/Helpers/hook.php:816
+#, fuzzy
+msgid "Visit the Updates screen for details."
+msgstr "詳細はアップデート画面をご覧ください。"
+
+#: core/Shared/Helpers/product.php:1427 core/Shared/Helpers/product.php:2014
 msgid "Invalid product id."
 msgstr "無効な商品 ID。"
 
-#: core/Shared/Helpers/product.php:1563
+#: core/Shared/Helpers/product.php:1564
 #, fuzzy
 msgid "Product author cannot be null or empty."
 msgstr "プロダクトオーサーはnullやemptyであってはなりません。"
 
-#: core/Shared/Helpers/product.php:1699
+#: core/Shared/Helpers/product.php:1700
 #, fuzzy
 msgid "The title and body should not be null."
 msgstr "タイトルと本文は無効であってはなりません。"
 
-#: core/Shared/Helpers/product.php:1854
+#: core/Shared/Helpers/product.php:1855
 #, fuzzy
 msgid "Could not insert product into the product table."
 msgstr "商品表に商品を挿入できませんでした。"
 
-#: core/Shared/Helpers/product.php:1903
+#: core/Shared/Helpers/product.php:1904
 #, fuzzy
 msgid "Could not update product within the product table."
 msgstr "製品テーブル内で商品を更新できませんでした。"
@@ -1096,37 +1276,37 @@ msgstr "ユーザー削除の例外が発生しました。"
 msgid "You are not allowed to remove super admins from this site."
 msgstr "このサイトからスーパー管理者を削除することは許可されていません。"
 
-#: core/Shared/Helpers/user.php:597 core/Shared/Helpers/user.php:1106
-#: core/Shared/Helpers/user.php:1113
+#: core/Shared/Helpers/user.php:577 core/Shared/Helpers/user.php:1086
+#: core/Shared/Helpers/user.php:1093
 #, fuzzy
 msgid "Invalid user id."
 msgstr "ユーザーIDが無効です。"
 
-#: core/Shared/Helpers/user.php:676
+#: core/Shared/Helpers/user.php:656
 #, fuzzy
 msgid "Cannot create a user with an empty username."
 msgstr "空のユーザー名でユーザーを作成できません。"
 
-#: core/Shared/Helpers/user.php:680
+#: core/Shared/Helpers/user.php:660
 msgid "Username must be at least 3 characters long."
 msgstr "ユーザー名は3文字以上でなければなりません。"
 
-#: core/Shared/Helpers/user.php:684
+#: core/Shared/Helpers/user.php:664
 msgid "Username may not be longer than 60 characters."
 msgstr "ユーザー名は60文字以内にしてください。"
 
-#: core/Shared/Helpers/user.php:689
+#: core/Shared/Helpers/user.php:669
 #, fuzzy
 msgid "Sorry, that username cannot be used."
 msgstr "申し訳ありませんが、そのユーザー名は使用できません。"
 
-#: core/Shared/Helpers/user.php:704
+#: core/Shared/Helpers/user.php:684
 #, fuzzy, php-format
 msgid "Sorry, the username <strong>%s</strong> is not allowed."
 msgstr ""
 "申し訳ありませんが、ユーザー名 <strong>%s</strong> は許可されていません。"
 
-#: core/Shared/Helpers/user.php:744
+#: core/Shared/Helpers/user.php:724
 #, fuzzy
 msgid "Sorry, that email address cannot be used."
 msgstr "申し訳ありませんが、そのメールアドレスは使えません。"
@@ -1599,8 +1779,8 @@ msgid "Embed Height"
 msgstr "埋め込み高さ"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:38
-#: resources/views/backend/admin/content/create.phtml:48
-#: resources/views/backend/admin/manager/page-settings.phtml:40
+#: resources/views/backend/admin/content/create.phtml:64
+#: resources/views/backend/admin/manager/page-settings.phtml:42
 #: resources/views/backend/admin/product/create.phtml:47
 #: resources/views/backend/admin/site/index.phtml:42
 #: resources/views/backend/admin/user/create.phtml:89
@@ -1633,30 +1813,30 @@ msgstr "コンテンツタイプ説明"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:92
 #: resources/views/backend/admin/content-type/content-type.phtml:135
-#: resources/views/backend/admin/content/create.phtml:95
-#: resources/views/backend/admin/content/view.phtml:100
+#: resources/views/backend/admin/content/create.phtml:111
+#: resources/views/backend/admin/content/view.phtml:185
 msgid "Content Type"
 msgstr "コンテンツタイプ"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:93
 #: resources/views/backend/admin/content-type/content-type.phtml:136
-#: resources/views/backend/admin/plugin/index.phtml:72
-#: resources/views/backend/admin/plugin/index.phtml:115
-#: resources/views/backend/admin/plugin/install.phtml:53
-#: resources/views/backend/admin/plugin/install.phtml:108
-#: resources/views/backend/admin/theme/index.phtml:73
-#: resources/views/backend/admin/theme/index.phtml:122
-#: resources/views/backend/admin/theme/install.phtml:53
-#: resources/views/backend/admin/theme/install.phtml:108
+#: resources/views/backend/admin/plugin/index.phtml:74
+#: resources/views/backend/admin/plugin/index.phtml:117
+#: resources/views/backend/admin/plugin/install.phtml:54
+#: resources/views/backend/admin/plugin/install.phtml:109
+#: resources/views/backend/admin/theme/index.phtml:75
+#: resources/views/backend/admin/theme/index.phtml:124
+#: resources/views/backend/admin/theme/install.phtml:54
+#: resources/views/backend/admin/theme/install.phtml:109
 msgid "Description"
 msgstr "説明"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:94
 #: resources/views/backend/admin/content-type/content-type.phtml:137
-#: resources/views/backend/admin/content/create.phtml:76
-#: resources/views/backend/admin/content/create.phtml:230
-#: resources/views/backend/admin/content/view.phtml:81
-#: resources/views/backend/admin/content/view.phtml:241
+#: resources/views/backend/admin/content/create.phtml:92
+#: resources/views/backend/admin/content/create.phtml:244
+#: resources/views/backend/admin/content/view.phtml:110
+#: resources/views/backend/admin/content/view.phtml:569
 #: resources/views/backend/admin/product/create.phtml:76
 #: resources/views/backend/admin/product/create.phtml:215
 #: resources/views/backend/admin/product/view.phtml:76
@@ -1670,21 +1850,21 @@ msgstr "カウント"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:96
 #: resources/views/backend/admin/content-type/content-type.phtml:139
-#: resources/views/backend/admin/plugin/index.phtml:73
-#: resources/views/backend/admin/plugin/index.phtml:116
-#: resources/views/backend/admin/plugin/install.phtml:55
-#: resources/views/backend/admin/plugin/install.phtml:110
+#: resources/views/backend/admin/plugin/index.phtml:75
+#: resources/views/backend/admin/plugin/index.phtml:118
+#: resources/views/backend/admin/plugin/install.phtml:56
+#: resources/views/backend/admin/plugin/install.phtml:111
 #: resources/views/backend/admin/site/index.phtml:106
 #: resources/views/backend/admin/site/index.phtml:156
 #: resources/views/backend/admin/site/users.phtml:55
 #: resources/views/backend/admin/site/users.phtml:191
-#: resources/views/backend/admin/theme/index.phtml:74
-#: resources/views/backend/admin/theme/index.phtml:123
-#: resources/views/backend/admin/theme/install.phtml:55
-#: resources/views/backend/admin/theme/install.phtml:110
+#: resources/views/backend/admin/theme/index.phtml:76
+#: resources/views/backend/admin/theme/index.phtml:125
+#: resources/views/backend/admin/theme/install.phtml:56
+#: resources/views/backend/admin/theme/install.phtml:111
 #: resources/views/backend/admin/user/index.phtml:60
 #: resources/views/backend/admin/user/index.phtml:130
-#: resources/views/backend/updates.phtml:103
+#: resources/views/backend/updates.phtml:111
 msgid "Action"
 msgstr "アクション"
 
@@ -1701,10 +1881,12 @@ msgstr ""
 #: resources/views/backend/admin/content-type/content-type.phtml:168
 #: resources/views/backend/admin/content-type/update-content-type.phtml:93
 #: resources/views/backend/admin/content/content-by-type.phtml:81
-#: resources/views/backend/admin/content/create.phtml:236
+#: resources/views/backend/admin/content/create.phtml:250
 #: resources/views/backend/admin/content/index.phtml:82
-#: resources/views/backend/admin/content/view.phtml:247
-#: resources/views/backend/admin/content/view.phtml:269
+#: resources/views/backend/admin/content/view.phtml:575
+#: resources/views/backend/admin/content/view.phtml:597
+#: resources/views/backend/admin/content/view.phtml:611
+#: resources/views/backend/admin/content/view.phtml:647
 #: resources/views/backend/admin/product/create.phtml:221
 #: resources/views/backend/admin/product/create.phtml:243
 #: resources/views/backend/admin/product/index.phtml:84
@@ -1722,8 +1904,8 @@ msgstr "閉じる"
 #: resources/views/backend/admin/content-type/content-type.phtml:121
 #: resources/views/backend/admin/content/content-by-type.phtml:82
 #: resources/views/backend/admin/content/index.phtml:83
-#: resources/views/backend/admin/content/view.phtml:270
-#: resources/views/backend/admin/manager/index.phtml:79
+#: resources/views/backend/admin/content/view.phtml:598
+#: resources/views/backend/admin/manager/index.phtml:85
 #: resources/views/backend/admin/product/index.phtml:85
 #: resources/views/backend/admin/product/view.phtml:263
 #: resources/views/backend/admin/site/index.phtml:138
@@ -1745,31 +1927,32 @@ msgid "Update Content Type"
 msgstr "コンテンツ タイプの更新"
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:38
-#: resources/views/backend/admin/content/view.phtml:50
-#: resources/views/backend/admin/content/view.phtml:54
-#: resources/views/backend/admin/content/view.phtml:72
+#: resources/views/backend/admin/content/view.phtml:79
+#: resources/views/backend/admin/content/view.phtml:83
+#: resources/views/backend/admin/content/view.phtml:101
 #: resources/views/backend/admin/product/view.phtml:49
 #: resources/views/backend/admin/site/view.phtml:41
 #: resources/views/backend/admin/user/index.phtml:78
 #: resources/views/backend/admin/user/index.phtml:80
 #: resources/views/backend/admin/user/profile.phtml:48
 #: resources/views/backend/admin/user/view.phtml:46
-#: resources/views/backend/general.phtml:34
-#: resources/views/backend/reading.phtml:32
-#: resources/views/backend/updates.phtml:121
+#: resources/views/backend/settings.phtml:37
+#: resources/views/backend/updates.phtml:129
 msgid "Update"
 msgstr "更新"
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:39
-#: resources/views/backend/admin/content/create.phtml:49
-#: resources/views/backend/admin/content/view.phtml:56
-#: resources/views/backend/admin/manager/index.phtml:78
-#: resources/views/backend/admin/manager/page-settings.phtml:41
-#: resources/views/backend/admin/plugin/install.phtml:266
+#: resources/views/backend/admin/content/create.phtml:65
+#: resources/views/backend/admin/content/view.phtml:85
+#: resources/views/backend/admin/content/view.phtml:632
+#: resources/views/backend/admin/content/view.phtml:670
+#: resources/views/backend/admin/manager/index.phtml:81
+#: resources/views/backend/admin/manager/page-settings.phtml:43
+#: resources/views/backend/admin/plugin/install.phtml:267
 #: resources/views/backend/admin/product/create.phtml:48
 #: resources/views/backend/admin/product/view.phtml:51
 #: resources/views/backend/admin/site/view.phtml:42
-#: resources/views/backend/admin/theme/install.phtml:266
+#: resources/views/backend/admin/theme/install.phtml:267
 #: resources/views/backend/admin/user/create.phtml:90
 #: resources/views/backend/admin/user/profile.phtml:49
 #: resources/views/backend/admin/user/profile.phtml:199
@@ -1779,16 +1962,16 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:32
-#: resources/views/backend/admin/content/view.phtml:53
+#: resources/views/backend/admin/content/view.phtml:82
 msgid "New"
 msgstr "New"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:49
 #: resources/views/backend/admin/content/content-by-type.phtml:111
-#: resources/views/backend/admin/content/create.phtml:72
+#: resources/views/backend/admin/content/create.phtml:88
 #: resources/views/backend/admin/content/index.phtml:50
 #: resources/views/backend/admin/content/index.phtml:108
-#: resources/views/backend/admin/content/view.phtml:77
+#: resources/views/backend/admin/content/view.phtml:106
 #: resources/views/backend/admin/product/create.phtml:72
 #: resources/views/backend/admin/product/index.phtml:52
 #: resources/views/backend/admin/product/index.phtml:110
@@ -1798,10 +1981,10 @@ msgstr "タイトル"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:50
 #: resources/views/backend/admin/content/content-by-type.phtml:112
-#: resources/views/backend/admin/content/create.phtml:142
+#: resources/views/backend/admin/content/create.phtml:156
 #: resources/views/backend/admin/content/index.phtml:51
 #: resources/views/backend/admin/content/index.phtml:109
-#: resources/views/backend/admin/content/view.phtml:147
+#: resources/views/backend/admin/content/view.phtml:230
 #: resources/views/backend/admin/product/create.phtml:126
 #: resources/views/backend/admin/product/index.phtml:53
 #: resources/views/backend/admin/product/index.phtml:111
@@ -1835,7 +2018,7 @@ msgstr "編集"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:67
 #: resources/views/backend/admin/content/index.phtml:68
-#: resources/views/backend/admin/content/view.phtml:55
+#: resources/views/backend/admin/content/view.phtml:84
 #: resources/views/backend/admin/product/index.phtml:70
 #: resources/views/backend/admin/product/view.phtml:50
 msgid "Delete"
@@ -1843,22 +2026,15 @@ msgstr "削除"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:78
 #: resources/views/backend/admin/content/index.phtml:79
-#: resources/views/backend/admin/content/view.phtml:266
+#: resources/views/backend/admin/content/view.phtml:594
 msgid "Are you sure you want to delete this content?"
 msgstr "このコンテンツを削除してもよろしいでしょうか？"
 
-#: resources/views/backend/admin/content/create.phtml:67
-#: resources/views/backend/admin/content/create.phtml:80
-#: resources/views/backend/admin/content/view.phtml:85
-#: resources/views/backend/admin/product/create.phtml:80
-#: resources/views/backend/admin/product/view.phtml:80
-msgid "Content"
-msgstr "コンテンツ"
-
-#: resources/views/backend/admin/content/create.phtml:115
-#: resources/views/backend/admin/content/create.phtml:133
-#: resources/views/backend/admin/content/view.phtml:120
-#: resources/views/backend/admin/content/view.phtml:138
+#: resources/views/backend/admin/content/create.phtml:28
+#: resources/views/backend/admin/content/create.phtml:131
+#: resources/views/backend/admin/content/view.phtml:36
+#: resources/views/backend/admin/content/view.phtml:205
+#: resources/views/backend/admin/content/view.phtml:335
 #: resources/views/backend/admin/product/create.phtml:99
 #: resources/views/backend/admin/product/create.phtml:117
 #: resources/views/backend/admin/product/view.phtml:99
@@ -1866,24 +2042,52 @@ msgstr "コンテンツ"
 msgid "Publish"
 msgstr "公開"
 
-#: resources/views/backend/admin/content/create.phtml:120
-#: resources/views/backend/admin/content/view.phtml:125
+#: resources/views/backend/admin/content/create.phtml:29
+#: resources/views/backend/admin/content/view.phtml:37
+#: resources/views/backend/admin/product/create.phtml:118
+#: resources/views/backend/admin/product/view.phtml:118
+msgid "Schedule"
+msgstr "スケジュール"
+
+#: resources/views/backend/admin/content/create.phtml:31
+#: resources/views/backend/admin/content/view.phtml:39
+msgid "Pending Review"
+msgstr "保留中のレビュー"
+
+#: resources/views/backend/admin/content/create.phtml:32
+#: resources/views/backend/admin/content/view.phtml:40
+#: resources/views/backend/admin/product/create.phtml:122
+#: resources/views/backend/admin/product/view.phtml:122
+#: resources/views/backend/admin/site/view.phtml:92
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: resources/views/backend/admin/content/create.phtml:83
+#: resources/views/backend/admin/content/create.phtml:96
+#: resources/views/backend/admin/content/view.phtml:114
+#: resources/views/backend/admin/product/create.phtml:80
+#: resources/views/backend/admin/product/view.phtml:80
+msgid "Content"
+msgstr "コンテンツ"
+
+#: resources/views/backend/admin/content/create.phtml:136
+#: resources/views/backend/admin/content/view.phtml:210
 #: resources/views/backend/admin/product/create.phtml:104
 #: resources/views/backend/admin/product/view.phtml:104
 msgid "Publication Date"
 msgstr "公開日"
 
-#: resources/views/backend/admin/content/create.phtml:129
-#: resources/views/backend/admin/content/view.phtml:134
-#: resources/views/backend/admin/plugin/install.phtml:54
-#: resources/views/backend/admin/plugin/install.phtml:109
+#: resources/views/backend/admin/content/create.phtml:145
+#: resources/views/backend/admin/content/view.phtml:219
+#: resources/views/backend/admin/plugin/install.phtml:55
+#: resources/views/backend/admin/plugin/install.phtml:110
 #: resources/views/backend/admin/product/create.phtml:113
 #: resources/views/backend/admin/product/view.phtml:113
 #: resources/views/backend/admin/site/index.phtml:105
 #: resources/views/backend/admin/site/index.phtml:155
 #: resources/views/backend/admin/site/view.phtml:88
-#: resources/views/backend/admin/theme/install.phtml:54
-#: resources/views/backend/admin/theme/install.phtml:109
+#: resources/views/backend/admin/theme/install.phtml:55
+#: resources/views/backend/admin/theme/install.phtml:110
 #: resources/views/backend/admin/user/create.phtml:230
 #: resources/views/backend/admin/user/index.phtml:58
 #: resources/views/backend/admin/user/index.phtml:128
@@ -1891,78 +2095,63 @@ msgstr "公開日"
 msgid "Status"
 msgstr "ステータス"
 
-#: resources/views/backend/admin/content/create.phtml:134
-#: resources/views/backend/admin/content/view.phtml:139
-#: resources/views/backend/admin/product/create.phtml:118
-#: resources/views/backend/admin/product/view.phtml:118
-msgid "Schedule"
-msgstr "スケジュール"
-
-#: resources/views/backend/admin/content/create.phtml:138
-#: resources/views/backend/admin/content/view.phtml:143
-#: resources/views/backend/admin/product/create.phtml:122
-#: resources/views/backend/admin/product/view.phtml:122
-#: resources/views/backend/admin/site/view.phtml:92
-msgid "Archive"
-msgstr "アーカイブ"
-
-#: resources/views/backend/admin/content/create.phtml:156
-#: resources/views/backend/admin/content/view.phtml:161
+#: resources/views/backend/admin/content/create.phtml:170
+#: resources/views/backend/admin/content/view.phtml:489
 #, fuzzy
 msgid "Content Attributes"
 msgstr "コンテンツ属性"
 
-#: resources/views/backend/admin/content/create.phtml:161
-#: resources/views/backend/admin/content/view.phtml:166
+#: resources/views/backend/admin/content/create.phtml:175
+#: resources/views/backend/admin/content/view.phtml:494
 msgid "Parent"
 msgstr "親"
 
-#: resources/views/backend/admin/content/create.phtml:168
-#: resources/views/backend/admin/content/view.phtml:173
+#: resources/views/backend/admin/content/create.phtml:182
+#: resources/views/backend/admin/content/view.phtml:501
 msgid "Sidebar"
 msgstr "サイドバー"
 
-#: resources/views/backend/admin/content/create.phtml:174
-#: resources/views/backend/admin/content/view.phtml:180
+#: resources/views/backend/admin/content/create.phtml:188
+#: resources/views/backend/admin/content/view.phtml:508
 #: resources/views/backend/admin/product/create.phtml:160
 #: resources/views/backend/admin/product/view.phtml:173
 #, fuzzy
 msgid "Show in Menu"
 msgstr "メニューで表示"
 
-#: resources/views/backend/admin/content/create.phtml:180
-#: resources/views/backend/admin/content/view.phtml:187
+#: resources/views/backend/admin/content/create.phtml:194
+#: resources/views/backend/admin/content/view.phtml:515
 #: resources/views/backend/admin/product/create.phtml:166
 #: resources/views/backend/admin/product/view.phtml:180
 #, fuzzy
 msgid "Show in Search"
 msgstr "検索でショー"
 
-#: resources/views/backend/admin/content/create.phtml:193
-#: resources/views/backend/admin/content/view.phtml:201
+#: resources/views/backend/admin/content/create.phtml:207
+#: resources/views/backend/admin/content/view.phtml:529
 #: resources/views/backend/admin/product/create.phtml:179
 #: resources/views/backend/admin/product/view.phtml:194
 msgid "Featured Image"
 msgstr "アイキャッチ画像"
 
-#: resources/views/backend/admin/content/create.phtml:199
-#: resources/views/backend/admin/content/view.phtml:210
+#: resources/views/backend/admin/content/create.phtml:213
+#: resources/views/backend/admin/content/view.phtml:538
 #: resources/views/backend/admin/product/create.phtml:185
 #: resources/views/backend/admin/product/view.phtml:203
 msgid "Set featured image"
 msgstr "おすすめ画像を設定"
 
-#: resources/views/backend/admin/content/create.phtml:200
-#: resources/views/backend/admin/content/view.phtml:208
-#: resources/views/backend/admin/content/view.phtml:211
+#: resources/views/backend/admin/content/create.phtml:214
+#: resources/views/backend/admin/content/view.phtml:536
+#: resources/views/backend/admin/content/view.phtml:539
 #: resources/views/backend/admin/product/create.phtml:186
 #: resources/views/backend/admin/product/view.phtml:201
 #: resources/views/backend/admin/product/view.phtml:204
 msgid "Remove featured image"
 msgstr "おすすめ画像を削除する"
 
-#: resources/views/backend/admin/content/create.phtml:233
-#: resources/views/backend/admin/content/view.phtml:244
+#: resources/views/backend/admin/content/create.phtml:247
+#: resources/views/backend/admin/content/view.phtml:572
 #: resources/views/backend/admin/product/create.phtml:218
 #, fuzzy, php-format
 msgid "If left blank, the system will auto generate the %s slug."
@@ -1972,179 +2161,371 @@ msgstr "空欄のままにすると、システムは自動的に%sスラッグ�
 msgid "All Content"
 msgstr "すべてのコンテンツ"
 
-#: resources/views/backend/admin/manager/index.phtml:22
+#: resources/views/backend/admin/content/view.phtml:125
+msgid "Editorial Comments"
+msgstr "担当者のコメント："
+
+#: resources/views/backend/admin/content/view.phtml:143
+#, fuzzy
+msgid "Replying to comment"
+msgstr "コメントへの返信"
+
+#: resources/views/backend/admin/content/view.phtml:147
+#, fuzzy
+msgid "Add an editorial comment..."
+msgstr "編集コメントを追加..."
+
+#: resources/views/backend/admin/content/view.phtml:150
+#, fuzzy
+msgid ""
+"Optional: highlight text in the editor before commenting to save selected "
+"context."
+msgstr ""
+"オプション:コメント前にエディタでテキストをハイライトして選択したコンテキスト"
+"を保存すること。"
+
+#: resources/views/backend/admin/content/view.phtml:154
+msgid "Add Comment"
+msgstr "コメントを追加"
+
+#: resources/views/backend/admin/content/view.phtml:162
+msgid "Open"
+msgstr "開く"
+
+#: resources/views/backend/admin/content/view.phtml:165
+msgid "Resolved"
+msgstr "解決済み"
+
+#: resources/views/backend/admin/content/view.phtml:168
+#: resources/views/backend/layouts/admin-layout.phtml:232
+msgid "All"
+msgstr "すべて"
+
+#: resources/views/backend/admin/content/view.phtml:251
+msgid "Stage"
+msgstr "ステージ"
+
+#: resources/views/backend/admin/content/view.phtml:265
+#, fuzzy
+#| msgid "Last Name"
+msgid "Last Message"
+msgstr "最後のメッセージ"
+
+#: resources/views/backend/admin/content/view.phtml:269
+#, fuzzy
+msgid "Optional message..."
+msgstr "任意メッセージ..."
+
+#: resources/views/backend/admin/content/view.phtml:284
+#, fuzzy
+msgid "Request Review"
+msgstr "審査要請"
+
+#: resources/views/backend/admin/content/view.phtml:296
+#, fuzzy
+msgid "Withdraw Review"
+msgstr "撤退レビュー"
+
+#: resources/views/backend/admin/content/view.phtml:310
+#, fuzzy
+msgid "Not all reviewers have completed their review."
+msgstr "すべてのレビュアーがレビューを完了しているわけではありません。"
+
+#: resources/views/backend/admin/content/view.phtml:318
+msgid "Approve"
+msgstr "承認"
+
+#: resources/views/backend/admin/content/view.phtml:324
+#, fuzzy
+msgid "Request Changes"
+msgstr "変更のリクエスト"
+
+#: resources/views/backend/admin/content/view.phtml:349
+#, fuzzy
+msgid "Mark Review Complete"
+msgstr "マークレビュー完了"
+
+#: resources/views/backend/admin/content/view.phtml:359
+#: resources/views/backend/admin/content/view.phtml:379
+msgid "Reviewers"
+msgstr "レビュー担当者"
+
+#: resources/views/backend/admin/content/view.phtml:375
+#, fuzzy
+msgid "Current Reviewers"
+msgstr "現在のレビュアー"
+
+#: resources/views/backend/admin/content/view.phtml:377
+#, fuzzy
+msgid "Review Participants"
+msgstr "レビュー参加者"
+
+#: resources/views/backend/admin/content/view.phtml:403
+msgid "Complete"
+msgstr "完了"
+
+#: resources/views/backend/admin/content/view.phtml:408
+msgid "Review Closed"
+msgstr "レビュークローズ"
+
+#: resources/views/backend/admin/content/view.phtml:417
+#, fuzzy
+msgid "Review was completed without assigned reviewers."
+msgstr "レビューは指定レビュアーなしで実施されました。"
+
+#: resources/views/backend/admin/content/view.phtml:419
+#, fuzzy
+msgid "No reviewers assigned yet."
+msgstr "まだ査読者は割り当てられていません。"
+
+#: resources/views/backend/admin/content/view.phtml:435
+#, fuzzy
+msgid "Select one or more people who should review this content."
+msgstr "この内容をレビューする方を一人以上選んでください。"
+
+#: resources/views/backend/admin/content/view.phtml:440
+#, fuzzy
+msgid "Save Reviewers"
+msgstr "レビュアーを保存してください"
+
+#: resources/views/backend/admin/content/view.phtml:448
+msgid "Revision History"
+msgstr "改訂記録"
+
+#: resources/views/backend/admin/content/view.phtml:457
+#, fuzzy
+msgid "Load revisions to view previous changes."
+msgstr "リビジョンを読み込んで過去の変更を確認できます。"
+
+#: resources/views/backend/admin/content/view.phtml:464
+msgid "Workflow Activity"
+msgstr "ワークフローのアクティビティ"
+
+#: resources/views/backend/admin/content/view.phtml:478
+#, fuzzy
+msgid "Load activity to view workflow history."
+msgstr "アクティビティを読み込んでワークフロー履歴を表示してください。"
+
+#: resources/views/backend/admin/content/view.phtml:615
+#, fuzzy
+msgid "Restore Revision as Draft"
+msgstr "改訂をドラフトとして復元する"
+
+#: resources/views/backend/admin/content/view.phtml:621
+#, fuzzy
+msgid "Are you sure you want to restore this revision?"
+msgstr "本当にこの改訂を復活させたいのですか?"
+
+#: resources/views/backend/admin/content/view.phtml:624
+#, fuzzy
+msgid ""
+"The selected revision will be restored as a draft. It will not be published "
+"automatically."
+msgstr ""
+"選ばれた改訂版はドラフトとして復元されます。自動的に公開されることはありませ"
+"ん。"
+
+#: resources/views/backend/admin/content/view.phtml:636
+#, fuzzy
+msgid "Restore as Draft"
+msgstr "ドラフトとして復元"
+
+#: resources/views/backend/admin/content/view.phtml:652
+#, fuzzy
+msgid "Delete Editorial Comment"
+msgstr "編集コメントを削除する"
+
+#: resources/views/backend/admin/content/view.phtml:658
+#, fuzzy
+#| msgid "Are you sure you want to delete this content?"
+msgid "Are you sure you want to delete this editorial comment?"
+msgstr "この編集コメントを削除してもいいですか?"
+
+#: resources/views/backend/admin/content/view.phtml:662
+#, fuzzy
+msgid ""
+"This action cannot be undone. If you want to keep the discussion for review "
+"history, consider resolving the comment instead."
+msgstr ""
+"この行動は取り消せない。レビュー履歴として議論を残したいなら、コメントを解決"
+"することを検討してください。"
+
+#: resources/views/backend/admin/content/view.phtml:674
+msgid "Delete Comment"
+msgstr "コメントを削除"
+
+#: resources/views/backend/admin/manager/index.phtml:23
 msgid "Page Builder"
 msgstr "ページビルダー"
 
-#: resources/views/backend/admin/manager/index.phtml:43
+#: resources/views/backend/admin/manager/index.phtml:44
 msgid "Pages"
 msgstr "ページ"
 
-#: resources/views/backend/admin/manager/index.phtml:75
-#, fuzzy
+#: resources/views/backend/admin/manager/index.phtml:76
 msgid "Are you sure you want to delete this page?"
-msgstr "本当にこのページを削除したいのですか?"
+msgstr "このページを削除してもよろしいですか？"
 
-#: resources/views/backend/admin/manager/index.phtml:110
+#: resources/views/backend/admin/manager/index.phtml:118
 msgid "Languages"
 msgstr "言語"
 
-#: resources/views/backend/admin/manager/index.phtml:118
+#: resources/views/backend/admin/manager/index.phtml:126
 #, fuzzy
 msgid "Use Ctrl/Cmd to select multiple."
 msgstr "Ctrl/Cmdで複数選択できます。"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:57
+#: resources/views/backend/admin/manager/page-settings.phtml:59
 msgid "Page"
 msgstr "ページ"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:90
+#: resources/views/backend/admin/manager/page-settings.phtml:92
 msgid "URI"
 msgstr "URI"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:91
+#: resources/views/backend/admin/manager/page-settings.phtml:93
 #, fuzzy
 msgid "Note: add the uri without a trailing slash."
 msgstr "注意:尾にスラッシュをつけずにURIを追加してください。"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:109
+#: resources/views/backend/admin/manager/page-settings.phtml:114
 msgid "Attributes"
 msgstr "属性"
 
-#: resources/views/backend/admin/plugin/index.phtml:70
-#: resources/views/backend/admin/plugin/index.phtml:113
+#: resources/views/backend/admin/plugin/index.phtml:72
+#: resources/views/backend/admin/plugin/index.phtml:115
 #: resources/views/backend/admin/site/index.phtml:103
 #: resources/views/backend/admin/site/index.phtml:153
-#: resources/views/backend/admin/theme/index.phtml:71
-#: resources/views/backend/admin/theme/index.phtml:120
+#: resources/views/backend/admin/theme/index.phtml:73
+#: resources/views/backend/admin/theme/index.phtml:122
 #: resources/views/backend/admin/user/create.phtml:108
 #: resources/views/backend/admin/user/profile.phtml:191
 #: resources/views/backend/admin/user/view.phtml:69
 msgid "Name"
 msgstr "名前"
 
-#: resources/views/backend/admin/plugin/index.phtml:71
-#: resources/views/backend/admin/plugin/index.phtml:114
-#: resources/views/backend/admin/theme/index.phtml:72
-#: resources/views/backend/admin/theme/index.phtml:121
+#: resources/views/backend/admin/plugin/index.phtml:73
+#: resources/views/backend/admin/plugin/index.phtml:116
+#: resources/views/backend/admin/theme/index.phtml:74
+#: resources/views/backend/admin/theme/index.phtml:123
 msgid "Version"
 msgstr "バージョン"
 
-#: resources/views/backend/admin/plugin/index.phtml:75
-#: resources/views/backend/admin/plugin/index.phtml:118
-#: resources/views/backend/admin/theme/index.phtml:76
-#: resources/views/backend/admin/theme/index.phtml:125
+#: resources/views/backend/admin/plugin/index.phtml:77
+#: resources/views/backend/admin/plugin/index.phtml:120
+#: resources/views/backend/admin/theme/index.phtml:78
+#: resources/views/backend/admin/theme/index.phtml:127
 #, fuzzy
 msgid "Show on Subsites"
 msgstr "Subsitesでの番組"
 
-#: resources/views/backend/admin/plugin/index.phtml:90
-#: resources/views/backend/admin/theme/index.phtml:96
+#: resources/views/backend/admin/plugin/index.phtml:92
+#: resources/views/backend/admin/theme/index.phtml:98
 #, fuzzy
 msgid "Developer:"
 msgstr "開発者:"
 
-#: resources/views/backend/admin/plugin/index.phtml:92
-#: resources/views/backend/admin/theme/index.phtml:98
+#: resources/views/backend/admin/plugin/index.phtml:94
+#: resources/views/backend/admin/theme/index.phtml:100
 msgid "View Details"
 msgstr "詳細を見る"
 
-#: resources/views/backend/admin/plugin/index.phtml:176
-#: resources/views/backend/admin/plugin/index.phtml:197
+#: resources/views/backend/admin/plugin/index.phtml:178
+#: resources/views/backend/admin/plugin/index.phtml:199
 #, fuzzy
 msgid "Unable to update plugin visibility."
 msgstr "プラグインの可視性を更新できません。"
 
-#: resources/views/backend/admin/plugin/index.phtml:185
+#: resources/views/backend/admin/plugin/index.phtml:187
 #, fuzzy
 msgid "Plugin is now available on subsites."
 msgstr "プラグインは現在、サブサイトで利用可能です。"
 
-#: resources/views/backend/admin/plugin/index.phtml:190
+#: resources/views/backend/admin/plugin/index.phtml:192
 #, fuzzy
 msgid "Plugin has been removed from subsite plugin lists."
 msgstr "プラグインはサブサイトのプラグインリストから削除されました。"
 
-#: resources/views/backend/admin/plugin/install.phtml:24
+#: resources/views/backend/admin/plugin/install.phtml:25
 #, fuzzy
 msgid "Add Plugins (Experimental)"
 msgstr "プラグインの追加(実験的)"
 
-#: resources/views/backend/admin/plugin/install.phtml:52
-#: resources/views/backend/admin/plugin/install.phtml:107
-#: resources/views/backend/admin/theme/install.phtml:52
-#: resources/views/backend/admin/theme/install.phtml:107
+#: resources/views/backend/admin/plugin/install.phtml:53
+#: resources/views/backend/admin/plugin/install.phtml:108
+#: resources/views/backend/admin/theme/install.phtml:53
+#: resources/views/backend/admin/theme/install.phtml:108
 msgid "Vendor"
 msgstr "販売者"
 
-#: resources/views/backend/admin/plugin/install.phtml:71
-#: resources/views/backend/admin/theme/install.phtml:71
+#: resources/views/backend/admin/plugin/install.phtml:72
+#: resources/views/backend/admin/theme/install.phtml:72
 msgid "Installed"
 msgstr "インストール済み"
 
-#: resources/views/backend/admin/plugin/install.phtml:73
-#: resources/views/backend/admin/theme/install.phtml:73
+#: resources/views/backend/admin/plugin/install.phtml:74
+#: resources/views/backend/admin/theme/install.phtml:74
 msgid "Available"
 msgstr "利用可能"
 
-#: resources/views/backend/admin/plugin/install.phtml:86
-#: resources/views/backend/admin/plugin/install.phtml:205
-#: resources/views/backend/admin/plugin/install.phtml:229
-#: resources/views/backend/admin/plugin/install.phtml:271
-#: resources/views/backend/admin/theme/install.phtml:86
-#: resources/views/backend/admin/theme/install.phtml:205
-#: resources/views/backend/admin/theme/install.phtml:229
-#: resources/views/backend/admin/theme/install.phtml:271
+#: resources/views/backend/admin/plugin/install.phtml:87
+#: resources/views/backend/admin/plugin/install.phtml:206
+#: resources/views/backend/admin/plugin/install.phtml:230
+#: resources/views/backend/admin/plugin/install.phtml:272
+#: resources/views/backend/admin/theme/install.phtml:87
+#: resources/views/backend/admin/theme/install.phtml:206
+#: resources/views/backend/admin/theme/install.phtml:230
+#: resources/views/backend/admin/theme/install.phtml:272
 msgid "Remove"
 msgstr "削除"
 
-#: resources/views/backend/admin/plugin/install.phtml:89
-#: resources/views/backend/admin/theme/install.phtml:89
+#: resources/views/backend/admin/plugin/install.phtml:90
+#: resources/views/backend/admin/theme/install.phtml:90
 msgid "Unavailable"
 msgstr "利用不可"
 
-#: resources/views/backend/admin/plugin/install.phtml:98
-#: resources/views/backend/admin/plugin/install.phtml:199
-#: resources/views/backend/admin/plugin/install.phtml:230
-#: resources/views/backend/admin/theme/install.phtml:98
-#: resources/views/backend/admin/theme/install.phtml:199
-#: resources/views/backend/admin/theme/install.phtml:230
+#: resources/views/backend/admin/plugin/install.phtml:99
+#: resources/views/backend/admin/plugin/install.phtml:200
+#: resources/views/backend/admin/plugin/install.phtml:231
+#: resources/views/backend/admin/theme/install.phtml:99
+#: resources/views/backend/admin/theme/install.phtml:200
+#: resources/views/backend/admin/theme/install.phtml:231
 msgid "Install"
 msgstr "インストール"
 
-#: resources/views/backend/admin/plugin/install.phtml:173
-#: resources/views/backend/admin/theme/install.phtml:173
+#: resources/views/backend/admin/plugin/install.phtml:174
+#: resources/views/backend/admin/theme/install.phtml:174
 msgid "Removing..."
 msgstr "ボタンを削除します。"
 
-#: resources/views/backend/admin/plugin/install.phtml:174
-#: resources/views/backend/admin/theme/install.phtml:174
+#: resources/views/backend/admin/plugin/install.phtml:175
+#: resources/views/backend/admin/theme/install.phtml:175
 msgid "Installing..."
 msgstr "インストール中..."
 
-#: resources/views/backend/admin/plugin/install.phtml:213
-#: resources/views/backend/admin/theme/install.phtml:213
+#: resources/views/backend/admin/plugin/install.phtml:214
+#: resources/views/backend/admin/theme/install.phtml:214
 #, fuzzy
 #| msgid "Remove featured image"
 msgid "Remove failed."
 msgstr "削除失敗。"
 
-#: resources/views/backend/admin/plugin/install.phtml:214
-#: resources/views/backend/admin/theme/install.phtml:214
+#: resources/views/backend/admin/plugin/install.phtml:215
+#: resources/views/backend/admin/theme/install.phtml:215
 msgid "Install failed."
 msgstr "インストールに失敗しました。"
 
-#: resources/views/backend/admin/plugin/install.phtml:248
+#: resources/views/backend/admin/plugin/install.phtml:249
 msgid "Remove Plugin"
 msgstr "プラグインを削除"
 
-#: resources/views/backend/admin/plugin/install.phtml:254
+#: resources/views/backend/admin/plugin/install.phtml:255
 #, fuzzy
 msgid "Are you sure you want to remove this plugin from the system?"
 msgstr "このプラグインをシステムから削除したいと本当に思っていますか?"
 
-#: resources/views/backend/admin/plugin/install.phtml:259
-#: resources/views/backend/admin/theme/install.phtml:259
+#: resources/views/backend/admin/plugin/install.phtml:260
+#: resources/views/backend/admin/theme/install.phtml:260
 msgid "This action cannot be undone."
 msgstr "この操作を元に戻すことはできません。"
 
@@ -2180,7 +2561,7 @@ msgid "The purchase url is where customers can purchase your product."
 msgstr "購入URLは、顧客があなたの製品を購入できる場所です。"
 
 #: resources/views/backend/admin/product/index.phtml:31
-#: resources/views/backend/layouts/admin-layout.phtml:185
+#: resources/views/backend/layouts/admin-layout.phtml:210
 msgid "All Products"
 msgstr "すべての商品"
 
@@ -2218,7 +2599,7 @@ msgstr "サブドメイン"
 
 #: resources/views/backend/admin/site/index.phtml:69
 #: resources/views/backend/admin/site/view.phtml:70
-#: resources/views/backend/general.phtml:57
+#: resources/views/backend/settings.phtml:60
 msgid "Site Name"
 msgstr "サイト名"
 
@@ -2359,39 +2740,39 @@ msgstr "サイトマッピング"
 msgid "Public"
 msgstr "公開"
 
-#: resources/views/backend/admin/theme/index.phtml:70
-#: resources/views/backend/admin/theme/index.phtml:119
+#: resources/views/backend/admin/theme/index.phtml:72
+#: resources/views/backend/admin/theme/index.phtml:121
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
-#: resources/views/backend/admin/theme/index.phtml:183
-#: resources/views/backend/admin/theme/index.phtml:204
+#: resources/views/backend/admin/theme/index.phtml:185
+#: resources/views/backend/admin/theme/index.phtml:206
 #, fuzzy
 msgid "Unable to update theme visibility."
 msgstr "テーマの可視性を更新できません。"
 
-#: resources/views/backend/admin/theme/index.phtml:192
+#: resources/views/backend/admin/theme/index.phtml:194
 #, fuzzy
 msgid "Theme is now available on subsites."
 msgstr "テーマは現在サブサイトで利用可能です。"
 
-#: resources/views/backend/admin/theme/index.phtml:197
+#: resources/views/backend/admin/theme/index.phtml:199
 #, fuzzy
 msgid "Theme has been removed from subsite theme lists."
 msgstr "テーマはサブサイトのテーマリストから削除されました。"
 
-#: resources/views/backend/admin/theme/install.phtml:24
+#: resources/views/backend/admin/theme/install.phtml:25
 #, fuzzy
 msgid "Add Themes (Experimental)"
 msgstr "テーマの追加(実験的)"
 
-#: resources/views/backend/admin/theme/install.phtml:248
+#: resources/views/backend/admin/theme/install.phtml:249
 #, fuzzy
 #| msgid "Remove featured image"
 msgid "Remove Theme"
 msgstr "テーマを削除"
 
-#: resources/views/backend/admin/theme/install.phtml:254
+#: resources/views/backend/admin/theme/install.phtml:255
 #, fuzzy
 msgid "Are you sure you want to remove this theme from the system?"
 msgstr "このテーマをシステムから削除したいのですか?"
@@ -2478,7 +2859,7 @@ msgstr ""
 "い。"
 
 #: resources/views/backend/admin/user/profile.phtml:42
-#: resources/views/backend/layouts/admin-layout.phtml:103
+#: resources/views/backend/layouts/admin-layout.phtml:126
 msgid "Profile"
 msgstr "プロフィール"
 
@@ -2538,19 +2919,19 @@ msgstr "タイムゾーン"
 
 #: resources/views/backend/admin/user/profile.phtml:314
 #: resources/views/backend/admin/user/view.phtml:196
-#: resources/views/backend/reading.phtml:63
+#: resources/views/backend/settings.phtml:122
 msgid "Date Format"
 msgstr "日付フォーマット"
 
 #: resources/views/backend/admin/user/profile.phtml:319
 #: resources/views/backend/admin/user/view.phtml:201
-#: resources/views/backend/reading.phtml:67
+#: resources/views/backend/settings.phtml:126
 msgid "Time Format"
 msgstr "時間の書式"
 
 #: resources/views/backend/admin/user/profile.phtml:335
 #: resources/views/backend/admin/user/view.phtml:209
-#: resources/views/backend/general.phtml:69
+#: resources/views/backend/settings.phtml:72
 msgid "Locale"
 msgstr "ロケール"
 
@@ -2618,36 +2999,10 @@ msgstr "リセット"
 msgid "Devflow"
 msgstr "Devflow"
 
-#: resources/views/backend/general.phtml:61
-msgid "Site Description"
-msgstr "サイトの説明"
-
-#: resources/views/backend/general.phtml:65
-msgid "Admin Email"
-msgstr "管理者のメールアドレス"
-
-#: resources/views/backend/general.phtml:76
-#, fuzzy
-msgid "Cookie Expire"
-msgstr "クッキーの有効期限"
-
-#: resources/views/backend/general.phtml:80
-msgid "Cookie Path"
-msgstr "Cookie のパス"
-
-#: resources/views/backend/general.phtml:84
-#, fuzzy
-msgid "System Timezone"
-msgstr "システムタイムゾーン"
-
-#: resources/views/backend/general.phtml:93
-msgid "API Key"
-msgstr "APIキー"
-
 #: resources/views/backend/index.phtml:22
 #: resources/views/backend/index.phtml:27
-#: resources/views/backend/layouts/admin-layout.phtml:143
-#: resources/views/backend/updates.phtml:30
+#: resources/views/backend/layouts/admin-layout.phtml:166
+#: resources/views/backend/updates.phtml:29
 msgid "Dashboard"
 msgstr "ダッシュボード"
 
@@ -2657,105 +3012,102 @@ msgid "Control panel"
 msgstr "コントロールパネル"
 
 #: resources/views/backend/index.phtml:26
-#: resources/views/backend/layouts/admin-layout.phtml:149
+#: resources/views/backend/layouts/admin-layout.phtml:172
 msgid "Home"
 msgstr "ホーム"
 
-#: resources/views/backend/layouts/admin-layout.phtml:79
+#: resources/views/backend/layouts/admin-layout.phtml:81
 msgid "Toggle navigation"
 msgstr "ナビゲーションを切り替え"
 
-#: resources/views/backend/layouts/admin-layout.phtml:96
+#: resources/views/backend/layouts/admin-layout.phtml:93
+#, fuzzy
+msgid "No workflow notifications"
+msgstr "ワークフロー通知はありません"
+
+#: resources/views/backend/layouts/admin-layout.phtml:100
+msgid "Mark all as read"
+msgstr "すべて既読にする"
+
+#: resources/views/backend/layouts/admin-layout.phtml:119
 msgid "Member since"
 msgstr "会員歴"
 
-#: resources/views/backend/layouts/admin-layout.phtml:108
+#: resources/views/backend/layouts/admin-layout.phtml:131
 #, fuzzy
 msgid "Switch back"
 msgstr "スイッチバック"
 
-#: resources/views/backend/layouts/admin-layout.phtml:112
+#: resources/views/backend/layouts/admin-layout.phtml:135
 msgid "Logout"
 msgstr "ログアウト"
 
-#: resources/views/backend/layouts/admin-layout.phtml:134
+#: resources/views/backend/layouts/admin-layout.phtml:157
 msgid "Online"
 msgstr "オンライン"
 
-#: resources/views/backend/layouts/admin-layout.phtml:139
+#: resources/views/backend/layouts/admin-layout.phtml:162
 #, fuzzy
 msgid "MAIN NAVIGATION"
 msgstr "メインナビゲーション"
 
-#: resources/views/backend/layouts/admin-layout.phtml:150
-#: resources/views/backend/updates.phtml:26
-#: resources/views/backend/updates.phtml:31
+#: resources/views/backend/layouts/admin-layout.phtml:174
+#: resources/views/backend/updates.phtml:25
+#: resources/views/backend/updates.phtml:30
 msgid "Updates"
 msgstr "更新"
 
-#: resources/views/backend/layouts/admin-layout.phtml:151
+#: resources/views/backend/layouts/admin-layout.phtml:176
 #: resources/views/backend/snapshot.phtml:35
 msgid "System Report"
 msgstr "システムレポート"
 
-#: resources/views/backend/layouts/admin-layout.phtml:157
+#: resources/views/backend/layouts/admin-layout.phtml:182
 #, fuzzy
 msgid "Flush Cache"
 msgstr "フラッシュキャッシュ"
 
-#: resources/views/backend/layouts/admin-layout.phtml:170
+#: resources/views/backend/layouts/admin-layout.phtml:195
 msgid "Manage"
 msgstr "管理"
 
-#: resources/views/backend/layouts/admin-layout.phtml:186
-#: resources/views/backend/layouts/admin-layout.phtml:206
-#: resources/views/backend/layouts/admin-layout.phtml:269
+#: resources/views/backend/layouts/admin-layout.phtml:211
+#: resources/views/backend/layouts/admin-layout.phtml:233
+#: resources/views/backend/layouts/admin-layout.phtml:298
 msgid "Add New"
 msgstr "新規追加"
 
-#: resources/views/backend/layouts/admin-layout.phtml:205
-msgid "All"
-msgstr "すべて"
-
-#: resources/views/backend/layouts/admin-layout.phtml:227
+#: resources/views/backend/layouts/admin-layout.phtml:254
 msgid "Installed Plugins"
 msgstr "インストール済みのプラグイン"
 
-#: resources/views/backend/layouts/admin-layout.phtml:229
+#: resources/views/backend/layouts/admin-layout.phtml:256
 msgid "Add Plugin"
 msgstr "プラグインの追加"
 
-#: resources/views/backend/layouts/admin-layout.phtml:245
+#: resources/views/backend/layouts/admin-layout.phtml:273
 msgid "Add Theme"
 msgstr "テーマを追加する"
 
-#: resources/views/backend/layouts/admin-layout.phtml:253
+#: resources/views/backend/layouts/admin-layout.phtml:282
 #, fuzzy
 msgid "Vihzhuo"
 msgstr "ヴィジュオ"
 
-#: resources/views/backend/layouts/admin-layout.phtml:268
+#: resources/views/backend/layouts/admin-layout.phtml:297
 msgid "All Users"
 msgstr "全てのユーザー"
 
-#: resources/views/backend/layouts/admin-layout.phtml:270
-#: resources/views/backend/layouts/admin-layout.phtml:278
+#: resources/views/backend/layouts/admin-layout.phtml:299
+#: resources/views/backend/layouts/admin-layout.phtml:307
 msgid "Your Profile"
 msgstr "あなたのプロフィール"
 
-#: resources/views/backend/layouts/admin-layout.phtml:286
-msgid "Options"
-msgstr "オプション"
+#: resources/views/backend/layouts/admin-layout.phtml:315
+msgid "Settings"
+msgstr "設定"
 
-#: resources/views/backend/layouts/admin-layout.phtml:292
-msgid "General"
-msgstr "一般"
-
-#: resources/views/backend/layouts/admin-layout.phtml:293
-msgid "Reading"
-msgstr "読む"
-
-#: resources/views/backend/layouts/admin-layout.phtml:320
+#: resources/views/backend/layouts/admin-layout.phtml:348
 #, fuzzy
 msgid "Login expires in "
 msgstr "ログイン期限切れ"
@@ -2764,21 +3116,112 @@ msgstr "ログイン期限切れ"
 msgid "Powered by"
 msgstr "Powered by"
 
-#: resources/views/backend/reading.phtml:55
+#: resources/views/backend/partial/security-advisory.phtml:15
+#, fuzzy
+msgid "Composer Security Advisories"
+msgstr "作曲家のセキュリティ注意事項"
+
+#: resources/views/backend/partial/security-advisory.phtml:21
+#, fuzzy
+msgid "No Composer security audit has been run yet."
+msgstr "Composerのセキュリティ監査はまだ実施されていません。"
+
+#: resources/views/backend/partial/security-advisory.phtml:23
+#, fuzzy
+msgid "Run:"
+msgstr "ラン:"
+
+#: resources/views/backend/partial/security-advisory.phtml:28
+#, fuzzy
+msgid "Security audit failed."
+msgstr "セキュリティ監査は失敗しました。"
+
+#: resources/views/backend/partial/security-advisory.phtml:29
+msgid "Unknown error."
+msgstr "不明なエラー。"
+
+#: resources/views/backend/partial/security-advisory.phtml:33
+#: resources/views/backend/partial/security-advisory.phtml:42
+#: resources/views/backend/partial/security-advisory.phtml:86
+#, fuzzy
+msgid "Last checked:"
+msgstr "最終確認日:"
+
+#: resources/views/backend/partial/security-advisory.phtml:37
+#, fuzzy
+msgid "security advisories found."
+msgstr "セキュリティ注意事項が確認されました。"
+
+#: resources/views/backend/partial/security-advisory.phtml:38
+#, fuzzy
+msgid "Update the affected Composer packages as soon as possible."
+msgstr "影響を受けたComposerパッケージはできるだけ早く更新してください。"
+
+#: resources/views/backend/partial/security-advisory.phtml:66
+#, fuzzy
+msgid "Affected versions:"
+msgstr "影響を受けたバージョン:"
+
+#: resources/views/backend/partial/security-advisory.phtml:73
+#, fuzzy
+#| msgid "View Details"
+msgid "View advisory"
+msgstr "アドバイザリーを見る"
+
+#: resources/views/backend/partial/security-advisory.phtml:82
+#, fuzzy
+msgid "No known Composer security advisories found."
+msgstr "既知のComposerセキュリティ注意事項は検出されませんでした。"
+
+#: resources/views/backend/settings.phtml:55
+msgid "General Settings"
+msgstr "一般設定"
+
+#: resources/views/backend/settings.phtml:64
+msgid "Site Description"
+msgstr "サイトの説明"
+
+#: resources/views/backend/settings.phtml:68
+msgid "Admin Email"
+msgstr "管理者のメールアドレス"
+
+#: resources/views/backend/settings.phtml:79
+#, fuzzy
+msgid "Cookie Expire"
+msgstr "クッキーの有効期限"
+
+#: resources/views/backend/settings.phtml:83
+msgid "Cookie Path"
+msgstr "Cookie のパス"
+
+#: resources/views/backend/settings.phtml:87
+#, fuzzy
+msgid "System Timezone"
+msgstr "システムタイムゾーン"
+
+#: resources/views/backend/settings.phtml:96
+msgid "API Key"
+msgstr "APIキー"
+
+#: resources/views/backend/settings.phtml:109
+msgid "Reading Settings"
+msgstr "読み取りの設定"
+
+#: resources/views/backend/settings.phtml:114
 msgid "Charset"
 msgstr "文字セット"
 
-#: resources/views/backend/reading.phtml:59
+#: resources/views/backend/settings.phtml:118
 #, fuzzy
 msgid "Content per Page"
 msgstr "ページごとのコンテンツ"
 
-#: resources/views/backend/updates.phtml:27
+#: resources/views/backend/updates.phtml:26
 #, fuzzy
 msgid "Devflow CMF, plugins, and themes"
 msgstr "Devflow CMF、プラグイン、テーマ"
 
-#: resources/views/backend/updates.phtml:45
+#: resources/views/backend/updates.phtml:49
 #, fuzzy
 msgid ""
 "Update checks are temporarily unavailable. Showing cached or fallback "
@@ -2787,48 +3230,65 @@ msgstr ""
 "更新チェックは一時的に利用できません。キャッシュまたはフォールバックの結果を"
 "表示します。"
 
-#: resources/views/backend/updates.phtml:51
+#: resources/views/backend/updates.phtml:55
 #, fuzzy, php-format
 msgid "Devflow <strong>%s</strong> is available."
 msgstr "Devflow <strong>%s</strong> が利用可能です。"
 
-#: resources/views/backend/updates.phtml:52
+#: resources/views/backend/updates.phtml:56
 #, fuzzy, php-format
 msgid "Current version: <strong>%s</strong>"
 msgstr "現行バージョン: <strong>%s</strong>"
 
-#: resources/views/backend/updates.phtml:55
+#: resources/views/backend/updates.phtml:59
 #, fuzzy, php-format
 msgid "Run %s from the command line to update Devflow core."
 msgstr "コマンドラインから%sを実行してDevflow Coreを更新してください。"
 
-#: resources/views/backend/updates.phtml:59
+#: resources/views/backend/updates.phtml:63
 #, fuzzy, php-format
 msgid "Devflow %s is up to date."
 msgstr "Devflow %sは最新です。"
 
-#: resources/views/backend/updates.phtml:79
+#: resources/views/backend/updates.phtml:87
 #, fuzzy, php-format
 #| msgid "Update User"
 msgid "Update All %s."
 msgstr "%s全て更新してください。"
 
-#: resources/views/backend/updates.phtml:91
+#: resources/views/backend/updates.phtml:99
 #, fuzzy, php-format
 msgid "No %s updates available."
 msgstr "%sの更新はありません。"
 
-#: resources/views/backend/updates.phtml:100
+#: resources/views/backend/updates.phtml:108
 msgid "Package"
 msgstr "パッケージ"
 
-#: resources/views/backend/updates.phtml:101
+#: resources/views/backend/updates.phtml:109
 msgid "Current"
 msgstr "現在"
 
-#: resources/views/backend/updates.phtml:102
+#: resources/views/backend/updates.phtml:110
 msgid "Latest"
 msgstr "最新"
+
+#, fuzzy
+#~ msgid "General options exception occurred and was logged."
+#~ msgstr "一般的なオプションの例外が発生し、ログに記録されました。"
+
+#, fuzzy
+#~ msgid "Reading options exception occurred and was logged."
+#~ msgstr "リーディングオプションの例外が発生し、記録されました。"
+
+#~ msgid "Options"
+#~ msgstr "オプション"
+
+#~ msgid "General"
+#~ msgstr "一般"
+
+#~ msgid "Reading"
+#~ msgstr "読む"
 
 #, fuzzy, php-format
 #~ msgid "Unable to fetch registry URL [%s]. Response: %s"

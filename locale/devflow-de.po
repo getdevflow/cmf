@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow CMF\n"
-"POT-Creation-Date: 2026-05-25 14:34-0600\n"
-"PO-Revision-Date: 2026-05-25 14:34-0600\n"
+"POT-Creation-Date: 2026-06-25 23:04-0600\n"
+"PO-Revision-Date: 2026-06-25 23:04-0600\n"
 "Last-Translator: Joshua Parker <joshua@joshuaparker.dev>\n"
 "Language-Team: Joshua Parker\n"
 "Language: de\n"
@@ -225,33 +225,33 @@ msgstr ""
 msgid "Password reset exception occurred and was logged."
 msgstr "Die Passwort-Zurücksetzungs-Ausnahme trat auf und wurde protokolliert."
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:113
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:185
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:220
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:122
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:199
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:247
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:67
 #: core/Infrastructure/Http/Controllers/AdminContentTypeController.php:119
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:54
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:80
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:109
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:169
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:171
 #: core/Infrastructure/Http/Controllers/AdminMediaController.php:135
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:52
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:78
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:110
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:64
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:127
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:193
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:63
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:126
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:191
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:64
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:118
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:169
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:227
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:285
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:330
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:386
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:449
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:288
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:336
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:392
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:455
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:56
 #: core/Infrastructure/Http/Controllers/AdminThemeController.php:104
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:138
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:140
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:93
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:209
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:237
@@ -267,20 +267,40 @@ msgstr "Die Passwort-Zurücksetzungs-Ausnahme trat auf und wurde protokolliert."
 #: core/Infrastructure/Http/Controllers/ExtensionInstallerController.php:117
 #: core/Infrastructure/Http/Controllers/ExtensionInstallerController.php:217
 #: core/Infrastructure/Http/Controllers/PageBuilderController.php:62
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:49
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:46
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:53
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:78
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:100
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:121
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:142
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:51
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:60
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:94
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:101
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:142
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:149
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:203
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:210
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionDiffService.php:45
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:67
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:95
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:857
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1014
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1332
 msgid "Access denied."
 msgstr "Zugriff verweigert."
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:123
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:132
 #, fuzzy, php-format
 msgid "Create %s Content"
 msgstr "Erstellen Sie %s Inhalte"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:231
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:258
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:786
 msgid "Content not found."
 msgstr "Inhalt nicht gefunden"
 
-#: core/Infrastructure/Http/Controllers/AdminContentController.php:240
+#: core/Infrastructure/Http/Controllers/AdminContentController.php:267
 #, php-format
 msgid "%s Content"
 msgstr "%s Inhalt"
@@ -295,12 +315,33 @@ msgstr "Inhalts-Typen"
 msgid "The content type does not exist."
 msgstr "Der Inhaltstyp existiert nicht."
 
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:84
+#, fuzzy
+msgid "Reviewers updated."
+msgstr "Rezensenten aktualisiert."
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:112
+#, fuzzy
+msgid "Review marked complete."
+msgstr "Überprüfung als abgeschlossen markiert."
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:140
+#, fuzzy
+msgid "Review request withdrawn."
+msgstr "Prüfungsantrag zurückgezogen."
+
+#: core/Infrastructure/Http/Controllers/AdminContentWorkflowController.php:511
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:120
+#, fuzzy
+msgid "Revision restored as draft."
+msgstr "Überarbeitung als Entwurf wiederhergestellt."
+
 #: core/Infrastructure/Http/Controllers/AdminDashboardController.php:89
 #, fuzzy
 msgid "System Snapshot"
 msgstr "System-Snapshot"
 
-#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:143
+#: core/Infrastructure/Http/Controllers/AdminDashboardController.php:145
 msgid "Cache flushed successfully."
 msgstr "Der Cache wurde erfolgreich geleert."
 
@@ -313,32 +354,20 @@ msgstr "Medienbibliothek"
 msgid "elFinder"
 msgstr "elFinder"
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:61
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:101
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:194
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:222
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:289
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:64
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:107
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:201
 msgid "Access denied"
 msgstr "Zugriff verweigert"
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:171
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:178
 #, fuzzy
-msgid "General options exception occurred and was logged."
-msgstr "Die Ausnahme für allgemeine Optionen trat auf und wurde protokolliert."
+msgid "System settings exception occurred and was logged."
+msgstr "Die Ausnahme der Systemeinstellungen trat auf und wurde protokolliert."
 
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:201
-msgid "General Options"
-msgstr "Allgemeine Optionen"
-
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:266
-#, fuzzy
-msgid "Reading options exception occurred and was logged."
-msgstr "Die Ausnahme für Leseoptionen trat auf und wurde protokolliert."
-
-#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:296
-#, fuzzy
-msgid "Reading Options"
-msgstr "Leseoptionen"
+#: core/Infrastructure/Http/Controllers/AdminOptionsController.php:208
+msgid "System Settings"
+msgstr "Systemeinstellungen"
 
 #: core/Infrastructure/Http/Controllers/AdminPluginController.php:60
 msgid "Plugins"
@@ -362,17 +391,17 @@ msgstr "Plugin deaktiviert."
 msgid "Plugin deactivation exception occurred and was logged."
 msgstr "Eine Plugin-Deaktivierungs-Ausnahme trat auf und wurde protokolliert."
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:74
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:73
 msgid "Products"
 msgstr "Produkte"
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:135
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:134
 msgid "Create Product"
 msgstr "Produkt erstellen"
 
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:204
-#: core/Infrastructure/Http/Controllers/AdminProductController.php:226
-#: core/Infrastructure/Services/Product/ProductService.php:75
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:202
+#: core/Infrastructure/Http/Controllers/AdminProductController.php:223
+#: core/Infrastructure/Services/Product/ProductService.php:76
 #, fuzzy
 msgid "The product does not exist."
 msgstr "Das Produkt existiert nicht."
@@ -381,10 +410,10 @@ msgstr "Das Produkt existiert nicht."
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:125
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:176
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:234
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:292
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:336
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:393
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:456
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:295
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:342
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:399
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:462
 #, fuzzy
 msgid "Multisite is not enabled."
 msgstr "Multisite ist nicht aktiviert."
@@ -416,9 +445,9 @@ msgid "Content types error."
 msgstr "Fehler in den Inhaltstypen."
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:205
-#: core/Infrastructure/Services/Content/ContentService.php:170
+#: core/Infrastructure/Services/Content/ContentService.php:186
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:120
-#: core/Infrastructure/Services/Product/ProductService.php:150
+#: core/Infrastructure/Services/Product/ProductService.php:166
 #, fuzzy
 msgid "Change exception occurred and was logged."
 msgstr "Eine Ausnahme der Änderung erfolgte und wurde protokolliert."
@@ -429,48 +458,48 @@ msgstr "Eine Ausnahme der Änderung erfolgte und wurde protokolliert."
 msgid "The site does not exist."
 msgstr "Die Seite existiert nicht."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:299
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:302
 #, fuzzy
 msgid "The action is not allowed."
 msgstr "Die Aktion ist nicht erlaubt."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:310
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:313
 #, fuzzy
 msgid "Manage System Users"
 msgstr "Systembenutzer verwalten"
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:342
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:348
 #, fuzzy
 msgid "You cannot submit an empty site id."
 msgstr "Du kannst keine leere Site-ID einreichen."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:348
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:354
 #, fuzzy
 msgid "You cannot submit an empty user role."
 msgstr "Du kannst keine leere Benutzerrolle einreichen."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:358
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:364
 msgid "An error occurred."
 msgstr "Ein Fehler ist aufgetreten."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:428
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:434
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:144
 #, fuzzy
 msgid "Delete exception occurred and was logged."
 msgstr "Die Delete-Ausnahme trat auf und wurde protokolliert."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:464
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:470
 #, fuzzy
 msgid "This action is not allowed."
 msgstr "Diese Maßnahme ist nicht erlaubt."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:475
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:481
 #, fuzzy
 msgid "A site check exception occurred and was logged."
 msgstr ""
 "Eine Ausnahme für die Standortkontrolle trat auf und wurde protokolliert."
 
-#: core/Infrastructure/Http/Controllers/AdminSiteController.php:498
+#: core/Infrastructure/Http/Controllers/AdminSiteController.php:504
 #, fuzzy
 msgid "A site deletion exception occurred and was logged."
 msgstr ""
@@ -480,22 +509,22 @@ msgstr ""
 msgid "Themes"
 msgstr "Themes"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:112
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:113
 msgid "Theme activated."
 msgstr "Theme aktiviert."
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:116
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:117
 #, fuzzy
 msgid "Theme activation exception occurred and was logged."
 msgstr ""
 "Die Ausnahme für die Thema-Aktivierung trat auf und wurde protokolliert."
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:146
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:149
 #, fuzzy
 msgid "Theme deactivated."
 msgstr "Thema deaktiviert."
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:150
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:153
 #, fuzzy
 msgid "Theme deactivation exception occurred and was logged."
 msgstr "Die Theme-Deaktivierungs-Ausnahme trat auf und wurde protokolliert."
@@ -717,11 +746,11 @@ msgstr ""
 "Theme kann nicht entfernt werden, da es auf einer oder mehreren Seiten "
 "aktiviert ist."
 
-#: core/Infrastructure/Http/Controllers/UpdatesController.php:74
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:159
 msgid "Package updated successfully."
 msgstr "﻿Pake erfolgreich aktualisiert"
 
-#: core/Infrastructure/Http/Controllers/UpdatesController.php:91
+#: core/Infrastructure/Http/Controllers/UpdatesController.php:176
 #, fuzzy
 #| msgid "Cache flushed successfully."
 msgid "Updates completed successfully."
@@ -732,70 +761,208 @@ msgstr "Aktualisierungen erfolgreich abgeschlossen."
 msgid "User removed from site."
 msgstr "Nutzer von der Seite entfernt."
 
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:83
-#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:111
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:74
+#: core/Infrastructure/Http/Controllers/WebsiteManagerController.php:258
 #, fuzzy
 msgid "Website Manager"
 msgstr "Website-Manager"
 
-#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:113
+#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:107
 #, fuzzy, php-format
 msgid "Devflow %s"
 msgstr "Devflow %s"
 
-#: core/Infrastructure/Services/Content/ContentService.php:96
+#: core/Infrastructure/Services/Content/ContentService.php:97
 #, fuzzy
 msgid "The content does not exist."
 msgstr "Der Inhalt existiert nicht."
 
-#: core/Infrastructure/Services/Content/ContentService.php:123
+#: core/Infrastructure/Services/Content/ContentService.php:131
 #, fuzzy
 msgid "Content added successfully."
 msgstr "Inhalte erfolgreich hinzugefügt."
 
-#: core/Infrastructure/Services/Content/ContentService.php:136
+#: core/Infrastructure/Services/Content/ContentService.php:144
 #, fuzzy
 msgid "Could not create content. Please try again later."
 msgstr ""
 "Ich konnte keine Inhalte erstellen. Bitte versuchen Sie es später noch "
 "einmal."
 
-#: core/Infrastructure/Services/Content/ContentService.php:196
-#: core/Infrastructure/Services/Product/ProductService.php:176
+#: core/Infrastructure/Services/Content/ContentService.php:212
+#: core/Infrastructure/Services/Product/ProductService.php:192
 #, fuzzy
 msgid "Removal of featured image was successful."
 msgstr "Die Entfernung des Feature-Bildes war erfolgreich."
 
-#: core/Infrastructure/Services/Content/ContentService.php:206
-#: core/Infrastructure/Services/Product/ProductService.php:186
+#: core/Infrastructure/Services/Content/ContentService.php:222
+#: core/Infrastructure/Services/Product/ProductService.php:202
 #, fuzzy
 msgid "Removal exception occurred and was logged."
 msgstr "Die Ausnahme für die Entfernung erfolgte und wurde protokolliert."
 
-#: core/Infrastructure/Services/Content/ContentService.php:255
-#: core/Infrastructure/Services/Content/ContentService.php:283
-#: core/Infrastructure/Services/Product/ProductService.php:230
+#: core/Infrastructure/Services/Content/ContentService.php:271
+#: core/Infrastructure/Services/Content/ContentService.php:306
+#: core/Infrastructure/Services/Product/ProductService.php:253
 #, fuzzy
 msgid "A deletion exception occurred and was logged."
 msgstr "Eine Löschungsausnahme trat auf und wurde protokolliert."
 
-#: core/Infrastructure/Services/Content/ContentService.php:273
-#: core/Infrastructure/Services/Product/ProductService.php:220
+#: core/Infrastructure/Services/Content/ContentService.php:296
+#: core/Infrastructure/Services/Product/ProductService.php:243
 #, fuzzy
 msgid "Removal was successful."
 msgstr "Die Entfernung war erfolgreich."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionDiffService.php:114
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:176
+#, fuzzy
+#| msgid "User not found."
+msgid "Revision not found."
+msgstr "Version nicht gefunden."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:136
+#, fuzzy
+#| msgid "Remove featured image"
+msgid "Revision restore failed."
+msgstr "Die Wiederherstellung der Revision ist fehlgeschlagen."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentRevisionService.php:250
+#, fuzzy, php-format
+msgid ""
+"Cannot restore this revision because the event history does not contain a "
+"complete snapshot. Missing: %s"
+msgstr ""
+"Diese Version kann nicht wiederhergestellt werden, da die Ereignishistorie "
+"keinen vollständigen Schnappschuss enthält. Fehlt: %s"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:112
+#, fuzzy
+msgid "Content ready for review"
+msgstr "Inhalte sind zur Überprüfung bereit"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:113
+#, fuzzy
+msgid "A content item is ready for review."
+msgstr "Ein Inhaltspunkt ist zur Überprüfung bereit."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:183
+#, fuzzy
+msgid "Review assignment updated"
+msgstr "Überprüfung der Zuweisung aktualisiert"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:184
+#, fuzzy
+msgid "You have been assigned to review content."
+msgstr "Sie wurden beauftragt, Inhalte zu überprüfen."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:375
+#, fuzzy
+msgid "You are not assigned as a reviewer."
+msgstr "Du bist nicht als Gutachter zugeteilt."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:415
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:429
+#, fuzzy
+msgid "All assigned reviewers have completed their review."
+msgstr "Alle zugewiesenen Gutachter haben ihre Überprüfung abgeschlossen."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:428
+#, fuzzy
+msgid "Content ready for approval"
+msgstr "Inhalt bereit zur Genehmigung"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:548
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:848
+#, fuzzy
+msgid "Comment cannot be empty."
+msgstr "Kommentar darf nicht leer sein."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:603
+#, fuzzy
+msgid "Content is not scheduled."
+msgstr "Die Inhalte sind nicht geplant."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:607
+#, fuzzy
+msgid "Scheduled publish date has not passed."
+msgstr "Das geplante Veröffentlichungsdatum ist noch nicht vergangen."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:626
+#, fuzzy
+msgid "Scheduled content was published automatically."
+msgstr "Geplante Inhalte wurden automatisch veröffentlicht."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:723
+msgid "System"
+msgstr "System"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:828
+#, fuzzy
+msgid "Content workflow update failed."
+msgstr "Content-Workflow-Update fehlgeschlagen."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:910
+#, fuzzy
+msgid "Parent comment does not belong to this content."
+msgstr "Der Kommentar der Eltern gehört nicht zu diesem Inhalt."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1102
+msgid "Comment not found."
+msgstr "Kommentar nicht gefunden."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1204
+msgid "Editorial Comment"
+msgstr "Redaktioneller Kommentar"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1204
+#, fuzzy
+msgid "Editorial Workflow"
+msgstr "Redaktioneller Workflow"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1292
+#, fuzzy, php-format
+msgid "Invalid workflow stage. Expected one of [%s], current stage is [%s]."
+msgstr ""
+"Ungültige Workflow-Phase. Erwartete Stufe von [%s], aktuelle Stufe ist [%s]."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1312
+#, fuzzy, php-format
+msgid "Invalid content status. Expected one of [%s], current status is [%s]."
+msgstr ""
+"Status des ungültigen Inhalts. Erwarteter Wert von [%s], aktueller Status "
+"ist [%s]."
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1408
+msgid "View Content"
+msgstr "Inhalt anzeigen"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1470
+#, fuzzy
+msgid "New editorial comment reply"
+msgstr "Neue redaktionelle Kommentarantwort"
+
+#: core/Infrastructure/Services/Content/Workflow/ContentWorkflowService.php:1470
+#, fuzzy
+msgid "New editorial comment"
+msgstr "Neuer redaktioneller Kommentar"
+
+#: core/Infrastructure/Services/Content/Workflow/Queue/ContentWorkflowEmailNotification.php:61
+#, php-format
+msgid "[%s] %s"
+msgstr "[%s] %s"
 
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:50
 #, fuzzy
 msgid "Error fetching content types."
 msgstr "Fehler beim Abrufen von Inhaltstypen."
 
-#: core/Infrastructure/Services/Product/ProductService.php:102
+#: core/Infrastructure/Services/Product/ProductService.php:110
 #, fuzzy
 msgid "Product added successfully."
 msgstr "Produkt erfolgreich hinzugefügt."
 
-#: core/Infrastructure/Services/Product/ProductService.php:116
+#: core/Infrastructure/Services/Product/ProductService.php:124
 #, fuzzy
 msgid "Could not create product. Please try again later."
 msgstr ""
@@ -920,46 +1087,46 @@ msgstr "Komponisten-Update-Check hat zeitlich abgelaufen."
 msgid "No row found for site \"%s\" and user \"%s\"."
 msgstr "Keine Zeile für die Seite \"%s\" und Benutzer \"%s\" gefunden."
 
-#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:133
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:130
 #, fuzzy
 msgid "User attribute not found"
 msgstr "Benutzerattribut nicht gefunden"
 
-#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:142
+#: core/Infrastructure/Services/User/PdoUserAttributeDataRepository.php:138
 #, fuzzy
 msgid "Attribute patch callback must return an AttributeBag instance."
 msgstr ""
 "Ein Attribut-Patch-Callback muss eine AttributeBag-Instanz zurückgeben."
 
-#: core/Shared/Helpers/auth.php:177
+#: core/Shared/Helpers/auth.php:178
 msgid "Sorry, there was an error."
 msgstr "Es tut uns leid. Es ist ein Fehler aufgetreten."
 
-#: core/Shared/Helpers/auth.php:202
+#: core/Shared/Helpers/auth.php:203
 #, fuzzy, php-format
 msgid ""
 "Login was successful. Welcome <strong>%s</strong> to the admin dashboard."
 msgstr ""
 "Der Login war erfolgreich. Willkommen <strong>%s</strong> im Admin-Dashboard."
 
-#: core/Shared/Helpers/auth.php:234
+#: core/Shared/Helpers/auth.php:235
 #, fuzzy
 msgid "<strong>ERROR</strong>: The username/email field is empty."
 msgstr "<strong>FEHLER:</strong> Das Benutzername-/E-Mail-Feld ist leer."
 
-#: core/Shared/Helpers/auth.php:243
+#: core/Shared/Helpers/auth.php:244
 msgid "<strong>ERROR</strong>: The password field is empty."
 msgstr "<strong>Fehler:</strong> Passwortfeld ist leer."
 
-#: core/Shared/Helpers/auth.php:257
+#: core/Shared/Helpers/auth.php:258
 msgid "<strong>ERROR</strong>: Invalid email address."
 msgstr "<strong>Fehler</strong>: ungültige Emailadresse."
 
-#: core/Shared/Helpers/auth.php:269
+#: core/Shared/Helpers/auth.php:270
 msgid "<strong>ERROR</strong>: Invalid username."
 msgstr "<strong>FEHLER</strong>: Ungültiger Benutzername."
 
-#: core/Shared/Helpers/auth.php:280
+#: core/Shared/Helpers/auth.php:281
 msgid "<strong>ERROR</strong>: The password you entered is incorrect."
 msgstr "<strong>FEHLER</strong>: das eingegebene Passwort ist falsch."
 
@@ -978,36 +1145,36 @@ msgstr "Ungültige Inhaltstyp-ID."
 msgid "The system was not able to delete the content type."
 msgstr "Das System konnte den Inhaltstyp nicht löschen."
 
-#: core/Shared/Helpers/content.php:1770 core/Shared/Helpers/content.php:2332
+#: core/Shared/Helpers/content.php:1773 core/Shared/Helpers/content.php:2335
 #, fuzzy
 msgid "Invalid content id."
 msgstr "Ungültige Inhalts-ID."
 
-#: core/Shared/Helpers/content.php:1917
+#: core/Shared/Helpers/content.php:1920
 #, fuzzy
 msgid "Content author cannot be null or empty."
 msgstr "Der Inhaltsautor kann weder null noch leer sein."
 
-#: core/Shared/Helpers/content.php:2021
+#: core/Shared/Helpers/content.php:2024
 #, fuzzy
 msgid "The title and content are null."
 msgstr "Titel und Inhalt sind nicht."
 
-#: core/Shared/Helpers/content.php:2175
+#: core/Shared/Helpers/content.php:2178
 #, fuzzy
 msgid "Could not insert content into the content table."
 msgstr "Ich konnte keinen Inhalt in die Inhaltstabelle einfügen."
 
-#: core/Shared/Helpers/content.php:2223
+#: core/Shared/Helpers/content.php:2226
 #, fuzzy
 msgid "Could not update content within the content table."
 msgstr "Der Inhalt in der Inhaltstabelle konnte nicht aktualisiert werden."
 
-#: core/Shared/Helpers/core.php:748
+#: core/Shared/Helpers/core.php:752
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: core/Shared/Helpers/core.php:1429
+#: core/Shared/Helpers/core.php:1569
 #, fuzzy, php-format
 #| msgid ""
 #| "Devflow release %s is available for download/upgrade. Before upgrading, "
@@ -1024,7 +1191,7 @@ msgstr ""
 msgid "Reassign content error: %s"
 msgstr "Fehler \"Inhalte neu zuweisen\": %s"
 
-#: core/Shared/Helpers/hook.php:780
+#: core/Shared/Helpers/hook.php:794
 #, fuzzy
 #| msgid ""
 #| "Your system is currently in `dev` mode. Please remember to set your "
@@ -1039,27 +1206,42 @@ msgstr ""
 "daran, Ihr System nach dem Testen auf Produktionsmodus zu stellen. Wenn der "
 "Produktionsmodus aktiviert ist, verschwindet diese Warnmeldung."
 
-#: core/Shared/Helpers/product.php:1426 core/Shared/Helpers/product.php:2013
+#: core/Shared/Helpers/hook.php:814
+#, fuzzy
+msgid "Composer security advisories found."
+msgstr "Komponisten-Sicherheitshinweise gefunden."
+
+#: core/Shared/Helpers/hook.php:815
+#, fuzzy, php-format
+msgid "%s advisories were detected."
+msgstr "%s Warnungen wurden entdeckt."
+
+#: core/Shared/Helpers/hook.php:816
+#, fuzzy
+msgid "Visit the Updates screen for details."
+msgstr "Besuchen Sie den Updates-Bildschirm für weitere Details."
+
+#: core/Shared/Helpers/product.php:1427 core/Shared/Helpers/product.php:2014
 #, fuzzy
 msgid "Invalid product id."
 msgstr "Ungültige Produkt-ID."
 
-#: core/Shared/Helpers/product.php:1563
+#: core/Shared/Helpers/product.php:1564
 #, fuzzy
 msgid "Product author cannot be null or empty."
 msgstr "Produktautor kann nicht null oder leer sein."
 
-#: core/Shared/Helpers/product.php:1699
+#: core/Shared/Helpers/product.php:1700
 #, fuzzy
 msgid "The title and body should not be null."
 msgstr "Der Titel und der Hauptteil sollten nicht null sein."
 
-#: core/Shared/Helpers/product.php:1854
+#: core/Shared/Helpers/product.php:1855
 #, fuzzy
 msgid "Could not insert product into the product table."
 msgstr "Konnte kein Produkt in die Produkttabelle einfügen."
 
-#: core/Shared/Helpers/product.php:1903
+#: core/Shared/Helpers/product.php:1904
 #, fuzzy
 msgid "Could not update product within the product table."
 msgstr "Konnte das Produkt in der Produkttabelle nicht aktualisieren."
@@ -1114,38 +1296,38 @@ msgstr "Die Ausnahme für das Löschen des Nutzers ist aufgetreten."
 msgid "You are not allowed to remove super admins from this site."
 msgstr "Du darfst Super-Admins nicht von dieser Seite entfernen."
 
-#: core/Shared/Helpers/user.php:597 core/Shared/Helpers/user.php:1106
-#: core/Shared/Helpers/user.php:1113
+#: core/Shared/Helpers/user.php:577 core/Shared/Helpers/user.php:1086
+#: core/Shared/Helpers/user.php:1093
 #, fuzzy
 msgid "Invalid user id."
 msgstr "Ungültige Benutzer-ID."
 
-#: core/Shared/Helpers/user.php:676
+#: core/Shared/Helpers/user.php:656
 #, fuzzy
 msgid "Cannot create a user with an empty username."
 msgstr "Man kann keinen Benutzer mit einem leeren Benutzernamen erstellen."
 
-#: core/Shared/Helpers/user.php:680
+#: core/Shared/Helpers/user.php:660
 #, fuzzy
 msgid "Username must be at least 3 characters long."
 msgstr "Der Benutzername muss mindestens 3 Zeichen lang sein."
 
-#: core/Shared/Helpers/user.php:684
+#: core/Shared/Helpers/user.php:664
 msgid "Username may not be longer than 60 characters."
 msgstr "Der Benutzername darf nicht länger als 60 Zeichen sein."
 
-#: core/Shared/Helpers/user.php:689
+#: core/Shared/Helpers/user.php:669
 #, fuzzy
 msgid "Sorry, that username cannot be used."
 msgstr "Entschuldigung, dieser Benutzername kann nicht verwendet werden."
 
-#: core/Shared/Helpers/user.php:704
+#: core/Shared/Helpers/user.php:684
 #, fuzzy, php-format
 msgid "Sorry, the username <strong>%s</strong> is not allowed."
 msgstr ""
 "Entschuldigung, der Benutzername <strong>%s</strong> ist nicht erlaubt."
 
-#: core/Shared/Helpers/user.php:744
+#: core/Shared/Helpers/user.php:724
 #, fuzzy
 msgid "Sorry, that email address cannot be used."
 msgstr "Entschuldigung, diese E-Mail-Adresse kann nicht verwendet werden."
@@ -1609,8 +1791,8 @@ msgid "Embed Height"
 msgstr "Höhe einbetten"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:38
-#: resources/views/backend/admin/content/create.phtml:48
-#: resources/views/backend/admin/manager/page-settings.phtml:40
+#: resources/views/backend/admin/content/create.phtml:64
+#: resources/views/backend/admin/manager/page-settings.phtml:42
 #: resources/views/backend/admin/product/create.phtml:47
 #: resources/views/backend/admin/site/index.phtml:42
 #: resources/views/backend/admin/user/create.phtml:89
@@ -1644,30 +1826,30 @@ msgstr "Inhaltsbeschreibung"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:92
 #: resources/views/backend/admin/content-type/content-type.phtml:135
-#: resources/views/backend/admin/content/create.phtml:95
-#: resources/views/backend/admin/content/view.phtml:100
+#: resources/views/backend/admin/content/create.phtml:111
+#: resources/views/backend/admin/content/view.phtml:185
 msgid "Content Type"
 msgstr "Inhaltstyp"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:93
 #: resources/views/backend/admin/content-type/content-type.phtml:136
-#: resources/views/backend/admin/plugin/index.phtml:72
-#: resources/views/backend/admin/plugin/index.phtml:115
-#: resources/views/backend/admin/plugin/install.phtml:53
-#: resources/views/backend/admin/plugin/install.phtml:108
-#: resources/views/backend/admin/theme/index.phtml:73
-#: resources/views/backend/admin/theme/index.phtml:122
-#: resources/views/backend/admin/theme/install.phtml:53
-#: resources/views/backend/admin/theme/install.phtml:108
+#: resources/views/backend/admin/plugin/index.phtml:74
+#: resources/views/backend/admin/plugin/index.phtml:117
+#: resources/views/backend/admin/plugin/install.phtml:54
+#: resources/views/backend/admin/plugin/install.phtml:109
+#: resources/views/backend/admin/theme/index.phtml:75
+#: resources/views/backend/admin/theme/index.phtml:124
+#: resources/views/backend/admin/theme/install.phtml:54
+#: resources/views/backend/admin/theme/install.phtml:109
 msgid "Description"
 msgstr "Beschreibung"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:94
 #: resources/views/backend/admin/content-type/content-type.phtml:137
-#: resources/views/backend/admin/content/create.phtml:76
-#: resources/views/backend/admin/content/create.phtml:230
-#: resources/views/backend/admin/content/view.phtml:81
-#: resources/views/backend/admin/content/view.phtml:241
+#: resources/views/backend/admin/content/create.phtml:92
+#: resources/views/backend/admin/content/create.phtml:244
+#: resources/views/backend/admin/content/view.phtml:110
+#: resources/views/backend/admin/content/view.phtml:569
 #: resources/views/backend/admin/product/create.phtml:76
 #: resources/views/backend/admin/product/create.phtml:215
 #: resources/views/backend/admin/product/view.phtml:76
@@ -1681,21 +1863,21 @@ msgstr "Anzahl"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:96
 #: resources/views/backend/admin/content-type/content-type.phtml:139
-#: resources/views/backend/admin/plugin/index.phtml:73
-#: resources/views/backend/admin/plugin/index.phtml:116
-#: resources/views/backend/admin/plugin/install.phtml:55
-#: resources/views/backend/admin/plugin/install.phtml:110
+#: resources/views/backend/admin/plugin/index.phtml:75
+#: resources/views/backend/admin/plugin/index.phtml:118
+#: resources/views/backend/admin/plugin/install.phtml:56
+#: resources/views/backend/admin/plugin/install.phtml:111
 #: resources/views/backend/admin/site/index.phtml:106
 #: resources/views/backend/admin/site/index.phtml:156
 #: resources/views/backend/admin/site/users.phtml:55
 #: resources/views/backend/admin/site/users.phtml:191
-#: resources/views/backend/admin/theme/index.phtml:74
-#: resources/views/backend/admin/theme/index.phtml:123
-#: resources/views/backend/admin/theme/install.phtml:55
-#: resources/views/backend/admin/theme/install.phtml:110
+#: resources/views/backend/admin/theme/index.phtml:76
+#: resources/views/backend/admin/theme/index.phtml:125
+#: resources/views/backend/admin/theme/install.phtml:56
+#: resources/views/backend/admin/theme/install.phtml:111
 #: resources/views/backend/admin/user/index.phtml:60
 #: resources/views/backend/admin/user/index.phtml:130
-#: resources/views/backend/updates.phtml:103
+#: resources/views/backend/updates.phtml:111
 msgid "Action"
 msgstr "Aktion"
 
@@ -1713,10 +1895,12 @@ msgstr ""
 #: resources/views/backend/admin/content-type/content-type.phtml:168
 #: resources/views/backend/admin/content-type/update-content-type.phtml:93
 #: resources/views/backend/admin/content/content-by-type.phtml:81
-#: resources/views/backend/admin/content/create.phtml:236
+#: resources/views/backend/admin/content/create.phtml:250
 #: resources/views/backend/admin/content/index.phtml:82
-#: resources/views/backend/admin/content/view.phtml:247
-#: resources/views/backend/admin/content/view.phtml:269
+#: resources/views/backend/admin/content/view.phtml:575
+#: resources/views/backend/admin/content/view.phtml:597
+#: resources/views/backend/admin/content/view.phtml:611
+#: resources/views/backend/admin/content/view.phtml:647
 #: resources/views/backend/admin/product/create.phtml:221
 #: resources/views/backend/admin/product/create.phtml:243
 #: resources/views/backend/admin/product/index.phtml:84
@@ -1734,8 +1918,8 @@ msgstr "Schließen"
 #: resources/views/backend/admin/content-type/content-type.phtml:121
 #: resources/views/backend/admin/content/content-by-type.phtml:82
 #: resources/views/backend/admin/content/index.phtml:83
-#: resources/views/backend/admin/content/view.phtml:270
-#: resources/views/backend/admin/manager/index.phtml:79
+#: resources/views/backend/admin/content/view.phtml:598
+#: resources/views/backend/admin/manager/index.phtml:85
 #: resources/views/backend/admin/product/index.phtml:85
 #: resources/views/backend/admin/product/view.phtml:263
 #: resources/views/backend/admin/site/index.phtml:138
@@ -1757,31 +1941,32 @@ msgid "Update Content Type"
 msgstr "Inhalts-Art aktualisieren"
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:38
-#: resources/views/backend/admin/content/view.phtml:50
-#: resources/views/backend/admin/content/view.phtml:54
-#: resources/views/backend/admin/content/view.phtml:72
+#: resources/views/backend/admin/content/view.phtml:79
+#: resources/views/backend/admin/content/view.phtml:83
+#: resources/views/backend/admin/content/view.phtml:101
 #: resources/views/backend/admin/product/view.phtml:49
 #: resources/views/backend/admin/site/view.phtml:41
 #: resources/views/backend/admin/user/index.phtml:78
 #: resources/views/backend/admin/user/index.phtml:80
 #: resources/views/backend/admin/user/profile.phtml:48
 #: resources/views/backend/admin/user/view.phtml:46
-#: resources/views/backend/general.phtml:34
-#: resources/views/backend/reading.phtml:32
-#: resources/views/backend/updates.phtml:121
+#: resources/views/backend/settings.phtml:37
+#: resources/views/backend/updates.phtml:129
 msgid "Update"
 msgstr "Aktualisieren"
 
 #: resources/views/backend/admin/content-type/update-content-type.phtml:39
-#: resources/views/backend/admin/content/create.phtml:49
-#: resources/views/backend/admin/content/view.phtml:56
-#: resources/views/backend/admin/manager/index.phtml:78
-#: resources/views/backend/admin/manager/page-settings.phtml:41
-#: resources/views/backend/admin/plugin/install.phtml:266
+#: resources/views/backend/admin/content/create.phtml:65
+#: resources/views/backend/admin/content/view.phtml:85
+#: resources/views/backend/admin/content/view.phtml:632
+#: resources/views/backend/admin/content/view.phtml:670
+#: resources/views/backend/admin/manager/index.phtml:81
+#: resources/views/backend/admin/manager/page-settings.phtml:43
+#: resources/views/backend/admin/plugin/install.phtml:267
 #: resources/views/backend/admin/product/create.phtml:48
 #: resources/views/backend/admin/product/view.phtml:51
 #: resources/views/backend/admin/site/view.phtml:42
-#: resources/views/backend/admin/theme/install.phtml:266
+#: resources/views/backend/admin/theme/install.phtml:267
 #: resources/views/backend/admin/user/create.phtml:90
 #: resources/views/backend/admin/user/profile.phtml:49
 #: resources/views/backend/admin/user/profile.phtml:199
@@ -1792,16 +1977,16 @@ msgid "Cancel"
 msgstr "Stornieren"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:32
-#: resources/views/backend/admin/content/view.phtml:53
+#: resources/views/backend/admin/content/view.phtml:82
 msgid "New"
 msgstr "Neu"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:49
 #: resources/views/backend/admin/content/content-by-type.phtml:111
-#: resources/views/backend/admin/content/create.phtml:72
+#: resources/views/backend/admin/content/create.phtml:88
 #: resources/views/backend/admin/content/index.phtml:50
 #: resources/views/backend/admin/content/index.phtml:108
-#: resources/views/backend/admin/content/view.phtml:77
+#: resources/views/backend/admin/content/view.phtml:106
 #: resources/views/backend/admin/product/create.phtml:72
 #: resources/views/backend/admin/product/index.phtml:52
 #: resources/views/backend/admin/product/index.phtml:110
@@ -1811,10 +1996,10 @@ msgstr "Titel"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:50
 #: resources/views/backend/admin/content/content-by-type.phtml:112
-#: resources/views/backend/admin/content/create.phtml:142
+#: resources/views/backend/admin/content/create.phtml:156
 #: resources/views/backend/admin/content/index.phtml:51
 #: resources/views/backend/admin/content/index.phtml:109
-#: resources/views/backend/admin/content/view.phtml:147
+#: resources/views/backend/admin/content/view.phtml:230
 #: resources/views/backend/admin/product/create.phtml:126
 #: resources/views/backend/admin/product/index.phtml:53
 #: resources/views/backend/admin/product/index.phtml:111
@@ -1848,7 +2033,7 @@ msgstr "Bearbeiten"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:67
 #: resources/views/backend/admin/content/index.phtml:68
-#: resources/views/backend/admin/content/view.phtml:55
+#: resources/views/backend/admin/content/view.phtml:84
 #: resources/views/backend/admin/product/index.phtml:70
 #: resources/views/backend/admin/product/view.phtml:50
 msgid "Delete"
@@ -1856,23 +2041,16 @@ msgstr "Löschen"
 
 #: resources/views/backend/admin/content/content-by-type.phtml:78
 #: resources/views/backend/admin/content/index.phtml:79
-#: resources/views/backend/admin/content/view.phtml:266
+#: resources/views/backend/admin/content/view.phtml:594
 #, fuzzy
 msgid "Are you sure you want to delete this content?"
 msgstr "Bist du sicher, dass du diesen Inhalt löschen möchtest?"
 
-#: resources/views/backend/admin/content/create.phtml:67
-#: resources/views/backend/admin/content/create.phtml:80
-#: resources/views/backend/admin/content/view.phtml:85
-#: resources/views/backend/admin/product/create.phtml:80
-#: resources/views/backend/admin/product/view.phtml:80
-msgid "Content"
-msgstr "Inhalt"
-
-#: resources/views/backend/admin/content/create.phtml:115
-#: resources/views/backend/admin/content/create.phtml:133
-#: resources/views/backend/admin/content/view.phtml:120
-#: resources/views/backend/admin/content/view.phtml:138
+#: resources/views/backend/admin/content/create.phtml:28
+#: resources/views/backend/admin/content/create.phtml:131
+#: resources/views/backend/admin/content/view.phtml:36
+#: resources/views/backend/admin/content/view.phtml:205
+#: resources/views/backend/admin/content/view.phtml:335
 #: resources/views/backend/admin/product/create.phtml:99
 #: resources/views/backend/admin/product/create.phtml:117
 #: resources/views/backend/admin/product/view.phtml:99
@@ -1880,24 +2058,52 @@ msgstr "Inhalt"
 msgid "Publish"
 msgstr "Veröffentlichen"
 
-#: resources/views/backend/admin/content/create.phtml:120
-#: resources/views/backend/admin/content/view.phtml:125
+#: resources/views/backend/admin/content/create.phtml:29
+#: resources/views/backend/admin/content/view.phtml:37
+#: resources/views/backend/admin/product/create.phtml:118
+#: resources/views/backend/admin/product/view.phtml:118
+msgid "Schedule"
+msgstr "Zeitplan"
+
+#: resources/views/backend/admin/content/create.phtml:31
+#: resources/views/backend/admin/content/view.phtml:39
+msgid "Pending Review"
+msgstr "Ausstehende Überprüfung"
+
+#: resources/views/backend/admin/content/create.phtml:32
+#: resources/views/backend/admin/content/view.phtml:40
+#: resources/views/backend/admin/product/create.phtml:122
+#: resources/views/backend/admin/product/view.phtml:122
+#: resources/views/backend/admin/site/view.phtml:92
+msgid "Archive"
+msgstr "Archiv"
+
+#: resources/views/backend/admin/content/create.phtml:83
+#: resources/views/backend/admin/content/create.phtml:96
+#: resources/views/backend/admin/content/view.phtml:114
+#: resources/views/backend/admin/product/create.phtml:80
+#: resources/views/backend/admin/product/view.phtml:80
+msgid "Content"
+msgstr "Inhalt"
+
+#: resources/views/backend/admin/content/create.phtml:136
+#: resources/views/backend/admin/content/view.phtml:210
 #: resources/views/backend/admin/product/create.phtml:104
 #: resources/views/backend/admin/product/view.phtml:104
 msgid "Publication Date"
 msgstr "Veröffentlichungsdatum"
 
-#: resources/views/backend/admin/content/create.phtml:129
-#: resources/views/backend/admin/content/view.phtml:134
-#: resources/views/backend/admin/plugin/install.phtml:54
-#: resources/views/backend/admin/plugin/install.phtml:109
+#: resources/views/backend/admin/content/create.phtml:145
+#: resources/views/backend/admin/content/view.phtml:219
+#: resources/views/backend/admin/plugin/install.phtml:55
+#: resources/views/backend/admin/plugin/install.phtml:110
 #: resources/views/backend/admin/product/create.phtml:113
 #: resources/views/backend/admin/product/view.phtml:113
 #: resources/views/backend/admin/site/index.phtml:105
 #: resources/views/backend/admin/site/index.phtml:155
 #: resources/views/backend/admin/site/view.phtml:88
-#: resources/views/backend/admin/theme/install.phtml:54
-#: resources/views/backend/admin/theme/install.phtml:109
+#: resources/views/backend/admin/theme/install.phtml:55
+#: resources/views/backend/admin/theme/install.phtml:110
 #: resources/views/backend/admin/user/create.phtml:230
 #: resources/views/backend/admin/user/index.phtml:58
 #: resources/views/backend/admin/user/index.phtml:128
@@ -1905,76 +2111,61 @@ msgstr "Veröffentlichungsdatum"
 msgid "Status"
 msgstr "Status"
 
-#: resources/views/backend/admin/content/create.phtml:134
-#: resources/views/backend/admin/content/view.phtml:139
-#: resources/views/backend/admin/product/create.phtml:118
-#: resources/views/backend/admin/product/view.phtml:118
-msgid "Schedule"
-msgstr "Zeitplan"
-
-#: resources/views/backend/admin/content/create.phtml:138
-#: resources/views/backend/admin/content/view.phtml:143
-#: resources/views/backend/admin/product/create.phtml:122
-#: resources/views/backend/admin/product/view.phtml:122
-#: resources/views/backend/admin/site/view.phtml:92
-msgid "Archive"
-msgstr "Archiv"
-
-#: resources/views/backend/admin/content/create.phtml:156
-#: resources/views/backend/admin/content/view.phtml:161
+#: resources/views/backend/admin/content/create.phtml:170
+#: resources/views/backend/admin/content/view.phtml:489
 #, fuzzy
 msgid "Content Attributes"
 msgstr "Inhaltsattribute"
 
-#: resources/views/backend/admin/content/create.phtml:161
-#: resources/views/backend/admin/content/view.phtml:166
+#: resources/views/backend/admin/content/create.phtml:175
+#: resources/views/backend/admin/content/view.phtml:494
 msgid "Parent"
 msgstr "Übergeordnet"
 
-#: resources/views/backend/admin/content/create.phtml:168
-#: resources/views/backend/admin/content/view.phtml:173
+#: resources/views/backend/admin/content/create.phtml:182
+#: resources/views/backend/admin/content/view.phtml:501
 msgid "Sidebar"
 msgstr "Seitenleiste"
 
-#: resources/views/backend/admin/content/create.phtml:174
-#: resources/views/backend/admin/content/view.phtml:180
+#: resources/views/backend/admin/content/create.phtml:188
+#: resources/views/backend/admin/content/view.phtml:508
 #: resources/views/backend/admin/product/create.phtml:160
 #: resources/views/backend/admin/product/view.phtml:173
 msgid "Show in Menu"
 msgstr "Im Menü anzeigen"
 
-#: resources/views/backend/admin/content/create.phtml:180
-#: resources/views/backend/admin/content/view.phtml:187
+#: resources/views/backend/admin/content/create.phtml:194
+#: resources/views/backend/admin/content/view.phtml:515
 #: resources/views/backend/admin/product/create.phtml:166
 #: resources/views/backend/admin/product/view.phtml:180
 msgid "Show in Search"
 msgstr "In der Suche anzeigen"
 
-#: resources/views/backend/admin/content/create.phtml:193
-#: resources/views/backend/admin/content/view.phtml:201
+#: resources/views/backend/admin/content/create.phtml:207
+#: resources/views/backend/admin/content/view.phtml:529
 #: resources/views/backend/admin/product/create.phtml:179
 #: resources/views/backend/admin/product/view.phtml:194
 msgid "Featured Image"
 msgstr "Beitragsbild"
 
-#: resources/views/backend/admin/content/create.phtml:199
-#: resources/views/backend/admin/content/view.phtml:210
+#: resources/views/backend/admin/content/create.phtml:213
+#: resources/views/backend/admin/content/view.phtml:538
 #: resources/views/backend/admin/product/create.phtml:185
 #: resources/views/backend/admin/product/view.phtml:203
 msgid "Set featured image"
 msgstr "Beitragsbild festlegen"
 
-#: resources/views/backend/admin/content/create.phtml:200
-#: resources/views/backend/admin/content/view.phtml:208
-#: resources/views/backend/admin/content/view.phtml:211
+#: resources/views/backend/admin/content/create.phtml:214
+#: resources/views/backend/admin/content/view.phtml:536
+#: resources/views/backend/admin/content/view.phtml:539
 #: resources/views/backend/admin/product/create.phtml:186
 #: resources/views/backend/admin/product/view.phtml:201
 #: resources/views/backend/admin/product/view.phtml:204
 msgid "Remove featured image"
 msgstr "Beitragsbild entfernen"
 
-#: resources/views/backend/admin/content/create.phtml:233
-#: resources/views/backend/admin/content/view.phtml:244
+#: resources/views/backend/admin/content/create.phtml:247
+#: resources/views/backend/admin/content/view.phtml:572
 #: resources/views/backend/admin/product/create.phtml:218
 #, fuzzy, php-format
 msgid "If left blank, the system will auto generate the %s slug."
@@ -1984,50 +2175,248 @@ msgstr "Wenn es leer bleibt, erzeugt das System automatisch die %s Slug."
 msgid "All Content"
 msgstr "Alle Inhalte"
 
-#: resources/views/backend/admin/manager/index.phtml:22
+#: resources/views/backend/admin/content/view.phtml:125
+msgid "Editorial Comments"
+msgstr "Redaktionelle Kommentare"
+
+#: resources/views/backend/admin/content/view.phtml:143
+#, fuzzy
+msgid "Replying to comment"
+msgstr "Antwort auf Kommentar"
+
+#: resources/views/backend/admin/content/view.phtml:147
+#, fuzzy
+msgid "Add an editorial comment..."
+msgstr "Fügen Sie einen redaktionellen Kommentar hinzu..."
+
+#: resources/views/backend/admin/content/view.phtml:150
+#, fuzzy
+msgid ""
+"Optional: highlight text in the editor before commenting to save selected "
+"context."
+msgstr ""
+"Optional: Text im Editor markieren, bevor Sie kommentieren, um ausgewählten "
+"Kontext zu speichern."
+
+#: resources/views/backend/admin/content/view.phtml:154
+msgid "Add Comment"
+msgstr "Kommentar hinzufügen"
+
+#: resources/views/backend/admin/content/view.phtml:162
+msgid "Open"
+msgstr "Offen"
+
+#: resources/views/backend/admin/content/view.phtml:165
+msgid "Resolved"
+msgstr "Gelöst"
+
+#: resources/views/backend/admin/content/view.phtml:168
+#: resources/views/backend/layouts/admin-layout.phtml:232
+msgid "All"
+msgstr "Alle"
+
+#: resources/views/backend/admin/content/view.phtml:251
+msgid "Stage"
+msgstr "Bühne"
+
+#: resources/views/backend/admin/content/view.phtml:265
+msgid "Last Message"
+msgstr "Letzte Nachricht"
+
+#: resources/views/backend/admin/content/view.phtml:269
+#, fuzzy
+msgid "Optional message..."
+msgstr "Optionale Nachricht..."
+
+#: resources/views/backend/admin/content/view.phtml:284
+#, fuzzy
+msgid "Request Review"
+msgstr "Anfrageprüfung"
+
+#: resources/views/backend/admin/content/view.phtml:296
+#, fuzzy
+msgid "Withdraw Review"
+msgstr "Rückzugsbewertung"
+
+#: resources/views/backend/admin/content/view.phtml:310
+#, fuzzy
+msgid "Not all reviewers have completed their review."
+msgstr "Nicht alle Gutachter haben ihre Überprüfung abgeschlossen."
+
+#: resources/views/backend/admin/content/view.phtml:318
+msgid "Approve"
+msgstr "Genehmigen"
+
+#: resources/views/backend/admin/content/view.phtml:324
+#, fuzzy
+msgid "Request Changes"
+msgstr "Änderungen anfordern"
+
+#: resources/views/backend/admin/content/view.phtml:349
+#, fuzzy
+msgid "Mark Review Complete"
+msgstr "Prüfen Sie die Überprüfung abgeschlossen"
+
+#: resources/views/backend/admin/content/view.phtml:359
+#: resources/views/backend/admin/content/view.phtml:379
+#, fuzzy
+msgid "Reviewers"
+msgstr "Rezensenten"
+
+#: resources/views/backend/admin/content/view.phtml:375
+#, fuzzy
+msgid "Current Reviewers"
+msgstr "Aktuelle Rezensenten"
+
+#: resources/views/backend/admin/content/view.phtml:377
+#, fuzzy
+msgid "Review Participants"
+msgstr "Teilnehmer der Übersicht"
+
+#: resources/views/backend/admin/content/view.phtml:403
+msgid "Complete"
+msgstr "Abgeschlossen"
+
+#: resources/views/backend/admin/content/view.phtml:408
+#, fuzzy
+msgid "Review Closed"
+msgstr "Rezension geschlossen"
+
+#: resources/views/backend/admin/content/view.phtml:417
+#, fuzzy
+msgid "Review was completed without assigned reviewers."
+msgstr "Die Überprüfung wurde ohne zugewiesene Gutachter abgeschlossen."
+
+#: resources/views/backend/admin/content/view.phtml:419
+#, fuzzy
+msgid "No reviewers assigned yet."
+msgstr "Noch keine Prüfer zugewiesen."
+
+#: resources/views/backend/admin/content/view.phtml:435
+#, fuzzy
+msgid "Select one or more people who should review this content."
+msgstr ""
+"Wählen Sie eine oder mehrere Personen aus, die diese Inhalte lesen sollten."
+
+#: resources/views/backend/admin/content/view.phtml:440
+#, fuzzy
+msgid "Save Reviewers"
+msgstr "Rezensenten speichern"
+
+#: resources/views/backend/admin/content/view.phtml:448
+#, fuzzy
+msgid "Revision History"
+msgstr "Überarbeitungsgeschichte"
+
+#: resources/views/backend/admin/content/view.phtml:457
+#, fuzzy
+msgid "Load revisions to view previous changes."
+msgstr "Lade Revisionen, um frühere Änderungen anzuzeigen."
+
+#: resources/views/backend/admin/content/view.phtml:464
+#, fuzzy
+msgid "Workflow Activity"
+msgstr "Workflow-Aktivität"
+
+#: resources/views/backend/admin/content/view.phtml:478
+#, fuzzy
+msgid "Load activity to view workflow history."
+msgstr "Laden Sie die Aktivität, um den Workflow-Verlauf einzusehen."
+
+#: resources/views/backend/admin/content/view.phtml:615
+#, fuzzy
+msgid "Restore Revision as Draft"
+msgstr "Revision als Entwurf wiederherstellen"
+
+#: resources/views/backend/admin/content/view.phtml:621
+#, fuzzy
+#| msgid "Are you sure you want to delete this page?"
+msgid "Are you sure you want to restore this revision?"
+msgstr "Bist du sicher, dass du diese Version wiederherstellen möchtest?"
+
+#: resources/views/backend/admin/content/view.phtml:624
+#, fuzzy
+msgid ""
+"The selected revision will be restored as a draft. It will not be published "
+"automatically."
+msgstr ""
+"Die ausgewählte Überarbeitung wird als Entwurf wiederhergestellt. Sie wird "
+"nicht automatisch veröffentlicht."
+
+#: resources/views/backend/admin/content/view.phtml:636
+#, fuzzy
+msgid "Restore as Draft"
+msgstr "Wiederherstellen als Draft"
+
+#: resources/views/backend/admin/content/view.phtml:652
+#, fuzzy
+msgid "Delete Editorial Comment"
+msgstr "Redaktionelle Kommentare löschen"
+
+#: resources/views/backend/admin/content/view.phtml:658
+#, fuzzy
+msgid "Are you sure you want to delete this editorial comment?"
+msgstr ""
+"Bist du sicher, dass du diesen redaktionellen Kommentar löschen möchtest?"
+
+#: resources/views/backend/admin/content/view.phtml:662
+#, fuzzy
+msgid ""
+"This action cannot be undone. If you want to keep the discussion for review "
+"history, consider resolving the comment instead."
+msgstr ""
+"Diese Maßnahme kann nicht rückgängig gemacht werden. Wenn du die Diskussion "
+"für den Review-Verlauf behalten möchtest, solltest du stattdessen in "
+"Erwägung ziehen, den Kommentar zu lösen."
+
+#: resources/views/backend/admin/content/view.phtml:674
+msgid "Delete Comment"
+msgstr "Kommentar löschen"
+
+#: resources/views/backend/admin/manager/index.phtml:23
 msgid "Page Builder"
 msgstr "Page Builder"
 
-#: resources/views/backend/admin/manager/index.phtml:43
+#: resources/views/backend/admin/manager/index.phtml:44
 msgid "Pages"
 msgstr "Seiten"
 
-#: resources/views/backend/admin/manager/index.phtml:75
+#: resources/views/backend/admin/manager/index.phtml:76
 msgid "Are you sure you want to delete this page?"
 msgstr "Sind sie sicher, dass Sie diese Seite löschen wollen?"
 
-#: resources/views/backend/admin/manager/index.phtml:110
+#: resources/views/backend/admin/manager/index.phtml:118
 msgid "Languages"
 msgstr "Sprachen"
 
-#: resources/views/backend/admin/manager/index.phtml:118
+#: resources/views/backend/admin/manager/index.phtml:126
 #, fuzzy
 msgid "Use Ctrl/Cmd to select multiple."
 msgstr "Benutze Strg/Cmd, um mehrere auszuwählen."
 
-#: resources/views/backend/admin/manager/page-settings.phtml:57
+#: resources/views/backend/admin/manager/page-settings.phtml:59
 msgid "Page"
 msgstr "Seite"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:90
+#: resources/views/backend/admin/manager/page-settings.phtml:92
 msgid "URI"
 msgstr "URI"
 
-#: resources/views/backend/admin/manager/page-settings.phtml:91
+#: resources/views/backend/admin/manager/page-settings.phtml:93
 #, fuzzy
 msgid "Note: add the uri without a trailing slash."
 msgstr "Hinweis: Füge die URI hinzu, ohne einen nachlaufenden Schrägstrich."
 
-#: resources/views/backend/admin/manager/page-settings.phtml:109
+#: resources/views/backend/admin/manager/page-settings.phtml:114
 msgid "Attributes"
 msgstr "Attribute"
 
-#: resources/views/backend/admin/plugin/index.phtml:70
-#: resources/views/backend/admin/plugin/index.phtml:113
+#: resources/views/backend/admin/plugin/index.phtml:72
+#: resources/views/backend/admin/plugin/index.phtml:115
 #: resources/views/backend/admin/site/index.phtml:103
 #: resources/views/backend/admin/site/index.phtml:153
-#: resources/views/backend/admin/theme/index.phtml:71
-#: resources/views/backend/admin/theme/index.phtml:120
+#: resources/views/backend/admin/theme/index.phtml:73
+#: resources/views/backend/admin/theme/index.phtml:122
 #: resources/views/backend/admin/user/create.phtml:108
 #: resources/views/backend/admin/user/profile.phtml:191
 #: resources/views/backend/admin/user/view.phtml:69
@@ -2035,130 +2424,130 @@ msgstr "Attribute"
 msgid "Name"
 msgstr "Name"
 
-#: resources/views/backend/admin/plugin/index.phtml:71
-#: resources/views/backend/admin/plugin/index.phtml:114
-#: resources/views/backend/admin/theme/index.phtml:72
-#: resources/views/backend/admin/theme/index.phtml:121
+#: resources/views/backend/admin/plugin/index.phtml:73
+#: resources/views/backend/admin/plugin/index.phtml:116
+#: resources/views/backend/admin/theme/index.phtml:74
+#: resources/views/backend/admin/theme/index.phtml:123
 msgid "Version"
 msgstr "Version"
 
-#: resources/views/backend/admin/plugin/index.phtml:75
-#: resources/views/backend/admin/plugin/index.phtml:118
-#: resources/views/backend/admin/theme/index.phtml:76
-#: resources/views/backend/admin/theme/index.phtml:125
+#: resources/views/backend/admin/plugin/index.phtml:77
+#: resources/views/backend/admin/plugin/index.phtml:120
+#: resources/views/backend/admin/theme/index.phtml:78
+#: resources/views/backend/admin/theme/index.phtml:127
 #, fuzzy
 #| msgid "Show in Search"
 msgid "Show on Subsites"
 msgstr "Show on Subsites"
 
-#: resources/views/backend/admin/plugin/index.phtml:90
-#: resources/views/backend/admin/theme/index.phtml:96
+#: resources/views/backend/admin/plugin/index.phtml:92
+#: resources/views/backend/admin/theme/index.phtml:98
 msgid "Developer:"
 msgstr "Entwickler:"
 
-#: resources/views/backend/admin/plugin/index.phtml:92
-#: resources/views/backend/admin/theme/index.phtml:98
+#: resources/views/backend/admin/plugin/index.phtml:94
+#: resources/views/backend/admin/theme/index.phtml:100
 msgid "View Details"
 msgstr "Details anzeigen"
 
-#: resources/views/backend/admin/plugin/index.phtml:176
-#: resources/views/backend/admin/plugin/index.phtml:197
+#: resources/views/backend/admin/plugin/index.phtml:178
+#: resources/views/backend/admin/plugin/index.phtml:199
 #, fuzzy
 msgid "Unable to update plugin visibility."
 msgstr "Die Sichtbarkeit des Plugins kann nicht aktualisiert werden."
 
-#: resources/views/backend/admin/plugin/index.phtml:185
+#: resources/views/backend/admin/plugin/index.phtml:187
 #, fuzzy
 msgid "Plugin is now available on subsites."
 msgstr "Das Plugin ist jetzt auf Subsites verfügbar."
 
-#: resources/views/backend/admin/plugin/index.phtml:190
+#: resources/views/backend/admin/plugin/index.phtml:192
 #, fuzzy
 msgid "Plugin has been removed from subsite plugin lists."
 msgstr "Plugin wurde aus den Subsite-Plugin-Listen entfernt."
 
-#: resources/views/backend/admin/plugin/install.phtml:24
+#: resources/views/backend/admin/plugin/install.phtml:25
 #, fuzzy
 msgid "Add Plugins (Experimental)"
 msgstr "Plugins hinzufügen (Experimentell)"
 
-#: resources/views/backend/admin/plugin/install.phtml:52
-#: resources/views/backend/admin/plugin/install.phtml:107
-#: resources/views/backend/admin/theme/install.phtml:52
-#: resources/views/backend/admin/theme/install.phtml:107
+#: resources/views/backend/admin/plugin/install.phtml:53
+#: resources/views/backend/admin/plugin/install.phtml:108
+#: resources/views/backend/admin/theme/install.phtml:53
+#: resources/views/backend/admin/theme/install.phtml:108
 msgid "Vendor"
 msgstr "Verkäufer"
 
-#: resources/views/backend/admin/plugin/install.phtml:71
-#: resources/views/backend/admin/theme/install.phtml:71
+#: resources/views/backend/admin/plugin/install.phtml:72
+#: resources/views/backend/admin/theme/install.phtml:72
 msgid "Installed"
 msgstr "Installiert"
 
-#: resources/views/backend/admin/plugin/install.phtml:73
-#: resources/views/backend/admin/theme/install.phtml:73
+#: resources/views/backend/admin/plugin/install.phtml:74
+#: resources/views/backend/admin/theme/install.phtml:74
 msgid "Available"
 msgstr "Verfügbar"
 
-#: resources/views/backend/admin/plugin/install.phtml:86
-#: resources/views/backend/admin/plugin/install.phtml:205
-#: resources/views/backend/admin/plugin/install.phtml:229
-#: resources/views/backend/admin/plugin/install.phtml:271
-#: resources/views/backend/admin/theme/install.phtml:86
-#: resources/views/backend/admin/theme/install.phtml:205
-#: resources/views/backend/admin/theme/install.phtml:229
-#: resources/views/backend/admin/theme/install.phtml:271
+#: resources/views/backend/admin/plugin/install.phtml:87
+#: resources/views/backend/admin/plugin/install.phtml:206
+#: resources/views/backend/admin/plugin/install.phtml:230
+#: resources/views/backend/admin/plugin/install.phtml:272
+#: resources/views/backend/admin/theme/install.phtml:87
+#: resources/views/backend/admin/theme/install.phtml:206
+#: resources/views/backend/admin/theme/install.phtml:230
+#: resources/views/backend/admin/theme/install.phtml:272
 msgid "Remove"
 msgstr "Entfernen"
 
-#: resources/views/backend/admin/plugin/install.phtml:89
-#: resources/views/backend/admin/theme/install.phtml:89
+#: resources/views/backend/admin/plugin/install.phtml:90
+#: resources/views/backend/admin/theme/install.phtml:90
 msgid "Unavailable"
 msgstr "Nicht verfügbar"
 
-#: resources/views/backend/admin/plugin/install.phtml:98
-#: resources/views/backend/admin/plugin/install.phtml:199
-#: resources/views/backend/admin/plugin/install.phtml:230
-#: resources/views/backend/admin/theme/install.phtml:98
-#: resources/views/backend/admin/theme/install.phtml:199
-#: resources/views/backend/admin/theme/install.phtml:230
+#: resources/views/backend/admin/plugin/install.phtml:99
+#: resources/views/backend/admin/plugin/install.phtml:200
+#: resources/views/backend/admin/plugin/install.phtml:231
+#: resources/views/backend/admin/theme/install.phtml:99
+#: resources/views/backend/admin/theme/install.phtml:200
+#: resources/views/backend/admin/theme/install.phtml:231
 msgid "Install"
 msgstr "Installieren"
 
-#: resources/views/backend/admin/plugin/install.phtml:173
-#: resources/views/backend/admin/theme/install.phtml:173
+#: resources/views/backend/admin/plugin/install.phtml:174
+#: resources/views/backend/admin/theme/install.phtml:174
 msgid "Removing..."
 msgstr "Entfernen..."
 
-#: resources/views/backend/admin/plugin/install.phtml:174
-#: resources/views/backend/admin/theme/install.phtml:174
+#: resources/views/backend/admin/plugin/install.phtml:175
+#: resources/views/backend/admin/theme/install.phtml:175
 msgid "Installing..."
 msgstr "Installiere …"
 
-#: resources/views/backend/admin/plugin/install.phtml:213
-#: resources/views/backend/admin/theme/install.phtml:213
+#: resources/views/backend/admin/plugin/install.phtml:214
+#: resources/views/backend/admin/theme/install.phtml:214
 #, fuzzy
 #| msgid "Remove featured image"
 msgid "Remove failed."
 msgstr "Entfernen fehlgeschlagen."
 
-#: resources/views/backend/admin/plugin/install.phtml:214
-#: resources/views/backend/admin/theme/install.phtml:214
+#: resources/views/backend/admin/plugin/install.phtml:215
+#: resources/views/backend/admin/theme/install.phtml:215
 #, fuzzy
 msgid "Install failed."
 msgstr "Installation fehlgeschlagen."
 
-#: resources/views/backend/admin/plugin/install.phtml:248
+#: resources/views/backend/admin/plugin/install.phtml:249
 msgid "Remove Plugin"
 msgstr "Plugin entfernen"
 
-#: resources/views/backend/admin/plugin/install.phtml:254
+#: resources/views/backend/admin/plugin/install.phtml:255
 #, fuzzy
 msgid "Are you sure you want to remove this plugin from the system?"
 msgstr ""
 "Bist du sicher, dass du dieses Plugin aus dem System entfernen möchtest?"
 
-#: resources/views/backend/admin/plugin/install.phtml:259
-#: resources/views/backend/admin/theme/install.phtml:259
+#: resources/views/backend/admin/plugin/install.phtml:260
+#: resources/views/backend/admin/theme/install.phtml:260
 msgid "This action cannot be undone."
 msgstr "Diese Aktion kann nicht rückgängig gemacht werden."
 
@@ -2194,7 +2583,7 @@ msgid "The purchase url is where customers can purchase your product."
 msgstr "Die Kauf-URL ist der Ort, an dem Kunden Ihr Produkt kaufen können."
 
 #: resources/views/backend/admin/product/index.phtml:31
-#: resources/views/backend/layouts/admin-layout.phtml:185
+#: resources/views/backend/layouts/admin-layout.phtml:210
 msgid "All Products"
 msgstr "Alle Produkte"
 
@@ -2232,7 +2621,7 @@ msgstr "Subdomain"
 
 #: resources/views/backend/admin/site/index.phtml:69
 #: resources/views/backend/admin/site/view.phtml:70
-#: resources/views/backend/general.phtml:57
+#: resources/views/backend/settings.phtml:60
 msgid "Site Name"
 msgstr "Seitenname"
 
@@ -2378,39 +2767,39 @@ msgstr "Standortkartierung"
 msgid "Public"
 msgstr "Öffentlich"
 
-#: resources/views/backend/admin/theme/index.phtml:70
-#: resources/views/backend/admin/theme/index.phtml:119
+#: resources/views/backend/admin/theme/index.phtml:72
+#: resources/views/backend/admin/theme/index.phtml:121
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: resources/views/backend/admin/theme/index.phtml:183
-#: resources/views/backend/admin/theme/index.phtml:204
+#: resources/views/backend/admin/theme/index.phtml:185
+#: resources/views/backend/admin/theme/index.phtml:206
 #, fuzzy
 msgid "Unable to update theme visibility."
 msgstr "Die Sichtbarkeit des Themas kann nicht aktualisiert werden."
 
-#: resources/views/backend/admin/theme/index.phtml:192
+#: resources/views/backend/admin/theme/index.phtml:194
 #, fuzzy
 msgid "Theme is now available on subsites."
 msgstr "Theme ist jetzt auf Subsites verfügbar."
 
-#: resources/views/backend/admin/theme/index.phtml:197
+#: resources/views/backend/admin/theme/index.phtml:199
 #, fuzzy
 msgid "Theme has been removed from subsite theme lists."
 msgstr "Theme wurde aus den Themenlisten der Unterseiten entfernt."
 
-#: resources/views/backend/admin/theme/install.phtml:24
+#: resources/views/backend/admin/theme/install.phtml:25
 #, fuzzy
 msgid "Add Themes (Experimental)"
 msgstr "Hinzufügen von Themen (Experimentell)"
 
-#: resources/views/backend/admin/theme/install.phtml:248
+#: resources/views/backend/admin/theme/install.phtml:249
 #, fuzzy
 #| msgid "Remove featured image"
 msgid "Remove Theme"
 msgstr "Thema entfernen"
 
-#: resources/views/backend/admin/theme/install.phtml:254
+#: resources/views/backend/admin/theme/install.phtml:255
 #, fuzzy
 msgid "Are you sure you want to remove this theme from the system?"
 msgstr ""
@@ -2498,7 +2887,7 @@ msgstr ""
 "Sie unten."
 
 #: resources/views/backend/admin/user/profile.phtml:42
-#: resources/views/backend/layouts/admin-layout.phtml:103
+#: resources/views/backend/layouts/admin-layout.phtml:126
 msgid "Profile"
 msgstr "Profil"
 
@@ -2555,19 +2944,19 @@ msgstr "Zeitzone"
 
 #: resources/views/backend/admin/user/profile.phtml:314
 #: resources/views/backend/admin/user/view.phtml:196
-#: resources/views/backend/reading.phtml:63
+#: resources/views/backend/settings.phtml:122
 msgid "Date Format"
 msgstr "Datumsformat"
 
 #: resources/views/backend/admin/user/profile.phtml:319
 #: resources/views/backend/admin/user/view.phtml:201
-#: resources/views/backend/reading.phtml:67
+#: resources/views/backend/settings.phtml:126
 msgid "Time Format"
 msgstr "Zeitformat"
 
 #: resources/views/backend/admin/user/profile.phtml:335
 #: resources/views/backend/admin/user/view.phtml:209
-#: resources/views/backend/general.phtml:69
+#: resources/views/backend/settings.phtml:72
 msgid "Locale"
 msgstr "Lokal"
 
@@ -2636,35 +3025,10 @@ msgstr "Zurücksetzen"
 msgid "Devflow"
 msgstr "Devflow"
 
-#: resources/views/backend/general.phtml:61
-msgid "Site Description"
-msgstr "Seitenbeschreibung"
-
-#: resources/views/backend/general.phtml:65
-msgid "Admin Email"
-msgstr "Administrator E-Mail"
-
-#: resources/views/backend/general.phtml:76
-#, fuzzy
-msgid "Cookie Expire"
-msgstr "Cookie läuft ab"
-
-#: resources/views/backend/general.phtml:80
-msgid "Cookie Path"
-msgstr "Cookie-Pfad"
-
-#: resources/views/backend/general.phtml:84
-msgid "System Timezone"
-msgstr "Systemzeitzone"
-
-#: resources/views/backend/general.phtml:93
-msgid "API Key"
-msgstr "API-Schlüssel"
-
 #: resources/views/backend/index.phtml:22
 #: resources/views/backend/index.phtml:27
-#: resources/views/backend/layouts/admin-layout.phtml:143
-#: resources/views/backend/updates.phtml:30
+#: resources/views/backend/layouts/admin-layout.phtml:166
+#: resources/views/backend/updates.phtml:29
 msgid "Dashboard"
 msgstr "Dashboard"
 
@@ -2673,102 +3037,99 @@ msgid "Control panel"
 msgstr "Bedienpanel"
 
 #: resources/views/backend/index.phtml:26
-#: resources/views/backend/layouts/admin-layout.phtml:149
+#: resources/views/backend/layouts/admin-layout.phtml:172
 msgid "Home"
 msgstr "Startseite"
 
-#: resources/views/backend/layouts/admin-layout.phtml:79
+#: resources/views/backend/layouts/admin-layout.phtml:81
 msgid "Toggle navigation"
 msgstr "Navigation umschalten"
 
-#: resources/views/backend/layouts/admin-layout.phtml:96
+#: resources/views/backend/layouts/admin-layout.phtml:93
+#, fuzzy
+msgid "No workflow notifications"
+msgstr "Keine Workflow-Benachrichtigungen"
+
+#: resources/views/backend/layouts/admin-layout.phtml:100
+msgid "Mark all as read"
+msgstr "Alle als gelesen markieren"
+
+#: resources/views/backend/layouts/admin-layout.phtml:119
 msgid "Member since"
 msgstr "Mitglied seit"
 
-#: resources/views/backend/layouts/admin-layout.phtml:108
+#: resources/views/backend/layouts/admin-layout.phtml:131
 msgid "Switch back"
 msgstr "Zurückschalten"
 
-#: resources/views/backend/layouts/admin-layout.phtml:112
+#: resources/views/backend/layouts/admin-layout.phtml:135
 msgid "Logout"
 msgstr "Abmelden"
 
-#: resources/views/backend/layouts/admin-layout.phtml:134
+#: resources/views/backend/layouts/admin-layout.phtml:157
 msgid "Online"
 msgstr "Online"
 
-#: resources/views/backend/layouts/admin-layout.phtml:139
+#: resources/views/backend/layouts/admin-layout.phtml:162
 msgid "MAIN NAVIGATION"
 msgstr "HAUPTNAVIGATION"
 
-#: resources/views/backend/layouts/admin-layout.phtml:150
-#: resources/views/backend/updates.phtml:26
-#: resources/views/backend/updates.phtml:31
+#: resources/views/backend/layouts/admin-layout.phtml:174
+#: resources/views/backend/updates.phtml:25
+#: resources/views/backend/updates.phtml:30
 msgid "Updates"
 msgstr "Aktualisierungen"
 
-#: resources/views/backend/layouts/admin-layout.phtml:151
+#: resources/views/backend/layouts/admin-layout.phtml:176
 #: resources/views/backend/snapshot.phtml:35
 msgid "System Report"
 msgstr "Systemreport abrufen"
 
-#: resources/views/backend/layouts/admin-layout.phtml:157
+#: resources/views/backend/layouts/admin-layout.phtml:182
 msgid "Flush Cache"
 msgstr "Cache Leeren"
 
-#: resources/views/backend/layouts/admin-layout.phtml:170
+#: resources/views/backend/layouts/admin-layout.phtml:195
 msgid "Manage"
 msgstr "Verwalten"
 
-#: resources/views/backend/layouts/admin-layout.phtml:186
-#: resources/views/backend/layouts/admin-layout.phtml:206
-#: resources/views/backend/layouts/admin-layout.phtml:269
+#: resources/views/backend/layouts/admin-layout.phtml:211
+#: resources/views/backend/layouts/admin-layout.phtml:233
+#: resources/views/backend/layouts/admin-layout.phtml:298
 msgid "Add New"
 msgstr "Neu hinzufügen"
 
-#: resources/views/backend/layouts/admin-layout.phtml:205
-msgid "All"
-msgstr "Alle"
-
-#: resources/views/backend/layouts/admin-layout.phtml:227
+#: resources/views/backend/layouts/admin-layout.phtml:254
 msgid "Installed Plugins"
 msgstr "Installierte Plugins"
 
-#: resources/views/backend/layouts/admin-layout.phtml:229
+#: resources/views/backend/layouts/admin-layout.phtml:256
 msgid "Add Plugin"
 msgstr "Plugin hinzufügen"
 
-#: resources/views/backend/layouts/admin-layout.phtml:245
+#: resources/views/backend/layouts/admin-layout.phtml:273
 msgid "Add Theme"
 msgstr "Thema hinzufügen"
 
-#: resources/views/backend/layouts/admin-layout.phtml:253
+#: resources/views/backend/layouts/admin-layout.phtml:282
 #, fuzzy
 msgid "Vihzhuo"
 msgstr "Vihzhuo"
 
-#: resources/views/backend/layouts/admin-layout.phtml:268
+#: resources/views/backend/layouts/admin-layout.phtml:297
 msgid "All Users"
 msgstr "Alle Benutzer"
 
-#: resources/views/backend/layouts/admin-layout.phtml:270
-#: resources/views/backend/layouts/admin-layout.phtml:278
+#: resources/views/backend/layouts/admin-layout.phtml:299
+#: resources/views/backend/layouts/admin-layout.phtml:307
 msgid "Your Profile"
 msgstr "Dein Profil"
 
-#: resources/views/backend/layouts/admin-layout.phtml:286
-msgid "Options"
-msgstr "Optionen"
+#: resources/views/backend/layouts/admin-layout.phtml:315
+msgid "Settings"
+msgstr "Einstellungen"
 
-#: resources/views/backend/layouts/admin-layout.phtml:292
-msgid "General"
-msgstr "Allgemein"
-
-#: resources/views/backend/layouts/admin-layout.phtml:293
-msgid "Reading"
-msgstr "Lesen"
-
-#: resources/views/backend/layouts/admin-layout.phtml:320
+#: resources/views/backend/layouts/admin-layout.phtml:348
 #, fuzzy
 msgid "Login expires in "
 msgstr "Login läuft ab "
@@ -2777,21 +3138,112 @@ msgstr "Login läuft ab "
 msgid "Powered by"
 msgstr "Powered by"
 
-#: resources/views/backend/reading.phtml:55
+#: resources/views/backend/partial/security-advisory.phtml:15
+#, fuzzy
+msgid "Composer Security Advisories"
+msgstr "Sicherheitshinweise für Komponisten"
+
+#: resources/views/backend/partial/security-advisory.phtml:21
+#, fuzzy
+msgid "No Composer security audit has been run yet."
+msgstr "Es wurde bisher kein Composer-Sicherheitsaudit durchgeführt."
+
+#: resources/views/backend/partial/security-advisory.phtml:23
+#, fuzzy
+msgid "Run:"
+msgstr "Lauf:"
+
+#: resources/views/backend/partial/security-advisory.phtml:28
+#, fuzzy
+msgid "Security audit failed."
+msgstr "Sicherheitsaudit fehlgeschlagen."
+
+#: resources/views/backend/partial/security-advisory.phtml:29
+msgid "Unknown error."
+msgstr "Unbekannter Fehler."
+
+#: resources/views/backend/partial/security-advisory.phtml:33
+#: resources/views/backend/partial/security-advisory.phtml:42
+#: resources/views/backend/partial/security-advisory.phtml:86
+#, fuzzy
+msgid "Last checked:"
+msgstr "Zuletzt überprüft:"
+
+#: resources/views/backend/partial/security-advisory.phtml:37
+#, fuzzy
+msgid "security advisories found."
+msgstr "Sicherheitshinweise gefunden."
+
+#: resources/views/backend/partial/security-advisory.phtml:38
+#, fuzzy
+msgid "Update the affected Composer packages as soon as possible."
+msgstr ""
+"Aktualisieren Sie die betroffenen Composer-Pakete so schnell wie möglich."
+
+#: resources/views/backend/partial/security-advisory.phtml:66
+#, fuzzy
+msgid "Affected versions:"
+msgstr "Betroffene Versionen:"
+
+#: resources/views/backend/partial/security-advisory.phtml:73
+#, fuzzy
+#| msgid "View Details"
+msgid "View advisory"
+msgstr "Hinweis anzeigen"
+
+#: resources/views/backend/partial/security-advisory.phtml:82
+#, fuzzy
+msgid "No known Composer security advisories found."
+msgstr "Keine bekannten Sicherheitshinweise von Composer gefunden."
+
+#: resources/views/backend/settings.phtml:55
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: resources/views/backend/settings.phtml:64
+msgid "Site Description"
+msgstr "Seitenbeschreibung"
+
+#: resources/views/backend/settings.phtml:68
+msgid "Admin Email"
+msgstr "Administrator E-Mail"
+
+#: resources/views/backend/settings.phtml:79
+#, fuzzy
+msgid "Cookie Expire"
+msgstr "Cookie läuft ab"
+
+#: resources/views/backend/settings.phtml:83
+msgid "Cookie Path"
+msgstr "Cookie-Pfad"
+
+#: resources/views/backend/settings.phtml:87
+msgid "System Timezone"
+msgstr "Systemzeitzone"
+
+#: resources/views/backend/settings.phtml:96
+msgid "API Key"
+msgstr "API-Schlüssel"
+
+#: resources/views/backend/settings.phtml:109
+msgid "Reading Settings"
+msgstr "Lese Einstellungen"
+
+#: resources/views/backend/settings.phtml:114
 msgid "Charset"
 msgstr "Zeichensatz"
 
-#: resources/views/backend/reading.phtml:59
+#: resources/views/backend/settings.phtml:118
 #, fuzzy
 msgid "Content per Page"
 msgstr "Inhalt pro Seite"
 
-#: resources/views/backend/updates.phtml:27
+#: resources/views/backend/updates.phtml:26
 #, fuzzy
 msgid "Devflow CMF, plugins, and themes"
 msgstr "Devflow CMF, Plugins und Themes"
 
-#: resources/views/backend/updates.phtml:45
+#: resources/views/backend/updates.phtml:49
 #, fuzzy
 msgid ""
 "Update checks are temporarily unavailable. Showing cached or fallback "
@@ -2800,49 +3252,67 @@ msgstr ""
 "Update-Prüfungen sind vorübergehend nicht verfügbar. Zeigt "
 "zwischengespeicherte oder Rückfall-Ergebnisse an."
 
-#: resources/views/backend/updates.phtml:51
+#: resources/views/backend/updates.phtml:55
 #, fuzzy, php-format
 msgid "Devflow <strong>%s</strong> is available."
 msgstr "Devflow <strong>%s</strong> ist verfügbar."
 
-#: resources/views/backend/updates.phtml:52
+#: resources/views/backend/updates.phtml:56
 #, fuzzy, php-format
 msgid "Current version: <strong>%s</strong>"
 msgstr "Aktuelle Version: <strong>%s</strong>"
 
-#: resources/views/backend/updates.phtml:55
+#: resources/views/backend/updates.phtml:59
 #, fuzzy, php-format
 msgid "Run %s from the command line to update Devflow core."
 msgstr ""
 "Führe %s über die Kommandozeile aus, um den Devflow Core zu aktualisieren."
 
-#: resources/views/backend/updates.phtml:59
+#: resources/views/backend/updates.phtml:63
 #, fuzzy, php-format
 msgid "Devflow %s is up to date."
 msgstr "Devflow %s ist auf dem neuesten Stand."
 
-#: resources/views/backend/updates.phtml:79
+#: resources/views/backend/updates.phtml:87
 #, fuzzy, php-format
 #| msgid "Update User"
 msgid "Update All %s."
 msgstr "Aktualisieren Sie alle %s."
 
-#: resources/views/backend/updates.phtml:91
+#: resources/views/backend/updates.phtml:99
 #, fuzzy, php-format
 msgid "No %s updates available."
 msgstr "Keine %s Updates verfügbar."
 
-#: resources/views/backend/updates.phtml:100
+#: resources/views/backend/updates.phtml:108
 msgid "Package"
 msgstr "Paket"
 
-#: resources/views/backend/updates.phtml:101
+#: resources/views/backend/updates.phtml:109
 msgid "Current"
 msgstr "Aktuell"
 
-#: resources/views/backend/updates.phtml:102
+#: resources/views/backend/updates.phtml:110
 msgid "Latest"
 msgstr "Neueste"
+
+#, fuzzy
+#~ msgid "General options exception occurred and was logged."
+#~ msgstr ""
+#~ "Die Ausnahme für allgemeine Optionen trat auf und wurde protokolliert."
+
+#, fuzzy
+#~ msgid "Reading options exception occurred and was logged."
+#~ msgstr "Die Ausnahme für Leseoptionen trat auf und wurde protokolliert."
+
+#~ msgid "Options"
+#~ msgstr "Optionen"
+
+#~ msgid "General"
+#~ msgstr "Allgemein"
+
+#~ msgid "Reading"
+#~ msgstr "Lesen"
 
 #, fuzzy, php-format
 #~ msgid "Unable to fetch registry URL [%s]. Response: %s"
