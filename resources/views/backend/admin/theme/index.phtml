@@ -100,9 +100,19 @@ if (! is_main_site() && is_multisite()) {
                                         <a href="<?=esc_url($theme['themeUri']);?>"><?=trans_html(string: 'View Details');?></a>
                                     </td>
                                     <?php if (is_theme_active(esc_html($theme['className'])) === true) : ?>
-                                        <td<?= ae('deactivate:themes'); ?> class="text-center"><a class="btn btn-danger" href="<?=admin_url('theme/deactivate/');?>"><i class="fa fa-minus-circle"></i></a></td>
+                                        <td<?= ae('deactivate:themes'); ?> class="text-center">
+                                            <form action="<?=admin_url('theme/deactivate/');?>" method="post" autocomplete="off">
+                                                <input type="hidden" name="theme_id" value="<?= esc_html($theme['className']); ?>" />
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                                            </form>
+                                        </td>
                                     <?php else : ?>
-                                        <td<?= ae('deactivate:themes'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url(sprintf('theme/activate/?id=%s', $theme['className']));?>"><i class="fa fa-plus-circle"></i></a></td>
+                                        <td<?= ae('activate:themes'); ?> class="text-center">
+                                            <form action="<?=admin_url('theme/activate/');?>" method="post" autocomplete="off">
+                                                <input type="hidden" name="theme_id" value="<?= esc_html($theme['className']); ?>" />
+                                                <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
+                                            </form>
+                                        </td>
                                     <?php endif; ?>
                                     <?php if ($canManageNetworkThemes) : ?>
                                         <td class="text-center">

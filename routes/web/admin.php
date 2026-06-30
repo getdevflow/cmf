@@ -52,8 +52,8 @@ return function (\Qubus\Routing\Psr7Router $router) {
             // Plugin routes
             $group->get(uri: '/plugin/', callback: 'AdminPluginController@plugins')
                 ->name('admin.plugins');
-            $group->get(uri: '/plugin/activate/', callback: 'AdminPluginController@activate')->name('plugin.activate');
-            $group->get(
+            $group->post(uri: '/plugin/activate/', callback: 'AdminPluginController@activate')->name('plugin.activate');
+            $group->post(
                 uri: '/plugin/deactivate/',
                 callback: 'AdminPluginController@deactivate'
             )->name('plugin.deactivate');
@@ -66,8 +66,8 @@ return function (\Qubus\Routing\Psr7Router $router) {
             // Theme routes
             $group->get(uri: '/theme/', callback: 'AdminThemeController@themes')
                 ->name('admin.themes');
-            $group->get(uri: '/theme/activate/', callback: 'AdminThemeController@activate')->name('theme.activate');
-            $group->get(
+            $group->post(uri: '/theme/activate/', callback: 'AdminThemeController@activate')->name('theme.activate');
+            $group->post(
                 uri: '/theme/deactivate/',
                 callback: 'AdminThemeController@deactivate'
             )->name('theme.deactivate');

@@ -94,9 +94,19 @@ if (! is_main_site() && is_multisite()) {
                                         <a href="<?=esc_url($plugin['pluginUri']);?>"><?=trans_html('View Details');?></a>
                                     </td>
                                     <?php if (is_plugin_activated(esc_html($plugin['className'])) === true && class_exists(esc_html($plugin['className']))) : ?>
-                                        <td<?= ae('deactivate:plugins'); ?> class="text-center"><a class="btn btn-danger" href="<?=admin_url(sprintf('plugin/deactivate/?id=%s', esc_html($plugin['className'])));?>"><i class="fa fa-minus-circle"></i></a></td>
+                                        <td<?= ae('deactivate:plugins'); ?> class="text-center">
+                                            <form action="<?=admin_url('plugin/deactivate/');?>" method="post" autocomplete="off">
+                                                <input type="hidden" name="plugin_id" value="<?= esc_html($plugin['className']); ?>" />
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                                            </form>
+                                        </td>
                                     <?php else : ?>
-                                        <td<?= ae('activate:plugins'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url(sprintf('plugin/activate/?id=%s', esc_html($plugin['className'])));?>"><i class="fa fa-plus-circle"></i></a></td>
+                                        <td<?= ae('activate:plugins'); ?> class="text-center">
+                                            <form action="<?=admin_url('plugin/activate/');?>" method="post" autocomplete="off">
+                                                <input type="hidden" name="plugin_id" value="<?= esc_html($plugin['className']); ?>" />
+                                                <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
+                                            </form>
+                                        </td>
                                     <?php endif; ?>
                                     <?php if ($canManageNetworkPlugins) : ?>
                                         <td class="text-center">
