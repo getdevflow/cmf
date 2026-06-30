@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Devflow CMF\n"
-"POT-Creation-Date: 2026-06-25 23:04-0600\n"
-"PO-Revision-Date: 2026-06-25 23:04-0600\n"
+"POT-Creation-Date: 2026-06-30 16:30-0700\n"
+"PO-Revision-Date: 2026-06-30 16:30-0700\n"
 "Last-Translator: Joshua Parker <joshua@joshuaparker.dev>\n"
 "Language-Team: Joshua Parker\n"
 "Language: zh_CN\n"
@@ -248,9 +248,10 @@ msgstr "密码重置异常发生并被记录。"
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:336
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:392
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:455
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:56
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:104
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:140
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:57
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:105
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:141
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:152
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:93
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:209
 #: core/Infrastructure/Http/Controllers/AdminUserController.php:237
@@ -445,9 +446,9 @@ msgid "Content types error."
 msgstr "内容类型错误。"
 
 #: core/Infrastructure/Http/Controllers/AdminSiteController.php:205
-#: core/Infrastructure/Services/Content/ContentService.php:186
+#: core/Infrastructure/Services/Content/ContentService.php:199
 #: core/Infrastructure/Services/ContentType/ContentTypeService.php:120
-#: core/Infrastructure/Services/Product/ProductService.php:166
+#: core/Infrastructure/Services/Product/ProductService.php:178
 #, fuzzy
 msgid "Change exception occurred and was logged."
 msgstr "变更异常发生并被记录。"
@@ -503,26 +504,26 @@ msgstr "发生了站点检查异常并被记录。"
 msgid "A site deletion exception occurred and was logged."
 msgstr "发生了网站删除异常并被记录。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:86
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:87
 msgid "Themes"
 msgstr "主题"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:113
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:114
 #, fuzzy
 msgid "Theme activated."
 msgstr "主题已激活。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:117
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:118
 #, fuzzy
 msgid "Theme activation exception occurred and was logged."
 msgstr "主题激活异常发生并被记录。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:149
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:161
 #, fuzzy
 msgid "Theme deactivated."
 msgstr "主题已关闭。"
 
-#: core/Infrastructure/Http/Controllers/AdminThemeController.php:153
+#: core/Infrastructure/Http/Controllers/AdminThemeController.php:165
 #, fuzzy
 msgid "Theme deactivation exception occurred and was logged."
 msgstr "主题停用异常发生并被记录。"
@@ -755,47 +756,47 @@ msgstr "用户已被移除。"
 msgid "Website Manager"
 msgstr "网站管理员"
 
-#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:107
+#: core/Infrastructure/Providers/CmsHelperServiceProvider.php:109
 #, fuzzy, php-format
 msgid "Devflow %s"
 msgstr "开发流程%s"
 
-#: core/Infrastructure/Services/Content/ContentService.php:97
+#: core/Infrastructure/Services/Content/ContentService.php:98
 #, fuzzy
 msgid "The content does not exist."
 msgstr "内容不存在。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:131
+#: core/Infrastructure/Services/Content/ContentService.php:138
 #, fuzzy
 msgid "Content added successfully."
 msgstr "内容已成功添加。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:144
+#: core/Infrastructure/Services/Content/ContentService.php:151
 #, fuzzy
 msgid "Could not create content. Please try again later."
 msgstr "无法创作内容。请稍后再试。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:212
-#: core/Infrastructure/Services/Product/ProductService.php:192
+#: core/Infrastructure/Services/Content/ContentService.php:231
+#: core/Infrastructure/Services/Product/ProductService.php:210
 #, fuzzy
 msgid "Removal of featured image was successful."
 msgstr "重点图片的移除成功。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:222
-#: core/Infrastructure/Services/Product/ProductService.php:202
+#: core/Infrastructure/Services/Content/ContentService.php:241
+#: core/Infrastructure/Services/Product/ProductService.php:220
 #, fuzzy
 msgid "Removal exception occurred and was logged."
 msgstr "发生了移除异常并被记录。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:271
-#: core/Infrastructure/Services/Content/ContentService.php:306
-#: core/Infrastructure/Services/Product/ProductService.php:253
+#: core/Infrastructure/Services/Content/ContentService.php:290
+#: core/Infrastructure/Services/Content/ContentService.php:331
+#: core/Infrastructure/Services/Product/ProductService.php:277
 #, fuzzy
 msgid "A deletion exception occurred and was logged."
 msgstr "发生了删除异常并被记录。"
 
-#: core/Infrastructure/Services/Content/ContentService.php:296
-#: core/Infrastructure/Services/Product/ProductService.php:243
+#: core/Infrastructure/Services/Content/ContentService.php:321
+#: core/Infrastructure/Services/Product/ProductService.php:267
 #, fuzzy
 msgid "Removal was successful."
 msgstr "清除行动成功。"
@@ -938,12 +939,12 @@ msgstr "[%s] %s"
 msgid "Error fetching content types."
 msgstr "错误获取内容类型。"
 
-#: core/Infrastructure/Services/Product/ProductService.php:110
+#: core/Infrastructure/Services/Product/ProductService.php:116
 #, fuzzy
 msgid "Product added successfully."
 msgstr "产品成功添加。"
 
-#: core/Infrastructure/Services/Product/ProductService.php:124
+#: core/Infrastructure/Services/Product/ProductService.php:130
 #, fuzzy
 msgid "Could not create product. Please try again later."
 msgstr "无法创造产品。请稍后再试。"
@@ -1797,12 +1798,13 @@ msgstr "内容类型"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:93
 #: resources/views/backend/admin/content-type/content-type.phtml:136
-#: resources/views/backend/admin/plugin/index.phtml:74
-#: resources/views/backend/admin/plugin/index.phtml:117
+#: resources/views/backend/admin/plugin/index.phtml:81
+#: resources/views/backend/admin/plugin/index.phtml:136
+#: resources/views/backend/admin/plugin/index.phtml:189
 #: resources/views/backend/admin/plugin/install.phtml:54
 #: resources/views/backend/admin/plugin/install.phtml:109
 #: resources/views/backend/admin/theme/index.phtml:75
-#: resources/views/backend/admin/theme/index.phtml:124
+#: resources/views/backend/admin/theme/index.phtml:134
 #: resources/views/backend/admin/theme/install.phtml:54
 #: resources/views/backend/admin/theme/install.phtml:109
 msgid "Description"
@@ -1827,8 +1829,8 @@ msgstr "计数"
 
 #: resources/views/backend/admin/content-type/content-type.phtml:96
 #: resources/views/backend/admin/content-type/content-type.phtml:139
-#: resources/views/backend/admin/plugin/index.phtml:75
-#: resources/views/backend/admin/plugin/index.phtml:118
+#: resources/views/backend/admin/plugin/index.phtml:137
+#: resources/views/backend/admin/plugin/index.phtml:190
 #: resources/views/backend/admin/plugin/install.phtml:56
 #: resources/views/backend/admin/plugin/install.phtml:111
 #: resources/views/backend/admin/site/index.phtml:106
@@ -1836,7 +1838,7 @@ msgstr "计数"
 #: resources/views/backend/admin/site/users.phtml:55
 #: resources/views/backend/admin/site/users.phtml:191
 #: resources/views/backend/admin/theme/index.phtml:76
-#: resources/views/backend/admin/theme/index.phtml:125
+#: resources/views/backend/admin/theme/index.phtml:135
 #: resources/views/backend/admin/theme/install.phtml:56
 #: resources/views/backend/admin/theme/install.phtml:111
 #: resources/views/backend/admin/user/index.phtml:60
@@ -1913,7 +1915,7 @@ msgstr "更新内容类型"
 #: resources/views/backend/admin/user/index.phtml:78
 #: resources/views/backend/admin/user/index.phtml:80
 #: resources/views/backend/admin/user/profile.phtml:48
-#: resources/views/backend/admin/user/view.phtml:46
+#: resources/views/backend/admin/user/view.phtml:45
 #: resources/views/backend/settings.phtml:37
 #: resources/views/backend/updates.phtml:129
 msgid "Update"
@@ -1933,9 +1935,9 @@ msgstr "更新"
 #: resources/views/backend/admin/theme/install.phtml:267
 #: resources/views/backend/admin/user/create.phtml:90
 #: resources/views/backend/admin/user/profile.phtml:49
-#: resources/views/backend/admin/user/profile.phtml:199
-#: resources/views/backend/admin/user/view.phtml:47
-#: resources/views/backend/admin/user/view.phtml:78
+#: resources/views/backend/admin/user/profile.phtml:200
+#: resources/views/backend/admin/user/view.phtml:46
+#: resources/views/backend/admin/user/view.phtml:77
 msgid "Cancel"
 msgstr "取消"
 
@@ -2059,6 +2061,7 @@ msgstr "发布日期"
 
 #: resources/views/backend/admin/content/create.phtml:145
 #: resources/views/backend/admin/content/view.phtml:219
+#: resources/views/backend/admin/plugin/index.phtml:82
 #: resources/views/backend/admin/plugin/install.phtml:55
 #: resources/views/backend/admin/plugin/install.phtml:110
 #: resources/views/backend/admin/product/create.phtml:113
@@ -2071,7 +2074,7 @@ msgstr "发布日期"
 #: resources/views/backend/admin/user/create.phtml:230
 #: resources/views/backend/admin/user/index.phtml:58
 #: resources/views/backend/admin/user/index.phtml:128
-#: resources/views/backend/admin/user/view.phtml:150
+#: resources/views/backend/admin/user/view.phtml:149
 msgid "Status"
 msgstr "状态"
 
@@ -2365,55 +2368,79 @@ msgstr "注意：添加uri时不要带斜线。"
 msgid "Attributes"
 msgstr "属性"
 
-#: resources/views/backend/admin/plugin/index.phtml:72
-#: resources/views/backend/admin/plugin/index.phtml:115
+#: resources/views/backend/admin/plugin/index.phtml:68
+#, fuzzy
+#| msgid "Installed Plugins"
+msgid "Global-Use Plugins"
+msgstr "全球使用插件"
+
+#: resources/views/backend/admin/plugin/index.phtml:73
+#, fuzzy
+msgid ""
+"Global-use plugins are loaded automatically for every site and cannot be "
+"disabled from the admin. Remove the plugin file to disable it."
+msgstr ""
+"全局使用的插件会自动加载到每个站点，管理员无法禁用。移除插件文件以禁用它。"
+
+#: resources/views/backend/admin/plugin/index.phtml:79
+#: resources/views/backend/admin/plugin/index.phtml:134
+#: resources/views/backend/admin/plugin/index.phtml:187
 #: resources/views/backend/admin/site/index.phtml:103
 #: resources/views/backend/admin/site/index.phtml:153
 #: resources/views/backend/admin/theme/index.phtml:73
-#: resources/views/backend/admin/theme/index.phtml:122
+#: resources/views/backend/admin/theme/index.phtml:132
 #: resources/views/backend/admin/user/create.phtml:108
 #: resources/views/backend/admin/user/profile.phtml:191
-#: resources/views/backend/admin/user/view.phtml:69
+#: resources/views/backend/admin/user/view.phtml:68
 msgid "Name"
 msgstr "名称"
 
-#: resources/views/backend/admin/plugin/index.phtml:73
-#: resources/views/backend/admin/plugin/index.phtml:116
+#: resources/views/backend/admin/plugin/index.phtml:80
+#: resources/views/backend/admin/plugin/index.phtml:135
+#: resources/views/backend/admin/plugin/index.phtml:188
 #: resources/views/backend/admin/theme/index.phtml:74
-#: resources/views/backend/admin/theme/index.phtml:123
+#: resources/views/backend/admin/theme/index.phtml:133
 msgid "Version"
 msgstr "版本"
 
-#: resources/views/backend/admin/plugin/index.phtml:77
-#: resources/views/backend/admin/plugin/index.phtml:120
-#: resources/views/backend/admin/theme/index.phtml:78
-#: resources/views/backend/admin/theme/index.phtml:127
-#, fuzzy
-msgid "Show on Subsites"
-msgstr "Subsites 上的节目"
-
-#: resources/views/backend/admin/plugin/index.phtml:92
+#: resources/views/backend/admin/plugin/index.phtml:94
+#: resources/views/backend/admin/plugin/index.phtml:154
 #: resources/views/backend/admin/theme/index.phtml:98
 msgid "Developer:"
 msgstr "开发者："
 
-#: resources/views/backend/admin/plugin/index.phtml:94
+#: resources/views/backend/admin/plugin/index.phtml:108
+#: resources/views/backend/admin/plugin/index.phtml:156
 #: resources/views/backend/admin/theme/index.phtml:100
 msgid "View Details"
 msgstr "查看详情"
 
-#: resources/views/backend/admin/plugin/index.phtml:178
-#: resources/views/backend/admin/plugin/index.phtml:199
+#: resources/views/backend/admin/plugin/index.phtml:114
+#, fuzzy
+#| msgid "All Users"
+msgid "Global Use"
+msgstr "全球应用"
+
+#: resources/views/backend/admin/plugin/index.phtml:139
+#: resources/views/backend/admin/plugin/index.phtml:192
+#: resources/views/backend/admin/theme/index.phtml:78
+#: resources/views/backend/admin/theme/index.phtml:137
+#, fuzzy
+msgid "Show on Subsites"
+msgstr "Subsites 上的节目"
+
+#: resources/views/backend/admin/plugin/index.phtml:250
+#: resources/views/backend/admin/plugin/index.phtml:271
 #, fuzzy
 msgid "Unable to update plugin visibility."
 msgstr "无法更新插件可见性。"
 
-#: resources/views/backend/admin/plugin/index.phtml:187
+#: resources/views/backend/admin/plugin/index.phtml:259
 #, fuzzy
 msgid "Plugin is now available on subsites."
 msgstr "插件现已在子网站提供。"
 
-#: resources/views/backend/admin/plugin/index.phtml:192
+#: resources/views/backend/admin/plugin/index.phtml:264
 #, fuzzy
 msgid "Plugin has been removed from subsite plugin lists."
 msgstr "插件已被从子站点插件列表中移除。"
@@ -2586,8 +2613,8 @@ msgstr "管理员"
 
 #: resources/views/backend/admin/site/index.phtml:102
 #: resources/views/backend/admin/site/index.phtml:152
-#: resources/views/backend/admin/user/profile.phtml:240
-#: resources/views/backend/admin/user/view.phtml:112
+#: resources/views/backend/admin/user/profile.phtml:242
+#: resources/views/backend/admin/user/view.phtml:111
 msgid "URL"
 msgstr "网址"
 
@@ -2624,7 +2651,7 @@ msgstr "多站点用户"
 #: resources/views/backend/admin/user/index.phtml:55
 #: resources/views/backend/admin/user/index.phtml:125
 #: resources/views/backend/admin/user/profile.phtml:196
-#: resources/views/backend/admin/user/view.phtml:74
+#: resources/views/backend/admin/user/view.phtml:73
 #: resources/views/backend/auth/index.phtml:23
 msgid "Username"
 msgstr "用户名"
@@ -2634,8 +2661,8 @@ msgstr "用户名"
 #: resources/views/backend/admin/user/create.phtml:138
 #: resources/views/backend/admin/user/index.phtml:56
 #: resources/views/backend/admin/user/index.phtml:126
-#: resources/views/backend/admin/user/profile.phtml:203
-#: resources/views/backend/admin/user/view.phtml:83
+#: resources/views/backend/admin/user/profile.phtml:205
+#: resources/views/backend/admin/user/view.phtml:82
 msgid "First Name"
 msgstr "名字"
 
@@ -2644,8 +2671,8 @@ msgstr "名字"
 #: resources/views/backend/admin/user/create.phtml:148
 #: resources/views/backend/admin/user/index.phtml:57
 #: resources/views/backend/admin/user/index.phtml:127
-#: resources/views/backend/admin/user/profile.phtml:213
-#: resources/views/backend/admin/user/view.phtml:93
+#: resources/views/backend/admin/user/profile.phtml:215
+#: resources/views/backend/admin/user/view.phtml:92
 #, fuzzy
 msgid "Last Name"
 msgstr "姓氏"
@@ -2669,7 +2696,7 @@ msgstr "遗址"
 #: resources/views/backend/admin/user/create.phtml:252
 #: resources/views/backend/admin/user/index.phtml:59
 #: resources/views/backend/admin/user/index.phtml:129
-#: resources/views/backend/admin/user/view.phtml:170
+#: resources/views/backend/admin/user/view.phtml:169
 msgid "Role"
 msgstr "角色"
 
@@ -2710,23 +2737,23 @@ msgid "Public"
 msgstr "公开"
 
 #: resources/views/backend/admin/theme/index.phtml:72
-#: resources/views/backend/admin/theme/index.phtml:121
+#: resources/views/backend/admin/theme/index.phtml:131
 #, fuzzy
 msgid "Screenshot"
 msgstr "截图"
 
-#: resources/views/backend/admin/theme/index.phtml:185
-#: resources/views/backend/admin/theme/index.phtml:206
+#: resources/views/backend/admin/theme/index.phtml:195
+#: resources/views/backend/admin/theme/index.phtml:216
 #, fuzzy
 msgid "Unable to update theme visibility."
 msgstr "无法更新主题可见性。"
 
-#: resources/views/backend/admin/theme/index.phtml:194
+#: resources/views/backend/admin/theme/index.phtml:204
 #, fuzzy
 msgid "Theme is now available on subsites."
 msgstr "主题现已在子网站上提供。"
 
-#: resources/views/backend/admin/theme/index.phtml:199
+#: resources/views/backend/admin/theme/index.phtml:209
 #, fuzzy
 msgid "Theme has been removed from subsite theme lists."
 msgstr "主题已被从子网站主题列表中移除。"
@@ -2753,14 +2780,14 @@ msgid "New User?"
 msgstr "新用户?"
 
 #: resources/views/backend/admin/user/create.phtml:143
-#: resources/views/backend/admin/user/profile.phtml:208
-#: resources/views/backend/admin/user/view.phtml:88
+#: resources/views/backend/admin/user/profile.phtml:210
+#: resources/views/backend/admin/user/view.phtml:87
 msgid "Middle Name"
 msgstr "中间名"
 
 #: resources/views/backend/admin/user/create.phtml:163
-#: resources/views/backend/admin/user/profile.phtml:229
-#: resources/views/backend/admin/user/view.phtml:101
+#: resources/views/backend/admin/user/profile.phtml:231
+#: resources/views/backend/admin/user/view.phtml:100
 msgid "Contact info"
 msgstr "联系信息"
 
@@ -2786,7 +2813,7 @@ msgid "Hide Password"
 msgstr "隐藏密码"
 
 #: resources/views/backend/admin/user/create.phtml:224
-#: resources/views/backend/admin/user/view.phtml:145
+#: resources/views/backend/admin/user/view.phtml:144
 msgid "User Status"
 msgstr "用户状态"
 
@@ -2796,12 +2823,12 @@ msgid "If the account is Inactive, the user will be incapable of logging in."
 msgstr "如果账户处于非活跃状态，用户将无法登录。"
 
 #: resources/views/backend/admin/user/create.phtml:246
-#: resources/views/backend/admin/user/view.phtml:165
+#: resources/views/backend/admin/user/view.phtml:164
 msgid "User Role"
 msgstr "用户角色"
 
 #: resources/views/backend/admin/user/index.phtml:37
-#: resources/views/backend/admin/user/view.phtml:45
+#: resources/views/backend/admin/user/view.phtml:44
 msgid "New User"
 msgstr "新用户"
 
@@ -2846,73 +2873,73 @@ msgstr "切换侧边栏"
 msgid "Admin Skin"
 msgstr "管理员皮肤"
 
-#: resources/views/backend/admin/user/profile.phtml:198
-#: resources/views/backend/admin/user/view.phtml:77
+#: resources/views/backend/admin/user/profile.phtml:199
+#: resources/views/backend/admin/user/view.phtml:76
 #, fuzzy
 msgid "Change username"
 msgstr "更改用户名"
 
-#: resources/views/backend/admin/user/profile.phtml:258
+#: resources/views/backend/admin/user/profile.phtml:260
 msgid "About yourself"
 msgstr "个人说明"
 
-#: resources/views/backend/admin/user/profile.phtml:264
-#: resources/views/backend/admin/user/view.phtml:127
+#: resources/views/backend/admin/user/profile.phtml:266
+#: resources/views/backend/admin/user/view.phtml:126
 msgid "Biography"
 msgstr "简介"
 
-#: resources/views/backend/admin/user/profile.phtml:269
-#: resources/views/backend/admin/user/view.phtml:132
+#: resources/views/backend/admin/user/profile.phtml:271
+#: resources/views/backend/admin/user/view.phtml:131
 msgid "Profile Picture"
 msgstr "资料图片"
 
-#: resources/views/backend/admin/user/profile.phtml:271
+#: resources/views/backend/admin/user/profile.phtml:273
 #, php-format
 msgid "You can change your profile picture on <a href=\"%s\">Gravatar</a>."
 msgstr "您可以在<a href=\"%s\">Gravatar</a>修改您的个人资料图片。"
 
-#: resources/views/backend/admin/user/profile.phtml:299
-#: resources/views/backend/admin/user/view.phtml:181
+#: resources/views/backend/admin/user/profile.phtml:301
+#: resources/views/backend/admin/user/view.phtml:180
 msgid "Date/Time"
 msgstr "日期/时间"
 
-#: resources/views/backend/admin/user/profile.phtml:304
-#: resources/views/backend/admin/user/view.phtml:186
+#: resources/views/backend/admin/user/profile.phtml:306
+#: resources/views/backend/admin/user/view.phtml:185
 msgid "Timezone"
 msgstr "时区"
 
-#: resources/views/backend/admin/user/profile.phtml:314
-#: resources/views/backend/admin/user/view.phtml:196
+#: resources/views/backend/admin/user/profile.phtml:316
+#: resources/views/backend/admin/user/view.phtml:195
 #: resources/views/backend/settings.phtml:122
 msgid "Date Format"
 msgstr "日期格式"
 
-#: resources/views/backend/admin/user/profile.phtml:319
-#: resources/views/backend/admin/user/view.phtml:201
+#: resources/views/backend/admin/user/profile.phtml:321
+#: resources/views/backend/admin/user/view.phtml:200
 #: resources/views/backend/settings.phtml:126
 msgid "Time Format"
 msgstr "时间格式"
 
-#: resources/views/backend/admin/user/profile.phtml:335
-#: resources/views/backend/admin/user/view.phtml:209
+#: resources/views/backend/admin/user/profile.phtml:337
+#: resources/views/backend/admin/user/view.phtml:208
 #: resources/views/backend/settings.phtml:72
 msgid "Locale"
 msgstr "本地化"
 
-#: resources/views/backend/admin/user/profile.phtml:340
-#: resources/views/backend/admin/user/view.phtml:214
+#: resources/views/backend/admin/user/profile.phtml:342
+#: resources/views/backend/admin/user/view.phtml:213
 msgid "Language"
 msgstr "语言"
 
-#: resources/views/backend/admin/user/view.phtml:42
+#: resources/views/backend/admin/user/view.phtml:41
 msgid "Update User"
 msgstr "更新用户"
 
-#: resources/views/backend/admin/user/view.phtml:121
+#: resources/views/backend/admin/user/view.phtml:120
 msgid "About the user"
 msgstr "关于用户"
 
-#: resources/views/backend/admin/user/view.phtml:158
+#: resources/views/backend/admin/user/view.phtml:157
 #, fuzzy
 msgid ""
 "If the account is Inactive, the user will be incapable of logging into the "
