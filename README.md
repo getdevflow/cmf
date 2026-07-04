@@ -22,6 +22,8 @@ Its rich set of features includes __action__ and __filter__ hooks, enabling cust
 content management is intuitive and tailored to your specific needs, providing flexibility and control for building scalable 
 and maintainable applications. Perfect for developers seeking a robust, modern solution for headless content management.
 
+![https://devflow-cmf.s3.us-east-1.amazonaws.com/image/Devflow-CMS-Content-Types.gif](https://devflow-cmf.s3.us-east-1.amazonaws.com/image/Devflow-CMS-Content-Types.gif)
+
 ## 📍 Requirement
 - PHP >= 8.4+
 - BCMath PHP Extension
