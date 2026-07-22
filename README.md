@@ -14,13 +14,13 @@
 
 <p align="center">🌟 Star me on <a href="https://github.com/getdevflow/cmf">GitHub</a> to encourage continuous development!</p>
 
-__Devflow__ is a powerful headless content management framework and CMS built for PHP programmers, designed to streamline web development 
-using __CQRS__ (Command Query Responsibility Segregation) and __domain-driven development__ principles. Offering an advanced architecture, 
-Devflow supports __event sourcing__ and __domain events__, allowing developers to easily manage complex workflows and data changes. 
+__Devflow CMS__ is a hybrid content management framework that gives PHP architects the freedom to build without limits.
 
-Its rich set of features includes __action__ and __filter__ hooks, enabling customization and extension. Devflow ensures that 
-content management is intuitive and tailored to your specific needs, providing flexibility and control for building scalable 
-and maintainable applications. Perfect for developers seeking a robust, modern solution for headless content management.
+![https://devflow-cmf.s3.us-east-1.amazonaws.com/image/Devflow-CMS-Content-Types.gif](https://devflow-cmf.s3.us-east-1.amazonaws.com/image/Devflow-CMS-Content-Types.gif)
+
+__Devflow CMS__ is a powerful hybrid content management framework and CMS built for PHP architects, designed to streamline web development
+using __CQRS__ (Command Query Responsibility Segregation) and __domain-driven development__ principles. Offering an advanced architecture,
+Devflow CMS supports __event sourcing__ and __domain events__, allowing developers to easily manage complex workflows and data changes.
 
 ## 📍 Requirement
 - PHP >= 8.4+
@@ -38,21 +38,19 @@ and maintainable applications. Perfect for developers seeking a robust, modern s
 - XMLWriter PHP Extension
 
 ## 🏆 Highlighted Features
-- Domain-Driven Development
-- CQRS & Event Sourcing
-- Read Models for content, products, and users
-- Serializer - supports serializing and deserialization of data
 - Custom Content Types
+- Editorial workflow for publishing teams
+- Robust firewall (enabled by default)
+- Security headers (enabled by default)
+- Referrer Spam detection (enabled by default)
+- CORS (enabled by default)
+- Rate limiting (enabled by default)
+- Visual page builder (for supported themes)
 - Provides a simple hook and event system without affecting core code
-- Ability to customize admin dashboard using hooks
 - Scheduler for scheduling tasks/jobs
 - Security and sanitizing helpers
 - NIST Level 2 Standard Role-Based Access Control
-- Authentication and User Session Middlewares
-- Http Cache Middleware
-- Content Cache Middleware
-- Minify Middlewares
-- Throttle Middleware
+- Caching (enabled by default)
 
 ## 🖼 Screenshots
 
@@ -83,12 +81,13 @@ composer create-project getdevflow/cmf project-name
 
 ## 📘 Documentation
 
-Documentation is still a work in progress. Between the [Devflow Docs](https://docs.getdevflow.com/), [Qubus Components](https://docs.qubusphp.com/) documentation,
-and [CodefyPHP's](https://codefyphp.com/docs/) documentation, that should help you get started.
+Documentation is still a work in progress. Between the [Devflow Docs](https://docs.getdevflow.com/) and [CodefyPHP's](https://codefyphp.com/docs/) documentation, 
+that should help you get started.
 
 ## 🙌 Sponsors
 
-If you use and love Devflow and are interested in supporting its continued development, please consider sponsoring me via [Github](https://github.com/sponsors/nomadicjosh).
+If you use and love Devflow and are interested in supporting its continued development, please consider sponsoring 
+me via [Github](https://github.com/sponsors/nomadicjosh).
 
 ## 🖋 Contributing
 
@@ -105,7 +104,7 @@ rules to follow in order to ease code reviews, and discussions before I accept a
 
 ## 🔐 Security Vulnerabilities
 
-If you discover a vulnerability in the code, please email [joshua@nomadicjosh.com](mailto:joshua@nomadicjosh.com).
+If you discover a vulnerability in the code, please email [joshua@joshuaparker.dev](mailto:joshua@joshuaparker.dev).
 
 ## 📄 License
 

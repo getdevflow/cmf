@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Infrastructure\Http\Controllers\UpdatesController;
 use Psr\Http\Message\RequestInterface;
 use Qubus\Http\Request;
 
@@ -52,8 +51,8 @@ return function (\Qubus\Routing\Psr7Router $router) {
             // Plugin routes
             $group->get(uri: '/plugin/', callback: 'AdminPluginController@plugins')
                 ->name('admin.plugins');
-            $group->get(uri: '/plugin/activate/', callback: 'AdminPluginController@activate')->name('plugin.activate');
-            $group->get(
+            $group->post(uri: '/plugin/activate/', callback: 'AdminPluginController@activate')->name('plugin.activate');
+            $group->post(
                 uri: '/plugin/deactivate/',
                 callback: 'AdminPluginController@deactivate'
             )->name('plugin.deactivate');
@@ -66,8 +65,8 @@ return function (\Qubus\Routing\Psr7Router $router) {
             // Theme routes
             $group->get(uri: '/theme/', callback: 'AdminThemeController@themes')
                 ->name('admin.themes');
-            $group->get(uri: '/theme/activate/', callback: 'AdminThemeController@activate')->name('theme.activate');
-            $group->get(
+            $group->post(uri: '/theme/activate/', callback: 'AdminThemeController@activate')->name('theme.activate');
+            $group->post(
                 uri: '/theme/deactivate/',
                 callback: 'AdminThemeController@deactivate'
             )->name('theme.deactivate');
@@ -163,10 +162,8 @@ return function (\Qubus\Routing\Psr7Router $router) {
 
             // Option routes
             $group->post(uri: '/options/', callback: 'AdminOptionsController@options');
-            $group->get(uri: '/general/', callback: 'AdminOptionsController@generalView');
-            $group->post(uri: '/general/', callback: 'AdminOptionsController@generalOptions');
-            $group->get(uri: '/reading/', callback: 'AdminOptionsController@readingView');
-            $group->post(uri: '/reading/', callback: 'AdminOptionsController@readingOptions');
+            $group->get(uri: '/settings/', callback: 'AdminOptionsController@settingsView');
+            $group->post(uri: '/settings/', callback: 'AdminOptionsController@settingsUpdate');
 
 
             // Content routes
@@ -202,6 +199,89 @@ return function (\Qubus\Routing\Psr7Router $router) {
                 callback: 'AdminContentController@contentDelete'
             )
             ->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+
+            $group->post(
+                uri: '/content-workflow/{contentId}/request-review/',
+                callback: 'AdminContentWorkflowController@requestReview'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/assign-reviewers/',
+                callback: 'AdminContentWorkflowController@assignReviewers'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/complete-review/',
+                callback: 'AdminContentWorkflowController@completeReview'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/withdraw-review/',
+                callback: 'AdminContentWorkflowController@withdrawReview'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/approve/',
+                callback: 'AdminContentWorkflowController@approve'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/request-changes/',
+                callback: 'AdminContentWorkflowController@requestChanges'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/publish/',
+                callback: 'AdminContentWorkflowController@publish'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/comment/',
+                callback: 'AdminContentWorkflowController@comment'
+            );
+            $group->get(
+                uri: '/content-workflow/{contentId}/activity/',
+                callback: 'AdminContentWorkflowController@activity'
+            );
+            $group->get(
+                uri: '/content-workflow/{contentId}/revisions/',
+                callback: 'AdminContentWorkflowController@revisions'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/restore-revision/',
+                callback: 'AdminContentWorkflowController@restoreRevision'
+            );
+            $group->get(
+                uri: '/content-workflow/{contentId}/revision-diff/',
+                callback: 'AdminContentWorkflowController@revisionDiff'
+            );
+            $group->get(
+                uri: '/content-workflow/{contentId}/comments/',
+                callback: 'AdminContentWorkflowController@comments'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/comment/update/',
+                callback: 'AdminContentWorkflowController@updateComment'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/comment/reply/',
+                callback: 'AdminContentWorkflowController@replyComment'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/comment/resolve/',
+                callback: 'AdminContentWorkflowController@resolveComment'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/comment/reopen/',
+                callback: 'AdminContentWorkflowController@reopenComment'
+            );
+            $group->get(
+                uri: '/content-workflow/{contentId}/comments/summary/',
+                callback: 'AdminContentWorkflowController@commentSummary'
+            );
+            $group->post(
+                uri: '/content-workflow/{contentId}/comment/delete/',
+                callback: 'AdminContentWorkflowController@deleteComment'
+            );
+            $group->get(uri: 'content-notifications/unread/', callback: 'AdminContentNotificationController@unread');
+            $group->post(uri: '/content-notifications/read/', callback: 'AdminContentNotificationController@markRead');
+            $group->post(
+                uri: '/content-notifications/read-all/',
+                callback: 'AdminContentNotificationController@markAllRead'
+            );
 
 
             // Product routes

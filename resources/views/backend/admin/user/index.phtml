@@ -79,7 +79,7 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                     <?php else : ?>
                                         <a href="<?= admin_url(sprintf('user/%s/', esc_html($user['user_id']) )); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Update'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
                                     <?php endif; ?>
-                                    <a href="<?= admin_url(sprintf('user/%s/reset-password/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Reset Password'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-redo"></i></button></a>
+                                    <a<?=ae('reset:password');?> href="<?= admin_url(sprintf('user/%s/reset-password/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Reset Password'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-redo"></i></button></a>
                                     <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && esc_html($user['user_id']) !== get_current_user_id()) : ?>
                                         <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Switch to'); ?>"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
                                     <?php endif; ?>

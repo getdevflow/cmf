@@ -4,9 +4,9 @@
  */
 
 use App\Application\Devflow;
+use App\Domain\User\ValueObject\UserToken;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
-
 use Qubus\EventDispatcher\ActionFilter\Filter;
 
 use function App\Shared\Helpers\admin_url;
@@ -86,6 +86,7 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
                     <h3 class="box-title"><?= trans_html(string: 'Create User'); ?></h3>
 
                     <div class="pull-right">
+                        <input type="hidden" name="token" id="token" value="<?=UserToken::generateAsString();?>" />
                         <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?= trans_html(string: 'Save'); ?></button>
                         <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('user/'); ?>'"><i class="fa fa-ban"></i> <?= trans_html(string: 'Cancel'); ?></button>
                     </div>

@@ -15,11 +15,11 @@ $this->block('auth', function () {
 
     <div class="brand">
         <?=get_auth_screen_logo();?>
-        <?=Devflow::$PHP->flash->display();?>
     </div>
 
     <div class="card fat">
         <div class="card-body">
+            <?=Devflow::$PHP->flash->display();?>
             <?php Action::getInstance()->doAction('reset_form_top'); ?>
             <form method="post" action="<?= admin_url('reset-password/'); ?>" class="my-login-validation" novalidate="" autocomplete="off">
                 <div class="form-group">

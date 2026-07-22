@@ -28,9 +28,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['product']->slug);
     <script src="static/assets/js/url_slug.js" type="text/javascript"></script>
     <script>
         $(function () {
-            $('#product_title').keyup(function () {
-                $('#product_slug').val(url_slug($(this).val()));
-            });
+            bindSlugGenerator('#product_title', '#product_slug');
         });
     </script>
 

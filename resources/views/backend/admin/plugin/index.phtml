@@ -5,6 +5,7 @@ use App\Shared\Services\Registry;
 
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\ae;
+use function App\Shared\Helpers\global_plugin_info;
 use function App\Shared\Helpers\is_main_site;
 use function App\Shared\Helpers\is_multisite;
 use function App\Shared\Helpers\is_plugin_activated;
@@ -23,6 +24,7 @@ Registry::getInstance()->{'set'}('screen_parent', 'plugins');
 Registry::getInstance()->{'set'}('screen_child', 'installed-plugins');
 
 $canManageNetworkPlugins = is_main_site() && is_super_admin() && is_multisite();
+$globalPlugins = global_plugin_info();
 $plugins = plugin_info(public_path('plugins/'));
 
 if (! is_main_site() && is_multisite()) {
@@ -60,6 +62,66 @@ if (! is_main_site() && is_multisite()) {
                 <!-- left column -->
                 <div class="col-md-12">
                     <!-- general form elements -->
+                    <?php if ($globalPlugins !== []) : ?>
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= trans_html('Global-Use Plugins'); ?></h3>
+                            </div>
+
+                            <div class="box-body">
+                                <p class="text-muted">
+                                    <?= trans_html('Global-use plugins are loaded automatically for every site and cannot be disabled from the admin. Remove the plugin file to disable it.'); ?>
+                                </p>
+
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center"><?= trans_html('Name'); ?></th>
+                                        <th class="text-center"><?= trans_html('Version'); ?></th>
+                                        <th class="text-center"><?= trans_html('Description'); ?></th>
+                                        <th class="text-center"><?= trans_html('Status'); ?></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($globalPlugins as $plugin) : ?>
+                                        <tr class="gradeX" style="background-color:#EAF7FF !important;">
+                                            <td class="text-center"><?= esc_html($plugin['name'] ?? ''); ?></td>
+                                            <td class="text-center"><?= esc_html($plugin['version'] ?? ''); ?></td>
+                                            <td class="text-center">
+                                                <?= purify_html($plugin['description'] ?? ''); ?> <br>
+
+                                                <?php if (! empty($plugin['author'])) : ?>
+                                                    <strong><?= trans_html('Developer:'); ?></strong>
+
+                                                    <?php if (! empty($plugin['authorUri'])) : ?>
+                                                        <a href="<?= esc_url($plugin['authorUri']); ?>">
+                                                            <?= esc_html($plugin['author']); ?>
+                                                        </a>
+                                                    <?php else : ?>
+                                                        <?= esc_html($plugin['author']); ?>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+
+                                                <?php if (! empty($plugin['pluginUri'])) : ?>
+                                                    |
+                                                    <a href="<?= esc_url($plugin['pluginUri']); ?>">
+                                                        <?= trans_html('View Details'); ?>
+                                                    </a>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="label label-success">
+                                                    <?= trans_html('Global Use'); ?>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title"><?=trans_html('Plugins');?></h3>
@@ -94,9 +156,19 @@ if (! is_main_site() && is_multisite()) {
                                         <a href="<?=esc_url($plugin['pluginUri']);?>"><?=trans_html('View Details');?></a>
                                     </td>
                                     <?php if (is_plugin_activated(esc_html($plugin['className'])) === true && class_exists(esc_html($plugin['className']))) : ?>
-                                        <td<?= ae('deactivate:plugins'); ?> class="text-center"><a class="btn btn-danger" href="<?=admin_url(sprintf('plugin/deactivate/?id=%s', esc_html($plugin['className'])));?>"><i class="fa fa-minus-circle"></i></a></td>
+                                        <td<?= ae('deactivate:plugins'); ?> class="text-center">
+                                            <form action="<?=admin_url('plugin/deactivate/');?>" method="post" autocomplete="off">
+                                                <input type="hidden" name="plugin_id" value="<?= esc_html($plugin['className']); ?>" />
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                                            </form>
+                                        </td>
                                     <?php else : ?>
-                                        <td<?= ae('activate:plugins'); ?> class="text-center"><a class="btn btn-success" href="<?=admin_url(sprintf('plugin/activate/?id=%s', esc_html($plugin['className'])));?>"><i class="fa fa-plus-circle"></i></a></td>
+                                        <td<?= ae('activate:plugins'); ?> class="text-center">
+                                            <form action="<?=admin_url('plugin/activate/');?>" method="post" autocomplete="off">
+                                                <input type="hidden" name="plugin_id" value="<?= esc_html($plugin['className']); ?>" />
+                                                <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
+                                            </form>
+                                        </td>
                                     <?php endif; ?>
                                     <?php if ($canManageNetworkPlugins) : ?>
                                         <td class="text-center">
