@@ -1,6 +1,7 @@
 <?php
 
 use App\Application\Devflow;
+use Qubus\EventDispatcher\ActionFilter\Action;
 
 use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\get_auth_screen_logo;
@@ -13,11 +14,12 @@ $this->block('auth', function ($params) {
 
     <div class="brand">
         <?=get_auth_screen_logo();?>
-        <?=Devflow::$PHP->flash->display();?>
     </div>
 
     <div class="card fat">
         <div class="card-body">
+            <?=Devflow::$PHP->flash->display();?>
+            <?php Action::getInstance()->doAction('login_form_top'); ?>
             <form method="post" action="<?=$params['url'];?>" class="my-login-validation" novalidate="" autocomplete="off">
                 <div class="form-group">
                     <label for="username"><?=trans_html('Username');?></label>
@@ -50,6 +52,7 @@ $this->block('auth', function ($params) {
                     <input type="submit" name="login-submit" class="btn btn-submit btn-block" value="<?=trans_attr(string: 'Login');?>">
                 </div>
             </form>
+            <?php Action::getInstance()->doAction('login_form_bottom'); ?>
         </div>
     </div>
 

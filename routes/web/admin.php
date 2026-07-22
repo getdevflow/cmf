@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Infrastructure\Http\Controllers\UpdatesController;
 use Psr\Http\Message\RequestInterface;
 use Qubus\Http\Request;
 

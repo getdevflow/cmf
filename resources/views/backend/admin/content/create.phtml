@@ -43,10 +43,8 @@ $statuses = array_filter(
 
     <script src="static/assets/js/url_slug.js" type="text/javascript"></script>
     <script>
-        $(function(){
-            $('#content_title').keyup(function() {
-                $('#content_slug').val(url_slug($(this).val()));
-            });
+        $(function () {
+            bindSlugGenerator('#content_title', '#content_slug');
         });
     </script>
 

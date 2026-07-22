@@ -9,12 +9,14 @@ use Qubus\EventDispatcher\ActionFilter\Action;
 use Qubus\EventDispatcher\ActionFilter\Filter;
 
 use function App\Shared\Helpers\admin_url;
+use function App\Shared\Helpers\checked;
 use function App\Shared\Helpers\cms_charset;
 use function App\Shared\Helpers\cms_dropdown_languages;
 use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\selected;
 use function Codefy\Framework\Helpers\trans_html;
+use function Qubus\Security\Helpers\esc_html__;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
@@ -104,6 +106,30 @@ Action::getInstance()->doAction('settings_init');
                     </div>
                     <!-- /.left column -->
                     <div class="col-md-3">
+                        <div class="box box-warning">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= trans_html(string: 'Maintenance Mode'); ?></h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        <input type="hidden" name="maintenance_mode" value="0" />
+                                        <input type="checkbox"
+                                               class="js-switch"
+                                               name="maintenance_mode"
+                                               value="1"<?= checked('1', !empty(get_option(key: 'maintenance_mode')) ? '1' : '0', false); ?> />
+                                        <label><?= trans_html('Enable'); ?></label>
+
+                                        <p class="help-block">
+                                            <?=trans_html('Place the frontend in maintenance mode.');?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><?= trans_html(string: 'Reading Settings'); ?></h3>

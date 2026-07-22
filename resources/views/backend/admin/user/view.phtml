@@ -43,7 +43,8 @@ Action::getInstance()->doAction('update_user_init');
                     <div class="pull-right">
                         <button type="button"<?=ae('create:users');?> class="btn btn-warning" onclick="window.location='<?= admin_url('user/create/'); ?>'"><i class="fa fa-plus"></i> <?= trans_html(string: 'New User'); ?></button>
                         <button type="submit"<?=ae('update:users');?> class="btn btn-success"><i class="fa fa-save"></i> <?= trans_html(string: 'Update'); ?></button>
-                        <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('user/'); ?>'"><i class="fa fa-ban"></i> <?= trans_html(string: 'Cancel'); ?></button>
+                        <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url('user/'); ?>'"><i class="fa fa-cancel"></i> <?= trans_html(string: 'Cancel'); ?></button>
+                        <input type="hidden" name="id" value="<?=$params['user']->id;?>" />
                         <?php if ($params['user']->id === get_current_user_id()) : ?>
                             <input type="hidden" name="role" value="<?= get_user_option('role', $params['user']->id); ?>" />
                             <input type="hidden" name="status" value="<?= get_user_option('status', $params['user']->id); ?>" />
@@ -54,8 +55,6 @@ Action::getInstance()->doAction('update_user_init');
 
             <!-- Main content -->
             <section class="content">
-
-                <?php Action::getInstance()->doAction('admin_notices'); ?>
 
                 <?= Devflow::$PHP->flash->display(); ?>
 
@@ -124,7 +123,7 @@ Action::getInstance()->doAction('update_user_init');
 
                                 <div class="form-group">
                                     <label><strong><?= trans_html(string: 'Biography'); ?></strong></label>
-                                    <textarea class="form-control" name="bio" rows="5"><?= get_user_option('bio', $params['user']->id); ?></textarea>
+                                    <textarea class="form-control" name="bio" rows="5"><?=$params['user']->bio;?></textarea>
                                 </div>
 
                                 <div class="form-group">
