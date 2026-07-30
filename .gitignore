@@ -26,6 +26,8 @@ storage/logs/*.log
 composer.lock
 cron-log.txt
 difflist.txt
+private.key
 releases.json
+sign.php
 time.log
 update.json
