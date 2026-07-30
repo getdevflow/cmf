@@ -77,7 +77,7 @@ composer create-project getdevflow/cmf project-name
 |---------|---------------------|---------------|-----------------|----------------------|
 | 1 - LTS | 8.3                 | December 2024 | June 2027       | December 2028        |
 | 2       | 8.4                 | May 2026      | January 2028    | April 2030           |
-| 3 - LTS | 8.5                 | August 2026   | February 2029   | May 2030             |
+| 3 - LTS | 8.5                 | November 2026 | May 2029        | November 2030        |
 
 ## 📘 Documentation
 
