@@ -1,6 +1,6 @@
 {
   "$schema": "https://fundingjson.org/schema/v1.1.0.json",
-  "version": "v1.1.2",
+  "version": "v1.1.3",
   "entity": {
     "type": "individual",
     "role": "maintainer",
@@ -8,8 +8,7 @@
     "email": "joshua@joshuaparker.dev",
     "description": "I am a PHP Architect and amateur nature photographer. I am the maintainer of the CodefyPHP Framework and Devflow CMS.",
     "webpageUrl": {
-      "url": "https://joshuaparker.dev",
-      "wellKnown": "https://joshuaparker.dev/.well-known/funding-manifest-urls"
+      "url": "https://getdevflow.com"
     }
   },
   "projects": [{
@@ -21,7 +20,7 @@
     },
     "repositoryUrl": {
       "url": "https://github.com/getdevflow/cmf",
-      "wellKnown": "https://github.com/getdevflow/cmf/refs/heads/main/.well-known/funding-manifest-urls"
+      "wellKnown": "https://github.com/getdevflow/cmf/blob/main/.well-known/funding-manifest-urls"
     },
     "licenses": ["spdx:GPL-2.0"],
     "tags": ["cms", "content-management-framework", "content-management-system", "domain-driven-design", "ddd", "cqrs", "php"]
