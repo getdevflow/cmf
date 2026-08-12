@@ -1,0 +1,96 @@
+{
+  "$schema": "https://fundingjson.org/schema/v1.1.0.json",
+  "version": "v1.1.0",
+  "entity": {
+    "type": "individual",
+    "role": "maintainer",
+    "name": "Joshua Parker",
+    "email": "joshua@joshuaparker.dev",
+    "description": "I am a PHP Architect and amateur nature photographer. I am the maintainer of the CodefyPHP Framework and Devflow CMS.",
+    "webpageUrl": {
+      "url": "https://joshuaparker.dev"
+    }
+  },
+  "projects": [{
+    "guid": "devflow-cms",
+    "name": "Devflow CMS",
+    "description": "Devflow CMS is a developer-centric, content-first content management framework for PHP Architects, offering a WordPress-like experience with the freedom to build without limits.",
+    "webpageUrl": {
+      "url": "https://getdevflow.com"
+    },
+    "repositoryUrl": {
+      "url": "https://github.com/getdevflow/cmf"
+    },
+    "licenses": ["spdx:GPL-2.0"],
+    "tags": ["cms", "content-management-framework", "content-management-system", "domain-driven-design", "ddd", "cqrs", "php"]
+  }],
+  "funding": {
+    "channels": [
+      {
+        "guid": "github-sponsors",
+        "type": "payment-provider",
+        "address": "https://github.com/sponsors/nomadicjosh",
+        "description": "Sponsor me through Github."
+      },
+      {
+        "guid": "funding-website",
+        "type": "payment-provider",
+        "address": "https://getdevflow.com/portal/signup/sponsor",
+        "description": "Pay with your debit/credit card through this gateway and setup recurring subscriptions."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "sponsor-gold",
+        "status": "active",
+        "name": "Gold Sponsor",
+        "description": "With your contribution, you help to drive Devflow CMS development forward, and your logo will appear on getdevflow.com with a link to your site.",
+        "amount": 500,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["funding-website"]
+      },
+      {
+        "guid": "sponsor-silver",
+        "status": "active",
+        "name": "Silver Sponsor",
+        "description": "With your contribution, you help to drive Devflow CMS development forward, and your logo will appear on getdevflow.com.",
+        "amount": 250,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["funding-website"]
+      },
+      {
+        "guid": "sponsor-bronze",
+        "status": "active",
+        "name": "Bronze Sponsor",
+        "description": "With your contribution, you help to drive Devflow CMS development forward, and your logo will appear on getdevflow.com.",
+        "amount": 100,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["funding-website"]
+      },
+      {
+        "guid": "visionary",
+        "status": "active",
+        "name": "visionary",
+        "description": "Become a sponsor for $50.00 per month and help drive Devflow CMS development forward!",
+        "amount": 50,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors"]
+      },
+      {
+        "guid": "angel",
+        "status": "active",
+        "name": "Angel",
+        "description": "Become a sponsor for $25.00 per month and help drive Devflow CMS development forward!",
+        "amount": 25,
+        "currency": "USD",
+        "frequency": "monthly",
+        "channels": ["github-sponsors"]
+      }
+    ]
+  }
+}
+
