@@ -17,9 +17,12 @@ return [
      */
     'encryption_key' => file_get_contents(filename: __DIR__ . '/../.enc.key'),
 
-    'login_route' => 'login',
+    'login_route' => env(key: 'CMS_LOGIN_ROUTE', default: 'login'),
 
-    'login_url' => env(key: 'APP_BASE_URL') . 'admin/login/',
+    'login_url' => sprintf(
+        env(key: 'APP_BASE_URL') . 'admin/%s/',
+        env(key: 'CMS_LOGIN_ROUTE', default: 'login')
+    ),
 
     'admin_url' => env(key: 'APP_BASE_URL') . 'admin/',
 
@@ -43,7 +46,10 @@ return [
     /** Where should users be redirected when authentication fails? */
     'http_redirect' => '',
 
-    'redirect_guests_to' => '/admin/login/',
+    'redirect_guests_to' => sprintf(
+        '/admin/%s/',
+        env(key: 'CMS_LOGIN_ROUTE', default: 'login')
+    ),
 
     'password_min_length' => 26,
 

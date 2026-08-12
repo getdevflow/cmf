@@ -19,7 +19,7 @@ final class ViewServiceProvider extends CodefyServiceProvider
             return new NativeLoader(
                 namespaces: $this->codefy->configContainer->array(key: 'view.path'),
                 functions: [
-                    'url' => 'App\Shared\Helpers\site_url'
+                    'url' => \App\Shared\Helpers\site_url(...)
                 ],
                 extension: 'phtml'
             );

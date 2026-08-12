@@ -66,7 +66,7 @@ return [
     | Otherwise the header will still be included in the response.
     |--------------------------------------------------------------------------
     */
-    'x-powered-by' => '',
+    'x-powered-by' => 'Devflow CMS',
 
     /*
     |--------------------------------------------------------------------------
