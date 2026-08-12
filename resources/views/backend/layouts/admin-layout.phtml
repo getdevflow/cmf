@@ -64,6 +64,7 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
         <?php admin_head(); ?>
     </head>
     <body class="hold-transition <?= get_user_option('admin.skin', $user->id) ?: 'skin-red'; ?> <?= (get_user_option('admin.layout', $user->id) === 0 ? 'fixed ' : ''); ?><?= (get_user_option('admin.sidebar', $user->id) === 0 ? 'sidebar-collapse ' : ''); ?>sidebar-mini">
+    <?php Action::getInstance()->doAction('cms_admin_body_open'); ?>
     <div class="wrapper">
 
         <header class="main-header">
