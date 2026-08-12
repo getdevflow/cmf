@@ -21,7 +21,7 @@
     },
     "repositoryUrl": {
       "url": "https://github.com/getdevflow/cmf",
-      "wellKnown": "https://raw.githubusercontent.com/getdevflow/cmf/refs/heads/main/.well-known/funding-manifest-urls"
+      "wellKnown": "https://github.com/getdevflow/cmf/refs/heads/main/.well-known/funding-manifest-urls"
     },
     "licenses": ["spdx:GPL-2.0"],
     "tags": ["cms", "content-management-framework", "content-management-system", "domain-driven-design", "ddd", "cqrs", "php"]
@@ -95,4 +95,3 @@
     ]
   }
 }
-
