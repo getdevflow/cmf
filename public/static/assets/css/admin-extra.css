@@ -38,3 +38,55 @@
     outline-offset: 2px;
     background-color: #fff;
 }
+
+.dashboard-customize-toolbar {
+    margin-bottom: 15px;
+}
+
+.dashboard-save-status {
+    line-height: 34px;
+    margin-right: 12px;
+}
+
+.dashboard-widget-picker[hidden],
+.dashboard-empty-state[hidden],
+.dashboard-column-empty[hidden],
+.dashboard-widget-catalog [hidden] {
+    display: none !important;
+}
+
+.dashboard-widget-catalog .well {
+    min-height: 120px;
+}
+
+.dashboard-widget-catalog p {
+    margin: 8px 0;
+}
+
+.dashboard-widget-column {
+    min-height: 90px;
+}
+
+.dashboard-column-empty {
+    border: 2px dashed #d2d6de;
+    margin-bottom: 20px;
+    padding: 30px 15px;
+}
+
+.dashboard-empty-state {
+    background: #fff;
+    border: 1px solid #d2d6de;
+    padding: 50px 20px;
+}
+
+.dashboard-widget-list {
+    margin-bottom: 0;
+}
+
+.dashboard-system-info {
+    margin-bottom: 0;
+}
+
+.dashboard-quick-actions .btn-app {
+    margin: 0 8px 8px 0;
+}

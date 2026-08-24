@@ -17,6 +17,9 @@ return function (\Qubus\Routing\Psr7Router $router) {
             $group->get(uri: '/', callback: 'AdminDashboardController@index')
                 ->name('admin.dashboard');
 
+            $group->post(uri: '/dashboard/widgets/', callback: 'AdminDashboardController@saveWidgets')
+                ->name('admin.dashboard.widgets');
+
             $group->get(uri: '/snapshot/', callback: 'AdminDashboardController@snapshot')
                 ->name('admin.snapshot');
 

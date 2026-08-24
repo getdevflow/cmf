@@ -3,65 +3,157 @@
 declare(strict_types=1);
 
 use App\Application\Devflow;
+use App\Infrastructure\Services\Dashboard\DashboardWidget;
 use App\Shared\Services\Registry;
 use Qubus\EventDispatcher\ActionFilter\Action;
 
+use function App\Shared\Helpers\admin_url;
 use function Codefy\Framework\Helpers\trans_html;
+use function Qubus\Security\Helpers\esc_attr;
+use function Qubus\Security\Helpers\esc_html;
+use function Qubus\Security\Helpers\esc_url;
 
 $this->parent('framework::backend/layouts/admin-layout');
-$this->block('backend', function () {
+$this->block('backend', function (array $params) {
 Registry::getInstance()->{'set'}('screen_parent', 'dashboard');
 Registry::getInstance()->{'set'}('screen_child', 'home');
+
+/** @var array<string, DashboardWidget> $widgets */
+$widgets = $params['dashboardWidgets'];
+/** @var array{left: list<string>, right: list<string>} $layout */
+$layout = $params['dashboardLayout'];
+/** @var array<string, DashboardWidget> $inactiveWidgets */
+$inactiveWidgets = $params['inactiveDashboardWidgets'];
+$editable = $params['dashboardEditable'] === true;
+
+$renderWidget = static function (DashboardWidget $widget, bool $editable): void {
+    ?>
+    <article class="box box-primary dashboard-widget"
+             data-widget-id="<?= esc_attr($widget->id()); ?>"
+             data-default-column="<?= esc_attr($widget->getColumn()); ?>">
+        <div class="box-header with-border dashboard-widget-handle">
+            <i class="<?= esc_attr($widget->getIcon()); ?>"></i>
+            <h3 class="box-title"><?= esc_html($widget->title()); ?></h3>
+            <?php if ($editable) : ?>
+                <div class="box-tools pull-right">
+                    <button type="button"
+                            class="btn btn-box-tool js-dashboard-widget-remove"
+                            aria-label="<?= esc_attr(trans_html('Remove widget')); ?>"
+                            title="<?= esc_attr(trans_html('Remove widget')); ?>">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="box-body">
+            <?= $widget->render(); ?>
+        </div>
+    </article>
+    <?php
+};
 ?>
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
                 <?= trans_html(string: 'Dashboard'); ?>
                 <small><?= trans_html(string: 'Control panel'); ?></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> <?= trans_html(string: 'Home'); ?></a></li>
+                <li><a href="<?= esc_url(admin_url()); ?>"><i class="fa fa-dashboard"></i> <?= trans_html(string: 'Home'); ?></a></li>
                 <li class="active"><?= trans_html(string: 'Dashboard'); ?></li>
             </ol>
         </section>
 
-        <!-- Main content -->
-        <section class="content">
+        <section class="content dashboard-widgets"
+             data-editable="<?= $editable ? '1' : '0'; ?>"
+             data-save-url="<?= esc_url(admin_url('dashboard/widgets/')); ?>"
+        >
 
             <?php Action::getInstance()->doAction('admin_notices'); ?>
 
-            <?=Devflow::$PHP->flash->display();?>
+            <?= Devflow::$PHP->flash->display(); ?>
 
-            <div class="row">
-                <?php //top widgets can go here.?>
+            <?php if ($editable) : ?>
+                <div class="dashboard-customize-toolbar clearfix">
+                    <button type="button"
+                            class="btn btn-primary pull-right js-dashboard-customize"
+                            aria-expanded="false"
+                            aria-controls="dashboard-widget-picker">
+                        <i class="fa fa-sliders"></i> <?= trans_html('Customize Dashboard'); ?>
+                    </button>
+                    <span class="dashboard-save-status pull-right" role="status" aria-live="polite"></span>
+                </div>
+
+                <div id="dashboard-widget-picker" class="box box-default dashboard-widget-picker" hidden>
+                    <div class="box-header with-border">
+                        <h2 class="box-title"><?= trans_html('Available Widgets'); ?></h2>
+                    </div>
+                    <div class="box-body">
+                        <p class="text-muted">
+                            <?= trans_html('Add useful widgets, then drag their headers to reorder them or move them between columns.'); ?>
+                        </p>
+                        <div class="row dashboard-widget-catalog">
+                            <?php foreach ($widgets as $widget) : ?>
+                                <?php $isActive = ! isset($inactiveWidgets[$widget->id()]); ?>
+                                <div class="col-md-6 dashboard-widget-catalog-item"
+                                     data-widget-id="<?= esc_attr($widget->id()); ?>">
+                                    <div class="well well-sm">
+                                        <strong>
+                                            <i class="<?= esc_attr($widget->getIcon()); ?>"></i>
+                                            <?= esc_html($widget->title()); ?>
+                                        </strong>
+                                        <?php if ($widget->getDescription() !== '') : ?>
+                                            <p class="text-muted"><?= esc_html($widget->getDescription()); ?></p>
+                                        <?php endif; ?>
+                                        <button type="button"
+                                                class="btn btn-success btn-xs js-dashboard-widget-add"
+                                                <?= $isActive ? 'hidden disabled' : ''; ?>>
+                                            <i class="fa fa-plus"></i> <?= trans_html('Add'); ?>
+                                        </button>
+                                        <span class="label label-success dashboard-widget-active"
+                                              <?= $isActive ? '' : 'hidden'; ?>><?= trans_html('Added'); ?></span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="row dashboard-widget-columns">
+                <?php foreach ([DashboardWidget::COLUMN_LEFT, DashboardWidget::COLUMN_RIGHT] as $column) : ?>
+                    <section class="col-lg-6 dashboard-widget-column<?= $editable ? ' connectedSortable' : ''; ?>"
+                             data-column="<?= esc_attr($column); ?>">
+                        <?php foreach ($layout[$column] as $widgetId) : ?>
+                            <?php if (isset($widgets[$widgetId])) : ?>
+                                <?php $renderWidget($widgets[$widgetId], $editable); ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        <div class="dashboard-column-empty text-center text-muted" hidden>
+                            <i class="fa fa-arrow-down"></i>
+                            <?= trans_html('Drop a widget here.'); ?>
+                        </div>
+                    </section>
+                <?php endforeach; ?>
             </div>
-            <!-- /.row -->
 
-            <!-- Main row -->
-            <div class="row">
-                <!-- Left col -->
-                <section class="col-lg-6">
+            <?php if ($editable) : ?>
+                <div class="dashboard-empty-state text-center" hidden>
+                    <i class="fa fa-table-columns fa-3x text-muted"></i>
+                    <h2><?= trans_html('Make this dashboard yours'); ?></h2>
+                    <p class="text-muted"><?= trans_html('Choose Customize Dashboard to add your first widget.'); ?></p>
+                    <button type="button" class="btn btn-primary js-dashboard-customize">
+                        <i class="fa fa-plus"></i> <?= trans_html('Add a Widget'); ?>
+                    </button>
+                </div>
 
-                    <?php Action::getInstance()->doAction('widget_left_column'); ?>
-
-                </section>
-                <!-- /.Left col -->
-
-                <!-- Left col -->
-                <section class="col-lg-6 connectedSortable">
-
-                    <?php Action::getInstance()->doAction('widget_right_column'); ?>
-
-                </section>
-                <!-- /.Left col -->
-            </div>
-            <!-- /.row (main row) -->
-
+                <div class="dashboard-widget-warehouse" hidden>
+                    <?php foreach ($inactiveWidgets as $widget) : ?>
+                        <?php $renderWidget($widget, true); ?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 <?php }); ?>
