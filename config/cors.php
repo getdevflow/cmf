@@ -15,9 +15,11 @@ return [
         RequestMethod::GET,
         RequestMethod::OPTIONS,
         RequestMethod::PUT,
+        RequestMethod::PATCH,
         RequestMethod::DELETE
     ],
 
+    // Use explicit origins before enabling credentials. Wildcard credentials are rejected.
     'access-control-allow-origin' => ['*'],
 
     'access-control-allow-headers' => [
@@ -29,7 +31,7 @@ return [
         'X-CSRF-Token'
     ],
 
-    'access-control-allow-credentials' => ['false'],
+    'access-control-allow-credentials' => false,
 
     'access-control-expose-headers' => [
         'Cache-Control',

@@ -10,21 +10,20 @@ return [
     */
     'cookie_name' => 'USERSESSID',
 
-    /**
-     * Do not use the default app encryption key found in .env.example.
-     * Generate a new encryption key by running this console command:
-     * php codex generate:key
-     */
-    'encryption_key' => file_get_contents(filename: __DIR__ . '/../.enc.key'),
+    // Preserve the existing deployment key. Generate a key only for a new installation.
+    'encryption_key' => is_file(__DIR__ . '/../.enc.key') ? trim(file_get_contents(__DIR__ . '/../.enc.key')) : '',
 
-    'login_route' => env(key: 'CMS_LOGIN_ROUTE', default: 'login'),
+    'password_reset_route' => 'admin/password/reset/',
+    'password_reset_lifetime' => 3600,
+
+    'login_route' => env(key: 'AUTH_LOGIN_ROUTE', default: 'login'),
 
     'login_url' => sprintf(
-        env(key: 'APP_BASE_URL') . 'admin/%s/',
-        env(key: 'CMS_LOGIN_ROUTE', default: 'login')
+        rtrim((string) env(key: 'APP_BASE_URL'), '/') . '/admin/%s/',
+        env(key: 'AUTH_LOGIN_ROUTE', default: 'login')
     ),
 
-    'admin_url' => env(key: 'APP_BASE_URL') . 'admin/',
+    'admin_url' => rtrim((string) env(key: 'APP_BASE_URL'), '/') . '/admin/',
 
     'pdo' => [
         /** name of the user's table */
@@ -48,7 +47,7 @@ return [
 
     'redirect_guests_to' => sprintf(
         '/admin/%s/',
-        env(key: 'CMS_LOGIN_ROUTE', default: 'login')
+        env(key: 'AUTH_LOGIN_ROUTE', default: 'login')
     ),
 
     'password_min_length' => 26,

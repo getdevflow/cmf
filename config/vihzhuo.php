@@ -39,7 +39,7 @@ return [
         'use_database' => true,
         'database' => [
             'driver' => env('DB_CONNECTION'),
-            'dsn'    => env(key: 'DB_DSN'),
+            'dsn'    => env(key: 'DB_DSN') ?: 'sqlite:' . dirname(__DIR__) . '/database/devflow.sqlite',
             'username'  => env('DB_USER'),
             'password'  => env('DB_PASSWORD'),
             'options' => [
@@ -77,7 +77,7 @@ return [
      */
     'website_manager' => [
         'use_website_manager' => true,
-        'class' => Vihzhuo\Modules\WebsiteManager\WebsiteManager::class,
+        'class' => \App\Infrastructure\Services\Vihzhuo\WebsiteManager::class,
         'url' => '/admin/manager/'
     ],
 
@@ -102,7 +102,7 @@ return [
      |
      */
     'pagebuilder' => [
-        'class' => Vihzhuo\Modules\GrapesJS\PageBuilder::class,
+        'class' => \App\Infrastructure\Services\Vihzhuo\PageEditor::class,
         'url' => '/admin/manager/pagebuilder/',
         'actions' => [
             'back' => '/admin/manager/'
@@ -185,6 +185,5 @@ return [
      | Important: when overriding a class always extend the original class.
      |
      */
-    'class_replacements' => [
-    ],
+    'class_replacements' => [],
 ];

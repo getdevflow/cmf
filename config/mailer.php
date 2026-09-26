@@ -2,101 +2,44 @@
 
 declare(strict_types=1);
 
+use function Codefy\Framework\Helpers\env;
 use function Codefy\Framework\Helpers\storage_path;
-use function Qubus\Config\Helpers\env;
 
 return [
     /*
     |--------------------------------------------------------------------------
-    | Default PHPMailer Transport
+    | Default Symfony Mailer DSN
     |--------------------------------------------------------------------------
+    |
+    | Any DSN supported by Symfony Mailer and the installed provider bridges.
+    | Keep credentials URL-encoded. Examples:
+    |
+    | smtp://user:password@smtp.example.com:587?require_tls=true
+    | postmark+api://KEY@default
+    | failover(postmark+api://KEY@default smtp://localhost)
+    |
     */
-    'mail_transport' => 'smtp',
+    'dsn' => env(key: 'MAILER_DSN', default: 'smtp://localhost'),
+
     /*
     |--------------------------------------------------------------------------
-    | SMTP PHPMailer Transport
+    | Named Transports
     |--------------------------------------------------------------------------
+    |
+    | Select these using withTransport('transactional'), withSmtp(), etc.
+    | Provider transports require their corresponding Symfony bridge package.
+    |
     */
-    'smtp' => [
-
-        /*
-        |--------------------------------------------------------------------------
-        | SMTP Host
-        |--------------------------------------------------------------------------
-        */
-        'host' => env(key: 'MAILER_HOST'),
-
-        /*
-        |--------------------------------------------------------------------------
-        | SMTP Port
-        |--------------------------------------------------------------------------
-        */
-        'port' => env(key: 'MAILER_PORT'),
-
-        /*
-        |--------------------------------------------------------------------------
-        | SMTP Username
-        |--------------------------------------------------------------------------
-        */
-        'username' => env(key: 'MAILER_USERNAME'),
-
-        /*
-        |--------------------------------------------------------------------------
-        | SMTP Password
-        |--------------------------------------------------------------------------
-        */
-        'password' => env(key: 'MAILER_PASSWORD'),
-
-        /*
-        |--------------------------------------------------------------------------
-        | Set to true to use SMTP authentication, false otherwise.
-        |--------------------------------------------------------------------------
-        */
-        'auth' => true,
-
-        /*
-        |--------------------------------------------------------------------------
-        | SMTP Auth Mode
-        |--------------------------------------------------------------------------
-        */
-        'authmode' => env(key: 'MAILER_AUTHMODE'),
-
-        /*
-        |--------------------------------------------------------------------------
-        | SMTP Encryption Mode (i.e. tls, ssl, starttls)
-        |--------------------------------------------------------------------------
-        */
-        'encryption' => env(key: 'MAILER_ENCRYPTION'),
+    'transports' => [
+        'smtp' => env(key: 'MAILER_SMTP_DSN', default: 'smtp://localhost'),
+        'sendmail' => env(key: 'MAILER_SENDMAIL_DSN', default: 'sendmail://default'),
+        'qmail' => env(key: 'MAILER_QMAIL_DSN', default: 'sendmail://default?command=/usr/sbin/qmail-inject'),
+        'transactional' => env(key: 'MAILER_TRANSACTIONAL_DSN', default: 'postmark+api://KEY@default'),
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Sendmail Transport
-    |--------------------------------------------------------------------------
-    */
-    'sendmail' => [
+    /* Save to emlfile instead of sending. */
+    'debug' => (bool) (env(key: 'MAILER_DEBUG', default: false)),
 
-        /*
-        |--------------------------------------------------------------------------
-        | Sendmail Command
-        |--------------------------------------------------------------------------
-        */
-        'command' => env(key: 'MAILER_SENDMAIL_PATH', default: '/usr/sbin/sendmail -bs'),
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Set to true to write to a file for debugging instead of sending
-    | an actual email.
-    |--------------------------------------------------------------------------
-    */
-    'debug' => false,
-
-    /*
-    |--------------------------------------------------------------------------
-    | .eml file for debugging. Can be opened in email clients such as
-    | Thunderbird.
-    |--------------------------------------------------------------------------
-    */
-    'emlfile' => storage_path(path: sprintf('email/%s', date(format: 'YmdHis') . '_' . uniqid() . '.eml')),
+    /* RFC 822 output path used in debug mode. */
+    'emlfile' => env(key: 'MAILER_EML_FILE', default: storage_path('mail/debug.eml')),
 ];

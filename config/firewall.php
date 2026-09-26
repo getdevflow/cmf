@@ -29,7 +29,18 @@ return [
      * Empty methods, rules, sources, or fields mean "all" for that
      * dimension. Use "*" explicitly when it improves readability.
      */
-    'exclusions' => [],
+    'exclusions' => [
+        // Authorized editors intentionally submit HTML, including embedded media.
+        // CSRF and vihzhuo:manage authorization still apply to this endpoint.
+        [
+            'path' => '/admin/manager/pagebuilder',
+            'methods' => ['POST'],
+            'rules' => ['xss'],
+            'sources' => ['body'],
+            'fields' => ['data'],
+            'log' => false,
+        ],
+    ],
 
     'rules' => [
         'sql_injection' => [
@@ -68,6 +79,8 @@ return [
 
         'ssrf' => [
             'enabled' => true,
+            // Inspect submitted destinations, not this application's own host (e.g. localhost).
+            'sources' => ['query', 'body'],
             'add' => [],
             'remove' => [],
             'replace' => [],
@@ -106,7 +119,7 @@ return [
      * Deprecated legacy additions.
      *
      * Keep temporarily so existing applications do not break. New
-     * configuration should use rules.<type>.add above.
+     * configuration should use rules.<type>.add.
      */
     'sql_injection' => [],
     'xss' => [],
