@@ -83,6 +83,7 @@ Registry::getInstance()->{'set'}('screen_child', 'updates');
                         <?php if (!empty($params['updates'][$key])) : ?>
                             <div class="box-tools pull-right">
                                 <form method="post" action="<?=admin_url($section['all']);?>">
+                                    <?= csrf_field(); ?>
                                     <button type="submit" class="btn btn-primary btn-sm">
                                         <?=sprintf(trans_html('Update All %s.'), esc_html($section['title']));?>
                                     </button>
@@ -124,6 +125,7 @@ Registry::getInstance()->{'set'}('screen_child', 'updates');
                                         <td><?=esc_html($package['latest']);?></td>
                                         <td class="text-right">
                                             <form method="post" action="<?=admin_url($section['single']);?>" class="js-update-form">
+                                                <?= csrf_field(); ?>
                                                 <input type="hidden" name="package" value="<?=esc_attr($package['name']);?>">
                                                 <button type="submit" class="btn btn-success btn-sm">
                                                     <?= trans_html(string: 'Update'); ?>

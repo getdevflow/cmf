@@ -26,6 +26,7 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
 
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url('content-type/create/'); ?>" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -118,7 +119,7 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
-                                                                <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url('content-type/' . $contentType['id'] . '/d/'); ?>'"><?= trans_html(string: 'Confirm'); ?></button>
+                                                                <button type="submit" class="btn btn-primary" formnovalidate formaction="<?= admin_url('content-type/' . $contentType['id'] . '/d/'); ?>"><?= trans_html(string: 'Confirm'); ?></button>
                                                             </div>
                                                         </div>
                                                         <!-- /.modal-content -->

@@ -27,6 +27,7 @@ Action::getInstance()->doAction('settings_init');
 ?>
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url('settings/'); ?>" id="form" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains post content -->
         <div class="content-wrapper">
             <!-- Content Header (Post header) -->

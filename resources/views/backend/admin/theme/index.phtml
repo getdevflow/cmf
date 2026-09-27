@@ -102,6 +102,7 @@ if (! is_main_site() && is_multisite()) {
                                     <?php if (is_theme_active(esc_html($theme['className'])) === true) : ?>
                                         <td<?= ae('deactivate:themes'); ?> class="text-center">
                                             <form action="<?=admin_url('theme/deactivate/');?>" method="post" autocomplete="off">
+                                                <?= csrf_field(); ?>
                                                 <input type="hidden" name="theme_id" value="<?= esc_html($theme['className']); ?>" />
                                                 <button type="submit" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
                                             </form>
@@ -109,6 +110,7 @@ if (! is_main_site() && is_multisite()) {
                                     <?php else : ?>
                                         <td<?= ae('activate:themes'); ?> class="text-center">
                                             <form action="<?=admin_url('theme/activate/');?>" method="post" autocomplete="off">
+                                                <?= csrf_field(); ?>
                                                 <input type="hidden" name="theme_id" value="<?= esc_html($theme['className']); ?>" />
                                                 <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
                                             </form>

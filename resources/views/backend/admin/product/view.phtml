@@ -34,6 +34,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['product']->slug);
 
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url(sprintf('product/%s/', $params['product']->id));?>" id="form" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains content -->
         <div class="content-wrapper">
             <!-- Content Header (Content header) -->
@@ -196,7 +197,7 @@ Registry::getInstance()->{'set'}('screen_child', $params['product']->slug);
                                 <div id="elfinder"></div>
                                 <div id="elfinder_image"><img src="<?= $params['product']->featuredImage; ?>" style="width:280px;height:auto;background-size:contain;margin-bottom:.9em;background-repeat:no-repeat" /></div>
                                 <?php if ($params['product']->featuredImage !== '') : ?>
-                                    <button type="button" class="btn btn-primary" onclick="window.location = '<?= admin_url(sprintf('product/%s/remove-featured-image/', $params['product']->id)); ?>'"><?= trans_html(string: 'Remove featured image'); ?></button>
+                                    <button type="submit" class="btn btn-primary" formnovalidate formaction="<?= admin_url(sprintf('product/%s/remove-featured-image/', $params['product']->id)); ?>"><?= trans_html(string: 'Remove featured image'); ?></button>
                                 <?php else : ?>
                                     <button type="button" id="set_image" class="btn btn-primary" style="display:none;"><?= trans_html(string: 'Set featured image'); ?></button>
                                     <button type="button" id="remove_image" class="btn btn-primary" style="display:none;"><?= trans_html(string: 'Remove featured image'); ?></button>
@@ -258,7 +259,10 @@ Action::getInstance()->doAction('enqueue_cms_editor');
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
-                    <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url(sprintf('product/%s/d/', $params['product']->id)); ?>'"><?= trans_html(string: 'Confirm'); ?></button>
+                    <form method="post" action="<?= admin_url(sprintf('product/%s/d/', $params['product']->id)); ?>">
+                        <?= csrf_field(); ?>
+                        <button type="submit" class="btn btn-primary"><?= trans_html(string: 'Confirm'); ?></button>
+                    </form>
                 </div>
             </div>
             <!-- /.modal-content -->

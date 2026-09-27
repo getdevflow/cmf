@@ -50,6 +50,7 @@ $statuses = array_filter(
 
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url(sprintf('content-type/%s/create/', $params['type']->slug)); ?>" id="form" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains content -->
         <div class="content-wrapper">
             <!-- Content Header (Content header) -->

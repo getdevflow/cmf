@@ -79,7 +79,10 @@ Registry::getInstance()->{'set'}('screen_child', $params['type']);
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><?= trans_html(string: 'Close'); ?></button>
-                                                    <button type="button" class="btn btn-primary" onclick="window.location='<?= admin_url(sprintf('content-type/%s/%s/d/', $params['type'], $content['id'])); ?>'"><?= trans_html(string: 'Confirm'); ?></button>
+                                                    <form method="post" action="<?= admin_url(sprintf('content-type/%s/%s/d/', $params['type'], $content['id'])); ?>">
+                                                        <?= csrf_field(); ?>
+                                                        <button type="submit" class="btn btn-primary"><?= trans_html(string: 'Confirm'); ?></button>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->

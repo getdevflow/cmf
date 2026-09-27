@@ -1,0 +1,22 @@
+<script>
+(() => {
+    const header = <?=phpb_json($header);?>;
+    const token = <?=phpb_json($token);?>;
+    const sameOrigin = url => new URL(url, window.location.href).origin === window.location.origin;
+
+    // Vihzhuo saves pages and deletes assets through jQuery.
+    window.jQuery.ajaxPrefilter((options, original, xhr) => {
+        if (sameOrigin(options.url) && !/^(GET|HEAD|OPTIONS)$/i.test(options.type)) {
+            xhr.setRequestHeader(header, token);
+        }
+    });
+
+    // GrapesJS uploads files through its own transport.
+    window.addEventListener('vihzhuo:grapesjs:before-init', event => {
+        const assets = event.detail.assetManager;
+        if (assets && typeof assets.upload === 'string' && sameOrigin(assets.upload)) {
+            assets.headers = {...assets.headers, [header]: token};
+        }
+    });
+})();
+</script>

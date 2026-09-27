@@ -33,6 +33,7 @@ Registry::getInstance()->{'set'}('screen_child', 'profile');
 
     <!-- form start -->
     <form method="post" action="<?= admin_url('user/profile/'); ?>" data-toggle="validator" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->

@@ -77,6 +77,7 @@ Registry::getInstance()->{'set'}('screen_child', 'create-user');
 
     <!-- form start -->
     <form id="user_form" method="post" action="<?= admin_url('user/create/'); ?>" data-toggle="validator" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->

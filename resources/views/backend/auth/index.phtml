@@ -21,6 +21,7 @@ $this->block('auth', function ($params) {
             <?=Devflow::$PHP->flash->display();?>
             <?php Action::getInstance()->doAction('login_form_top'); ?>
             <form method="post" action="<?=$params['url'];?>" class="my-login-validation" novalidate="" autocomplete="off">
+                <?= csrf_field(); ?>
                 <div class="form-group">
                     <label for="username"><?=trans_html('Username');?></label>
                     <input id="username" type="text" class="form-control" name="user_login" required="required" autofocus>

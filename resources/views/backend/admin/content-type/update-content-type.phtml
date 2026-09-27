@@ -25,6 +25,7 @@ Registry::getInstance()->{'set'}('screen_parent', 'content_types');
 
     <!-- form start -->
     <form method="post" action="<?=admin_url('content-type/' . $params['type']->id . '/'); ?>" data-toggle="validator" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
