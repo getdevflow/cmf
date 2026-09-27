@@ -12,6 +12,7 @@
 
   $().ready(function() {
     var elf = $('#elfinder').elfinder({
+                requestType: 'post',
       // set your elFinder options here
       url: rootPath + 'admin/connector/',  // connector URL
       getFileCallback: function(file) { // editor callback
