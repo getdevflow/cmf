@@ -14,6 +14,8 @@
 
 <p align="center">🌟 Star me on <a href="https://github.com/getdevflow/cmf">GitHub</a> to encourage continuous development!</p>
 
+For the 3.x release, follow the [application upgrade guide](docs/upgrade-3.0.md).
+
 __Devflow CMS__ is a hybrid content management framework that gives PHP architects the freedom to build without limits.
 
 ![https://devflow-cmf.s3.us-east-1.amazonaws.com/image/Devflow-CMS-Content-Types.gif](https://devflow-cmf.s3.us-east-1.amazonaws.com/image/Devflow-CMS-Content-Types.gif)

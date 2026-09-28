@@ -1,3 +1,14 @@
+## 3.0.0 (unreleased)
+
+- 🔧 Integrate Core 3, CodefyPHP 4, and the updated page builder without modifying core.
+- 🔧 Protect CMS forms/AJAX with CSRF; require POST for state changes.
+- 🔧 Register middleware aliases, enforce plugin permissions, throttle authentication,
+  and wire email-verified password recovery.
+- 🔧 Retire the arbitrary-table v1 API; require explicit nonempty Bearer credentials for v2.
+- 🔧 Move master cron to a locked console task and update queue/scheduler integration.
+- 🔧 Update SEO/mail integrations, environment setup, and private runtime defaults.
+- ➕ Add application regression coverage and the [deployment guide](docs/upgrade-3.0.md).
+
 ## 2.2.0 (2026-06-01)
 - ➕ Security audit advisory on updates screen
 - ➕ Site specific plugins
