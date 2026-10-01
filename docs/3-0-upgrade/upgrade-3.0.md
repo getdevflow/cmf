@@ -2,7 +2,7 @@
 
 This application targets Devflow Core 3, CodefyPHP 4, Vihzhuo 2, Qubus Form 3,
 and PHP 8.4+. Application changes leave the installed `core/` package untouched.
-See the [core upgrade guide](4-0-upgrade/devflow-core-upgrade-3.0.md) and
+See the [core upgrade guide](devflow-core-upgrade-3.0.md) and
 [CodefyPHP guide](https://github.com/codefyphp/codefy/blob/4.x/docs/4-0-upgrade/upgrade-4.0.md) for the underlying contracts.
 
 ## Deployment
