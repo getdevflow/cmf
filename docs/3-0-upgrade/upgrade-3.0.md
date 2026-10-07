@@ -103,34 +103,4 @@ existing values, refuses an `.env` symlink, and restricts `.env` permissions.
 The Composer project-creation script creates an encryption key only for a new
 project; it is not an upgrade command.
 
-## Verification and limits
 
-Verified on PHP 8.5.10:
-
-- Application suite: 35 tests, 1,156 assertions. It covers real route matching,
-  CSRF cookies/submissions and generated forms, CORS, Bearer authentication,
-  signature-route exemptions, alias resolution, job registration, SEO schema,
-  and repeatable environment setup. Tests use an isolated container and runtime
-  directory; controller mutations are not dispatched against the installed database.
-- DevCart suite: 16 tests, 42 assertions.
-- Application coding standards and PHPStan level 0 pass. This is basic
-  compatibility analysis, not a claim of strict type coverage across dependencies.
-- 444 application and bundled-plugin PHP/template files passed syntax checks.
-- CLI route and scheduler registration succeeded.
-- Direct HTTP-pipeline smoke checks: login 200 with a CSRF form field, GET logout
-  405, tokenless POST logout 412, retired API 410, and unauthenticated API write 401.
-  Host-path and temporary salt overrides were used only in the smoke process.
-- Composer manifest validates with the expected development-constraint warning.
-  Audit returned no security advisories, but reported abandoned packages:
-  `laminas/laminas-loader`, `marcusschwarz/lesserphp`, `meenie/javascript-packer`,
-  and `oomphinc/composer-installers-extender`. Audit therefore exits nonzero.
-
-Run `composer test`, `composer cs-check`, `composer analyse`,
-`composer validate --no-check-publish`, and `composer audit --locked` on deployment.
-In a sandbox that cannot open PHPStan's local worker socket, run
-`composer analyse -- --debug` for serial analysis.
-
-Interactive browser editing, production SMTP, external payment delivery,
-PHP 8.4 runtime execution, and multi-host/Swoole behavior were not verified.
-The current supplied environment needs its original `APP_SALT` restored before
-normal HTTP login can render without a temporary test override.

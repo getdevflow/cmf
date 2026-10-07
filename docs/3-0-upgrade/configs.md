@@ -1,11 +1,22 @@
 # Devflow CMS 3.x Configuration Updates
 
+## Site logo in Settings
+
+Settings now includes a Site Logo picker in its right column. It uses the existing
+image-only elFinder picker and saves the native `site_logo` option. Select or remove
+the logo, then click Update. [Header Footer Builder](https://getdevflow.com/extensions/getdevflow/header-footer-builder) is optional.
+
+Ship the Settings template and `settings-logo.js` with Core's updated
+`AdminOptionsController` save allowlist and URL-aware `Options` reader. Themes can
+read the option using `get_option('site_logo', '')` and escape it with `esc_url()`
+when using it in an image's `src` attribute. No database migration is required.
+
 ## app.php
 
 ```php
 'url' => env(key: 'APP_BASE_URL', default: 'http://localhost:8080/'),
 
-'crypto_key' => is_file(__DIR__ . '/../.enc.key') ? trim(file_get_contents(__DIR__ . '/../.enc.key')) : '',`
+'crypto_key' => is_file(__DIR__ . '/../.enc.key') ? trim(file_get_contents(__DIR__ . '/../.enc.key')) : '',
 
 'middlewares' => Middleware::defaultMiddlewares()->merge([
     'csrf.protection' => \App\Infrastructure\Http\Middlewares\CmsCsrfMiddleware::class,
@@ -154,3 +165,9 @@ The upgrade will replace your current throttle config.
 ## vihzhuo.php
 
 The upgrade will replace your current vihzhuo config.
+
+Core's Vihzhuo 2.1 integration supports child themes through PHP theme-class
+inheritance. Keep `theme.class`, `folder`, and `folder_url`; the activated theme
+takes precedence over `active_theme`. No parent map or additional cache settings
+are needed. See [Vihzhuo child themes](vihzhuo-child-themes.md) for the bundled
+example, complete resource overrides, assets, and safe developer previews.

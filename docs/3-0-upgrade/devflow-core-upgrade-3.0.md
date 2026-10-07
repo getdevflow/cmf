@@ -147,13 +147,5 @@ Custom validators must explicitly declare every field used by a DTO or write ope
 
 ## Verification
 
-Run `composer test`, `composer cs-check`, `composer analyse`,
-`composer validate --no-check-publish`, and `composer audit --locked`.
-Migration verification on PHP 8.4 and PHP 8.5: 89 tests passed (266 assertions each).
-All 444 PHP files passed PHP 8.4 syntax checks. The core tests cover cookie compatibility, queue payloads,
-password recovery, password rehashing, method restrictions, and event-store rollback/replay.
-Static analysis at level 0 checks the whole core for basic compatibility errors; this does
-not claim higher-level type-analysis coverage.
-
 Production SMTP, application routes/templates, multi-host storage, and live Swoole need
 application-level verification. The dependency audit during migration reported no advisories.
