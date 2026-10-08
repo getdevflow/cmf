@@ -12,11 +12,13 @@ use function App\Shared\Helpers\admin_url;
 use function App\Shared\Helpers\checked;
 use function App\Shared\Helpers\cms_charset;
 use function App\Shared\Helpers\cms_dropdown_languages;
+use function App\Shared\Helpers\cms_upload_image;
 use function App\Shared\Helpers\generate_timezone_list;
 use function App\Shared\Helpers\get_option;
 use function App\Shared\Helpers\selected;
 use function Codefy\Framework\Helpers\trans_html;
 use function Qubus\Security\Helpers\esc_html__;
+use function Qubus\Security\Helpers\esc_attr;
 
 $this->parent('framework::backend/layouts/admin-layout');
 $this->block('backend', function () {
@@ -24,7 +26,11 @@ Registry::getInstance()->{'set'}('screen_parent', 'settings');
 Registry::getInstance()->{'set'}('screen_child', 'settings');
 
 Action::getInstance()->doAction('settings_init');
+$siteLogo = get_option(key: 'site_logo', default: '');
+$siteLogo = is_string($siteLogo) ? $siteLogo : '';
 ?>
+    <?= cms_upload_image(); ?>
+    <script src="static/assets/js/settings-logo.js"></script>
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url('settings/'); ?>" id="form" autocomplete="off">
         <?= csrf_field(); ?>
@@ -107,6 +113,33 @@ Action::getInstance()->doAction('settings_init');
                     </div>
                     <!-- /.left column -->
                     <div class="col-md-3">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><?= trans_html(string: 'Site Logo'); ?></h3>
+                            </div>
+                            <div class="box-body">
+                                <div id="elfinder"></div>
+                                <div class="form-group">
+                                    <img id="site-logo-preview" hidden
+                                         alt="<?= esc_attr(trans_html(string: 'Site logo preview')); ?>"
+                                         style="max-width:100%;max-height:160px;height:auto;margin-bottom:1em;" />
+                                    <input type="hidden" name="site_logo" id="site-logo"
+                                           value="<?= esc_attr($siteLogo); ?>" />
+                                    <div>
+                                        <button type="button" id="choose-site-logo" class="btn btn-primary">
+                                            <?= trans_html(string: 'Choose Logo'); ?>
+                                        </button>
+                                        <button type="button" id="remove-site-logo" class="btn btn-default" style="display:none;">
+                                            <?= trans_html(string: 'Remove Logo'); ?>
+                                        </button>
+                                    </div>
+                                    <p class="help-block">
+                                        <?= trans_html('Choose an image from the Media Library. Click Update to save changes.'); ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="box box-warning">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><?= trans_html(string: 'Maintenance Mode'); ?></h3>
