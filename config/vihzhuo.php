@@ -152,6 +152,10 @@ return [
      | PageBuilder requires a themes folder in which for each theme the individual
      | theme blocks are defined. A theme block is a sub folder in the themes folder
      | containing a view, model (optional) and controller (optional).
+     | Child themes extend their installed parent's PHP theme class. The site's
+     | activated theme takes precedence over active_theme, which is a fallback.
+     | Matching child block/layout directories replace the whole parent resource.
+     | See docs/vihzhuo-child-themes.md for assets, previews, and examples.
      |
      */
     'theme' => [

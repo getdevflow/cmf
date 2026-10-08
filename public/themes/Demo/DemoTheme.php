@@ -17,7 +17,7 @@ use function dirname;
 use function get_class;
 use function Qubus\Security\Helpers\t__;
 
-final class DemoTheme extends Theme
+class DemoTheme extends Theme
 {
     /**
      * @inheritDoc
@@ -51,6 +51,7 @@ final class DemoTheme extends Theme
 
     /**
      * @inheritDoc
+     * @throws ReflectionException
      */
     public function handle(): void
     {
