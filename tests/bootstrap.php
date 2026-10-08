@@ -33,6 +33,18 @@ $config->setConfigKey('vihzhuo', [
 ]);
 $app->share(new Qubus\Http\Request('https://cms.test/'));
 
+// Core's theme adapter reads the site's selection through Options. Keep that
+// lookup isolated from the installed site's database, even when no theme is selected.
+$optionDb = new Qubus\Expressive\QueryBuilder(new Qubus\Expressive\Connection\Pdo\Sqlite([
+    'dsn' => 'sqlite::memory:', 'driver' => 'pdo_sqlite',
+]));
+$optionDb->prefix = 'test_';
+$optionDb->getConnection()->pdo->exec(
+    'CREATE TABLE test_option (option_id TEXT PRIMARY KEY, option_key TEXT UNIQUE, option_value TEXT)'
+);
+$testOptions = new App\Infrastructure\Services\Options($optionDb, new Qubus\Cache\InMemoryCache());
+$app->singleton(App\Infrastructure\Services\Options::class, static fn () => $testOptions);
+
 register_shutdown_function(static function () use ($testRoot): void {
     $files = new RecursiveIteratorIterator(
         new RecursiveDirectoryIterator($testRoot, FilesystemIterator::SKIP_DOTS),
