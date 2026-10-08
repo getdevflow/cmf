@@ -14,7 +14,7 @@
 
 <p align="center">🌟 Star me on <a href="https://github.com/getdevflow/cmf">GitHub</a> to encourage continuous development!</p>
 
-For the 3.x release, follow the [application upgrade guide](docs/upgrade-3.0.md).
+For the 3.x release, follow the [application upgrade guide](docs/3-0-upgrade/README.md).
 
 __Devflow CMS__ is a hybrid content management framework that gives PHP architects the freedom to build without limits.
 
@@ -48,6 +48,7 @@ Devflow CMS supports __event sourcing__ and __domain events__, allowing develope
 - CORS (enabled by default)
 - Rate limiting (enabled by default)
 - Visual page builder (for supported themes)
+- [Pagebuilder child themes](docs/3-0-upgrade/vihzhuo-child-themes.md) with inherited layouts, blocks, and assets
 - Provides a simple hook and event system without affecting core code
 - Scheduler for scheduling tasks/jobs
 - Security and sanitizing helpers
