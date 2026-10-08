@@ -158,6 +158,7 @@ if (! is_main_site() && is_multisite()) {
                                     <?php if (is_plugin_activated(esc_html($plugin['className'])) === true && class_exists(esc_html($plugin['className']))) : ?>
                                         <td<?= ae('deactivate:plugins'); ?> class="text-center">
                                             <form action="<?=admin_url('plugin/deactivate/');?>" method="post" autocomplete="off">
+                                                <?= csrf_field(); ?>
                                                 <input type="hidden" name="plugin_id" value="<?= esc_html($plugin['className']); ?>" />
                                                 <button type="submit" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
                                             </form>
@@ -165,6 +166,7 @@ if (! is_main_site() && is_multisite()) {
                                     <?php else : ?>
                                         <td<?= ae('activate:plugins'); ?> class="text-center">
                                             <form action="<?=admin_url('plugin/activate/');?>" method="post" autocomplete="off">
+                                                <?= csrf_field(); ?>
                                                 <input type="hidden" name="plugin_id" value="<?= esc_html($plugin['className']); ?>" />
                                                 <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle"></i></button>
                                             </form>

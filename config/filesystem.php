@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use function Codefy\Framework\Helpers\public_path;
 use function Codefy\Framework\Helpers\storage_path;
 use function Qubus\Config\Helpers\env;
 
@@ -21,15 +22,15 @@ return [
         */
         'local' => [
             'root' => storage_path(),
-            'visibility' => \League\Flysystem\Visibility::PUBLIC,
+            'visibility' => \League\Flysystem\Visibility::PRIVATE,
             'permission' => [
                 'file' => [
                     'public'  => 0644,
-                    'private' => 0604,
+                    'private' => 0600,
                 ],
                 'dir'  => [
                     'public'  => 0755,
-                    'private' => 7604,
+                    'private' => 0700,
                 ],
             ],
         ],
@@ -40,16 +41,16 @@ return [
         |--------------------------------------------------------------------------
         */
         'public' => [
-            'root' => storage_path(path: 'app/public'),
+            'root' => public_path(),
             'visibility' => \League\Flysystem\Visibility::PUBLIC,
             'permission' => [
                 'file' => [
                     'public'  => 0644,
-                    'private' => 0604,
+                    'private' => 0600,
                 ],
                 'dir'  => [
                     'public'  => 0755,
-                    'private' => 7604,
+                    'private' => 0700,
                 ],
             ],
         ],
@@ -65,11 +66,11 @@ return [
             'permission' => [
                 'file' => [
                     'public'  => 0644,
-                    'private' => 0604,
+                    'private' => 0600,
                 ],
                 'dir'  => [
                     'public'  => 0755,
-                    'private' => 7604,
+                    'private' => 0700,
                 ],
             ],
         ],
@@ -85,11 +86,11 @@ return [
             'permission' => [
                 'file' => [
                     'public'  => 0644,
-                    'private' => 0604,
+                    'private' => 0600,
                 ],
                 'dir'  => [
                     'public'  => 0755,
-                    'private' => 7604,
+                    'private' => 0700,
                 ],
             ],
         ],
@@ -105,11 +106,11 @@ return [
             'permission' => [
                 'file' => [
                     'public'  => 0644,
-                    'private' => 0604,
+                    'private' => 0600,
                 ],
                 'dir'  => [
                     'public'  => 0755,
-                    'private' => 7604,
+                    'private' => 0700,
                 ],
             ],
         ],
@@ -125,11 +126,11 @@ return [
             'permission' => [
                 'file' => [
                     'public'  => 0644,
-                    'private' => 0604,
+                    'private' => 0600,
                 ],
                 'dir'  => [
                     'public'  => 0755,
-                    'private' => 7604,
+                    'private' => 0700,
                 ],
             ],
         ],
@@ -145,11 +146,11 @@ return [
             'permission' => [
                 'file' => [
                     'public'  => 0644,
-                    'private' => 0604,
+                    'private' => 0600,
                 ],
                 'dir'  => [
                     'public'  => 0755,
-                    'private' => 7604,
+                    'private' => 0700,
                 ],
             ],
         ],
@@ -165,11 +166,11 @@ return [
             'permission' => [
                 'file' => [
                     'public'  => 0644,
-                    'private' => 0604,
+                    'private' => 0600,
                 ],
                 'dir'  => [
                     'public'  => 0755,
-                    'private' => 7604,
+                    'private' => 0700,
                 ],
             ],
         ],
@@ -212,11 +213,11 @@ return [
         'permission' => [
             'file' => [
                 'public'  => 0644,
-                'private' => 0604,
+                'private' => 0600,
             ],
             'dir'  => [
                 'public'  => 0755,
-                'private' => 7604,
+                'private' => 0700,
             ],
         ],
     ],

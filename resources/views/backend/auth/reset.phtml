@@ -22,6 +22,7 @@ $this->block('auth', function () {
             <?=Devflow::$PHP->flash->display();?>
             <?php Action::getInstance()->doAction('reset_form_top'); ?>
             <form method="post" action="<?= admin_url('reset-password/'); ?>" class="my-login-validation" novalidate="" autocomplete="off">
+                <?= csrf_field(); ?>
                 <div class="form-group">
                     <label for="username"><?=trans_html('Email');?>
                         <a href="<?=admin_login_url('admin');?>" class="float-right">
@@ -33,7 +34,7 @@ $this->block('auth', function () {
                         <?=trans_html('Email is invalid.');?>
                     </div>
                     <div class="form-text text-muted">
-                        <?=trans_html('By clicking "Reset" the system will email you a new password.');?>
+                        <?=trans_html('If the account exists, we will email you a link to choose a new password.');?>
                     </div>
                 </div>
 

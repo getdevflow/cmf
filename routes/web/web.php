@@ -13,14 +13,14 @@ return function (\Qubus\Routing\Psr7Router $router) {
 
     if (config()->boolean(key: 'vihzhuo.enable')) {
         $router
-            ->any(
+            ->get(
                 uri: config()->string(key: 'vihzhuo.general.assets_url') . '{any}',
                 callback: 'PageBuilderController@assets'
             )
             ->where(['any' => '.*']);
 
         $router
-            ->any(
+            ->get(
                 uri: config()->string(key: 'vihzhuo.general.uploads_url') . '{any}',
                 callback: 'PageBuilderController@uploads'
             )
@@ -28,7 +28,8 @@ return function (\Qubus\Routing\Psr7Router $router) {
 
         if (config()->boolean(key: 'vihzhuo.website_manager.use_website_manager')) {
             $router
-                ->any(
+                ->map(
+                    ['GET', 'POST'],
                     uri: config()->string(key: 'vihzhuo.website_manager.url') . '{any}',
                     callback: 'PageBuilderController@websiteManager'
                 )
@@ -37,7 +38,7 @@ return function (\Qubus\Routing\Psr7Router $router) {
 
         if (config()->boolean(key: 'vihzhuo.router.use_router')) {
             $router
-                ->any(
+                ->get(
                     uri: '/{any}',
                     callback: 'PageBuilderController@any'
                 )

@@ -84,4 +84,15 @@ return [
     */
     'remove_logs_after' => 10,
     'remove_cookies_after' => 14,
+    /*
+    |--------------------------------------------------------------------------
+    | Maintenance mode attributes.
+    |--------------------------------------------------------------------------
+    */
+    'maintenance_mode_attrs' => [
+        'retry_after' => '120',
+        'cache_control' => 'no-cache, no-store, must-revalidate',
+        'pragma' => 'no-cache',
+        'expires' => '0',
+    ],
 ];

@@ -22,6 +22,7 @@ Registry::getInstance()->set('screen_parent', 'media');
     <script type="text/javascript">
         $().ready(function() {
             var elf = $('#elfinder').elfinder({
+                requestType: 'post',
                 baseUrl: '<?=site_url('vendor/studio-42/elfinder/');?>',
                 url : '<?=admin_url('connector/');?>',
                 soundPath: '<?=site_url('vendor/studio-42/elfinder/sounds');?>',

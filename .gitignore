@@ -31,3 +31,13 @@ releases.json
 sign.php
 time.log
 update.json
+
+# Private runtime state; retain legacy jobs locally for an explicit migration.
+database/nodequeue*.json
+database/nodequeue*.lock
+storage/scheduler-locks/
+storage/framework/sessions/*
+storage/framework/cookies/*
+storage/mail/
+
+**/.phpunit.cache/

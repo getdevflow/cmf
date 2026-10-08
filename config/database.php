@@ -24,21 +24,22 @@ return [
         */
         'mysql' => [
             'driver' => 'mysql',
+            'prefix' => env(key: 'DB_TABLE_PREFIX'),
             'dsn' => env(key: 'DB_DSN'),
             'username' => env(key: 'DB_USER'),
             'password' => env(key: 'DB_PASSWORD'),
-            'prefix' => env(key: 'DB_TABLE_PREFIX'),
             'options' => [
                 PDO::ATTR_EMULATE_PREPARES => false,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_PERSISTENT => env(key: 'DB_PERSISTENT'),
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci"
-            ],
+            ] + (extension_loaded('pdo_mysql') ? [
+                    \Pdo\Mysql::ATTR_INIT_COMMAND => 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci',
+            ] : []),
         ],
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'dsn' => env(key: 'DB_DSN'),
+            'dsn' => env(key: 'DB_DSN') ?: 'sqlite:' . dirname(__DIR__) . '/database/devflow.sqlite',
             'username' => env(key: 'DB_USER'),
             'password' => env(key: 'DB_PASSWORD'),
             'prefix' => env(key: 'DB_TABLE_PREFIX'),

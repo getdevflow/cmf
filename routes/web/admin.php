@@ -25,12 +25,12 @@ return function (\Qubus\Routing\Psr7Router $router) {
 
             $group->post(uri: '/auth/', callback: 'AdminAuthController@auth')
                 ->name('admin.auth')
-                ->middleware(['user.authenticate','user.session']);
+                ->middleware(['rate.limiter', 'user.authenticate', 'user.session', 'bind.request']);
 
-            $group->get(uri: '/flush-cache/', callback: 'AdminDashboardController@flushCache')
+            $group->post(uri: '/flush-cache/', callback: 'AdminDashboardController@flushCache')
                 ->name('admin.cache.flush');
 
-            $group->map(['GET', 'POST'], '/connector/', callback: 'AdminMediaController@connector')
+            $group->post('/connector/', callback: 'AdminMediaController@connector')
                 ->name('admin.connector');
 
             $group->get(uri: '/elfinder/', callback: 'AdminMediaController@elFinder')
@@ -40,16 +40,24 @@ return function (\Qubus\Routing\Psr7Router $router) {
                 ->name('admin.media');
 
             $group->get(uri: "/{$loginRoute}/", callback: 'AdminAuthController@login')
-                ->name('admin.login')
-                ->middleware(['rate.limiter']);
+                ->name('admin.login');
 
-            $group->get(uri: '/logout/', callback: 'AdminAuthController@logout')
+            $group->get('/logout/', static fn () => new \Qubus\Http\Response(
+                status: 405,
+                headers: ['Allow' => 'POST']
+            ));
+
+            $group->post(uri: '/logout/', callback: 'AdminAuthController@logout')
                 ->name('admin.logout')
                 ->middleware(['user.session.expire']);
 
             // Password Reset
             $group->get(uri: '/reset-password/', callback: 'AdminAuthController@resetPasswordView');
-            $group->post(uri: '/reset-password/', callback: 'AdminAuthController@resetPasswordChange');
+            $group->post(uri: '/reset-password/', callback: 'AdminAuthController@resetPasswordChange')
+                ->middleware('rate.limiter');
+            $group->get(uri: '/password/reset/', callback: 'AdminAuthController@resetPasswordView');
+            $group->post(uri: '/password/reset/', callback: 'AdminAuthController@resetPasswordChange')
+                ->middleware('rate.limiter');
 
             // Plugin routes
             $group->get(uri: '/plugin/', callback: 'AdminPluginController@plugins')
@@ -97,18 +105,15 @@ return function (\Qubus\Routing\Psr7Router $router) {
             $group->get(
                 uri: '/content-type/{contentTypeId}/',
                 callback: 'AdminContentTypeController@contentTypeView'
-            )
-            ->where(['contentTypeId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['contentTypeId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
             $group->post(
                 uri: '/content-type/{contentTypeId}/',
                 callback: 'AdminContentTypeController@contentTypeChange'
-            )
-            ->where(['contentTypeId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
-            $group->get(
+            )->where(['contentTypeId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
+            $group->post(
                 uri: '/content-type/{contentTypeId}/d/',
                 callback: 'AdminContentTypeController@contentTypeDelete'
-            )
-            ->where(['contentTypeId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['contentTypeId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
 
 
             // Site routes
@@ -120,19 +125,17 @@ return function (\Qubus\Routing\Psr7Router $router) {
             );
             $group->get(uri: '/site/users/', callback: 'AdminSiteController@siteUsers');
             $group->post(uri: '/site/users/{userId}/d/', callback: 'AdminSiteController@siteUsersDelete')
-                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
             $group->get(uri: '/site/{siteId}/', callback: 'AdminSiteController@siteView')
-                ->where(['siteId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+                ->where(['siteId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
             $group->post(
                 uri: '/site/{siteId}/',
                 callback: 'AdminSiteController@siteChange'
-            )
-            ->where(['siteId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
-            $group->get(
+            )->where(['siteId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
+            $group->post(
                 uri: '/site/{siteId}/d/',
                 callback: 'AdminSiteController@siteDelete'
-            )
-            ->where(['siteId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['siteId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
 
             // User routes
             $group->get(uri: '/user/', callback: 'AdminUserController@users');
@@ -140,27 +143,24 @@ return function (\Qubus\Routing\Psr7Router $router) {
             $group->get(uri: '/user/create/', callback: 'AdminUserController@userCreateView');
             $group->post(uri: '/user/create/', callback: 'AdminUserController@userCreate');
             $group->get(uri: '/user/{userId}/', callback: 'AdminUserController@userView')
-                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
             $group->post(
                 uri: '/user/{userId}/',
                 callback: 'AdminUserController@userChange'
-            )
-            ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
             $group->post(
                 uri: '/user/{userId}/d/',
                 callback: 'AdminUserController@userDelete'
-            )
-            ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
             $group->post(uri: '/user/lookup/', callback: 'AdminUserController@userLookup');
-            $group->get(
+            $group->post(
                 uri: '/user/{userId}/reset-password/',
                 callback: 'AdminUserController@userResetPassword'
-            )
-                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
-            $group->get(uri: '/user/{userId}/switch-to/', callback: 'AdminUserController@userSwitchTo')
-                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
-            $group->get(uri: '/user/{userId}/switch-back/', callback: 'AdminUserController@userSwitchBack')
-                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
+            $group->post(uri: '/user/{userId}/switch-to/', callback: 'AdminUserController@userSwitchTo')
+                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
+            $group->post(uri: '/user/{userId}/switch-back/', callback: 'AdminUserController@userSwitchBack')
+                ->where(['userId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
 
 
             // Option routes
@@ -185,23 +185,19 @@ return function (\Qubus\Routing\Psr7Router $router) {
             $group->get(
                 uri: '/content-type/{contentTypeSlug}/{contentId}/',
                 callback: 'AdminContentController@contentView'
-            )
-            ->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
             $group->post(
                 uri: '/content-type/{contentTypeSlug}/{contentId}/',
                 callback: 'AdminContentController@contentChange'
-            )
-            ->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
-            $group->get(
+            )->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
+            $group->post(
                 uri: '/content-type/{contentTypeSlug}/{contentId}/remove-featured-image/',
                 callback: 'AdminContentController@removeFeaturedImage'
-            )
-            ->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
-            $group->get(
+            )->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
+            $group->post(
                 uri: '/content-type/{contentTypeSlug}/{contentId}/d/',
                 callback: 'AdminContentController@contentDelete'
-            )
-            ->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['contentId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
 
             $group->post(
                 uri: '/content-workflow/{contentId}/request-review/',
@@ -279,7 +275,10 @@ return function (\Qubus\Routing\Psr7Router $router) {
                 uri: '/content-workflow/{contentId}/comment/delete/',
                 callback: 'AdminContentWorkflowController@deleteComment'
             );
-            $group->get(uri: 'content-notifications/unread/', callback: 'AdminContentNotificationController@unread');
+            $group->get(
+                uri: 'content-notifications/unread/',
+                callback: 'AdminContentNotificationController@unread'
+            );
             $group->post(uri: '/content-notifications/read/', callback: 'AdminContentNotificationController@markRead');
             $group->post(
                 uri: '/content-notifications/read-all/',
@@ -300,23 +299,19 @@ return function (\Qubus\Routing\Psr7Router $router) {
             $group->get(
                 uri: '/product/{productId}/',
                 callback: 'AdminProductController@productView'
-            )
-            ->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
             $group->post(
                 uri: '/product/{productId}/',
                 callback: 'AdminProductController@productChange'
-            )
-            ->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
-            $group->get(
+            )->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
+            $group->post(
                 uri: '/product/{productId}/remove-featured-image/',
                 callback: 'AdminProductController@removeFeaturedImage'
-            )
-            ->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
-            $group->get(
+            )->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
+            $group->post(
                 uri: '/product/{productId}/d/',
                 callback: 'AdminProductController@productDelete'
-            )
-            ->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ{26}$]+']);
+            )->where(['productId' => '[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{26}']);
 
             // Page Builder Manager
             $group->get(
@@ -340,12 +335,6 @@ return function (\Qubus\Routing\Psr7Router $router) {
                 uri: '/manager/{pageId}/d/',
                 callback: 'WebsiteManagerController@destroy'
             )->where(['pageId' => '[0-9]+']);
-
-            // Master cron route
-            $group->get(
-                uri: '/cron/master/',
-                callback: 'CronController@master'
-            );
         }
     );
 

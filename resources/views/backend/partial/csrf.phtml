@@ -1,0 +1,24 @@
+<?php
+
+use Codefy\Framework\Http\Middleware\Csrf\CsrfTokenMiddleware;
+use Codefy\Framework\Http\RequestContext;
+
+use function Codefy\Framework\Helpers\config;
+
+$csrfHeader = config()->string('csrf.header');
+$csrfToken = RequestContext::get()->getAttribute(CsrfTokenMiddleware::CSRF_SESSION_ATTRIBUTE);
+?>
+<script>
+(() => {
+    const header = <?= json_encode($csrfHeader, JSON_HEX_TAG | JSON_HEX_AMP | JSON_THROW_ON_ERROR); ?>;
+    const token = <?= json_encode($csrfToken, JSON_HEX_TAG | JSON_HEX_AMP | JSON_THROW_ON_ERROR); ?>;
+    if (window.jQuery && token) {
+        window.jQuery.ajaxPrefilter((options, original, xhr) => {
+            const url = new URL(options.url, window.location.href);
+            if (url.origin === window.location.origin && !/^(GET|HEAD|OPTIONS)$/i.test(options.type)) {
+                xhr.setRequestHeader(header, token);
+            }
+        });
+    }
+})();
+</script>

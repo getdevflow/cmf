@@ -2,7 +2,7 @@
     "name": "getdevflow/cmf",
     "type": "project",
     "description": "Developer-centric content management framework.",
-    "keywords": ["framework","content-management","cms","cmf","content-management-system","headless","headless-cms"],
+    "keywords": ["framework", "content-management", "cms", "cmf", "content-management-system", "headless", "headless-cms"],
     "license": "GPL-2.0-only",
     "authors": [
         {
@@ -19,7 +19,7 @@
         "ext-pdo": "*",
         "ext-zip": "*",
         "composer/installers": "^2.3",
-        "getdevflow/core": "2.x-dev",
+        "getdevflow/core": "3.x-dev",
         "oomphinc/composer-installers-extender": "^2.0"
     },
     "autoload": {
@@ -33,14 +33,16 @@
         }
     },
     "scripts": {
-        "devstan": "phpstan analyse -l 2",
+        "devstan": "@analyse",
         "test": "vendor/bin/pest",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
+        "setup-environment": "@php bootstrap/setup-environment.php",
         "post-create-project-cmd": [
-            "touch .enc.key",
-            "cp .env.example .env"
-        ]
+            "@setup-environment",
+            "@php codex generate:key:file"
+        ],
+        "analyse": "phpstan analyse --no-progress"
     },
     "config": {
         "optimize-autoloader": true,
@@ -64,7 +66,7 @@
         "webonyx/graphql-php": "A PHP implementation of the GraphQL specification based on the reference implementation in JavaScript."
     },
     "extra": {
-        "installer-types": ["devflow-core","devflow-plugin","devflow-theme"],
+        "installer-types": ["devflow-core", "devflow-plugin", "devflow-theme"],
         "installer-paths": {
             "core/": ["type:devflow-core"],
             "public/plugins/{$name}/": ["type:devflow-plugin"],

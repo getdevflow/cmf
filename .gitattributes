@@ -3,9 +3,16 @@
 * linguist-vendored
 *.php linguist-vendored=false
 
-.github          export-ignore
+.github         export-ignore
+.well-known     export-ignore
 .gitattributes  export-ignore
 .gitignore      export-ignore
+docs            export-ignore
 CHANGELOG.md    export-ignore
-package.xml     export-ignore
+funding.json    export-ignore
+LICENSE.md      export-ignore
+phpcs.xml       export-ignore
+phpstan.neon    export-ignore
+phpunit.xml     export-ignore
 README.md       export-ignore
+VISION.md       export-ignore

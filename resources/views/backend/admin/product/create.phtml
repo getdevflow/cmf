@@ -33,6 +33,7 @@ Registry::getInstance()->{'set'}('screen_child', 'product-create');
 
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?= admin_url('product/create/'); ?>" id="form" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains content -->
         <div class="content-wrapper">
             <!-- Content Header (Content header) -->

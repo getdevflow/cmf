@@ -79,9 +79,15 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
                                     <?php else : ?>
                                         <a href="<?= admin_url(sprintf('user/%s/', esc_html($user['user_id']) )); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Update'); ?>"><button type="button" class="btn bg-yellow"><i class="fa fa-edit"></i></button></a>
                                     <?php endif; ?>
-                                    <a<?=ae('reset:password');?> href="<?= admin_url(sprintf('user/%s/reset-password/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Reset Password'); ?>"><button type="button" class="btn bg-purple"><i class="fa fa-redo"></i></button></a>
+                                    <form method="post" action="<?= admin_url(sprintf('user/%s/reset-password/', esc_html($user['user_id']))); ?>" style="display:inline;">
+                                        <?= csrf_field(); ?>
+                                        <button type="submit"<?=ae('reset:password');?>  data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Reset Password'); ?>" class="btn btn-link"><i class="fa fa-redo"></i></button>
+                                    </form>
                                     <?php if (!isset($_COOKIE['SWITCH_USERBACK']) && esc_html($user['user_id']) !== get_current_user_id()) : ?>
-                                        <a<?= ae('switch:user'); ?> href="<?= admin_url(sprintf('user/%s/switch-to/', esc_html($user['user_id']))); ?>" data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Switch to'); ?>"><button type="button" class="btn bg-blue"><i class="fa fa-exchange-alt"></i></button></a>
+                                        <form method="post" action="<?= admin_url(sprintf('user/%s/switch-to/', esc_html($user['user_id']))); ?>" style="display:inline;">
+                                            <?= csrf_field(); ?>
+                                            <button type="submit"<?= ae('switch:user'); ?>  data-toggle="tooltip" data-placement="top" title="<?= trans_attr(string: 'Switch to'); ?>" class="btn btn-link"><i class="fa fa-exchange-alt"></i></button>
+                                        </form>
                                     <?php endif; ?>
                                     <?php if ($data->role !== 'super' && esc_html($user['user_id']) !== get_current_user_id()) : ?>
                                         <a<?= ae('delete:users'); ?> href="#" data-toggle="modal" data-target="#delete-<?= esc_html($user['user_id']); ?>"><button type="button" class="btn bg-red"><i class="fa fa-trash"></i></button></a>
@@ -89,6 +95,7 @@ Registry::getInstance()->{'set'}('screen_child', 'all-users');
 
                                     <div class="modal" id="delete-<?=esc_html($user['user_id']);?>">
                                         <form method="post" action="<?=admin_url(sprintf('user/%s/d/', esc_html($user['user_id'])));?>">
+                                            <?= csrf_field(); ?>
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">

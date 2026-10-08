@@ -32,6 +32,7 @@ Action::getInstance()->doAction('update_user_init');
 
     <!-- form start -->
     <form method="post" action="<?= admin_url(sprintf('user/%s/', $params['user']->id)); ?>" data-toggle="validator" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->

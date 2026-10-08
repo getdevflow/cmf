@@ -39,7 +39,7 @@ return [
         'use_database' => true,
         'database' => [
             'driver' => env('DB_CONNECTION'),
-            'dsn'    => env(key: 'DB_DSN'),
+            'dsn'    => env(key: 'DB_DSN') ?: 'sqlite:' . dirname(__DIR__) . '/database/devflow.sqlite',
             'username'  => env('DB_USER'),
             'password'  => env('DB_PASSWORD'),
             'options' => [
@@ -77,7 +77,7 @@ return [
      */
     'website_manager' => [
         'use_website_manager' => true,
-        'class' => Vihzhuo\Modules\WebsiteManager\WebsiteManager::class,
+        'class' => \App\Infrastructure\Services\Vihzhuo\WebsiteManager::class,
         'url' => '/admin/manager/'
     ],
 
@@ -102,7 +102,7 @@ return [
      |
      */
     'pagebuilder' => [
-        'class' => Vihzhuo\Modules\GrapesJS\PageBuilder::class,
+        'class' => \App\Infrastructure\Services\Vihzhuo\PageEditor::class,
         'url' => '/admin/manager/pagebuilder/',
         'actions' => [
             'back' => '/admin/manager/'
@@ -152,6 +152,10 @@ return [
      | PageBuilder requires a themes folder in which for each theme the individual
      | theme blocks are defined. A theme block is a sub folder in the themes folder
      | containing a view, model (optional) and controller (optional).
+     | Child themes extend their installed parent's PHP theme class. The site's
+     | activated theme takes precedence over active_theme, which is a fallback.
+     | Matching child block/layout directories replace the whole parent resource.
+     | See docs/vihzhuo-child-themes.md for assets, previews, and examples.
      |
      */
     'theme' => [
@@ -185,6 +189,5 @@ return [
      | Important: when overriding a class always extend the original class.
      |
      */
-    'class_replacements' => [
-    ],
+    'class_replacements' => [],
 ];

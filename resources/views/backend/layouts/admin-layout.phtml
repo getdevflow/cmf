@@ -62,6 +62,7 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
         <link rel="manifest" href="static/assets/img/manifest.json">
         <link href="static/assets/css/iCheck/all.css" type="text/css" rel="stylesheet" />
         <?php admin_head(); ?>
+        <?php $this->insert('framework::backend/partial/csrf'); ?>
     </head>
     <body class="hold-transition <?= get_user_option('admin.skin', $user->id) ?: 'skin-red'; ?> <?= (get_user_option('admin.layout', $user->id) === 0 ? 'fixed ' : ''); ?><?= (get_user_option('admin.sidebar', $user->id) === 0 ? 'sidebar-collapse ' : ''); ?>sidebar-mini">
     <?php Action::getInstance()->doAction('cms_admin_body_open'); ?>
@@ -129,11 +130,17 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                                     </div>
                                     <?php if (isset($_COOKIE['SWITCH_USERBACK'])) : ?>
                                         <div class="pull-left">
-                                            <a href="<?= admin_url(sprintf('user/%s/switch-back/', esc_html($cookie->id))); ?>" class="btn btn-default btn-flat"><?=trans_html(string: 'Switch back');?></a>
+                                            <form method="post" action="<?= admin_url(sprintf('user/%s/switch-back/', esc_html($cookie->id))); ?>" style="display:inline;">
+                                                <?= csrf_field(); ?>
+                                                <button type="submit"  class="btn btn-default btn-flat"><?=trans_html(string: 'Switch back');?></button>
+                                            </form>
                                         </div>
                                     <?php endif; ?>
                                     <div class="pull-right">
-                                        <a href="<?=admin_logout_url(admin_login_url());?>" class="btn btn-default btn-flat"><?=trans_html(string: 'Logout');?></a>
+                                        <form method="post" action="<?=admin_logout_url(admin_login_url());?>" style="display:inline;">
+                                            <?= csrf_field(); ?>
+                                            <button type="submit"  class="btn btn-default btn-flat"><?=trans_html(string: 'Logout');?></button>
+                                        </form>
                                     </div>
                                 </li>
                             </ul>
@@ -179,9 +186,12 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
                         </ul>
                     </li>
                     <li<?= ae('flush:cache'); ?> class="treeview">
-                        <a href="<?= admin_url('flush-cache/'); ?>">
-                            <i class="fa fa-broom"></i> <span><?=trans_html(string: 'Flush Cache');?></span>
-                        </a>
+                        <form method="post" action="<?= admin_url('flush-cache/'); ?>" class="sidebar-action-form">
+                            <?= csrf_field(); ?>
+                            <button type="submit" class="sidebar-action">
+                                <i class="fa fa-broom"></i> <span><?=trans_html(string: 'Flush Cache');?></span>
+                            </button>
+                        </form>
                     </li>
                     <?php if(is_multisite() && is_main_site()): ?>
                     <li<?= ae('manage:sites'); ?> class="treeview<?=current_screen('screen_parent', 'sites'); ?>">
@@ -329,6 +339,14 @@ $filter = Filter::getInstance()->applyFilter('pagebuilder.support', false);
         </aside>
 
         <?php $this->block('backend'); ?>
+
+        <script>
+            // Core's image picker inherits these defaults; the connector accepts POST only.
+            // Configure it after the screen loads elFinder, before its ready/click handlers run.
+            if (window.elFinder) {
+                window.elFinder.prototype._options.requestType = 'post';
+            }
+        </script>
 
         <footer class="main-footer">
             <div class="pull-right hidden-xs">

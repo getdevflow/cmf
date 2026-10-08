@@ -90,3 +90,75 @@
 .dashboard-quick-actions .btn-app {
     margin: 0 8px 8px 0;
 }
+
+/* POST actions use the same spacing and skin colors as sidebar navigation links. */
+.sidebar-menu .sidebar-action-form {
+    margin: 0;
+}
+
+.sidebar-menu .sidebar-action {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-left: 3px solid transparent;
+    border-radius: 0;
+    padding: 12px 5px 12px 15px;
+    color: var(--sidebar-action-color, #b8c7ce);
+    background: transparent;
+    font: inherit;
+    font-weight: var(--sidebar-action-weight, 400);
+    text-align: left;
+    cursor: pointer;
+    appearance: none;
+}
+
+.sidebar-menu .sidebar-action > .fa {
+    width: 20px;
+}
+
+.sidebar-menu > li:hover .sidebar-action,
+.sidebar-menu .sidebar-action:focus-visible {
+    color: var(--sidebar-action-hover-color, #fff);
+    background: var(--sidebar-action-hover-background, #1e282c);
+    border-left-color: var(--sidebar-action-accent, transparent);
+}
+
+.sidebar-menu .sidebar-action:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
+.skin-blue .sidebar-action { --sidebar-action-accent: #3c8dbc; }
+.skin-black .sidebar-action { --sidebar-action-accent: #fff; }
+.skin-green .sidebar-action { --sidebar-action-accent: #00a65a; }
+.skin-red .sidebar-action { --sidebar-action-accent: #dd4b39; }
+.skin-yellow .sidebar-action { --sidebar-action-accent: #f39c12; }
+.skin-purple .sidebar-action { --sidebar-action-accent: #605ca8; }
+
+:is(.skin-blue-light, .skin-black-light, .skin-green-light,
+    .skin-red-light, .skin-yellow-light, .skin-purple-light) .sidebar-action {
+    --sidebar-action-color: #444;
+    --sidebar-action-weight: 600;
+    --sidebar-action-hover-color: #000;
+    --sidebar-action-hover-background: #f4f4f5;
+}
+
+@media (min-width: 768px) {
+    .sidebar-mini.sidebar-collapse .sidebar-action > span {
+        display: none;
+        border-top-right-radius: 4px;
+    }
+
+    .sidebar-mini.sidebar-collapse .sidebar-menu > li:hover .sidebar-action > span,
+    .sidebar-mini.sidebar-collapse .sidebar-action:focus-visible > span {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50px;
+        width: 180px;
+        margin-left: -3px;
+        padding: 12px 5px 12px 20px;
+        background-color: inherit;
+    }
+}

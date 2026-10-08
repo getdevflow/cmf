@@ -10,4 +10,5 @@ return [
     App\Infrastructure\Providers\DebugBarServiceProvider::class,
     Application\Provider\VihzhuoBlocksServiceProvider::class,
     Application\Provider\FirewallServiceProvider::class,
+    Application\Provider\MiddlewareAliasServiceProvider::class,
 ];

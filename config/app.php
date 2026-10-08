@@ -43,7 +43,7 @@ return [
     | Application Base Url
     |--------------------------------------------------------------------------
     */
-    'url' => env(key: 'APP_URL', default: 'http://localhost:8080/'),
+    'url' => env(key: 'APP_BASE_URL', default: 'http://localhost:8080/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ return [
     | Encryption Key
     |--------------------------------------------------------------------------
     */
-    'crypto_key' => file_get_contents(filename: __DIR__ . '/../.enc.key'),
+    'crypto_key' => is_file(__DIR__ . '/../.enc.key') ? trim(file_get_contents(__DIR__ . '/../.enc.key')) : '',
 
     /*
     |--------------------------------------------------------------------------
@@ -123,7 +123,8 @@ return [
     | can add them to a route, a group of routes or controllers.
     */
     'middlewares' => Middleware::defaultMiddlewares()->merge([
-        'rest.api' => \Application\Http\Middleware\RestApiMiddleware::class,
+        'csrf.protection' => \App\Infrastructure\Http\Middlewares\CmsCsrfMiddleware::class,
+        'rest.api' => \App\Infrastructure\Http\Middlewares\RestApiMiddleware::class,
     ])->toArray(),
 
     /*
@@ -133,19 +134,18 @@ return [
     | Register middleware class strings or aliases to be applied to the entire
     | application.
     */
-    'base_middlewares' => [
+    'base_middlewares' => array_merge([
+        'cors',
+        'http.exception',
+        'security.headers',
+        'http.cache.prevention',
         'referrer.spam',
         'firewall',
         'csrf.token',
         'csrf.protection',
-        'http.cache.prevention',
         'user.cookie.decrypt',
         'bind.request',
-        'cors',
-        'security.headers',
-        'http.exception',
-        //'php.debugbar'
-    ],
+    ], env(key: 'APP_DEBUG', default: false) ? ['php.debugbar'] : []),
 
     /*
     |--------------------------------------------------------------------------
@@ -158,6 +158,7 @@ return [
         /*
          * Application Console Commands . . .
          */
+        App\Application\Console\Commands\MasterCronCommand::class,
         App\Application\Console\Commands\ClearCacheCommand::class,
         App\Application\Console\Commands\ClearCookiesCommand::class,
         App\Application\Console\Commands\ClearLogsCommand::class,

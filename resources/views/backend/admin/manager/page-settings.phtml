@@ -22,6 +22,7 @@ $formAction = $params['action'] === 'create'
 
     <!-- form start -->
     <form name="form" method="post" data-toggle="validator" action="<?=$formAction;?>" id="form" autocomplete="off">
+        <?= csrf_field(); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
