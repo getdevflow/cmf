@@ -5,6 +5,109 @@ and PHP 8.4+. Application changes leave the installed `core/` package untouched.
 See the [core upgrade guide](devflow-core-upgrade-3.0.md) and
 [CodefyPHP guide](https://github.com/codefyphp/codefy/blob/4.x/docs/4-0-upgrade/upgrade-4.0.md) for the underlying contracts.
 
+## Environment and Composer Changes
+
+### .env
+
+Make sure to add the following changes to your .env file based on your needs and configuration:
+
+```dotenv
+AUTH_LOGIN_ROUTE=login
+
+## Cookies: enable secure cookies when deploying with HTTPS.
+COOKIE_SECURE=true
+COOKIE_DOMAIN=''
+COOKIE_PATH=/
+COOKIE_SAMESITE=lax
+
+MAILER_DSN=smtp://localhost
+MAILER_SMTP_DSN=smtp://localhost
+MAILER_SENDMAIL_DSN=sendmail://default
+MAILER_QMAIL_DSN="sendmail://default?command=/usr/sbin/qmail-inject"
+MAILER_TRANSACTIONAL_DSN=postmark+api://KEY@default
+MAILER_DEBUG=false
+MAILER_EML_FILE=files/mail-debug.eml
+MAILER_FROM_EMAIL=no-reply@example.com
+MAILER_FROM_NAME="${APP_NAME}"
+```
+
+### composer.json
+
+The most important change is switching out the `getdevflow/core` dependency from `2` to `3` Your `composer.json` file should look 
+similar to below:
+
+```json
+{
+    "name": "getdevflow/cmf",
+    "type": "project",
+    "description": "Developer-centric content management framework.",
+    "keywords": ["framework", "content-management", "cms", "cmf", "content-management-system", "headless", "headless-cms"],
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Joshua Parker",
+            "email": "joshua@joshuaparker.dev",
+            "homepage": "https://joshuaparker.dev/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.4",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-zip": "*",
+        "composer/installers": "^2.3",
+        "getdevflow/core": "3.x-dev",
+        "oomphinc/composer-installers-extender": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "Cms/Application",
+            "Domain\\": "Cms/Domain",
+            "Database\\Seeders\\": "database/seeders/",
+            "Infrastructure\\": "Cms/Infrastructure",
+            "Plugin\\": "public/plugins/",
+            "Theme\\": "public/themes/"
+        }
+    },
+    "scripts": {
+        "devstan": "@analyse",
+        "test": "vendor/bin/pest",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "setup-environment": "@php bootstrap/setup-environment.php",
+        "post-create-project-cmd": [
+            "@setup-environment",
+            "@php codex generate:key:file"
+        ],
+        "analyse": "phpstan analyse --no-progress"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true,
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
+        }
+    },
+    "require-dev": {
+        "qubus/qubus-coding-standard": "^2.1.2"
+    },
+    "extra": {
+        "installer-types": ["devflow-core", "devflow-plugin", "devflow-theme"],
+        "installer-paths": {
+            "core/": ["type:devflow-core"],
+            "public/plugins/{$name}/": ["type:devflow-plugin"],
+            "public/themes/{$name}/": ["type:devflow-theme"]
+        }
+    }
+}
+
+```
+
 ## Deployment
 
 1. Back up the database, runtime files, `.env`, and `.enc.key`. Stop workers and
@@ -13,9 +116,8 @@ See the [core upgrade guide](devflow-core-upgrade-3.0.md) and
    **An installed application with a missing salt needs its original value
    restored from backup. Do not generate a replacement as an upgrade step.**
 2. Deploy the application with its `composer.lock` and resolved dependencies.
-   `3.x-dev` and its framework development dependency should be replaced with
-   stable constraints when those releases are available. Do not rerun project
-   creation or `devflow:setup` against an installed site.
+   `2.x-dev` core dependency should be replaced with `3.x-dev` for bleeding edge or `^3.0` for stable. Do not rerun project
+   creation or `devflow:install` against an installed site.
 3. Merge configuration. Use the full public `APP_BASE_URL`, including its scheme;
    retain the `APP_BASE_PATH` appropriate to the deployment (for example,
    `/var/www/html` inside a container). Configure `MAILER_DSN` and
@@ -42,11 +144,9 @@ against the existing installation during this application upgrade.
 - Every supplied application POST form carries `csrf_field()`. Bundled plugin
   POST templates also receive tokens. The admin layout supplies CSRF headers for
   same-origin unsafe jQuery requests, including workflow and notification actions.
-  elFinder uses POST; the standalone picker also loads CSRF support. AdminBar's
-  fetch requests include the configured token header.
+  elFinder uses POST; the standalone picker also loads CSRF support.
 - Page-manager forms use the application templates. Page names are escaped in
-  deletion dialogs. The core editor supplies its own jQuery/GrapesJS integration;
-  the old standalone `editor-csrf.phtml` fragment is not loaded.
+  deletion dialogs. The core editor supplies its own jQuery/GrapesJS integration.
 - CORS precedes error handling, security filtering, and authentication. CSRF
   preparation precedes protection; request binding occurs after token and cookie
   middleware and again after login authentication. The application provider binds
@@ -59,14 +159,10 @@ against the existing installation during this application upgrade.
   a recovery link, never a replacement password.
 - The public catch-all accepts GET after administrative, API, theme, and plugin
   routes. ULID constraints now enforce the full 26-character format.
-- CustomFields cloning/deletion requires POST. CustomFields, MenuBuilder, and
-  SqliteAdmin route groups require `manage:plugins`, in addition to CSRF for writes.
 - Plugins own their signature-authenticated callback exceptions. The generic
   `cms.csrf.signature_routes` filter starts with an empty map of route names to
   exact paths (without trailing slashes). Only loaded plugins register entries;
-  these callbacks must verify signatures before processing events. DevCart registers
-  its Stripe/Square callbacks through this hook. Exemption requires POST and a
-  matching route name and path; the CMS middleware contains no DevCart-specific rules.
+  these callbacks must verify signatures before processing events.
 
 ## API breaking changes
 
@@ -87,10 +183,6 @@ same scheduled-product publication and per-site hooks through the console. The
 scheduler invokes it every minute with `onlyOneInstance()`. Queue execution and
 cleanup commands also use overlap locks. `Schedule::php('codex queue:run')` was
 replaced by the supported console-command API.
-
-SimpleSeo uses SEO v3's named `Thing` constructor arguments. DevCart uses Symfony
-mail transport exceptions and records confirmation delivery only after the mail
-helper succeeds, allowing failures to be retried.
 
 Private disk file/directory modes are 0600/0700. Runtime queue, session, cookie,
 mail, and scheduler files are ignored by Git. Existing permissions and legacy
